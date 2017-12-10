@@ -81,12 +81,13 @@
                   /*    Ends  */    
         ?>
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 style="font-size:12px;font-family:arial;text-align:center;" class="modal-title">Device Console Output  - Command Issued - <?php echo $_GET['commandname'];?> </h4>
-    
+    <h5 class="modal-title" id="exampleModalLabel">Device Console Output  - Command Issued - <?php echo $_GET['commandname'];?></h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
-<div class="modal-body">    
+<div class="modal-body">     
 <?php
 	      if (isset($url)) {
 		       if (!$data = @file_get_contents($url)) {

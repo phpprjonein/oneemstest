@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   setHeight();
 
-        var default_pagelen = 12;
+        var default_pagelen = 14;
         if( $('#hidd_list_type').val() == 'market') {
           default_pagelen = 25;
         }
@@ -12,11 +12,7 @@ $(document).ready(function() {
           "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
           "pageLength": default_pagelen,
           "serverSide": true, 
-         /* "dom": 'lBfrtip', */
-          "dom": 'Bfrtip',
-         /* "buttons": [{extend: 'collection',text: 'Export', buttons: ['excel','pdf','print']}],
-         */
-          "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],  
+          "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "No records found",
@@ -36,6 +32,7 @@ $(document).ready(function() {
             { "data": "csr_site_id" },
             { "data": "csr_site_name" }
         ],
+        
         "order": [[1, 'asc']],
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
@@ -91,8 +88,6 @@ $(document).ready(function() {
 
              }  
            });
-		   
-		   $('#swt_user_devices').find('tr.drag_selected').removeClass('drag_selected'); 
           }
         });
       });
@@ -228,7 +223,7 @@ $(document).ready(function() {
   $(".map_region").click(function(marketid) {
     $("#marketname").val($(this).data('market')); 
     $("#market-region").text($(this).data('market')); 
-    $(location).attr("href","sheet1_switchtech_user_list.php?markets=" + $(this).data('market'))
+    $(location).attr("href","switchtech_user_list.php?markets=" + $(this).data('market'))
     
   });
 

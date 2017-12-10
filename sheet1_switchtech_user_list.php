@@ -62,7 +62,7 @@
       </div>
       <div class="panel-body">
         <div class="col-md-6" style="background-color:nonelightgreen;">
-          <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="switchtech_user_list.php" method = "POST" class="navbar-form search">
+          <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="sheet1_switchtech_user_list.php" method = "POST" class="navbar-form search">
             <div class="input-group add-on" style="min-width:350px;margin-left:0px;">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">

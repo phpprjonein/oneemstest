@@ -1,22 +1,19 @@
 <script type ="text/javascript">
 $(document).ready(function(){
-                $('.anchorcmd').click(function () { 
-
-                $("#mycmdModal").on("hidden.bs.modal", function(){
-                    $(".modal-content").html("<div>Loading Please Wait!</div>");
-                }); 
-
-                $("#mycmdModal").modal({
-                    remote: $(this).attr('href'),
-                    refresh: true
-                });            
-                 $('#mycmdModal').removeData()   
-                 return false;                  
+                $('.anchorcmd').click(function () {
+            		var myModal = $('#mycmdModal');
+                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="images/ajax-loader.gif"></img></div>');
+                    myModal.modal('show'); 
+                	$.ajax({url: $(this).attr('href'), success: function(result){
+                		var myModal = $('#mycmdModal');
+                        myModal.find('.modal-content').html(result);
+                        myModal.modal('show');
+                        
+                    }});
+                     $('#mycmdModal').removeData()   
+                     return false;                  
               });
-
- 
             });        
-
 </script>
 <?php
 include "classes/db2.class.php";

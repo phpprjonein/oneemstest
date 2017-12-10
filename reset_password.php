@@ -24,7 +24,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="welcome">Welcome <span><?php echo 'username' ?></span></a></li>
 					<li><a href="#"><img src="resources/img/Help.png" height="20px" alt="Help"/></a></li>
-					<li><a href="login.php"><img src="resources/img/Logout.png" height="20px" alt="Log Out"/></a></button></li>
+					<li><a href="login.php"><img src="resources/img/logout.jpg" height="20px" alt="Log Out"/></a></button></li>
 				</ul>
      
 				</div>

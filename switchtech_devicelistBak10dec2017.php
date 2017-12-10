@@ -1,11 +1,11 @@
 <?php
   include ("classes/db2.class.php");
   include "classes/paginator.class.php";  
-  include ("functions.php");   
+  include ("functions.php"); 
   user_session_check(); 
   //Check for switch tech type user
   check_user_authentication('2'); 
-  $page_title =  'OneEMS';
+  $page_title = 'OneEMS';
   // Default map dispaly flag true
   $show_map_flag = true;
   // Map flag set to false once map is clicked
@@ -20,7 +20,20 @@
     $marketname = null;
     unset($_SESSION['marketname']);  
   }
-   
+  
+  // To set map flag false if user seached by search form submit
+  if (isset($_GET['search_term'])) {
+    $show_map_flag = false;
+  } 
+  
+  // To set map flag true if user clicked low limit pagination
+  if (isset($_GET['ipp']) &&  $_GET['ipp'] == LOW_LIMIT){
+          $show_map_flag = true;
+  }
+  // To set map flag flase if user clicked high limit pagination
+  if (isset($_GET['ipp']) &&  $_GET['ipp'] == HIGH_LIMIT){
+          $show_map_flag = false;
+  }
  
   $userid = $_SESSION['userid'];
   $succss_msg  = '';
@@ -39,34 +52,40 @@
   if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     $switchlistid = $_SESSION['switchlistid'] = $_GET['switchlistid'];
   } 
-   
+  
+  if ( isset($_GET['search_term']) ){
+    $search_term = ( trim($_GET['search_term']) != '') ? trim($_GET['search_term']) : '';
+  } 
+
+  if (isset($_GET['submit']) && strtolower($_GET['submit']) == 'clear' ) {
+    $search_term = null;
+  }
   
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>  
 <?php include("includes.php");  ?>
-<script src="resources/js/switchtech_user_list.js?t=<?php echo date('his'); ?>"></script>
 </head>  
-<body class="hold-transition skin-blue sidebar-mini ownfont">
-<div class="wrapper">
-  
+<body>
+<div id="mainctr" class="container-fluid">
+  <div id="mainctrow" class="row">
     <?php 
     // Include menu bar htmls [ Logo, welcome text, menu ]
     include ('menu.php'); 
     ?>   
-  
-  <div class="row">
-    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info panel-default" style="background-color: white; min-height: 780px">
-      <div id="mylist" class="panel-heading panel-heading-lstmgmt"><font color="black"><b>List Management</b></font>
+  </div>
+  <div class="row" >
+    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info" style="background-color: white; min-height: 780px">
+      <div id="mylist" class="panel-heading"><b>My List</b>
       </div>
       <div class="panel-body">
-        <div class="col-md-6" style="background-color:nonelightgreen;">
-          <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="sheet1_switchtech_user_list.php" method = "POST" class="navbar-form search">
-            <div class="input-group add-on" style="min-width:350px;margin-left:0px;">
+        <div class="col-md-12" style="background-color: nonelightgreen;">
+          <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="switchtech_devicelist.php" method = "POST" class="navbar-form search">
+            <div class="input-group add-on">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">
-                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><font color="black"><b>Submit</b></font></button>
+                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit">Submit</button>
               </span>                                       
             </div>
           </form>
@@ -82,19 +101,19 @@
       </div>
       <div class="col-md-12">
         <div class="row">
-          <div id="switchlist" class="panel-warning  panel-default col-md-6 ">
-            <div class="panel-heading panel-heading-myswtlst" id="delete_mylists" style="background-color:#F6F6F6";>
-              <font color="black"><b>My Device List </b></font>
+          <div id="switchlist" class="panel-warning col-md-6 ">
+            <div class="panel-heading" id="delete_mylists" style="background-color:#F6F6F6";>
+              <b>My Device List </b>
               <!-- Deleted selected switch list by drag and drop area -->
               <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger">
-                <font color="black"><i class="fa fa-trash"></i>&nbsp; <b>Delete</b> </font>
+                <i class="fa fa-trash"></i>&nbsp; Delete 
               </span>
             </div>
             <div class ="panel-body" style="border: 1px solid #FAEBCC">
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
                 <thead>
                   <tr>
-                    <td width="60%" ><font color="black">List name </font> </td><td  width="20%"> Edit </td><td  width="20%">View</td>           
+                    <td width="80%" >List name  </td><td  width="20%"> Edit </td><td  width="20%">View</td>           
                   </tr>
                 </thead>
                 <tbody> 
@@ -103,14 +122,14 @@
                   $myswitchlist = usrfavritelist_display($userid);                       
                   foreach($myswitchlist['result'] as $key=>$value) { 
                   ?> 
-                    <tr style='cursor:pointer' class="del_<?php echo $value['listid'];?>">                            
-                      <td width="70%" >
+                    <tr class="del_<?php echo $value['listid'];?>">                            
+                      <td width="73%" >
                         <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows"></i>&nbsp;
                       <?php echo $value['listname']; ?>
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
                       </td>                    
-                      <td>&nbsp;<a href="switchtech_user_devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
+                      <td>&nbsp;<a href="mylist_devices.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
                       </td>
                     </tr>
                   <?php  
@@ -124,26 +143,26 @@
         if (isset( $_SESSION['switchlistid'] )) {
           $switchlist = usrfavritecondev_display($userid,$_SESSION['switchlistid']);
           ?>
-          <div class="col-md-6 panel-warning panel-default">
-            <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
-             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b></font>
-                <!-- Deleted selected list by drag   and drop area -->
-                <span type="button" class="box box-danger border pull-right"><font color="black"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b></font>
+          <div class="col-md-6 panel-warning">
+            <div class="panel-heading" id="mylist_delete" style="background-color:#F6F6F6";>
+              <b>View Device List :</b> <?php echo $switchlist['mylistname'] ?>
+                <!-- Deleted selected list by drag and drop area -->
+                <span type="button" class="box box-danger border pull-right"><i class="fa fa-trash"></i>&nbsp;Delete
                 </span>
             </div>
             <div class ="panel-body" style="border: 1px solid #FAEBCC">
               <!-- Start : View devices list table -->
-              <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?> width="100%" >
-                <thead><tr><td ><font color="black"><b> Device Id</b></font> </td><td><font color="black"><b>Device Name</b></font>     </td></tr></thead>
+              <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?>  >
+                <thead><tr><td ><b> Device Id</b> </td><td><b>Device Name</b></td></tr></thead>
                 <tbody id="mydevicestbl">
                 <?php                              
                   foreach ($switchlist['result'] as $key => $listitem) {
                     ?>
-                    <tr style='cursor:pointer' class='<?php echo "del_" . $listitem['nodeid']; echo " swtlistid_".$_SESSION['switchlistid']; ?>'>
-                      <td width="30%">
+                    <tr class='<?php echo "del_" . $listitem['nodeid']; echo " swtlistid_".$_SESSION['switchlistid']; ?>'>
+                      <td align='left'>
                         <i data-listid="<?php echo $_SESSION['switchlistid']; ?>" data-deviceid="<?php echo  $listitem['nodeid'] ?>" data-devicename="<?php echo $listitem['deviceName'] ?>" class='fa fa-arrows draggable'></i>&nbsp;<?php echo $listitem['nodeid'] ?>
                       </td>
-                      <td width="70%"><?php echo $listitem  ['deviceName'] ?></td>
+                      <td align='left'><?php echo $listitem['deviceName'] ?></td>
                     </tr>
                     <?php
                   }
@@ -154,7 +173,6 @@
           </div>
           <!-- Hidden field for getting selected switch list id -->
           <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_SESSION['switchlistid']; ?>">
-          <input type="hidden" name="hidd_userid" id="hidd_userid" value="<?php echo  $_SESSION['userid']; ?>">
           <?php
           }
           ?>
@@ -163,11 +181,11 @@
     </div>
     <!-- START : Right side panel  -->
     <div id="rhsPanel" class="col-sm-6 col-md-6" >
-      <div class="maprow"> 
+      <div class="row"> 
             <!-- START : Map section -->
             <div id="map_section" class="sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>; border:1px solid lightgray;'> 
               <!-- US Map Image -->
-              <img src="resources/img/map_new.png" id="map_image" usemap="#United States of America"  border=0 height="50%" border=0 >
+              <img src="resources/img/map_new.png" id="map_image" usemap="#United States of America"  border=0 height="50%" border=0>
               <!-- Map market area co-ordinats -->
               <map name="United States of America"> 
                 <!-- Pacific Northwest -->
@@ -238,11 +256,21 @@
                 <area shape="default" href="#" target="">
               </map> 
             </div><!-- END : Map section -->    
-      <div class="panel-info panel-default">
-        <div class="panel-heading panel-heading-swtname router_search_box">
-           
-          <?php
-            $str_marketname =  $marketname ; 
+      <div class="panel-info">
+        <div class="panel-heading router_search_box">
+          <form id="city_form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">  
+            <?php
+            $str_marketname =  $marketname ;        
+            ?> 
+            <input placeholder="Search" name="search_term" style="color: blue;" value="<?php echo $search_term; ?>" id="srch-term" type="text">
+            <input id="hidd_markets_name" name="markets" type="hidden" value="<?php echo $marketname ?>">
+            <button type="submit" name="submit" value="search"><i class="glyphicon glyphicon-search" style="color:#D52B1E"></i></button> 
+            <?php
+            if ($search_term) {
+              ?>
+              <button type="submit" name="submit" style="color:orange;"  value="clear" title="Clear Search" hxref="switchtech_devicelist.php?clear=search"><i class="fa fa-close"></i></button>
+              <?php
+            }
             $switch_device_name = '';
 
             // Function call to get Switch name assigned for the user
@@ -254,7 +282,7 @@
             if (!isset($str_marketname)) { 
             ?>
               <!-- Displays user assigned switch name -->
-              <span style="padding-left: 20px; "><font color="black"><label><b>Switch Name : &nbsp; </label><?php echo $switch_device_name ?></b></font></span>
+              <span style="padding-left: 20px; "><label>Switch Name : &nbsp; </label><?php echo $switch_device_name ?></span>
             <?php 
             } 
             elseif (isset($str_marketname)) {
@@ -264,55 +292,56 @@
             <?php 
             }
           ?>
-          <font color="black"><span id="map_show_link" class="pull-right sec_without_map" style='cursor: pointer; <?php echo ($show_map_flag) ? "display: none" : "display: block" ?>' onclick="showMap()"><b>Show Map</b>&nbsp;  <img width="25px" src="resources/img/usmap-icon.png" >&nbsp;</span>
-          <span id="map_hide_link" class="pull-right sec_with_map" style='cursor: pointer; <?php echo ($show_map_flag) ? "display: block" : "display: none" ?>' onclick="hideMap()"><b>Hide Map</b>&nbsp;  <img width="25px" src="resources/img/usmap-icon.png" >&nbsp;</span>
-          </font>
+          <!-- Show/Hide map link and icon section -->
+          <span id="map_show_link" class="pull-right sec_without_map" style='cursor: pointer; <?php echo ($show_map_flag) ? "display: none" : "display: block" ?>' onclick="showMap()"> Show Map&nbsp;  <img width="25px" src="resources/img/usmap-icon.png" >&nbsp;</span>
+          <span id="map_hide_link" class="pull-right sec_with_map" style='cursor: pointer; <?php echo ($show_map_flag) ? "display: block" : "display: none" ?>' onclick="hideMap()"> Hide Map&nbsp;  <img width="25px" src="resources/img/usmap-icon.png" >&nbsp;</span>
+          </form>      
         </div>
         <div  id="container_mymarketswitches" class="panel-body"> 
           <!-- $show_map_flag is used to set default value invisiblie -->
-          <div id="sw_result_without_map" class="" style='<?php echo ($show_map_flag) ? "display: block" : "display: block" ?>; '>
+          <div id="sw_result_without_map" class="sec_without_map" style='<?php echo ($show_map_flag) ? "display: none" : "display: block" ?>; '>
           <?php
+
+            // Highest possible listing item when map is invisible
+            $high_limit = HIGH_LIMIT;
+
+            // Highest possible listing item when map is Visible
+            $low_limit = LOW_LIMIT;
+
             if(isset($switch_device_name) && $switch_device_name != '' ) {
-              
+              $page_limit = $high_limit;
               if (!isset($str_marketname)) {  // IF No Market is selected
-                $list_type = 'user';
+
                 // Get  Routersfor users assigned switch
-                ?>
-                <input type="hidden" id="hidd_list_for" value="<?php echo $switch_device_name ?>" name="">
-                <input type="hidden" id="hidd_list_type" value="<?php echo $list_type ?>" name="">
-                <?php
-                // $device_details = get_swt_user_routers_list_datatable($switch_device_name, $list_for);
+                $device_details = getSWroutersDetails_all($switch_device_name, $search_term, $_SESSION['userid'], $page_limit);
               }
               else { //  If market is clicke on the map 
-                // $list_for = 'market';
-                $list_type ='market';
-                // Get routers for the selected market
-                ?>
-                <input type="hidden" id="hidd_list_for" value="<?php echo strtolower($str_marketname) ?>" name="">
-                <input type="hidden" id="hidd_list_type" value="<?php echo $list_type ?>" name="">
-                <?php
-                // $device_details = get_swt_user_routers_list_datatable(strtolower($str_marketname), $list_for);
-              }
-              ?>
 
-              <table id="swt_user_devices" class="table  table-border">
-                <thead>
-                  <tr>        
-                    <th></th>
-                    <th><b>ID</b></th>
-                    <th><b>Device Name</th>
-                    <th><b>Ip Address</th>
-                  <!--  <th><b>Custom Location</th> -->
-					<th><b>Site ID</th>
-					<th><b>Site Name</th>
-                  </tr>
-                </thead>
-              </table> 
-              <?php
+                // Get routers for the selected market
+                $device_details = getmarketroutersDetails_all(strtolower($str_marketname), $search_term, $page_limit );
+              }
+              // Include Routers list HTML section
+              include "sw_results_for_map.php";
             }
           ?>                  
           </div> <!-- END : Switch results without map -->
- 
+
+          <!-- START : Switch results with map -->
+          <div id="sw_result_with_map" class="sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>; '>
+          <?php
+          $device_details= '';
+            if(isset($switch_device_name) && $switch_device_name != '' ) {
+              $page_limit = $low_limit;
+              if (!isset($str_marketname)) {
+                $device_details = getSWroutersDetails_all($switch_device_name, $search_term, $_SESSION['userid'],$page_limit);
+              }
+              else {
+                $device_details = getmarketroutersDetails_all(strtolower($str_marketname), $search_term , $page_limit);
+              }
+              include "sw_results_for_map.php";
+            }
+          ?>                    
+          </div> <!-- END : Switch results with map -->
         </div>
       </div>
     </div> 
@@ -333,7 +362,7 @@
   <div style="clear:both;"></div>
   </div>
 </div>
-  
+  <script src="resources/js/mydashboardlist.js?t=<?php echo date('his'); ?>"></script>
 
  <?php 
     // Footder section include file

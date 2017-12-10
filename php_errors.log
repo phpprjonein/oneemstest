@@ -1,0 +1,8 @@
+[07-Dec-2017 23:08:57 UTC] PHP Warning:  include_once(/var/www/html//oneemstest/config/config.inc.php): failed to open stream: No such file or directory in /var/www/html/oneems/classes/db2.class.php on line 9
+[07-Dec-2017 23:08:57 UTC] PHP Warning:  include_once(): Failed opening '/var/www/html//oneemstest/config/config.inc.php' for inclusion (include_path='.:/usr/share/pear:/usr/share/php') in /var/www/html/oneems/classes/db2.class.php on line 9
+[07-Dec-2017 23:08:57 UTC] PHP Notice:  Use of undefined constant DB_HOST - assumed 'DB_HOST' in /var/www/html/oneems/classes/db2.class.php on line 136
+[07-Dec-2017 23:08:57 UTC] PHP Notice:  Use of undefined constant DB_PORT - assumed 'DB_PORT' in /var/www/html/oneems/classes/db2.class.php on line 136
+[07-Dec-2017 23:08:57 UTC] PHP Notice:  Use of undefined constant DB_USER - assumed 'DB_USER' in /var/www/html/oneems/classes/db2.class.php on line 136
+[07-Dec-2017 23:08:57 UTC] PHP Notice:  Use of undefined constant DB_PASSWORD - assumed 'DB_PASSWORD' in /var/www/html/oneems/classes/db2.class.php on line 136
+[07-Dec-2017 23:08:57 UTC] PHP Notice:  Use of undefined constant DB_NAME - assumed 'DB_NAME' in /var/www/html/oneems/classes/db2.class.php on line 136
+[07-Dec-2017 23:08:57 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /var/www/html/oneems/classes/db2.class.php on line 42

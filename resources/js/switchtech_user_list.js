@@ -25,7 +25,7 @@ $(document).ready(function() {
             {  "className":  'device_row',
                 "orderable":      false,
                 "data":           null,
-                "defaultContent": '<i class="fa fa-arrows" ></i>'},
+                "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
             { "data": "id" },            
             { "data": "deviceName" },
             { "data": "deviceIpAddr" }, 
@@ -242,7 +242,7 @@ $(document).ready(function() {
 
 function reconstruct($item) {   
 
-  return "<tr class=del_" + $item.data('deviceid') + ">" + "<td class='col-md-4'><i data-listid='" +  $('#hidd_mylistid').val() + "' data-deviceid='" + $item.data('deviceid') + "' data-devicename='" +  $item.data('devicename') + "' class='fa fa-arrows draggable'></i>&nbsp;" + $item.data('deviceid') + "</td>" +
+  return "<tr class=del_" + $item.data('deviceid') + ">" + "<td class='col-md-4'><i data-listid='" +  $('#hidd_mylistid').val() + "' data-deviceid='" + $item.data('deviceid') + "' data-devicename='" +  $item.data('devicename') + "' class='fa fa-arrows-alt draggable'></i>&nbsp;" + $item.data('deviceid') + "</td>" +
     "<td 'col-md-8'>" +  $item.data('devicename') + "</td></tr>";
 }
 

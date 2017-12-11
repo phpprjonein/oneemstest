@@ -1468,3 +1468,41 @@ function get_discovery_list_datatable($userid) {
     
     return $resultset;
 }
+function load_ipv4_dataset(){
+    $ipv4_data_preset = array('market' => 'OPW', 'from_ip' => '10.202.90.0', 'to_ip' => '10.202.90.255', 'subnet' => '10.202.90.0/24');
+    
+    for($i=0; $i<20;$i++){
+    $output .= '<tr>
+                  <th scope="row" class="">
+                    '.$ipv4_data_preset['market'].'
+                  </th>
+                  <td>'.$ipv4_data_preset['from_ip'].'</td>
+                  <td>'.rand(1,255).'</td>
+                  <td>'.$ipv4_data_preset['to_ip'].'</td>
+                  <td>'.$ipv4_data_preset['subnet'].'</td>
+                  <td>
+                    <button type="button" class="btn">GO</button>
+                  </td>
+                </tr>';
+    }
+    return $output;
+}
+function load_ipv6_dataset(){
+    $ipv6_data_preset = array('market' => 'OPW', 'from_ip' => '2001:0DB8:130F:0000:0000:7000:0000:140B', 'to_ip' => '2001:0DB8:130F:0000:0000:7000:0000:140B', 'subnet' => '2001:0DB8:130F:0000:0000:7000:0000:140B');
+    
+    for($i=0; $i<20;$i++){
+        $output .= '<tr>
+                  <th scope="row" class="">
+                    '.$ipv6_data_preset['market'].'
+                  </th>
+                  <td>'.$ipv6_data_preset['from_ip'].'</td>
+                  <td>'.rand(1,255).'</td>
+                  <td>'.$ipv6_data_preset['to_ip'].'</td>
+                  <td>'.$ipv6_data_preset['subnet'].'</td>
+                  <td>
+                    <button type="button" class="btn">GO</button>
+                  </td>
+                </tr>';
+    }
+    return $output;
+}

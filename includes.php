@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">    
  
         <!-- jQuery 2.2.3-->
-        <!--  <script defer src="resources/js/all.js"></script>  -->
+        <script defer src="resources/js/all.js"></script>
         <script type="text/javascript" language="javascript" src="resources/js/jquery-3.2.1.slim.min.js"></script>
         <script type="text/javascript" language="javascript" src="resources/js/popper.min.js"></script>
          

@@ -130,7 +130,7 @@
                   ?> 
                     <tr class="del_<?php echo $value['listid'];?>">                            
                       <td width="73%" >
-                        <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows"></i>&nbsp;
+                        <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
                       <?php echo $value['listname']; ?>
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
@@ -166,7 +166,7 @@
                     ?>
                     <tr class='<?php echo "del_" . $listitem['nodeid']; echo " swtlistid_".$_SESSION['switchlistid']; ?>'>
                       <td align='left'>
-                        <i data-listid="<?php echo $_SESSION['switchlistid']; ?>" data-deviceid="<?php echo  $listitem['nodeid'] ?>" data-devicename="<?php echo $listitem['deviceName'] ?>" class='fa fa-arrows draggable'></i>&nbsp;<?php echo $listitem['nodeid'] ?>
+                        <i data-listid="<?php echo $_SESSION['switchlistid']; ?>" data-deviceid="<?php echo  $listitem['nodeid'] ?>" data-devicename="<?php echo $listitem['deviceName'] ?>" class='fa fa-arrows-alt draggable'></i>&nbsp;<?php echo $listitem['nodeid'] ?>
                       </td>
                       <td align='left'><?php echo $listitem['deviceName'] ?></td>
                     </tr>

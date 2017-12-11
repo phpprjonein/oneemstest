@@ -22,6 +22,31 @@ user_session_check();
     <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+
+<link rel="stylesheet" type="text/css" href="resources/css/dataTables.tableTools.css">
+<script type="text/javascript" language="javascript" src="resources/js/dataTables.tableTools.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function() {
+	if($('#ipmgt-ipv4').length > 0){
+		table = $('#ipmgt-ipv4').DataTable( {
+			dom: 'T<"clear">lfrtip',
+			"pageLength": 5,
+			tableTools: {
+	            "sSwfPath": "resources/js/swf/copy_csv_xls_pdf.swf"
+	        }
+		} );
+	}
+	if($('#ipmgt-ipv6').length > 0){
+		table = $('#ipmgt-ipv6').DataTable( {
+			dom: 'T<"clear">lfrtip',
+			"pageLength": 5,
+			tableTools: {
+	            "sSwfPath": "js/swf/copy_csv_xls_pdf.swf"
+	        }
+		} );
+	}
+} );
+</script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
@@ -50,7 +75,6 @@ user_session_check();
 							-->
                           </div>                  
                           
- 							<div id="mylist" class="panel-heading" style = "height:600px;"><b>Coming soon.</b>
 								<!-- navigation tabs -->
    
 
@@ -182,7 +206,7 @@ user_session_check();
 
 <!-- IPv4 table content -->
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <table class="table table-striped table-sm">
+            <table id="ipmgt-ipv4" class="table table-striped table-sm">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Market</th>
@@ -194,93 +218,18 @@ user_session_check();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row" class="">
-                    OPW
-                  </th>
-                  <td>10.202.90.0</td>
-                  <td>255</td>
-                  <td>10.202.90.255</td>
-                  <td>10.202.90.0/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>10.202.90.0</td>
-                  <td>255</td>
-                  <td>10.202.90.255</td>
-                  <td>10.202.90.0/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">OPW</th>
-                  <td>10.202.90.0</td>
-                  <td>255</td>
-                  <td>10.202.90.255</td>
-                  <td>10.202.90.0/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">OPW</th>
-                  <td>10.202.90.0</td>
-                  <td>255</td>
-                  <td>10.202.90.255</td>
-                  <td>10.202.90.0/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>10.202.90.0</td>
-                  <td>255</td>
-                  <td>10.202.90.255</td>
-                  <td>10.202.90.0/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
+              <?php echo load_ipv4_dataset();?>
               </tbody>
             </table>
 
-<!-- pagination -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-<!-- /pagination -->
+
 
           </div>
 <!-- /IPv4 table content -->
 
 <!-- IPv6 table content -->
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <table class="table table-striped table-sm table-responsive ipv6-table">
+            <table id="ipmgt-ipv6" class="table table-striped table-sm table-responsive ipv6-table">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Market</th>
@@ -292,90 +241,11 @@ user_session_check();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>255</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>255</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>255</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>255</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B/24</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    OPW
-                  </th>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>255</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                  <td>2001:0DB8:130F:0000:0000:7000:0000:140B/24</td>
-                  <td>
-                    <button type="button" class="btn ">GO</button>
-                  </td>
-                </tr>
+              	<?php echo load_ipv6_dataset();?>
               </tbody>
             </table>
 
-<!-- pagination -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-<!-- /pagination -->
+
 
           </div>
 <!-- /IPv6 table content -->
@@ -387,8 +257,7 @@ user_session_check();
     </div>
 <!-- /IP management table row -->
 							
-							</div> 
-                        <!-- /.box-body -->
+
                       </div>
                   </div> 
                 </section> <!-- /.content -->
@@ -401,6 +270,6 @@ user_session_check();
         </div>
         <!-- ./wrapper -->
 
-        <?php include ('footer.php'); ?> 
+         <?php include ('footer.php'); ?> 
     </body>
 </html>

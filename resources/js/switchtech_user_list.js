@@ -157,18 +157,18 @@ $(document).ready(function() {
     });
 
     $('#myswitchlist_delete').droppable({
-      classes: {
+      /*classes: {
         "ui-droppable-active": "ui-state-active",
         "ui-droppable-hover": "ui-state-hover"
-      },
+      },*/
       drop: function( event, ui ) {
       }
     });
     $("#myswitchlist_delete.droppable").droppable({ 
-      classes: {
+      /*classes: {
         "ui-droppable-active": "ui-state-active",
         "ui-droppable-hover": "ui-state-hover"
-      },
+      },*/
       drop: function(event, ui) {   
         switchlistdel( $('#hidd_userid').val() , ui.draggable.data('listid'));
       }
@@ -189,11 +189,11 @@ $(document).ready(function() {
     });
 
     $("#mylist_delete").droppable({ 
- 
+    	/*
       classes: {
         "ui-droppable-active": "ui-state-active",
         "ui-droppable-hover": "ui-state-hover"
-      },
+      },*/
       drop: function(event, ui) { 
       switchesdel($('#hidd_userid').val(), ui.draggable.data('listid')  ,  ui.draggable.data('deviceid')); 
       }

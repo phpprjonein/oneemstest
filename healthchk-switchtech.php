@@ -2,10 +2,12 @@
 $(document).ready(function(){
                 $('.anchorcmd').click(function () {
             		var myModal = $('#mycmdModal');
+            		myModal.find('.modal-content').css('border', 'none'); 
                     myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="images/ajax-loader.gif"></img></div>');
                     myModal.modal('show'); 
                 	$.ajax({url: $(this).attr('href'), success: function(result){
                 		var myModal = $('#mycmdModal');
+                		myModal.find('.modal-content').css('border', '1px solid rgba(0, 0, 0, 0.2)');
                         myModal.find('.modal-content').html(result);
                         myModal.modal('show');
                         

@@ -400,6 +400,77 @@ user_session_check();
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
+		
+		<!-- add subnet mask modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD A SUBNET IN $REGION$</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- add subnet mask form -->
+
+<table class="table table-striped table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col-1"></th>
+                  <th scope="col-1" colspan="3" class="table_center_text">RANGE</th>
+
+                  <th scope="col-1" class="table_center_text">ADD SUBNET</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+
+<!-- market dropdown -->
+                    <div class="btn-group">
+                      <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      SELECT MARKET
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ohio</a>
+                        <a class="dropdown-item" href="#">OPW-EAST</a>
+                        <a class="dropdown-item" href="#">Outer Illinois</a>
+                      </div>
+                    </div>
+<!-- /market dropdown -->
+
+                  </td>
+                  <td>172.202.190.0</td>
+                  <td>255</td>
+                  <td>172.202.190.255</td>
+                  <td>
+                    <div class="row">
+                      <div class="col-lg-8 col-md-12 col-sm-12">
+                        <input type="email" class="form-control" id="inputSubnet" placeholder="SUBNET">
+                      </div>
+                      <div class="col-lg-1 d-none d-xl-block">
+                        <label for="inputMask">/</label>
+                      </div>
+                      <div class="col-lg-3 col-md-12 col-sm-12">
+                        <input type="email" class="form-control" id="inputMask" placeholder="MASK">
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+<!-- /add subnet mask form -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn">COMPUTE</button>
+            <button type="button" class="btn" disabled>ADD</button>
+          </div>
+        </div>
+      </div>
+  </div>
+<!-- /add subnet mask modal -->
 
         <?php include ('footer.php'); ?> 
     </body>

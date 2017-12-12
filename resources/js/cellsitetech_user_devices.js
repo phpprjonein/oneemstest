@@ -1,19 +1,12 @@
 $(document).ready(function() {
-      
+	if($('#example').length > 0){
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true,
           "ajax":"cellt_server_process.php",      
           "pageLength": 25,
-         /* "dom": 'lBfrtip', */
           "dom": 'Bfrtip',
-/*          "buttons": [ 'excel','pdf','print'],
-            "buttons": [{extend: 'collection',text: 'Export', buttons: ['excel','pdf','print']}],
-            "buttons": [{extend: 'excelHtml5',text: '<i class = "fa fa-file-excel-o"></i>', titleAttr:'Excel',className:'excelbtn'},{extend: 'pdfHtml5',text: '<i class = "fa fa-file-pdf-o"></i>', titleAttr:'PDF'}],
-	     "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'excelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'pdfbtn'},'print'], 
-	     "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'excelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'pdfbtn'},{extend: 'printHtml5',titleAttr:'',className:'printbtn'}], 
-*/
-	     "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
             "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "No records found",
@@ -35,7 +28,6 @@ $(document).ready(function() {
             { "data": "lastpolled" }
         ],
         "order": [[1, 'asc']],
-            // Per-row function to iterate cells
         "createdRow": function (row, data, rowIndex) {
              $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
@@ -43,8 +35,80 @@ $(document).ready(function() {
             	   $(this).attr('title', 'Click here for health check');
              }); 
         }
-
       } );
+	}
+	
+	
+	if($('#ipmgt-ipv4').length > 0){
+        var table1 =  $('#ipmgt-ipv4').DataTable( {
+         "processing": true,
+         "serverSide": true,
+         "ajax":"ip_mgt_process.php?type=ipv4",      
+         "pageLength": 5,
+         "dom": 'Bfrtip',
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+           "language": {
+           "lengthMenu": "Display _MENU_ records per page",
+           "zeroRecords": "No records found",
+           "info": "Showing page _PAGE_ of _PAGES_",
+           "infoEmpty": "",
+           "infoFiltered": ""
+           },
+         "columns": [
+           { "data": "market" },
+           { "data": "fromipv4" },
+           { "data": "id" },
+           { "data": "toipv4" },
+           { "data": "subnetmask" },
+           {   "orderable":      false,
+               "data":           null,
+               "defaultContent": "<button type=\"button\" class=\"btn\">GO</button>"},
+       ],
+       "order": [[0, 'asc']],
+
+     } );
+	}
+     
+	if($('#ipmgt-ipv6').length > 0){
+        var table1 =  $('#ipmgt-ipv6').DataTable( {
+         "processing": true,
+         "serverSide": true,
+         "ajax":"ip_mgt_process.php?type=ipv6",      
+         "pageLength": 5,
+         "dom": 'Bfrtip',
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+           "language": {
+           "lengthMenu": "Display _MENU_ records per page",
+           "zeroRecords": "No records found",
+           "info": "Showing page _PAGE_ of _PAGES_",
+           "infoEmpty": "",
+           "infoFiltered": ""
+           },
+         "columns": [
+           { "data": "market" },
+           { "data": "fromipv6" },
+           { "data": "id" },
+           { "data": "toipv6" },
+           { "data": "subnetmask" },
+           {   "orderable":      false,
+               "data":           null,
+               "defaultContent": "<button type=\"button\" class=\"btn\">GO</button>"},
+       ],
+       "order": [[0, 'asc']],
+
+     } );
+	}
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
 
 
       $('#example tbody').on('click', 'td.details-control', function () {

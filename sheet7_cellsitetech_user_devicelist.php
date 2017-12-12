@@ -23,10 +23,8 @@ user_session_check();
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
 
-<link rel="stylesheet" type="text/css" href="resources/css/dataTables.tableTools.css">
-<script type="text/javascript" language="javascript" src="resources/js/dataTables.tableTools.js"></script>
 <script type="text/javascript" language="javascript" class="init">
-$(document).ready(function() {
+/*$(document).ready(function() {
 	if($('#ipmgt-ipv4').length > 0){
 		table = $('#ipmgt-ipv4').DataTable( {
 			dom: 'T<"clear">lfrtip',
@@ -45,7 +43,7 @@ $(document).ready(function() {
 	        }
 		} );
 	}
-} );
+} );*/
 </script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
@@ -175,10 +173,7 @@ $(document).ready(function() {
 
 <!-- Export table -->
       <div class="col-auto align-middle">
-        <p class="export">
-          <a href="#" title="Excel"><img src="resources/img/xlsx.jpg"></a>
-          <a href="#" title="PDF"><img src="resources/img//pdf.jpg"></a>
-        </p>
+
       </div>
 <!-- /Export table -->
 
@@ -217,9 +212,6 @@ $(document).ready(function() {
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
-              <?php echo load_ipv4_dataset();?>
-              </tbody>
             </table>
 
 
@@ -240,9 +232,7 @@ $(document).ready(function() {
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
-              	<?php echo load_ipv6_dataset();?>
-              </tbody>
+              
             </table>
 
 

@@ -1468,41 +1468,77 @@ function get_discovery_list_datatable($userid) {
     
     return $resultset;
 }
-function load_ipv4_dataset(){
-    $ipv4_data_preset = array('market' => 'OPW', 'from_ip' => '10.202.90.0', 'to_ip' => '10.202.90.255', 'subnet' => '10.202.90.0/24');
+function get_ipallocation_list_datatable($userid) {
+    global $db2, $pages;
+    $draw = $_GET['draw'];
+    $start = isset($_GET['start']) ? $_GET['start'] : 0;
+    $length = isset($_GET['length']) ? $_GET['length'] : 10;
+    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
+    $order_col = $_GET['order'][0]['column'];
+    $order_dir = $_GET['order'][0]['dir'];
     
-    for($i=0; $i<20;$i++){
-    $output .= '<tr>
-                  <th scope="row" class="">
-                    '.$ipv4_data_preset['market'].'
-                  </th>
-                  <td>'.$ipv4_data_preset['from_ip'].'</td>
-                  <td>'.rand(1,255).'</td>
-                  <td>'.$ipv4_data_preset['to_ip'].'</td>
-                  <td>'.$ipv4_data_preset['subnet'].'</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>';
+    $columns[] = 'ipa.id';
+    $columns[] = 'ipa.market';
+    if($_GET['type'] == 'ipv4'){
+        $columns[] = 'ipa.fromipv4';
+        $columns[] = 'ipa.toipv4';
+        $sql_condition = " FROM ipallocation ipa where ipa.fromipv4 IS NOT NULL AND ipa.toipv4 IS NOT NULL ";
+    }else{
+        $columns[] = 'ipa.fromipv6';
+        $columns[] = 'ipa.toipv6';
+        $sql_condition = " FROM ipallocation ipa where ipa.fromipv6 IS NOT NULL AND ipa.toipv6 IS NOT NULL ";
     }
-    return $output;
-}
-function load_ipv6_dataset(){
-    $ipv6_data_preset = array('market' => 'OPW', 'from_ip' => '2001:0DB8:130F:0000:0000:7000:0000:140B', 'to_ip' => '2001:0DB8:130F:0000:0000:7000:0000:140B', 'subnet' => '2001:0DB8:130F:0000:0000:7000:0000:140B');
+    $columns[] = 'ipa.id';
+    $columns[] = 'ipa.subnetmask';
+
+    $sql_count = "SELECT COUNT(*) ";
+    $sql_select = "SELECT " . implode(", ", $columns);
     
-    for($i=0; $i<20;$i++){
-        $output .= '<tr>
-                  <th scope="row" class="">
-                    '.$ipv6_data_preset['market'].'
-                  </th>
-                  <td>'.$ipv6_data_preset['from_ip'].'</td>
-                  <td>'.rand(1,255).'</td>
-                  <td>'.$ipv6_data_preset['to_ip'].'</td>
-                  <td>'.$ipv6_data_preset['subnet'].'</td>
-                  <td>
-                    <button type="button" class="btn">GO</button>
-                  </td>
-                </tr>';
+    
+    if ($search) {
+        $sql_condition .=  " AND ( ";
+        $sql_condition .=  " ipa.market LIKE '%". $search ."%'";
+        if($_GET['type'] == 'ipv4'){
+            $sql_condition .=  " OR ipa.fromipv4  LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.toipv4  LIKE '%". $search ."%'";
+        }else{
+            $sql_condition .=  " OR ipa.fromipv6 LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.toipv6 LIKE '%". $search ."%'";
+        }
+        $sql_condition .=  " OR ipa.id  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR ipa.subnetmask  LIKE '%". $search ."%'";
+        $sql_condition .=  " )";
     }
-    return $output;
+    $count_sql = $sql_count . $sql_condition;
+    
+    $db2->query($count_sql);
+    $row = $db2->resultsetCols();
+    $total_rec = $row[0];
+    $sql_order = "";
+    if ($order_col != ''){
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    if ($order_dir != ''){
+        $sql_order .= $order_dir != '' ? " $order_dir ": " asc ";
+    }
+    $sql_limit = " LIMIT $start, $length ";
+    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
+    
+    $db2->query($sql);
+    $resultset['draw'] = $draw;
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'] ;
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    }
+    else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] =0;
+    }
+    return $resultset;
 }

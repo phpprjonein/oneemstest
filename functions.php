@@ -1480,13 +1480,13 @@ function get_ipallocation_list_datatable($userid) {
     $columns[] = 'ipa.id';
     $columns[] = 'ipa.market';
     if($_GET['type'] == 'ipv4'){
-        $columns[] = 'ipa.fromipv4';
-        $columns[] = 'ipa.toipv4';
-        $sql_condition = " FROM ipallocation ipa where ipa.fromipv4 IS NOT NULL AND ipa.toipv4 IS NOT NULL ";
+        $columns[] = 'ipa.fromipvfour';
+        $columns[] = 'ipa.toipvfour';
+        $sql_condition = " FROM ipallocation ipa ";
     }else{
-        $columns[] = 'ipa.fromipv6';
-        $columns[] = 'ipa.toipv6';
-        $sql_condition = " FROM ipallocation ipa where ipa.fromipv6 IS NOT NULL AND ipa.toipv6 IS NOT NULL ";
+        $columns[] = 'ipa.fromipvsix';
+        $columns[] = 'ipa.toipvsix';
+        $sql_condition = " FROM ipallocation ipa ";
     }
     $columns[] = 'ipa.id';
     $columns[] = 'ipa.subnetmask';
@@ -1496,14 +1496,14 @@ function get_ipallocation_list_datatable($userid) {
     
     
     if ($search) {
-        $sql_condition .=  " AND ( ";
+        $sql_condition .=  " where ( ";
         $sql_condition .=  " ipa.market LIKE '%". $search ."%'";
         if($_GET['type'] == 'ipv4'){
-            $sql_condition .=  " OR ipa.fromipv4  LIKE '%". $search ."%'";
-            $sql_condition .=  " OR ipa.toipv4  LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.fromipvfour  LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.toipvfour  LIKE '%". $search ."%'";
         }else{
-            $sql_condition .=  " OR ipa.fromipv6 LIKE '%". $search ."%'";
-            $sql_condition .=  " OR ipa.toipv6 LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.fromipvsix LIKE '%". $search ."%'";
+            $sql_condition .=  " OR ipa.toipvsix LIKE '%". $search ."%'";
         }
         $sql_condition .=  " OR ipa.id  LIKE '%". $search ."%'";
         $sql_condition .=  " OR ipa.subnetmask  LIKE '%". $search ."%'";

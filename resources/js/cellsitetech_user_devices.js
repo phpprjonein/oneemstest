@@ -56,9 +56,9 @@ $(document).ready(function() {
            },
          "columns": [
            { "data": "market" },
-           { "data": "fromipv4" },
+           { "data": "fromipvfour" },
            { "data": "id" },
-           { "data": "toipv4" },
+           { "data": "toipvfour" },
            { "data": "subnetmask" },
            {   "orderable":      false,
                "data":           null,
@@ -86,9 +86,9 @@ $(document).ready(function() {
            },
          "columns": [
            { "data": "market" },
-           { "data": "fromipv6" },
+           { "data": "fromipvsix" },
            { "data": "id" },
-           { "data": "toipv6" },
+           { "data": "toipvsix" },
            { "data": "subnetmask" },
            {   "orderable":      false,
                "data":           null,

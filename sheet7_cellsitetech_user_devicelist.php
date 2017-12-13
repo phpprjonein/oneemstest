@@ -22,29 +22,6 @@ user_session_check();
     <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
-
-<script type="text/javascript" language="javascript" class="init">
-/*$(document).ready(function() {
-	if($('#ipmgt-ipv4').length > 0){
-		table = $('#ipmgt-ipv4').DataTable( {
-			dom: 'T<"clear">lfrtip',
-			"pageLength": 5,
-			tableTools: {
-	            "sSwfPath": "resources/js/swf/copy_csv_xls_pdf.swf"
-	        }
-		} );
-	}
-	if($('#ipmgt-ipv6').length > 0){
-		table = $('#ipmgt-ipv6').DataTable( {
-			dom: 'T<"clear">lfrtip',
-			"pageLength": 5,
-			tableTools: {
-	            "sSwfPath": "js/swf/copy_csv_xls_pdf.swf"
-	        }
-		} );
-	}
-} );*/
-</script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
@@ -216,15 +193,15 @@ user_session_check();
               <?php $resultset =  load_ipv_dataset('ipv4'); 
               if(isset($resultset['result'])){
                   foreach ($resultset['result'] as $key => $value){
-                          $ipvfour_details = getipvfour_details($value['subnetmask']);
+                      $ipvfour_details = getipvfour_details($value['subnetmask']);
                         echo '<tr>
                           <th scope="row" class="">'.$value['market'].'</th>
-                          <td>'.$ipvfour_details['fromipvfour'].'</td>
-                          <td>'.$ipvfour_details['count'].'</td>
-                          <td>'.$ipvfour_details['toipvfour'].'</td>
+                          <td>'.$ipvfour_details[0].'</td>
+                          <td>'.count($ipvfour_details).'</td>
+                          <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
                           <td>'.$value['subnetmask'].'</td>
                           <td>
-                            <button type="button" class="btn">GO</button>
+                            <a href="ip_v4_more_details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>
                           </td>
                         </tr>';
                   }

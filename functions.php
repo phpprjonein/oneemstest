@@ -1472,11 +1472,12 @@ function get_discovery_list_datatable($userid) {
 function load_ipv_dataset($type){
     global $db2;
     $condition = ($type == 'ipv4') ? '.' : ':';
-    $sql = "SELECT * FROM ipallocation  as ipa  where subnetmask like '%".$condition."%'  ORDER BY ipa.id"; 
+    $sql = "SELECT * FROM ipallocation  as ipa  where subnetmask like '%".$condition."%' and market !=''  ORDER BY ipa.id"; 
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+/*
 function getipvfour_details($snm)
 {
      $parts=explode("/",$snm);
@@ -1489,5 +1490,32 @@ function getipvfour_details($snm)
      $ip['count'] = $count;
      return $ip;
 }
-
+*/
+function getipvfour_details($range){
+    $parts = explode('/',$range);
+    $exponent = 32-$parts[1].'-';
+    $count = pow(2,$exponent);
+    $start = ip2long($parts[0]);
+    $end = $start+$count;
+    return array_map('long2ip', range($start, ($end-1)) );
+}
+function cidrToRange($cidr) {
+    $range = array();
+    $cidr = explode('/', $cidr);
+    $range[0] = long2ip((ip2long($cidr[0])) & ((-1 << (32 - (int)$cidr[1]))));
+    $range[1] = long2ip((ip2long($range[0])) + pow(2, (32 - (int)$cidr[1])) - 1);
+    return $range;
+}
+function ip_in_range( $ip, $range ) {
+    if ( strpos( $range, '/' ) == false ) {
+        $range .= '/32';
+    }
+    // $range is in IP/CIDR format eg 127.0.0.1/24
+    list( $range, $netmask ) = explode( '/', $range, 2 );
+    $range_decimal = ip2long( $range );
+    $ip_decimal = ip2long( $ip );
+    $wildcard_decimal = pow( 2, ( 32 - $netmask ) ) - 1;
+    $netmask_decimal = ~ $wildcard_decimal;
+    return ( ( $ip_decimal & $netmask_decimal ) == ( $range_decimal & $netmask_decimal ) );
+}
         

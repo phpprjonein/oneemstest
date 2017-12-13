@@ -21,7 +21,7 @@ user_session_check();
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+      <script src="resources/js/cellsitetech_user_ipmgmtnodevstat.js?t=".<?php echo date('his'); ?>></script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
@@ -50,23 +50,31 @@ user_session_check();
 							-->
                           </div>                  
                           
- 							<div id="mylist" class="panel-heading" style = "height:600px;"><b>Coming soon.</b>
+ 							<div id="mylist" class="panel-heading" style = "height:600px;">
 								 <!-- table manipulation row -->
     <div class="form-row align-items-center justify-content-between">
 
 <!-- region name -->
       <div class="col-auto">
-        <b>REGION:</b> $Great Lakes$
+        <b>REGION:</b> <?php echo $_GET['region'];?>
       </div>
 <!-- /region selection -->
 
 <!-- add row button -->
       <div class="col-auto">
-        <b>MARKET:</b> $Illinois / Wisconsin$
-      </div>
+        <b>MARKET:</b> <?php echo $_GET['market'];?>
+      </div> 
+	   
+	  <?php //$output = ipaddresslist($_GET['subnetmask']); print_r($output); echo '<br/>';echo 'reach here ';
+	  
+	 // $ipaddresslist = array('10.202.90.167','10.202.90.85','10.202.90.206');
+	  
+	  ?>
+	  
 <!-- /add row button -->
 
 <!-- search table form field -->
+<!--
       <div class="col-6">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search Region Table" aria-label="Search Region Table">
@@ -75,15 +83,18 @@ user_session_check();
           </span>
         </div>
       </div>
+	  -->
 <!-- /search table form field -->
 
 <!-- Export table -->
+<!--
       <div class="col-auto align-middle">
         <p class="export">
           <a href="#" title="Excel"><img src="resources/img/XLSX.jpg"></a>
           <a href="#" title="PDF"><img src="resources/img/pdf.jpg"></a>
         </p>
       </div>
+	  -->
 <!-- /Export table -->
 
     </div>
@@ -99,9 +110,10 @@ user_session_check();
 
 <!-- IP table content -->
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <table class="table table-striped table-sm">
+            <table  id="example" class="table table-striped table-sm">
               <thead class="thead-light">
                 <tr>
+				 <th>ID</th>
                   <th scope="col">IP Address</th>
                   <th scope="col">Device Name</th>
                   <th scope="col">Site ID</th>
@@ -113,46 +125,7 @@ user_session_check();
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>10.203.144.152</td>
-                  <td>MSHWINBWT1A-P-CI-0090-01</td>
-                  <td>208090</td>
-                  <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                  <td>Cisco ASR 1000</td>
-                  <td>IOS-XE</td>
-                  <td>15.6(1)S1</td>
-                  <td>11/17/21 19:28</td>
-                </tr>
-                <tr>
-                  <td>10.203.144.150</td>
-                  <td>MSHWINBWT1A-P-CI-0091-01</td>
-                  <td>208091</td>
-                  <td>North Angola</td>
-                  <td>Cisco ASR 1000</td>
-                  <td>IOS-XE</td>
-                  <td>15.6(1)S1</td>
-                  <td>11/17/21 19:28</td>
-                </tr>
-                <tr>
-                  <td>10.203.144.33</td>
-                  <td>MSHWINBWT1A-P-CI-0101-01</td>
-                  <td>101</td>
-                  <td>SB NEW CARLISLE</td>
-                  <td>Cisco ASR 1000</td>
-                  <td>IOS-XE</td>
-                  <td>15.6(1)S1</td>
-                  <td>11/17/21 19:28</td>
-                </tr>
-                <tr>
-                  <td>10.203.144.72</td>
-                  <td>MSHWINBWT1A-P-CI-0102-01</td>
-                  <td>102</td>
-                  <td>SB NORTH LIBERTY</td>
-                  <td>Cisco ASR 1000</td>
-                  <td>IOS-XE</td>
-                  <td>15.6(1)S1</td>
-                  <td>11/17/21 19:28</td>
-                </tr>
+               
               </tbody>
             </table>
 

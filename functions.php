@@ -1482,13 +1482,13 @@ function get_ipallocation_list_datatable($userid) {
     if($_GET['type'] == 'ipv4'){
         $columns[] = 'ipa.fromipvfour';
         $columns[] = 'ipa.toipvfour';
-        $sql_condition = " FROM ipallocation ipa ";
+        $sql_condition = " FROM ipallocation ipa where ipa.subnetmask  LIKE '%.%'";
     }else{
         $columns[] = 'ipa.fromipvsix';
         $columns[] = 'ipa.toipvsix';
-        $sql_condition = " FROM ipallocation ipa ";
+        $sql_condition = " FROM ipallocation ipa where ipa.subnetmask  LIKE '%:%'";
     }
-    $columns[] = 'ipa.id';
+    //$columns[] = 'ipa.id';
     $columns[] = 'ipa.subnetmask';
 
     $sql_count = "SELECT COUNT(*) ";
@@ -1496,7 +1496,7 @@ function get_ipallocation_list_datatable($userid) {
     
     
     if ($search) {
-        $sql_condition .=  " where ( ";
+        $sql_condition .=  " AND ( ";
         $sql_condition .=  " ipa.market LIKE '%". $search ."%'";
         if($_GET['type'] == 'ipv4'){
             $sql_condition .=  " OR ipa.fromipvfour  LIKE '%". $search ."%'";
@@ -1505,7 +1505,7 @@ function get_ipallocation_list_datatable($userid) {
             $sql_condition .=  " OR ipa.fromipvsix LIKE '%". $search ."%'";
             $sql_condition .=  " OR ipa.toipvsix LIKE '%". $search ."%'";
         }
-        $sql_condition .=  " OR ipa.id  LIKE '%". $search ."%'";
+        //$sql_condition .=  " OR ipa.id  LIKE '%". $search ."%'";
         $sql_condition .=  " OR ipa.subnetmask  LIKE '%". $search ."%'";
         $sql_condition .=  " )";
     }
@@ -1513,7 +1513,7 @@ function get_ipallocation_list_datatable($userid) {
     
     $db2->query($count_sql);
     $row = $db2->resultsetCols();
-    $total_rec = $row[0];
+    $total_rec = 0;
     $sql_order = "";
     if ($order_col != ''){
         $sql_order = " ORDER BY " . $columns[$order_col];
@@ -1528,8 +1528,16 @@ function get_ipallocation_list_datatable($userid) {
     $resultset['draw'] = $draw;
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
-            $value['DT_RowId'] = "row_" . $value['id'] ;
-            $records[$key] = $value;
+            if (strpos($value['subnetmask'], '.') !== false) {
+                $value['DT_RowId'] = "row_" . $value['id'] ;
+                if($value['subnetmask']){
+                    $ipvfour_details = getipvfour_details($value['subnetmask']);
+                    $value['fromipvfour'] = $ipvfour_details['fromipvfour'];
+                    $value['toipvfour'] = $ipvfour_details['toipvfour'];
+                    $value['count'] = $ipvfour_details['count'];
+                }
+                $records[$key] = $value;
+            }
         }
         $resultset['data'] = $records;
         $resultset['recordsTotal'] = $total_rec;
@@ -1542,3 +1550,19 @@ function get_ipallocation_list_datatable($userid) {
     }
     return $resultset;
 }
+
+function getipvfour_details($snm)
+{	
+    $parts=explode("/",$snm);
+    $exponent = 32 - $parts[1].'-';
+    $count = pow(2,$exponent);
+    $start = ip2long($parts[0]);
+    $end = $start+$count;
+    $ip['fromipvfour'] = long2ip($start) ;
+    $ip['toipvfour'] = long2ip($end) ;
+    $ip['count'] = $count;
+    return $ip;
+}
+
+
+

@@ -44,7 +44,6 @@ $(document).ready(function() {
          "processing": true,
          "serverSide": true,
          "ajax":"ip_mgt_process.php?type=ipv4",      
-         "pageLength": 5,
          "dom": 'Bfrtip',
 	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
            "language": {
@@ -57,7 +56,7 @@ $(document).ready(function() {
          "columns": [
            { "data": "market" },
            { "data": "fromipvfour" },
-           { "data": "id" },
+           { "data": "count" },
            { "data": "toipvfour" },
            { "data": "subnetmask" },
            {   "orderable":      false,
@@ -87,7 +86,7 @@ $(document).ready(function() {
          "columns": [
            { "data": "market" },
            { "data": "fromipvsix" },
-           { "data": "id" },
+           { "data": "count" },
            { "data": "toipvsix" },
            { "data": "subnetmask" },
            {   "orderable":      false,

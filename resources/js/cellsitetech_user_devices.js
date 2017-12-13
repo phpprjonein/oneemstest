@@ -42,37 +42,6 @@ $(document).ready(function() {
 	if($('#ipmgt-ipv4').length > 0){
         var table1 =  $('#ipmgt-ipv4').DataTable( {
          "processing": true,
-         "serverSide": true,
-         "ajax":"ip_mgt_process.php?type=ipv4",      
-         "dom": 'Bfrtip',
-	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
-           "language": {
-           "lengthMenu": "Display _MENU_ records per page",
-           "zeroRecords": "No records found",
-           "info": "Showing page _PAGE_ of _PAGES_",
-           "infoEmpty": "",
-           "infoFiltered": ""
-           },
-         "columns": [
-           { "data": "market" },
-           { "data": "fromipvfour" },
-           { "data": "count" },
-           { "data": "toipvfour" },
-           { "data": "subnetmask" },
-           {   "orderable":      false,
-               "data":           null,
-               "defaultContent": "<button type=\"button\" class=\"btn\">GO</button>"},
-       ],
-       "order": [[0, 'asc']],
-
-     } );
-	}
-     
-	if($('#ipmgt-ipv6').length > 0){
-        var table1 =  $('#ipmgt-ipv6').DataTable( {
-         "processing": true,
-         "serverSide": true,
-         "ajax":"ip_mgt_process.php?type=ipv6",      
          "pageLength": 5,
          "dom": 'Bfrtip',
 	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
@@ -83,16 +52,24 @@ $(document).ready(function() {
            "infoEmpty": "",
            "infoFiltered": ""
            },
-         "columns": [
-           { "data": "market" },
-           { "data": "fromipvsix" },
-           { "data": "count" },
-           { "data": "toipvsix" },
-           { "data": "subnetmask" },
-           {   "orderable":      false,
-               "data":           null,
-               "defaultContent": "<button type=\"button\" class=\"btn\">GO</button>"},
-       ],
+       "order": [[0, 'asc']],
+
+     } );
+	}
+     
+	if($('#ipmgt-ipv6').length > 0){
+        var table2 =  $('#ipmgt-ipv6').DataTable( {
+         "processing": true,
+         "pageLength": 5,
+         "dom": 'Bfrtip',
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+           "language": {
+           "lengthMenu": "Display _MENU_ records per page",
+           "zeroRecords": "No records found",
+           "info": "Showing page _PAGE_ of _PAGES_",
+           "infoEmpty": "",
+           "infoFiltered": ""
+           },
        "order": [[0, 'asc']],
 
      } );

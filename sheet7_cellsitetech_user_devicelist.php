@@ -212,6 +212,25 @@ user_session_check();
                   <th scope="col"></th>
                 </tr>
               </thead>
+              <tbody>
+              <?php $resultset =  load_ipv_dataset('ipv4'); 
+              if(isset($resultset['result'])){
+                  foreach ($resultset['result'] as $key => $value){
+                          $ipvfour_details = getipvfour_details($value['subnetmask']);
+                        echo '<tr>
+                          <th scope="row" class="">'.$value['market'].'</th>
+                          <td>'.$ipvfour_details['fromipvfour'].'</td>
+                          <td>'.$ipvfour_details['count'].'</td>
+                          <td>'.$ipvfour_details['toipvfour'].'</td>
+                          <td>'.$value['subnetmask'].'</td>
+                          <td>
+                            <button type="button" class="btn">GO</button>
+                          </td>
+                        </tr>';
+                  }
+                }
+              ?>
+              </tbody>
             </table>
 
 
@@ -231,8 +250,26 @@ user_session_check();
                   <th scope="col">Subnet</th>
                   <th scope="col"></th>
                 </tr>
-              </thead>
-              
+              </thead
+              <tbody>
+              <?php $resultset =  load_ipv_dataset('ipv6'); 
+              if(isset($resultset['result'])){
+                  foreach ($resultset['result'] as $key => $value){
+                          $ipvfour_details = getipvfour_details($value['subnetmask']);
+                        echo '<tr>
+                          <th scope="row" class="">'.$value['market'].'</th>
+                          <td>'.$ipvfour_details['fromipvfour'].'</td>
+                          <td>'.$ipvfour_details['count'].'</td>
+                          <td>'.$ipvfour_details['toipvfour'].'</td>
+                          <td>'.$value['subnetmask'].'</td>
+                          <td>
+                            <button type="button" class="btn">GO</button>
+                          </td>
+                        </tr>';
+                  }
+                }
+              ?>
+              </tbody>
             </table>
 
 

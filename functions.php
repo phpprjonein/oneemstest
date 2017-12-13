@@ -1468,101 +1468,26 @@ function get_discovery_list_datatable($userid) {
     
     return $resultset;
 }
-function get_ipallocation_list_datatable($userid) {
-    global $db2, $pages;
-    $draw = $_GET['draw'];
-    $start = isset($_GET['start']) ? $_GET['start'] : 0;
-    $length = isset($_GET['length']) ? $_GET['length'] : 10;
-    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
-    $order_col = $_GET['order'][0]['column'];
-    $order_dir = $_GET['order'][0]['dir'];
-    
-    $columns[] = 'ipa.id';
-    $columns[] = 'ipa.market';
-    if($_GET['type'] == 'ipv4'){
-        $columns[] = 'ipa.fromipvfour';
-        $columns[] = 'ipa.toipvfour';
-        $sql_condition = " FROM ipallocation ipa where ipa.subnetmask  LIKE '%.%'";
-    }else{
-        $columns[] = 'ipa.fromipvsix';
-        $columns[] = 'ipa.toipvsix';
-        $sql_condition = " FROM ipallocation ipa where ipa.subnetmask  LIKE '%:%'";
-    }
-    //$columns[] = 'ipa.id';
-    $columns[] = 'ipa.subnetmask';
 
-    $sql_count = "SELECT COUNT(*) ";
-    $sql_select = "SELECT " . implode(", ", $columns);
-    
-    
-    if ($search) {
-        $sql_condition .=  " AND ( ";
-        $sql_condition .=  " ipa.market LIKE '%". $search ."%'";
-        if($_GET['type'] == 'ipv4'){
-            $sql_condition .=  " OR ipa.fromipvfour  LIKE '%". $search ."%'";
-            $sql_condition .=  " OR ipa.toipvfour  LIKE '%". $search ."%'";
-        }else{
-            $sql_condition .=  " OR ipa.fromipvsix LIKE '%". $search ."%'";
-            $sql_condition .=  " OR ipa.toipvsix LIKE '%". $search ."%'";
-        }
-        //$sql_condition .=  " OR ipa.id  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR ipa.subnetmask  LIKE '%". $search ."%'";
-        $sql_condition .=  " )";
-    }
-    $count_sql = $sql_count . $sql_condition;
-    
-    $db2->query($count_sql);
-    $row = $db2->resultsetCols();
-    $total_rec = 0;
-    $sql_order = "";
-    if ($order_col != ''){
-        $sql_order = " ORDER BY " . $columns[$order_col];
-    }
-    if ($order_dir != ''){
-        $sql_order .= $order_dir != '' ? " $order_dir ": " asc ";
-    }
-    $sql_limit = " LIMIT $start, $length ";
-    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
-    
+function load_ipv_dataset($type){
+    global $db2;
+    $condition = ($type == 'ipv4') ? '.' : ':';
+    $sql = "SELECT * FROM ipallocation  as ipa  where subnetmask like '%".$condition."%'  ORDER BY ipa.id"; 
     $db2->query($sql);
-    $resultset['draw'] = $draw;
-    if ($db2->resultset()) {
-        foreach ($db2->resultset() as $key => $value) {
-            if (strpos($value['subnetmask'], '.') !== false) {
-                $value['DT_RowId'] = "row_" . $value['id'] ;
-                if($value['subnetmask']){
-                    $ipvfour_details = getipvfour_details($value['subnetmask']);
-                    $value['fromipvfour'] = $ipvfour_details['fromipvfour'];
-                    $value['toipvfour'] = $ipvfour_details['toipvfour'];
-                    $value['count'] = $ipvfour_details['count'];
-                }
-                $records[$key] = $value;
-            }
-        }
-        $resultset['data'] = $records;
-        $resultset['recordsTotal'] = $total_rec;
-        $resultset['recordsFiltered'] = $total_rec;
-    }
-    else {
-        $resultset['data'] = array();
-        $resultset['recordsTotal'] = 10;
-        $resultset['recordsFiltered'] =0;
-    }
+    $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-
 function getipvfour_details($snm)
-{	
-    $parts=explode("/",$snm);
-    $exponent = 32 - $parts[1].'-';
-    $count = pow(2,$exponent);
-    $start = ip2long($parts[0]);
-    $end = $start+$count;
-    $ip['fromipvfour'] = long2ip($start) ;
-    $ip['toipvfour'] = long2ip($end) ;
-    $ip['count'] = $count;
-    return $ip;
+{
+     $parts=explode("/",$snm);
+     $exponent = 32 - $parts[1].'-';
+     $count = pow(2,$exponent);
+     $start = ip2long($parts[0]);
+     $end = $start+$count;
+     $ip['fromipvfour'] = long2ip($start) ;
+     $ip['toipvfour'] = long2ip($end) ;
+     $ip['count'] = $count;
+     return $ip;
 }
 
-
-
+        

@@ -26,7 +26,7 @@ if (isset($device_details['result']) && count($device_details['result'])) {
     <table class="draggable table table-bordered" cellspacing="0" data-userid="<?php echo $_SESSION['userid'] ?>" data-switchid="<?php echo $_GET['deviceid'] ?>" data-deviceid="<?php echo $output['id']; ?>"  data-devicename="<?php echo $output['deviceName']; ?>"cellpadding="0">
       <tbody> 
         <tr  >        
-          <td><?php echo '<img src="./resources/img/router.png" alt="Router"   width="17" />&nbsp;' . $output['id']  ?></td>
+          <td><?php echo '<img src="resources/img/router.png" alt="Router"   width="17" />&nbsp;' . $output['id']  ?></td>
           <td><?php echo $output['deviceName']; ?></td>
           <td><?php echo $output['deviceIpAddr']; ?></td>
           <td><?php echo $output['custom_Location']; ?>

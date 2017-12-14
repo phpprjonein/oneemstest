@@ -3,7 +3,7 @@ $(document).ready(function(){
                 $('.anchorcmd').click(function () {
             		var myModal = $('#mycmdModal');
             		myModal.find('.modal-content').css('border', 'none'); 
-                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="images/ajax-loader.gif"></img></div>');
+                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
                     myModal.modal('show'); 
                 	$.ajax({url: $(this).attr('href'), success: function(result){
                 		var myModal = $('#mycmdModal');

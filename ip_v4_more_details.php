@@ -58,7 +58,8 @@ user_session_check();
 <!-- /add row button -->
 
 <!-- search table form field -->
-      <div class="col-6">
+
+<!--      <div class="col-6">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search Region Table" aria-label="Search Region Table">
           <span class="input-group-btn">
@@ -66,6 +67,7 @@ user_session_check();
           </span>
         </div>
       </div>
+	  -->
 <!-- /search table form field -->
 
 <!-- Export table -->
@@ -101,20 +103,37 @@ user_session_check();
                 </tr>
               </thead>
               <tbody>
-              <?php $ipvfour_details = getipvfour_details($_GET['subnetmask']); ?>
+              <?php $ipvfour_details = getipvfour_details($_GET['subnetmask']);  //print_r($ipvfour_details); echo '<br>';?>
+			  <?php //$ipvfour_details =array('10.88.127.250'); ?>
               <?php //print '<pre>'; print_r($ipvfour_details); die;?>
-              <?php foreach ($ipvfour_details as $key => $val): ?>
+			  <?php $devicelist = get_nodes_list_ipmgmt($_GET['region'],$_GET['market']); //print_r($devicelist); echo $devicelist['deviceName'];?>
+              <?php foreach ($ipvfour_details as $key => $val) { ?>
+			  <?php foreach ($devicelist as $key1 => $val1){ ?>
+			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
                 <tr>
-                  <td><?php echo $val;?></td>
-                  <td>MSHWINBWT1A-P-CI-0090-01</td>
-                  <td>208090</td>
-                  <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                  <td>Cisco ASR 1000</td>
-                  <td>IOS-XE</td>
-                  <td>15.6(1)S1</td>
-                  <td>11/17/21 19:28</td>
+                  <td><?php echo $val; ?></td> 					  
+                  <td><?php echo $val1['deviceName'];?></td>
+                  <td><?php echo $val1['csr_site_id'];?></td>
+                  <td><?php echo $val1['csr_site_name'];?></td>
+                  <td><?php echo $val1['deviceseries'];?></td>
+                  <td><?php echo $val1['deviceos'];?></td>
+                  <td><?php echo $val1['nodeversion'];?></td>
+                  <td><?php echo $val1['lastpolled'];?></td>
                 </tr>
-                <?php endforeach;?>
+			  <?php } else { ?>
+			  <tr>
+                  <td><?php echo $val; ?></td> 					  
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo "Not in use";?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                </tr> 
+			  <?php }; ?>
+			  
+			  <?php };};?>
               </tbody>
             </table>
 

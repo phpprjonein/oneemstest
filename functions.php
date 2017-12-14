@@ -1519,3 +1519,18 @@ function ip_in_range( $ip, $range ) {
     return ( ( $ip_decimal & $netmask_decimal ) == ( $range_decimal & $netmask_decimal ) );
 }
         
+function get_nodes_list_ipmgmt($region,$market) {
+	  global $db2;
+	  //$sql_select = "SELECT n.id, n.custom_Location, n.deviceName, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, n.severity, n.deviceseries ";
+    $sql_select = "SELECT n.id, deviceIpAddr, n.deviceName, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeversion,n.lastpolled ";
+    $sql_condition = " FROM  nodes n
+                     WHERE n.market = '$market' and n.region = '$region'
+                    ";
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+	//print_r($resultset['result'][0]);
+    //return $resultset; 
+	return $resultset['result']; 
+}
+		

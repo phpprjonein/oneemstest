@@ -1544,3 +1544,22 @@ function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	$output['ipaddrlst']   = $ipvfour_details; 	
 	return $output; 
 } 
+
+function get_ipallocation_region_list(){
+    global $db2;
+    $sql = "select distinct(region) from ipallocation order by region";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+function get_ipallocation_market_list(){
+    global $db2;
+    $sql = "select distinct(market) from ipallocation order by market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+
+

@@ -117,11 +117,15 @@ $(document).ready(function() {
 			
 		}
 	}); 
-	
+
+    	
+    	$("#ip-allocation-region a").click(function(){
+    		$("#ip-allocation-region .btn").html($(this).text());
+    	});
          
-	
-         
-         
+    	$("#ip-allocation-market a").click(function(){
+    		$("#ip-allocation-market .btn").html($(this).text());
+    	});
          
          
          

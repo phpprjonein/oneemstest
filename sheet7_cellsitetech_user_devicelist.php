@@ -61,14 +61,21 @@ user_session_check();
 
 <!-- region selection -->
       <div class="col-auto">
-        <div class="btn-group">
+        <div class="btn-group" id="ip-allocation-region">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT REGION
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Ohio</a>
-            <a class="dropdown-item" href="#">OPW-EAST</a>
-            <a class="dropdown-item" href="#">Outer Illinois</a>
+          <?php 
+          $region_list = get_ipallocation_region_list();
+          foreach ($region_list['result'] as $rkey => $rvalue):
+            if(!empty($rvalue['region'])):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
+          
+          <?php 
+          endif;
+          endforeach;?>
           </div>
         </div>
       </div>
@@ -97,7 +104,7 @@ user_session_check();
         <div class="form-check mb-2 mb-sm-0">
           <div class="btn-group" role="group" aria-label="">
             <!--<button type="button" class="btn btn-danger">ADD A SUBNET</button>-->
-            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">ADD A SUBNET</button>
+            <button type="button" class="btn" id="add-a-subnet" data-toggle="modal" data-target="#exampleModal">ADD A SUBNET</button>
           </div>
         </div>
       </div>
@@ -263,22 +270,29 @@ user_session_check();
                   <td>
 
 <!-- market dropdown -->
-                    <div class="btn-group">
+                    <div class="btn-group" id="ip-allocation-market">
                       <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       SELECT MARKET
                       </button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ohio</a>
-                        <a class="dropdown-item" href="#">OPW-EAST</a>
-                        <a class="dropdown-item" href="#">Outer Illinois</a>
+                      <?php 
+                      $market_list = get_ipallocation_market_list();
+                      foreach ($market_list['result'] as $mkey => $mvalue):
+                      if(!empty($mvalue['market'])):          
+                      ?>
+                      <a class="dropdown-item" id="<?php echo $mkey; ?>" href="#"><?php echo $mvalue['market']; ?></a>
+                      
+                      <?php 
+                      endif;
+                      endforeach;?>
                       </div>
                     </div>
 <!-- /market dropdown -->
 
                   </td>
-                  <td>172.202.190.0</td>
-                  <td>255</td>
-                  <td>172.202.190.255</td>
+                  <td id="compute-from-ip">{{from IP}}</td>
+                  <td id="compute-count">{{Count}}</td>
+                  <td id="compute-to-ip">{{to IP}}</td>
                   <td>
                     <div class="row">
                       <div class="col-lg-8 col-md-12 col-sm-12">

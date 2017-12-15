@@ -34,7 +34,7 @@ user_session_check();
         </div>
         </div>
 
-        <div class="wrapper">
+        <div class="wrapper" id="ip-mgt-screen">
             <?php include ('menu.php'); ?> 
 
             <!-- Content Wrapper. Contains page content -->
@@ -55,58 +55,6 @@ user_session_check();
 
     <hr />
 
-<!-- IP management summary table row -->
-    <div class="row">
-
-<!-- region name display -->
-      <div class="col-lg-2">
-        <div class="card">
-          <div class="card-body">
-            REGION:
-            <hr />
-            <b>Ohio</b>
-          </div>
-        </div>
-      </div>
-<!-- /region name display -->
-
-<!-- region table display -->
-      <div class="col-lg-10">
-        <table class="table table-sm table-bordered">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Market</th>
-              <th scope="col">Allocated</th>
-              <th scope="col">Consumed</th>
-              <th scope="col">Unused</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>OPW</td>
-              <td>130</td>
-              <td>29255; 234; AKROOH20T1A-P-CI-0003-01</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>OPW</td>
-              <td>307</td>
-              <td>29255; 234; AKROOH20T1A-P-CI-0003-01</td>
-              <td>34</td>
-            </tr>
-            <tr>
-              <td>OPW</td>
-              <td>5660</td>
-              <td>29255; 234; AKROOH20T1A-P-CI-0003-01</td>
-              <td>255</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-<!-- /region table display -->
-
-    </div>
-<!-- /IP management summary table row -->
 
 <!-- table manipulation row -->
     <div class="form-row align-items-center justify-content-between">
@@ -128,12 +76,19 @@ user_session_check();
 
 <!-- search table form field -->
       <div class="col-6">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Region Table" aria-label="Search Region Table">
+        <div class="input-group" id="search-v-pills-home">
+          <input type="text" class="form-control" placeholder="Search IP V4 Table" aria-label="Search Table">
           <span class="input-group-btn">
             <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
           </span>
         </div>
+        <div class="input-group" style="display: none;" id="search-v-pills-profile">
+          <input type="text" class="form-control" placeholder="Search IP V6 Table" aria-label="Search Table">
+          <span class="input-group-btn">
+            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+          </span>
+        </div>
+        
       </div>
 <!-- /search table form field -->
 
@@ -147,7 +102,14 @@ user_session_check();
         </div>
       </div>
 <!-- /add row button -->
-
+<!-- Export table -->
+      <div class="col-auto align-middle">
+        <p class="export" id="export-v-pills-home">
+        </p>
+        <p class="export" id="export-v-pills-profile">
+        </p>
+      </div>
+<!-- /Export table -->
 <!-- Export table -->
       <div class="col-auto align-middle">
 

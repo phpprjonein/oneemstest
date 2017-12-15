@@ -40,6 +40,8 @@ $(document).ready(function() {
 	
 	
 	if($('#ipmgt-ipv4').length > 0){
+		$('#export-v-pills-profile').hide();
+		$('#search-v-pills-profile').hide();
         var table1 =  $('#ipmgt-ipv4').DataTable( {
          "processing": true,
          "pageLength": 5,
@@ -55,6 +57,10 @@ $(document).ready(function() {
        "order": [[0, 'asc']],
 
      } );
+        table1.buttons().container().appendTo('#export-v-pills-home');
+        $('#search-v-pills-home input').keyup(function(){
+        	table1.search($(this).val()).draw() ;
+      })
 	}
      
 	if($('#ipmgt-ipv6').length > 0){
@@ -73,6 +79,11 @@ $(document).ready(function() {
        "order": [[0, 'asc']],
 
      } );
+        table2.buttons().container().appendTo('#export-v-pills-profile');
+        $('#search-v-pills-profile input').keyup(function(){
+        	table2.search($(this).val()).draw() ;
+      })
+        
 	}
 	if($('#ipv4subnetmask').length > 0){
         var table3 =  $('#ipv4subnetmask').DataTable( {
@@ -92,7 +103,21 @@ $(document).ready(function() {
      } );
 	}     
          
-         
+	$(".col-1 .nav-link").click(function(){
+		if($(this).html() == 'IPv4'){
+			$('#export-v-pills-profile').hide();
+			$('#export-v-pills-home').show();
+			$('#search-v-pills-profile').hide();
+			$('#search-v-pills-home').show();
+		}else{
+			$('#export-v-pills-home').hide();
+			$('#export-v-pills-profile').show();
+			$('#search-v-pills-home').hide();
+			$('#search-v-pills-profile').show();
+			
+		}
+	}); 
+	
          
 	
          

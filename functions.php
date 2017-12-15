@@ -1553,13 +1553,20 @@ function get_ipallocation_region_list(){
     return $resultset;
 }
 
-function get_ipallocation_market_list(){
+function get_ipallocation_market_list($region){
     global $db2;
-    $sql = "select distinct(market) from ipallocation order by market";
+    $sql = "select distinct(market) from ipallocation where region = '".$region."' order by market";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-
+function insert_ip_allocation($values){
+    global $db2;
+    $sql = "INSERT INTO ipallocation (cust_gvn_region, region, market, subnetmask)
+				VALUES ('".$values[cust_gvn_region]."','".$values[region]."','".$values[market]."','".$values[subnetmask]."')";
+    
+    $db2->query($sql);
+    $db2->execute();
+}
 
 

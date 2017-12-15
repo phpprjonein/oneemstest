@@ -121,17 +121,51 @@ $(document).ready(function() {
     	
     	$("#ip-allocation-region a").click(function(){
     		$("#ip-allocation-region .btn").html($(this).text());
+			  $("#exampleModal #exampleModalLabel").html("ADD A SUBNET IN " + $(this).text());
+			  $("#exampleModal #selected_region").val($(this).text());
+    		$.post( "ip_mgt_process.php", { calltype: "trigger", region: $(this).text() })
+    		  .done(function( data ) {
+    			  $("#ip-allocation-market button").text("SELECT MARKET");
+    			  $("#ip-allocation-market .dropdown-menu").html(data);
+    		  });
     	});
-         
-    	$("#ip-allocation-market a").click(function(){
+    	$(document).on('click', '#ip-allocation-market a', function(event) {
     		$("#ip-allocation-market .btn").html($(this).text());
+    		$("#exampleModal #selected_market").val($(this).text());
     	});
-         
-         
-         
-         
-
-
+    	$("#exampleModal .modal-footer button").click(function(){
+    		if($("#ip-allocation-market .btn").html() == "" || $("#exampleModal #inputSubnet").val() == "" || $("#exampleModal #inputMask").val() == ""){
+    			$("#exampleModal .alert-danger").show();
+    		}else{
+    			$("#exampleModal .alert-danger").hide();
+    			if($(this).text() == 'COMPUTE'){
+    				$.post( "ip_mgt_process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val()})
+    	    		  .done(function( data ) {
+    	    			  	var res = data.split(" ");
+    	    			  	$("#exampleModal #compute-from-ip").html(res[0]);
+    	    			  	$("#exampleModal #compute-count").html(res[1]);
+    	    			  	$("#exampleModal #compute-to-ip").html(res[2]);
+    	    		  });
+    			}else{
+    				$.post( "ip_mgt_process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val(), region:$("#exampleModal #selected_region").val(),market:$("#exampleModal #selected_market").val()})
+  	    		  .done(function( data ) {
+  	    			  if(data == 'success'){
+  	    				$("#exampleModal .alert-success").show();
+	    			  	$("#exampleModal #compute-from-ip").html('{{from IP}}');
+	    			  	$("#exampleModal #compute-count").html('{{Count}}');
+	    			  	$("#exampleModal #compute-to-ip").html('{{to IP}}');
+	    			  	$("#exampleModal #inputSubnet").val('');
+	    			  	$("#exampleModal #inputMask").val('');
+  	    			  }
+  	    		  });
+    			}
+    			
+    		}
+    	});
+    	
+    	
+    	
+    	
       $('#example tbody').on('click', 'td.details-control', function () {
         
          var tr = $(this).closest('tr');

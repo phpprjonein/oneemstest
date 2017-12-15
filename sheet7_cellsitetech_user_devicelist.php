@@ -248,14 +248,21 @@ user_session_check();
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ADD A SUBNET IN $REGION$</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+      <input type="hidden" name="selected_region" id="selected_region" value="">
+      <input type="hidden" name="selected_market" id="selected_market" value="">
         <!-- add subnet mask form -->
-
+<div class="alert alert-danger" style="display:none;">
+  Market, Subnet and Mask fields are required.
+</div>
+<div class="alert alert-success" style="display:none;">
+  IP details added successfully.
+</div>
 <table class="table table-striped table-sm">
               <thead class="thead-light">
                 <tr>
@@ -275,16 +282,7 @@ user_session_check();
                       SELECT MARKET
                       </button>
                       <div class="dropdown-menu">
-                      <?php 
-                      $market_list = get_ipallocation_market_list();
-                      foreach ($market_list['result'] as $mkey => $mvalue):
-                      if(!empty($mvalue['market'])):          
-                      ?>
-                      <a class="dropdown-item" id="<?php echo $mkey; ?>" href="#"><?php echo $mvalue['market']; ?></a>
-                      
-                      <?php 
-                      endif;
-                      endforeach;?>
+
                       </div>
                     </div>
 <!-- /market dropdown -->
@@ -314,7 +312,7 @@ user_session_check();
           </div>
           <div class="modal-footer">
             <button type="button" class="btn">COMPUTE</button>
-            <button type="button" class="btn" disabled>ADD</button>
+            <button type="button" class="btn">ADD</button>
           </div>
         </div>
       </div>

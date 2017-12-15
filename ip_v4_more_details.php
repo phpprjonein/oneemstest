@@ -102,13 +102,13 @@ user_session_check();
                   <th scope="col">Last Polled</th>
                 </tr>
               </thead>
-              <tbody>
-              <?php $ipvfour_details = getipvfour_details($_GET['subnetmask']);  //print_r($ipvfour_details); echo '<br>';?>
-			  <?php //$ipvfour_details =array('10.88.127.250'); ?>
-              <?php //print '<pre>'; print_r($ipvfour_details); die;?>
-			  <?php $devicelist = get_nodes_list_ipmgmt($_GET['region'],$_GET['market']); //print_r($devicelist); echo $devicelist['deviceName'];?>
-              <?php foreach ($ipvfour_details as $key => $val) { ?>
-			  <?php foreach ($devicelist as $key1 => $val1){ ?>
+              <tbody>             
+			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];
+			  $region = 'South East ' ;$market = 'Georgia/Alabama';
+			  //$region = 'Great Lakes' ;$market = 'OPW';?>
+			  <?php $devicelist = get_nodes_list_ipmgmt($region,$market,$subnetmask); ?>
+              <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
+			  <?php foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>
 			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
                 <tr>
                   <td><?php echo $val; ?></td> 					  
@@ -131,8 +131,7 @@ user_session_check();
                   <td><?php echo ""?></td>
                   <td><?php echo ""?></td>
                 </tr> 
-			  <?php }; ?>
-			  
+			  <?php }; ?> 
 			  <?php };};?>
               </tbody>
             </table>

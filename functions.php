@@ -1519,18 +1519,28 @@ function ip_in_range( $ip, $range ) {
     return ( ( $ip_decimal & $netmask_decimal ) == ( $range_decimal & $netmask_decimal ) );
 }
         
-function get_nodes_list_ipmgmt($region,$market) {
+function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	  global $db2;
-	  //$sql_select = "SELECT n.id, n.custom_Location, n.deviceName, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, n.severity, n.deviceseries ";
-    $sql_select = "SELECT n.id, deviceIpAddr, n.deviceName, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeversion,n.lastpolled ";
-    $sql_condition = " FROM  nodes n
+	 // echo 'value of region'.$region.'market'.$market.'subnetmask'.$subnetmask.'<br>';	   
+	  $ipvfour_details = getipvfour_details($subnetmask);	
+	$sql_select = "SELECT n.id, deviceIpAddr, n.deviceName, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeversion,n.lastpolled "; 
+	$sql_condition = " FROM  nodes n
                      WHERE n.market = '$market' and n.region = '$region'
                     ";
     $sql = $sql_select . $sql_condition;
+	//echo '<br>'.$sql.'<br>';
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
-	//print_r($resultset['result'][0]);
-    //return $resultset; 
-	return $resultset['result']; 
-}
-		
+	$k =array_values($resultset['result']);
+	$i =0;
+	$outputres = Array();
+	foreach ($k as $key1 => $val1){ 
+		$m = $val1['deviceIpAddr'];
+		for ($j=0;$j<count($ipvfour_details); $j++) {
+			if  ($ipvfour_details[$j] == $m) { echo 'Matched ip address'.$m; $outputres[] = $val1; }
+		}; 
+	}; 
+	$output['devicerecords'] = $outputres;
+	$output['ipaddrlst']   = $ipvfour_details; 	
+	return $output; 
+} 

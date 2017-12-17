@@ -1,6 +1,6 @@
 <?php
   /* Partial code of listing routers list which is 
-  *  tacken away from switchtech_devicelist.php file and being included as sw_results_for_map.php
+  *  tacken away from switchtech-devicelist.php file and being included as sw-results-for-map.php
   *  to implement tow type of record set for same query with different pagination limit
   */
                     $pages='';

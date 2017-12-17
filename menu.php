@@ -18,7 +18,7 @@
         </a>
       </li> 
       <li class="dropdown messages-menu">
-        <a href="login.php">                      
+        <a href="index.php">                      
           <img src="resources/img/logout.jpg"  width="15" alt="Logo"/>
         </a>
       </li>

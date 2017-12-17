@@ -73,7 +73,7 @@ if (isset($_POST['username']) && $_POST['password']) {
     ?>
     
     <div class="form">
-      <form class="login-form" action="login.php" method="post">
+      <form class="login-form" action="index.php" method="post">
     
         <p class="box-title"> Username </p>
         <input name="username" type="text" />

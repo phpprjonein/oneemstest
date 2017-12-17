@@ -21,7 +21,7 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'ADD' &&  isset($_POST['region'])) {
     $subnet_whole = $_POST['subnet'].'/'.$_POST['mask'];
-    $values_arr = array('cust_gvn_region' => 'TEST', 'region' => $_POST['region'], 'market' => $_POST['market'], 'subnetmask' => $subnet_whole);
+    $values_arr = array('cust_gvn_region' => '', 'region' => $_POST['region'], 'market' => $_POST['market'], 'subnetmask' => $subnet_whole);
     insert_ip_allocation($values_arr);
     print 'success';
 }

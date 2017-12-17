@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors',1);
 include "classes/db2.class.php";
 include 'functions.php';
 

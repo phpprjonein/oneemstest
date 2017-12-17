@@ -110,7 +110,7 @@
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
                       </td>                    
-                      <td>&nbsp;<a href="switchtech_user_devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
+                      <td>&nbsp;<a href="switchtech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
                       </td>
                     </tr>
                   <?php  

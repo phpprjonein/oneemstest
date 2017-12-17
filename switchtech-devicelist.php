@@ -5,7 +5,7 @@
   user_session_check(); 
   //Check for switch tech type user
   check_user_authentication('2'); 
-  $page_title = 'NCM';
+  $page_title =  'OneEMS';
   // Default map dispaly flag true
   $show_map_flag = true;
   // Map flag set to false once map is clicked
@@ -48,17 +48,17 @@
 <?php include("includes.php");  ?>
 <script src="resources/js/switchtech_user_list.js?t=<?php echo date('his'); ?>"></script>
 </head>  
-<body>
-<div id="mainctr" class="container-fluid">
-  <div id="mainctrow" class="row">
+<body class="hold-transition skin-blue sidebar-mini ownfont">
+<div class="wrapper">
+  
     <?php 
     // Include menu bar htmls [ Logo, welcome text, menu ]
     include ('menu.php'); 
     ?>   
-  </div>
+  
   <div class="row">
-    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info" style="background-color: white; min-height: 780px">
-      <div id="mylist" class="panel-heading"><font color="black"><b>List Management</b></font>
+    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info panel-default" style="background-color: white; min-height: 780px">
+      <div id="mylist" class="panel-heading panel-heading-lstmgmt"><font color="black"><b>List Management</b></font>
       </div>
       <div class="panel-body">
         <div class="col-md-6" style="background-color:nonelightgreen;">
@@ -82,8 +82,8 @@
       </div>
       <div class="col-md-12">
         <div class="row">
-          <div id="switchlist" class="panel-warning col-md-6 ">
-            <div class="panel-heading" id="delete_mylists" style="background-color:#F6F6F6";>
+          <div id="switchlist" class="panel-warning  panel-default col-md-6 ">
+            <div class="panel-heading panel-heading-myswtlst" id="delete_mylists" style="background-color:#F6F6F6";>
               <font color="black"><b>My Device List </b></font>
               <!-- Deleted selected switch list by drag and drop area -->
               <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger">
@@ -110,7 +110,7 @@
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
                       </td>                    
-                      <td>&nbsp;<a href="switchtech_user_devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
+                      <td>&nbsp;<a href="switchtech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
                       </td>
                     </tr>
                   <?php  
@@ -124,9 +124,9 @@
         if (isset( $_SESSION['switchlistid'] )) {
           $switchlist = usrfavritecondev_display($userid,$_SESSION['switchlistid']);
           ?>
-          <div class="col-md-6 panel-warning">
-            <div class="panel-heading" id="mylist_delete" style="background-color:#F6F6F6";>
-             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname'] ?></b></font>
+          <div class="col-md-6 panel-warning panel-default">
+            <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
+             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b></font>
                 <!-- Deleted selected list by drag   and drop area -->
                 <span type="button" class="box box-danger border pull-right"><font color="black"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b></font>
                 </span>
@@ -163,11 +163,11 @@
     </div>
     <!-- START : Right side panel  -->
     <div id="rhsPanel" class="col-sm-6 col-md-6" >
-      <div class="row"> 
+      <div class="maprow"> 
             <!-- START : Map section -->
             <div id="map_section" class="sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>; border:1px solid lightgray;'> 
               <!-- US Map Image -->
-              <img src="resources/img/map_new.png" id="map_image" usemap="#United States of America"  border=0 height="50%" border=0>
+              <img src="resources/img/map_new.png" id="map_image" usemap="#United States of America"  border=0 height="50%" border=0 >
               <!-- Map market area co-ordinats -->
               <map name="United States of America"> 
                 <!-- Pacific Northwest -->
@@ -238,8 +238,8 @@
                 <area shape="default" href="#" target="">
               </map> 
             </div><!-- END : Map section -->    
-      <div class="panel-info">
-        <div class="panel-heading router_search_box">
+      <div class="panel-info panel-default">
+        <div class="panel-heading panel-heading-swtname router_search_box">
            
           <?php
             $str_marketname =  $marketname ; 
@@ -302,8 +302,9 @@
                     <th><b>ID</b></th>
                     <th><b>Device Name</th>
                     <th><b>Ip Address</th>
-                    <th><b>Site ID</th>
-                    <th><b>Site Name</th>
+                  <!--  <th><b>Custom Location</th> -->
+					<th><b>Site ID</th>
+					<th><b>Site Name</th>
                   </tr>
                 </thead>
               </table> 

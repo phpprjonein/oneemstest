@@ -170,7 +170,7 @@ user_session_check();
                           <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
                           <td>'.$value['subnetmask'].'</td>
                           <td>
-                            <a href="ip_v4_more_details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>
+                            <a href="ip-v4-more-details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>
                           </td>
                         </tr>';
                   }

@@ -3,7 +3,7 @@ $(document).ready(function() {
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true, 
-          "ajax":"swt_server_process.php?listid="+$('#example').data('listid'),
+          "ajax":"swt-server-process.php?listid="+$('#example').data('listid'),
           "pageLength": 25,
           //"dom": 'lBfrtip',
           "dom": 'Bfrtip',

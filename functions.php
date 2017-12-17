@@ -45,7 +45,7 @@ function check_user_authentication($usertype) {
 function get_landing_page() {
     
     if (!$_SESSION['userlevel']) {
-        return 'login.php';
+        return 'index.php';
     }
     else {
         if ($_SESSION['userlevel'] === "1") { // fieldsite technician
@@ -104,14 +104,14 @@ function user_session_check() {
             $result = $rows[0];
             
             if ( ! $result ) {
-                header("Location: login.php?msg=Username and Password is wrong");
+                header("Location: index.php?msg=Username and Password is wrong");
                 exit();
             }
             $userid = $_SESSION['userid'] = $result['id'];
             $_SESSION['username'] = $username;
         }
         else {
-            header("Location: login.php");
+            header("Location: index.php");
             exit();
         }
         
@@ -120,7 +120,7 @@ function user_session_check() {
         
         if ( ! isset($_SESSION['userid'])) {
             
-            header("Location: login.php?msg=User session expired");
+            header("Location: index.php?msg=User session expired");
             exit();
         }
     }
@@ -1299,82 +1299,6 @@ function export_table($table_name, $table_fields = array()) {
     
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
-    return $resultset;
-}
-
-function get_device_list_ipmgmt_datatable($userid) {
-    global $db2, $pages;
-    $draw = $_GET['draw'];
-    $start = isset($_GET['start']) ? $_GET['start'] : 0;
-    $length = isset($_GET['length']) ? $_GET['length'] : 10;
-    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
-    $order_col = $_GET['order'][0]['column'];
-    $order_dir = $_GET['order'][0]['dir'];
-    
-    $columns = array(
-        'n.id',
-        'n.market',
-        'n.fromipvfour',
-        'n.toipvfour',
-        'n.fromipvsix',
-        'n.toipvsix'
-    );
-    
-    $sql_count = "SELECT COUNT(*) ";
-    $sql_select = "SELECT " . implode(", ", $columns);
-    
-    $sql_condition = " FROM  ipaddrmgmt n";
-    if ($search) {
-        $sql_condition .=  " where ( ";
-        //$sql_condition .=  " n.id LIKE '%". $search ."%'";
-        $sql_condition .=  " n.market  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.fromipvfour  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.toipvfour  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.fromipvsix  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.toipvsix  LIKE '%". $search ."%'";
-        $sql_condition .=  " ) ";
-    }
-    $count_sql = $sql_count . $sql_condition;
-    //echo $count_sql;
-    $db2->query($count_sql);
-    $row = $db2->resultsetCols();
-    
-    
-    $total_rec = $row[0];
-    
-    
-    $sql_order = "";
-    if ($order_col != ''){
-        $sql_order = " ORDER BY " . $columns[$order_col];
-    }
-    
-    if ($order_dir != ''){
-        $sql_order .= $order_dir != '' ? " $order_dir ": " asc ";
-    }
-    
-    $sql_limit = " LIMIT $start, $length ";
-    
-    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
-    
-    $db2->query($sql);
-    $resultset['draw'] = $draw;
-    if ($db2->resultset()) {
-        foreach ($db2->resultset() as $key => $value) {
-            $value['DT_RowId'] = "row_" . $value['id'] ;
-            $records[$key] = $value;
-        }
-        
-        
-        $resultset['data'] = $records;
-        $resultset['recordsTotal'] = $total_rec;
-        $resultset['recordsFiltered'] = $total_rec;
-    }
-    else {
-        $resultset['data'] = array();
-        $resultset['recordsTotal'] = 10;
-        $resultset['recordsFiltered'] =0;
-    }
-    
     return $resultset;
 }
 

@@ -12,25 +12,16 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-check_user_authentication('2'); //cellsite tech type user
+ check_user_authentication('1'); //cellsite tech type user
 /**
 * Device Search section
 */
 if ( $_SESSION['userid'] && isset($_POST['search_term']) && trim($_POST['search_term']) != '' ) {
   $_SESSION['search_term'] = $_POST['search_term'];
 }
-$userid = $_SESSION['userid'];
-$listid = $_GET['listid'];
-//$device_list = get_device_list_from_nodes($_SESSION['userid']); 
-$device_list = user_mylist_devieslist($userid,$listid); 
 
-if ( ! isset($device_list['result'][0]['listname'])) {
-  $title = "Default list";
-}
-else {
-  $title = $device_list['result'][0]['listname'];
-}
-$page_title = $title;
+$device_list = get_device_list_from_nodes($_SESSION['userid']); 
+$page_title = 'OneEMS';
 $pages = new paginator();
 $pages->items_total = $device_list['total_rec'];
 $pages->mid_range =7; 
@@ -42,7 +33,15 @@ $pages->paginate();
    <?php include("includes.php");  ?>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
-       
+        
+        <div id="mycmdModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+        </div>
+
         <div class="wrapper">
             <?php include ('menu.php'); ?> 
 
@@ -55,22 +54,20 @@ $pages->paginate();
                         <div class="box box-solid">
                         <div class="box-header with-border">
                           <!-- Page title -->
-                          <h3 class="box-title"> List Name : <?php echo $title ?>  </h3>
+                          <h3 class="box-title">Device List</h3>
                         </div>              		
-                        <div style="display: bloc;">
-                          <form class="navbar-form search" method="POST" action="mylist_devices.php" role="search">
+                        <div>
+                          <form class="navbar-form search" method="POST" action="cellsitetech-devicelist.php" role="search">
                             <div class="input-group add-on">
-                              <input type="hidden" name="listid" id="listid" value="<?php echo $listid ?>">
                               <input class="form-control" placeholder="Search" name="search_term" id="srch-term" type="text">
                                 <div class="input-group-btn">
                                   <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" style="color:#D52B1E"></i></button>
                                 </div>                                       
                             </div>
                             <?php
-
                             if ($_SESSION['search_term']) {
                               ?>
-                              <a type="button" class="btn bg-purple btn-flat margin"  title="Cleasr Search" href="static_devicelist.php?clear=search"> <?php echo $_SESSION['search_term'] ?> <i class="fa fa-close pull-right"></i></a>
+                              <a type="button" class="btn bg-purple btn-flat margin"  title="Cleasr Search" href="cellsitetech-devicelist.php?clear=search"> <?php echo $_SESSION['search_term'] ?> <i class="fa fa-close pull-right"></i></a>
                               <?php
                             }
                             ?>
@@ -102,9 +99,9 @@ $pages->paginate();
                                 <table class="table table_header">
                                   <thead style="background-color:#f6f6f6;"> 
                                     <tr>
-                                      <th width="10%"> Severity</th>      
-                                      <th width="20%"> Device Name</th>
-                                      <th width="10%"> IP Address</th>
+                                     <th width="10%">Severity</th>      
+                                      <th width="20%">Device Name</th>
+                                      <th width="10%">IP Address</th>
                                       <th width="10%">Reachable</th>
                                       <th width="10%">Operational</th>
                                       <th width="15%">Device Series</th> 
@@ -119,9 +116,10 @@ $pages->paginate();
                               <!-- Table Records section -->
                               <div class="panel"  style="border: 1px solid  <?php echo ($k%2==0) ? '#fcfcfc':'#f6f6f6' ?>; margin-bottom: 2px;"> 
                                 <table style=" <?php echo ($k%2==0) ? 'background-color: #fcfcfc':'background-color:#ffffff'; ?>" class="table device_details collapsed"  data-userid="<?php echo $userid; ?>"  data-deviceid="<?php echo $device['id']; ?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $k+1 ?>">
+
                                   <tbody>
                                     <tr>
-                                      <td width="10%"> <?php echo $device['severity']; ?></td>      
+                                  <td width="10%"> <?php echo $device['severity']; ?></td>
                                       <td width="20%"> <?php echo $device['deviceName'];  ?></td>
                                       <td width="10%"><?php echo $device['deviceIpAddr']; ?></td>
                                       <td width="10%"><?php echo $device['status'] == 1 ?  'Reachable' : 'Not Reachable'; ?></td>
@@ -131,8 +129,8 @@ $pages->paginate();
                                       <td >Up Since <?php echo date('m/d/Y', strtotime($device['upsince'])); ?></th>
                                     </tr>                                             
                                   </tbody>
-                                </table> 
-                                <div id="collapse<?php echo $k+1; ?>" class="mydevicebox_<?php echo $device['deviceid']; ?> panel-collapse collapse">
+                                </table>  
+                                <div id="collapse<?php echo $k+1; ?>" class="mydevicebox_<?php echo $device['id']; ?> panel-collapse collapse"> 
                                   <!-- Innter HTML will be depicted for the selected Device details from ajax call --> 
                                 </div>
                               </div>                                         
@@ -166,22 +164,15 @@ $pages->paginate();
                   </div> 
                 </section> <!-- /.content -->
               </div>
-              <div id="mycmdModal" class="modal fade">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <!-- Content will be loaded here from "remote.php" file -->
-                      </div>
-                  </div>
-              </div>
             <!-- /.content-wrapper --> 
-               
             <!-- /.control-sidebar -->
             <!-- Add the sidebar's background. This div must be placed
             immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <?php include ('footer.php'); ?>  
-        <script src="resources/js/mylist_devices.js?t=".<?php echo date('his'); ?>></script>
+
+        <?php include ('footer.php'); ?> 
+        <script src="resources/js/devices.js?t=".<?php echo date('his'); ?>></script>
     </body>
 </html>

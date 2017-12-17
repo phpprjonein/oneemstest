@@ -3,7 +3,7 @@ $(document).ready(function() {
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true,
-          "ajax":"cellt_server_process.php",      
+          "ajax":"cellt-server-process.php",      
           "pageLength": 25,
           "dom": 'Bfrtip',
 	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
@@ -123,7 +123,7 @@ $(document).ready(function() {
     		$("#ip-allocation-region .btn").html($(this).text());
 			  $("#exampleModal #exampleModalLabel").html("ADD A SUBNET IN " + $(this).text());
 			  $("#exampleModal #selected_region").val($(this).text());
-    		$.post( "ip_mgt_process.php", { calltype: "trigger", region: $(this).text() })
+    		$.post( "ip-mgt-process.php", { calltype: "trigger", region: $(this).text() })
     		  .done(function( data ) {
     			  $("#ip-allocation-market button").text("SELECT MARKET");
     			  $("#ip-allocation-market .dropdown-menu").html(data);
@@ -139,7 +139,7 @@ $(document).ready(function() {
     		}else{
     			$("#exampleModal .alert-danger").hide();
     			if($(this).text() == 'COMPUTE'){
-    				$.post( "ip_mgt_process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val()})
+    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val()})
     	    		  .done(function( data ) {
     	    			  	var res = data.split(" ");
     	    			  	$("#exampleModal #compute-from-ip").html(res[0]);
@@ -147,7 +147,7 @@ $(document).ready(function() {
     	    			  	$("#exampleModal #compute-to-ip").html(res[2]);
     	    		  });
     			}else{
-    				$.post( "ip_mgt_process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val(), region:$("#exampleModal #selected_region").val(),market:$("#exampleModal #selected_market").val()})
+    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val(), region:$("#exampleModal #selected_region").val(),market:$("#exampleModal #selected_market").val()})
   	    		  .done(function( data ) {
   	    			  if(data == 'success'){
   	    				$("#exampleModal .alert-success").show();

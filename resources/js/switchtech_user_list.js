@@ -20,7 +20,7 @@ $(document).ready(function() {
             "infoEmpty": "",
             "infoFiltered": ""
             },
-          "ajax":"swtchtech_user_list_server_process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val(),
+          "ajax":"swtchtech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val(),
              "columns": [
             {  "className":  'device_row',
                 "orderable":      false,
@@ -281,7 +281,7 @@ function switchlistdel(userid, switchlistid) {
         'userid': userid
       },
       success: function() {
-        $(location).attr("href", 'switchtech_devicelist.php'); 
+        $(location).attr("href", 'switchtech-devicelist.php'); 
       }
     });
   }

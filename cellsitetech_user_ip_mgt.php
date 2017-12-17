@@ -13,7 +13,7 @@ if(isset($_POST['optradio']) && $_POST['optradio'] == 'ip-v4'){
         insert_ipaddrmgmt_record($post_arr);
     }
 }
-header("Location:sheet7_cellsitetech_user_devicelist.php");
+header("Location:cellsitetech-ip-management.php");
 
 /*
  * Validating IP in use for other markets
@@ -37,12 +37,12 @@ function validate_ip_address($market, $type, $low_ip, $high_ip){
             }
             if($err_flag){
                 $_SESSION['ip_err'] = array('market' => $val['market'], 'type' => 'ip-err');
-                header("Location:sheet7_cellsitetech_user_devicelist.php");
+                header("Location:cellsitetech-ip-management.php");
                 return false;
             }
         }else{
             $_SESSION['ip_err'] = array('market' => $val['market'], 'type' => 'market-exist');
-            header("Location:sheet7_cellsitetech_user_devicelist.php");
+            header("Location:cellsitetech-ip-management.php");
             return false;
         }
     }

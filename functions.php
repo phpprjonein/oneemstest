@@ -49,10 +49,10 @@ function get_landing_page() {
     }
     else {
         if ($_SESSION['userlevel'] === "1") { // fieldsite technician
-            $location_href = "sheet1_cellsitetech_user_devicelist.php";
+            $location_href = "cellsitetech-dashboard.php";
         }
         if ($_SESSION['userlevel'] === "2") {
-            $location_href = "sheet1_switchtech_user_list.php";
+            $location_href = "switchtech-dashboard.php";
         }
         return $location_href;
     }

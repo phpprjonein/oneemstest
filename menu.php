@@ -39,22 +39,22 @@
     if (isset($_SESSION['welcome_username'])) {
     ?>
     <?php if ($_SESSION['userlevel'] === "1"){ ?>
-		<li  class="nav-item"><a class="nav-link <?php print activemenu("sheet1_cellsitetech_user_devicelist.php"); ?>" href="sheet1_cellsitetech_user_devicelist.php">Dashboard</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet2_cellsitetech_user_devicelist.php"); ?>" href="sheet2_cellsitetech_user_devicelist.php">Discovery</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet3_cellsitetech_user_devicelist.php"); ?>" href="sheet3_cellsitetech_user_devicelist.php">Backup</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet4_cellsitetech_user_devicelist.php"); ?>" href="sheet4_cellsitetech_user_devicelist.php">Configuration</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet5_cellsitetech_user_devicelist.php"); ?>" href="sheet5_cellsitetech_user_devicelist.php">Scripting</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet6_cellsitetech_user_devicelist.php"); ?>" href="sheet6_cellsitetech_user_devicelist.php">Compliances</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet7_cellsitetech_user_devicelist.php"); ?>" href="sheet7_cellsitetech_user_devicelist.php">IP Management</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet8_cellsitetech_user_devicelist.php"); ?>" href="sheet8_cellsitetech_user_devicelist.php">Help</a></li>
+		<li  class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-dashboard.php"); ?>" href="cellsitetech-dashboard.php">Dashboard</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-discovery.php"); ?>" href="cellsitetech-discovery.php">Discovery</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-backup.php"); ?>" href="cellsitetech-backup.php">Backup</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-configuration.php"); ?>" href="cellsitetech-configuration.php">Configuration</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-scripting.php"); ?>" href="cellsitetech-scripting.php">Scripting</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-compliances.php"); ?>" href="cellsitetech-compliances.php">Compliances</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-ip-management.php"); ?>" href="cellsitetech-ip-management.php">IP Management</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-help.php"); ?>" href="cellsitetech-help.php">Help</a></li>
     <?php }elseif($_SESSION['userlevel'] === "2"){  ?>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet1_switchtech_user_list.php"); ?>" href="sheet1_switchtech_user_list.php">Dashboard</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet2_switchtech_user_list.php"); ?>" href="sheet2_switchtech_user_list.php">Discovery</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet3_switchtech_user_list.php"); ?>" href="sheet3_switchtech_user_list.php">Backup</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet4_switchtech_user_list.php"); ?>" href="sheet4_switchtech_user_list.php">Configuration</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet5_switchtech_user_list.php"); ?>" href="sheet5_switchtech_user_list.php">Scripting</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet6_switchtech_user_list.php"); ?>" href="sheet6_switchtech_user_list.php">Compliances</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet7_switchtech_user_list.php"); ?>" href="sheet7_switchtech_user_list.php">IP Management</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>" href="switchtech-dashboard.php">Dashboard</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-discovery.php"); ?>" href="switchtech-discovery.php">Discovery</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-backup.php"); ?>" href="switchtech-backup.php">Backup</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-configuration.php"); ?>" href="switchtech-configuration.php">Configuration</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-scripting.php"); ?>" href="switchtech-scripting.php">Scripting</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-ip-management.php"); ?>" href="switchtech-ip-management.php">IP Management</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet8_switchtech_user_list.php"); ?>" href="sheet8_switchtech_user_list.php">Help</a></li>    
     <?php } ?>
   <?php  } ?>

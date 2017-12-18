@@ -43,10 +43,11 @@ $(document).ready(function() {
 		$('#export-v-pills-profile').hide();
 		$('#search-v-pills-profile').hide();
         var table1 =  $('#ipmgt-ipv4').DataTable( {
+        "aoColumns": [{ "bSortable": true },{ "bSortable": true, "bVisible": false },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false }],	
          "processing": true,
          "pageLength": 5,
          "dom": 'Bfrtip',
-	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [0, 2, 3, 4, 5]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [0, 2, 3, 4, 5]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [0, 2, 3, 4, 5]}}], 
            "language": {
            "lengthMenu": "Display _MENU_ records per page",
            "zeroRecords": "No records found",
@@ -65,6 +66,7 @@ $(document).ready(function() {
      
 	if($('#ipmgt-ipv6').length > 0){
         var table2 =  $('#ipmgt-ipv6').DataTable( {
+            "aoColumns": [{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false }],	
          "processing": true,
          "pageLength": 5,
          "dom": 'Bfrtip',
@@ -121,41 +123,57 @@ $(document).ready(function() {
     	
     	$("#ip-allocation-region a").click(function(){
     		$("#ip-allocation-region .btn").html($(this).text());
-			  $("#exampleModal #exampleModalLabel").html("ADD A SUBNET IN " + $(this).text());
-			  $("#exampleModal #selected_region").val($(this).text());
+			  $("#exampleModalIPM #exampleModalIPMLabel").html("ADD A SUBNET IN " + $(this).text());
+			  $("#exampleModalIPM #selected_region").val($(this).text());
     		$.post( "ip-mgt-process.php", { calltype: "trigger", region: $(this).text() })
     		  .done(function( data ) {
     			  $("#ip-allocation-market button").text("SELECT MARKET");
     			  $("#ip-allocation-market .dropdown-menu").html(data);
     		  });
     	});
+    	
+    	$("#ip-allocation-region-dt-filter a").click(function(){
+    		$("#ip-allocation-region-dt-filter .btn").html($(this).text());
+    		var table1 =  $('#ipmgt-ipv4').DataTable();
+    		if($(this).text() != 'SELECT REGION'){
+    			table1.columns(1).search('^'+$(this).text()+'$', true, false).draw();
+    		}else{
+    			table1.columns(1).search('').draw();
+    		}
+    	});
+    	
+    	$('#myModal').on('hidden.bs.modal', function () {
+    		 location.reload();
+    	})
+    	
+    	
     	$(document).on('click', '#ip-allocation-market a', function(event) {
     		$("#ip-allocation-market .btn").html($(this).text());
-    		$("#exampleModal #selected_market").val($(this).text());
+    		$("#exampleModalIPM #selected_market").val($(this).text());
     	});
-    	$("#exampleModal .modal-footer button").click(function(){
-    		if($("#ip-allocation-market .btn").html() == "" || $("#exampleModal #inputSubnet").val() == "" || $("#exampleModal #inputMask").val() == ""){
-    			$("#exampleModal .alert-danger").show();
+    	$("#exampleModalIPM .modal-footer button").click(function(){
+    		if($("#ip-allocation-market .btn").html() == "" || $("#exampleModalIPM #inputSubnet").val() == "" || $("#exampleModalIPM #inputMask").val() == ""){
+    			$("#exampleModalIPM .alert-danger").show();
     		}else{
-    			$("#exampleModal .alert-danger").hide();
+    			$("#exampleModalIPM .alert-danger").hide();
     			if($(this).text() == 'COMPUTE'){
-    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val()})
+    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
     	    		  .done(function( data ) {
     	    			  	var res = data.split(" ");
-    	    			  	$("#exampleModal #compute-from-ip").html(res[0]);
-    	    			  	$("#exampleModal #compute-count").html(res[1]);
-    	    			  	$("#exampleModal #compute-to-ip").html(res[2]);
+    	    			  	$("#exampleModalIPM #compute-from-ip").html(res[0]);
+    	    			  	$("#exampleModalIPM #compute-count").html(res[1]);
+    	    			  	$("#exampleModalIPM #compute-to-ip").html(res[2]);
     	    		  });
     			}else{
-    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModal #inputSubnet").val(), mask: $("#exampleModal #inputMask").val(), region:$("#exampleModal #selected_region").val(),market:$("#exampleModal #selected_market").val()})
+    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val(), region:$("#exampleModalIPM #selected_region").val(),market:$("#exampleModalIPM #selected_market").val()})
   	    		  .done(function( data ) {
   	    			  if(data == 'success'){
-  	    				$("#exampleModal .alert-success").show();
-	    			  	$("#exampleModal #compute-from-ip").html('{{from IP}}');
-	    			  	$("#exampleModal #compute-count").html('{{Count}}');
-	    			  	$("#exampleModal #compute-to-ip").html('{{to IP}}');
-	    			  	$("#exampleModal #inputSubnet").val('');
-	    			  	$("#exampleModal #inputMask").val('');
+  	    				$("#exampleModalIPM .alert-success").show();
+	    			  	$("#exampleModalIPM #compute-from-ip").html('{{from IP}}');
+	    			  	$("#exampleModalIPM #compute-count").html('{{Count}}');
+	    			  	$("#exampleModalIPM #compute-to-ip").html('{{to IP}}');
+	    			  	$("#exampleModalIPM #inputSubnet").val('');
+	    			  	$("#exampleModalIPM #inputMask").val('');
   	    			  }
   	    		  });
     			}
@@ -163,7 +181,9 @@ $(document).ready(function() {
     		}
     	});
     	
-    	
+    	$('#exampleModalIPM').on('hidden.bs.modal', function () {
+    		 location.reload();
+    	})
     	
     	
       $('#example tbody').on('click', 'td.details-control', function () {

@@ -72,10 +72,12 @@ user_session_check();
             if(!empty($rvalue['region'])):          
           ?>
           <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
-          
           <?php 
           endif;
-          endforeach;?>
+          endforeach;
+          if(count($region_list['result']) > 1): ?>
+          	<a class="dropdown-item" href="#">SELECT REGION</a>
+          <?php endif; ?>
           </div>
         </div>
       </div>
@@ -104,7 +106,7 @@ user_session_check();
         <div class="form-check mb-2 mb-sm-0">
           <div class="btn-group" role="group" aria-label="">
             <!--<button type="button" class="btn btn-danger">ADD A SUBNET</button>-->
-            <button type="button" class="btn" id="add-a-subnet" data-toggle="modal" data-target="#exampleModal">ADD A SUBNET</button>
+            <button type="button" class="btn" id="add-a-subnet" data-toggle="modal" data-target="#exampleModalIPM">ADD A SUBNET</button>
           </div>
         </div>
       </div>
@@ -127,7 +129,6 @@ user_session_check();
 <!-- /table maniupulation row -->
 
     <hr />
-
 <!-- IP management table row -->
     <div class="row">
 
@@ -139,9 +140,44 @@ user_session_check();
         </div>
       </div>
 <!-- /table pill navigation -->
+<!-- region selection -->
+      <div class="col-auto">
+        <div class="btn-group" id="ip-allocation-region-dt-filter">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SELECT REGION
+          </button>
+          <div class="dropdown-menu">
+          <?php 
+          $region_list = get_ipallocation_region_list();
+          foreach ($region_list['result'] as $rkey => $rvalue):
+            if(!empty($rvalue['region'])):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
+          <?php 
+          endif;
+          endforeach;
+          if(count($region_list['result']) > 1): ?>
+          	<a class="dropdown-item" href="#">SELECT REGION</a>
+          <?php endif; ?>
+          </div>
+        </div>
+      </div>
+<!-- /region selection -->
+</div>
+<!-- IP management table row -->
+    <div class="row">
+
+<!-- table pill navigation 
+      <div class="col-1">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IPv4</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">IPv6</a>
+        </div>
+      </div>
+table pill navigation -->
 
 <!-- table content row -->
-      <div class="col-11">
+      <div class="col-12">
 
         <div class="tab-content" id="v-pills-tabContent">
 
@@ -151,6 +187,7 @@ user_session_check();
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Market</th>
+                  <th scope="col">Region</th>
                   <th scope="col" class="table_center_text">From</th>
                   <th scope="col">Count</th>
                   <th scope="col" class="table_center_text">To</th>
@@ -165,6 +202,7 @@ user_session_check();
                       $ipvfour_details = getipvfour_details($value['subnetmask']);
                         echo '<tr>
                           <th scope="row" class="">'.$value['market'].'</th>
+                          <th>'.$value['region'].'</th>
                           <td>'.$ipvfour_details[0].'</td>
                           <td>'.count($ipvfour_details).'</td>
                           <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
@@ -244,11 +282,11 @@ user_session_check();
         <!-- ./wrapper -->
 		
 		<!-- add subnet mask modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalIPM" tabindex="-1" role="dialog" aria-labelledby="exampleModalIPMLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalIPMLabel"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

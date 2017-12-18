@@ -28,7 +28,7 @@
         <script type="text/javascript" language="javascript" src="resources/js/jquery.dataTables.min.js"></script> 
          <link rel="stylesheet" type="text/css" href="resources/css/datatables.min.css"/>
 		<script type="text/javascript" src="resources/js/datatables.min.js"></script>
-		<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+		<!--  <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">  -->
  
         <script type="text/javascript" language="javascript" src="resources/js/jquery-ui.min.js"></script>
 

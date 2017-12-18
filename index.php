@@ -37,7 +37,7 @@ if (isset($_POST['username']) && $_POST['password']) {
    <?php include "includes.php" ?>
   </head> 
   <body> 
-  
+  <div class="container-fluid">
      <header class="main-header">
 	  <div class="nav">
 		<div class="pull-left box"><a class="navbar-brand" href="#" >
@@ -93,5 +93,6 @@ if (isset($_POST['username']) && $_POST['password']) {
       </form>
     </div>
     </div> 
+    </div>
   </body>
 </html>

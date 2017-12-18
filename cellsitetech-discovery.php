@@ -25,8 +25,7 @@ $page_title = 'OneEMS';
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
 <!-- container div -->
-  <div class="container-fluid">
-	<div class="wrapper" id="disc-mgt-screen">
+  <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
 
 <!-- table manipulation row -->
@@ -585,8 +584,6 @@ $page_title = 'OneEMS';
     </div>
 <!-- /IP management table row -->
 
-  </div>
-<!-- /container div -->
 
 <!-- add device modal -->
   <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">

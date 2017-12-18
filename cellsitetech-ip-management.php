@@ -34,7 +34,7 @@ user_session_check();
         </div>
         </div>
 
-        <div class="wrapper" id="ip-mgt-screen">
+        <div class="container-fluid" id="ip-mgt-screen">
             <?php include ('menu.php'); ?> 
 
             <!-- Content Wrapper. Contains page content -->

@@ -55,7 +55,7 @@
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-scripting.php"); ?>" href="switchtech-scripting.php">Scripting</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-ip-management.php"); ?>" href="switchtech-ip-management.php">IP Management</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("sheet8_switchtech_user_list.php"); ?>" href="sheet8_switchtech_user_list.php">Help</a></li>    
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-help.php"); ?>" href="switchtech-help.php">Help</a></li>    
     <?php } ?>
   <?php  } ?>
     </ul>

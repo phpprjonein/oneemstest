@@ -48,7 +48,7 @@ modal.children[0].addEventListener('click', function(e) {
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
 
-        <div style="min-height: 620px" class="container-fluid">
+        <div class="container-fluid">
             <?php include ('menu.php'); ?>
 
             <!-- Content Wrapper. Contains page content -->

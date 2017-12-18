@@ -49,7 +49,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
 <script src="resources/js/switchtech_user_list.js?t=<?php echo date('his'); ?>"></script>
 </head>  
 <body class="hold-transition skin-blue sidebar-mini ownfont">
-<div class="wrapper">
+<div class="container-fluid">
 
     <?php 
     // Include menu bar htmls [ Logo, welcome text, menu ]

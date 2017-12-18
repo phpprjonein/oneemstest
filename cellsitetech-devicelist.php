@@ -42,7 +42,7 @@ $pages->paginate();
         </div>
         </div>
 
-        <div class="wrapper">
+        <div class="container-fluid">
             <?php include ('menu.php'); ?> 
 
             <!-- Content Wrapper. Contains page content -->

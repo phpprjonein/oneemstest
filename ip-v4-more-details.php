@@ -34,7 +34,7 @@ user_session_check();
         </div>
         </div>
 
-        <div class="wrapper">
+        <div class="container-fluid">
             <?php include ('menu.php'); ?> 
 
 <!-- container div -->

@@ -136,7 +136,7 @@ $page_title = 'OneEMS';
 
 <!-- conflict table content -->
             <div class="tab-pane fade show active" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              <table class="table table-responsive table-sm ip-conflict-table">
+              <table class="table table-responsive table-sm ip-conflict-table" id="ip-conflict-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -150,6 +150,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Update</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -165,129 +167,17 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>MASTER</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0091-02</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.33</td>
-                    <td>Discovery</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0101-01</td>
-                    <td>101</td>
-                    <td>SB NEW CARLISLE</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.35</td>
-                    <td>MASTER</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0102-01</td>
-                    <td>101</td>
-                    <td>SB NORTH LIBERTY</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.73</td>
-                    <td>Discovery</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>AUVNINBWT1A-P-CI-0090-01</td>
-                    <td>103</td>
-                    <td>SB PLYMOUTH</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.73</td>
-                    <td>MASTER</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>kkk-P-CI-0091-02</td>
-                    <td>104</td>
-                    <td>SB DT SOUTH BEND</td>
-                    <td>Cisco ASR 930</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.85</td>
-                    <td>Discovery</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0105-01</td>
-                    <td>105</td>
-                    <td>SB BREMEN</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.73</td>
-                    <td>MASTER</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0106-01</td>
-                    <td>106</td>
-                    <td>SB Mishawaka</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
+                    <td>Great Lakes</td>
+                    <td>OPW</td>
                   </tr>
                 </tbody>
               </table>
-
-  <!-- pagination -->
-              <nav aria-label="Pagination example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-  <!-- /pagination -->
-
             </div>
 <!-- /conflict table content -->
 
 <!-- missed table content -->
             <div class="tab-pane fade" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
-              <table class="table table-sm table-responsive table-striped ip-missed-table">
+              <table class="table table-sm table-responsive table-striped ip-missed-table" id="ip-missed-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -302,6 +192,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Remove / Update</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Market</th>                    
                   </tr>
                 </thead>
                 <tbody>
@@ -318,94 +210,17 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.150</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0091-01</td>
-                    <td>F</td>
-                    <td>F</td>
-                    <td>208091</td>
-                    <td>North Angola</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.33</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0101-01</td>
-                    <td>P</td>
-                    <td>F</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>P</td>
-                    <td>F</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>P</td>
-                    <td>F</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
+                    <td>Great Lakes</td>
+                    <td>OPW</td>
                   </tr>
                 </tbody>
               </table>
-
-<!-- pagination -->
-              <nav aria-label="Pagination example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-<!-- /pagination -->
-
             </div>
 <!-- /missed table content -->
 
 <!-- new table content -->
             <div class="tab-pane fade" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
-              <table class="table table-responsive table-striped ip-new-table">
+              <table class="table table-responsive table-striped ip-new-table" id="ip-new-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -416,6 +231,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Add</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -428,72 +245,11 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addDeviceModal">ADD</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.150</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0091-01</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">ADD</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.33</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0101-01</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">ADD</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">ADD</button></td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">ADD</button></td>
+                    <td>Great Lakes</td>
+                    <td>OPW</td>
                   </tr>
                 </tbody>
               </table>
-
-<!-- pagination -->
-              <nav aria-label="Pagination example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-<!-- /pagination -->
-
             </div>
 <!-- /new table content -->
 
@@ -512,6 +268,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Select All</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -530,70 +288,8 @@ $page_title = 'OneEMS';
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                       </label>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.150</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0091-01</td>
-                    <td>208091</td>
-                    <td>North Angola</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.33</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0101-01</td>
-                    <td>101</td>
-                    <td>SB NEW CARLISLE</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.73</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0103-01</td>
-                    <td>103</td>
-                    <td>SB PLYMOUTH</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10.203.144.2</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0104-01</td>
-                    <td>104</td>
-                    <td>SB DT SOUTH BEND</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      </label>
-                    </td>
+                    <td>Great Lakes</td>
+                    <td>OPW</td>
                   </tr>
                 </tbody>
               </table>

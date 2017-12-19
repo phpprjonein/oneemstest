@@ -10,6 +10,9 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
             $output .= '<a class="dropdown-item" id="' . $mkey . '" href="#">' . $mvalue['market'] . '</a>';
         }
     }
+    if($_POST['page-id'] == 'discovery'):
+        $output .= '<a class="dropdown-item" href="#">SELECT MARKET</a>';
+    endif;
     echo $output;
 }
 

@@ -273,24 +273,31 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      </label>
-                    </td>
-                    <td>Great Lakes</td>
-                    <td>OPW</td>
-                  </tr>
+                  
+                  	<?php $resultset =  load_discovery_dataset(); 
+                    if(isset($resultset['result'])){
+                        foreach ($resultset['result'] as $key => $value){       ?>
+                        <tr> <td><?php echo $value['ipvfour'];?></td>
+                        <td><?php echo $value['ipvsix'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
+                        <td><?php echo $value['site_id'];?></td>
+                        <td><?php echo $value['site_name'];?></td>
+                        <td><?php echo $value['deviceseries'];?></td>
+                        <td><?php echo $value['os'];?></td>
+                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['lastpolled'];?></td>
+                        <td>
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<?php echo $value['id'];?>">
+                          </label>
+                        </td>
+                        <td><?php echo $value['region'];?></td>
+                        <td><?php echo $value['market'];?></td></tr>                          
+                   <?php }
+                    }
+                    ?>
+
+                  
                 </tbody>
               </table>
             </div>

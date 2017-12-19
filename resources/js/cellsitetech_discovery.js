@@ -161,4 +161,13 @@ $(document).ready(function() {
         	ipoktable.search($(this).val()).draw() ;
        });
 	}	
+	
+	//Action JS
+	$("#ip-ok-table #inlineCheckbox1").click(function(){
+		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':$(this).val(), 'action' : 'Disc-OK' })
+		  .done(function( data ) {
+			  alert("Status Updated Successfully");
+			  location.reload();
+		  });
+	});
 });

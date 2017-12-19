@@ -1492,5 +1492,17 @@ function insert_ip_allocation($values){
     $db2->query($sql);
     $db2->execute();
 }
-
-
+function load_discovery_dataset(){
+    global $db2;
+    $sql = "SELECT * FROM discoveryres where status is NULL ORDER BY id";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function discovery_status_update($status, $id){
+    global $db2;
+    $sql = "UPDATE `discoveryres` SET status = '".$status."' WHERE id = '".$id."'";
+    $db2->query($sql);
+    $db2->execute();
+    return success;
+}

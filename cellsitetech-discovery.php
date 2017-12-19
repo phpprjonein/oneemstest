@@ -21,7 +21,7 @@ $page_title = 'OneEMS';
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_discovery.js?t=".<?php echo date('his'); ?>></script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
 <!-- container div -->
@@ -31,33 +31,82 @@ $page_title = 'OneEMS';
 <!-- table manipulation row -->
       <div class="form-row align-items-center justify-content-between">
 
-<!-- region name -->
-        <div class="col-auto">
-          <b>REGION:</b> $Great Lakes$
+<!-- region selection -->
+      <div class="col-auto">
+        <div class="btn-group" id="discovery-region">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SELECT REGION
+          </button>
+          <div class="dropdown-menu">
+          <?php 
+          $region_list = get_ipallocation_region_list();
+          foreach ($region_list['result'] as $rkey => $rvalue):
+            if(!empty($rvalue['region'])):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
+          <?php 
+          endif;
+          endforeach;
+          if(count($region_list['result']) > 1): ?>
+          	<a class="dropdown-item" href="#">SELECT REGION</a>
+          <?php endif; ?>
+          </div>
         </div>
+      </div>
 <!-- /region selection -->
 
-<!-- add row button -->
-        <div class="col-auto">
-          <b>MARKET:</b> $Illinois / Wisconsin$
-        </div>
-<!-- /add row button -->
+<!-- market dropdown -->
+                    <div class="btn-group" id="discovery-market">
+                      <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      SELECT MARKET
+                      </button>
+                      <div class="dropdown-menu">
+                      </div>
+                    </div>
+<!-- /market dropdown -->
 
 <!-- search table form field -->
+
         <div class="col-6">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Region Table" aria-label="Search Region Table">
+          
+          <div class="input-group" id="search-v-pills-conflict">
+            <input type="text" class="form-control" placeholder="Search Conflicts" aria-label="Search Region Table">
             <span class="input-group-btn">
               <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
             </span>
           </div>
+          
+          <div class="input-group" style="display: none;" id="search-v-pills-missed">
+            <input type="text" class="form-control" placeholder="Search Missed" aria-label="Search Region Table">
+            <span class="input-group-btn">
+              <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+            </span>
+          </div>
+          
+           <div class="input-group" style="display: none;" id="search-v-pills-new">
+            <input type="text" class="form-control" placeholder="Search New" aria-label="Search Region Table">
+            <span class="input-group-btn">
+              <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+            </span>
+          </div>
+          
+           <div class="input-group" style="display: none;" id="search-v-pills-ok">
+            <input type="text" class="form-control" placeholder="Search OK" aria-label="Search Region Table">
+            <span class="input-group-btn">
+              <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+            </span>
+          </div>
+          
         </div>
 <!-- /search table form field -->
 
 <!-- Export table -->
-        <div class="col-auto align-middle">
-			<div class="dt-buttons"><a class="dt-button buttons-excel buttons-html5 dtexcelbtn" tabindex="0" aria-controls=""><span></span></a><a class="dt-button buttons-pdf buttons-html5 dtpdfbtn" tabindex="0" aria-controls=""><span>PDF</span></a><a class="dt-button buttons-print dtprintbtn" tabindex="0" aria-controls=""><span>Print</span></a></div>
-        </div>
+      <div class="col-md-2 col-xs-6">
+        <p class="export" id="export-v-pills-conflict"></p>
+        <p class="export" id="export-v-pills-missed"></p>
+        <p class="export" id="export-v-pills-new"></p>
+        <p class="export" id="export-v-pills-ok"></p>
+      </div>
 <!-- /Export table -->
 
       </div>
@@ -450,7 +499,7 @@ $page_title = 'OneEMS';
 
 <!-- ok table content -->
             <div class="tab-pane fade" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
-              <table class="table table-sm table-responsive table-striped ip-ok-table">
+              <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -548,29 +597,6 @@ $page_title = 'OneEMS';
                   </tr>
                 </tbody>
               </table>
-
-<!-- pagination -->
-              <nav aria-label="Pagination example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-<!-- /pagination -->
-
             </div>
 <!-- /ok table content -->
 

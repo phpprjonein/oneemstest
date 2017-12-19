@@ -340,4 +340,4 @@ border-bottom-right-radius:0 !important;
 .main-header .top-menu .navbar-nav{display: inline-flex; flex-direction:unset;}
 .nav>li:hover{text-decoration:none;background-color:#eee}
 .modal-lg {max-width: 65vw;}
-#ip-mgt-screen .dataTables_wrapper .dataTables_filter{visibility: hidden;}
+#ip-mgt-screen .dataTables_wrapper .dataTables_filter, #disc-mgt-screen .dataTables_wrapper .dataTables_filter{visibility: hidden;}

@@ -113,14 +113,6 @@ user_session_check();
 <!-- /add row button -->
 <!-- Export table -->
       <div class="col-auto align-middle">
-        <p class="export" id="export-v-pills-home">
-        </p>
-        <p class="export" id="export-v-pills-profile">
-        </p>
-      </div>
-<!-- /Export table -->
-<!-- Export table -->
-      <div class="col-auto align-middle">
 
       </div>
 <!-- /Export table -->
@@ -133,7 +125,7 @@ user_session_check();
     <div class="row">
 
 <!-- table pill navigation -->
-      <div class="col-1">
+      <div class="col-1 col-xs-6">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">IPv4</a>
           <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">IPv6</a>
@@ -141,7 +133,7 @@ user_session_check();
       </div>
 <!-- /table pill navigation -->
 <!-- region selection -->
-      <div class="col-auto">
+      <div class="col-md-9 col-xs-6">
         <div class="btn-group" id="ip-allocation-region-dt-filter">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT REGION
@@ -163,6 +155,14 @@ user_session_check();
         </div>
       </div>
 <!-- /region selection -->
+<!-- Export table -->
+      <div class="col-md-2 col-xs-6">
+        <p class="export" id="export-v-pills-home">
+        </p>
+        <p class="export" id="export-v-pills-profile">
+        </p>
+      </div>
+<!-- /Export table -->
 </div>
 <!-- IP management table row -->
     <div class="row">

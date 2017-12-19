@@ -1461,7 +1461,7 @@ function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	foreach ($k as $key1 => $val1){ 
 		$m = $val1['deviceIpAddr'];
 		for ($j=0;$j<count($ipvfour_details); $j++) {
-			if  ($ipvfour_details[$j] == $m) { echo 'Matched ip address'.$m; $outputres[] = $val1; }
+			if  ($ipvfour_details[$j] == $m) { $outputres[] = $val1; }
 		}; 
 	}; 
 	$output['devicerecords'] = $outputres;

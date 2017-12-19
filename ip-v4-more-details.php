@@ -103,9 +103,7 @@ user_session_check();
                 </tr>
               </thead>
               <tbody>             
-			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];
-			  $region = 'South East ' ;$market = 'Georgia/Alabama';
-			  //$region = 'Great Lakes' ;$market = 'OPW';?>
+			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];  ?>
 			  <?php $devicelist = get_nodes_list_ipmgmt($region,$market,$subnetmask); ?>
               <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
 			  <?php foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>

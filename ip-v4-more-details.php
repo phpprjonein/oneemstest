@@ -105,8 +105,8 @@ user_session_check();
               <tbody>             
 			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];  ?>
 			  <?php $devicelist = get_nodes_list_ipmgmt($region,$market,$subnetmask); ?>
-              <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
-			  <?php foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>
+              <?php if(!empty($devicelist['devicerecords'])) {  foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
+			  <?php  foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>
 			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
                 <tr>
                   <td><?php echo $val; ?></td> 					  
@@ -130,11 +130,22 @@ user_session_check();
                   <td><?php echo ""?></td>
                 </tr> 
 			  <?php }; ?> 
-			  <?php };};?>
+			  <?php };};};?>
+			   <?php if(empty($devicelist['devicerecords'])) { ?>
+			   <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
+				<tr>
+                  <td><?php echo $val; ?></td> 					  
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo "Not in use";?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                  <td><?php echo ""?></td>
+                </tr>  
+			  <?php };};?> 			  
               </tbody>
-            </table>
-
-
+            </table> 
           </div>
 <!-- /IP table content -->
 

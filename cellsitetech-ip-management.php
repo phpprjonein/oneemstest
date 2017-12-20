@@ -189,7 +189,7 @@ table pill navigation -->
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Market</th>
-                  <th scope="col">Region</th>
+                  <th scope="col" style="display:none;">Region</th>
                   <th scope="col" class="table_center_text">From</th>
                   <th scope="col">Count</th>
                   <th scope="col" class="table_center_text">To</th>
@@ -203,8 +203,8 @@ table pill navigation -->
                   foreach ($resultset['result'] as $key => $value){
                       $ipvfour_details = getipvfour_details($value['subnetmask']);
                         echo '<tr>
-                          <th scope="row" class="">'.$value['market'].'</th>
-                          <th>'.$value['region'].'</th>
+                          <td scope="row" class="">'.$value['market'].'</td>
+                          <td style="display:none;">'.$value['region'].'</td>
                           <td>'.$ipvfour_details[0].'</td>
                           <td>'.count($ipvfour_details).'</td>
                           <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
@@ -230,6 +230,7 @@ table pill navigation -->
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Market</th>
+                  <th scope="col" style="display:none;">Region</th>
                   <th scope="col" class="table_center_text">From</th>
                   <th scope="col">Count</th>
                   <th scope="col" class="table_center_text">To</th>
@@ -241,15 +242,16 @@ table pill navigation -->
               <?php $resultset =  load_ipv_dataset('ipv6'); 
               if(isset($resultset['result'])){
                   foreach ($resultset['result'] as $key => $value){
-                          $ipvfour_details = getipvfour_details($value['subnetmask']);
+                        $ipvsix_details = getipvsix_details($value['subnetmask']);
                         echo '<tr>
-                          <th scope="row" class="">'.$value['market'].'</th>
-                          <td>'.$ipvfour_details['fromipvfour'].'</td>
-                          <td>'.$ipvfour_details['count'].'</td>
-                          <td>'.$ipvfour_details['toipvfour'].'</td>
+                          <td scope="row" class="">'.$value['market'].'</td>
+                          <td style="display:none;">'.$value['region'].'</td>  
+                          <td>'.$ipvsix_details['fromipvsix'].'</td>
+                          <td>'.$ipvsix_details['count'].'</td>
+                          <td>'.$ipvsix_details['toipvsix'].'</td>
                           <td>'.$value['subnetmask'].'</td>
                           <td>
-                            <button type="button" class="btn">GO</button>
+                            <a href="ip-v6-more-details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>
                           </td>
                         </tr>';
                   }

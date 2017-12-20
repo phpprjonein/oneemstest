@@ -1423,6 +1423,73 @@ function getipvfour_details($range){
     $end = $start+$count;
     return array_map('long2ip', range($start, ($end-1)) );
 }
+function getipvsix_details($range){
+    // Split in address and prefix length
+    list($firstaddrstr, $prefixlen) = explode('/', $range);
+    
+    // Parse the address into a binary string
+    $firstaddrbin = inet_pton($firstaddrstr);
+    
+    // Convert the binary string to a string with hexadecimal characters
+    # unpack() can be replaced with bin2hex()
+    # unpack() is used for symmetry with pack() below
+    $firstaddrhex = reset(unpack('H*', $firstaddrbin));
+    
+    // Overwriting first address string to make sure notation is optimal
+    $firstaddrstr = inet_ntop($firstaddrbin);
+    
+    // Calculate the number of 'flexible' bits
+    $flexbits = 128 - $prefixlen;
+    
+    // Build the hexadecimal string of the last address
+    $lastaddrhex = $firstaddrhex;
+    
+    // We start at the end of the string (which is always 32 characters long)
+    $pos = 31;
+    while ($flexbits > 0) {
+        // Get the character at this position
+        $orig = substr($lastaddrhex, $pos, 1);
+        
+        // Convert it to an integer
+        $origval = hexdec($orig);
+        
+        // OR it with (2^flexbits)-1, with flexbits limited to 4 at a time
+        $newval = $origval | (pow(2, min(4, $flexbits)) - 1);
+        
+        // Convert it back to a hexadecimal character
+        $new = dechex($newval);
+        
+        // And put that character back in the string
+        $lastaddrhex = substr_replace($lastaddrhex, $new, $pos, 1);
+        
+        // We processed one nibble, move to previous position
+        $flexbits -= 4;
+        $pos -= 1;
+    }
+    
+    // Convert the hexadecimal string to a binary string
+    # Using pack() here
+    # Newer PHP version can use hex2bin()
+    $lastaddrbin = pack('H*', $lastaddrhex);
+    
+    // And create an IPv6 address from the binary string
+    $lastaddrstr = inet_ntop($lastaddrbin);
+    
+    // Report to user
+    $ip['fromipvsix'] = $firstaddrstr ;
+    $ip['toipvsix'] = $lastaddrstr ;
+    $ip['count'] = (ipv6_numeric($lastaddrstr) - ipv6_numeric($firstaddrstr));
+    return $ip;
+}
+
+function ipv6_numeric($ip) {
+    $binNum = '';
+    foreach (unpack('C*', inet_pton($ip)) as $byte) {
+        $binNum .= str_pad(decbin($byte), 8, "0", STR_PAD_LEFT);
+    }
+    return base_convert(ltrim($binNum, '0'), 2, 10);
+}
+
 function cidrToRange($cidr) {
     $range = array();
     $cidr = explode('/', $cidr);

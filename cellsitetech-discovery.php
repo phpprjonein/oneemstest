@@ -150,8 +150,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Update</th>
-                    <th scope="col">Region</th>
-                    <th scope="col">Market</th>
+                    <th scope="col" style="display:none;">Region</th>
+                    <th scope="col" style="display:none;">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,8 +167,8 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td></td>
-                    <td>Great Lakes</td>
-                    <td>OPW</td>
+                    <td style="display:none;">Great Lakes</td>
+                    <td style="display:none;">OPW</td>
                   </tr>
                 </tbody>
               </table>
@@ -192,8 +192,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Remove / Update</th>
-                    <th scope="col">Region</th>
-                    <th scope="col">Market</th>                    
+                    <th scope="col" style="display:none;">Region</th>
+                    <th scope="col" style="display:none;">Market</th>                    
                   </tr>
                 </thead>
                 <tbody>
@@ -210,8 +210,8 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                    <td>Great Lakes</td>
-                    <td>OPW</td>
+                    <td style="display:none;">Great Lakes</td>
+                    <td style="display:none;">OPW</td>
                   </tr>
                 </tbody>
               </table>
@@ -231,8 +231,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Add</th>
-                    <th scope="col">Region</th>
-                    <th scope="col">Market</th>
+                    <th scope="col" style="display:none;">Region</th>
+                    <th scope="col" style="display:none;">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -245,8 +245,8 @@ $page_title = 'OneEMS';
                     <td>15.6(1)S1</td>
                     <td>11/16/17 19:28</td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addDeviceModal">ADD</button></td>
-                    <td>Great Lakes</td>
-                    <td>OPW</td>
+                    <td style="display:none;">Great Lakes</td>
+                    <td style="display:none;">OPW</td>
                   </tr>
                 </tbody>
               </table>
@@ -268,8 +268,8 @@ $page_title = 'OneEMS';
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <th scope="col">Select All</th>
-                    <th scope="col">Region</th>
-                    <th scope="col">Market</th>
+                    <th scope="col" style="display:none;">Region</th>
+                    <th scope="col" style="display:none;">Market</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -291,8 +291,8 @@ $page_title = 'OneEMS';
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<?php echo $value['id'];?>">
                           </label>
                         </td>
-                        <td><?php echo $value['region'];?></td>
-                        <td><?php echo $value['market'];?></td></tr>                          
+                        <td style="display:none;"><?php echo $value['region'];?></td>
+                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
                    <?php }
                     }
                     ?>

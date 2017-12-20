@@ -66,7 +66,7 @@ $(document).ready(function() {
      
 	if($('#ipmgt-ipv6').length > 0){
         var table2 =  $('#ipmgt-ipv6').DataTable( {
-            "aoColumns": [{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false }],	
+            "aoColumns": [{ "bSortable": true },{ "bSortable": true, "bVisible": false },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false }],	
          "processing": true,
          "pageLength": 5,
          "dom": 'Bfrtip',

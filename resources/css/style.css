@@ -343,5 +343,5 @@ border-bottom-right-radius:0 !important;
 #ip-mgt-screen .dataTables_wrapper .dataTables_filter, #disc-mgt-screen .dataTables_wrapper .dataTables_filter{visibility: hidden;}
 p.export {
 margin-top:0;	
-	
 }
+#ip-mgt-screen td{min-width:20%;}

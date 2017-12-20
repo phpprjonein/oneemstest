@@ -57,7 +57,7 @@ user_session_check();
 
 
 <!-- table manipulation row -->
-    <div class="form-row align-items-center justify-content-between">
+    <div class="form-row align-items-center justify-content-center">
 
 <!-- region selection -->
       <div class="col-auto">
@@ -83,23 +83,6 @@ user_session_check();
       </div>
 <!-- /region selection -->
 
-<!-- search table form field -->
-      <div class="col-6">
-        <div class="input-group" id="search-v-pills-home">
-          <input type="text" class="form-control" placeholder="Search IP V4 Table" aria-label="Search Table">
-          <span class="input-group-btn">
-            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
-          </span>
-        </div>
-        <div class="input-group" style="display: none;" id="search-v-pills-profile">
-          <input type="text" class="form-control" placeholder="Search IP V6 Table" aria-label="Search Table">
-          <span class="input-group-btn">
-            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
-          </span>
-        </div>
-        
-      </div>
-<!-- /search table form field -->
 
 <!-- add row button -->
       <div class="col-auto">
@@ -133,7 +116,8 @@ user_session_check();
       </div>
 <!-- /table pill navigation -->
 <!-- region selection -->
-      <div class="col-md-9 col-xs-6">
+<div class="col-md-3 col-xs-6">
+      
         <div class="btn-group" id="ip-allocation-region-dt-filter">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT REGION
@@ -155,6 +139,24 @@ user_session_check();
         </div>
       </div>
 <!-- /region selection -->
+
+<!-- search table form field -->
+      <div class="col">
+        <div class="input-group" id="search-v-pills-home">
+          <input type="text" class="form-control" placeholder="Search IP V4 Table" aria-label="Search Table">
+          <span class="input-group-btn">
+            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+          </span>
+        </div>
+        <div class="input-group" style="display: none;" id="search-v-pills-profile">
+          <input type="text" class="form-control" placeholder="Search IP V6 Table" aria-label="Search Table">
+          <span class="input-group-btn">
+            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+          </span>
+        </div>
+        
+      </div>
+<!-- /search table form field -->
 <!-- Export table -->
       <div class="col-md-2 col-xs-6">
         <p class="export" id="export-v-pills-home">

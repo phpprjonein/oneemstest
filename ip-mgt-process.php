@@ -18,8 +18,14 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'COMPUTE') {
     $subnet_whole = $_POST['subnet'].'/'.$_POST['mask'];
-    $ipvfour_details = getipvfour_details($subnet_whole);
-    print $ipvfour_details[0].' '.count($ipvfour_details).' '.$ipvfour_details[count($ipvfour_details)-1];
+    $ipvfourorsix = strpos($subnet_whole, '.');
+    if ($ipvfourorsix === false) {
+        $ipvsix_details = getipvsix_details($subnet_whole);
+        print $ipvsix_details['fromipvsix'].' '.$ipvsix_details['count'].' '.$ipvsix_details['toipvsix'];
+    }else{
+        $ipvfour_details = getipvfour_details($subnet_whole);
+        print $ipvfour_details[0].' '.count($ipvfour_details).' '.$ipvfour_details[count($ipvfour_details)-1];
+    }
 }    
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'ADD' &&  isset($_POST['region'])) {

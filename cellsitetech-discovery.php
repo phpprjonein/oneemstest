@@ -273,19 +273,25 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
-                  
-                  	<?php $resultset =  load_discovery_dataset(); 
+                  	<?php 
+                  	$resultset =  load_discovery_dataset(); 
                     if(isset($resultset['result'])){
-                        foreach ($resultset['result'] as $key => $value){       ?>
+                        foreach ($resultset['result'] as $key => $value){
+                            if(test_ipv6_address($value['deviceIpAddr'])){
+                                $value['ipvsix'] = $value['deviceIpAddr'];
+                            }else{
+                                $value['ipvfour'] = $value['deviceIpAddr'];
+                            }
+                            ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
                         <td><?php echo $value['devicename'];?></td>
                         <td><?php echo $value['site_id'];?></td>
                         <td><?php echo $value['site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
-                        <td><?php echo $value['os'];?></td>
+                        <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['lastpolled'];?></td>
+                        <td><?php echo $value['timepolled'];?></td>
                         <td>
                           <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<?php echo $value['id'];?>">
@@ -296,8 +302,6 @@ $page_title = 'OneEMS';
                    <?php }
                     }
                     ?>
-
-                  
                 </tbody>
               </table>
             </div>

@@ -38,4 +38,31 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Disc-OK' && isset($_POST['id']) && is_numeric(($_POST['id']))){
     echo discovery_status_update('o', $_POST['id']);
 }   
-
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Add New'){
+    $values_arr = array(
+        'devicename' => $_POST['devicename'],
+        'deviceIpAddr' => $_POST['deviceIpAddr'],
+        'nodeCatId' => $_POST['nodeCatId'],
+        'model' => $_POST['model'],
+        'nodeVersion' => $_POST['nodeVersion'],
+        'nodeAddedBy' => $_POST['nodeAddedBy'],
+        'status' => $_POST['status'],
+        'systemname' => $_POST['systemname'],
+        'severity' => $_POST['severity'],
+        'unacknowledged' => $_POST['unacknowledged'],
+        'investigationstate' => $_POST['investigationstate'],
+        'deviceseries' => $_POST['deviceseries'],
+        'upsince' => $_POST['upsince'],
+        'csr_site_tech_mgr_name' => $_POST['csr_site_tech_mgr_name'],
+        'csr_site_tech_mgr_id' => $_POST['csr_site_tech_mgr_id'],
+        'csr_site_tech_name' => $_POST['csr_site_tech_name'],
+        'csr_site_tech_id' => $_POST['csr_site_tech_id'],
+        'csr_site_name' => $_POST['csr_site_name'],
+        'csr_site_id' => $_POST['csr_site_id'],
+        'switch_name' => $_POST['switch_name'],
+        'region' => $_POST['region'],
+        'market' => $_POST['market'],
+        'deviceos' => $_POST['deviceos'],
+    );
+    echo discovery_add_new_device($values_arr);
+}

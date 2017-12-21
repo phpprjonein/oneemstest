@@ -347,11 +347,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputRegion">Region</label>
-                      <input type="regionName" class="form-control-plaintext" id="inputRegion" placeholder="Ohio" readonly>
+                      <input type="regionName" class="form-control-plaintext" id="inputRegion" placeholder="Ohio" >
                     </div>
                     <div class="col-md-6">
                       <label for="inputMarket">Market</label>
-                      <input type="marketnName" class="form-control-plaintext" id="inputMarket" placeholder="OPW" readonly>
+                      <input type="marketnName" class="form-control-plaintext" id="inputMarket" placeholder="OPW" >
                     </div>
                   </div>
 <!-- /first row -->
@@ -364,11 +364,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputDevicename">Device Name</label>
-                      <input type="deviceName" class="form-control-plaintext" id="inputDevicename" placeholder="MSHWINBWT1A-P-CI-0090-01" readonly>
+                      <input type="deviceName" class="form-control-plaintext" id="inputDevicename" placeholder="MSHWINBWT1A-P-CI-0090-01" >
                     </div>
                     <div class="col-md-6">
                       <label for="inputDeviceIPaddress">Device IP Address</label>
-                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress" placeholder="10.203.144.152" readonly>
+                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress" placeholder="10.203.144.152" >
                     </div>
                   </div>
 <!-- /second row -->
@@ -377,7 +377,7 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-12">
                       <label for="inputNodeAddedBy">Node Added By</label>
-                      <input type="NodeAddedBy" class="form-control-plaintext" id="inputNodeAddedBy" placeholder="userID of Discovery Mgr" readonly>
+                      <input type="NodeAddedBy" class="form-control-plaintext" id="inputNodeAddedBy" placeholder="userID of Discovery Mgr" >
                     </div>
                   </div>
 <!-- /third row -->
@@ -386,11 +386,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputNodeCatID">Node Category</label>
-                      <input type="NodeCatID" class="form-control-plaintext" id="inputNodeCatID" placeholder="Router" readonly>
+                      <input type="NodeCatID" class="form-control-plaintext" id="inputNodeCatID" placeholder="Router" >
                     </div>
                     <div class="col-md-6">
                       <label for="inputVendorID">Vendor</label>
-                      <input type="model" class="form-control-plaintext" id="inputVendorID" placeholder="CISCO" readonly>
+                      <input type="model" class="form-control-plaintext" id="inputVendorID" placeholder="CISCO" >
                     </div>
                   </div>
 <!-- /fourth row -->
@@ -399,19 +399,19 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-4">
                       <label for="inputModel">Model</label>
-                      <input type="model" class="form-control-plaintext" id="inputModel" placeholder="Cisco" readonly>
+                      <input type="model" class="form-control-plaintext" id="inputModel" placeholder="Cisco" >
                     </div>
                     <div class="col-md-4">
                       <label for="inputDeviceSeries">Device Series</label>
-                      <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" readonly>
+                      <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" >
                     </div>
                     <div class="col-md-2">
                       <label for="inputNodeVersion">OS</label>
-                      <input type="nodeVersion" class="form-control-plaintext" id="inputNodeVersion" placeholder="IOS-XE" readonly>
+                      <input type="nodeVersion" class="form-control-plaintext" id="inputNodeVersion" placeholder="IOS-XE" >
                     </div>
                     <div class="col-md-2">
                       <label for="inputDeviceStatus">Status</label>
-                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" placeholder="1" readonly>
+                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" placeholder="1" >
                     </div>
                   </div>
 <!-- /fifth row -->
@@ -424,11 +424,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechName">Tech Name</label>
-                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" readonly>
+                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" >
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechMgrName">Tech Mgr Name</label>
-                      <input type="CSRSiteTechMgrName" class="form-control-plaintext" id="inputCSRSiteTechMgrName" placeholder="Site Tech Mgr Name" readonly>
+                      <input type="CSRSiteTechMgrName" class="form-control-plaintext" id="inputCSRSiteTechMgrName" placeholder="Site Tech Mgr Name" >
                     </div>
                   </div>
 <!-- /sixth row -->
@@ -437,7 +437,7 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-12">
                       <label for="inputCSRSiteTechName">Site ID</label>
-                      <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" readonly>
+                      <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" >
                     </div>
                   </div>
 <!-- /seventh row -->
@@ -448,11 +448,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputLastPolled">Device Date Added</label>
-                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="Today()" readonly>
+                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="Today()" >
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputUpSince">Device Last Updated</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="dateTimeStamp of Discovery" readonly>
+                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="dateTimeStamp of Discovery" >
                     </div>
                   </div>
 <!-- /eighth row -->
@@ -461,15 +461,15 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputLastPolled">Last Polled</label>
-                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="11/16/17 19:28" readonly>
+                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="11/16/17 19:28" >
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputUpSince">Up Since</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="sysUptime" readonly>
+                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="sysUptime" >
                     </div>
                     <!--<div class="form-group col-md-4">
                       <label for="inputConnPort">Connection Port</label>
-                      <input type="connPort" class="form-control-plaintext" id="inputConnPort" placeholder="PortShow" readonly>
+                      <input type="connPort" class="form-control-plaintext" id="inputConnPort" placeholder="PortShow" >
                     </div>-->
                   </div>
 <!-- /ninth row -->
@@ -478,11 +478,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputSysName">System Name</label>
-                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.verizonwireless.com" readonly>
+                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.verizonwireless.com" >
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputDeviceOS">Device OS</label>
-                      <input type="deviceOS" class="form-control-plaintext" id="inputDeviceOS" placeholder="auto derive from osypeTable" readonly>
+                      <input type="deviceOS" class="form-control-plaintext" id="inputDeviceOS" placeholder="auto derive from osypeTable" >
                     </div>
                   </div>
 <!-- /tenth row -->
@@ -573,7 +573,17 @@ $page_title = 'OneEMS';
                     </div>
                   </div>
 <!-- /third row -->
-
+<!-- fourth row -->
+                  <div class="row" id="discovery-new-ip">
+                      <div class="col-auto">
+                        <div class="form-check mb-2 mb-sm-0">
+                          <div class="btn-group" role="group" aria-label="">
+                            <button type="button" class="btn" value="Add New" id="add-new-ip">ADD NEW</button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+<!-- /third row -->
                 </div>
 <!-- /right side -->
 

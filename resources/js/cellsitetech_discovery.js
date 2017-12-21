@@ -170,4 +170,46 @@ $(document).ready(function() {
 			  location.reload();
 		  });
 	});
+	
+	$("#discovery-new-ip #add-new-ip").click(function(){
+		$.post( "ip-mgt-process.php", { calltype: "trigger", 
+			'devicename':$('#inputDevicename').val(), 
+			'action' : 'Add New' 
+			'deviceIpAddr':	$('#inputDeviceIPaddress').val(),
+			'nodeCatId':	$('#inputNodeCatID').val(),
+			'model':	$('#inputModel').val(),
+			'nodeVersion':	$('#inputNodeVersion').val(),
+			'nodeAddedBy':	$('#inputNodeAddedBy').val(),
+			'status':	$('#inputDeviceStatus').val(),
+			'systemname':	$('#inputSysName').val(),
+			'severity':	$('#inputSeverity').val(),
+			'unacknowledged':	$('#inputUnacknowledged').val(),
+			'investigationstate':	$('#investigationstate').val(),
+			'deviceseries':	$('#inputDeviceSeries').val(),
+			'upsince':	$('#inputUpSince').val(),
+			'csr_site_tech_mgr_name':	$('#inputCSRSiteTechMgrName').val(),
+			'csr_site_tech_mgr_id':	$('#inputCSRMgrID').val(),
+			'csr_site_tech_name':	$('#inputCSRSiteTechName').val(),
+			'csr_site_tech_id':	$('#inputCSRTechID').val(),
+			'csr_site_name':	$('#inputCSRSiteName').val(),
+			'csr_site_id':	$('#inputCSRSiteID').val(),
+			'switch_name':	$('#inputSwitchName').val(),
+			'region':	$('#inputRegion').val(),
+			'market':	$('#inputMarket').val(),
+			'deviceos':	$('#inputDeviceOS').val(),
+		})
+		  .done(function( data ) {
+			  alert("New Device Added Successfully");
+			  location.reload();
+		  });	
+		
+	alert($('#inputDevicename').val());
+	/*
+	$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':$(this).val(), 'action' : 'Add New' })
+	  .done(function( data ) {
+		  alert("Status Updated Successfully");
+		  location.reload();
+	  });
+	  */
+	});
 });

@@ -1576,5 +1576,20 @@ function discovery_status_update($status, $id){
 function test_ipv6_address($ipaddress = ''){
     return filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
 }
-
-
+function discovery_add_new_device($values){
+    global $db2;
+    $sqlc = "SELECT  max(id) + 1  as listidmaxval FROM nodes WHERE listid <> 0 ";
+    $db2->query($sqlc);
+    $recordset = $db2->resultset();
+    $id = $recordset[0]['id']+1;
+    $values['id'] = $id;
+    /*
+    $sql = "INSERT INTO nodes (id, devicename, deviceIpAddr, nodeCatId, vendorId, model, nodeVersion, nodeAddedBy, status, systemname, severity, unacknowledged,
+            investigationstate, deviceseries, upsince, csr_site_tech_mgr_name, csr_site_tech_mgr_id, csr_site_tech_name, csr_site_tech_id, csr_site_name,
+             csr_site_id, switch_name, region, market, deviceos )
+				VALUES (".$values['id'].",'".$values['devicename']."','".$values[deviceIpAddr]."',".$values[nodeCatId].")";
+    
+    $db2->query($sql);
+    $db2->execute();
+    */
+}

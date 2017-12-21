@@ -62,6 +62,7 @@ $(document).ready(function() {
         $('#search-v-pills-home input').keyup(function(){
         	table1.search($(this).val()).draw() ;
       })
+      table1.columns(1).search($("#ip-allocation-region-dt-filter .btn").html().trim()).draw();
 	}
      
 	if($('#ipmgt-ipv6').length > 0){
@@ -85,7 +86,7 @@ $(document).ready(function() {
         $('#search-v-pills-profile input').keyup(function(){
         	table2.search($(this).val()).draw() ;
       })
-        
+      table2.columns(1).search($("#ip-allocation-region-dt-filter .btn").html().trim()).draw();
 	}
 	if($('#ipv4subnetmask').length > 0){
         var table3 =  $('#ipv4subnetmask').DataTable( {
@@ -135,10 +136,13 @@ $(document).ready(function() {
     	$("#ip-allocation-region-dt-filter a").click(function(){
     		$("#ip-allocation-region-dt-filter .btn").html($(this).text());
     		var table1 =  $('#ipmgt-ipv4').DataTable();
+    		var table2 =  $('#ipmgt-ipv6').DataTable();
     		if($(this).text() != 'SELECT REGION'){
     			table1.columns(1).search('^'+$(this).text()+'$', true, false).draw();
+    			table2.columns(1).search('^'+$(this).text()+'$', true, false).draw();
     		}else{
     			table1.columns(1).search('').draw();
+    			table2.columns(1).search('').draw();
     		}
     	});
     	

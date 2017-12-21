@@ -120,7 +120,7 @@ user_session_check();
       
         <div class="btn-group" id="ip-allocation-region-dt-filter">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          SELECT REGION
+          Great Lakes
           </button>
           <div class="dropdown-menu">
           <?php 
@@ -132,9 +132,9 @@ user_session_check();
           <?php 
           endif;
           endforeach;
-          if(count($region_list['result']) > 1): ?>
-          	<a class="dropdown-item" href="#">SELECT REGION</a>
-          <?php endif; ?>
+          //if(count($region_list['result']) > 1): ?>
+          <!-- 	<a class="dropdown-item" href="#">SELECT REGION</a>  -->
+          <?php //endif; ?>
           </div>
         </div>
       </div>

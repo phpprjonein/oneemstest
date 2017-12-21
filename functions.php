@@ -1578,18 +1578,21 @@ function test_ipv6_address($ipaddress = ''){
 }
 function discovery_add_new_device($values){
     global $db2;
-    $sqlc = "SELECT  max(id) + 1  as listidmaxval FROM nodes WHERE listid <> 0 ";
+    $sqlc = "SELECT  max(id) + 1  as id FROM nodes WHERE id <> 0 ";
     $db2->query($sqlc);
     $recordset = $db2->resultset();
-    $id = $recordset[0]['id']+1;
-    $values['id'] = $id;
-    /*
+    $values['id'] = $recordset[0]['id'];
     $sql = "INSERT INTO nodes (id, devicename, deviceIpAddr, nodeCatId, vendorId, model, nodeVersion, nodeAddedBy, status, systemname, severity, unacknowledged,
             investigationstate, deviceseries, upsince, csr_site_tech_mgr_name, csr_site_tech_mgr_id, csr_site_tech_name, csr_site_tech_id, csr_site_name,
-             csr_site_id, switch_name, region, market, deviceos )
-				VALUES (".$values['id'].",'".$values['devicename']."','".$values[deviceIpAddr]."',".$values[nodeCatId].")";
-    
+             csr_site_id, switch_name, region, market, deviceos, submarket)
+				VALUES (
+                ".$values['id'].",'".$values['devicename']."','".$values['deviceIpAddr']."','".$values['nodeCatId']."',
+                '".$values['vendorId']."','".$values['model']."','".$values['nodeVersion']."','".$values['nodeAddedBy']."',
+                '".$values['status']."','".$values['systemname']."','".$values['severity']."','".$values['unacknowledged']."',
+                '".$values['investigationstate']."','".$values['deviceseries']."','".$values['upsince']."','".$values['csr_site_tech_mgr_name']."',
+                '".$values['csr_site_tech_mgr_id']."','".$values['csr_site_tech_name']."','".$values['csr_site_tech_id']."','".$values['csr_site_name']."',
+                '".$values['csr_site_id']."','".$values['switch_name']."','".$values['region']."','".$values['market']."','".$values['deviceos']."',''
+            )";
     $db2->query($sql);
     $db2->execute();
-    */
 }

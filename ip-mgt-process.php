@@ -43,6 +43,7 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
         'devicename' => $_POST['devicename'],
         'deviceIpAddr' => $_POST['deviceIpAddr'],
         'nodeCatId' => $_POST['nodeCatId'],
+        'vendorId' => $_POST['vendorId'],
         'model' => $_POST['model'],
         'nodeVersion' => $_POST['nodeVersion'],
         'nodeAddedBy' => $_POST['nodeAddedBy'],
@@ -64,5 +65,6 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
         'market' => $_POST['market'],
         'deviceos' => $_POST['deviceos'],
     );
-    echo discovery_add_new_device($values_arr);
+    discovery_add_new_device($values_arr);
+    echo "success";
 }

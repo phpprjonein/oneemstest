@@ -174,9 +174,10 @@ $(document).ready(function() {
 	$("#discovery-new-ip #add-new-ip").click(function(){
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
 			'devicename':$('#inputDevicename').val(), 
-			'action' : 'Add New' 
+			'action' : 'Add New',
 			'deviceIpAddr':	$('#inputDeviceIPaddress').val(),
 			'nodeCatId':	$('#inputNodeCatID').val(),
+			'vendorId':$('#inputVendorID').val(),
 			'model':	$('#inputModel').val(),
 			'nodeVersion':	$('#inputNodeVersion').val(),
 			'nodeAddedBy':	$('#inputNodeAddedBy').val(),
@@ -196,20 +197,10 @@ $(document).ready(function() {
 			'switch_name':	$('#inputSwitchName').val(),
 			'region':	$('#inputRegion').val(),
 			'market':	$('#inputMarket').val(),
-			'deviceos':	$('#inputDeviceOS').val(),
-		})
-		  .done(function( data ) {
+			'deviceos':	$('#inputDeviceOS').val()
+		}).done(function( data ) {
 			  alert("New Device Added Successfully");
 			  location.reload();
 		  });	
-		
-	alert($('#inputDevicename').val());
-	/*
-	$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':$(this).val(), 'action' : 'Add New' })
-	  .done(function( data ) {
-		  alert("Status Updated Successfully");
-		  location.reload();
-	  });
-	  */
 	});
 });

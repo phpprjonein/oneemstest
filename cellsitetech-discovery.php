@@ -17,13 +17,49 @@ check_user_authentication('1'); //cellsite tech type user
 $page_title = 'OneEMS';
 
 ?>
+<?php 
+/*
+$managers = get_managers();
+
+foreach ($managers['result'] as $key => $val){
+    print_r($val['csr_site_tech_mgr_id'] . ' => ' . $val['csr_site_tech_mgr_name']);
+    print "<br/>";
+    
+}
+
+echo "<br/><br/>================================================================================================<br/><br/>";
+
+
+$categories = generic_get_categories();
+foreach ($categories['result'] as $key => $val){
+    print_r($val['id'] . ' => ' . $val['categoryName']);
+    print "<br/>";
+}
+
+echo "<br/><br/>================================================================================================<br/><br/>";
+
+
+
+$categories = generic_get_vendors();
+foreach ($categories['result'] as $key => $val){
+    print_r($val['id'] . ' => ' . $val['vendorName']);
+    print "<br/>";
+}
+
+echo "<br/><br/>================================================================================================<br/><br/>";
+
+die;
+*/
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_discovery.js?t=".<?php echo date('his'); ?>></script>
  </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
+     <body>
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
@@ -408,8 +444,15 @@ $page_title = 'OneEMS';
 <!-- third row -->
                   <div class="row">
                     <div class="col-md-12">
+                    	<?php 
+                    	$managers = get_managers();
+                    	?>
                       <label for="inputNodeAddedBy">Node Added By</label>
-                      <input type="NodeAddedBy" class="form-control-plaintext" id="inputNodeAddedBy" placeholder="userID of Discovery Mgr" >
+                      <select class="form-control" id="inputNodeAddedBy">
+                      <?php foreach ($managers['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_tech_mgr_id']; ?>"><?php  echo $val['csr_site_tech_mgr_name']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
                   </div>
 <!-- /third row -->
@@ -417,12 +460,26 @@ $page_title = 'OneEMS';
 <!-- fourth row -->
                   <div class="row">
                     <div class="col-md-6">
+                    	<?php 
+                    	$categories = generic_get_categories();
+                    	?>
                       <label for="inputNodeCatID">Node Category</label>
-                      <input type="NodeCatID" class="form-control-plaintext" id="inputNodeCatID" placeholder="Router" >
+                      <select class="form-control" id="inputNodeCatID">
+                      <?php foreach ($categories['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['id']; ?>"><?php  echo $val['categoryName']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
                     <div class="col-md-6">
+                        <?php 
+                        $vendors = generic_get_vendors();
+                    	?>
                       <label for="inputVendorID">Vendor</label>
-                      <input type="model" class="form-control-plaintext" id="inputVendorID" placeholder="CISCO" >
+                      <select class="form-control" id="inputVendorID">
+                      <?php foreach ($vendors['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['id']; ?>"><?php  echo $val['vendorName']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
                   </div>
 <!-- /fourth row -->
@@ -437,13 +494,19 @@ $page_title = 'OneEMS';
                       <label for="inputDeviceSeries">Device Series</label>
                       <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" >
                     </div>
-                    <div class="col-md-2">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-4">
                       <label for="inputNodeVersion">OS</label>
                       <input type="nodeVersion" class="form-control-plaintext" id="inputNodeVersion" placeholder="IOS-XE" >
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                       <label for="inputDeviceStatus">Status</label>
-                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" placeholder="1" >
+                      <select class="form-control" id="inputDeviceStatus">
+                      <option value="1">Active</option>
+                      <option value="0">In-Active</option>
+                      <option value="2">Unknown</option>
+                      </select>
                     </div>
                   </div>
 <!-- /fifth row -->
@@ -455,21 +518,46 @@ $page_title = 'OneEMS';
 <!-- sixth row -->
                   <div class="row">
                     <div class="form-group col-md-6">
+                        <?php 
+                        $technames = get_csr_technames();
+                    	?>
                       <label for="inputCSRSiteTechName">Tech Name</label>
-                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" >
+                      <select class="form-control" id="inputCSRSiteTechName">
+                      <?php foreach ($technames['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_tech_name']; ?>"><?php  echo $val['csr_site_tech_name']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
+                    
+                    
                     <div class="form-group col-md-6">
+                        <?php 
+                    	$managers = get_managers();
+                    	?>
                       <label for="inputCSRSiteTechMgrName">Tech Mgr Name</label>
-                      <input type="CSRSiteTechMgrName" class="form-control-plaintext" id="inputCSRSiteTechMgrName" placeholder="Site Tech Mgr Name" >
+                      <select class="form-control" id="inputCSRSiteTechMgrName">
+                      <?php foreach ($managers['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_tech_mgr_name']; ?>"><?php  echo $val['csr_site_tech_mgr_name']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
                   </div>
+                  
+                  
 <!-- /sixth row -->
 
 <!-- seventh row -->
                   <div class="row">
                     <div class="form-group col-md-12">
-                      <label for="inputCSRSiteTechName">Site ID</label>
-                      <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" >
+                        <?php 
+                        $site_ids = generic_get_site_ids();
+                    	?>
+                      <label for="inputCSRSiteID">Site ID</label>
+                      <select class="form-control" id="inputCSRSiteID">
+                      <?php foreach ($site_ids['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_id']; ?>"><?php  echo $val['csr_site_id']; ?></option>	
+                      <?php } ?>
+                      </select>
                     </div>
                   </div>
 <!-- /seventh row -->
@@ -529,25 +617,25 @@ $page_title = 'OneEMS';
 <!-- first row -->
                   <div class="row">
                     <div class="form-group col-md-6">
+                        <?php 
+                        $technames = get_csr_technames();
+                    	?>
                       <label for="inputCSRTechID">Tech ID</label>
                       <select class="form-control" id="inputCSRTechID">
-                        <option>site_tech_ID1</option>
-                        <option>site_tech_ID2</option>
-                        <option>site_tech_ID3</option>
-                        <option>site_tech_ID4</option>
-                        <option>site_tech_ID5</option>
-                        <option>site_tech_ID6</option>
+                      <?php foreach ($technames['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_tech_id']; ?>"><?php  echo $val['csr_site_tech_id']; ?></option>	
+                      <?php } ?>
                       </select>
                     </div>
                     <div class="form-group col-md-6">
+                        <?php 
+                    	$managers = get_managers();
+                    	?>
                       <label for="inputCSRMgrID">Tech Manager ID</label>
                       <select class="form-control" id="inputCSRMgrID">
-                        <option>mgr_ID1</option>
-                        <option>mgr_ID2</option>
-                        <option>mgr_ID3</option>
-                        <option>mgr_ID4</option>
-                        <option>mgr_ID5</option>
-                        <option>mgr_ID6</option>
+                      <?php foreach ($managers['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_tech_mgr_id']; ?>"><?php  echo $val['csr_site_tech_mgr_id']; ?></option>	
+                      <?php } ?>
                       </select>
                     </div>
                   </div>
@@ -556,24 +644,26 @@ $page_title = 'OneEMS';
 <!-- second row -->
                   <div class="row">
                     <div class="form-group col-md-6">
+                        <?php 
+                        $site_names = generic_get_csr_site_names();
+                    	?>
                       <label for="inputCSRSiteName">Site Name</label>
                       <select class="form-control" id="inputCSRSiteName">
-                        <option>ILWI NORTH POKAGON-CST-ARNOLD RL</option>
-                        <option>North Angola</option>
-                        <option>SB NEW CARLISLE</option>
-                        <option>SB NORTH LIBERTY</option>
-                        <option>SB PLYMOUTH</option>
-                        <option>SB DT SOUTH BEND</option>
+                      <?php foreach ($site_names['result'] as $key => $val){ ?>
+                      	<option value="<?php  echo $val['csr_site_name']; ?>"><?php  echo $val['csr_site_name']; ?></option>	
+                      <?php } ?>
                       </select>
                     </div>
+                    
                     <div class="col-md-6">
+                        <?php 
+                        $switch_names = generic_get_csr_switch_names();
+                    	?>
                       <label for="inputSwitchName">Select Switch Name</label>
                       <select class="form-control" id="inputSwitchName">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                      <?php foreach ($switch_names['result'] as $key => $val){ ?>
+                      <option value="<?php  echo $val['switch_name']; ?>"><?php  echo $val['switch_name']; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                   </div>
@@ -584,23 +674,23 @@ $page_title = 'OneEMS';
                     <div class="form-group col-md-4">
                       <label for="inputInvestigationState">Investigation State</label>
                       <select class="form-control" id="inputInvestigationState">
-                        <option>Operational</option>
-                        <option>Suspended</option>
+                        <option value="Operational">Operational</option>
+                        <option value="Suspended">Suspended</option>
                       </select>
                     </div>
                     <div class="form-check col-md-3">
                       <label for="inputSeverity">Severity</label>
                         <select class="form-control" id="inputSeverity">
-                          <option>Low</option>
-                          <option>Medium</option>
-                          <option>High</option>
+                          <option value="Low">Low</option>
+                          <option value="Medium">Medium</option>
+                          <option value="High">High</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="inputUnacknowledged">Unacknowledged</label>
                       <select class="form-control" id="inputUnacknowledged">
-                          <option>Yes</option>
-                          <option>No</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
                         </select>
                     </div>
                   </div>

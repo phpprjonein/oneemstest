@@ -23,7 +23,7 @@ user_session_check();
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
  </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
+     <body>
         <!-- Modal HTML -->
         
         <div id="mycmdModal" class="modal fade">

@@ -1596,3 +1596,71 @@ function discovery_add_new_device($values){
     $db2->query($sql);
     $db2->execute();
 }
+function get_managers(){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_tech_mgr_id),csr_site_tech_mgr_name FROM nodes ORDER BY csr_site_tech_mgr_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function get_csr_technames(){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_tech_id),csr_site_tech_name FROM nodes ORDER BY csr_site_tech_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_categories(){
+    global $db2;
+    $sql = "SELECT id,categoryName FROM categories where status = 1 ORDER BY categoryName";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_vendors(){
+    global $db2;
+    $sql = "SELECT id,vendorName FROM vendors  where status = 1 ORDER BY vendorName";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_site_ids(){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_id) FROM nodes ORDER BY csr_site_id";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_csr_site_names(){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_name) FROM nodes ORDER BY csr_site_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_csr_switch_names(){
+    global $db2;
+    $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_region(){
+    global $db2;
+    $sql = "SELECT distinct(region) FROM nodes ORDER BY region";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_market(){
+    global $db2;
+    $sql = "SELECT distinct(market) FROM nodes ORDER BY market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+
+
+
+

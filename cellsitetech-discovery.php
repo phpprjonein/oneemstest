@@ -155,21 +155,32 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>Discovery</td>
-                    <td>2001:db8:abcd:0012:2001:db8:abcd:0012</td>
-                    <td>AUVNINBWT1A-P-CI-0090-01</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td></td>
-                    <td style="display:none;">Great Lakes</td>
-                    <td style="display:none;">OPW</td>
-                  </tr>
+                <?php 
+                  	$resultset =  load_discovery_dataset('c'); 
+                    if(isset($resultset['result'])){
+                        foreach ($resultset['result'] as $key => $value){
+                            if(test_ipv6_address($value['deviceIpAddr'])){
+                                $value['ipvsix'] = $value['deviceIpAddr'];
+                            }else{
+                                $value['ipvfour'] = $value['deviceIpAddr'];
+                            }
+                            ?>
+                        <tr> <td><?php echo $value['ipvfour'];?></td>
+                        <td>Discovery</td>
+                        <td><?php echo $value['ipvsix'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
+                    	<td><?php echo $value['site_id'];?></td>
+                        <td><?php echo $value['site_name'];?></td>
+                        <td><?php echo $value['deviceseries'];?></td>
+                        <td><?php echo $value['deviceos'];?></td>
+                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['timepolled'];?></td>
+						<td></td>
+                        <td style="display:none;"><?php echo $value['region'];?></td>
+                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
+                   <?php }
+                    }
+                    ?>
                 </tbody>
               </table>
             </div>
@@ -197,22 +208,33 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>P</td>
-                    <td>F</td>
-                    <td>208090</td>
-                    <td>ILWI NORTH POKAGON-CST-ARNOLD RL</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
-                    <td><button type="button" class="btn btn-danger">UPDATE</button></td>
-                    <td style="display:none;">Great Lakes</td>
-                    <td style="display:none;">OPW</td>
-                  </tr>
+                <?php 
+                  	$resultset =  load_discovery_dataset('m'); 
+                    if(isset($resultset['result'])){
+                        foreach ($resultset['result'] as $key => $value){
+                            if(test_ipv6_address($value['deviceIpAddr'])){
+                                $value['ipvsix'] = $value['deviceIpAddr'];
+                            }else{
+                                $value['ipvfour'] = $value['deviceIpAddr'];
+                            }
+                            ?>
+                        <tr> <td><?php echo $value['ipvfour'];?></td>
+                        <td><?php echo $value['ipvsix'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
+                        <td>P</td>
+                    	<td>F</td>
+                    	<td><?php echo $value['site_id'];?></td>
+                        <td><?php echo $value['site_name'];?></td>
+                        <td><?php echo $value['deviceseries'];?></td>
+                        <td><?php echo $value['deviceos'];?></td>
+                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['timepolled'];?></td>
+						<td><button type="button" class="btn btn-danger">UPDATE</button></td>
+                        <td style="display:none;"><?php echo $value['region'];?></td>
+                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
+                   <?php }
+                    }
+                    ?>
                 </tbody>
               </table>
             </div>
@@ -236,20 +258,30 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>10.203.144.152</td>
-                    <td>2001:0DB8:130F:0000:0000:7000:0000:140B</td>
-                    <td>MSHWINBWT1A-P-CI-0090-01</td>
-                    <td>Cisco ASR 1000</td>
-                    <td>IOS-XE</td>
-                    <td>15.6(1)S1</td>
-                    <td>11/16/17 19:28</td>
+                <?php 
+                  	$resultset =  load_discovery_dataset('n'); 
+                    if(isset($resultset['result'])){
+                        foreach ($resultset['result'] as $key => $value){
+                            if(test_ipv6_address($value['deviceIpAddr'])){
+                                $value['ipvsix'] = $value['deviceIpAddr'];
+                            }else{
+                                $value['ipvfour'] = $value['deviceIpAddr'];
+                            }
+                            ?>
+                        <tr> <td><?php echo $value['ipvfour'];?></td>
+                        <td><?php echo $value['ipvsix'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
+                        <td><?php echo $value['deviceseries'];?></td>
+                        <td><?php echo $value['deviceos'];?></td>
+                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['timepolled'];?></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addDeviceModal">ADD</button></td>
-                    <td style="display:none;">Great Lakes</td>
-                    <td style="display:none;">OPW</td>
-                  </tr>
-                </tbody>
-              </table>
+                        <td style="display:none;"><?php echo $value['region'];?></td>
+                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
+                   <?php }
+                    }
+                    ?>
+                    </tbody></table>
             </div>
 <!-- /new table content -->
 
@@ -274,7 +306,7 @@ $page_title = 'OneEMS';
                 </thead>
                 <tbody>
                   	<?php 
-                  	$resultset =  load_discovery_dataset(); 
+                  	$resultset =  load_discovery_dataset('k'); 
                     if(isset($resultset['result'])){
                         foreach ($resultset['result'] as $key => $value){
                             if(test_ipv6_address($value['deviceIpAddr'])){

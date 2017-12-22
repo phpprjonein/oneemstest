@@ -1559,9 +1559,9 @@ function insert_ip_allocation($values){
     $db2->query($sql);
     $db2->execute();
 }
-function load_discovery_dataset(){
+function load_discovery_dataset($class = 'C'){
     global $db2;
-    $sql = "SELECT * FROM discoveryres where class is NULL or class ='' ORDER BY id";
+    $sql = "SELECT * FROM discoveryres where class is NULL or class ='".strtolower($class)."' ORDER BY id";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

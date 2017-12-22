@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	if($('#example').length > 0){
+		//$('#ip-mgt-utils div').hide();
+		$('#ip-mgt-utils #ajax_loader').show();
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true,
@@ -87,6 +89,8 @@ $(document).ready(function() {
         	table2.search($(this).val()).draw() ;
       })
       table2.columns(1).search($("#ip-allocation-region-dt-filter .btn").html().trim()).draw();
+        $('#ip-mgt-screen #ajax_loader').hide();
+        $('#ip-mgt-screen #ip-mgt-utils').show();
 	}
 	if($('#ipv4subnetmask').length > 0){
         var table3 =  $('#ipv4subnetmask').DataTable( {

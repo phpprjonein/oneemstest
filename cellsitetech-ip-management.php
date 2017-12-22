@@ -58,6 +58,9 @@ user_session_check();
 
 <!-- table manipulation row -->
     <div class="form-row align-items-center justify-content-center">
+		<div id="ajax_loader"><img src="resources/img/ajax-loader.gif"></img></div>
+	</div>	
+    <div class="form-row align-items-center justify-content-center" id="ip-mgt-utils" style="display: none;">
 
 <!-- region selection -->
       <div class="col-auto">

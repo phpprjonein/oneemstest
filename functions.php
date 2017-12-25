@@ -1417,6 +1417,9 @@ function getipvfour_details($snm)
 */
 function getipvfour_details($range){
     $parts = explode('/',$range);
+    $ip_exp_add_arr = explode('.',$parts[0]);
+    $ip_exp_add_arr[count($ip_exp_add_arr) - 1] = 0;
+    $parts[0] = implode('.',$ip_exp_add_arr);
     $exponent = 32-$parts[1].'-';
     $count = pow(2,$exponent);
     $start = ip2long($parts[0]);

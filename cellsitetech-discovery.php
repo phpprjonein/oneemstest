@@ -114,8 +114,8 @@ $page_title = 'OneEMS';
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link btn-conflicts" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
             <a class="nav-link btn-missed" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
-            <a class="nav-link btn-new" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
-            <a class="nav-link btn-ok active" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
+            <a class="nav-link btn-new active" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
+            <a class="nav-link btn-ok" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
           </div>
         </div>
 <!-- /table pill navigation -->
@@ -233,7 +233,7 @@ $page_title = 'OneEMS';
 <!-- /missed table content -->
 
 <!-- new table content -->
-            <div class="tab-pane fade" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
+            <div class="tab-pane fade show active" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
               <table class="table table-responsive table-striped ip-new-table" id="ip-new-table">
                 <thead>
                   <tr>
@@ -247,6 +247,7 @@ $page_title = 'OneEMS';
                     <th scope="col">Add</th>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>
+                    <th scope="col" style="display:none;">Model</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -266,10 +267,12 @@ $page_title = 'OneEMS';
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['timepolled'];?></td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addDeviceModal">ADD</button></td>
+                        <td><?php echo $value['lastpolled'];?></td>
+                    <td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
-                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
+                        <td style="display:none;"><?php echo $value['market'];?></td>
+                        <td style="display:none;"><?php echo $value['model'];?></td>
+                        </tr>                          
                    <?php }
                     }
                     ?>
@@ -278,7 +281,7 @@ $page_title = 'OneEMS';
 <!-- /new table content -->
 
 <!-- ok table content -->
-            <div class="tab-pane fade show active" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
+            <div class="tab-pane fade" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
             	<?php $resultset =  load_discovery_dataset('k'); ?>
               <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
                 <thead>
@@ -346,6 +349,13 @@ $page_title = 'OneEMS';
 <!-- /IP management table row -->
 
 
+
+
+
+
+
+
+
 <!-- add device modal -->
   <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
 
@@ -375,11 +385,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputRegion">Region</label>
-                      <input type="regionName" class="form-control-plaintext" id="inputRegion" placeholder="Ohio" >
+                      <input type="regionName" class="form-control-plaintext" id="inputRegion" placeholder="Ohio" readonly>
                     </div>
                     <div class="col-md-6">
                       <label for="inputMarket">Market</label>
-                      <input type="marketnName" class="form-control-plaintext" id="inputMarket" placeholder="OPW" >
+                      <input type="marketnName" class="form-control-plaintext" id="inputMarket" placeholder="OPW" readonly>
                     </div>
                   </div>
 <!-- /first row -->
@@ -392,11 +402,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="col-md-6">
                       <label for="inputDevicename">Device Name</label>
-                      <input type="deviceName" class="form-control-plaintext" id="inputDevicename" placeholder="MSHWINBWT1A-P-CI-0090-01" >
+                      <input type="deviceName" class="form-control-plaintext" id="inputDevicename" placeholder="MSHWINBWT1A-P-CI-0090-01" readonly>
                     </div>
                     <div class="col-md-6">
                       <label for="inputDeviceIPaddress">Device IP Address</label>
-                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress" placeholder="10.203.144.152" >
+                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress" placeholder="10.203.144.152" readonly>
                     </div>
                   </div>
 <!-- /second row -->
@@ -404,15 +414,8 @@ $page_title = 'OneEMS';
 <!-- third row -->
                   <div class="row">
                     <div class="col-md-12">
-                    	<?php 
-                    	$managers = get_managers();
-                    	?>
                       <label for="inputNodeAddedBy">Node Added By</label>
-                      <select class="form-control" id="inputNodeAddedBy">
-                      <?php foreach ($managers['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_mgr_id']; ?>"><?php  echo $val['csr_site_tech_mgr_name']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <input type="NodeAddedBy" class="form-control-plaintext" id="inputNodeAddedBy" placeholder="userID of Discovery Mgr" readonly>
                     </div>
                   </div>
 <!-- /third row -->
@@ -420,53 +423,35 @@ $page_title = 'OneEMS';
 <!-- fourth row -->
                   <div class="row">
                     <div class="col-md-6">
-                    	<?php 
-                    	$categories = generic_get_categories();
-                    	?>
                       <label for="inputNodeCatID">Node Category</label>
-                      <select class="form-control" id="inputNodeCatID">
-                      <?php foreach ($categories['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['id']; ?>"><?php  echo $val['categoryName']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <input type="NodeCatID" class="form-control-plaintext" id="inputNodeCatID" placeholder="Router" readonly>
                     </div>
                     <div class="col-md-6">
-                        <?php 
-                        $vendors = generic_get_vendors();
-                    	?>
                       <label for="inputVendorID">Vendor</label>
-                      <select class="form-control" id="inputVendorID">
-                      <?php foreach ($vendors['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['id']; ?>"><?php  echo $val['vendorName']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <input type="model" class="form-control-plaintext" id="inputVendorID" placeholder="CISCO" readonly>
                     </div>
                   </div>
 <!-- /fourth row -->
 
 <!-- fifth row -->
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="inputModel">Model</label>
-                      <input type="model" class="form-control-plaintext" id="inputModel" placeholder="Cisco" >
+                      <input type="model" class="form-control-plaintext" id="inputModel" placeholder="Cisco" readonly>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="inputDeviceSeries">Device Series</label>
-                      <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" >
+                      <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" readonly>
                     </div>
                     </div>
                     <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="inputNodeVersion">OS</label>
-                      <input type="nodeVersion" class="form-control-plaintext" id="inputNodeVersion" placeholder="IOS-XE" >
+                      <input type="nodeVersion" class="form-control-plaintext" id="inputNodeVersion" placeholder="IOS-XE" readonly>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="inputDeviceStatus">Status</label>
-                      <select class="form-control" id="inputDeviceStatus">
-                      <option value="1">Active</option>
-                      <option value="0">In-Active</option>
-                      <option value="2">Unknown</option>
-                      </select>
+                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" placeholder="1" readonly>
                     </div>
                   </div>
 <!-- /fifth row -->
@@ -478,46 +463,21 @@ $page_title = 'OneEMS';
 <!-- sixth row -->
                   <div class="row">
                     <div class="form-group col-md-6">
-                        <?php 
-                        $technames = get_csr_technames();
-                    	?>
                       <label for="inputCSRSiteTechName">Tech Name</label>
-                      <select class="form-control" id="inputCSRSiteTechName">
-                      <?php foreach ($technames['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_name']; ?>"><?php  echo $val['csr_site_tech_name']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" readonly>
                     </div>
-                    
-                    
                     <div class="form-group col-md-6">
-                        <?php 
-                    	$managers = get_managers();
-                    	?>
                       <label for="inputCSRSiteTechMgrName">Tech Mgr Name</label>
-                      <select class="form-control" id="inputCSRSiteTechMgrName">
-                      <?php foreach ($managers['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_mgr_name']; ?>"><?php  echo $val['csr_site_tech_mgr_name']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <input type="CSRSiteTechMgrName" class="form-control-plaintext" id="inputCSRSiteTechMgrName" placeholder="Site Tech Mgr Name" readonly>
                     </div>
                   </div>
-                  
-                  
 <!-- /sixth row -->
 
 <!-- seventh row -->
                   <div class="row">
                     <div class="form-group col-md-12">
-                        <?php 
-                        $site_ids = generic_get_site_ids();
-                    	?>
-                      <label for="inputCSRSiteID">Site ID</label>
-                      <select class="form-control" id="inputCSRSiteID">
-                      <?php foreach ($site_ids['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_id']; ?>"><?php  echo $val['csr_site_id']; ?></option>	
-                      <?php } ?>
-                      </select>
+                      <label for="inputCSRSiteTechName">Site ID</label>
+                      <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" readonly>
                     </div>
                   </div>
 <!-- /seventh row -->
@@ -527,12 +487,12 @@ $page_title = 'OneEMS';
 <!-- eighth row -->
                   <div class="row">
                     <div class="form-group col-md-6">
-                      <label for="inputLastPolled">Device Date Added</label>
-                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="Today()" >
+                      <label for="inputDeviceDateAdded">Device Date Added</label>
+                      <input type="lastPolled" class="form-control-plaintext" id="inputDeviceDateAdded" placeholder="Today()" readonly>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputUpSince">Device Last Updated</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="dateTimeStamp of Discovery" >
+                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="dateTimeStamp of Discovery" readonly>
                     </div>
                   </div>
 <!-- /eighth row -->
@@ -541,15 +501,15 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputLastPolled">Last Polled</label>
-                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="11/16/17 19:28" >
+                      <input type="lastPolled" class="form-control-plaintext" id="inputLastPolled" placeholder="11/16/17 19:28" readonly>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputUpSince">Up Since</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="sysUptime" >
+                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="sysUptime" readonly>
                     </div>
                     <!--<div class="form-group col-md-4">
                       <label for="inputConnPort">Connection Port</label>
-                      <input type="connPort" class="form-control-plaintext" id="inputConnPort" placeholder="PortShow" >
+                      <input type="connPort" class="form-control-plaintext" id="inputConnPort" placeholder="PortShow" readonly>
                     </div>-->
                   </div>
 <!-- /ninth row -->
@@ -558,11 +518,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputSysName">System Name</label>
-                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.verizonwireless.com" >
+                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.verizonwireless.com" readonly>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputDeviceOS">Device OS</label>
-                      <input type="deviceOS" class="form-control-plaintext" id="inputDeviceOS" placeholder="auto derive from osypeTable" >
+                      <input type="deviceOS" class="form-control-plaintext" id="inputDeviceOS" placeholder="auto derive from osypeTable" readonly>
                     </div>
                   </div>
 <!-- /tenth row -->
@@ -573,29 +533,37 @@ $page_title = 'OneEMS';
 
 <!-- right side -->
                 <div class="col-lg-6 col-md-12 border">
-
+<!--  selector -->
+				<div class="row">
+                    <div class="form-group col-md-6">
+                    <label for="inputCSRTechID">Existing</label>
+                    <input type="radio" name="added-details" value="1"/>
+                    <label for="inputCSRTechID">New</label>
+                    <input type="radio" name="added-details" value="0"/>
+                    </div>
+                </div>
 <!-- first row -->
                   <div class="row">
                     <div class="form-group col-md-6">
-                        <?php 
-                        $technames = get_csr_technames();
-                    	?>
                       <label for="inputCSRTechID">Tech ID</label>
                       <select class="form-control" id="inputCSRTechID">
-                      <?php foreach ($technames['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_id']; ?>"><?php  echo $val['csr_site_tech_id']; ?></option>	
-                      <?php } ?>
+                        <option>site_tech_ID1</option>
+                        <option>site_tech_ID2</option>
+                        <option>site_tech_ID3</option>
+                        <option>site_tech_ID4</option>
+                        <option>site_tech_ID5</option>
+                        <option>site_tech_ID6</option>
                       </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <?php 
-                    	$managers = get_managers();
-                    	?>
                       <label for="inputCSRMgrID">Tech Manager ID</label>
                       <select class="form-control" id="inputCSRMgrID">
-                      <?php foreach ($managers['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_mgr_id']; ?>"><?php  echo $val['csr_site_tech_mgr_id']; ?></option>	
-                      <?php } ?>
+                        <option>mgr_ID1</option>
+                        <option>mgr_ID2</option>
+                        <option>mgr_ID3</option>
+                        <option>mgr_ID4</option>
+                        <option>mgr_ID5</option>
+                        <option>mgr_ID6</option>
                       </select>
                     </div>
                   </div>
@@ -604,17 +572,16 @@ $page_title = 'OneEMS';
 <!-- second row -->
                   <div class="row">
                     <div class="form-group col-md-6">
-                        <?php 
-                        $site_names = generic_get_csr_site_names();
-                    	?>
                       <label for="inputCSRSiteName">Site Name</label>
                       <select class="form-control" id="inputCSRSiteName">
-                      <?php foreach ($site_names['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_name']; ?>"><?php  echo $val['csr_site_name']; ?></option>	
-                      <?php } ?>
+                        <option>ILWI NORTH POKAGON-CST-ARNOLD RL</option>
+                        <option>North Angola</option>
+                        <option>SB NEW CARLISLE</option>
+                        <option>SB NORTH LIBERTY</option>
+                        <option>SB PLYMOUTH</option>
+                        <option>SB DT SOUTH BEND</option>
                       </select>
                     </div>
-                    
                     <div class="col-md-6">
                         <?php 
                         $switch_names = generic_get_csr_switch_names();
@@ -628,44 +595,6 @@ $page_title = 'OneEMS';
                     </div>
                   </div>
 <!-- /second row -->
-
-<!-- third row -->
-                  <div class="row">
-                    <div class="form-group col-md-4">
-                      <label for="inputInvestigationState">Investigation State</label>
-                      <select class="form-control" id="inputInvestigationState">
-                        <option value="Operational">Operational</option>
-                        <option value="Suspended">Suspended</option>
-                      </select>
-                    </div>
-                    <div class="form-check col-md-3">
-                      <label for="inputSeverity">Severity</label>
-                        <select class="form-control" id="inputSeverity">
-                          <option value="Low">Low</option>
-                          <option value="Medium">Medium</option>
-                          <option value="High">High</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="inputUnacknowledged">Unacknowledged</label>
-                      <select class="form-control" id="inputUnacknowledged">
-                          <option value="Yes">Yes</option>
-                          <option value="No">No</option>
-                        </select>
-                    </div>
-                  </div>
-<!-- /third row -->
-<!-- fourth row -->
-                  <div class="row" id="discovery-new-ip">
-                      <div class="col-auto">
-                        <div class="form-check mb-2 mb-sm-0">
-                          <div class="btn-group" role="group" aria-label="">
-                            <button type="button" class="btn" value="Add New" id="add-new-ip">ADD NEW</button>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-<!-- /third row -->
                 </div>
 <!-- /right side -->
 
@@ -674,7 +603,6 @@ $page_title = 'OneEMS';
         </div>
 
       </div>
-    </div>
     </div>
 <!-- /add device modal -->
 

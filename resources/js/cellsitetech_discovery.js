@@ -127,7 +127,7 @@ $(document).ready(function() {
 	// New Tab - 1- 8 col, 8 no exp and 9, 10 region, market
 	if($('#ip-new-table').length > 0){
 		var ipnewtable =  $('#ip-new-table').DataTable( {
-		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
+		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{},{},{}],	
 		 "processing": true,
 		 "pageLength": 5,
 		 "searching" : false,
@@ -177,23 +177,25 @@ $(document).ready(function() {
   		  });
         }
     };
-	/*
-	  $('#select_all').on('click', function(e) {
-		    $(".form-check-input").prop('checked', $(this).prop('checked'));
-		    var allVals = [];
-		     $('.form-check-input:checked').each(function() {
-		       allVals.push($(this).val());
-		     });
-		     if(allVals.length > 0){
-		 		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':allVals.join(", "), 'action' : 'Disc-OK' })
-				  .done(function( data ) {
-					  alert("Status Updated Successfully");
-					  location.reload();
-				  });
-		     }
-		  });
-	*/
-	$("#discovery-new-ip #add-new-ip").click(function(){
+    $(document).on('click', "#ip-new-table .addDeviceModal", function(event) {	
+    	$('#inputRegion').val($(this).closest('tr').find('td:eq(8)').html());
+    	$('#inputMarket').val($(this).closest('tr').find('td:eq(9)').html());
+    	$('#inputDevicename').val($(this).closest('tr').find('td:eq(2)').html());
+    	if($(this).closest('tr').find('td:eq(0)').html() == ""){
+    		$('#inputDeviceIPaddress').val($(this).closest('tr').find('td:eq(1)').html());
+    	}else{
+    		$('#inputDeviceIPaddress').val($(this).closest('tr').find('td:eq(0)').html());
+    	}
+    	$('#inputDeviceSeries').val($(this).closest('tr').find('td:eq(3)').html());
+    	$('#inputDeviceOS').val($(this).closest('tr').find('td:eq(4)').html());
+    	$('#inputNodeVersion').val($(this).closest('tr').find('td:eq(4)').html());
+    	$('#inputModel').val($(this).closest('tr').find('td:eq(10)').html());
+    	$('#inputLastPolled').val($(this).closest('tr').find('td:eq(6)').html());
+    	$('#inputDeviceDateAdded').val($(this).closest('tr').find('td:eq(6)').html());
+       	$('#addDeviceModal').modal('show');
+    	return false;
+    });
+	$("#discovery-new-ip #add-new-ip1").click(function(){
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
 			'devicename':$('#inputDevicename').val(), 
 			'action' : 'Add New',

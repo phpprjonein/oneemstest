@@ -172,8 +172,8 @@ $(document).ready(function() {
         if (confirmation) {
     		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':0, 'action' : 'Disc-OK' })
   		  	.done(function( data ) {
-  			  //alert("Status Updated Successfully");
-  			  //location.reload();
+  			  alert("Status Updated Successfully");
+  			  location.reload();
   		  });
         }
     };

@@ -279,6 +279,7 @@ $page_title = 'OneEMS';
 
 <!-- ok table content -->
             <div class="tab-pane fade show active" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
+            	<?php $resultset =  load_discovery_dataset('k'); ?>
               <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
                 <thead>
                   <tr>
@@ -291,14 +292,17 @@ $page_title = 'OneEMS';
                     <th scope="col">OS</th>
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
+                    <?php  if(count($resultset['result']) > 0): ?>
                     <th scope="col"><a href="#" id="select_all" onclick="ok_all_item();">Select&nbsp;All</a></th>
+                    <?php else:?>
+                    <th scope="col">Select&nbsp;All</th>
+                    <?php endif; ?>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>
                   </tr>
                 </thead>
                 <tbody>
                   	<?php 
-                  	$resultset =  load_discovery_dataset('k'); 
                     if(isset($resultset['result'])){
                         foreach ($resultset['result'] as $key => $value){
                             if(test_ipv6_address($value['deviceIpAddr'])){

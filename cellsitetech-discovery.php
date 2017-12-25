@@ -17,42 +17,6 @@ check_user_authentication('1'); //cellsite tech type user
 $page_title = 'OneEMS';
 
 ?>
-<?php 
-/*
-$managers = get_managers();
-
-foreach ($managers['result'] as $key => $val){
-    print_r($val['csr_site_tech_mgr_id'] . ' => ' . $val['csr_site_tech_mgr_name']);
-    print "<br/>";
-    
-}
-
-echo "<br/><br/>================================================================================================<br/><br/>";
-
-
-$categories = generic_get_categories();
-foreach ($categories['result'] as $key => $val){
-    print_r($val['id'] . ' => ' . $val['categoryName']);
-    print "<br/>";
-}
-
-echo "<br/><br/>================================================================================================<br/><br/>";
-
-
-
-$categories = generic_get_vendors();
-foreach ($categories['result'] as $key => $val){
-    print_r($val['id'] . ' => ' . $val['vendorName']);
-    print "<br/>";
-}
-
-echo "<br/><br/>================================================================================================<br/><br/>";
-
-die;
-*/
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,10 +28,10 @@ die;
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
 
-<!-- table manipulation row -->
+
+<!-- 
       <div class="form-row align-items-center justify-content-between">
 
-<!-- region selection -->
       <div class="col-auto">
         <div class="btn-group" id="discovery-region">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,9 +53,7 @@ die;
           </div>
         </div>
       </div>
-<!-- /region selection -->
 
-<!-- market dropdown -->
                     <div class="btn-group" id="discovery-market">
                       <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       SELECT MARKET
@@ -99,9 +61,7 @@ die;
                       <div class="dropdown-menu">
                       </div>
                     </div>
-<!-- /market dropdown -->
 
-<!-- search table form field -->
 
         <div class="col-6">
           
@@ -134,32 +94,28 @@ die;
           </div>
           
         </div>
-<!-- /search table form field -->
 
-<!-- Export table -->
       <div class="col-md-2 col-xs-6">
         <p class="export" id="export-v-pills-conflict"></p>
         <p class="export" id="export-v-pills-missed"></p>
         <p class="export" id="export-v-pills-new"></p>
         <p class="export" id="export-v-pills-ok"></p>
       </div>
-<!-- /Export table -->
 
       </div>
-<!-- /table maniupulation row -->
 
       <hr />
-
+ -->
 <!-- IP management table row -->
       <div class="row">
 
 <!-- table pill navigation -->
         <div class="col-1">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link btn-conflicts active" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
+            <a class="nav-link btn-conflicts" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
             <a class="nav-link btn-missed" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
             <a class="nav-link btn-new" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
-            <a class="nav-link btn-ok" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
+            <a class="nav-link btn-ok active" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
           </div>
         </div>
 <!-- /table pill navigation -->
@@ -171,7 +127,7 @@ die;
           <div class="tab-content" id="v-pills-tabContent">
 
 <!-- conflict table content -->
-            <div class="tab-pane fade show active" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
               <table class="table table-responsive table-sm ip-conflict-table" id="ip-conflict-table">
                 <thead>
                   <tr>
@@ -322,7 +278,7 @@ die;
 <!-- /new table content -->
 
 <!-- ok table content -->
-            <div class="tab-pane fade" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
+            <div class="tab-pane fade show active" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
               <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
                 <thead>
                   <tr>
@@ -335,7 +291,7 @@ die;
                     <th scope="col">OS</th>
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
-                    <th scope="col">Select All</th>
+                    <th scope="col"><a href="#" id="select_all" onclick="ok_all_item();">Select&nbsp;All</a></th>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>
                   </tr>

@@ -1,13 +1,4 @@
 $(document).ready(function() {
-	//Common JS block
-	$('#export-v-pills-conflict').show();
-	$('#search-v-pills-conflict').show();
-	$('#export-v-pills-missed').hide();
-	$('#search-v-pills-missed').hide();
-	$('#export-v-pills-new').hide();
-	$('#search-v-pills-new').hide();
-	$('#export-v-pills-ok').hide();
-	$('#search-v-pills-ok').hide();
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'Conflicts'){
 			$('#export-v-pills-conflict').show();
@@ -104,6 +95,7 @@ $(document).ready(function() {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
 		 "pageLength": 5,
+		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}}], 
 		 "order": [[0, 'asc']],
 		 } );
@@ -119,6 +111,7 @@ $(document).ready(function() {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
 		 "pageLength": 5,
+		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}}], 
 		 "order": [[0, 'asc']],
 		
@@ -137,6 +130,7 @@ $(document).ready(function() {
 		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
 		 "pageLength": 5,
+		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}}], 
 		   "order": [[0, 'asc']],
 		 } );
@@ -152,6 +146,7 @@ $(document).ready(function() {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
 		 "pageLength": 5,
+		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}}], 
 		 "order": [[0, 'asc']],
 		 } );
@@ -171,6 +166,33 @@ $(document).ready(function() {
 		  });
 	});
 	
+
+	ok_all_item = function() {
+        var confirmation = confirm('Are you sure you want to proceed?');
+        if (confirmation) {
+    		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':0, 'action' : 'Disc-OK' })
+  		  	.done(function( data ) {
+  			  //alert("Status Updated Successfully");
+  			  //location.reload();
+  		  });
+        }
+    };
+	/*
+	  $('#select_all').on('click', function(e) {
+		    $(".form-check-input").prop('checked', $(this).prop('checked'));
+		    var allVals = [];
+		     $('.form-check-input:checked').each(function() {
+		       allVals.push($(this).val());
+		     });
+		     if(allVals.length > 0){
+		 		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':allVals.join(", "), 'action' : 'Disc-OK' })
+				  .done(function( data ) {
+					  alert("Status Updated Successfully");
+					  location.reload();
+				  });
+		     }
+		  });
+	*/
 	$("#discovery-new-ip #add-new-ip").click(function(){
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
 			'devicename':$('#inputDevicename').val(), 

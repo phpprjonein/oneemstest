@@ -36,8 +36,11 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 }
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Disc-OK' && isset($_POST['id']) && is_numeric(($_POST['id']))){
-    echo discovery_status_update('o', $_POST['id']);
-}   
+    echo discovery_status_update('k', $_POST['id']);
+}
+
+
+
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Add New'){
     $values_arr = array(
         'devicename' => $_POST['devicename'],

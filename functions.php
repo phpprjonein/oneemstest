@@ -1571,7 +1571,11 @@ function load_discovery_dataset($class = 'C'){
 }
 function discovery_status_update($status, $id){
     global $db2;
-    $sql = "UPDATE `discoveryres` SET class = '".$status."' WHERE id = '".$id."'";
+    if($id != 0){
+        $sql = "UPDATE `discoveryres` SET class = 'd' WHERE id = '".$id."' AND class = '".$status."'";
+    }else{
+        $sql = "UPDATE `discoveryres` SET class = 'd' WHERE class = '".$status."'";
+    }
     $db2->query($sql);
     $db2->execute();
     return success;

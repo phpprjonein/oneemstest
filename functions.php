@@ -1617,6 +1617,24 @@ function get_csr_technames(){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+
+function get_csr_site_tech_mgr_id($username){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_tech_mgr_id),csr_site_tech_mgr_name FROM nodes where csr_site_tech_id = '".$username."' ORDER BY csr_site_tech_mgr_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+function get_csr_site_names($username){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_name) FROM nodes where csr_site_tech_id = '".$username."' ORDER BY csr_site_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+
 function generic_get_categories(){
     global $db2;
     $sql = "SELECT id,categoryName FROM categories where status = 1 ORDER BY categoryName";

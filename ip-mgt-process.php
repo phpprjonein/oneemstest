@@ -71,3 +71,21 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     discovery_add_new_device($values_arr);
     echo "success";
 }
+
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Tech Manager ID' && isset($_POST['csrsitetechid'])){
+    $technmgrames = get_csr_site_tech_mgr_id($_POST['csrsitetechid']);
+    $output = '';
+    foreach ($technmgrames['result'] as $key => $val){
+        $output .= '<option value="'.$val['csr_site_tech_mgr_id'].'">'.$val['csr_site_tech_mgr_id'].'</option>';	
+    }   
+    echo $output;
+}
+
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Site Name' && isset($_POST['csrsitetechid'])){
+    $techsitenames = get_csr_site_names($_POST['csrsitetechid']);
+    $output = '';
+    foreach ($techsitenames['result'] as $key => $val){
+        $output .= '<option value="'.$val['csr_site_name'].'">'.$val['csr_site_name'].'</option>';
+    }
+    echo $output;
+}

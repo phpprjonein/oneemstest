@@ -195,6 +195,35 @@ $(document).ready(function() {
        	$('#addDeviceModal').modal('show');
     	return false;
     });
+    
+    $('#addDeviceModal #tech-details input:radio').change(function() {
+    	var selected = $("#addDeviceModal #tech-details input[name='added-details']:checked").val();
+    	if(selected == 1){
+    		$('#addDeviceModal .tech-exist').show();
+    		$('#addDeviceModal .tech-new').hide();
+    	}else{
+    		$('#addDeviceModal .tech-exist').hide();
+    		$('#addDeviceModal .tech-new').show();
+    	}
+     });
+    
+    $(document).on('change', "#addDeviceModal #inputCSRTechID", function(event) {
+		$.post( "ip-mgt-process.php", { calltype: "trigger", 
+			'csrsitetechid':this.value, 
+			'action':'Tech Manager ID'
+		}).done(function( data ) {
+			$('#inputCSRMgrID').html(data);	
+		});
+		$.post( "ip-mgt-process.php", { calltype: "trigger", 
+			'csrsitetechid':this.value, 
+			'action':'Site Name'
+		}).done(function( data ) {
+			$('#inputCSRSiteName').html(data);	
+		});
+		
+		
+    });
+    
 	$("#discovery-new-ip #add-new-ip1").click(function(){
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
 			'devicename':$('#inputDevicename').val(), 

@@ -462,7 +462,7 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechName">Tech Name</label>
-                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" readonly>
+                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechMgrName">Tech Mgr Name</label>
@@ -531,6 +531,18 @@ $page_title = 'OneEMS';
 
 <!-- right side -->
                 <div class="col-lg-6 col-md-12 border">
+                <!-- first row -->
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCSRTechID">Tech ID</label>
+					  <input type="inputCSRTechID" class="form-control-plaintext" id="inputCSRTechID" placeholder="Tech ID">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputCSRMgrID">Tech Manager ID</label>
+                      <input type="inputCSRMgrID" class="form-control-plaintext" id="inputCSRMgrID" placeholder="Tech Manager ID" readonly>
+                    </div>
+                  </div>
+<!-- /first row -->
 <!--  selector -->
 				<div class="row">
                     <div class="form-group col-md-6" id="tech-details">
@@ -540,66 +552,22 @@ $page_title = 'OneEMS';
                     <input type="radio" name="added-details" value="0"/>
                     </div>
                 </div>
-<!-- first row -->
-                  <div class="row">
-                  	<div class="form-group col-md-6 tech-exist">
-                        <?php 
-                        $technames = get_csr_technames();
-                    	?>
-                      <label for="inputCSRTechID">Tech ID</label>
-                      <select class="form-control" id="inputCSRTechID">
-                      <?php foreach ($technames['result'] as $key => $val){ ?>
-                      	<?php 
-                      	     $selected = '';
-                      	     if($val['csr_site_tech_id'] == $_SESSION['username']){
-                      	         $selected = 'selected';
-                      	     }
-                      	?>
-                      	<option value="<?php  echo $val['csr_site_tech_id']; ?>" <?php echo $selected; ?>><?php  echo $val['csr_site_tech_id']; ?></option>	
-                      <?php } ?>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-6 tech-new" style="display: none;">
-                      <label for="inputCSRTechID">Tech ID</label>
-                      <input type="inputCSRTechID" class="form-control-plaintext" id="inputCSRTechIDNew" placeholder="Tech ID">
-                    </div>
-                    
-                    <?php 
-                        $technmgrames = get_csr_site_tech_mgr_id($_SESSION['username']);
-                    ?>
-                    
-                    <div class="form-group col-md-6 tech-exist">
-                      <label for="inputCSRMgrID">Tech Manager ID</label>
-                      <select class="form-control" id="inputCSRMgrID">
-                      <?php foreach ($technmgrames['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_tech_mgr_id']; ?>"><?php  echo $val['csr_site_tech_mgr_id']; ?></option>	
-                      <?php } ?>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-6 tech-new" style="display: none;">
-                      <label for="inputCSRMgrID">Tech Manager ID</label>
-                      <input type="TechManagerID" class="form-control-plaintext" id="inputCSRMgrIDNew" placeholder="Tech Manager ID">
-                    </div>
-                  </div>
-<!-- /first row -->
-
 <!-- second row -->
                   <div class="row">
-                  	<?php 
-                        $techsitenames = get_csr_site_names($_SESSION['username']);
-                    ?>
-                    <div class="form-group col-md-6 tech-exist">
+                    
+                    <div class="form-group col-md-6">
                       <label for="inputCSRSiteName">Site Name</label>
-                      <select class="form-control" id="inputCSRSiteName">
-                      <?php foreach ($techsitenames['result'] as $key => $val){ ?>
-                      	<option value="<?php  echo $val['csr_site_name']; ?>"><?php  echo $val['csr_site_name']; ?></option>
-                      <?php } ?>
+                      <select class="form-control site-name-exist" id="inputCSRSiteName">
+                        <option>ILWI NORTH POKAGON-CST-ARNOLD RL</option>
+                        <option>North Angola</option>
+                        <option>SB NEW CARLISLE</option>
+                        <option>SB NORTH LIBERTY</option>
+                        <option>SB PLYMOUTH</option>
+                        <option>SB DT SOUTH BEND</option>
                       </select>
+                      <input type="inputCSRTechID" style="display: none;" class="form-control-plaintext site-name-new" id="inputCSRSiteName" placeholder="Site Name">
                     </div>
-                    <div class="form-group col-md-6 tech-new" style="display: none;">
-                      <label for="inputCSRSiteNameNew">Site Name</label>
-                      <input type="siteName" class="form-control-plaintext" id="inputCSRSiteNameNew" placeholder="Site Name">
-                    </div>
+                    
                     <div class="col-md-6">
                         <?php 
                         $switch_names = generic_get_csr_switch_names();
@@ -613,6 +581,11 @@ $page_title = 'OneEMS';
                     </div>
                   </div>
 <!-- /second row -->
+
+
+
+
+
 <!-- fourth row -->
                   <div class="row" id="discovery-new-ip">
                       <div class="col-auto">

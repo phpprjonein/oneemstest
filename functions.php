@@ -1685,7 +1685,25 @@ function generic_get_market(){
     return $resultset;
 }
 
-
-
-
-
+function generic_get_csr_site_tech_name($query){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_tech_name), csr_site_tech_id FROM nodes WHERE csr_site_tech_name LIKE '".$query."%'";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result[$val['csr_site_tech_id']] = $val["csr_site_tech_name"];
+    }
+    return json_encode($Result);
+}
+function get_csr_tech_mgr_name_from_tech_name($csr_tech_name){
+    global $db2;
+    $db2->query( "SELECT csr_site_tech_mgr_name FROM nodes WHERE csr_site_tech_name='" .$csr_tech_name ."'");
+    $row = $db2->resultsetCols();
+    return $row[0];
+}
+function get_csr_tech_mgr_id_from_tech_id($csr_tech_id){
+    global $db2;
+    $db2->query( "SELECT csr_site_tech_mgr_id FROM nodes WHERE csr_site_tech_id='" .$csr_tech_id ."'");
+    $row = $db2->resultsetCols();
+    return $row[0];
+}

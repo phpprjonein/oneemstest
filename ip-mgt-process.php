@@ -89,3 +89,17 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     }
     echo $output;
 }
+
+if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query'])){
+    echo generic_get_csr_site_tech_name($query);
+}
+if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_name'])){
+    echo get_csr_tech_mgr_name_from_tech_name($_POST['csr_tech_name']);
+}
+if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_id'])){
+    echo get_csr_tech_mgr_id_from_tech_id($_POST['csr_tech_id']);
+}
+
+
+
+

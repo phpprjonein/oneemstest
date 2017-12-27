@@ -181,7 +181,7 @@ $(document).ready(function() {
     	$('#inputRegion').val($(this).closest('tr').find('td:eq(8)').html());
     	$('#inputMarket').val($(this).closest('tr').find('td:eq(9)').html());
     	$('#inputDevicename').val($(this).closest('tr').find('td:eq(2)').html());
-    	$('#inputSysName').val($(this).closest('tr').find('td:eq(2)').html());
+    	$('#inputSysName').val($(this).closest('tr').find('td:eq(2)').html() + "ABC");
     	
     	if($(this).closest('tr').find('td:eq(0)').html() == ""){
     		$('#inputDeviceIPaddress').val($(this).closest('tr').find('td:eq(1)').html());
@@ -216,17 +216,18 @@ $(document).ready(function() {
     	return false;
     });
     
+   
     $('#addDeviceModal #tech-details input:radio').change(function() {
     	var selected = $("#addDeviceModal #tech-details input[name='added-details']:checked").val();
     	if(selected == 1){
-    		$('#addDeviceModal .tech-exist').show();
-    		$('#addDeviceModal .tech-new').hide();
+    		$('#addDeviceModal .site-name-exist').show();
+    		$('#addDeviceModal .site-name-new').hide();
     	}else{
-    		$('#addDeviceModal .tech-exist').hide();
-    		$('#addDeviceModal .tech-new').show();
+    		$('#addDeviceModal .site-name-exist').hide();
+    		$('#addDeviceModal .site-name-new').show();
     	}
      });
-    
+    /*
     $(document).on('change', "#addDeviceModal #inputCSRTechID", function(event) {
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
 			'csrsitetechid':this.value, 
@@ -240,9 +241,68 @@ $(document).ready(function() {
 		}).done(function( data ) {
 			$('#inputCSRSiteName').html(data);	
 		});
-		
-		
     });
+    */
+    
+    
+    $('#inputCSRSiteTechName').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: "ip-mgt-process.php",
+				data: 'type=autocomplete&query=' + query,            
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+					result($.map(data, function (index, value) {
+						return index;
+                    }));
+                }
+            });
+        }
+    });
+    $("#addDeviceModal #inputCSRSiteTechName").on("change", function(event) {
+		$.post( "ip-mgt-process.php", { type: "loadauto", 
+			'csr_tech_name':this.value, 
+		}).done(function( data ) {
+			$("#addDeviceModal #inputCSRSiteTechMgrName").val(data);
+		});
+    });
+
+    $('#inputCSRTechID').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: "ip-mgt-process.php",
+				data: 'type=autocomplete&query=' + query,            
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+					result($.map(data, function (index, value) {
+						return value;
+                    }));
+                }
+            });
+        }
+    });
+    
+    $("#addDeviceModal #inputCSRTechID").on("change", function(event) {
+		$.post( "ip-mgt-process.php", { type: "loadauto", 
+			'csr_tech_id':this.value, 
+		}).done(function( data ) {
+			$("#addDeviceModal #inputCSRMgrID").val(data);
+		});
+		$.post( "ip-mgt-process.php", { calltype: "trigger", 
+			'csrsitetechid':this.value, 
+			'action':'Site Name'
+		}).done(function( data ) {
+			$('#inputCSRSiteName').html(data);	
+		});
+    });
+    
+    
+    
+    
+    
+    
     
 	$("#discovery-new-ip #add-new-ip1").click(function(){
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 

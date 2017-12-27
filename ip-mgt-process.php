@@ -46,6 +46,14 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     
     $_SESSION['disc_page_tab'] = 'New';
     
+    $categories = generic_get_categories();
+    foreach ($categories['result'] as $key => $val){
+        $categories_arr[$val['categoryName']] = $val['id'];
+    }
+    $vendors = generic_get_vendors();
+    foreach ($vendors['result'] as $key => $val){
+        $vendors_arr[$val['vendorName']] = $val['id'];
+    }
     
     $values_arr = array(
         'region' => $_POST['region'],
@@ -53,23 +61,22 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
         'devicename' => $_POST['devicename'],
         'deviceIpAddr' => $_POST['deviceIpAddr'],
         'nodeAddedBy' => $_POST['nodeAddedBy'],
-        //'nodeCatId' => $_POST['nodeCatId'],
-        'nodeCatId' => rand(1,99),
-        //'vendorId' => $_POST['vendorId'],
-        'vendorId' => rand(1,99),
+        'nodeCatId' => $categories_arr[$_POST['nodeCatId']],
+        'vendorId' => $vendors_arr[$_POST['vendorId']],
         'deviceseries' => $_POST['deviceseries'],
         'status' => $_POST['status'],
         'csr_site_tech_name' => $_POST['csr_site_tech_name'],
         'csr_site_tech_mgr_name' => $_POST['csr_site_tech_mgr_name'],
-        //'csr_site_id' => $_POST['csr_site_id'],
-        'csr_site_id' => rand(1,99),
+        'csr_site_id' => $_POST['csr_site_id'],
         'systemname' => $_POST['systemname'],
         'deviceos' => $_POST['deviceos'],
         'csr_site_tech_id' => $_POST['csr_site_tech_id'],
         'csr_site_tech_mgr_id' => $_POST['csr_site_tech_mgr_id'],
         'csr_site_name' => $_POST['csr_site_name'],
-        //'model' => $_POST['model'],
         'nodeVersion' => $_POST['nodeVersion'],
+        'lastpolled' => date('Y-m-d H:i:s',strtotime($_POST['lastpolled'])),        
+        'deviceDateAdded'=>  $_POST['deviceDateAdded'],
+        'deviceLastUpdated'=> date('Y-m-d',strtotime($_POST['deviceLastUpdated'])),
         'upsince' => $_POST['upsince'],
         'switch_name' => $_POST['switch_name']
     );

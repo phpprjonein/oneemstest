@@ -1589,17 +1589,16 @@ function discovery_add_new_device($values){
     $db2->query($sqlc);
     $recordset = $db2->resultset();
     $values['id'] = $recordset[0]['id'];
-    $sql = "INSERT INTO nodes (id, devicename, deviceIpAddr, nodeCatId, vendorId, model, nodeVersion, nodeAddedBy, status, systemname, severity, unacknowledged,
-            investigationstate, deviceseries, upsince, csr_site_tech_mgr_name, csr_site_tech_mgr_id, csr_site_tech_name, csr_site_tech_id, csr_site_name,
-             csr_site_id, switch_name, region, market, deviceos, submarket)
+    $sql = "INSERT INTO nodes (id, region, market, devicename, deviceIpAddr, nodeAddedBy, nodeCatId, vendorId, deviceseries, status, 
+            csr_site_tech_name, csr_site_tech_mgr_name, csr_site_id, systemname, deviceos, csr_site_tech_id, csr_site_tech_mgr_id,
+            csr_site_name, nodeVersion, lastpolled, deviceDateAdded, deviceLastUpdated, upsince, switch_name, submarket)
 				VALUES (
-                ".$values['id'].",'".$values['devicename']."','".$values['deviceIpAddr']."','".$values['nodeCatId']."',
-                '".$values['vendorId']."','".$values['model']."','".$values['nodeVersion']."','".$values['nodeAddedBy']."',
-                '".$values['status']."','".$values['systemname']."','".$values['severity']."','".$values['unacknowledged']."',
-                '".$values['investigationstate']."','".$values['deviceseries']."','".$values['upsince']."','".$values['csr_site_tech_mgr_name']."',
-                '".$values['csr_site_tech_mgr_id']."','".$values['csr_site_tech_name']."','".$values['csr_site_tech_id']."','".$values['csr_site_name']."',
-                '".$values['csr_site_id']."','".$values['switch_name']."','".$values['region']."','".$values['market']."','".$values['deviceos']."',''
-            )";
+                ".$values['id'].",'".$values['region']."','".$values['market']."','".$values['devicename']."','".$values['deviceIpAddr']."',
+                '".$values['nodeAddedBy']."','".$values['nodeCatId']."','".$values['vendorId']."','".$values['deviceseries']."','".$values['status']."',
+                '".$values['csr_site_tech_name']."','".$values['csr_site_tech_mgr_name']."','".$values['csr_site_id']."','".$values['systemname']."',
+                '".$values['deviceos']."','".$values['csr_site_tech_id']."', '".$values['csr_site_tech_mgr_id']."','".$values['csr_site_name']."',
+                '".$values['nodeVersion']."', '".$values['lastpolled']."', '".$values['deviceDateAdded']."', '".$values['deviceLastUpdated']."',    
+                '".$values['upsince']."','".$values['switch_name']."','')";
     $db2->query($sql);
     $db2->execute();
 }

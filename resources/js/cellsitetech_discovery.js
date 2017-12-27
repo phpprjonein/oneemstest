@@ -193,9 +193,9 @@ $(document).ready(function() {
     	var deviceseries = $(this).closest('tr').find('td:eq(3)').html();
     	/*Populate Node Category*/
     	if(deviceseries.search("Router") >=0 ){
-    		$('#inputNodeCatID').val('Router');
+    		$('#inputNodeCatID').val('Routers');
     	}else if(deviceseries.search("Switch") >=0 ){
-    		$('#inputNodeCatID').val('Switch');
+    		$('#inputNodeCatID').val('Switches');
     	}
     	/*Populate Node Vendor*/
     	if(deviceseries.search("Cisco") >=0 ){
@@ -324,8 +324,10 @@ $(document).ready(function() {
 			'csr_site_tech_id':	$('#inputCSRTechID').val(),
 			'csr_site_tech_mgr_id':	$('#inputCSRMgrID').val(),
 			'csr_site_name': inputCSRSiteName,		//need dynamic calculation
-			//'model':	$('#inputModel').val(),
 			'nodeVersion':	$('#inputDeviceOS').val(),
+			'lastpolled': $('#inputLastPolled').val(),
+			'deviceDateAdded': $('#inputDeviceDateAdded').val(),
+			'deviceLastUpdated':$('#inputDeviceLastUpdated').val(),
 			'upsince':	$('#inputUpSince').val(),
 			'switch_name':	$('#inputSwitchName').val(),
 			'action' : 'Add New'

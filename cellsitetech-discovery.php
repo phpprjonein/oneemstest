@@ -558,14 +558,9 @@ $page_title = 'OneEMS';
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteName">Site Name</label>
                       <select class="form-control site-name-exist" id="inputCSRSiteName">
-                        <option>ILWI NORTH POKAGON-CST-ARNOLD RL</option>
-                        <option>North Angola</option>
-                        <option>SB NEW CARLISLE</option>
-                        <option>SB NORTH LIBERTY</option>
-                        <option>SB PLYMOUTH</option>
-                        <option>SB DT SOUTH BEND</option>
+                      	<option>Select Site Name</option>
                       </select>
-                      <input type="inputCSRTechID" style="display: none;" class="form-control-plaintext site-name-new" id="inputCSRSiteName" placeholder="Site Name">
+                      <input type="inputCSRTechID" style="display: none;" class="form-control-plaintext site-name-new" id="inputCSRSiteNameNew" placeholder="Site Name">
                     </div>
                     
                     <div class="col-md-6">

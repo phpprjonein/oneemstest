@@ -299,38 +299,37 @@ $(document).ready(function() {
     });
     
     
-    
-    
-    
-    
-    
-	$("#discovery-new-ip #add-new-ip1").click(function(){
+	$("#discovery-new-ip #add-new-ip").click(function(){
+		var selected = $("#addDeviceModal #tech-details input[name='added-details']:checked").val();
+		if(selected == 1){
+			var inputCSRSiteName = $('#inputCSRSiteName').val();
+    	}else{
+    		var inputCSRSiteName = $('#inputCSRSiteNameNew').val();	
+    	}
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 
-			'devicename':$('#inputDevicename').val(), 
-			'action' : 'Add New',
-			'deviceIpAddr':	$('#inputDeviceIPaddress').val(),
-			'nodeCatId':	$('#inputNodeCatID').val(),
-			'vendorId':$('#inputVendorID').val(),
-			'model':	$('#inputModel').val(),
-			'nodeVersion':	$('#inputNodeVersion').val(),
-			'nodeAddedBy':	$('#inputNodeAddedBy').val(),
-			'status':	$('#inputDeviceStatus').val(),
-			'systemname':	$('#inputSysName').val(),
-			'severity':	$('#inputSeverity').val(),
-			'unacknowledged':	$('#inputUnacknowledged').val(),
-			'investigationstate':	$('#investigationstate').val(),
-			'deviceseries':	$('#inputDeviceSeries').val(),
-			'upsince':	$('#inputUpSince').val(),
-			'csr_site_tech_mgr_name':	$('#inputCSRSiteTechMgrName').val(),
-			'csr_site_tech_mgr_id':	$('#inputCSRMgrID').val(),
-			'csr_site_tech_name':	$('#inputCSRSiteTechName').val(),
-			'csr_site_tech_id':	$('#inputCSRTechID').val(),
-			'csr_site_name':	$('#inputCSRSiteName').val(),
-			'csr_site_id':	$('#inputCSRSiteID').val(),
-			'switch_name':	$('#inputSwitchName').val(),
 			'region':	$('#inputRegion').val(),
 			'market':	$('#inputMarket').val(),
-			'deviceos':	$('#inputDeviceOS').val()
+			'devicename':$('#inputDevicename').val(),
+			'deviceIpAddr':	$('#inputDeviceIPaddress').val(),
+			'nodeAddedBy':	$('#inputNodeAddedBy').val(),
+			'nodeCatId':	$('#inputNodeCatID').val(),
+			'vendorId':$('#inputVendorID').val(),
+			'deviceseries':	$('#inputDeviceSeries').val(),
+			'status':1,
+			'csr_site_tech_name':	$('#inputCSRSiteTechName').val(),
+			'csr_site_tech_mgr_name':	$('#inputCSRSiteTechMgrName').val(),
+			'csr_site_id':	$('#inputCSRSiteID').val(),
+			'systemname':	$('#inputSysName').val(),
+			'deviceos':	$('#inputDeviceOS').val(),	
+			'csr_site_tech_id':	$('#inputCSRTechID').val(),
+			'csr_site_tech_mgr_id':	$('#inputCSRMgrID').val(),
+			'csr_site_name': inputCSRSiteName,		//need dynamic calculation
+			//'model':	$('#inputModel').val(),
+			'nodeVersion':	$('#inputDeviceOS').val(),
+			'upsince':	$('#inputUpSince').val(),
+			'switch_name':	$('#inputSwitchName').val(),
+			'action' : 'Add New'
+			
 		}).done(function( data ) {
 			  alert("New Device Added Successfully");
 			  location.reload();

@@ -160,13 +160,13 @@ $page_title = 'OneEMS';
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td>Discovery</td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['devicename'];?></td>
-                    	<td><?php echo $value['site_id'];?></td>
-                        <td><?php echo $value['site_name'];?></td>
+                        <td><?php echo $value['deviceName'];?></td>
+                    	<td><?php echo $value['csr_site_id'];?></td>
+                        <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['timepolled'];?></td>
+                        <td><?php echo $value['timepolled'];?></td>_
 						<td></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
                         <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
@@ -212,11 +212,11 @@ $page_title = 'OneEMS';
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['devicename'];?></td>
+                        <td><?php echo $value['deviceName'];?></td>
                         <td>P</td>
                     	<td>F</td>
-                    	<td><?php echo $value['site_id'];?></td>
-                        <td><?php echo $value['site_name'];?></td>
+                    	<td><?php echo $value['csr_site_id'];?></td>
+                        <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
@@ -247,7 +247,8 @@ $page_title = 'OneEMS';
                     <th scope="col">Add</th>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>
-                    <th scope="col" style="display:none;">Model</th>
+                    <th scope="col" style="display:none;">Upsince</th>
+                    <th scope="col" style="display:none;">Site ID</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -263,15 +264,16 @@ $page_title = 'OneEMS';
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['devicename'];?></td>
+                        <td><?php echo $value['deviceName'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['lastpolled'];?></td>
-                    <td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
+                        <td><?php echo !empty($value['lastpolled']) ? date('m/d/y h:i:s', strtotime($value['lastpolled'])) : '';?></td>
+                    	<td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
                         <td style="display:none;"><?php echo $value['market'];?></td>
-                        <td style="display:none;"><?php echo $value['model'];?></td>
+                        <td style="display:none;"><?php echo $value['upsince'];?></td>
+                        <td style="display:none;"><?php echo $value['csr_site_id'];?></td>
                         </tr>                          
                    <?php }
                     }
@@ -316,9 +318,9 @@ $page_title = 'OneEMS';
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['devicename'];?></td>
-                        <td><?php echo $value['site_id'];?></td>
-                        <td><?php echo $value['site_name'];?></td>
+                        <td><?php echo $value['deviceName'];?></td>
+                        <td><?php echo $value['csr_site_id'];?></td>
+                        <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
@@ -436,10 +438,6 @@ $page_title = 'OneEMS';
 <!-- fifth row -->
                   <div class="row">
                     <div class="col-md-6">
-                      <label for="inputModel">Model</label>
-                      <input type="model" class="form-control-plaintext" id="inputModel" placeholder="Cisco" readonly>
-                    </div>
-                    <div class="col-md-6">
                       <label for="inputDeviceSeries">Device Series</label>
                       <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" readonly>
                     </div>
@@ -451,7 +449,7 @@ $page_title = 'OneEMS';
                     </div>
                     <div class="col-md-6">
                       <label for="inputDeviceStatus">Status</label>
-                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" placeholder="1" readonly>
+                      <input type="deviceStatus" class="form-control-plaintext" id="inputDeviceStatus" value="Operational" placeholder="Operational" readonly>
                     </div>
                   </div>
 <!-- /fifth row -->
@@ -476,7 +474,7 @@ $page_title = 'OneEMS';
 <!-- seventh row -->
                   <div class="row">
                     <div class="form-group col-md-12">
-                      <label for="inputCSRSiteTechName">Site ID</label>
+                      <label for="inputCSRSiteID">Site ID</label>
                       <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" readonly>
                     </div>
                   </div>
@@ -488,11 +486,11 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputDeviceDateAdded">Device Date Added</label>
-                      <input type="lastPolled" class="form-control-plaintext" id="inputDeviceDateAdded" placeholder="Today()" readonly>
+                      <input type="lastPolled" class="form-control-plaintext" id="inputDeviceDateAdded" value="<?php echo date('m/d/y'); ?>" placeholder="Today()" readonly>
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputUpSince">Device Last Updated</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="dateTimeStamp of Discovery" readonly>
+                      <label for="inputDeviceLastUpdated">Device Last Updated</label>
+                      <input type="upSince" class="form-control-plaintext" id="inputDeviceLastUpdated" value="<?php echo date('m/d/y H:i'); ?>" placeholder="dateTimeStamp of Discovery" readonly>
                     </div>
                   </div>
 <!-- /eighth row -->

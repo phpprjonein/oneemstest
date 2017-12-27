@@ -127,7 +127,7 @@ $(document).ready(function() {
 	// New Tab - 1- 8 col, 8 no exp and 9, 10 region, market
 	if($('#ip-new-table').length > 0){
 		var ipnewtable =  $('#ip-new-table').DataTable( {
-		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{},{},{}],	
+		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{},{},{},{}],	
 		 "processing": true,
 		 "pageLength": 5,
 		 "searching" : false,
@@ -181,17 +181,37 @@ $(document).ready(function() {
     	$('#inputRegion').val($(this).closest('tr').find('td:eq(8)').html());
     	$('#inputMarket').val($(this).closest('tr').find('td:eq(9)').html());
     	$('#inputDevicename').val($(this).closest('tr').find('td:eq(2)').html());
+    	$('#inputSysName').val($(this).closest('tr').find('td:eq(2)').html());
+    	
     	if($(this).closest('tr').find('td:eq(0)').html() == ""){
     		$('#inputDeviceIPaddress').val($(this).closest('tr').find('td:eq(1)').html());
     	}else{
     		$('#inputDeviceIPaddress').val($(this).closest('tr').find('td:eq(0)').html());
     	}
     	$('#inputDeviceSeries').val($(this).closest('tr').find('td:eq(3)').html());
+    	
+    	var deviceseries = $(this).closest('tr').find('td:eq(3)').html();
+    	/*Populate Node Category*/
+    	if(deviceseries.search("Router") >=0 ){
+    		$('#inputNodeCatID').val('Router');
+    	}else if(deviceseries.search("Switch") >=0 ){
+    		$('#inputNodeCatID').val('Switch');
+    	}
+    	/*Populate Node Vendor*/
+    	if(deviceseries.search("Cisco") >=0 ){
+    		$('#inputVendorID').val('Cisco');
+    	}else if(deviceseries.search("Nokia") >=0 ){
+    		$('#inputVendorID').val('Nokia');
+    	}else if(deviceseries.search("Juniper") >=0 ){
+    		$('#inputVendorID').val('Juniper');
+    	}
+    	
+    	
     	$('#inputDeviceOS').val($(this).closest('tr').find('td:eq(4)').html());
     	$('#inputNodeVersion').val($(this).closest('tr').find('td:eq(4)').html());
-    	$('#inputModel').val($(this).closest('tr').find('td:eq(10)').html());
+    	$('#inputUpSince').val($(this).closest('tr').find('td:eq(10)').html());
+    	$('#inputCSRSiteID').val($(this).closest('tr').find('td:eq(11)').html());
     	$('#inputLastPolled').val($(this).closest('tr').find('td:eq(6)').html());
-    	$('#inputDeviceDateAdded').val($(this).closest('tr').find('td:eq(6)').html());
        	$('#addDeviceModal').modal('show');
     	return false;
     });

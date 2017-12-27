@@ -27,8 +27,6 @@ $page_title = 'OneEMS';
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
-
-
 <!-- 
       <div class="form-row align-items-center justify-content-between">
 
@@ -106,16 +104,18 @@ $page_title = 'OneEMS';
 
       <hr />
  -->
+
+
 <!-- IP management table row -->
       <div class="row">
 
 <!-- table pill navigation -->
         <div class="col-1">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link btn-conflicts" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
-            <a class="nav-link btn-missed" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
-            <a class="nav-link btn-new active" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
-            <a class="nav-link btn-ok" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
+            <a class="nav-link btn-conflicts <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
+            <a class="nav-link btn-missed <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
+            <a class="nav-link btn-new <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>active<?php endif;?>" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
+            <a class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
           </div>
         </div>
 <!-- /table pill navigation -->
@@ -127,7 +127,7 @@ $page_title = 'OneEMS';
           <div class="tab-content" id="v-pills-tabContent">
 
 <!-- conflict table content -->
-            <div class="tab-pane fade" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
               <table class="table table-responsive table-sm ip-conflict-table" id="ip-conflict-table">
                 <thead>
                   <tr>
@@ -157,7 +157,7 @@ $page_title = 'OneEMS';
                                 $value['ipvfour'] = $value['deviceIpAddr'];
                             }
                             ?>
-                        <tr> <td><?php echo $value['ipvfour'];?></td>
+                        <tr><td><?php echo $value['ipvfour'];?></td>
                         <td>Discovery</td>
                         <td><?php echo $value['ipvsix'];?></td>
                         <td><?php echo $value['deviceName'];?></td>
@@ -166,10 +166,11 @@ $page_title = 'OneEMS';
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['timepolled'];?></td>_
+                        <td><?php echo $value['timepolled'];?></td>
 						<td></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
-                        <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
+                        <td style="display:none;"><?php echo $value['market'];?></td>
+                        </tr>                          
                    <?php }
                     }
                     ?>
@@ -179,7 +180,7 @@ $page_title = 'OneEMS';
 <!-- /conflict table content -->
 
 <!-- missed table content -->
-            <div class="tab-pane fade" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
+            <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
               <table class="table table-sm table-responsive table-striped ip-missed-table" id="ip-missed-table">
                 <thead>
                   <tr>
@@ -233,7 +234,7 @@ $page_title = 'OneEMS';
 <!-- /missed table content -->
 
 <!-- new table content -->
-            <div class="tab-pane fade show active" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
+            <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
               <table class="table table-responsive table-striped ip-new-table" id="ip-new-table">
                 <thead>
                   <tr>
@@ -283,7 +284,7 @@ $page_title = 'OneEMS';
 <!-- /new table content -->
 
 <!-- ok table content -->
-            <div class="tab-pane fade" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
+            <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
             	<?php $resultset =  load_discovery_dataset('k'); ?>
               <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
                 <thead>

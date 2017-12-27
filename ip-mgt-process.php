@@ -36,12 +36,17 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 }
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Disc-OK' && isset($_POST['id']) && is_numeric(($_POST['id']))){
+    $_SESSION['disc_page_tab'] = 'OK';
     echo discovery_status_update('k', $_POST['id']);
 }
 
 
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Add New'){
+    
+    $_SESSION['disc_page_tab'] = 'New';
+    
+    
     $values_arr = array(
         'region' => $_POST['region'],
         'market' => $_POST['market'],

@@ -112,7 +112,8 @@ $page_title = 'OneEMS';
 <!-- table pill navigation -->
         <div class="col-1">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link btn-conflicts <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
+            
+			<a class="nav-link btn-conflicts <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true" >Conflicts</a>
             <a class="nav-link btn-missed <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
             <a class="nav-link btn-new <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>active<?php endif;?>" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
             <a class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
@@ -351,13 +352,9 @@ $page_title = 'OneEMS';
     </div>
 <!-- /IP management table row -->
 
+<br><br><br><br><br><br><br>
 
-
-
-
-
-
-
+<?php include ('footer.php'); ?> 
 
 <!-- add device modal -->
   <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
@@ -604,6 +601,6 @@ $page_title = 'OneEMS';
     
 <!-- /add device modal -->
 	</div>
-         <?php include ('footer.php'); ?> 
+         
     </body>
 </html>

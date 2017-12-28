@@ -94,7 +94,7 @@ $(document).ready(function() {
 		var ipconflicttable =  $('#ip-conflict-table').DataTable( {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
-		 "pageLength": 5,
+		 "pageLength": 20,
 		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}}], 
 		 "order": [[0, 'asc']],
@@ -110,7 +110,7 @@ $(document).ready(function() {
 		var ipmissedtable =  $('#ip-missed-table').DataTable( {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
-		 "pageLength": 5,
+		 "pageLength": 20,
 		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}}], 
 		 "order": [[0, 'asc']],
@@ -129,7 +129,7 @@ $(document).ready(function() {
 		var ipnewtable =  $('#ip-new-table').DataTable( {
 		"aoColumns": [{},{},{},{},{},{},{},{"bSortable": false},{},{},{},{}],	
 		 "processing": true,
-		 "pageLength": 5,
+		 "pageLength": 20,
 		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7]}}], 
 		   "order": [[0, 'asc']],
@@ -145,7 +145,7 @@ $(document).ready(function() {
 		var ipoktable =  $('#ip-ok-table').DataTable( {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
-		 "pageLength": 5,
+		 "pageLength": 20,
 		 "searching" : false,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]}}], 
 		 "order": [[0, 'asc']],

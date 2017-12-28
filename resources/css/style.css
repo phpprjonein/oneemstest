@@ -347,3 +347,5 @@ margin-top:0;
 }
 #ip-mgt-screen td{min-width:20%;}
 #disc-mgt-screen #ip-new-table td{min-width:12.5%;}
+#addDeviceModal input:focus:-moz-read-only { outline:0px !important; border:0px !important;}
+#addDeviceModal input:focus:read-only {outline:0px !important;border:0px !important;}

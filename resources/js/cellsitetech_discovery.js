@@ -249,7 +249,7 @@ $(document).ready(function() {
         source: function (query, result) {
             $.ajax({
                 url: "ip-mgt-process.php",
-				data: 'type=autocomplete&query=' + query,            
+                data: 'type=autocomplete&category=site-tech-name&query=' + query,            
                 dataType: "json",
                 type: "POST",
                 success: function (data) {
@@ -264,10 +264,56 @@ $(document).ready(function() {
 		$.post( "ip-mgt-process.php", { type: "loadauto", 
 			'csr_tech_name':this.value, 
 		}).done(function( data ) {
-			$("#addDeviceModal #inputCSRSiteTechMgrName").val(data);
+			var obj = jQuery.parseJSON( data );
+			$("#addDeviceModal #inputCSRSiteTechMgrName").val(obj.csr_site_tech_mgr_name);
 		});
     });
 
+    $('#inputCSRSiteTechNameID').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: "ip-mgt-process.php",
+				data: 'type=autocomplete&category=site-tech-name&query=' + query,            
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+					result($.map(data, function (index, value) {
+						return index;
+                    }));
+                }
+            });
+        }
+    });
+    
+    $('#inputCSRSiteName').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: "ip-mgt-process.php",
+				data: 'type=autocomplete&category=site-name&query=' + query + "&region=" + $("#inputRegion").val() +"&market=" + $("#inputMarket").val(),            
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+					result($.map(data, function (index, value) {
+						return index;
+                    }));
+                }
+            });
+        }
+    });
+    
+    
+    
+    $("#addDeviceModal #inputCSRSiteTechNameID").on("change", function(event) {
+		$.post( "ip-mgt-process.php", { type: "loadauto", 
+			'csr_tech_name':this.value, 
+		}).done(function( data ) {
+			var obj = jQuery.parseJSON( data );
+			$("#addDeviceModal #inputCSRSiteTechMgrNameID").val(obj.csr_site_tech_mgr_name);
+			$("#addDeviceModal #inputCSRSiteTechNameIDVal").val(obj.csr_site_tech_id);
+			$("#addDeviceModal #inputCSRSiteTechMgrNameIDVal").val(obj.csr_site_tech_mgr_id);
+		});
+    });
+    
     $('#inputCSRTechID').typeahead({
         source: function (query, result) {
             $.ajax({
@@ -321,8 +367,8 @@ $(document).ready(function() {
 			'csr_site_id':	$('#inputCSRSiteID').val(),
 			'systemname':	$('#inputSysName').val(),
 			'deviceos':	$('#inputDeviceOS').val(),	
-			'csr_site_tech_id':	$('#inputCSRTechID').val(),
-			'csr_site_tech_mgr_id':	$('#inputCSRMgrID').val(),
+			'csr_site_tech_id':	$('#inputCSRSiteTechNameIDVal').val(),
+			'csr_site_tech_mgr_id':	$('#inputCSRSiteTechMgrNameIDVal').val(),
 			'csr_site_name': inputCSRSiteName,		//need dynamic calculation
 			'nodeVersion':	$('#inputDeviceOS').val(),
 			'lastpolled': $('#inputLastPolled').val(),

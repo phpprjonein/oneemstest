@@ -1625,15 +1625,6 @@ function get_csr_site_tech_mgr_id($username){
     return $resultset;
 }
 
-function get_csr_site_names($username){
-    global $db2;
-    $sql = "SELECT distinct(csr_site_name) FROM nodes where csr_site_tech_id = '".$username."' ORDER BY csr_site_name";
-    $db2->query($sql);
-    $resultset['result'] = $db2->resultset();
-    return $resultset;
-}
-
-
 function generic_get_categories(){
     global $db2;
     $sql = "SELECT id,categoryName FROM categories where status = 1 ORDER BY categoryName";
@@ -1686,19 +1677,36 @@ function generic_get_market(){
 
 function generic_get_csr_site_tech_name($query){
     global $db2;
-    $sql = "SELECT distinct(csr_site_tech_name), csr_site_tech_id FROM nodes WHERE csr_site_tech_name LIKE '".$query."%'";
+    $sql = "SELECT distinct(csr_site_tech_name) FROM nodes WHERE csr_site_tech_name LIKE '".$query."%'";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     foreach ($resultset['result'] as $key => $val){
-        $Result[$val['csr_site_tech_id']] = $val["csr_site_tech_name"];
+        $Result[] = $val["csr_site_tech_name"];
     }
     return json_encode($Result);
 }
+
+function get_csr_site_names($region, $market){
+    global $db2;
+    $sql = "SELECT distinct(csr_site_name) FROM nodes where region like '".$region."' AND market like '".$market."' ORDER BY csr_site_name"; 
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result[] = $val["csr_site_name"];
+    }
+    return json_encode($Result);
+}
+
 function get_csr_tech_mgr_name_from_tech_name($csr_tech_name){
     global $db2;
-    $db2->query( "SELECT csr_site_tech_mgr_name FROM nodes WHERE csr_site_tech_name='" .$csr_tech_name ."'");
-    $row = $db2->resultsetCols();
-    return $row[0];
+    $db2->query( "SELECT csr_site_tech_mgr_name, csr_site_tech_mgr_id, csr_site_tech_id  FROM nodes WHERE csr_site_tech_name='" .$csr_tech_name ."'");
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result['csr_site_tech_mgr_id'] = $val['csr_site_tech_mgr_id'];
+        $Result['csr_site_tech_mgr_name'] = $val["csr_site_tech_mgr_name"];
+        $Result['csr_site_tech_id'] = $val["csr_site_tech_id"];
+    }
+    return json_encode($Result);
 }
 function get_csr_tech_mgr_id_from_tech_id($csr_tech_id){
     global $db2;

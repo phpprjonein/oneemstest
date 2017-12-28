@@ -491,7 +491,7 @@ $page_title = 'OneEMS';
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputDeviceLastUpdated">Device Last Updated</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputDeviceLastUpdated" value="<?php echo date('m/d/y H:i'); ?>" placeholder="dateTimeStamp of Discovery" readonly>
+                      <input type="upSince" class="form-control-plaintext" id="inputDeviceLastUpdated" value="<?php echo date('m/d/y H:i:s'); ?>" placeholder="dateTimeStamp of Discovery" readonly>
                     </div>
                   </div>
 <!-- /eighth row -->
@@ -534,13 +534,15 @@ $page_title = 'OneEMS';
                 <div class="col-lg-6 col-md-12 border">
                 <!-- first row -->
                   <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="inputCSRTechID">Tech ID</label>
-					  <input type="inputCSRTechID" class="form-control-plaintext" id="inputCSRTechID" placeholder="Tech ID">
+                  	<div class="form-group col-md-6">
+                      <label for="inputCSRSiteTechNameID">Tech Name</label>
+                      <input type="inputCSRSiteTechNameID" class="form-control-plaintext" id="inputCSRSiteTechNameID" placeholder="Site Tech Name">
+                      <input type="hidden" value="" name="inputCSRSiteTechNameIDVal" id="inputCSRSiteTechNameIDVal">
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputCSRMgrID">Tech Manager ID</label>
-                      <input type="inputCSRMgrID" class="form-control-plaintext" id="inputCSRMgrID" placeholder="Tech Manager ID" readonly>
+                      <label for="inputCSRSiteTechMgrNameID">Tech Mgr Name</label>
+                      <input type="inputCSRSiteTechMgrNameID" class="form-control-plaintext" id="inputCSRSiteTechMgrNameID" placeholder="Site Tech Mgr Name" readonly>
+                      <input type="hidden" value="" name="inputCSRSiteTechMgrNameIDVal" id="inputCSRSiteTechMgrNameIDVal">
                     </div>
                   </div>
 <!-- /first row -->
@@ -558,9 +560,7 @@ $page_title = 'OneEMS';
                     
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteName">Site Name</label>
-                      <select class="form-control site-name-exist" id="inputCSRSiteName">
-                      	<option>Select Site Name</option>
-                      </select>
+                      <input type="inputCSRSiteName" class="form-control-plaintext site-name-exist" id="inputCSRSiteName" placeholder="Site Name">
                       <input type="inputCSRTechID" style="display: none;" class="form-control-plaintext site-name-new" id="inputCSRSiteNameNew" placeholder="Site Name">
                     </div>
                     
@@ -601,8 +601,9 @@ $page_title = 'OneEMS';
 
       </div>
     </div>
+    
 <!-- /add device modal -->
-
+	</div>
          <?php include ('footer.php'); ?> 
     </body>
 </html>

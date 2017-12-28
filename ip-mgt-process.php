@@ -76,7 +76,7 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
         'nodeVersion' => $_POST['nodeVersion'],
         'lastpolled' => date('Y-m-d H:i:s',strtotime($_POST['lastpolled'])),        
         'deviceDateAdded'=>  $_POST['deviceDateAdded'],
-        'deviceLastUpdated'=> date('Y-m-d',strtotime($_POST['deviceLastUpdated'])),
+        'deviceLastUpdated'=> date('Y-m-d H:i:s',strtotime($_POST['deviceLastUpdated'])),
         'upsince' => $_POST['upsince'],
         'switch_name' => $_POST['switch_name']
     );
@@ -93,16 +93,11 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     echo $output;
 }
 
-if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Site Name' && isset($_POST['csrsitetechid'])){
-    $techsitenames = get_csr_site_names($_POST['csrsitetechid']);
-    $output = '';
-    foreach ($techsitenames['result'] as $key => $val){
-        $output .= '<option value="'.$val['csr_site_name'].'">'.$val['csr_site_name'].'</option>';
-    }
-    echo $output;
+if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['region']) && $_POST['market'] && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'site-name'){
+    echo get_csr_site_names($_POST['region'], $_POST['market']);
 }
 
-if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query'])){
+if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'site-tech-name'){
     echo generic_get_csr_site_tech_name($query);
 }
 if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_name'])){

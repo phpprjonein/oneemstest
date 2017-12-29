@@ -112,8 +112,9 @@ $page_title = 'OneEMS';
 <!-- table pill navigation -->
         <div class="col-1">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            
-			<a class="nav-link btn-conflicts <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true" >Conflicts</a>
+            <!--
+			<a class="nav-link btn-conflicts <?php /*if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])): */?>active<?php /*endif; */?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>			
+			-->
             <a class="nav-link btn-missed <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
             <a class="nav-link btn-new <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>active<?php endif;?>" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
             <a class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
@@ -182,7 +183,7 @@ $page_title = 'OneEMS';
 
 <!-- missed table content -->
             <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
-              <table class="table table-sm table-responsive table-striped ip-missed-table" id="ip-missed-table">
+              <table class="table table-sm table-striped ip-missed-table" id="ip-missed-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -236,7 +237,7 @@ $page_title = 'OneEMS';
 
 <!-- new table content -->
             <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
-              <table class="table table-responsive table-striped ip-new-table" id="ip-new-table">
+              <table class="table table-striped ip-new-table" id="ip-new-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -365,7 +366,7 @@ $page_title = 'OneEMS';
 
 <!-- modal header -->
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ADD A DEVICE</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add device</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -406,7 +407,7 @@ $page_title = 'OneEMS';
                     </div>
                     <div class="col-md-6">
                       <label for="inputDeviceIPaddress">Device IP Address</label>
-                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress" placeholder="10.203.144.152" readonly>
+                      <input type="deviceIPaddress" class="form-control-plaintext" id="inputDeviceIPaddress"  readonly>
                     </div>
                   </div>
 <!-- /second row -->
@@ -435,7 +436,7 @@ $page_title = 'OneEMS';
 
 <!-- fifth row -->
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <label for="inputDeviceSeries">Device Series</label>
                       <input type="model" class="form-control-plaintext" id="inputDeviceSeries" placeholder="ASR900" readonly>
                     </div>
@@ -460,7 +461,7 @@ $page_title = 'OneEMS';
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechName">Tech Name</label>
-                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name">
+                      <input type="CSRSiteTechName" class="form-control-plaintext" id="inputCSRSiteTechName" placeholder="Site Tech Name" readonly>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteTechMgrName">Tech Mgr Name</label>
@@ -472,7 +473,7 @@ $page_title = 'OneEMS';
 <!-- seventh row -->
                   <div class="row">
                     <div class="form-group col-md-12">
-                      <label for="inputCSRSiteID">Site ID</label>
+                      <label for="inputCSRSiteID">Site Name</label>
                       <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" readonly>
                     </div>
                   </div>
@@ -501,7 +502,7 @@ $page_title = 'OneEMS';
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputUpSince">Up Since</label>
-                      <input type="upSince" class="form-control-plaintext" id="inputUpSince" placeholder="sysUptime" readonly>
+                      <input type="upSince" class="form-control-plaintext" id="inputUpSince"  readonly>
                     </div>
                     <!--<div class="form-group col-md-4">
                       <label for="inputConnPort">Connection Port</label>
@@ -512,10 +513,12 @@ $page_title = 'OneEMS';
 
 <!-- tenth row -->
                   <div class="row">
+				  <!--
                     <div class="form-group col-md-6">
                       <label for="inputSysName">System Name</label>
                       <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.verizonwireless.com" readonly>
                     </div>
+					-->
                     <div class="form-group col-md-4">
                       <label for="inputDeviceOS">Device OS</label>
                       <input type="deviceOS" class="form-control-plaintext" id="inputDeviceOS" placeholder="auto derive from osypeTable" readonly>
@@ -533,7 +536,7 @@ $page_title = 'OneEMS';
                   <div class="row">
                   	<div class="form-group col-md-6">
                       <label for="inputCSRSiteTechNameID">Tech Name</label>
-                      <input type="inputCSRSiteTechNameID" class="form-control-plaintext" id="inputCSRSiteTechNameID" placeholder="Site Tech Name">
+                      <input type="inputCSRSiteTechNameID" class="form-control" id="inputCSRSiteTechNameID" placeholder="Site Tech Name">
                       <input type="hidden" value="" name="inputCSRSiteTechNameIDVal" id="inputCSRSiteTechNameIDVal">
                     </div>
                     <div class="form-group col-md-6">
@@ -557,10 +560,11 @@ $page_title = 'OneEMS';
                     
                     <div class="form-group col-md-6">
                       <label for="inputCSRSiteName">Site Name</label>
-                      <input type="inputCSRSiteName" class="form-control-plaintext site-name-exist" id="inputCSRSiteName" placeholder="Site Name">
+                      <input type="inputCSRSiteName" class="form-control site-name-exist" id="inputCSRSiteName" placeholder="Site Name">
                       <input type="inputCSRTechID" style="display: none;" class="form-control-plaintext site-name-new" id="inputCSRSiteNameNew" placeholder="Site Name">
                     </div>
                     
+					
                     <div class="col-md-6">
                         <?php 
                         $switch_names = generic_get_csr_switch_names();

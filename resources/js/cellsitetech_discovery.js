@@ -90,7 +90,7 @@ $(document).ready(function() {
 	});
 
 	// Conflict Tab - 1-11 col, 11 no exp and 12, 13 region, market
-	if($('#ip-conflict-table').length > 0){
+	if($('#ip-conflict-table1').length > 0){
 		var ipconflicttable =  $('#ip-conflict-table').DataTable( {
 		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
@@ -177,6 +177,56 @@ $(document).ready(function() {
   		  });
         }
     };
+    
+    $(document).on('click', "#ip-missed-table .missed_update", function(event) {
+    	var myModal = $('#Modal_Missed_Update');
+    	myModal.find('.modal-body #ajax_loader').show();
+    	myModal.modal('show');
+    	
+    	if($(this).closest('tr').find('td:eq(0)').html() == ""){
+    		$('#missedDeviceIPaddress').val($(this).closest('tr').find('td:eq(1)').html());
+    	}else{
+    		$('#missedDeviceIPaddress').val($(this).closest('tr').find('td:eq(0)').html());
+    	}
+    	
+    	
+    	$.post( "api-test.php", { type: "api-ajax"
+		}).done(function( data ) {
+			var obj = jQuery.parseJSON( data );
+			$('#Modal_Missed_Update').modal('hide');
+			if(obj.result == true){
+				myModal.find('.modal-body #response-txt h6').html('Device Ping - Successful.');
+				myModal.find('.modal-body #button-action #ip-ok').show();
+				myModal.find('.modal-body #button-action #ip-ignore').hide();
+				myModal.find('.modal-body #button-action #ip-remove').hide();
+			}else{
+				myModal.find('.modal-body #response-txt h6').html('Device Ping - Failed.');
+				myModal.find('.modal-body #button-action #ip-ok').show();
+				myModal.find('.modal-body #button-action #ip-ignore').show();
+				myModal.find('.modal-body #button-action #ip-remove').show();
+			}
+			myModal.find('.modal-body #ajax_loader').hide();
+			myModal.find('.modal-body #discovery-missed-ip').show();
+			$('#Modal_Missed_Update').modal('show');
+		});
+    	return false;
+    });
+    
+    $(document).on('click', "#discovery-missed-ip #button-action button", function(event) {
+    	var myModal = $('#Modal_Missed_Update');
+    	if(this.value == 'Ignore'){
+    		myModal.modal('hide');
+    	}else{
+    		$.post( "ip-mgt-process.php", { 'calltype': "trigger", 'action' : 'IP-Miss-Process', 'IP-address' : $("#missedDeviceIPaddress").val(), 'process' : this.value })
+  		  	.done(function( data ) {
+  			  alert("Status Updated Successfully");
+  			  location.reload();
+  		  	});
+    	}
+    	return false;
+    });
+    
+    
     $(document).on('click', "#ip-new-table .addDeviceModal", function(event) {	
     	$('#inputRegion').val($(this).closest('tr').find('td:eq(8)').html());
     	$('#inputMarket').val($(this).closest('tr').find('td:eq(9)').html());

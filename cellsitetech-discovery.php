@@ -115,7 +115,7 @@ $page_title = 'OneEMS';
             <!--
 			<a class="nav-link btn-conflicts <?php /*if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])): */?>active<?php /*endif; */?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>			
 			-->
-            <a class="nav-link btn-missed <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
+            <a class="nav-link btn-missed <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed')  || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
             <a class="nav-link btn-new <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>active<?php endif;?>" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
             <a class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
           </div>
@@ -128,8 +128,8 @@ $page_title = 'OneEMS';
 <!-- IP container div -->
           <div class="tab-content" id="v-pills-tabContent">
 
-<!-- conflict table content -->
-            <div class="tab-pane fade <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
+<!-- conflict table content
+            <div class="tab-pane fade <?php /* if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])): */?>show active<?php /* unset($_SESSION['disc_page_tab']); endif; */?>" id="v-pills-conflict" role="tabpanel" aria-labelledby="v-pills-home-tab">
               <table class="table table-responsive table-sm ip-conflict-table" id="ip-conflict-table">
                 <thead>
                   <tr>
@@ -150,6 +150,7 @@ $page_title = 'OneEMS';
                 </thead>
                 <tbody>
                 <?php 
+                    /*
                   	$resultset =  load_discovery_dataset('c'); 
                     if(isset($resultset['result'])){
                         foreach ($resultset['result'] as $key => $value){
@@ -157,32 +158,32 @@ $page_title = 'OneEMS';
                                 $value['ipvsix'] = $value['deviceIpAddr'];
                             }else{
                                 $value['ipvfour'] = $value['deviceIpAddr'];
-                            }
+                            }*/
                             ?>
-                        <tr><td><?php echo $value['ipvfour'];?></td>
+                        <tr><td><?php //echo $value['ipvfour'];?></td>
                         <td>Discovery</td>
-                        <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['deviceName'];?></td>
-                    	<td><?php echo $value['csr_site_id'];?></td>
-                        <td><?php echo $value['csr_site_name'];?></td>
-                        <td><?php echo $value['deviceseries'];?></td>
-                        <td><?php echo $value['deviceos'];?></td>
-                        <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo $value['timepolled'];?></td>
+                        <td><?php //echo $value['ipvsix'];?></td>
+                        <td><?php //echo $value['deviceName'];?></td>
+                    	<td><?php //echo $value['csr_site_id'];?></td>
+                        <td><?php //echo $value['csr_site_name'];?></td>
+                        <td><?php //echo $value['deviceseries'];?></td>
+                        <td><?php //echo $value['deviceos'];?></td>
+                        <td><?php //echo $value['nodeversion'];?></td>
+                        <td><?php //echo $value['timepolled'];?></td>
 						<td></td>
-                        <td style="display:none;"><?php echo $value['region'];?></td>
-                        <td style="display:none;"><?php echo $value['market'];?></td>
+                        <td style="display:none;"><?php //echo $value['region'];?></td>
+                        <td style="display:none;"><?php //echo $value['market'];?></td>
                         </tr>                          
-                   <?php }
-                    }
+                   <?php //}
+                    //}
                     ?>
                 </tbody>
               </table>
             </div>
-<!-- /conflict table content -->
+conflict table content -->
 
 <!-- missed table content -->
-            <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
+			<div class="tab-pane fade <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed') || empty($_SESSION['disc_page_tab'])):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-missed" role="tabpanel" aria-labelledby="v-pills-missed-tab">
               <table class="table table-sm table-striped ip-missed-table" id="ip-missed-table">
                 <thead>
                   <tr>
@@ -224,7 +225,7 @@ $page_title = 'OneEMS';
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
                         <td><?php echo $value['timepolled'];?></td>
-						<td><button type="button" class="btn btn-danger">UPDATE</button></td>
+						<td><button type="button"  data-toggle="modal" class="btn btn-danger missed_update">UPDATE</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
                         <td style="display:none;"><?php echo $value['market'];?></td></tr>                          
                    <?php }
@@ -356,6 +357,62 @@ $page_title = 'OneEMS';
 <br><br><br><br><br><br><br>
 
 <?php include ('footer.php'); ?> 
+
+<!-- Missed Modal -->
+<div class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="Modal_Missed_Update" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    	      <div class="modal-header">
+        <h5 class="modal-title">Remove or Update</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	   <div id="ajax_loader" style="padding-left:45%;"><img src="resources/img/ajax-loader.gif" style="display: none;"></img></div>
+           <div class="row" id="discovery-missed-ip" style="display: none;">
+              <div class="col-auto">
+                <div class="form-check mb-2 mb-sm-0">
+                  <div id="response-txt"><h6></h6></div>	
+                  <div class="btn-group" id="button-action" role="group" aria-label="">
+                  			<input type="hidden" value="" name="missedDeviceIPaddress" id="missedDeviceIPaddress" />
+                  	        <button type="button" class="btn btn-primary" value="OK" id="ip-ok">OK</button>&nbsp;&nbsp;&nbsp;
+        					<button type="button" class="btn btn-primary" value="Ignore" id="ip-ignore">Ignore</button>&nbsp;&nbsp;&nbsp;
+        					<button type="button" class="btn btn-primary" value="Remove" id="ip-remove">Remove From Master</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- add device modal -->
   <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">

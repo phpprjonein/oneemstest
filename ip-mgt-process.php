@@ -40,6 +40,14 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     echo discovery_status_update('k', $_POST['id']);
 }
 
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'IP-Miss-Process' && isset($_POST['IP-address']) && isset($_POST['process'])){
+    $_SESSION['disc_page_tab'] = 'Missed';
+    if($_POST['process'] == 'OK'){
+        process_missed_ip($_POST['IP-address'], 'OK');
+    }elseif ($_POST['process'] == 'Remove'){
+        process_missed_ip($_POST['IP-address'], 'Remove');
+    }
+}
 
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'Add New'){

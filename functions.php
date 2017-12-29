@@ -1714,3 +1714,19 @@ function get_csr_tech_mgr_id_from_tech_id($csr_tech_id){
     $row = $db2->resultsetCols();
     return $row[0];
 }
+function process_missed_ip($ip_address, $process){
+    global $db2;
+    if($process == 'OK' && !empty($ip_address)){
+        $sql = "UPDATE `discoveryres` SET class = 'k' WHERE deviceIpAddr = '".$ip_address."'";
+        $db2->query($sql);
+        $db2->execute();
+    }elseif ($process == 'Remove' && !empty($ip_address)){
+       echo $sql = "DELETE FROM discoveryres WHERE deviceIpAddr = '".$ip_address."'";
+        $db2->query($sql);
+        $db2->execute();
+        echo $sql = "DELETE FROM nodes WHERE deviceIpAddr = '".$ip_address."'";
+        $db2->query($sql);
+        $db2->execute();
+    }
+    return success;
+}

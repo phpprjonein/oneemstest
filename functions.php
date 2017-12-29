@@ -1721,10 +1721,10 @@ function process_missed_ip($ip_address, $process){
         $db2->query($sql);
         $db2->execute();
     }elseif ($process == 'Remove' && !empty($ip_address)){
-       echo $sql = "DELETE FROM discoveryres WHERE deviceIpAddr = '".$ip_address."'";
+        $sql = "UPDATE `discoveryres` SET class = 'd' WHERE deviceIpAddr = '".$ip_address."'";
         $db2->query($sql);
         $db2->execute();
-        echo $sql = "DELETE FROM nodes WHERE deviceIpAddr = '".$ip_address."'";
+        $sql = "DELETE FROM nodes WHERE deviceIpAddr = '".$ip_address."'";
         $db2->query($sql);
         $db2->execute();
     }

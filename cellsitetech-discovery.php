@@ -390,6 +390,7 @@ conflict table content -->
         </button>
       </div>
       <div class="modal-body">
+      		  <div id="status" style="display: none;" class="alert"></div>
       	   <div id="ajax_loader" style="padding-left:45%;"><img src="resources/img/ajax-loader.gif" style="display: none;"></img></div>
            <div class="row" id="discovery-missed-ip" style="display: none;">
               <div class="col-auto">
@@ -432,6 +433,9 @@ conflict table content -->
 
 <!-- add device form -->
         <div class="modal-body">
+        <div id="status" style="display: none;" class="alert">
+		</div>
+		
           <form>
               <div class="row">
 

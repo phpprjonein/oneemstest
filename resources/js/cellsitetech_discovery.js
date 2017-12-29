@@ -213,14 +213,24 @@ $(document).ready(function() {
     });
     
     $(document).on('click', "#discovery-missed-ip #button-action button", function(event) {
+    	$("#Modal_Missed_Update #button-action button").attr("disabled", "disabled");
     	var myModal = $('#Modal_Missed_Update');
     	if(this.value == 'Ignore'){
     		myModal.modal('hide');
     	}else{
     		$.post( "ip-mgt-process.php", { 'calltype': "trigger", 'action' : 'IP-Miss-Process', 'IP-address' : $("#missedDeviceIPaddress").val(), 'process' : this.value })
   		  	.done(function( data ) {
-  			  alert("Status Updated Successfully");
-  			  location.reload();
+  				$('#Modal_Missed_Update #status').css("opacity","");
+				$('#Modal_Missed_Update #status').html("<strong>Success!</strong> Status Updated Successfully<br/>");
+				$('#Modal_Missed_Update #status').addClass('alert-success');
+				$('#Modal_Missed_Update #status').show();
+			    window.setTimeout(function() {
+			        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+			            $(this).hide(); 
+			            $("#Modal_Missed_Update #button-action button").removeAttr("disabled");  
+			            location.reload();
+			        });
+			    }, 4000);
   		  	});
     	}
     	return false;
@@ -402,9 +412,32 @@ $(document).ready(function() {
 			$('#inputCSRSiteName').html(data);	
 		});
     });
-    
+
     
 	$("#discovery-new-ip #add-new-ip").click(function(){
+		var req_err = false;
+		$('#addDeviceModal #status').html('');
+		$('#addDeviceModal #status').css("opacity","");
+		
+		if($('#inputCSRSiteTechNameID').val() == ""){
+			$('#addDeviceModal #status').html("<strong>Error!</strong> Tech Name field is required.<br/>");
+			$('#addDeviceModal #status').addClass('alert-danger');
+			req_err = true;
+		}
+		if(($('#inputCSRSiteName').val() == "") && ($('#inputCSRSiteNameNew').val() == "")){
+			$('#addDeviceModal #status').append("<strong>Error!</strong> Site Name field is required.<br/>");
+			$('#addDeviceModal #status').addClass('alert-danger');
+			req_err = true;
+		}
+		if(req_err){ 
+			$('#addDeviceModal #status').show();
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
 		var selected = $("#addDeviceModal #tech-details input[name='added-details']:checked").val();
 		if(selected == 1){
 			var inputCSRSiteName = $('#inputCSRSiteName').val();
@@ -438,8 +471,15 @@ $(document).ready(function() {
 			'action' : 'Add New'
 			
 		}).done(function( data ) {
-			  alert("New Device Added Successfully");
-			  location.reload();
+			$('#addDeviceModal #status').html("<strong>Success!</strong> Device Added Successfully<br/>");
+			$('#addDeviceModal #status').addClass('alert-success');
+			$('#addDeviceModal #status').show();
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		            location.reload();
+		        });
+		    }, 4000);	
 		  });	
 	});
 });

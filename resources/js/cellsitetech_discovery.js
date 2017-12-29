@@ -293,7 +293,7 @@ $(document).ready(function() {
                 dataType: "json",
                 type: "POST",
                 success: function (data) {
-					result($.map(data, function (index, value) {
+					result($.map(data, function (index, value) {						
 						return index;
                     }));
                 }
@@ -301,9 +301,15 @@ $(document).ready(function() {
         }
     });
     
-    
-    
+   $("#addDeviceModal #inputCSRSiteName").on("change", function(event) {
+	
+		$("#addDeviceModal #inputCSRSiteID").val(this.value);
+	
+	});
+	
+	
     $("#addDeviceModal #inputCSRSiteTechNameID").on("change", function(event) {
+		$("#addDeviceModal #inputCSRSiteTechName").val(this.value);		
 		$.post( "ip-mgt-process.php", { type: "loadauto", 
 			'csr_tech_name':this.value, 
 		}).done(function( data ) {
@@ -311,6 +317,9 @@ $(document).ready(function() {
 			$("#addDeviceModal #inputCSRSiteTechMgrNameID").val(obj.csr_site_tech_mgr_name);
 			$("#addDeviceModal #inputCSRSiteTechNameIDVal").val(obj.csr_site_tech_id);
 			$("#addDeviceModal #inputCSRSiteTechMgrNameIDVal").val(obj.csr_site_tech_mgr_id);
+			$("#addDeviceModal #inputCSRSiteTechMgrName").val(obj.csr_site_tech_mgr_name);
+			
+			
 		});
     });
     

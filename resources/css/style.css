@@ -349,3 +349,32 @@ margin-top:0;
 #disc-mgt-screen #ip-new-table td{min-width:12.5%;}
 #addDeviceModal input:focus:-moz-read-only { outline:0px !important; border:0px !important;}
 #addDeviceModal input:focus:read-only {outline:0px !important;border:0px !important;}
+
+.form-check-input {
+	margin-left: 0;
+	margin-top: -0.70rem;
+	margin-bottom: 0;
+}
+
+.modal-body .form-control-plaintext {
+	color: black;
+	opacity: 1;
+	line-height:1;
+  width: 100%;
+}
+.modal-body label {
+	font-weight: 600;
+	margin-bottom: 0.1875rem;
+	/* fix for Google Chrome wrapping input field labels */
+	white-space: nowrap;
+}
+.modal-body .row {
+	margin-bottom: 0.25rem;
+}
+.modal-body .form-group {
+	margin-bottom:0.1rem;
+}
+.modal-body hr {
+	margin-top: 0.1rem !important;
+	margin-bottom: 0.1rem !important;
+}

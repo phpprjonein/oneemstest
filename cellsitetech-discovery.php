@@ -354,8 +354,6 @@ conflict table content -->
     </div>
 <!-- /IP management table row -->
 
-<br><br><br><br><br><br><br>
-
 <?php include ('footer.php'); ?> 
 
 <!-- Missed Modal -->

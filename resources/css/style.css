@@ -36,17 +36,6 @@
 	font-weight: 500;
 }
 
-/* Footer */	
-/*.footer {
-	height: 20px;
-	color: #333333;
-	font-size: x-small;
-	background-color: #FFFFFF;
-	text-align: center;
-	margin-top: -2px;
-	padding-top: 3px;
-}
-*/
 /* Login Page */
 .login-page {
 	width: 360px;
@@ -107,6 +96,7 @@
 body {
 	background: #ffffff;
 	font-family: Arial, sans-serif;
+	min-height: 100vh;
 }
 .box-title {
 	text-align: left;
@@ -216,15 +206,6 @@ overflow-y:scroll;
 .table-fixed tbody td, .table-fixed thead > tr> th {
   float: left;
   border-bottom-width: 0;
-}
-#footer {
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  /*background-color: #efefef;*/
-  text-align: center;
 }
 
 .router_search_box {
@@ -378,3 +359,8 @@ margin-top:0;
 	margin-top: 0.1rem !important;
 	margin-bottom: 0.1rem !important;
 }
+footer {
+  position: absolute;
+  bottom: 0;
+}
+footer .panel-footer{text-align: center;}

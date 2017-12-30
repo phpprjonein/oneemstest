@@ -1564,7 +1564,11 @@ function insert_ip_allocation($values){
 }
 function load_discovery_dataset($class = 'C'){
     global $db2;
-    $sql = "SELECT * FROM discoveryres where class is NULL or class ='".strtolower($class)."' ORDER BY id";
+    $sqlm = "select GROUP_CONCAT(market) as market from nodes where csr_site_tech_id like '".$_SESSION['username']."'";
+    $db2->query($sqlm);
+    $mrecordset = $db2->resultset();
+    $market = $mrecordset[0]['market'];
+    $sql = "SELECT * FROM discoveryres where class ='".strtolower($class)."' AND market in ('".$market."') ORDER BY id";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

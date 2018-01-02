@@ -223,7 +223,7 @@ $(document).ready(function() {
   $(".map_region").click(function(marketid) {
     $("#marketname").val($(this).data('market')); 
     $("#market-region").text($(this).data('market')); 
-    $(location).attr("href","sheet1_switchtech_user_list.php?markets=" + $(this).data('market'))
+    $(location).attr("href","switchtech-dashboard.php?markets=" + $(this).data('market'))
     
   });
 

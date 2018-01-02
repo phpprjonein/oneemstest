@@ -43,7 +43,7 @@ $(document).ready(function() {
         }           
       });
  
-      $('#swt_user_devices').on( 'click', 'tr',function(){
+      $('#swt_user_devices').on( 'click', 'tbody tr',function(){
           $(this).toggleClass('drag_selected');
 
           $('tr.drag_selected').draggable({

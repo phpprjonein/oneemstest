@@ -42,6 +42,7 @@ user_session_check();
                 <!-- Main content -->
                 <section class="content"> 
                   <div class="col-md-12">
+                  <div id="main-status" style="display: none;" class="alert"></div>
                       <div class="panel"> 
                           <div class="panel-info">
                             <!-- Page title -->
@@ -61,9 +62,9 @@ user_session_check();
 		<div id="ajax_loader"><img src="resources/img/ajax-loader.gif"></img></div>
 	</div>	
     <div class="form-row align-items-center justify-content-center" id="ip-mgt-utils" style="display: none;">
-
 <!-- region selection -->
-      <div class="col-auto">
+      <div class="col-auto"> 
+      
         <div class="btn-group" id="ip-allocation-region">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT REGION
@@ -92,7 +93,7 @@ user_session_check();
         <div class="form-check mb-2 mb-sm-0">
           <div class="btn-group" role="group" aria-label="">
             <!--<button type="button" class="btn btn-danger">ADD A SUBNET</button>-->
-            <button type="button" class="btn" id="add-a-subnet" data-toggle="modal" data-target="#exampleModalIPM">ADD A SUBNET</button>
+            <button type="button" class="btn" id="add-a-subnet" data-toggle="modal">ADD A SUBNET</button>
           </div>
         </div>
       </div>
@@ -302,9 +303,7 @@ table pill navigation -->
       <input type="hidden" name="selected_region" id="selected_region" value="">
       <input type="hidden" name="selected_market" id="selected_market" value="">
         <!-- add subnet mask form -->
-<div class="alert alert-danger" style="display:none;">
-  Market, Subnet and Mask fields are required.
-</div>
+	<div id="status" style="display: none;" class="alert"></div>
 <div class="alert alert-success" style="display:none;">
   IP details added successfully.
 </div>

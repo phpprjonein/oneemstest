@@ -159,11 +159,53 @@ $(document).ready(function() {
     		$("#ip-allocation-market .btn").html($(this).text());
     		$("#exampleModalIPM #selected_market").val($(this).text());
     	});
+    	
+    	$("#ip-mgt-screen #add-a-subnet").click(function(){
+    		$('#ip-mgt-screen #main-status').html('');
+    		$('#ip-mgt-screen #main-status').css("opacity","");
+    		if($.trim($("#ip-allocation-region .btn").html()) == "SELECT REGION"){
+    			$('#ip-mgt-screen #main-status').html("<strong>Error!</strong> Select Region field is required.<br/>");
+    			$('#ip-mgt-screen #main-status').addClass('alert-danger');
+    			$('#ip-mgt-screen #main-status').show();
+    		    window.setTimeout(function() {
+    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
+        	var myModal = $('#exampleModalIPM');
+        	myModal.modal('show');
+    	});	
+    		
     	$("#exampleModalIPM .modal-footer button").click(function(){
-    		if($("#ip-allocation-market .btn").html() == "" || $("#exampleModalIPM #inputSubnet").val() == "" || $("#exampleModalIPM #inputMask").val() == ""){
-    			$("#exampleModalIPM .alert-danger").show();
-    		}else{
-    			$("#exampleModalIPM .alert-danger").hide();
+    		var req_err = false;
+    		$('#exampleModalIPM #status').html('');
+    		$('#exampleModalIPM #status').css("opacity","");
+    		if($.trim($("#exampleModalIPM  #ip-allocation-market .btn").html()) == "SELECT MARKET"){
+    			$('#exampleModalIPM #status').html("<strong>Error!</strong> Market field is required.<br/>");
+    			$('#exampleModalIPM #status').addClass('alert-danger');
+    			req_err = true;
+    		}
+    		if($('#exampleModalIPM #inputSubnet').val() == ""){
+    			$('#exampleModalIPM #status').append("<strong>Error!</strong> Subnet field is required.<br/>");
+    			$('#exampleModalIPM #status').addClass('alert-danger');
+    			req_err = true;
+    		}
+    		if($('#exampleModalIPM #inputMask').val() == ""){
+    			$('#exampleModalIPM #status').append("<strong>Error!</strong> Mask field is required.<br/>");
+    			$('#exampleModalIPM #status').addClass('alert-danger');
+    			req_err = true;
+    		}
+    		if(req_err){ 
+    			$('#exampleModalIPM #status').show();
+    		    window.setTimeout(function() {
+    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
     			if($(this).text() == 'COMPUTE'){
     				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
     	    		  .done(function( data ) {
@@ -186,8 +228,8 @@ $(document).ready(function() {
   	    		  });
     			}
     			
-    		}
-    	});
+    		});
+    	
     	
     	$('#exampleModalIPM').on('hidden.bs.modal', function () {
     		 location.reload();

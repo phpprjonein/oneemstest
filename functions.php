@@ -1422,8 +1422,8 @@ function getipvfour_details($range){
     $parts[0] = implode('.',$ip_exp_add_arr);
     $exponent = 32-$parts[1].'-';
     $count = pow(2,$exponent);
-    $start = ip2long($parts[0]);
-    $end = $start+$count;
+    $start = ip2long($parts[0]) + 1;
+    $end = $start+($count-2);
     return array_map('long2ip', range($start, ($end-1)) );
 }
 function getipvsix_details($range){

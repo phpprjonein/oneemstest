@@ -190,8 +190,6 @@ conflict table content -->
                     <th scope="col">IPv4 Address</th>
                     <th scope="col">IPv6 Address</th>
                     <th scope="col">Device Name</th>
-                    <th scope="col">ICMP</th>
-                    <th scope="col">SNMP</th>
                     <th scope="col">Site ID</th>
                     <th scope="col">Site Name</th>
                     <th scope="col">Device Series</th>
@@ -217,8 +215,6 @@ conflict table content -->
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
                         <td><?php echo $value['deviceName'];?></td>
-                        <td>P</td>
-                    	<td>F</td>
                     	<td><?php echo $value['csr_site_id'];?></td>
                         <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>

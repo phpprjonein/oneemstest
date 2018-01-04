@@ -60,12 +60,12 @@ $(document).ready(function() {
 		
 		if($(this).text() != 'SELECT REGION'){
 			ipconflicttable.columns(11).search('^'+$(this).text()+'$', true, false).draw();
-			ipmissedtable.columns(12).search('^'+$(this).text()+'$', true, false).draw();
+			ipmissedtable.columns(10).search('^'+$(this).text()+'$', true, false).draw();
 			ipnewtable.columns(8).search('^'+$(this).text()+'$', true, false).draw();
 			ipoktable.columns(10).search('^'+$(this).text()+'$', true, false).draw();
 		}else{
 			ipconflicttable.columns(11).search('').draw();
-			ipmissedtable.columns(12).search('').draw();
+			ipmissedtable.columns(10).search('').draw();
 			ipnewtable.columns(8).search('').draw();
 			ipoktable.columns(10).search('').draw();
 		}
@@ -78,12 +78,12 @@ $(document).ready(function() {
 		
 		if($(this).text() != 'SELECT MARKET'){
 			ipconflicttable.columns(12).search('^'+$(this).text()+'$', true, false).draw();
-			ipmissedtable.columns(13).search('^'+$(this).text()+'$', true, false).draw();
+			ipmissedtable.columns(11).search('^'+$(this).text()+'$', true, false).draw();
 			ipnewtable.columns(9).search('^'+$(this).text()+'$', true, false).draw();
 			ipoktable.columns(11).search('^'+$(this).text()+'$', true, false).draw();
 		}else{
 			ipconflicttable.columns(12).search('').draw();
-			ipmissedtable.columns(13).search('').draw();
+			ipmissedtable.columns(11).search('').draw();
 			ipnewtable.columns(9).search('').draw();
 			ipoktable.columns(11).search('').draw();
 		}
@@ -108,7 +108,7 @@ $(document).ready(function() {
 	// Missed Tab - 1-11 col, 11 no exp and 12, 13 region, market
 	if($('#ip-missed-table').length > 0){
 		var ipmissedtable =  $('#ip-missed-table').DataTable( {
-		"aoColumns": [{},{},{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
+		"aoColumns": [{},{},{},{},{},{},{},{},{},{"bSortable": false},{"bVisible": false},{"bVisible": false}],	
 		 "processing": true,
 		 "pageLength": 20,
 		 "searching" : false,

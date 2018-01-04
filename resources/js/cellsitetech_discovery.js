@@ -158,7 +158,7 @@ $(document).ready(function() {
 	}	
 	
 	//Action JS
-	$("#ip-ok-table #inlineCheckbox1").click(function(){
+	$(document).on('click', '#ip-ok-table #inlineCheckbox1', function(event) {
 		$.post( "ip-mgt-process.php", { calltype: "trigger", 'id':$(this).val(), 'action' : 'Disc-OK' })
 		  .done(function( data ) {
 			  alert("Status Updated Successfully");

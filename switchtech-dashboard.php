@@ -48,7 +48,7 @@
 <?php include("includes.php");  ?>
 <script src="resources/js/switchtech_user_list.js?t=<?php echo date('his'); ?>"></script>
 </head>  
-<body class="hold-transition skin-blue sidebar-mini ownfont">
+<body>
 <div class="container-fluid">
   
     <?php 

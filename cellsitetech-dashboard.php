@@ -23,7 +23,7 @@ user_session_check();
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
  </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
+     <body>
         <!-- Modal HTML -->
         
         <div id="mycmdModal" class="modal fade">
@@ -50,7 +50,7 @@ user_session_check();
 						  -->
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">
-                            <table id="example" class="display" cellspacing="0" width="100%">
+                            <table id="example"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
                                   <th class="noExport">Health Check</th>

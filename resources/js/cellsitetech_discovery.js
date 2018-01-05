@@ -270,7 +270,6 @@ $(document).ready(function() {
     	$('#inputDeviceOS').val($(this).closest('tr').find('td:eq(4)').html());
     	$('#inputNodeVersion').val($(this).closest('tr').find('td:eq(4)').html());
     	$('#inputUpSince').val($(this).closest('tr').find('td:eq(10)').html());
-    	$('#inputCSRSiteIDVal').val($(this).closest('tr').find('td:eq(11)').html());
     	$('#inputLastPolled').val($(this).closest('tr').find('td:eq(6)').html());
        	$('#addDeviceModal').modal('show');
     	return false;
@@ -454,7 +453,7 @@ $(document).ready(function() {
 			'status':1,
 			'csr_site_tech_name':	$('#inputCSRSiteTechName').val(),
 			'csr_site_tech_mgr_name':	$('#inputCSRSiteTechMgrName').val(),
-			'csr_site_id':	$('#inputCSRSiteIDVal').val(),
+			'csr_site_id':	$('#inputCSRSiteID').val(),
 			'systemname':	$('#inputSysName').val(),
 			'deviceos':	$('#inputDeviceOS').val(),	
 			'csr_site_tech_id':	$('#inputCSRSiteTechNameIDVal').val(),

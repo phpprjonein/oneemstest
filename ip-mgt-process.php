@@ -62,10 +62,6 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     foreach ($vendors['result'] as $key => $val){
         $vendors_arr[$val['vendorName']] = $val['id'];
     }
-    $_POST['csr_site_id'] = get_csr_site_id_from_csr_site_name($_POST['csr_site_name']);
-    if(!is_numeric($_POST['csr_site_id'])){
-        $_POST['csr_site_id'] = 0;
-    }
     $values_arr = array(
         'region' => $_POST['region'],
         'market' => $_POST['market'],

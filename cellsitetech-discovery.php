@@ -530,6 +530,7 @@ conflict table content -->
                     <div class="form-group col-md-12">
                       <label for="inputCSRSiteID">Site Name</label>
                       <input type="CSRSiteID" class="form-control-plaintext" id="inputCSRSiteID" placeholder="Site ID" readonly>
+                      <input type="hidden" class="form-control-plaintext" id="inputCSRSiteIDVal" placeholder="Site ID" readonly>
                     </div>
                   </div>
 <!-- /seventh row -->

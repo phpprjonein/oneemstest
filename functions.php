@@ -1718,6 +1718,12 @@ function get_csr_tech_mgr_id_from_tech_id($csr_tech_id){
     $row = $db2->resultsetCols();
     return $row[0];
 }
+function get_csr_site_id_from_csr_site_name($csr_site_name){
+    global $db2;
+    $db2->query( "SELECT csr_site_id FROM nodes WHERE csr_site_name='" .$csr_site_name ."'");
+    $row = $db2->resultsetCols();
+    return $row[0];
+}
 function process_missed_ip($ip_address, $process){
     global $db2;
     if($process == 'OK' && !empty($ip_address)){

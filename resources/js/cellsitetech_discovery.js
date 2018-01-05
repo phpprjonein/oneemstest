@@ -362,9 +362,7 @@ $(document).ready(function() {
     });
     
    $("#addDeviceModal #inputCSRSiteName").on("change", function(event) {
-	
-		$("#addDeviceModal #inputCSRSiteID").val(this.value);
-	
+	   $("#addDeviceModal #inputCSRSiteID").val(this.value);
 	});
 	
 	

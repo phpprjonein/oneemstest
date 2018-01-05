@@ -268,7 +268,7 @@ conflict table content -->
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
                         <td><?php echo $value['nodeversion'];?></td>
-                        <td><?php echo !empty($value['lastpolled']) ? date('m/d/y h:i:s', strtotime($value['lastpolled'])) : '';?></td>
+                        <td><?php echo (!empty($value['lastpolled']) && $value['lastpolled'] != 'None') ? date('m/d/y h:i:s', strtotime($value['lastpolled'])) : date('m/d/y h:i:s');?></td>
                     	<td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
                         <td style="display:none;"><?php echo $value['market'];?></td>

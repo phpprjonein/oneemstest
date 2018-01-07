@@ -23,7 +23,7 @@ $(document).ready(function() {
                 "defaultContent": ''},
             { "data": "csr_site_id" },
             { "data": "csr_site_name" },
-            { "data": "deviceName" },
+            { "data": "devicename" },
             { "data": "market" },
             { "data": "deviceseries" },
             { "data": "nodeVersion" },

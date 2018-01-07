@@ -161,7 +161,7 @@ function get_device_list_from_nodes($user_id) {
     $pages->paginate();
     if ($user_id > 0) {
         $sql_count = "SELECT COUNT(*) ";
-        $sql_select = "SELECT n.id, n.custom_Location, n.deviceName, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, n.severity, n.deviceseries ";
+        $sql_select = "SELECT n.id, n.custom_Location, n.devicename, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, n.severity, n.deviceseries ";
         
         $sql_condition = " FROM userdevices ud
          JOIN nodes n on ud.nodeid = n.id
@@ -173,7 +173,7 @@ function get_device_list_from_nodes($user_id) {
         if ( $_SESSION['search_term'] != ''){
             $search_term = $_SESSION['search_term'];
             
-            $sql_search_cond = " AND ( n.deviceName LIKE '%" . $search_term . "%' ";
+            $sql_search_cond = " AND ( n.devicename LIKE '%" . $search_term . "%' ";
             $sql_search_cond .= " OR n.deviceIpAddr LIKE '%" . $search_term . "%' ";
             $sql_search_cond .= " OR n.custom_Location LIKE '%" . $search_term . "%' ";
             
@@ -226,7 +226,7 @@ function get_device_list_from_nodes_datatable($userid) {
         'n.id',
         'n.csr_site_id',
         'n.csr_site_name',
-        'n.deviceName',
+        'n.devicename',
         'n.market',
         'n.deviceseries',
         'n.nodeVersion',
@@ -243,7 +243,7 @@ function get_device_list_from_nodes_datatable($userid) {
        WHERE ud.userid = " . $userid ;
     if ($search) {
         $sql_condition .=  " AND ( ";
-        $sql_condition .=  " n.deviceName LIKE '%". $search ."%'";
+        $sql_condition .=  " n.devicename LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.csr_site_id  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.csr_site_name  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.market  LIKE '%". $search ."%'";
@@ -515,7 +515,7 @@ function getSwitchDevicesList($userid){
     
     global $db2;
     
-    $sql = "SELECT n.id, n.deviceName, n.custom_Location, n.submarket  FROM userdevices ud
+    $sql = "SELECT n.id, n.devicename, n.custom_Location, n.submarket  FROM userdevices ud
           JOIN nodes n ON n.id = ud.nodeid
           WHERE ud.userid = $userid AND n.submarket != ''
           ORDER BY ud.nodeid
@@ -535,7 +535,7 @@ function getSwitchDevicesListByCity($userid, $city){
     global $db2, $pages;
     
     $sql_count = " SELECT count(*) ";
-    $sql_select = " SELECT n.id, n.deviceName, n.custom_Location, n.submarket ";
+    $sql_select = " SELECT n.id, n.devicename, n.custom_Location, n.submarket ";
     
     $sql_condition = " FROM userdevices ud
                     JOIN nodes n ON n.id = ud.nodeid
@@ -566,7 +566,7 @@ function get_switchlist_for_market_subregion($userid, $market, $subregion){
     $pages->paginate();
     
     $sql_count = " SELECT count(*) ";
-    $sql_select = " SELECT n.id, n.deviceName, n.custom_Location, n.submarket, n.market as 'subregion' ";
+    $sql_select = " SELECT n.id, n.devicename, n.custom_Location, n.submarket, n.market as 'subregion' ";
     
     $sql_join = " FROM userdevices ud
                     JOIN nodes n ON n.id = ud.nodeid ";
@@ -608,7 +608,7 @@ function get_switchlist_for_market_subregion($userid, $market, $subregion){
 function getSWroutersDetails($deviceid, $userid) {
     global $db2;
     
-    $sql_select = " SELECT n2.id,n2.deviceName,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
+    $sql_select = " SELECT n2.id,n2.devicename,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
     $sql_condition = " FROM nodes n
                     JOIN userdevices ud ON ud.nodeid = n.id
                     JOIN connectingdevices cd ON cd.swname = n.switch_name
@@ -719,7 +719,7 @@ function insert_usrfavritedev($data){
 
 function usrfavritecondev_display($userid,$listid){
     $db2 = new db2();
-    $sql_select = " SELECT ud.id, ud.listid, ud.listname, ud.nodeid, n.deviceName ";
+    $sql_select = " SELECT ud.id, ud.listid, ud.listname, ud.nodeid, n.devicename ";
     $sql_condition = "
   FROM
   userdevices ud
@@ -745,7 +745,7 @@ function user_mylist_devieslist($userid,$listid){
     $pages->paginate();
     if ($userid > 0) {
         $sql_count = "SELECT COUNT(*) ";
-        $sql_select = "SELECT n.id, n.custom_Location, n.deviceName, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, ud.listname, n.severity, n.deviceseries ";
+        $sql_select = "SELECT n.id, n.custom_Location, n.devicename, n.deviceIpAddr, n.model, v.vendorName, n.investigationstate, n.status, n.upsince, n.nodeVersion, ud.listname, n.severity, n.deviceseries ";
         
         $sql_condition = " FROM userdevices ud
          JOIN nodes n on ud.nodeid = n.id
@@ -812,7 +812,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
         'n.id',
         'n.csr_site_id',
         'n.csr_site_name',
-        'n.deviceName',
+        'n.devicename',
         'n.market',
         'n.deviceseries',
         'n.nodeVersion',
@@ -828,7 +828,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
        WHERE ud.userid = " . $userid ." and ud.listid = " . $listid ;
     if ($search) {
         $sql_condition .=  " AND ( ";
-        $sql_condition .=  " n.deviceName LIKE '%". $search ."%'";
+        $sql_condition .=  " n.devicename LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.csr_site_id LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.csr_site_name  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.market  LIKE '%". $search ."%'";
@@ -1075,7 +1075,7 @@ function getSWroutersDetails_all($swich_devince_name, $search_term='', $userid, 
     
     
     $sql_count = " SELECT count(*) ";
-    $sql_select = " SELECT n2.id,n2.deviceName,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
+    $sql_select = " SELECT n2.id,n2.devicename,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
     $sql_condition = " FROM nodes n2
                       join userdevices ud on ud.nodeid = n2.id
                       join users u on u.id = ud.userid
@@ -1083,7 +1083,7 @@ function getSWroutersDetails_all($swich_devince_name, $search_term='', $userid, 
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n2.deviceName LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n2.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.market LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.submarket LIKE '%". addslashes($search_term) ."%' " ;
@@ -1123,7 +1123,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     $columns = array(
         'n.id',
         'n.id',
-        'n.deviceName',
+        'n.devicename',
         'n.deviceIpAddr',
         'n.csr_site_name',
         'n.csr_site_id'
@@ -1150,7 +1150,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n.deviceName LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
@@ -1259,13 +1259,13 @@ function getmarketroutersDetails_all($market, $search_term, $page_limit) {
     
     
     $sql_count = " SELECT count(*) ";
-    $sql_select = " SELECT n2.id,n2.deviceName,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
+    $sql_select = " SELECT n2.id,n2.devicename,n2.deviceIpAddr, n2.custom_Location, n2.connPort, n2.model, n2.systemname ";
     $sql_condition = " FROM nodes n2
                         WHERE trim(lower(REPLACE(n2.market,' ',''))) ='$market'";
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n2.deviceName LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n2.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.market LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n2.submarket LIKE '%". addslashes($search_term) ."%' " ;
@@ -1328,7 +1328,7 @@ function get_discovery_list_datatable($userid) {
         'n.ping',
         'n.deviceid',
         'n.deviceos',
-        'n.nodeversion',
+        'n.nodeVersion',
         'n.deviceseries',
         'n.processed'
     );
@@ -1344,7 +1344,7 @@ function get_discovery_list_datatable($userid) {
         $sql_condition .=  " OR n.ping  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceid  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceos  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.nodeversion  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.nodeVersion  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceseries  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.processed  LIKE '%". $search ."%'";
         $sql_condition .=  " ) ";
@@ -1517,7 +1517,7 @@ function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	  global $db2;
 	 // echo 'value of region'.$region.'market'.$market.'subnetmask'.$subnetmask.'<br>';	   
 	  $ipvfour_details = getipvfour_details($subnetmask);	
-	$sql_select = "SELECT n.id, deviceIpAddr, n.deviceName, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeversion,n.lastpolled "; 
+	$sql_select = "SELECT n.id, deviceIpAddr, n.devicename, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeVersion,n.lastpolled "; 
 	$sql_condition = " FROM  nodes n
                      WHERE n.market = '$market' and n.region = '$region'
                     ";

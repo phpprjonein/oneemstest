@@ -120,7 +120,7 @@ $pages->paginate();
                                   <tbody>
                                     <tr>
                                   <td width="10%"> <?php echo $device['severity']; ?></td>
-                                      <td width="20%"> <?php echo $device['deviceName'];  ?></td>
+                                      <td width="20%"> <?php echo $device['devicename'];  ?></td>
                                       <td width="10%"><?php echo $device['deviceIpAddr']; ?></td>
                                       <td width="10%"><?php echo $device['status'] == 1 ?  'Reachable' : 'Not Reachable'; ?></td>
                                       <td width="10%"><?php echo $device['investigationstate']; ?></td>

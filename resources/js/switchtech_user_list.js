@@ -27,7 +27,7 @@ $(document).ready(function() {
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
             { "data": "id" },            
-            { "data": "deviceName" },
+            { "data": "devicename" },
             { "data": "deviceIpAddr" }, 
             { "data": "csr_site_id" },
             { "data": "csr_site_name" }
@@ -37,7 +37,7 @@ $(document).ready(function() {
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
              // $(row).addClass('device_row'); 
-             $(row).attr('data-devicename', data.deviceName);
+             $(row).attr('data-devicename', data.devicename);
              $(row).attr('data-deviceid', data.id);
 
         }           

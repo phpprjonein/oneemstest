@@ -141,9 +141,9 @@
                     ?>
                     <tr style='cursor:pointer' class='<?php echo "del_" . $listitem['nodeid']; echo " swtlistid_".$_SESSION['switchlistid']; ?>'>
                       <td width="30%">
-                        <i data-listid="<?php echo $_SESSION['switchlistid']; ?>" data-deviceid="<?php echo  $listitem['nodeid'] ?>" data-devicename="<?php echo $listitem['deviceName'] ?>" class='fa fa-arrows-alt draggable'></i>&nbsp;<?php echo $listitem['nodeid'] ?>
+                        <i data-listid="<?php echo $_SESSION['switchlistid']; ?>" data-deviceid="<?php echo  $listitem['nodeid'] ?>" data-devicename="<?php echo $listitem['devicename'] ?>" class='fa fa-arrows-alt draggable'></i>&nbsp;<?php echo $listitem['nodeid'] ?>
                       </td>
-                      <td width="70%"><?php echo $listitem  ['deviceName'] ?></td>
+                      <td width="70%"><?php echo $listitem  ['devicename'] ?></td>
                     </tr>
                     <?php
                   }

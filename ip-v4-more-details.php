@@ -110,12 +110,12 @@ user_session_check();
 			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
                 <tr>
                   <td><?php echo $val; ?></td> 					  
-                  <td><?php echo $val1['deviceName'];?></td>
+                  <td><?php echo $val1['devicename'];?></td>
                   <td><?php echo $val1['csr_site_id'];?></td>
                   <td><?php echo $val1['csr_site_name'];?></td>
                   <td><?php echo $val1['deviceseries'];?></td>
                   <td><?php echo $val1['deviceos'];?></td>
-                  <td><?php echo $val1['nodeversion'];?></td>
+                  <td><?php echo $val1['nodeVersion'];?></td>
                   <td><?php echo $val1['lastpolled'];?></td>
                 </tr>
 			  <?php } else { ?>

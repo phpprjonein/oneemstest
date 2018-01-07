@@ -163,12 +163,12 @@ $page_title = 'OneEMS';
                         <tr><td><?php //echo $value['ipvfour'];?></td>
                         <td>Discovery</td>
                         <td><?php //echo $value['ipvsix'];?></td>
-                        <td><?php //echo $value['deviceName'];?></td>
+                        <td><?php //echo $value['devicename'];?></td>
                     	<td><?php //echo $value['csr_site_id'];?></td>
                         <td><?php //echo $value['csr_site_name'];?></td>
                         <td><?php //echo $value['deviceseries'];?></td>
                         <td><?php //echo $value['deviceos'];?></td>
-                        <td><?php //echo $value['nodeversion'];?></td>
+                        <td><?php //echo $value['nodeVersion'];?></td>
                         <td><?php //echo $value['timepolled'];?></td>
 						<td></td>
                         <td style="display:none;"><?php //echo $value['region'];?></td>
@@ -214,12 +214,12 @@ conflict table content -->
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['deviceName'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
                     	<td><?php echo $value['csr_site_id'];?></td>
                         <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
-                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['nodeVersion'];?></td>
                         <td><?php echo $value['timepolled'];?></td>
 						<td><button type="button"  data-toggle="modal" class="btn btn-danger missed_update">UPDATE</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
@@ -264,10 +264,10 @@ conflict table content -->
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['deviceName'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
-                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['nodeVersion'];?></td>
                         <td><?php echo (!empty($value['lastpolled']) && $value['lastpolled'] != 'None') ? date('m/d/y h:i:s', strtotime($value['lastpolled'])) : date('m/d/y h:i:s');?></td>
                     	<td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
                         <td style="display:none;"><?php echo $value['region'];?></td>
@@ -318,12 +318,12 @@ conflict table content -->
                             ?>
                         <tr> <td><?php echo $value['ipvfour'];?></td>
                         <td><?php echo $value['ipvsix'];?></td>
-                        <td><?php echo $value['deviceName'];?></td>
+                        <td><?php echo $value['devicename'];?></td>
                         <td><?php echo $value['csr_site_id'];?></td>
                         <td><?php echo $value['csr_site_name'];?></td>
                         <td><?php echo $value['deviceseries'];?></td>
                         <td><?php echo $value['deviceos'];?></td>
-                        <td><?php echo $value['nodeversion'];?></td>
+                        <td><?php echo $value['nodeVersion'];?></td>
                         <td><?php echo $value['timepolled'];?></td>
                         <td>
                           <label class="form-check-label">

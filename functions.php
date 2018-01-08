@@ -1763,7 +1763,7 @@ function upload_file_to_disk($trigger, $path, $allowed_ext = array('jpg','jpeg',
                 }
                 //upload file
                 if ($valid) {
-                    $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $path . DIRECTORY_SEPARATOR. $append.$name;
+                    $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $path . DIRECTORY_SEPARATOR. $append.'_config.txt';    
                     move_uploaded_file($tmpName,$targetPath);
                     return true;
                     exit;

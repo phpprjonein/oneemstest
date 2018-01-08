@@ -1740,3 +1740,57 @@ function process_missed_ip($ip_address, $process){
     }
     return success;
 }
+function upload_file_to_disk($trigger, $path, $allowed_ext = array('jpg','jpeg','png','gif'), $append = ''){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST[$trigger]) && $_POST[$trigger] == 'Upload') {
+        $name     = $_FILES['file']['name'];
+        $tmpName  = $_FILES['file']['tmp_name'];
+        $error    = $_FILES['file']['error'];
+        $size     = $_FILES['file']['size'];
+        $ext	  = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+        
+        switch ($error) {
+            case UPLOAD_ERR_OK:
+                $valid = true;
+                //validate file extensions
+                if ( !in_array($ext, $allowed_ext) ) {
+                    $valid = false;
+                    $response = 'Invalid file extension.';
+                }
+                //validate file size
+                if ( $size/1024/1024 > 2 ) {
+                    $valid = false;
+                    $response = 'File size is exceeding maximum allowed size.';
+                }
+                //upload file
+                if ($valid) {
+                    $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $path . DIRECTORY_SEPARATOR. $append.$name;
+                    move_uploaded_file($tmpName,$targetPath);
+                    return true;
+                    exit;
+                }
+                break;
+            case UPLOAD_ERR_INI_SIZE:
+                $response = 'The uploaded file exceeds the upload_max_filesize directive in php.ini.';
+                break;
+            case UPLOAD_ERR_PARTIAL:
+                $response = 'The uploaded file was only partially uploaded.';
+                break;
+            case UPLOAD_ERR_NO_FILE:
+                $response = 'No file was uploaded.';
+                break;
+            case UPLOAD_ERR_NO_TMP_DIR:
+                $response = 'Missing a temporary folder.';
+                break;
+            case UPLOAD_ERR_CANT_WRITE:
+                $response = 'Failed to write file to disk.';
+                break;
+            default:
+                $response = 'Unknown error';
+                break;
+        }
+        return $response;
+    }else{
+        $response = 'Required parameter is missing.';
+        return $response;
+    }
+}

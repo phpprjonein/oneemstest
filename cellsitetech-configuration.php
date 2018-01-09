@@ -23,100 +23,86 @@ user_session_check();
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
  </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
-        <!-- Modal HTML -->
-        
-        <div id="mycmdModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
-            </div>
-        </div>
-        </div>
-
+     <body>
         <div class="container-fluid">
             <?php include ('menu.php'); ?> 
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
                 <!-- Main content -->
                 <section class="content"> 
                   <div class="col-md-12">
-                      <div class="panel"> 
-                          <div class="panel-info">
-                            <!-- Page title -->
-							<!--
-                            <div class="panel-heading"> My Devices List </div>
-							-->
-                          </div>                  
-                          
- 							<div id="mylist" class="panel-heading" style = "height:560px;"><b></b> 
-							     <form action="upload_03.php" method="post" enctype="multipart/form-data">
-									<table>
-										<tr>
-										  <td> Filename: </td>
-										  <td> 	<input type="file" name="file" id="file">  </td>
-										</tr> 
-										<tr>
-										  <td colspan="2" align="left"> <input type="submit" name="submit" value="Submit">  </td>
-										  
-										</tr>
-									</table> 
-								</form> 
+                  	<?php if($_SESSION['msg'] == 'ss'){ ?>
+                  		<div id="main-status" class="alert alert-success">Script File Generated Successfully in Upload Path</div>
+                  	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
+                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
+                  	<?php }unset($_SESSION['msg']);?>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Configuration Management</div>
+                      <div class="panel-body">
+                      	     <div class="row">
+                    	      	<div class="col-lg-12">
+							     	<form action="upload_03.php" method="post" enctype="multipart/form-data">
+							        <div class="form-group">
+                    				    <label for="file">Select a file to upload</label>
+                    				    <input type="file"  id="file" name="file">
+                    				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
+                    				  </div>
+                    				  <input type="submit" name="config-submit" class="btn btn-lg btn-primary" value="Upload">
+                    				</form><br/>
 								<?php
-									$filename = "O:\wamp\www\oneems\upload\sampleconfigfile.txt";
+							$filename = getcwd()."/upload/sampleconfigfile.txt";
+							$output = '<form name="file_process" action="cellsite-config-process.php" method="post">';
+							if(file_exists($filename)){
 									$fd = fopen ($filename, "r");
-									//$contents = fread ($fd,filesize ($filename));
+									$line = 0;
 									while(!feof($fd))
 									{
-									  //echo fgets($fd) . "<br>";  
-									$contents = fgets($fd,filesize ($filename));									
-									$delimiter = "#";
-									$splitcontents = explode($delimiter, $contents);
-									//print_r($splitcontents); 
-									$counter = "";
-									$splitcontcount = count($splitcontents);
-									//echo 'value of splitcontcount'.$splitcontcount.'<br>';
-									//echo "Count of splitcontents array is".$splitcontcount.'<br>';
-									if ($splitcontcount > 1) { 
-										foreach ( $splitcontents as $color )
-										{   
-											$counter = $counter+1; 
-											//echo "<b>Split $counter: </b> $color"; 
-											if (substr_count(strtolower($color),"x") > 0 )
-												echo '<input type="text" value="'."$color".'" >';
-											else
-												echo '<input type="text" value="'."$color".'" readonly >'; 
-										};
-                                        echo '<br>';										
-									} elseif($splitcontcount == 1) {
-										//echo 'Inside the else part';
-										foreach ( $splitcontents as $color )
-										{   
-											$counter = $counter+1;  
-											//echo "<b>Split $counter: </b> $color"; 
-											echo '<input type="text" value="'."$color".'" readonly >'."<br>";
-											//echo '<input type="text" value="" readonly >'."<br>";
-										}; 
-										echo '<br>';
-									};
+									    ++$line;
+    									$contents = fgets($fd,filesize ($filename));									
+    									$delimiter = "#";
+    									$splitcontents = explode($delimiter, $contents);
+    									$splitcontcount = count($splitcontents);
+    									if ($splitcontcount > 1) {
+    									    $output .= '<div class="form-group">';
+    										foreach ( $splitcontents as $color )
+    										{   
+    										    if(!empty($color)){
+        											if (substr_count(strtolower($color),"x") > 0 ){
+        											    $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
+        											}else{
+        											    if(strlen(trim($color))!=0){
+        											         $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
+        											    }
+        										    }
+    										    }
+    										};
+    										$output .= '</div>';										
+    									} elseif($splitcontcount == 1) {
+    										foreach ( $splitcontents as $color )
+    										{   
+    										    if(!empty($color)){
+    											    $output .= '<div class="form-group"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></div>';
+    											}
+    										}; 
+    									};
 									};									
-									fclose($fd);?>  
-									<form  action='configtempl.php'> <input type = "submit" value = "SaveDB"></form>
-									<form  action='scriptfile.php'> <input type = "submit" value = "Saveasscriptfile"></form>
-							</div> 
-                        <!-- /.box-body -->
+									fclose($fd);
+									$output .= '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile"></div>';
+									$output .= '</form>';
+									echo $output;
+									?>  
+
+								<?php } ?>	
+                    			</div>
+	      					</div>
                       </div>
+                    </div>
                   </div> 
                 </section> <!-- /.content -->
               </div>
-            <!-- /.content-wrapper --> 
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-            immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
         </div>
-        <!-- ./wrapper -->	 
-        <?php //include ('footer.php'); ?> 
+        <!-- container-fluid -->
+
+        <?php include ('footer.php'); ?> 
     </body>
 </html>

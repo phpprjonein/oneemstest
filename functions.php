@@ -1794,3 +1794,12 @@ function upload_file_to_disk($trigger, $path, $allowed_ext = array('jpg','jpeg',
         return $response;
     }
 }
+function generateRandomString($length = 10) {
+    $characters = '0123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}

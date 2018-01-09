@@ -15,13 +15,7 @@ user_session_check();
  check_user_authentication('1'); //cellsite tech type user 
 
     $page_title = 'OneEMS';
-    /*
-    $title = 'hostname <<XXXXXXYY>>5RE-E-CI-<<3850>>-01';
-    preg_match_all("/\<<([^\>>]+)\>>/", $title , $matches);
-    print '<pre>';
-    print_r($matches);
-    die;
-    */
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,78 +23,100 @@ user_session_check();
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
  </head>
-     <body>
+     <body class="hold-transition skin-blue sidebar-mini ownfont">
+        <!-- Modal HTML -->
+        
+        <div id="mycmdModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+        </div>
+
         <div class="container-fluid">
             <?php include ('menu.php'); ?> 
+
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
                 <!-- Main content -->
                 <section class="content"> 
                   <div class="col-md-12">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">Configuration Management</div>
-                      <div class="panel-body">
-                      	     <div class="row">
-                    	      	<div class="col-lg-12">
-                    	      		<?php 
-                    	      		
-                    	      		if(isset($_POST['config-submit']) && $_POST['config-submit'] == 'Save Changes'){
-                                        print '<pre>';
-                                        print_r($_POST);
-                                        die;
-                    	      		}
-                    	      		if($_POST['config-submit'] == 'Upload'){
-                    	      		    $upload_try = upload_file_to_disk('config-submit', 'config', array('txt'), $_SESSION['userid']);
-                    	      		    if($upload_try === true){
-                    	      		        $filename = getcwd()."/uploads/config/".$_SESSION['userid']."_config.txt";
-                    	      		        $handle = fopen($filename, "r");
-                    	      		        $loop = 0;
-                    	      		        $output = '<form name="file_process" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-                    	      		        if ($handle) {
-                    	      		            while (($line = fgets($handle)) !== false) {
-                    	      		                ++$loop;
-                    	      		                preg_match_all("/\<<([^\>>]+)\>>/", $line , $matches);
-                    	      		                if(count($matches[1]) > 0){
-                    	      		                    $newv = $matches[1];
-                    	      		                    
-                    	      		                    for($i=0;$i<count($newv);$i++){
-                    	      		                        $line = str_replace('<<'.$newv[$i].'>>', '<input type="text" value="'.$newv[$i].'" name="looper_'.$loop.'[]"/>', $line, $count);
-                    	      		                    }
-                    	      		                }
-                    	      		                $output .= '<div class="form-group">'.$line.'</div>';
-                    	      		            }
-                    	      		            fclose($handle);
-                    	      		        }
-                    	      		        if($loop > 0){
-                    	      		            $output .= '<input type="submit" name="config-submit" class="btn btn-lg btn-primary" value="Save Changes">';
-                    	      		        }
-                    	      		        $output .= '</form>';
-                    	      		        echo $output;
-                    	      		    }
-                    	      		}else{
-                    	      		    if(file_exists(getcwd()."/uploads/config/".$_SESSION['userid']."_config.txt")){
-                    	      		        unlink(getcwd()."/uploads/config/".$_SESSION['userid']."_config.txt");
-                    	      		    }
-                    	      		?>
-                    	           <form class="well" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
-                    				  <div class="form-group">
-                    				    <label for="file">Select a file to upload</label>
-                    				    <input type="file" name="file">
-                    				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
-                    				  </div>
-                    				  <input type="submit" name="config-submit" class="btn btn-lg btn-primary" value="Upload">
-                    				</form>
-                    				<?php } ?>	
-                    			</div>
-	      					</div>
+                      <div class="panel"> 
+                          <div class="panel-info">
+                            <!-- Page title -->
+							<!--
+                            <div class="panel-heading"> My Devices List </div>
+							-->
+                          </div>                  
+                          
+ 							<div id="mylist" class="panel-heading" style = "height:560px;"><b></b> 
+							     <form action="upload_03.php" method="post" enctype="multipart/form-data">
+									<table>
+										<tr>
+										  <td> Filename: </td>
+										  <td> 	<input type="file" name="file" id="file">  </td>
+										</tr> 
+										<tr>
+										  <td colspan="2" align="left"> <input type="submit" name="submit" value="Submit">  </td>
+										  
+										</tr>
+									</table> 
+								</form> 
+								<?php
+									$filename = "O:\wamp\www\oneems\upload\sampleconfigfile.txt";
+									$fd = fopen ($filename, "r");
+									//$contents = fread ($fd,filesize ($filename));
+									while(!feof($fd))
+									{
+									  //echo fgets($fd) . "<br>";  
+									$contents = fgets($fd,filesize ($filename));									
+									$delimiter = "#";
+									$splitcontents = explode($delimiter, $contents);
+									//print_r($splitcontents); 
+									$counter = "";
+									$splitcontcount = count($splitcontents);
+									//echo 'value of splitcontcount'.$splitcontcount.'<br>';
+									//echo "Count of splitcontents array is".$splitcontcount.'<br>';
+									if ($splitcontcount > 1) { 
+										foreach ( $splitcontents as $color )
+										{   
+											$counter = $counter+1; 
+											//echo "<b>Split $counter: </b> $color"; 
+											if (substr_count(strtolower($color),"x") > 0 )
+												echo '<input type="text" value="'."$color".'" >';
+											else
+												echo '<input type="text" value="'."$color".'" readonly >'; 
+										};
+                                        echo '<br>';										
+									} elseif($splitcontcount == 1) {
+										//echo 'Inside the else part';
+										foreach ( $splitcontents as $color )
+										{   
+											$counter = $counter+1;  
+											//echo "<b>Split $counter: </b> $color"; 
+											echo '<input type="text" value="'."$color".'" readonly >'."<br>";
+											//echo '<input type="text" value="" readonly >'."<br>";
+										}; 
+										echo '<br>';
+									};
+									};									
+									fclose($fd);?>  
+									<form  action='configtempl.php'> <input type = "submit" value = "SaveDB"></form>
+									<form  action='scriptfile.php'> <input type = "submit" value = "Saveasscriptfile"></form>
+							</div> 
+                        <!-- /.box-body -->
                       </div>
-                    </div>
                   </div> 
                 </section> <!-- /.content -->
               </div>
+            <!-- /.content-wrapper --> 
+            <!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
+            immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
         </div>
-        <!-- container-fluid -->
-
-        <?php include ('footer.php'); ?> 
+        <!-- ./wrapper -->	 
+        <?php //include ('footer.php'); ?> 
     </body>
 </html>

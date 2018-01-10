@@ -364,3 +364,5 @@ footer {
   bottom: 0;
 }
 footer .panel-footer{text-align: center;}
+#cellsitech-config .form-group{margin-bottom:0.3rem;margin-right:0.3rem;}
+#cellsitech-config #file_process{max-height:250px; overflow-y:scroll;}

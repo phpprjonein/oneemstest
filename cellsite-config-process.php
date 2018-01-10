@@ -37,5 +37,11 @@ if($_POST['action'] == 'SaveDB'){
     fclose($file);
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
+}elseif ($_POST['action'] == 'Downloadsscriptfile'){
+    $file_url = getcwd()."/upload/sampleconfigfile.script";
+    header('Content-Type: application/octet-stream');
+    header("Content-Transfer-Encoding: Binary");
+    header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
+    readfile($file_url); // do the double-download-dance (dirty but worky)
 }
 ?>

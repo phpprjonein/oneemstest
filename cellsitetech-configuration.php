@@ -21,10 +21,10 @@ user_session_check();
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_config.js?t=".<?php echo date('his'); ?>></script>
  </head>
      <body>
-        <div class="container-fluid">
+        <div class="container-fluid" id="cellsitech-config">
             <?php include ('menu.php'); ?> 
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
@@ -51,7 +51,8 @@ user_session_check();
                     				</form><br/>
 								<?php
 							$filename = getcwd()."/upload/sampleconfigfile.txt";
-							$output = '<form name="file_process" action="cellsite-config-process.php" method="post">';
+							$output = '<form name="file_process" id="file_process" action="cellsite-config-process.php" method="post">';
+							$output .= '<div class="form-group"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							if(file_exists($filename)){
 									$fd = fopen ($filename, "r");
 									$line = 0;
@@ -87,7 +88,7 @@ user_session_check();
     									};
 									};									
 									fclose($fd);
-									$output .= '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile"></div>';
+									$output .= '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
 									$output .= '</form>';
 									echo $output;
 									?>  

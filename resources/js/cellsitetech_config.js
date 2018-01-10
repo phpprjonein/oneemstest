@@ -8,7 +8,7 @@ $(document).ready(function() {
         	});
         }else{
         	$('#file_process *').filter(':input').filter(':text').each(function(){
-        		$(this).show_hide_readonly();
+        		$(this).show();
         	})
         }
     });

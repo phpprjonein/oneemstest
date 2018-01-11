@@ -42,15 +42,23 @@ user_session_check();
                                   		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
                                   	<?php }elseif($_SESSION['msg'] == 'fus'){ ?>
                                   		<div id="main-status" class="alert alert-success">File Saved Successfully</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fae'){ ?>
+                                  		<div id="main-status" class="alert alert-danger"><strong>Error!</strong> <?php echo $_SESSION['msg-param']['filename']." already exists. "; ?></div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fe'){ ?>
+                                  		<div id="main-status" class="alert alert-danger"><strong>Error!</strong> <?php echo $_SESSION['msg-param']['fileerror'];?></div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fte'){ ?>
+                                  		<div id="main-status" class="alert alert-danger"><strong>Error!</strong> File is not of the permitted type.</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'feps'){ ?>
+                                  		<div id="main-status" class="alert alert-danger"><strong>Error!</strong> File exceeds permitted size.</div>
                                   	<?php }unset($_SESSION['msg']);?>
                     	      		<div id="upload_status" style="display:none;" class="alert"></div>
-							     	<form action="upload_03.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
+							     	<form action="cellsite-config-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
 							        <div class="form-group">
                     				    <label for="file">Select a file to upload</label>
                     				    <input type="file"  id="file" name="file">
                     				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
                     				  </div>
-                    				  <input type="submit" name="config-submit" id="config-submit" class="btn" value="Upload">
+                    				  <input type="submit" name="action" id="config-submit" class="btn" value="Upload">
                     				</form><br/>
 								<?php
 							$filename = getcwd()."/upload/sampleconfigfile.txt";
@@ -76,10 +84,10 @@ user_session_check();
     										{
     										    if(!empty($color)){
         											if (substr_count(strtolower($color),"x") > 0 ){
-        											    $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" class="form-control"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
+        											    $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'"  style="background-color:pink;" class="form-control"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
         											}else{
         											     if(strlen(trim($color))!=0){
-        											         $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly class="form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
+        											         $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'"  style="background-color:lightgrey;" readonly class="form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
         											     }
         										    }
     										    }
@@ -93,7 +101,7 @@ user_session_check();
     										foreach ( $splitcontents as $color )
     										{   
     										    if(!empty($color)){
-    											    $output .= '<div class="form-group"><span class="form-non-editable-fields"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly class"form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></span></div>';
+    											    $output .= '<div class="form-group"><span class="form-non-editable-fields"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:lightgrey;" readonly class"form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></span></div>';
     											}
     										}; 
     									};

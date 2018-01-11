@@ -38,10 +38,44 @@ if($_POST['action'] == 'Save Configuration'){
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
 }elseif ($_POST['action'] == 'Download Script'){
+    $file = fopen(getcwd()."/upload/sampleconfigfile.script","w");
+    foreach ($_POST['loop'] as $key => $val){
+        $line = '';
+        foreach($val as $linekey => $lineval){
+            $line .= $lineval;
+        }
+        fwrite($file,$line."\n");
+    }
+    fclose($file);
     $file_url = getcwd()."/upload/sampleconfigfile.script";
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: Binary");
     header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
     readfile($file_url); // do the double-download-dance (dirty but worky)
+}elseif ($_POST['action'] == 'Upload'){
+    if ($_FILES["file"]["type"] == "text/plain" && $_FILES["file"]["size"] < 65536) {
+        if ($_FILES["file"]["error"] > 0) {
+            $_SESSION['msg'] = 'fe';
+            $_SESSION['msg-param']['fileerror'] = $_FILES["file"]["error"];
+        } else {
+            if (file_exists("upload/" . $_FILES["file"]["name"])) {
+                $_SESSION['msg'] = 'fae';
+                $_SESSION['msg-param']['filename'] = $_FILES["file"]["name"];
+            } else {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"])) {
+                    $_SESSION['msg'] = 'fus';
+                }
+            }
+        }
+    } else {
+        if ($_FILES["file"]["type"] != "text/plain"){
+            $_SESSION['msg'] = 'fte';
+        }
+        else if ($_FILES["file"]["size"] < 65536){
+            $_SESSION['msg'] = 'feps';
+        }
+    }
+    header("location:cellsitetech-configuration.php");
 }
+
 ?>

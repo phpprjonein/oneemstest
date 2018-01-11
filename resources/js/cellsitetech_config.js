@@ -8,6 +8,7 @@ $(document).ready(function() {
     });
     $(document).on('click', "#config_file_uploader #config-submit", function(event) {
     	/*File required validation*/
+    	$('#main-status').hide();
     	var req_err = false;
     	if($("#file").val() == ""){
         	$("#upload_status").html("<strong>Error!</strong> File input field is required.");

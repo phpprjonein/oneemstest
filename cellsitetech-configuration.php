@@ -31,23 +31,26 @@ user_session_check();
                 <!-- Main content -->
                 <section class="content"> 
                   <div class="col-md-12">
-                  	<?php if($_SESSION['msg'] == 'ss'){ ?>
-                  		<div id="main-status" class="alert alert-success">Script File Generated Successfully in Upload Path</div>
-                  	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
-                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
-                  	<?php }unset($_SESSION['msg']);?>
                     <div class="panel panel-default">
                       <div class="panel-heading">Configuration Management</div>
                       <div class="panel-body">
                       	     <div class="row">
                     	      	<div class="col-lg-12">
-							     	<form action="upload_03.php" method="post" enctype="multipart/form-data">
+                    	      		<?php if($_SESSION['msg'] == 'ss'){ ?>
+                                  		<div id="main-status" class="alert alert-success">Script File Generated Successfully in Upload Path</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
+                                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fus'){ ?>
+                                  		<div id="main-status" class="alert alert-success">File Saved Successfully</div>
+                                  	<?php }unset($_SESSION['msg']);?>
+                    	      		<div id="upload_status" style="display:none;" class="alert"></div>
+							     	<form action="upload_03.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
 							        <div class="form-group">
                     				    <label for="file">Select a file to upload</label>
                     				    <input type="file"  id="file" name="file">
                     				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
                     				  </div>
-                    				  <input type="submit" name="config-submit" class="btn btn-lg btn-primary" value="Upload">
+                    				  <input type="submit" name="config-submit" id="config-submit" class="btn btn-lg btn-primary" value="Upload">
                     				</form><br/>
 								<?php
 							$filename = getcwd()."/upload/sampleconfigfile.txt";
@@ -68,24 +71,29 @@ user_session_check();
     									$splitcontcount = count($splitcontents);
     									if ($splitcontcount > 1) {
     									    $output .= '<div class="form-group">';
+    									    $output_inner = '';
     										foreach ( $splitcontents as $color )
-    										{   
+    										{
     										    if(!empty($color)){
         											if (substr_count(strtolower($color),"x") > 0 ){
-        											    $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:pink;"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
+        											    $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:pink;"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
         											}else{
-        											    if(strlen(trim($color))!=0){
-        											         $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly style="background-color:lightgrey;" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
-        											    }
+        											     if(strlen(trim($color))!=0){
+        											         $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly style="background-color:lightgrey;" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
+        											     }
         										    }
     										    }
     										};
+    										
+    										
+    										$output .= '<span class="form-editable-fields">'.$output_inner.'</span>';
+    										
     										$output .= '</div>';										
     									} elseif($splitcontcount == 1) {
     										foreach ( $splitcontents as $color )
     										{   
     										    if(!empty($color)){
-    											    $output .= '<div class="form-group"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:lightgrey;" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></div>';
+    											    $output .= '<div class="form-group"><span class="form-non-editable-fields"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:lightgrey;" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></span></div>';
     											}
     										}; 
     									};

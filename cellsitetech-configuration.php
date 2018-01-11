@@ -51,8 +51,11 @@ user_session_check();
                     				</form><br/>
 								<?php
 							$filename = getcwd()."/upload/sampleconfigfile.txt";
-							$output = '<form name="file_process" id="file_process" action="cellsite-config-process.php" method="post">';
+							$output = '<form name="file_process"  action="cellsite-config-process.php" method="post">';
 							$output .= '<div class="form-group"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
+							?>
+							<div id="file_process">
+							<?php
 							if(file_exists($filename)){
 									$fd = fopen ($filename, "r");
 									$line = 0;
@@ -69,10 +72,10 @@ user_session_check();
     										{   
     										    if(!empty($color)){
         											if (substr_count(strtolower($color),"x") > 0 ){
-        											    $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
+        											    $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:pink;"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
         											}else{
         											    if(strlen(trim($color))!=0){
-        											         $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
+        											         $output .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly style="background-color:lightgrey;" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
         											    }
         										    }
     										    }
@@ -82,17 +85,21 @@ user_session_check();
     										foreach ( $splitcontents as $color )
     										{   
     										    if(!empty($color)){
-    											    $output .= '<div class="form-group"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></div>';
+    											    $output .= '<div class="form-group"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:lightgrey;" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></div>';
     											}
     										}; 
     									};
 									};									
-									fclose($fd);
-									$output .= '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
-									$output .= '</form>';
+									fclose($fd); 
 									echo $output;
 									?>  
-
+								</div>
+								<?php
+									//$output = '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
+									$output = '<div class="form-group"> <input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Download Script"></div>';
+									$output .= '</form>'; 
+									echo $output;
+								?> 
 								<?php } ?>	
                     			</div>
 	      					</div>

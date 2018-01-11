@@ -3,7 +3,7 @@ include "classes/db2.class.php";
 include 'functions.php';
 $userid = $_SESSION['userid'];
     
-if($_POST['action'] == 'SaveDB'){
+if($_POST['action'] == 'Save Configuration'){
     $db2 = new db2();
     $templname = 'templ_'.generateRandomString();
     $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`) VALUES';
@@ -25,7 +25,7 @@ if($_POST['action'] == 'SaveDB'){
         $_SESSION['msg'] = 'dbs';
     }
     header("location:cellsitetech-configuration.php");
-}elseif ($_POST['action'] == 'Saveasscriptfile'){
+}elseif ($_POST['action'] == 'Save Script'){
     $file = fopen(getcwd()."/upload/sampleconfigfile.script","w");
     foreach ($_POST['loop'] as $key => $val){
         $line = '';
@@ -37,7 +37,7 @@ if($_POST['action'] == 'SaveDB'){
     fclose($file);
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
-}elseif ($_POST['action'] == 'Downloadsscriptfile'){
+}elseif ($_POST['action'] == 'Download Script'){
     $file_url = getcwd()."/upload/sampleconfigfile.script";
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: Binary");

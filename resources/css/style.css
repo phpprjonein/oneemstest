@@ -364,5 +364,18 @@ footer {
   bottom: 0;
 }
 footer .panel-footer{text-align: center;}
+/* editable fields styles for configuration page */
 #cellsitech-config .form-group{margin-bottom:0.3rem;margin-right:0.3rem;}
-#cellsitech-config #file_process{max-height:250px; overflow-y:scroll;}
+#cellsitech-config #file_process{margin-bottom: 1.8rem; max-height:250px; overflow-y:scroll;}
+
+.form-editable-fields .form-control {
+	background-color: #ffc0cb;
+	display: inline !important;
+	margin: 0.5rem 0.5rem;
+	width: auto;
+}
+
+.form-editable-fields .form-control-plaintext {
+	background-color: #d8dada;
+	display: inline;
+}

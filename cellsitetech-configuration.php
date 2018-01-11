@@ -50,11 +50,11 @@ user_session_check();
                     				    <input type="file"  id="file" name="file">
                     				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
                     				  </div>
-                    				  <input type="submit" name="config-submit" id="config-submit" class="btn btn-lg btn-primary" value="Upload">
+                    				  <input type="submit" name="config-submit" id="config-submit" class="btn" value="Upload">
                     				</form><br/>
 								<?php
 							$filename = getcwd()."/upload/sampleconfigfile.txt";
-							$output = '<form name="file_process"  action="cellsite-config-process.php" method="post">';
+							$output = '<form name="file_process"  action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							?>
 							<div id="file_process">
@@ -76,10 +76,10 @@ user_session_check();
     										{
     										    if(!empty($color)){
         											if (substr_count(strtolower($color),"x") > 0 ){
-        											    $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:pink;"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
+        											    $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" class="form-control"><input type="hidden" name="hidden[looper_'.$line.'][]" value="1" >';
         											}else{
         											     if(strlen(trim($color))!=0){
-        											         $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly style="background-color:lightgrey;" ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
+        											         $output_inner .= '<input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly class="form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" >';
         											     }
         										    }
     										    }
@@ -93,7 +93,7 @@ user_session_check();
     										foreach ( $splitcontents as $color )
     										{   
     										    if(!empty($color)){
-    											    $output .= '<div class="form-group"><span class="form-non-editable-fields"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" style="background-color:lightgrey;" readonly ><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></span></div>';
+    											    $output .= '<div class="form-group"><span class="form-non-editable-fields"><input type="text" name="loop[looper_'.$line.'][]" value="'."$color".'" readonly class"form-control-plaintext"><input type="hidden" name="hidden[looper_'.$line.'][]" value="0" ></span></div>';
     											}
     										}; 
     									};
@@ -103,8 +103,8 @@ user_session_check();
 									?>  
 								</div>
 								<?php
-									//$output = '<div class="form-group"><input class="btn btn-lg btn-primary" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
-									$output = '<div class="form-group"> <input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn btn-lg btn-primary" name="action" type = "submit" value = "Download Script"></div>';
+									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
+									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
 									$output .= '</form>'; 
 									echo $output;
 								?> 

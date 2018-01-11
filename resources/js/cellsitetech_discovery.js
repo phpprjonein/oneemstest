@@ -419,15 +419,16 @@ $(document).ready(function() {
 		if($('#inputCSRSiteTechNameID').val() == ""){
 			$('#addDeviceModal #status').html("<strong>Error!</strong> Tech Name field is required.<br/>");
 			$('#addDeviceModal #status').addClass('alert-danger');
+			$('#addDeviceModal #status').show();
 			req_err = true;
 		}
 		if(($('#inputCSRSiteName').val() == "") && ($('#inputCSRSiteNameNew').val() == "")){
 			$('#addDeviceModal #status').append("<strong>Error!</strong> Site Name field is required.<br/>");
 			$('#addDeviceModal #status').addClass('alert-danger');
+			$('#addDeviceModal #status').show();
 			req_err = true;
 		}
 		if(req_err){ 
-			$('#addDeviceModal #status').show();
 		    window.setTimeout(function() {
 		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
 		            $(this).hide(); 

@@ -86,10 +86,15 @@ user_session_check();
 
 <!-- table content row -->
       <div class="col">
-
+      <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];  ?>
+		<?php //$devicelist = get_nodes_list_ipmgmtv6($region,$market,$subnetmask); print '<pre>'; print_r($devicelist); die; ?>
+		
+		
+		
+		
 <!-- IP table content -->
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <table id="ipv4subnetmask" class="table table-striped table-sm">
+            <table id="ipv6subnetmask" class="table table-striped table-sm">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">IP Address</th>
@@ -104,12 +109,10 @@ user_session_check();
               </thead>
               <tbody>             
 			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];  ?>
-			  <?php $devicelist = get_nodes_list_ipmgmt($region,$market,$subnetmask); ?>
-              <?php if(!empty($devicelist['devicerecords'])) {  foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
-			  <?php  foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>
-			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
-                <tr>
-                  <td><?php echo $val; ?></td> 					  
+			  <?php $devicelist = get_nodes_list_ipmgmtv6($region,$market,$subnetmask); ?>
+ 			  <?php foreach ($devicelist as $key1 => $val1): ?>
+ 			    <tr>
+                  <td><?php echo $val1['deviceIpAddr']; ?></td> 					  
                   <td><?php echo $val1['devicename'];?></td>
                   <td><?php echo $val1['csr_site_id'];?></td>
                   <td><?php echo $val1['csr_site_name'];?></td>
@@ -118,32 +121,7 @@ user_session_check();
                   <td><?php echo $val1['nodeVersion'];?></td>
                   <td><?php echo $val1['lastpolled'];?></td>
                 </tr>
-			  <?php } else { ?>
-			  <tr>
-                  <td><?php echo $val; ?></td> 					  
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo "Not in use";?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                </tr> 
-			  <?php }; ?> 
-			  <?php };};};?>
-			   <?php if(empty($devicelist['devicerecords'])) { ?>
-			   <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
-				<tr>
-                  <td><?php echo $val; ?></td> 					  
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo "Not in use";?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                </tr>  
-			  <?php };};?> 			  
+ 			  <?php endforeach;?>
               </tbody>
             </table> 
           </div>

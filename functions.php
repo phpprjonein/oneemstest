@@ -1537,8 +1537,24 @@ function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	$output['devicerecords'] = $outputres;
 	$output['ipaddrlst']   = $ipvfour_details; 	
 	return $output; 
-} 
-
+}
+function get_nodes_list_ipmgmtv6($region,$market,$subnetmask) {
+    global $db2;
+    $sql_select = "SELECT n.id, deviceIpAddr, n.devicename, n.csr_site_id, n.csr_site_name, n.deviceseries, n.deviceos, n.nodeVersion,n.lastpolled ";
+    $sql_condition = " FROM  nodes n
+                     WHERE n.market = '$market' and n.region = '$region'
+                    ";
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    $ip = getipvsix_details($subnetmask);
+    foreach ($resultset['result'] as $key => $val){
+        if(filter_var($val['deviceIpAddr'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) && ($val['deviceIpAddr'] <= $ip['toipvsix'] && $ip['fromipvsix'] <= $val['deviceIpAddr']) ){
+            $outputres[] = $val;
+        }
+    }
+    return $outputres;
+}
 function get_ipallocation_region_list(){
     global $db2;
     $sql = "select distinct(region) from ipallocation order by region";

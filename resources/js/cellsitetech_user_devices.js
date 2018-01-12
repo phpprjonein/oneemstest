@@ -108,7 +108,24 @@ $(document).ready(function() {
        "order": [[1, 'asc']],
 
      } );
-	}     
+	}
+	if($('#ipv6subnetmask').length > 0){
+        var table3 =  $('#ipv6subnetmask').DataTable( {
+         "processing": true,
+         "pageLength": 5,
+         "dom": 'Bfrtip',
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+           "language": {
+           "lengthMenu": "Display _MENU_ records per page",
+           "zeroRecords": "No records found",
+           "info": "Showing page _PAGE_ of _PAGES_",
+           "infoEmpty": "",
+           "infoFiltered": ""
+           },
+       "order": [[1, 'asc']],
+
+     } );
+	}    
          
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'IPv4'){

@@ -365,17 +365,21 @@ footer {
 }
 footer .panel-footer{text-align: center;}
 /* editable fields styles for configuration page */
-#cellsitech-config .form-group{margin-bottom:0.3rem;margin-right:0.3rem;}
-#cellsitech-config #file_process{margin-bottom: 1.8rem; max-height:250px; overflow-y:scroll;}
+#cellsitech-config .form-group{margin-bottom:1px;}
+#cellsitech-config #file_process .form-group input{height:25px; font-size:12px;}
+#cellsitech-config #file_process{ max-height:440px; overflow-y:scroll;}
 
 .form-editable-fields .form-control {
 	background-color: #ffc0cb;
 	display: inline !important;
-	margin: 0.5rem 0.5rem;
 	width: auto;
 }
-
+#file_process .cb-control label{font-size:14px;margin:0.1rem;vertical-align: top;font-weight:bold;}
 .form-editable-fields .form-control-plaintext {
 	background-color: #d8dada;
 	display: inline;
 }
+#cellsitech-config .panel-default > .panel-heading {
+    padding: 5px 15px;
+}
+#cellsitech-config .panel-body{padding:5px;}   

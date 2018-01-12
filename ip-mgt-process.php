@@ -16,6 +16,15 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     echo $output;
 }
 
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'IP-Validate') {
+    $ipaddress = $_POST['subnet'];
+    if($_POST['type'] == 'IPv4' && filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)){
+       echo 'success';
+    }elseif($_POST['type'] == 'IPv6' && filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)){
+        echo 'success';
+    }
+}   
+
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'COMPUTE') {
     $subnet_whole = $_POST['subnet'].'/'.$_POST['mask'];
     $ipvfourorsix = strpos($subnet_whole, '.');

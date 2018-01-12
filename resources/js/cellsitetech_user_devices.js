@@ -197,6 +197,16 @@ $(document).ready(function() {
     			$('#exampleModalIPM #status').addClass('alert-danger');
     			req_err = true;
     		}
+    		if(($(this).text() == 'COMPUTE' || $(this).text() == 'ADD') && $('#exampleModalIPM #inputSubnet').val() != ""){
+    			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate", type: $('#v-pills-tab .active').html(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
+	    		  .done(function( data ) {
+	    			  if(data != 'success'){
+	    	    			$('#exampleModalIPM #status').append("<strong>Error!</strong> Subnet field " + $('#v-pills-tab .active').html() + " address is Invalid.<br/>");
+	    	    			$('#exampleModalIPM #status').addClass('alert-danger');
+	    	    			req_err = true;
+	    			  }
+	    		  });
+    		}
     		if(req_err){ 
     			$('#exampleModalIPM #status').show();
     		    window.setTimeout(function() {

@@ -383,3 +383,12 @@ footer .panel-footer{text-align: center;}
     padding: 5px 15px;
 }
 #cellsitech-config .panel-body{padding:5px;}   
+.cellsitech-configtxtdisp {
+background-color:lightgrey !important;
+opacity:.5;
+pointer-events:none;
+}
+.cellsitech-configtxtinp {
+background-color:pink;
+box-shadow: none;
+}

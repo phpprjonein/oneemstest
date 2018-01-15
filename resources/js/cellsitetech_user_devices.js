@@ -196,7 +196,8 @@ $(document).ready(function() {
     	});	
     		
     	$("#exampleModalIPM .modal-footer button").click(function(){
-    		var req_err = false;
+    		var req_err = valid_ip = false;
+    		var local_act = $(this).text();
     		$('#exampleModalIPM #status').html('');
     		$('#exampleModalIPM #status').css("opacity","");
     		if($.trim($("#exampleModalIPM  #ip-allocation-market .btn").html()) == "SELECT MARKET"){
@@ -221,6 +222,46 @@ $(document).ready(function() {
 	    	    			$('#exampleModalIPM #status').append("<strong>Error!</strong> Subnet field " + $('#v-pills-tab .active').html() + " address is Invalid.<br/>");
 	    	    			$('#exampleModalIPM #status').addClass('alert-danger');
 	    	    			req_err = true;
+	    	        		if(req_err){ 
+	    	        			$('#exampleModalIPM #status').show();
+	    	        		    window.setTimeout(function() {
+	    	        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    	        		            $(this).hide(); 
+	    	        		        });
+	    	        		    }, 4000);
+	    	        			return false;
+	    	        		}
+	    			  }else{
+	    				  valid_ip = true;
+	    		    		if(valid_ip && req_err == false){
+	    		    			if(local_act == 'COMPUTE'){
+	    		    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: local_act, subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
+	    		    	    		  .done(function( data ) {
+	    		    	    			  	var res = data.split(" ");
+	    		    	    			  	$("#exampleModalIPM #compute-from-ip").html(res[0]);
+	    		    	    			  	$("#exampleModalIPM #compute-count").html(res[1]);
+	    		    	    			  	$("#exampleModalIPM #compute-to-ip").html(res[2]);
+	    		    	    		  });
+	    		    			}else{
+	    		    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: local_act, subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val(), region:$("#exampleModalIPM #selected_region").val(),market:$("#exampleModalIPM #selected_market").val()})
+	    		  	    		  .done(function( data ) {
+	    		  	    			  if(data == 'success'){
+	    		  	    	    		$('#exampleModalIPM .alert-success').css("opacity","");
+	    		  	    				$("#exampleModalIPM .alert-success").show();
+	    			    			  	$("#exampleModalIPM #compute-from-ip").html('{{from IP}}');
+	    			    			  	$("#exampleModalIPM #compute-count").html('{{Count}}');
+	    			    			  	$("#exampleModalIPM #compute-to-ip").html('{{to IP}}');
+	    			    			  	$("#exampleModalIPM #inputSubnet").val('');
+	    			    			  	$("#exampleModalIPM #inputMask").val('');
+	    			        		    window.setTimeout(function() {
+	    	    	        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    	    	        		            $(this).hide(); 
+	    	    	        		        });
+	    	    	        		    }, 4000);
+	    		  	    			  }
+	    		  	    		  });
+	    		    			}
+	    		    		}
 	    			  }
 	    		  });
     		}
@@ -233,28 +274,6 @@ $(document).ready(function() {
     		    }, 4000);
     			return false;
     		}
-    			if($(this).text() == 'COMPUTE'){
-    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
-    	    		  .done(function( data ) {
-    	    			  	var res = data.split(" ");
-    	    			  	$("#exampleModalIPM #compute-from-ip").html(res[0]);
-    	    			  	$("#exampleModalIPM #compute-count").html(res[1]);
-    	    			  	$("#exampleModalIPM #compute-to-ip").html(res[2]);
-    	    		  });
-    			}else{
-    				$.post( "ip-mgt-process.php", { calltype: "trigger", action: $(this).text(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val(), region:$("#exampleModalIPM #selected_region").val(),market:$("#exampleModalIPM #selected_market").val()})
-  	    		  .done(function( data ) {
-  	    			  if(data == 'success'){
-  	    				$("#exampleModalIPM .alert-success").show();
-	    			  	$("#exampleModalIPM #compute-from-ip").html('{{from IP}}');
-	    			  	$("#exampleModalIPM #compute-count").html('{{Count}}');
-	    			  	$("#exampleModalIPM #compute-to-ip").html('{{to IP}}');
-	    			  	$("#exampleModalIPM #inputSubnet").val('');
-	    			  	$("#exampleModalIPM #inputMask").val('');
-  	    			  }
-  	    		  });
-    			}
-    			
     		});
     	
     	

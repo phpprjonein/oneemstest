@@ -231,10 +231,8 @@ function get_device_list_from_nodes_datatable($userid) {
         'n.deviceseries',
         'n.nodeVersion',
         'n.lastpolled'
-    );
-    
-    
-    
+    ); 
+	
     $sql_count = "SELECT COUNT(*) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     

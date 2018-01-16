@@ -54,6 +54,32 @@ user_session_check();
 		  </div>
 		</div>
 
+		
+		<!-- The Modal -->
+		<div class="modal fade" id="backupModal">
+		  <div class="modal-dialog" >
+			<div class="modal-content" id="cellsitech-backup">
+
+			  <!-- Modal Header -->
+			        <div class="modal-header">
+        <h5 class="modal-title">Back up for the device  - <span id="bkup-deviceid"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+			  <!-- Modal body -->
+			  <div class="modal-body"> 
+			  </div> 
+			  <!-- Modal footer -->
+			  <div class="modal-footer">
+	  			<!--<button type="button" class="btn btn-default">Cancel</button>
+				<button type="button" class="btn btn-default">Continue</button>
+				-->
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
 
         <div class="container-fluid">
             <?php include ('menu.php'); ?> 
@@ -74,14 +100,15 @@ user_session_check();
                             <table id="backuprestore"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
-                                  <th class="noExport">Health Check</th>
+                                  <th class="noExport">Backup & restore </th>
+								  <th>Device Name</th>
                                   <th>Site Id</th>
-                                  <th width="25%">Site Name</th>
-                                  <th>Device Name</th>
+                                  <th width="25%">Site Name</th>                                  
 								  <th>Region</th>
                                   <th>Market  </th>
                                   <th>Device series</th>
                                   <th>Version</th> 
+								  <th>BackUp</th> 
                                 </tr>
                               </thead>                              
                             </table>                            

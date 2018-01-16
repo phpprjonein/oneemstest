@@ -1,4 +1,3 @@
-
 <?php
 include "classes/db2.class.php";
 include "classes/paginator.class.php";  
@@ -22,27 +21,34 @@ include 'functions.php';
                         <tr>                  
 							<td><b><?php echo 'Backup file name one';?><b></td>                                              
                             <td><b><?php echo date('Y-m-d H:i:s');?><b></td>
-                            <td><b><?php echo 'Manual'?><b><b></td>
-                             <td><b><!-- Button trigger modal -->
-							 <!--
-								<button type="button" class="btn btn-primary anchorcmd" data-toggle="modal" data-target="#mycmdModal">Restore
-								</button>
-								-->
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
+                            <td><b><?php echo 'Manual'?><b><b></td> 
+								<td><!-- Button trigger modal -->							 
+								<button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
 								Restore </button>
+								</td>
+								 <td><!-- Button trigger modal --> 
+							 <!--
+								<button type="button" id = "backupbtn" class="btn btn-primary" data-toggle="modal" data-target="#backupModal" data-remote="remote-page.html">
+								Backup </button>
+							-->
+								&nbsp;	
 								</td>
                          </tr>
 						<tr>                  
 							<td><b><?php echo 'Backup file name two';?><b></td>                                              
                             <td><b><?php echo date('Y-m-d H:i:s');?><b></td>
-                            <td><b><?php echo 'Automatic'?><b><b></td>
-                             <td><b><!-- Button trigger modal -->
-								<!--
-								<button type="button" class="btn btn-primary anchorcmd" data-toggle="modal" data-target="#mycmdModal">Restore
-								</button>-->
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <td><b><?php echo 'Automatic'?><b><b></td> 
+                             <td><b><!-- Button trigger modal --> 
+								<button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
 								Restore </button>
-								</td>
+							 </td>
+							 <td><!-- Button trigger modal -->
+							 <!-- 
+								<button type="button" id = "backupbtn" class="btn btn-primary" data-toggle="modal" data-target="#backupModal" data-remote="remote-page.html">
+								Backup </button>
+							-->	
+							&nbsp;	
+							</td>
                          </tr>						 
                     </tbody>
                                        </table>

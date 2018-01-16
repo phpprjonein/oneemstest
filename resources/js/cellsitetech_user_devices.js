@@ -62,13 +62,19 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": ''},
+			{ "data": "devicename" },
             { "data": "csr_site_id" },
-            { "data": "csr_site_name" },
-            { "data": "devicename" },
+            { "data": "csr_site_name" },            
 			{ "data": "region" },
             { "data": "market" },
             { "data": "deviceseries" },
-            { "data": "nodeVersion" }
+            { "data": "nodeVersion" },
+	        {
+            "className":      'center',
+            "data":           null,
+            "defaultContent": "<button type='button' id = 'backupbtn' class='btn btn-primary' data-toggle='modal' data-target='#backupModal' data-remote='remote-page.html'>Backup </button>"
+			// "defaultContent":   "<input id='btnDetails' class='btn btn-success' width='25px' value='Get Details' />"
+			} 
         ],
         "order": [[1, 'asc']],
         "createdRow": function (row, data, rowIndex) {
@@ -426,16 +432,48 @@ $(document).ready(function() {
 
       });
 
-	  $(document).on('click', '#back_res button', function(event) {
+	  //$(document).on('click', '#back_res button', function(event) {
+		  
+		  $(document).on('click', '#back_res #restorebtn', function(event) {
+		  //alert('Restore button is clicked');
 		  	$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</h6>');
-	    	$.post( "backup-api-test.php", { type: "api-ajax"
+	    	$.post( "restore-api-test.php", { type: "api-ajax"
 			}).done(function( data ) {
 				$('#myModal .modal-body').html(data);
 			}); 
 		  	
 		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
-	  });   
+	  });
+
+/*
+$(document).on('click', '#back_res #backupbtn', function(event) {
+	      //alert('Backup button is clicked');
+		  	$('#backupModal #bkup-deviceid').html('<br/><h6> Device Id:' + $(this).closest('tr').find("td:eq(1)").text() + '</h6>');
+		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
+ 	    	$.post( "backup-api-test.php", { type: "api-ajax"
+			}).done(function( data ) {
+				$('#backupModal .modal-body').html(data);
+			}); 
+		  	
+		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+	  });	  
+	  */
+	  
+	  
+	  $(document).on('click', '#backupbtn', function(event) {
+	      //alert('Backup button is clicked');
+		  	$('#backupModal #bkup-deviceid').html('<br/><h6> Device Name:' + $(this).closest('tr').find("td:eq(1)").text() + '</h6>');
+		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
+ 	    	$.post( "backup-api-test.php", { type: "api-ajax"
+			}).done(function( data ) {
+				$('#backupModal .modal-body').html(data);
+			}); 
+		  	
+		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+	  });	  
 });
+
+
 
 function format ( d ) {
      var id = d.replace('row_','');

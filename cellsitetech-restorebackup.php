@@ -45,8 +45,9 @@ user_session_check();
 
 			  <!-- Modal footer -->
 			  <div class="modal-footer">
-	  			<button type="button" class="btn btn-default">Cancel</button>
+	  			<!--<button type="button" class="btn btn-default">Cancel</button>
 				<button type="button" class="btn btn-default">Continue</button>
+				-->
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			  </div>
 			</div>

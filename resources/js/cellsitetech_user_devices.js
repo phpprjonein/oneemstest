@@ -431,10 +431,7 @@ $(document).ready(function() {
 	    	$.post( "backup-api-test.php", { type: "api-ajax"
 			}).done(function( data ) {
 				$('#myModal .modal-body').html(data);
-			});
-		  	
-		  	
-		  	
+			}); 
 		  	
 		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
 	  });   

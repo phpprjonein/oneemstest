@@ -29,7 +29,7 @@ include 'functions.php';
 								</button>
 								-->
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
-								Open modal </button>
+								Restore </button>
 								</td>
                          </tr>
 						<tr>                  
@@ -41,7 +41,7 @@ include 'functions.php';
 								<button type="button" class="btn btn-primary anchorcmd" data-toggle="modal" data-target="#mycmdModal">Restore
 								</button>-->
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-								Open modal </button>
+								Restore </button>
 								</td>
                          </tr>						 
                     </tbody>

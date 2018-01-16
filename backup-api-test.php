@@ -1,5 +1,5 @@
 <?php 
-echo "TEST API CONTENT ".date('d-M-Y h:i:s')." <br/> RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#ter len 0
+echo "TEST API CONTENT ".date('d-M-Y h:i:s')." <br/>".' RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#ter len 0
 				Mon Jan  8 15:47:46.836 EST
 				RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#
 				RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#
@@ -499,5 +499,5 @@ echo "TEST API CONTENT ".date('d-M-Y h:i:s')." <br/> RP/0/RSP0/CPU0:AKROOH2092A-
 				!
 				.....
 
-				RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#";
+				RP/0/RSP0/CPU0:AKROOH2092A-P-CI-9010-02#';
 ?>

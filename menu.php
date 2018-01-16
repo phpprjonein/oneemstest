@@ -41,7 +41,7 @@
     <?php if ($_SESSION['userlevel'] === "1"){ ?>
 		<li  class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-dashboard.php"); ?>" href="cellsitetech-dashboard.php">Dashboard</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-discovery.php"); ?>" href="cellsitetech-discovery.php">Discovery</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-backup.php"); ?>" href="cellsitetech-backup.php">Backup</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>" href="cellsitetech-restorebackup.php">Backup</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-configuration.php"); ?>" href="cellsitetech-configuration.php">Configuration</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-scripting.php"); ?>" href="cellsitetech-scripting.php">Scripting</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-compliances.php"); ?>" href="cellsitetech-compliances.php">Compliances</a></li>

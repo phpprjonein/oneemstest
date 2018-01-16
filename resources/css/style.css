@@ -392,3 +392,7 @@ pointer-events:none;
 background-color:pink;
 box-shadow: none;
 }
+#cellsitech-backuprestore {
+    width:900px;
+	margin-left:-40%; /* width/2) */ 
+}

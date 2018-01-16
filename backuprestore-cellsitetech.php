@@ -17,7 +17,7 @@ include 'functions.php';
      ?>
 
                 <div class="ownfont box-body launch-modal">
-                  <table class="table table-bordered"  cellspacing="0" cellpadding="0" >				  
+                  <table class="table table-bordered" id="back_res" cellspacing="0" cellpadding="0" >				  
                     <tbody>
                         <tr>                  
 							<td><b><?php echo 'Backup file name one';?><b></td>                                              

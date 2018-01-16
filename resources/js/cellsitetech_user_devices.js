@@ -426,6 +426,18 @@ $(document).ready(function() {
 
       });
 
+	  $(document).on('click', '#back_res button', function(event) {
+		  	$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</h6>');
+	    	$.post( "backup-api-test.php", { type: "api-ajax"
+			}).done(function( data ) {
+				$('#myModal .modal-body').html(data);
+			});
+		  	
+		  	
+		  	
+		  	
+		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+	  });   
 });
 
 function format ( d ) {

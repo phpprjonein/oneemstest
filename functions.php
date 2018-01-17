@@ -1900,3 +1900,11 @@ function get_device_list_from_backuprestore_datatable($userid) {
     } 
     return $resultset;
 } 
+function get_celltechusers_list($userid){
+    global $db2;
+    $sql = "select listid, listname from userdevices where userid=".$userid;
+	echo $sql;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return  $resultset['result'];
+}

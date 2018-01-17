@@ -471,7 +471,22 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 		  	
 		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
 	  });	  
+	  
+	  $("#backup-restore-list-dt-filter a").click(function(){			
+    		$("#backup-restore-list-dt-filter .btn").html($(this).text());
+    		var table1 =  $('#backuprestore').DataTable(); 
+			//$('.dropdown-item').text('CTTPMIBGT1A-P-CI-0928-01');
+			alert('value of this after set '+$(this).text());			
+			//table1.columns(2).search('^'+CTTPMIBGT1A-P-CI-0928-01+'$', true, false).draw();     
+			if($(this).text() != 'SELECT LIST'){
+    			table1.columns(1).search('^'+$(this).text()+'$', true, false).draw();    			
+    		}else{
+    			table1.columns(1).search('').draw();    			
+    		}
+			
+    	});
 });
+
 
 
 

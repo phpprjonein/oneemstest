@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
@@ -93,6 +92,29 @@ user_session_check();
                           <!--  <div class="panel-heading"> My Devices List </div>
                           </div>                  
 						  -->
+						  <div class="btn-group" id="backup-restore-list-dt-filter">
+						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  SELECT LIST
+						  </button>
+						  <div class="dropdown-menu">
+						  <?php 
+						  //$region_list = get_ipallocation_region_list();
+						 // echo 'value of userid is'.$_SESSION['userid'];
+						  $celltuser_list = get_celltechusers_list($_SESSION['userid']);
+						  foreach ($celltuser_list as $key => $value):
+							if(!empty($value['listname'])):          
+						  ?>
+						  <a class="dropdown-item" href="#"><?php echo $value['listname']; ?></a>
+						  <?php 
+						  endif;
+						  endforeach;
+						 // if(count($celltuser_list['result']) > 1): ?>
+						   <!--	<a class="dropdown-item" href="#">SELECT LIST</a> -->
+						  <?php //endif; 
+						  //print_r($celltuser_list);?>
+						  
+						  </div>
+						</div>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">
                             <table id="backuprestore"  class="table table-striped table-sm">

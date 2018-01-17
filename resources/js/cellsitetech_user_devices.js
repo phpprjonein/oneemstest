@@ -42,6 +42,9 @@ $(document).ready(function() {
 	
 		if($('#backuprestore').length > 0){
 		//$('#ip-mgt-utils div').hide();
+			
+			
+			
 		$('#ip-mgt-utils #ajax_loader').show();
          var table =  $('#backuprestore').DataTable( {
           "processing": true,
@@ -380,8 +383,9 @@ $(document).ready(function() {
 
       });
 	  
-	        $('#backuprestore tbody').on('click', 'td.details-control', function () {
-        
+    	$(document).on('click', '#backuprestore tbody td.details-control', function(event) {
+	        //$('#backuprestore tbody').on('click', 'td.details-control', function () {
+    		var table =  $('#backuprestore').DataTable();
          var tr = $(this).closest('tr');
          var row = table.row( tr ); 
          var current_click_row = row.child.isShown();
@@ -474,17 +478,54 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 	  
 	  $("#backup-restore-list-dt-filter a").click(function(){			
     		$("#backup-restore-list-dt-filter .btn").html($(this).text());
-    		var table1 =  $('#backuprestore').DataTable(); 
-			//$('.dropdown-item').text('CTTPMIBGT1A-P-CI-0928-01');
-			alert('value of this after set '+$(this).text());			
-			//table1.columns(2).search('^'+CTTPMIBGT1A-P-CI-0928-01+'$', true, false).draw();     
-			if($(this).text() != 'SELECT LIST'){
-    			table1.columns(1).search('^'+$(this).text()+'$', true, false).draw();    			
-    		}else{
-    			table1.columns(1).search('').draw();    			
+    		var listname = '';
+    		if($(this).text() != 'SELECT LIST'){
+    			listname = $(this).text();
     		}
-			
-    	});
+    		
+            var table =  $('#backuprestore').DataTable( {
+                "processing": true,
+                "serverSide": true,
+                "ajax":"cellt-server-backuprestoreprocess.php?listname="+listname,      
+                "pageLength": 25,
+                "dom": 'Bfrtip',
+                "destroy": true,
+      	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+                  "language": {
+                  "lengthMenu": "Display _MENU_ records per page",
+                  "zeroRecords": "No records found",
+                  "info": "Showing page _PAGE_ of _PAGES_",
+                  "infoEmpty": "",
+                  "infoFiltered": ""
+                  },
+                "columns": [
+                  {  "className":      'details-control',
+                      "orderable":      false,
+                      "data":           null,
+                      "defaultContent": ''},
+      			{ "data": "devicename" },
+                  { "data": "csr_site_id" },
+                  { "data": "csr_site_name" },            
+      			{ "data": "region" },
+                  { "data": "market" },
+                  { "data": "deviceseries" },
+                  { "data": "nodeVersion" },
+      	        {
+                  "className":      'center',
+                  "data":           null,
+                  "defaultContent": "<button type='button' id = 'backupbtn' class='btn btn-primary' data-toggle='modal' data-target='#backupModal' data-remote='remote-page.html'>Backup </button>"
+      			} 
+              ],
+              "order": [[1, 'asc']],
+              "createdRow": function (row, data, rowIndex) {
+                   $(row).addClass('device_row');
+      			  $.each($('td', row), function (colIndex) {
+                  	 if(colIndex == 0)
+                  	   $(this).attr('title', 'Click here for health check');
+                   }); 
+              }
+            } );
+      });
 });
 
 

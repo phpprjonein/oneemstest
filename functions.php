@@ -1817,7 +1817,7 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
-function get_device_list_from_backuprestore_datatable($userid) {
+function get_device_list_from_backuprestore_datatable($userid, $listname = '') {
     
     global $db2, $pages;
     
@@ -1845,6 +1845,12 @@ function get_device_list_from_backuprestore_datatable($userid) {
     $sql_condition = " FROM userdevices ud
        JOIN nodes n on ud.nodeid = n.id
        WHERE ud.userid = " . $userid ;
+    
+    if($listname != ''){
+       $sql_condition .= " AND(ud.listname = ".$listname.")";
+    }
+    //die;
+    
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.devicename LIKE '%". $search ."%'";
@@ -1902,8 +1908,7 @@ function get_device_list_from_backuprestore_datatable($userid) {
 } 
 function get_celltechusers_list($userid){
     global $db2;
-    $sql = "select listid, listname from userdevices where userid=".$userid;
-	echo $sql;
+    $sql = "select distinct(listid), listname from userdevices where userid=".$userid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];

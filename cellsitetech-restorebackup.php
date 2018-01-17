@@ -98,21 +98,18 @@ user_session_check();
 						  </button>
 						  <div class="dropdown-menu">
 						  <?php 
-						  //$region_list = get_ipallocation_region_list();
-						 // echo 'value of userid is'.$_SESSION['userid'];
 						  $celltuser_list = get_celltechusers_list($_SESSION['userid']);
 						  foreach ($celltuser_list as $key => $value):
-							if(!empty($value['listname'])):          
+							if(isset($value['listname'])):          
 						  ?>
 						  <a class="dropdown-item" href="#"><?php echo $value['listname']; ?></a>
 						  <?php 
 						  endif;
+						  if(count($celltuser_list) > 0): ?>
+          					<a class="dropdown-item" href="#">SELECT LIST</a>
+          					<?php endif; 
 						  endforeach;
-						 // if(count($celltuser_list['result']) > 1): ?>
-						   <!--	<a class="dropdown-item" href="#">SELECT LIST</a> -->
-						  <?php //endif; 
-						  //print_r($celltuser_list);?>
-						  
+                            ?>
 						  </div>
 						</div>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">

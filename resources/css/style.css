@@ -393,6 +393,29 @@ background-color:pink;
 box-shadow: none;
 }
 #cellsitech-backuprestore {
-    width:900px;
+    width:1000px;
 	margin-left:-40%; /* width/2) */ 
+}
+#cellsitech-backup {
+    width:1000px;
+	margin-left:-40%; /* width/2) */ 
+} 
+#restorebtn {
+float:right;
+}	
+#restoremodalhdr {
+background-color:lightgrey;	
+text-align: right;
+}
+#backupmodalhdr {
+background-color:lightgrey;	
+}
+#restoremodalhdrtxt{
+margin-left:300px;
+}
+#backupmodalhdrtxt {
+margin-left:310px;
+}
+#restoremoddet{
+margin-left:210px;
 }

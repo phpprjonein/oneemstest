@@ -30,14 +30,12 @@ user_session_check();
 			<div class="modal-content" id="cellsitech-backuprestore">
 
 			  <!-- Modal Header -->
-			        <div class="modal-header">
-        <h5 class="modal-title">Back up File name to be restored - <span id="bkup-fileid"></span></h5>
+		<div class="modal-header" id="restoremodalhdr">
+        <h5 class="modal-title text-center"  id="modalLabelLarge"><span id = "restoremodalhdrtxt"><strong>Back up to be restored - <span id="bkup-fileid"></span><strong></span></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-
-
+      </div> 
 			  <!-- Modal body -->
 			  <div class="modal-body">
 				
@@ -61,8 +59,8 @@ user_session_check();
 			<div class="modal-content" id="cellsitech-backup">
 
 			  <!-- Modal Header -->
-			        <div class="modal-header">
-        <h5 class="modal-title">Back up for the device  - <span id="bkup-deviceid"></span></h5>
+		<div class="modal-header" id ="backupmodalhdr">
+        <h5 class="modal-title"><span id ="backupmodalhdrtxt"><strong>Back up device details <span id="bkup-deviceid"></span></strong></span></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

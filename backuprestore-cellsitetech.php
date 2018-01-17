@@ -26,13 +26,12 @@ include 'functions.php';
 								<button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
 								Restore </button>
 								</td>
-								 <td><!-- Button trigger modal --> 
-							 <!--
+								<!--
+								 <td>							 
 								<button type="button" id = "backupbtn" class="btn btn-primary" data-toggle="modal" data-target="#backupModal" data-remote="remote-page.html">
-								Backup </button>
-							-->
-								&nbsp;	
+								Backup </button>							 
 								</td>
+								-->
                          </tr>
 						<tr>                  
 							<td><b><?php echo 'Backup file name two';?><b></td>                                              
@@ -42,13 +41,12 @@ include 'functions.php';
 								<button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">
 								Restore </button>
 							 </td>
-							 <td><!-- Button trigger modal -->
 							 <!-- 
+							 <td>
 								<button type="button" id = "backupbtn" class="btn btn-primary" data-toggle="modal" data-target="#backupModal" data-remote="remote-page.html">
-								Backup </button>
-							-->	
-							&nbsp;	
+								Backup </button> 
 							</td>
+							-->	
                          </tr>						 
                     </tbody>
                                        </table>

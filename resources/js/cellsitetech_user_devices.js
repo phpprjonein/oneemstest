@@ -194,6 +194,7 @@ $(document).ready(function() {
     	
     	$("#ip-allocation-region a").click(function(){
     		$("#ip-allocation-region .btn").html($(this).text());
+			alert('value of the text is '+ $(this).text());
 			  $("#exampleModalIPM #exampleModalIPMLabel").html("ADD A SUBNET IN " + $(this).text());
 			  $("#exampleModalIPM #selected_region").val($(this).text());
     		$.post( "ip-mgt-process.php", { calltype: "trigger", region: $(this).text() })
@@ -479,7 +480,7 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 	  $("#backup-restore-list-dt-filter a").click(function(){			
     		$("#backup-restore-list-dt-filter .btn").html($(this).text());
     		var listname = '';
-    		if($(this).text() != 'SELECT LIST'){
+    		if($(this).text() != 'My List'){
     			listname = $(this).text();
     		}
     		

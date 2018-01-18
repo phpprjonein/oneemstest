@@ -92,9 +92,9 @@ user_session_check();
                           <!--  <div class="panel-heading"> My Devices List </div>
                           </div>                  
 						  -->
-						  <div class="btn-group" id="backup-restore-list-dt-filter">
-						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						  SELECT LIST
+						  <div class="btn-group" id="backup-restore-list-dt-filter">						  
+						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	
+                           My List 						  
 						  </button>
 						  <div class="dropdown-menu">
 						  <?php 
@@ -105,10 +105,11 @@ user_session_check();
 						  <a class="dropdown-item" href="#"><?php echo $value['listname']; ?></a>
 						  <?php 
 						  endif;
-						  if(count($celltuser_list) > 0): ?>
-          					<a class="dropdown-item" href="#">SELECT LIST</a>
-          					<?php endif; 
 						  endforeach;
+						  if(count($celltuser_list) > 0): ?>
+          					<a class="dropdown-item" href="#">My List</a>
+          					<?php endif; 
+						 
                             ?>
 						  </div>
 						</div>

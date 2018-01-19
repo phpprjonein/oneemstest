@@ -1847,7 +1847,7 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '') {
        WHERE ud.userid = " . $userid ;
     
     if($listname != ''){
-       $sql_condition .= " AND(ud.listname = ".$listname.")";
+       $sql_condition .= " AND(ud.listname = '".$listname."')";
     }
     //die;
     

@@ -97,11 +97,55 @@ $(document).ready(function() {
                     }
                 });
             }
-          }
-
-
-
+          } 
       });
+	  
+	  		if($('#backuprestore').length > 0){
+		//$('#ip-mgt-utils div').hide(); 
+		$('#ip-mgt-utils #ajax_loader').show();
+         var table =  $('#backuprestore').DataTable( {
+          "processing": true,
+          "serverSide": true,
+          "ajax":"switchtech-server-backuprestoreprocess.php",      
+          "pageLength": 25,
+          "dom": 'Bfrtip',
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+            "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "No records found",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "",
+            "infoFiltered": ""
+            },
+          "columns": [
+            {  "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''},
+			{ "data": "devicename" },
+            { "data": "csr_site_id" },
+            { "data": "csr_site_name" },            
+			{ "data": "region" },
+            { "data": "market" },
+            { "data": "deviceseries" },
+            { "data": "nodeVersion" },
+	        {
+            "className":      'center',
+            "data":           null,
+            "defaultContent": "<button type='button' id = 'backupbtn' class='btn btn-primary' data-toggle='modal' data-target='#backupModal' data-remote='remote-page.html'>Backup </button>"
+			// "defaultContent":   "<input id='btnDetails' class='btn btn-success' width='25px' value='Get Details' />"
+			} 
+        ],
+        "order": [[1, 'asc']],
+        "createdRow": function (row, data, rowIndex) {
+             $(row).addClass('device_row');
+			  $.each($('td', row), function (colIndex) {
+            	 if(colIndex == 0)
+            	   $(this).attr('title', 'Click here for health check');
+             }); 
+        }
+      } );
+	}
 
 });
 
@@ -118,4 +162,10 @@ function format ( d ) {
 
      return "<div id='detail_"+id+"'></div>";
 
-}
+} 
+
+$('#backuprestore tbody').on('click', 'td.details-control', function () {
+	
+ alert('inside the function');	
+	
+} 

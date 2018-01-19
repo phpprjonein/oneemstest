@@ -1913,3 +1913,11 @@ function get_celltechusers_list($userid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
+
+function get_switchtechusers_list($userid){
+    global $db2;
+    $sql = "select distinct(listid), listname from userdevices where userid=".$userid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return  $resultset['result'];
+}

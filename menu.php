@@ -50,7 +50,7 @@
     <?php }elseif($_SESSION['userlevel'] === "2"){  ?>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>" href="switchtech-dashboard.php">Dashboard</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-discovery.php"); ?>" href="switchtech-discovery.php">Discovery</a></li>
-    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-backup.php"); ?>" href="switchtech-backup.php">Backup</a></li>
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-restorebackup.php"); ?>" href="switchtech-restorebackup.php">Backup</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-configuration.php"); ?>" href="switchtech-configuration.php">Configuration</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-scripting.php"); ?>" href="switchtech-scripting.php">Scripting</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li>

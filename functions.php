@@ -1921,3 +1921,21 @@ function get_switchtechusers_list($userid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
+
+function update_login_api_rules($username){
+    global $db2;
+    //$url = 'http://txsliopsa1v.ncm.ncmwnet.com:8080/site/devices/user/'.$username.'/csrinfo';
+    //$output = @file_get_contents($url);
+   $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
+   $resp_result_arr = json_decode($output, 1);
+    for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
+        if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
+            foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
+                $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
+                $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."'  WHERE devicename = '".$val."'";
+                $db2->query($sql);
+                $db2->execute();
+            }
+        }
+    }
+}

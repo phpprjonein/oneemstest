@@ -1997,3 +1997,10 @@ function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
         return $location_href;
     }
 }
+function load_backup_information($deviceid){
+    global $db2;
+    $sql = "select * from backup_information where deviceid=".$deviceid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return  $resultset['result'];
+}

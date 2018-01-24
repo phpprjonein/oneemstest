@@ -926,20 +926,20 @@ function sendmail($mailbody,$pwrurl) {
     $mail = new PHPMailer();
     $mail->IsSMTP(); // send via SMTP
     $mail->SMTPAuth = true; // turn on SMTP authentication
-    $mail->Username = "ncmadministrator@gmail.com"; // SMTP username
-    $mail->Password = "ncmadministratorpassword"; // SMTP password
-    $webmaster_email = "ncmadministrator@gmail.com"; //Reply to this email ID
+    $mail->Username = "oneemsadministrator@gmail.com"; // SMTP username
+    $mail->Password = "oneemsadministratorpassword"; // SMTP password
+    $webmaster_email = "oneemsadministrator@gmail.com"; //Reply to this email ID
     $email="enduser@gmail.com"; // Recipients email ID
     $name="enduser"; // Recipient's name
     $mail->From = $webmaster_email;
-    $mail->FromName = "NCM Administrator";
+    $mail->FromName = "OneEMS Administrator";
     $mail->AddAddress($email,$name);
-    $mail->AddReplyTo($webmaster_email,"ncmadministrator@gmail.com");
+    $mail->AddReplyTo($webmaster_email,"oneemsadministrator@gmail.com");
     $mail->WordWrap = 50; // set word wrap
     //$mail->AddAttachment("/var/tmp/file.tar.gz"); // attachment
     //$mail->AddAttachment("/tmp/image.jpg", "new.jpg"); // attachment
     $mail->IsHTML(true); // send as HTML
-    $mail->Subject = "NCM Password Reset";
+    $mail->Subject = "OneEMS Password Reset";
     //$mail->Body = "Hi,
     //This is the HTML BODY "; //HTML Body
     $mail->Body = file_get_contents('emailcontent.php').$mailbody.$pwrurl;
@@ -1922,11 +1922,24 @@ function get_switchtechusers_list($userid){
     return  $resultset['result'];
 }
 
-function update_login_api_rules($username){
+function update_login_api_rules($username){	
     global $db2;
-    //$url = 'http://txsliopsa1v.ncm.ncmwnet.com:8080/site/devices/user/'.$username.'/csrinfo';
-    //$output = @file_get_contents($url);
-   $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
+    echo 'value of username'.$username;
+    if (strtolower($username) == 'Parimal' || strtolower($username) == 'edward') { // fieldsite technician
+       $_SESSION['userlevel'] = "2" ;
+       $username = 'swt_womaha';
+    } else {
+       $_SESSION['userlevel'] = "1" ;
+       $username = 'debarle';
+    };   
+    /*if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+        $userinfo = array('id' => 159,'username' => 'debarle','userlevel' =>'1','fname' => $fname, 'lname' => $lname);
+    } elseif ($_SESSION['userlevel'] === "2") {
+       $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
+    };
+   */
+	echo 'executed the function update_login_api_rules ';
+   $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
    $resp_result_arr = json_decode($output, 1);
     for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
         if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
@@ -1937,5 +1950,50 @@ function update_login_api_rules($username){
                 $db2->execute();
             }
         }
+    }
+}
+
+
+
+function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
+    echo 'inside the get_landing_page_sso function'.$username,$eid,$email,$fname,$lname,$vzid.'<br>';
+/*
+
+    $userinfo = array('id'=>159,'username' => $username,'userlevel'=>1,'fname'=>$fname,'lname'=>$lname');
+    $userinfo['id']  = 159;
+    $userinfo['username']  = $username;
+    $userinfo['userlevel'] = 1;
+    $userinfo['fname']  = $fname;
+    $userinfo['lname']  = $lname;
+*/
+    echo '<br>'."Username : $username, EID: $eid, EMAIL: $email, FIRSTNAME: $fname, LAST NAME :$lname,VZID: $vzid".'<br>';
+    if (strtolower($username) == 'mohilpa' || strtolower($username) == 'edward') { // fieldsite technician
+       $_SESSION['userlevel'] = "2" ;
+    } else {
+       $_SESSION['userlevel'] = "1" ;
+    };   
+    if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+        $userinfo = array('id' => 159,'username' => 'debarle','userlevel' =>'1','fname' => $fname, 'lname' => $lname);
+    } elseif ($_SESSION['userlevel'] === "2") {
+       $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
+    };
+    $_SESSION['userid'] = $userinfo['id'];
+    $_SESSION['username'] = $userinfo['username'];
+    $_SESSION['userlevel'] = $userinfo['userlevel'];
+    $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+    echo 'value of userlevel in session'.$_SESSION['userlevel'].'<br>';
+    if (!$_SESSION['userlevel']) {
+        return 'index.php';
+    }
+    else {
+        if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+       //  echo 'inside the cellsite tech url';
+            $location_href = "cellsitetech-dashboard.php";
+        }
+        if ($_SESSION['userlevel'] === "2") {
+            $location_href = "switchtech-dashboard.php";
+        }
+     // echo '<br>'.'value of location href inside the function'.$location_href.'<br>';
+        return $location_href;
     }
 }

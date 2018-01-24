@@ -1,34 +1,10 @@
 <?php
-$headers = apache_request_headers();
-//print_r($headers);
-foreach($headers as $header => $value) {
-       if ($header == 'SM_USER') {
-          $username = $value;
-        };
-       if ($header == 'EID') {
-          $eid = $value;
-        };
-       if ($header == 'Email') {
-          $email = $value;
-        };
-       if ($header == 'FirstName') {
-          $firstname = $value;
-        };
-       if ($header == 'LastName') {
-          $lastname  = $value;
-        };
-       if ($header == 'VZID') {
-          $sso_flag = 1;
-          $vzid  = $value;
-        };
-//       echo '<br>'."Header: $header value: $value".'<br>'; 
-};
 include 'classes/db2.class.php';
 include 'functions.php';
-$page_title = '';
+$page_title = 'OneEMS';
     //Destroy All sessions
     $_SESSION = array();
-if ( $sso_flag != 1) {
+
 if (isset($_POST['username']) && $_POST['password']) {
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -42,28 +18,17 @@ if (isset($_POST['username']) && $_POST['password']) {
       $_SESSION['userid'] = $userinfo['id'];
       $_SESSION['username'] = $userinfo['username'];
       $_SESSION['userlevel'] = $userinfo['userlevel'];
+
       $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
-      update_login_api_rules($_SESSION['username']);
    }
    
     if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
       $location_href = get_landing_page(); 
-// exit($location_href);
       header('Location:' . $location_href );
       exit;
     }
 
 }
-} else  {
-//  echo '<br>'."Username:$username EID:$eid Email:$email First Name:$firstname Last Name:$lastname VZID:$vzid".'<br>';
-  $userinfo = get_user_info_sso($username,$eid,$email,$firstname,$lastname,$vzid);
-};
-function get_user_info_sso($username,$eid,$email,$fname,$lname,$vzid) {
-      $location_href = get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid);
-      header('Location:' . $location_href );
-      exit;
-}
-$page_title = 'NCM Login';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +40,7 @@ $page_title = 'NCM Login';
      <header class="main-header">
 	  <div class="nav">
 		<div class="pull-left box"><a class="navbar-brand" href="#" >
-			<img src="resources/img/ncmlogo.png"  height = "24px"  alt=" OneEMS Logo"/>
+			<img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
 		  </a>
 		</div>
 	  </div> 
@@ -92,9 +57,9 @@ $page_title = 'NCM Login';
         </div>
     </div> 
     
-    <!-- 12 Oct 17: Added class login-page and OneEMS logo -->
+    <!-- 12 Oct 17: Added class login-page and ncm logo -->
     <div class="login-page">
-      <p class="logo"><a class="one"></a><a class="ems"></a></p>
+      <p class="logo"><a class="one"></a><a class="ems">OneEMS</a></p>
       
     <?php
 

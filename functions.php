@@ -223,7 +223,7 @@ function get_device_list_from_nodes_datatable($userid) {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'n.id',
+        'DISTINCT(\'n.id\')',
         'n.csr_site_id',
         'n.csr_site_name',
         'n.devicename',
@@ -233,12 +233,12 @@ function get_device_list_from_nodes_datatable($userid) {
         'n.lastpolled'
     ); 
 	
-    $sql_count = "SELECT COUNT(*) ";
+    $sql_count = "SELECT COUNT(DISTINCT 'n.id') ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
     $sql_condition = " FROM userdevices ud
        JOIN nodes n on ud.nodeid = n.id
-       WHERE ud.userid = " . $userid ;
+       WHERE ud.userid = " . $userid ." AND status = 3";
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.devicename LIKE '%". $search ."%'";
@@ -251,7 +251,7 @@ function get_device_list_from_nodes_datatable($userid) {
         $sql_condition .=  " ) ";
     }
     $count_sql = $sql_count . $sql_condition;
-    // echo $count_sql;
+    //echo $count_sql; die;
     $db2->query($count_sql);
     $row = $db2->resultsetCols();
     
@@ -1119,7 +1119,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'n.id',
+        'DISTINCT(\'n.id\')',
         'n.id',
         'n.devicename',
         'n.deviceIpAddr',
@@ -1137,12 +1137,12 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
         $sql_condition = " FROM nodes n
                       join userdevices ud on ud.nodeid = n.id
                       join users u on u.id = ud.userid
-                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid  ";
+                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid AND n.status = 3 ";
     }
     else {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
-                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market'";
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
         
     }
     
@@ -1924,7 +1924,6 @@ function get_switchtechusers_list($userid){
 
 function update_login_api_rules($username){	
     global $db2;
-    echo 'value of username'.$username;
     if (strtolower($username) == 'Parimal' || strtolower($username) == 'edward') { // fieldsite technician
        $_SESSION['userlevel'] = "2" ;
        $username = 'swt_womaha';
@@ -1938,14 +1937,15 @@ function update_login_api_rules($username){
        $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
     };
    */
-	echo 'executed the function update_login_api_rules ';
-   $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+   //$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+   $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
    $resp_result_arr = json_decode($output, 1);
     for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
         if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
             foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
                 $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
-                $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."'  WHERE devicename = '".$val."'";
+                //Node table status 3 added for live API active
+                $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
                 $db2->query($sql);
                 $db2->execute();
             }

@@ -223,7 +223,7 @@ function get_device_list_from_nodes_datatable($userid) {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'DISTINCT(\'n.id\')',
+        'DISTINCT(n.id)',
         'n.csr_site_id',
         'n.csr_site_name',
         'n.devicename',
@@ -233,7 +233,7 @@ function get_device_list_from_nodes_datatable($userid) {
         'n.lastpolled'
     ); 
 	
-    $sql_count = "SELECT COUNT(DISTINCT 'n.id') ";
+    $sql_count = "SELECT COUNT(DISTINCT(n.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
     $sql_condition = " FROM userdevices ud
@@ -1119,7 +1119,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'DISTINCT(\'n.id\')',
+        'DISTINCT(n.id)',
         'n.id',
         'n.devicename',
         'n.deviceIpAddr',
@@ -1128,7 +1128,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     );
     
     
-    $sql_count = " SELECT COUNT(DISTINCT n.id) as count ";
+    $sql_count = " SELECT COUNT(DISTINCT(n.id)) as count ";
     $sql_select = " SELECT distinct " . implode(", ", $columns);
     
     if ($list_type == 'user') {

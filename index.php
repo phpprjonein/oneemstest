@@ -20,6 +20,8 @@ if (isset($_POST['username']) && $_POST['password']) {
       $_SESSION['userlevel'] = $userinfo['userlevel'];
 
       $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+      
+      update_login_api_rules($_SESSION['username']);
    }
    
     if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {

@@ -210,10 +210,9 @@ $(document).ready(function() {
 			  });
 			  
 			  $(document).on('click', '#backupbtn', function(event) {
-			      //alert('Backup button is clicked');
-				  	$('#backupModal #bkup-deviceid').html('<br/><h6> <b><span id ="backupmoddet"> Device Name:' + $(this).closest('tr').find("td:eq(1)").text() + '</span><b></h6>');
+			    	$('#backupModal #bkup-deviceid').html('<br/><h6> <b><span id ="backupmoddet"> Device Name:' + $(this).closest('tr').find("td:eq(1)").text() + '</span><b></h6>');
 				  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
-		 	    	$.post( "backup-api-test.php", { type: "api-ajax"
+		 	    	$.post( "backup-api-process.php", { type: "api-ajax", deviceid: $(this).closest('tr').attr('id').replace('row_','')
 					}).done(function( data ) {
 						$('#backupModal .modal-body').html(data);
 					}); 

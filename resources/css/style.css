@@ -419,3 +419,14 @@ margin-left:310px;
 #restoremoddet{
 margin-left:210px;
 }
+
+.jf-form .custom-select {
+  background-color: transparent;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.jf-form .control-label {
+  font-weight: 600;
+  margin-bottom: 0;
+}

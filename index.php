@@ -1,53 +1,52 @@
 <?php
+$sso_flag = 0;
 include 'classes/db2.class.php';
 include 'functions.php';
 $page_title = 'OneEMS';
-    //Destroy All sessions
-    $_SESSION = array();
+//Destroy All sessions
+$_SESSION = array();
 
 if (isset($_POST['username']) && $_POST['password']) {
-   $username = $_POST['username'];
-   $password = $_POST['password'];
-
-   $userinfo = get_user_info($username, $password);
-//exit(print_r( $userinfo));
-   if ( ! $userinfo ) {
-      $message['error'] = 'Username or Password is incorrect ';
-   }
-   else {
-      $_SESSION['userid'] = $userinfo['id'];
-      $_SESSION['username'] = $userinfo['username'];
-      $_SESSION['userlevel'] = $userinfo['userlevel'];
-
-      $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
-      
-      update_login_api_rules($_SESSION['username']);
-   }
-   
-    if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
-      $location_href = get_landing_page(); 
-      header('Location:' . $location_href );
-      exit;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+    $userinfo = get_user_info($username, $password);
+    //exit(print_r( $userinfo));
+    if ( ! $userinfo ) {
+        $message['error'] = 'Username or Password is incorrect ';
     }
-
+    else {
+        $_SESSION['userid'] = $userinfo['id'];
+        $_SESSION['username'] = $userinfo['username'];
+        $_SESSION['userlevel'] = $userinfo['userlevel'];
+        $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+        update_login_api_rules($sso_flag,$_SESSION['username']);
+    }
+    
+    if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
+        $location_href = get_landing_page();
+        header('Location:' . $location_href );
+        exit;
+    }
+    
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
    <?php include "includes.php" ?>
-  </head> 
-  <body> 
+  </head>
+  <body>
   <div class="container-fluid">
      <header class="main-header">
-	  <div class="nav">
-		<div class="pull-left box"><a class="navbar-brand" href="#" >
-			<img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
-		  </a>
-		</div>
-	  </div> 
-	<hr style="border-top:5px solid red;">
-	</header> 
+          <div class="nav">
+                <div class="pull-left box"><a class="navbar-brand" href="#" >
+                        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
+                  </a>
+                </div>
+          </div>
+        <hr style="border-top:5px solid red;">
+        </header>
   
      <div id="div1"></div> 
     <!-- Modal HTML -->

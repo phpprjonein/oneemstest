@@ -1922,24 +1922,29 @@ function get_switchtechusers_list($userid){
     return  $resultset['result'];
 }
 
-function update_login_api_rules($username){	
+function update_login_api_rules($sso_flag,$username){
     global $db2;
-    if (strtolower($username) == 'Parimal' || strtolower($username) == 'edward') { // fieldsite technician
-       $_SESSION['userlevel'] = "2" ;
-       $username = 'swt_womaha';
-    } else {
-       $_SESSION['userlevel'] = "1" ;
-       $username = 'debarle';
-    };   
-    /*if ($_SESSION['userlevel'] === "1") { // fieldsite technician
-        $userinfo = array('id' => 159,'username' => 'debarle','userlevel' =>'1','fname' => $fname, 'lname' => $lname);
-    } elseif ($_SESSION['userlevel'] === "2") {
-       $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
+    if ($sso_flag == 1 ) {
+        if (strtolower($username) == 'Parimal' || strtolower($username) == 'edward') { // fieldsite technician
+            $_SESSION['userlevel'] = "2" ;
+            $username = 'swt_womaha';
+        } else {
+            $_SESSION['userlevel'] = "1" ;
+            $username = 'debarle';
+        };
     };
-   */
-   //$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
-   $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
-   $resp_result_arr = json_decode($output, 1);
+    /*if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+     $userinfo = array('id' => 159,'username' => 'debarle','userlevel' =>'1','fname' => $fname, 'lname' => $lname);
+     } elseif ($_SESSION['userlevel'] === "2") {
+     $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
+     };
+     */
+    if ($sso_flag == 1 ) {
+        $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+    }else{
+        $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
+    }
+    $resp_result_arr = json_decode($output, 1);
     for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
         if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
             foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){

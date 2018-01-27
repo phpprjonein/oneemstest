@@ -365,9 +365,9 @@ footer {
 }
 footer .panel-footer{text-align: center;}
 /* editable fields styles for configuration page */
-#cellsitech-config .form-group{margin-bottom:1px;margin-left:5px;}
-#cellsitech-config #file_process .form-group input{height:25px; font-size:12px; width:auto;}
-#cellsitech-config #file_process{ max-height:420px; overflow-y:scroll;}
+#cellsitech-config .form-group, #switchtech-config .form-group{margin-bottom:1px;margin-left:5px;}
+#cellsitech-config #file_process .form-group input, #switchtech-config #file_process .form-group input{height:25px; font-size:12px; width:auto;}
+#cellsitech-config #file_process, #switchtech-config #file_process{ max-height:420px; overflow-y:scroll;}
 
 .form-editable-fields .form-control {
 	background-color: #ffc0cb;
@@ -379,10 +379,10 @@ footer .panel-footer{text-align: center;}
 	background-color: #d8dada;
 	display: inline;
 }
-#cellsitech-config .panel-default > .panel-heading {
+#cellsitech-config .panel-default > .panel-heading, #switchtech-config .panel-default > .panel-heading{
     padding: 5px 15px;
 }
-#cellsitech-config .panel-body{padding:5px;}   
+#cellsitech-config .panel-body, #switchtech-config .panel-body{padding:5px;}   
 .cellsitech-configtxtdisp {
 background-color:lightgrey !important;
 opacity:.5;

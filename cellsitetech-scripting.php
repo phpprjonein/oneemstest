@@ -21,7 +21,7 @@ user_session_check();
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_user_devices.js?t="<?php echo date('his'); ?>></script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
@@ -50,7 +50,7 @@ user_session_check();
 							-->
                           </div>                  
                           
- 							<div id="mylist" class="panel-heading" style = "height:560px;"><b>Coming soon.</b>
+ 							<div id="mylist" class="panel-heading"><b>Coming soon.</b>
 							
 							<!-- backup management content row -->
     <div class="row">

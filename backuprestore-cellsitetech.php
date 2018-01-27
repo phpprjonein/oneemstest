@@ -1,8 +1,8 @@
 <?php
 
 $ftp_server = 'localhost';
-$ftp_user_name = 'saravanan';
-$ftp_user_pass = '123';
+$ftp_user_name = 'linuxnix';
+$ftp_user_pass = 'linuxnix';
 $row_region = strtolower(str_replace(' ','', $_GET['region']));
 $row_market = strtolower(str_replace(' ','', $_GET['market']));
 $row_device_name = $_GET['devicename']; //'AKROOH20T1A-P-CI-0382-01';
@@ -15,7 +15,7 @@ $conn_id = ftp_connect($ftp_server);
 $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 
 // get contents of the current directory
-$contents = ftp_nlist($conn_id, '/usr/apps/config/bkup/'.$row_region.'/'.$row_market.'/');
+$contents = ftp_nlist($conn_id, '/export/home/linuxnix/usr/apps/config/bakup/'.$row_region.'/');
 ?>
 <div class="ownfont box-body launch-modal">
 <table class="table table-bordered" id="back_res" cellspacing="0" cellpadding="0" >

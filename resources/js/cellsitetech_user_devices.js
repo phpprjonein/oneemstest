@@ -1,4 +1,24 @@
 $(document).ready(function() {
+    $('body').on('click', '.run_all_checks', function(){
+    	$thisdiv = $(this);
+        $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
+          $.ajax({
+              type:"get",
+              url:"healthchk-cellsitetech.php",
+              data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
+              beforeSend: function(){
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+              },
+              complete: function() {
+                  $thisdiv.addClass('loaded');
+              },
+              success: function(resdata){
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+              }
+          });
+      }); 
+    
+    
 	if($('#example').length > 0){
 		//$('#ip-mgt-utils div').hide();
 		$('#ip-mgt-utils #ajax_loader').show();

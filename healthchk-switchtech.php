@@ -159,7 +159,7 @@ echo $display; ?></td>
                                               <td>&nbsp;&nbsp;&nbsp;</td>                 
                                               <td>&nbsp;&nbsp;&nbsp;</td>      
                                               <td>&nbsp;&nbsp;&nbsp;</td>                                                 
-<!--                                          <td class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"> <b> Rerun All checks </b></td> -->
+                                          <td class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"> <b> Rerun All checks </b></td>
                                               <td colspan="2">&nbsp;&nbsp;&nbsp;</td>         
                                             </tr>
                                           </tbody>

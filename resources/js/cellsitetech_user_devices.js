@@ -466,6 +466,7 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 	  
 	  
 	  $(document).on('click', '#backupbtn', function(event) {
+		    $('#backupModal .modal-body').html('');
 	    	$('#backupModal #bkup-deviceid').html('<br/><h6> <b><span id ="backupmoddet"> Device Name:' + $(this).closest('tr').find("td:eq(1)").text() + '</span><b></h6>');
 		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
  	    	$.post( "backup-api-process.php", { type: "api-ajax", deviceid: $(this).closest('tr').attr('id').replace('row_','')

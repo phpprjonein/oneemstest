@@ -62,7 +62,7 @@ if($_POST['action'] == 'Save Configuration'){
                 $_SESSION['msg'] = 'fae';
                 $_SESSION['msg-param']['filename'] = $_FILES["file"]["name"];
             } else {
-                if (move_uploaded_file($_FILES["file"]["tmp_name"], "upload/sampleconfigfile.script")) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], "upload/sampleconfigfile.txt")) {
                     $_SESSION['msg'] = 'fus';
                 }
             }

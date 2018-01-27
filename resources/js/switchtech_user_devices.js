@@ -274,7 +274,7 @@ $(document).ready(function() {
 	                  var id = tr.attr('id').replace('row_','');  
 	                  var ajs = $.ajax({
 	                    type:"get",
-	                    url:"backuprestore-cellsitetech.php",					
+	                    data: {'deviceid':id, 'userid':$('#userid').val(), 'devicename': $(this).closest('tr').find("td:eq(1)").text(), 'region': $(this).closest('tr').find("td:eq(4)").text(), 'market' : $(this).closest('tr').find("td:eq(5)").text()},					
 	                    data: {deviceid:id, userid:$('#userid').val()},
 	                    beforeSend: function(){
 	                        $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');

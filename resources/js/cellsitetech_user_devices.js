@@ -194,7 +194,6 @@ $(document).ready(function() {
     	
     	$("#ip-allocation-region a").click(function(){
     		$("#ip-allocation-region .btn").html($(this).text());
-			alert('value of the text is '+ $(this).text());
 			  $("#exampleModalIPM #exampleModalIPMLabel").html("ADD A SUBNET IN " + $(this).text());
 			  $("#exampleModalIPM #selected_region").val($(this).text());
     		$.post( "ip-mgt-process.php", { calltype: "trigger", region: $(this).text() })

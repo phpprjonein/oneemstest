@@ -21,7 +21,7 @@ user_session_check();
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_user_devices.js?t="<?php echo date('his'); ?>></script>
    <script defer src="resources/js/all.js"></script>
  </head>
      <body>

@@ -1581,11 +1581,15 @@ function load_discovery_dataset($class = 'C'){
     $sqlm = "select GROUP_CONCAT(DISTINCT(CONCAT('''', (market), '''' ))) as market from nodes where csr_site_tech_id like '".$_SESSION['username']."'";
     $db2->query($sqlm);
     $mrecordset = $db2->resultset();
-    $market = $mrecordset[0]['market'];
-    $sql = "SELECT * FROM discoveryres where class ='".strtolower($class)."' AND market in (".$market.") ORDER BY id";
-    $db2->query($sql);
-    $resultset['result'] = $db2->resultset();
-    return $resultset;
+    if(isset($mrecordset[0]['market'])){
+        $market = $mrecordset[0]['market'];
+        $sql = "SELECT * FROM discoveryres where class ='".strtolower($class)."' AND market in (".$market.") ORDER BY id";
+        $db2->query($sql);
+        $resultset['result'] = $db2->resultset();
+        return $resultset;
+    }else{
+        return '';
+    }
 }
 function discovery_status_update($status, $id){
     global $db2;

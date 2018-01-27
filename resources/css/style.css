@@ -430,3 +430,5 @@ margin-left:210px;
   font-weight: 600;
   margin-bottom: 0;
 }
+.container-fluid{margin-bottom:15px;}
+.footer{position:unset;}

@@ -58,7 +58,7 @@ if (isset($_POST['username']) && $_POST['password']) {
         </div>
     </div> 
     
-    <!-- 12 Oct 17: Added class login-page and ncm logo -->
+    <!-- 12 Oct 17: Added class login-page and oneems logo -->
     <div class="login-page">
       <p class="logo"><a class="one"></a><a class="ems">OneEMS</a></p>
       

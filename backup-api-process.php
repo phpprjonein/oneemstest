@@ -5,8 +5,11 @@ include 'functions.php';
 ?>
 <?php  
         $deviceid = $_POST['deviceid'];               
-        //$url_send = 'http://63.49.0.192:8080/configbackup/'.$deviceid;
-        //$json_response = sendPostData($url_send);
+//        $deviceid = 5;
+        $url_send = 'http://63.49.0.192:8080/configbackup/'.$deviceid;
+        $json_response = sendPostData($url_send);
+
+       /*
         $json_response = '{
   "data": [
     {
@@ -17,12 +20,17 @@ include 'functions.php';
   "status": "success",
   "success": false
 }';
-        
+      */  
+
         $output = json_decode($json_response,true);   
-        
-        echo "<b>Backup Status : ".$output['status']."</b>";
+/*
+       echo "<br>";
+        print_r($output);
+*/
+       echo "<br>";
+        echo "<b>Backup Status : ".$output['data'][0]['status']."</b>";
         echo "<br/>";
-        echo "<b>Backup data : ".$output['data'][0]['data']."</b>";
+        echo "<b>Filename : ".$output['data'][0]['data']."</b>";
        
  ?>
  

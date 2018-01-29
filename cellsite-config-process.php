@@ -75,7 +75,11 @@ if($_POST['action'] == 'Save Configuration'){
             $_SESSION['msg'] = 'feps';
         }
     }
-    header("location:cellsitetech-configuration.php");
+    if(isset($_POST['usertype']) && $_POST['usertype'] == 2){
+        header("location:switchtech-configuration.php");
+    }else{
+        header("location:cellsitetech-configuration.php");
+    }
 }
 
 ?>

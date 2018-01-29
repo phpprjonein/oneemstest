@@ -74,6 +74,7 @@ $page_title = 'OneEMS';
                             				    <input type="file"  id="file" name="file">
                             				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
                             				  	</div>
+                            				  	<input type="hidden" name="usertype" value="2">
                             				  	<input type="submit" name="action" id="config-submit" class="btn" value="Upload">
                         					</form>
 										</div>

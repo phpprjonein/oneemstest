@@ -63,7 +63,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
       <div class="panel-body">
         <div class="col-md-6" style="background-color:nonelightgreen;">
           <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="cellsitetech-dashboard.php" method = "POST" class="navbar-form search">
-            <div class="input-group add-on" style="min-width:350px;margin-left:0px;">
+            <div class="input-group add-on" style="min-width:200px;margin-left:0px;">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">
                 <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><font color="black"><b>Submit</b></font></button>

@@ -1,4 +1,4 @@
-service nagleENDnewtwo
+service nagle
 no service pad
 service tcp-keepalives-in
 service tcp-keepalives-out

@@ -1,4 +1,4 @@
-service nagleENDnewtwo
+service nagle
 no service pad
 service tcp-keepalives-in
 service tcp-keepalives-out
@@ -554,6 +554,8 @@ ip access-list standard SSM
 ip radius source-interface Loopback300
 logging source-interface Loopback300 vrf CELL_MGMT
 !
+logging host ipv6 2001:4888:a01:2130:a1:fef:0:115 vrf CELL_MGMT
+!
 no ipv6 pim vrf LTE rp embedded
 no ipv6 pim rp embedded
 !
@@ -574,8 +576,10 @@ snmp-server trap link ietf
 snmp-server trap-source Loopback300
 snmp-server source-interface informs Loopback300
 snmp-server enable traps
-snmp-server host 10.194.102.212 vrf CELL_MGMT version 2c 2Y2LHTZP31
-snmp-server host 10.194.236.212 vrf CELL_MGMT version 2c 2Y2LHTZP31
+!
+!
+snmp-server host 2001:4888:a02:2105:a0:fef:0:5 vrf CELL_MGMT version 2c 2Y2LHTZP31
+snmp-server host 2001:4888:a03:210d:c0:fef:0:16 vrf CELL_MGMT version 2c 2Y2LHTZP31
 snmp-server host 2001:4888:a01:2106:a1:fef:0:203 vrf CELL_MGMT version 2c 2Y2LHTZP31
 snmp-server host 2001:4888:a03:210a:c0:fef:0:203 vrf CELL_MGMT version 2c 2Y2LHTZP31
 snmp ifmib ifindex persist

@@ -657,6 +657,27 @@ function usrfavritelist_display($userid){
     return $resultset;
 }
 
+function usrcellsitefavritelist_display($userid){
+    $db2 = new db2();
+    $sql_select = " SELECT listname, listid ";
+    $sql_condition = "
+  FROM
+  userdevices
+  WHERE userid = $userid 
+  group by listname, listid
+  order by listid desc ";
+    
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+
+
+
+
+
 function insert_my_device_record($data){
     $db2 = new db2();
     $listid = $data['listid'];

@@ -756,6 +756,25 @@ function usrfavritecondev_display($userid,$listid){
     return $resultset;
 }
 
+function usrfavritecondev_celt_display($userid,$listid){
+    $db2 = new db2();
+    $sql_select = " SELECT ud.id, ud.listid, ud.listname, ud.nodeid, n.devicename ";
+    $sql_condition = "
+  FROM
+  userdevices ud
+  LEFT JOIN nodes n on ud.nodeid = n.id
+  WHERE ud.listid = $listid and ud.userid = $userid and ud.listid = 0  order by ud.id desc ";
+    $sql = $sql_select . $sql_condition;
+    
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    
+    $resultset['mylistname'] = $resultset['result'][0]['listname'];
+    
+    array_pop($resultset['result']);
+    
+    return $resultset;
+}
 
 function user_mylist_devieslist($userid,$listid){
     

@@ -122,7 +122,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           </div> <!--  class : col-md-6 -->
         <?php 
         if (isset( $_SESSION['switchlistid'] )) {
-          $switchlist = usrfavritecondev_display($userid,$_SESSION['switchlistid']);
+           $switchlist = usrfavritecondev_celt_display($userid,$_SESSION['switchlistid']);
           ?>
           <div class="col-md-6 panel-warning panel-default">
             <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
@@ -243,14 +243,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
            
           <?php
             $str_marketname =  $marketname ; 
-            $switch_device_name = '';
+            $switch_device_name = 'Detroit 5';
 
             // Function call to get Switch name assigned for the user
-            $switch_list = get_switchlist_all_market($_SESSION['userid']); 
+            /*$switch_list = get_switchlist_all_market($_SESSION['userid']); 
             if (isset($switch_list['result'])){                
               $switch_device_name = $switch_list['result'][0]['switch_name'];
             }
-          
+            */
             if (!isset($str_marketname)) { 
             ?>
               <!-- Displays user assigned switch name -->

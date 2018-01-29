@@ -1239,6 +1239,113 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
     return $resultset;
 }
 
+
+
+function get_cellsitetech_user_routers_list_datatable($list_for, $list_type) {
+    global $db2;
+    
+    
+    //print_r($_GET);
+    $draw = $_GET['draw'];
+    $start = isset($_GET['start']) ? $_GET['start'] : 0;
+    $length = isset($_GET['length']) ? $_GET['length'] : 10;
+    $search_term = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
+    $order_col = $_GET['order'][0]['column'];
+    $order_dir = $_GET['order'][0]['dir'];
+    
+    $columns = array(
+        'DISTINCT(n.id)',
+        'n.id',
+        'n.devicename',
+        'n.deviceIpAddr',
+        'n.csr_site_name',
+        'n.csr_site_id'
+    );
+    
+    
+    $sql_count = " SELECT COUNT(DISTINCT(n.id)) as count ";
+    $sql_select = " SELECT distinct " . implode(", ", $columns);
+    
+    if ($list_type == 'user') {
+        $userid = $_SESSION['userid'];
+        $switch_device_name = addslashes($list_for);
+        $sql_condition = " FROM nodes n
+                      join userdevices ud on ud.nodeid = n.id
+                      join users u on u.id = ud.userid
+                      WHERE n.switch_name ='$switch_device_name' AND n.status = 3 ";
+    }
+    else {
+        $market = addslashes($list_for);
+        $sql_condition = " FROM nodes n
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
+        
+    }
+    
+    if ($search_term != '') {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= "  n.devicename LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= " ) ";
+    }
+    
+    $count_sql = $sql_count .  $sql_condition  ;
+    $db2->query($count_sql);
+    $row = $db2->resultsetCols();
+    
+    $total_rec = $row[0];
+    
+    
+    
+    $sql_order = "";
+    if ($order_col != ''){
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != ''){
+        $sql_order .= $order_dir != '' ? " $order_dir ": " asc ";
+    }
+    
+    $sql_limit = " LIMIT $start, $length ";
+    
+    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if (count($db2->resultset())) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'] ;
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+        
+    }
+    else {
+        $resultset['data'] = '';
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] =0;
+    }
+    
+    return $resultset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function get_market_list_new() {
     global $db2;
     
@@ -1989,9 +2096,11 @@ function update_login_api_rules($sso_flag,$username){
         $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
     }
     $resp_result_arr = json_decode($output, 1);
+    $_SESSION['sel_switch_name']  = '';
     for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
         if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
             foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
+                $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
                 $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
                 //Node table status 3 added for live API active
                 $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";

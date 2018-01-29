@@ -20,7 +20,7 @@ $(document).ready(function() {
             "infoEmpty": "",
             "infoFiltered": ""
             },
-          "ajax":"swtchtech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val(),
+          "ajax":"cellsitetech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val(),
              "columns": [
             {  "className":  'device_row',
                 "orderable":      false,

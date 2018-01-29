@@ -1,7 +1,7 @@
-<?php 
+<?php
 error_reporting(1);
 if (php_sapi_name() != 'cli') {
-    // only set this when not run from CLI 
+    // only set this when not run from CLI
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != '') {
         $config_basedir = "https://".$_SERVER['HTTP_HOST']."/";
     } else {
@@ -22,7 +22,7 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemtest/");
 //define('DB_HOST', 'txaroemsda3z');
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'oneemsdev');
+define('DB_NAME', 'ncmdev');
 define('DB_USER', 'root');
 define('DB_PASSWORD','root');
 define('HIGH_LIMIT', 25);

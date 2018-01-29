@@ -5,6 +5,7 @@ include 'functions.php';
 $page_title = 'OneEMS';
 //Destroy All sessions
 $_SESSION = array();
+ini_set('display_errors',1);
 
 if (isset($_POST['username']) && $_POST['password']) {
     $username = $_POST['username'];

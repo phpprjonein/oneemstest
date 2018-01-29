@@ -106,7 +106,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                     <tr style='cursor:pointer' class="del_<?php echo $value['listid'];?>">                            
                       <td width="70%" >
                         <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
-                      <?php echo $value['listname']; ?>
+                      <?php echo ($value['listname'] == '0' ? 'My routers' : $value['listname']); ?>
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
                       </td>                    
@@ -126,7 +126,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           ?>
           <div class="col-md-6 panel-warning panel-default">
             <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
-             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b></font>
+             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == 0 ? 'My routers' : $switchlist['mylistname']); ?> </b></font>
                 <!-- Deleted selected list by drag   and drop area -->
                 <span type="button" class="box box-danger border pull-right"><font color="black"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b></font>
                 </span>
@@ -243,7 +243,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
            
           <?php
             $str_marketname =  $marketname ; 
-            $switch_device_name = 'Detroit 5';
+            $switch_device_name = $_SESSION['sel_switch_name'];
 
             // Function call to get Switch name assigned for the user
             /*$switch_list = get_switchlist_all_market($_SESSION['userid']); 

@@ -243,13 +243,13 @@
            
           <?php
             $str_marketname =  $marketname ; 
-            $switch_device_name = '';
+            $switch_device_name = $_SESSION['sel_switch_name'];
 
             // Function call to get Switch name assigned for the user
-            $switch_list = get_switchlist_all_market($_SESSION['userid']); 
+            /*$switch_list = get_switchlist_all_market($_SESSION['userid']); 
             if (isset($switch_list['result'])){                
               $switch_device_name = $switch_list['result'][0]['switch_name'];
-            }
+            }*/
           
             if (!isset($str_marketname)) { 
             ?>

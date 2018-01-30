@@ -2093,8 +2093,8 @@ function update_login_api_rules($sso_flag,$username){
     if ($sso_flag == 1 ) {
         $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
     }else{
-        //$output = @file_get_contents('http://localhost/oneemstest/login_response.php');
-		$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+        $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
+		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
     }
     $resp_result_arr = json_decode($output, 1);
     $_SESSION['sel_switch_name']  = '';

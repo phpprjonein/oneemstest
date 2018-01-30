@@ -133,7 +133,7 @@ $page_title = 'OneEMS';
 								<?php
 									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
 									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
-									$output .= '</form>'; 
+									$output .= '<input type="hidden" name="usertype" value="2"></form>'; 
 									echo $output;
 								?> 
 								<?php } ?>	

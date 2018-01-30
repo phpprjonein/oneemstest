@@ -24,7 +24,11 @@ if($_POST['action'] == 'Save Configuration'){
         $db2->execute();
         $_SESSION['msg'] = 'dbs';
     }
-    header("location:cellsitetech-configuration.php");
+    if(isset($_POST['usertype']) && $_POST['usertype'] == 2){
+        header("location:switchtech-configuration.php");
+    }else{
+        header("location:cellsitetech-configuration.php");
+    }
 }elseif ($_POST['action'] == 'Save Script'){
     $file = fopen(getcwd()."/upload/sampleconfigfile.script","w");
     foreach ($_POST['loop'] as $key => $val){

@@ -126,7 +126,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           ?>
           <div class="col-md-6 panel-warning panel-default">
             <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
-             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == 0 ? 'My routers' : $switchlist['mylistname']); ?> </b></font>
+             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == '0' ? 'My routers' : $switchlist['mylistname']); ?> </b></font>
                 <!-- Deleted selected list by drag   and drop area -->
                 <span type="button" class="box box-danger border pull-right"><font color="black"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b></font>
                 </span>

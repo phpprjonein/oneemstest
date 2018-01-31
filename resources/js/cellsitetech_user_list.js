@@ -281,7 +281,7 @@ function switchlistdel(userid, switchlistid) {
         'userid': userid
       },
       success: function() {
-        $(location).attr("href", 'switchtech-devicelist.php'); 
+        $(location).attr("href", 'cellsitetech-dashboard.php'); 
       }
     });
   }

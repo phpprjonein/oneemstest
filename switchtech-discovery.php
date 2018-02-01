@@ -196,7 +196,7 @@ conflict table content -->
                     <th scope="col">OS</th>
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
-                    <th scope="col">Remove / Update</th>
+                    <th scope="col" style="display:none;">Remove / Update</th>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>                    
                   </tr>
@@ -244,7 +244,7 @@ conflict table content -->
                     <th scope="col">OS</th>
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
-                    <th scope="col">Add</th>
+                    <th scope="col" style="display:none;">Add</th>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>
                     <th scope="col" style="display:none;">Upsince</th>
@@ -285,7 +285,7 @@ conflict table content -->
 <!-- ok table content -->
             <div class="tab-pane fade <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
             	<?php $resultset =  load_discovery_dataset('k'); ?>
-              <table id="ip-ok-table" class="table table-sm table-responsive table-striped ip-ok-table">
+              <table id="ip-ok-table" class="table table-sm  table-striped ip-ok-table">
                 <thead>
                   <tr>
                     <th scope="col">IPv4 Address</th>
@@ -298,9 +298,9 @@ conflict table content -->
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <?php  if(count($resultset['result']) > 0): ?>
-                    <th scope="col"><a href="#" id="select_all" onclick="ok_all_item();">Select&nbsp;All</a></th>
+                    <th scope="col" style="display:none;><a href="#" id="select_all" onclick="ok_all_item();" style="display:none;" >Select&nbsp;All</a></th>
                     <?php else:?>
-                    <th scope="col">Select&nbsp;All</th>
+                    <th scope="col" style="display:none;" >Select&nbsp;All</th>
                     <?php endif; ?>
                     <th scope="col" style="display:none;">Region</th>
                     <th scope="col" style="display:none;">Market</th>

@@ -731,9 +731,12 @@ function insert_usrfavritedev($data){
     $_SESSION['switchlistid'] = $listid;
     $db2->query($sql);
     $result =$db2->execute();
-    
-    return $result;
-    
+    if ($_SESSION['userlevel'] = "1" ){
+       header("Location: cellsitetech-dashboard.php");
+    } else {
+       header("Location: switchtech-dashboard.php");
+    };
+    //return $result; 
 }
 
 function usrfavritecondev_display($userid,$listid){

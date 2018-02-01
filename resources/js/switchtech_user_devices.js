@@ -62,8 +62,9 @@ $(document).ready(function() {
         "createdRow": function (row, data, rowIndex) {
              $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
-            	 if(colIndex == 0)
+            	/* if(colIndex == 0)
             	   $(this).attr('title', 'Click here for health check');
+			   */  // Temporarily not needed. Needed in future.
              });
         }
 
@@ -242,6 +243,7 @@ $(document).ready(function() {
 	  	  
 	  		$(document).on('click', '#backuprestore tbody td.details-control', function(event) {
 		        //$('#backuprestore tbody').on('click', 'td.details-control', function () {
+				/* Temporarily commented on 31 jan 2018. Needed in future.	
 	    		var table =  $('#backuprestore').DataTable();
 	         var tr = $(this).closest('tr');
 	         var row = table.row( tr ); 
@@ -287,7 +289,7 @@ $(document).ready(function() {
 	                    }
 	                });
 	            }
-	          }
+	          }*/
 
 	      });	
 });

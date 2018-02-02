@@ -6,8 +6,6 @@ $page_title = 'OneEMS';
 //Destroy All sessions
 $_SESSION = array();
 ini_set('display_errors',1);
-
-if($sso_flag == 1){
 $headers = apache_request_headers();
     foreach($headers as $header => $value) {
         if ($header == 'SM_USER') {
@@ -30,6 +28,10 @@ $headers = apache_request_headers();
             $vzid  = $value;
         };
     };
+
+$_SESSION['sso_flag'] === $sso_flag;
+
+if($sso_flag == 1){
     $userinfo = get_user_info_sso($username);
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];

@@ -1,7 +1,7 @@
 <header class="main-header"> 
   <div class="nav top-menu">
     <div class="float-left box logo-box"><a class="navbar-brand" href="#" >
-        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" OneEMS Logo"/>
+        <img src="resources/img/verizonlogo.png"  height = "24px"  alt=" OneEMS Logo"/>
       </a>
     </div>
     <?php 
@@ -18,9 +18,11 @@
         </a>
       </li> 
       <li class="dropdown messages-menu">
+        <?php if ($_SESSION['sso_flag'] === "0") { ?>
         <a href="index.php">                      
           <img src="resources/img/logout.jpg"  width="15" alt="Logo"/>
         </a>
+       <?php }; ?> 
       </li>
     </ul>
   </div>

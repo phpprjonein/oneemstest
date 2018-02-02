@@ -29,6 +29,21 @@ function get_user_info($username, $password) {
     
 }
 
+
+function get_user_info_sso($username) {
+    
+    global $db2;
+    
+    if (trim($username) !='') {
+        $sql = "SELECT * FROM users WHERE username='" .$username. "'";
+        $db2->query($sql);
+        $rows = $db2->resultset();
+        $result = $rows[0];
+        return $result;
+    }
+    return false;
+}
+
 function check_user_authentication($usertype) {
     global $db2;
     
@@ -2093,6 +2108,8 @@ function update_login_api_rules($sso_flag,$username){
      $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
      };
      */
+    
+    
     if ($sso_flag == 1 ) {
         $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
     }else{
@@ -2127,8 +2144,10 @@ function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
     $userinfo['userlevel'] = 1;
     $userinfo['fname']  = $fname;
     $userinfo['lname']  = $lname;
-*/
+
     echo '<br>'."Username : $username, EID: $eid, EMAIL: $email, FIRSTNAME: $fname, LAST NAME :$lname,VZID: $vzid".'<br>';
+    
+    die;
     if (strtolower($username) == 'mohilpa' || strtolower($username) == 'edward') { // fieldsite technician
        $_SESSION['userlevel'] = "2" ;
     } else {
@@ -2139,6 +2158,11 @@ function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
     } elseif ($_SESSION['userlevel'] === "2") {
        $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
     };
+    
+    */
+    
+    
+    
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];

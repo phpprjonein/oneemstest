@@ -7,29 +7,65 @@ $page_title = 'OneEMS';
 $_SESSION = array();
 ini_set('display_errors',1);
 
-if (isset($_POST['username']) && $_POST['password']) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    $userinfo = get_user_info($username, $password);
-    //exit(print_r( $userinfo));
-    if ( ! $userinfo ) {
-        $message['error'] = 'Username or Password is incorrect ';
-    }
-    else {
-        $_SESSION['userid'] = $userinfo['id'];
-        $_SESSION['username'] = $userinfo['username'];
-        $_SESSION['userlevel'] = $userinfo['userlevel'];
-        $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
-        update_login_api_rules($sso_flag,$_SESSION['username']);
-    }
-    
+if($sso_flag == 1){
+$headers = apache_request_headers();
+    foreach($headers as $header => $value) {
+        if ($header == 'SM_USER') {
+            $username = $value;
+        };
+        if ($header == 'EID') {
+            $eid = $value;
+        };
+        if ($header == 'Email') {
+            $email = $value;
+        };
+        if ($header == 'FirstName') {
+            $firstname = $value;
+        };
+        if ($header == 'LastName') {
+            $lastname  = $value;
+        };
+        if ($header == 'VZID') {
+            $sso_flag = 1;
+            $vzid  = $value;
+        };
+    };
+    $userinfo = get_user_info_sso($username);
+    $_SESSION['userid'] = $userinfo['id'];
+    $_SESSION['username'] = $userinfo['username'];
+    $_SESSION['userlevel'] = $userinfo['userlevel'];
+    $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+    update_login_api_rules($sso_flag,$_SESSION['username']);
     if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
         $location_href = get_landing_page();
         header('Location:' . $location_href );
         exit;
+    }    
+}else{
+    if (isset($_POST['username']) && $_POST['password']) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        $userinfo = get_user_info($username, $password);
+        //exit(print_r( $userinfo));
+        if ( ! $userinfo ) {
+            $message['error'] = 'Username or Password is incorrect ';
+        }
+        else {
+            $_SESSION['userid'] = $userinfo['id'];
+            $_SESSION['username'] = $userinfo['username'];
+            $_SESSION['userlevel'] = $userinfo['userlevel'];
+            $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+            update_login_api_rules($sso_flag,$_SESSION['username']);
+        }
+        
+        if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
+            $location_href = get_landing_page();
+            header('Location:' . $location_href );
+            exit;
+        }
+        
     }
-    
 }
 ?>
 <!DOCTYPE html>

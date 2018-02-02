@@ -104,7 +104,7 @@ $page_title = 'OneEMS';
     										        if (substr_count(strtolower('#'.$color),"#x") > 0 || substr_count(strtolower('#'.$color),"#y") > 0 || substr_count(strtolower('#'.$color),"#x.x.x.x") > 0 || substr_count(strtolower('#'.$color),"#y.y.y.y") > 0 || substr_count(strtolower('#'.$color), "#z.z.z.z") > 0  || substr_count(strtolower('#'.$color),"#a.a.a.a") > 0 || substr_count(strtolower('#'.$color), "#b.b.b.b") > 0 ){
         											    $output_inner .= "<input type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_".$line."][]' value='1' >";
         											}else{
-        											     if(strlen(trim($color))!=0){
+        											     if(strlen($color)!=0){
         											         $output_inner .= "<input type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' >";
         											     }
         										    }

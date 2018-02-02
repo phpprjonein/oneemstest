@@ -384,9 +384,11 @@ footer .panel-footer{text-align: center;}
 }
 #cellsitech-config .panel-body, #switchtech-config .panel-body{padding:5px;}   
 .cellsitech-configtxtdisp {
-background-color:lightgrey !important;
+background-color:#CCCCCC !important;
 opacity:.5;
 pointer-events:none;
+color: black;
+font-weight:bold;
 }
 .cellsitech-configtxtinp {
 background-color:pink;

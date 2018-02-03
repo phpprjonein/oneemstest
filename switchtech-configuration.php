@@ -106,8 +106,9 @@ $page_title = 'OneEMS';
         											    $output_inner .= "<input type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_".$line."][]' value='1' >";
         											}else{
         											     if(strlen($color)!=0){
+        											         $orgcolor = $color;
         											         $color = ($color == " ") ? '&nbsp;' : $color;
-        											         $output_inner .= "<label class='readonly'>".$color."</label><input type='text' style='display:none !important;' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' >";
+        											         $output_inner .= "<label class='readonly'>".$color."</label><input type='text' style='display:none !important;' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' >";
         											     }
         										    }
     										    }
@@ -121,8 +122,9 @@ $page_title = 'OneEMS';
     										foreach ( $splitcontents as $color )
     										{   
     										    if(!empty($color)){
+    										        $orgcolor = $color;
     										        $color = ($color == " ") ? '&nbsp;' : $color;
-    										        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>".$color."</label><input style='display:none !important;' type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' ></span></div>";
+    										        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>".$color."</label><input style='display:none !important;' type='text' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' ></span></div>";
     											}
     										}; 
     									};

@@ -2,17 +2,23 @@
 include "classes/db2.class.php";
 include 'functions.php';
 $userid = $_SESSION['userid'];
-    
+ini_set('display_errors', 'ON');    
 if($_POST['action'] == 'Save Configuration'){
     $db2 = new db2();
     $templname = 'templ_'.generateRandomString();
     $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`) VALUES';
     $oc = 0;
+    
+    
+    
     foreach ($_POST['loop'] as $key => $val){
         $oc++;$inc = 0;
         foreach($val as $linekey => $lineval){
             $inc++;
-            if(count($_POST['loop']) == $oc && count($lineval) == $inc){
+            //print_r($lineval);
+            //print '<br/>';
+            //echo 'Count '. count($_POST['loop']) .' INC '. $inc.' OC '. $oc.' count($lineval) '. count($lineval) .' <br/>';
+            if(count($_POST['loop']) == $oc && count($val) == $inc){
                 $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."')";
             }else{
                 $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."'),";

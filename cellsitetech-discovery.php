@@ -27,6 +27,34 @@ $page_title = 'OneEMS';
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
+
+        <!-- The Modal -->
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog" >
+			<div class="modal-content" id="manual-device-discovery">
+
+			  <!-- Modal Header -->
+		<div class="modal-header" id="restoremodalhdr">
+        <h5 class="modal-title text-center"  id="modalLabelLarge">Manual Device Discovery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+			  <!-- Modal body -->
+			  <div class="modal-body">
+				
+			  </div>
+
+			  <!-- Modal footer -->
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+
+
 <!-- 
       <div class="form-row align-items-center justify-content-between">
 
@@ -118,6 +146,7 @@ $page_title = 'OneEMS';
             <a class="nav-link btn-missed <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Missed')  || empty($_SESSION['disc_page_tab'])):?>active<?php endif;?>" id="v-pills-missed-tab" data-toggle="pill" href="#v-pills-missed" role="tab" aria-controls="v-pills-missed" aria-selected="false">Missed</a>
             <a class="nav-link btn-new <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'New'):?>active<?php endif;?>" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">New</a>
             <a class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>" id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok" role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
+            <a class="nav-link btn-manual <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Manual Discovery'):?>active<?php endif;?>" id="v-pills-manual-tab" data-toggle="pill" href="#v-pills-manual" role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual Discovery</a>
           </div>
         </div>
 <!-- /table pill navigation -->
@@ -340,6 +369,60 @@ conflict table content -->
             </div>
 <!-- /ok table content -->
 
+
+<div class="tab-pane fade <?php if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Manual Discovery')):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>" id="v-pills-manual" role="tabpanel" aria-labelledby="v-pills-ok-manual">
+<hr />
+<div id="status" style="display: none;" class="alert"></div>
+<div class="form-row align-items-center justify-content-center" id="manual-disc-utils">
+<!-- region selection -->
+		<form class="form-inline">
+		               <div class="col-auto field">
+		               <div class="form-group form-inline">  
+                       <label class="control-label mr-2" for="inputDeviceIPaddress">Device IP Address</label>
+                      <input type="deviceIPaddress" class="form-control inline" id="inputDeviceIPaddress">
+                      </div>
+                    </div>
+
+      <div class="col-auto"> 
+        <div class="btn-group" id="manual-disc-market">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SELECT MARKET
+          </button>
+          <div class="dropdown-menu">
+          <?php 
+          $market_list = generic_get_market_by_username($_SESSION['username']);
+          foreach ($market_list['result'] as $rkey => $rvalue):
+            if(!empty($rvalue['market'])):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $rvalue['market']; ?></a>
+          <?php 
+          endif;
+          endforeach;
+          if(count($market_list['result']) > 0): ?>
+          	<a class="dropdown-item" href="#">SELECT MARKET</a>
+          <?php endif; ?>
+          </div>
+        </div>
+      </div>
+<!-- /region selection -->
+
+<!-- add row button -->
+      <div class="col-auto">
+        <div class="form-check mb-2 mb-sm-0">
+          <div class="btn-group" role="group" aria-label="">
+            <button type="button" class="btn" id="manual-discovery" data-toggle="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+<!-- /add row button -->
+
+	</form>
+    </div>
+    
+    <hr />
+    
+<!-- /table maniupulation row -->
+             </div>
         </div>
         </div>
 <!-- /IP container div -->

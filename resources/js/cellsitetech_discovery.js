@@ -409,7 +409,48 @@ $(document).ready(function() {
 			$('#inputCSRSiteName').html(data);	
 		});
     });
-
+    
+	$(document).on('click', '#manual-disc-utils #manual-disc-market a', function(event) {
+		$("#manual-disc-market .btn").html($(this).text());
+	});
+	
+	$("#manual-disc-utils #manual-discovery").click(function(){
+		var req_err = false;
+		$('#v-pills-manual #status').html('');
+		$('#v-pills-manual #status').css("opacity","");
+		if($('#v-pills-manual #inputDeviceIPaddress').val() == ""){
+			$('#v-pills-manual #status').html("<strong>Error!</strong> IP Address field is required.<br/>");
+			$('#v-pills-manual #status').addClass('alert-danger');
+			$('#v-pills-manual #status').show();
+			req_err = true;
+		}
+		if(($("#v-pills-manual #manual-disc-market .btn").html().trim() == "SELECT MARKET")){
+			$('#v-pills-manual #status').append("<strong>Error!</strong> Select Market field is required.<br/>");
+			$('#v-pills-manual #status').addClass('alert-danger');
+			$('#v-pills-manual #status').show();
+			req_err = true;
+		}
+		if(req_err){ 
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+		
+		var myModal = $('#myModal');
+    	$.post( "api-test-manual-device-disc.php", { type: "api-ajax", 'market':$("#manual-disc-market .btn").html().trim(),'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
+		}).done(function( data ) {
+			var obj = jQuery.parseJSON( data );
+			if(obj.result == true){
+				$('#myModal .modal-body').html('Device Discovered Successfully');
+			}else{
+				$('#myModal .modal-body').html('Device Discovery Failed');
+			}
+		}); 
+    	myModal.modal('show'); 
+	});
     
 	$("#discovery-new-ip #add-new-ip").click(function(){
 		var req_err = false;

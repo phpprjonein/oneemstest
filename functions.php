@@ -1862,6 +1862,14 @@ function generic_get_market(){
     return $resultset;
 }
 
+function generic_get_market_by_username($username){
+    global $db2;
+    $sql = "SELECT distinct(market) FROM nodes where csr_site_tech_id = '".$username."' ORDER BY market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
 function generic_get_csr_site_tech_name($query){
     global $db2;
     $sql = "SELECT distinct(csr_site_tech_name) FROM nodes WHERE csr_site_tech_name LIKE '".$query."%'";

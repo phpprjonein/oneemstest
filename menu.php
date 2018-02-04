@@ -1,7 +1,7 @@
 <header class="main-header"> 
   <div class="nav top-menu">
     <div class="float-left box logo-box"><a class="navbar-brand" href="#" >
-        <img src="resources/img/verizonlogo.png"  height = "24px"  alt=" OneEMS Logo"/>
+        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" OneEMS Logo"/>
       </a>
     </div>
     <?php 
@@ -18,7 +18,7 @@
         </a>
       </li> 
       <li class="dropdown messages-menu">
-        <?php if ($_SESSION['sso_flag'] === "0") { ?>
+        <?php if ($_SESSION['sso_flag'] == 0) { ?>
         <a href="index.php">                      
           <img src="resources/img/logout.jpg"  width="15" alt="Logo"/>
         </a>
@@ -48,7 +48,7 @@
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-configuration.php"); ?>" href="cellsitetech-configuration.php">Scripting</a></li>
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-scripting.php"); ?>" href="cellsitetech-scripting.php">Configuration</a></li>-->
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-compliances.php"); ?>" href="cellsitetech-compliances.php">Compliances</a></li> -->
-    	<!-- <li class="nav-item"><a class="nav-link <?php //print activemenu("help.php"); ?>" href="help.php">Help</a></li> -->
+    	<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>
     <?php }elseif($_SESSION['userlevel'] === "2"){  ?>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>" href="switchtech-dashboard.php">Network Elements</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-discovery.php"); ?>" href="switchtech-discovery.php">Discovery Results</a></li>
@@ -57,7 +57,7 @@
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-configuration.php"); ?>" href="switchtech-configuration.php">Scripting</a></li>
 <!--    	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-scripting.php"); ?>" href="switchtech-scripting.php">Configuration</a></li>-->
 <!--<li class="nav-item"><a class="nav-link <?php //print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li> -->
-    	<!--<li class="nav-item"><a class="nav-link <?php //print activemenu("help.php"); ?>" href="help.php">Help</a></li>    -->
+		<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li> 
     <?php } ?>
   <?php  } ?>
     </ul>

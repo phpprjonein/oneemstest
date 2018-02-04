@@ -29,7 +29,7 @@ $headers = apache_request_headers();
         };
     };
 
-$_SESSION['sso_flag'] === $sso_flag;
+$_SESSION['sso_flag'] = $sso_flag;
 
 if($sso_flag == 1){
     $userinfo = get_user_info_sso($username);

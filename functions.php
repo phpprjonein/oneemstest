@@ -2101,29 +2101,19 @@ function get_switchtechusers_list($userid){
 
 function update_login_api_rules($sso_flag,$username){
     global $db2;
-    if ($sso_flag == 1 ) {
-        if (strtolower($username) == 'Parimal' || strtolower($username) == 'edward') { // fieldsite technician
-            $_SESSION['userlevel'] = "2" ;
-            $username = 'swt_womaha';
-        } else {
-            $_SESSION['userlevel'] = "1" ;
-            $username = 'debarle';
-        };
-    };
-    /*if ($_SESSION['userlevel'] === "1") { // fieldsite technician
-     $userinfo = array('id' => 159,'username' => 'debarle','userlevel' =>'1','fname' => $fname, 'lname' => $lname);
-     } elseif ($_SESSION['userlevel'] === "2") {
-     $userinfo = array('id' => 503,'username' => 'swt_womaha','userlevel' =>'2','fname' => $fname, 'lname' => $lname);
+     //$_SESSION['userlevel'] = 2; 
+     echo "inside the update_login_api".$username.$ssoflag.$_SESSION['userlevel'];
+    if ($_SESSION['userlevel'] == 1) { // fieldsite technician
+        //$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+		$output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
+     } elseif ($_SESSION['userlevel'] == 2) {
+	//$output = 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$username.''';	
+        $output = @file_get_contents('https://ohtwoemsda3z.nss.vzwnet.com/oneemstest/login_response_switchtech_user.php');
+       // $output ='https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/cutteda';         
+		//print_r($output); 
+        echo 'reach here 123';
+       // exit();
      };
-     */
-    
-    
-    if ($sso_flag == 1 ) {
-        $output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
-    }else{
-        $output = @file_get_contents('http://localhost/oneemstest/login_response.php');
-		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
-    }
     $resp_result_arr = json_decode($output, 1);
     $_SESSION['sel_switch_name']  = '';
     for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
@@ -2139,8 +2129,6 @@ function update_login_api_rules($sso_flag,$username){
         }
     }
 }
-
-
 
 function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
     echo 'inside the get_landing_page_sso function'.$username,$eid,$email,$fname,$lname,$vzid.'<br>';

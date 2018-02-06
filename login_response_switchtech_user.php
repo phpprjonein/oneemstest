@@ -1,10 +1,174 @@
 <?php 
-echo $data = '{"site_devices":[{"siteid":"91","site_unid":"0AB207C289F13151FBB9CBBD3B8F9712","name":"I-96 & LIVERNOIS","switch":"West Omaha","techname":"swt_womaha","csr_hostnames":["OMALNEXUT1A-P-CI-0024-01"]},{"siteid":"572","site_unid":"1074EC524BC5339D9A4C14564E1C920F","name":"TIGER STADIUM","switch":"West Omaha","techname":"swt_womaha","csr_hostnames":["OMALNEXUT1A-P-CI-0025-01"]},{"siteid":"84","site_unid":"247B8B5CB6B668D1BD176F4217C68DE2","name":"COBO HALL","switch":"West Omaha","techname":"swt_womaha","csr_hostnames":["OMALNEXUT1A-P-CI-0027-01"]}]}';
+echo $data = '{
+  "switches": [
+    {
+      "switch_unid": "054342599CCEB2ACF2541D5C16A5A1F3",
+      "switch_name": "Duff Drive",
+      "latitude": "39.30942500",
+      "longitude": "-84.44885600",
+      "switch_clli": "CNCQOH22CM1",
+      "switch_callout_zone": "SWITCH_Duff",
+      "area": "Great Lakes",
+      "region": "OPW",
+      "market": "Ohio",
+      "remedy_switch": "DUFF DR",
+      "remedy_switch2": "",
+      "remedy_switch3": "",
+      "remedy_switch4": "",
+      "switch_xing_id": 90762,
+      "switch_emis_id": "7578345",
+      "switch_network_id": 2872513,
+      "emis_lastverifiedon": "",
+      "emis_nextverification": "",
+      "emis_verification": "none",
+      "emis_tooltip": "",
+      "emis_lastverifiedby": "",
+      "env_alarm_icon": "no",
+      "techs": [
+        {
+          "userid": "akersja",
+          "name": "Jason Akers"
+        },
+        {
+          "userid": "anclaan",
+          "name": "Anthony Anclard"
+        },
+        {
+          "userid": "bostda2",
+          "name": "Darwin Bostick"
+        },
+        {
+          "userid": "burriwe",
+          "name": "Wesley Burris"
+        },
+        {
+          "userid": "cutteda",
+          "name": "Dana Cutter"
+        },
+        {
+          "userid": "davjo16",
+          "name": "Joey Davis"
+        },
+        {
+          "userid": "kaspda1",
+          "name": "David Kasper"
+        },
+        {
+          "userid": "lewida6",
+          "name": "David Lewis"
+        },
+        {
+          "userid": "logwoli",
+          "name": "Lillian Logwood"
+        },
+        {
+          "userid": "patrra1",
+          "name": "Randy Patrick"
+        },
+        {
+          "userid": "trenan1",
+          "name": "Angela Trent"
+        },
+        {
+          "userid": "v790975",
+          "name": "Peter Mayer"
+        }
+      ],
+      "mgrs": [
+        {
+          "userid": "clar1wa",
+          "name": "Walter Clark"
+        }
+      ]
+    },
+    {
+      "switch_unid": "91EC711719D8864FB0774CEBD5136C34",
+      "switch_name": "Duff Drive 2",
+      "latitude": "38.65194444",
+      "longitude": "-83.74555556",
+      "switch_clli": "CNCQOH22CM2",
+      "switch_callout_zone": "SWITCH_Duff",
+      "area": "Great Lakes",
+      "region": "OPW",
+      "market": "Ohio",
+      "remedy_switch": "DUFF 2_MTX",
+      "remedy_switch2": "DUFF DR 2 1",
+      "remedy_switch3": "DUFF DR 2 2",
+      "remedy_switch4": "LEWIS CENTER_BSM_11",
+      "switch_xing_id": 90762,
+      "switch_emis_id": "3337364",
+      "switch_network_id": null,
+      "emis_lastverifiedon": "2018-01-19",
+      "emis_nextverification": "",
+      "emis_verification": "none",
+      "emis_tooltip": "",
+      "emis_lastverifiedby": "nelsoer",
+      "env_alarm_icon": "no",
+      "techs": [
+        {
+          "userid": "akersja",
+          "name": "Jason Akers"
+        },
+        {
+          "userid": "anclaan",
+          "name": "Anthony Anclard"
+        },
+        {
+          "userid": "bostda2",
+          "name": "Darwin Bostick"
+        },
+        {
+          "userid": "burriwe",
+          "name": "Wesley Burris"
+        },
+        {
+          "userid": "cutteda",
+          "name": "Dana Cutter"
+        },
+        {
+          "userid": "davjo16",
+          "name": "Joey Davis"
+        },
+        {
+          "userid": "kaspda1",
+          "name": "David Kasper"
+        },
+        {
+          "userid": "lewida6",
+          "name": "David Lewis"
+        },
+        {
+          "userid": "logwoli",
+          "name": "Lillian Logwood"
+        },
+        {
+          "userid": "patrra1",
+          "name": "Randy Patrick"
+        },
+        {
+          "userid": "trenan1",
+          "name": "Angela Trent"
+        },
+        {
+          "userid": "v790975",
+          "name": "Peter Mayer"
+        }
+      ],
+      "mgrs": [
+        {
+          "userid": "clar1wa",
+          "name": "Walter Clark"
+        }
+      ]
+    }
+  ]
+}';
 ?> 
 <?php
 /*
 curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 45ca85df-a619-3a65-8d63-ab24cc56f173' 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/cutteda'
 */
+/*
 echo 'Inside the routerbytechAPI file';
 
 $opts = array(
@@ -23,7 +187,7 @@ $output = file_get_contents('https://nssapigateway.vh.vzwnet.com/iop/switchbytec
 echo '<br>'."Results below".'<br>';
 print_r($output);
 echo '<br>'."Results are as below".'<br>';
-
+*/
 /*
 foreach($output as  $value) {
 echo "<br>". "Key and values"."<br>";

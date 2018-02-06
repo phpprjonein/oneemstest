@@ -64,6 +64,10 @@ if($_POST['action'] == 'Save Configuration'){
     readfile($file_url); // do the double-download-dance (dirty but worky)
 }elseif ($_POST['action'] == 'Upload'){
     if ($_FILES["file"]["type"] == "text/plain" && $_FILES["file"]["size"] < 65536) {
+        //Remove if config file exist
+        if(file_exists(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt")){
+            unlink(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt");
+        }
         if ($_FILES["file"]["error"] > 0) {
             $_SESSION['msg'] = 'fe';
             $_SESSION['msg-param']['fileerror'] = $_FILES["file"]["error"];

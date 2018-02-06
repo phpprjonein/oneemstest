@@ -2115,18 +2115,31 @@ function update_login_api_rules($sso_flag,$username){
         //echo 'reach here 123';
        // exit();
      };
-    $resp_result_arr = json_decode($output, 1);
-    $_SESSION['sel_switch_name']  = '';
-    for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
-        if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
-            foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
-                $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
-                $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
-                //Node table status 3 added for live API active
-                $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
-                $db2->query($sql);
-                $db2->execute();
+     
+    if ($_SESSION['userlevel'] == 1) {
+        $resp_result_arr = json_decode($output, 1);
+        $_SESSION['sel_switch_name']  = '';
+        for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
+            if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
+                foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
+                    $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
+                    $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
+                    //Node table status 3 added for live API active
+                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
+                    $db2->query($sql);
+                    $db2->execute();
+                }
             }
+        }
+    }else{
+        $resp_result_arr = json_decode($output, 1);
+        $_SESSION['sel_switch_name']  = '';
+        for($i=0; $i <= count($resp_result_arr['switches']); $i++){
+            $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
+            //Node table status 3 added for live API active
+            $sql = "UPDATE `nodes` SET status=3 WHERE switch_name = '".$resp_result_arr['switches'][$i]['switch_name']."'";
+            $db2->query($sql);
+            $db2->execute();
         }
     }
 }

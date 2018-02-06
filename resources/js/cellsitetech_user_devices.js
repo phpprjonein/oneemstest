@@ -501,6 +501,9 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
     		$("#backup-restore-list-dt-filter .btn").html($(this).text());
     		var listname = '';
     		if($(this).text() != 'My List'){
+    			if($(this).text() == 'My routers'){
+    				$(this).text() = 0;
+    			}
     			listname = $(this).text();
     		}
     		

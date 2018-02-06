@@ -12,7 +12,7 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
- check_user_authentication('1'); //cellsite tech type user 
+//check_user_authentication('1'); //cellsite tech type user 
 
     $page_title = 'OneEMS';
  
@@ -22,6 +22,7 @@ user_session_check();
     <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script defer src="resources/js/all.js"></script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
@@ -54,7 +55,7 @@ user_session_check();
  
 
 <!-- table manipulation row -->
-    <div class="form-row align-items-center justify-content-between border">
+    <div class="form-row align-items-center justify-content-between">
 
 <!-- search table form field --> 
       <div class="col">

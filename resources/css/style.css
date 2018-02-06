@@ -384,7 +384,7 @@ footer .panel-footer{text-align: center;}
 }
 #cellsitech-config .panel-body, #switchtech-config .panel-body{padding:5px;}   
 #file_process label.readonly {
-background-color:#CCCCCC !important;
+background-color:#F0F0F0;
 pointer-events:none;
 color: black;
 font-size: 14px;

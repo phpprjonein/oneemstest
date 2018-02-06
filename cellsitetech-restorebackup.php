@@ -102,7 +102,7 @@ user_session_check();
 						  foreach ($celltuser_list as $key => $value):
 							if(isset($value['listname'])):          
 						  ?>
-						  <a class="dropdown-item" href="#"><?php echo $value['listname']; ?></a>
+						  <a class="dropdown-item" href="#"><?php echo ($value['listname'] == "0") ? 'My routers' : $value['listname'] ; ?></a>
 						  <?php 
 						  endif;
 						  endforeach;

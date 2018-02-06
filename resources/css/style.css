@@ -4,7 +4,7 @@
 .navbar {
 	background-color: #ffffff;
 	height: 50px;
-	border-bottom: 4px solid #D52B1E;
+	/*border-bottom: 4px solid #D52B1E;*/
 	color: #333333;
 }
 .header-button {
@@ -137,7 +137,7 @@ body {
 	color: #333333;
 }
 .search-details {
-	height: 30px;
+	/*height: 30px;*/
 }
 .table-header {
 	color: #ffffff;
@@ -318,7 +318,7 @@ border-bottom-right-radius:0 !important;
 }
 #lhspanel{padding-right:15px; padding-left:30px; }
 .main-header .top-menu .nav > li{position: relative;display:block;padding: 20px;}
-.main-header .top-menu .navbar-nav{display: inline-flex; flex-direction:unset;}
+.main-header .top-menu .navbar-nav{display: inline-block; flex-direction:unset;}
 .nav>li:hover{text-decoration:none;background-color:#eee}
 .modal-lg {max-width: 65vw;}
 #exampleModalIPM .modal-lg{max-width: 80vw;}
@@ -502,4 +502,9 @@ margin-left:210px;
 .jf-form .control-label {
   font-weight: 600;
   margin-bottom: 0;
+}
+
+/* afotey's edits */
+#myswitchlist_delete, .btn-edit-list-delete {
+	padding: 0 0.3125rem;
 }

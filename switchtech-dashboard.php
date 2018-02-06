@@ -58,15 +58,15 @@
   
   <div class="row">
     <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info panel-default" style="background-color: white; min-height: 780px">
-      <div id="mylist" class="panel-heading panel-heading-lstmgmt"><font color="black"><b>List Management</b></font>
+      <div id="mylist" class="panel-heading panel-heading-lstmgmt"><b>List Management</b>
       </div>
       <div class="panel-body">
         <div class="col-md-6" style="background-color:nonelightgreen;">
           <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="switchtech-dashboard.php" method = "POST" class="navbar-form search">
-            <div class="input-group add-on" style="min-width:350px;margin-left:0px;">
+            <div class="input-group add-on" style="min-width:12.5rem;margin-left:0px;">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">
-                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><font color="black"><b>Submit</b></font></button>
+                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><b>Submit</b></button>
               </span>                                       
             </div>
           </form>
@@ -84,17 +84,17 @@
         <div class="row">
           <div id="switchlist" class="panel-warning  panel-default col-md-6 ">
             <div class="panel-heading panel-heading-myswtlst" id="delete_mylists" style="background-color:#F6F6F6";>
-              <font color="black"><b>My Device List </b></font>
+              <b>My Device List </b>
               <!-- Deleted selected switch list by drag and drop area -->
-              <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger">
-                <font color="black"><i class="fa fa-trash"></i>&nbsp; <b>Delete</b> </font>
+              <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger btn">
+                <i class="fa fa-trash"></i>&nbsp; <b>Delete</b>
               </span>
             </div>
             <div class ="panel-body" style="border: 1px solid #FAEBCC">
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
                 <thead>
                   <tr>
-                    <td width="60%" ><font color="black">List name </font> </td><td  width="20%"> Edit </td><td  width="20%">View</td>           
+                    <td width="60%" >List name </td><td  width="20%"> Edit </td><td  width="20%">View</td>           
                   </tr>
                 </thead>
                 <tbody> 
@@ -125,16 +125,16 @@
           $switchlist = usrfavritecondev_display($userid,$_SESSION['switchlistid']);
           ?>
           <div class="col-md-6 panel-warning panel-default">
-            <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
-             <font color="black"> <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b></font>
+            <div class="panel-heading panel-heading-editlst" id="mylist_delete">
+             <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b>
                 <!-- Deleted selected list by drag   and drop area -->
-                <span type="button" class="box box-danger border pull-right"><font color="black"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b></font>
+                <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b>
                 </span>
             </div>
             <div class ="panel-body" style="border: 1px solid #FAEBCC">
               <!-- Start : View devices list table -->
               <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?> width="100%" >
-                <thead><tr><td ><font color="black"><b> Device Id</b></font> </td><td><font color="black"><b>Device Name</b></font>     </td></tr></thead>
+                <thead><tr><td ><b> Device Id</b> </td><td><b>Device Name</b>     </td></tr></thead>
                 <tbody id="mydevicestbl">
                 <?php                              
                   foreach ($switchlist['result'] as $key => $listitem) {

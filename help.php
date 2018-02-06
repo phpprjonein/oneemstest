@@ -26,13 +26,13 @@ user_session_check();
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
         
-        <div id="mycmdModal" class="modal fade">
+        <!--<div id="mycmdModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
+                <!-- Content will be loaded here from "remote.php" file --
             </div>
         </div>
-        </div>
+        </div>-->
 
         <div class="container-fluid">
             <?php include ('menu.php'); ?> 
@@ -50,13 +50,13 @@ user_session_check();
 							-->
                           </div>                  
                           
- 						<div id="mylist" class="panel-heading" style = "height:560px;"><!-- header row -->
+ 						<div id="mylist" class="panel-heading"><!-- header row -->
  
 
 <!-- table manipulation row -->
     <div class="form-row align-items-center justify-content-between border">
 
-<!-- search table form field -->
+<!-- search table form field --> 
       <div class="col">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search Help Topics" aria-label="Search Help Topics">
@@ -65,7 +65,7 @@ user_session_check();
           </span>
         </div>
       </div>
-<!-- /search table form field -->
+ <!-- /search table form field -->
 
     </div>
 <!-- /table maniupulation row -->
@@ -382,7 +382,9 @@ user_session_check();
       </div>
 
     </div>
-<!-- /help guide content row --></div> 
+<!-- /help guide content row -->
+
+</div> 
                         <!-- /.box-body -->
                       </div>
                   </div> 
@@ -393,6 +395,7 @@ user_session_check();
             <!-- Add the sidebar's background. This div must be placed
             immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
+			<div style="clear:both;"></div>
         </div>
         <!-- ./wrapper -->
 

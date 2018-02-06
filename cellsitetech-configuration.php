@@ -79,7 +79,7 @@ $page_title = 'OneEMS';
 										</div>
 										<div class="col-lg-8 tags p-b-2">
 											<?php
-							$filename = getcwd()."/upload/sampleconfigfile.txt";
+							$filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
 							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							?>

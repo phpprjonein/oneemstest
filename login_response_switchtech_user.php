@@ -3,6 +3,35 @@ echo $data = '{"site_devices":[{"siteid":"91","site_unid":"0AB207C289F13151FBB9C
 ?> 
 <?php
 /*
+curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 45ca85df-a619-3a65-8d63-ab24cc56f173' 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/cutteda'
+*/
+echo 'Inside the routerbytechAPI file';
+
+$opts = array(
+  'http'=>array(
+    'method'=>"GET",
+    'header'=>"Accept-language: en\r\n" .
+             // "Cookie: foo=bar\r\n" .
+             // "User-agent: BROWSER-DESCRIPTION-HERE\r\n"
+              "Authorization: Bearer 45ca85df-a619-3a65-8d63-ab24cc56f173\r\n"
+  )
+);
+$context = stream_context_create($opts);
+// Open the file using the HTTP headers set above
+$output = file_get_contents('https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/cutteda', false, $context);
+//$output = json_decode($output):
+echo '<br>'."Results below".'<br>';
+print_r($output);
+echo '<br>'."Results are as below".'<br>';
+
+/*
+foreach($output as  $value) {
+echo "<br>". "Key and values"."<br>";
+echo $value->switches;
+};
+*/
+
+/*
 Sample json response is given as below.
 {
   "switches": [
@@ -289,6 +318,5 @@ Sample json response is given as below.
   ]
 }
 
-
-?>
 */
+?>

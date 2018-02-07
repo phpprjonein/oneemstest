@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 /* Header */
 .navbar {
 	background-color: #ffffff;
@@ -96,7 +97,7 @@
 body {
 	background: #ffffff;
 	font-family: Arial, sans-serif;
-	min-height: 100vh;
+	/*min-height: 100vh;*/
 }
 .box-title {
 	text-align: left;
@@ -362,6 +363,8 @@ margin-top:0;
 footer {
   position: absolute;
   bottom: 0;
+  height: 3.75rem;
+  line-height: 3.75rem;
 }
 footer .panel-footer{text-align: center;}
 /* editable fields styles for configuration page */
@@ -433,7 +436,7 @@ margin-left:210px;
   margin-bottom: 0;
 }
 .container-fluid{margin-bottom:15px;}
-.footer{position:unset;}
+/*.footer{position:unset;}*/
 
 .dropdown-nav-menu li.dropdown {
   position: static;

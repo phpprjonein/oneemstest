@@ -56,12 +56,12 @@ $page_title = 'OneEMS';
                                   	<?php }elseif($_SESSION['msg'] == 'fte'){ ?>
                                   		<div id="main-status"
 										class="alert alert-danger">
-										<strong>Error!</strong> File is not of the permitted type.
+										<strong>Error!</strong> File MUST be a <b>.txt</b> file!
 									</div>
                                   	<?php }elseif($_SESSION['msg'] == 'feps'){ ?>
                                   		<div id="main-status"
 										class="alert alert-danger">
-										<strong>Error!</strong> File exceeds permitted size.
+										<strong>Error!</strong> File cannot be larger than 2MB!
 									</div>
                                   	<?php }unset($_SESSION['msg']);?>
                                   	<div id="upload_status"
@@ -72,7 +72,7 @@ $page_title = 'OneEMS';
         							        	<div class="form-group">
                             				    <label for="file">Select a file to upload</label>
                             				    <input type="file"  id="file" name="file">
-                            				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
+                            				    <p class="help-block">Please upload <b>.txt</b> files with a maximum size of 2 MB.</p>
                             				  	</div>
                             				  	<input type="submit" name="action" id="config-submit" class="btn" value="Upload">
                         					</form>

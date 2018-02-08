@@ -138,7 +138,7 @@ $page_title = 'OneEMS';
       <div class="row">
 
 <!-- table pill navigation -->
-        <div class="col-1">
+        <div class="col col-md-2 col-sm-12">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <!--
 			<a class="nav-link btn-conflicts <?php /*if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])): */?>active<?php /*endif; */?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>			
@@ -152,7 +152,7 @@ $page_title = 'OneEMS';
 <!-- /table pill navigation -->
 
 <!-- table content row -->
-        <div class="col-11">
+        <div class="col-11 col-md-10">
 
 <!-- IP container div -->
           <div class="tab-content" id="v-pills-tabContent">

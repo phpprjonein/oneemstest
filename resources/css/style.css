@@ -511,3 +511,14 @@ margin-left:210px;
 #myswitchlist_delete, .btn-edit-list-delete {
 	padding: 0 0.3125rem;
 }
+
+.scrollspy-example img {
+  border: 1px solid #000;
+  -webkit-box-shadow: 0.5125rem 0.5125rem 0.5125rem 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0.5125rem 0.5125rem 0.5125rem 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0.5125rem 0.5125rem 0.5125rem 0px rgba(0, 0, 0, 0.75);
+}
+
+.card-body p , ul{
+	text-align: left;
+}

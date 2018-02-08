@@ -57,11 +57,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     ?>   
   
   <div class="row">
-    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info panel-default" style="background-color: white; min-height: 780px">
+    <div id="lhspanel"  class="col-sm-6 col-md-6 panel-info panel-default" >
       <div id="mylist" class="panel-heading panel-heading-lstmgmt"><font color="black"><b>List Management</b></font>
       </div>
       <div class="panel-body">
-        <div class="col-md-6" style="background-color:nonelightgreen;">
+        <div class="col-md-6">
           <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="cellsitetech-dashboard.php" method = "POST" class="navbar-form search">
             <div class="input-group add-on" style="min-width:12.5rem;margin-left:0px;">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
@@ -90,7 +90,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                 <i class="fa fa-trash"></i>&nbsp; <b>Delete</b> 
               </span>
             </div>
-            <div class ="panel-body" style="border: 1px solid #FAEBCC">
+            <div class ="panel-body border">
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
                 <thead>
                   <tr>
@@ -125,13 +125,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
            $switchlist = usrfavritecondev_celt_display($userid,$_SESSION['switchlistid']);
           ?>
           <div class="col-md-6 panel-warning panel-default">
-            <div class="panel-heading panel-heading-editlst" id="mylist_delete" style="background-color:#F6F6F6";>
+            <div class="panel-heading panel-heading-editlst" id="mylist_delete">
              <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == '0' ? 'My routers' : $switchlist['mylistname']); ?> </b>
                 <!-- Deleted selected list by drag   and drop area -->
                 <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b>
                 </span>
             </div>
-            <div class ="panel-body" style="border: 1px solid #FAEBCC">
+            <div class ="panel-body border">
               <!-- Start : View devices list table -->
               <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?> width="100%" >
                 <thead><tr><td ><b> Device Id</b> </td><td><b>Device Name</b>     </td></tr></thead>
@@ -165,7 +165,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     <div id="rhsPanel" class="col-sm-6 col-md-6" >
       <div class="maprow"> 
             <!-- START : Map section -->
-            <div id="map_section" class="sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>; border:1px solid lightgray;'> 
+            <div id="map_section" class="sec_with_map border" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>;'> 
               <!-- US Map Image -->
               <img src="resources/img/map_new.png" id="map_image" usemap="#United States of America"  border=0 height="50%" border=0 >
               <!-- Map market area co-ordinats -->
@@ -254,13 +254,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
             if (!isset($str_marketname)) { 
             ?>
               <!-- Displays user assigned switch name -->
-              <span style="padding-left: 20px; "><font color="black"><label><b>Switch Name : &nbsp; </label><?php echo $switch_device_name ?></b></font></span>
+              <span style="padding-left: 20px;"><label><b>Switch Name : &nbsp; </label><?php echo $switch_device_name ?></b></span>
             <?php 
             } 
             elseif (isset($str_marketname)) {
             ?>
               <!-- Displays user selected market name -->
-              <span style="padding-left: 20px; "><label>Market Name :&nbsp;</label><?php echo $str_marketname; ?></span>
+              <span style="padding-left: 20px;"><label>Market Name :&nbsp;</label><?php echo $str_marketname; ?></span>
             <?php 
             }
           ?>

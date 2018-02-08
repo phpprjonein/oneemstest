@@ -405,7 +405,7 @@ $(document).ready(function() {
 	  
     	$(document).on('click', '#backuprestore tbody td.details-control', function(event) {
 			//alert(' reach here');
-	        /*  Temporarily commented on 31 jan 2018. Needed in future.
+	       //  Temporarily commented on 31 jan 2018. Needed in future.
     		var table =  $('#backuprestore').DataTable();
          var tr = $(this).closest('tr');
          var row = table.row( tr ); 
@@ -453,7 +453,7 @@ $(document).ready(function() {
             }
           }
 
-            */ 
+            
 
       });
 

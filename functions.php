@@ -2246,8 +2246,8 @@ function update_login_api_rules($sso_flag,$username){
         //echo 'reach here 123';
        // exit();
 	     //echo "reach here";
-	    header("Location: index.php");        
-		exit();
+	    //header("Location: index.php");        
+		//exit();
      };
      
     if ($_SESSION['userlevel'] == 1) {

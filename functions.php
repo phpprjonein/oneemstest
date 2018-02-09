@@ -2241,7 +2241,8 @@ function update_login_api_rules($sso_flag,$username){
 	//$output = 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$username.''';	
         //$output = @file_get_contents('https://ohtwoemsda3z.nss.vzwnet.com/oneemstest/login_response_switchtech_user.php');
           $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php');
-       // $output ='https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/cutteda';         
+		 // $output = 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$username.''';	
+       // $output ='https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$username;         
 		//print_r($output); 
         //echo 'reach here 123';
        // exit();

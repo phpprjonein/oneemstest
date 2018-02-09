@@ -81,6 +81,9 @@ $page_title = 'OneEMS';
 										<div class="col-lg-8 tags p-b-2">
 											<?php
 							$filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
+							if(!file_exists($filename)){
+							    $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
+							}
 							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							?>

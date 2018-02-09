@@ -387,11 +387,13 @@ footer .panel-footer{text-align: center;}
 }
 #cellsitech-config .panel-body, #switchtech-config .panel-body{padding:5px;}   
 #file_process label.readonly {
-background-color:#F0F0F0;
 pointer-events:none;
 color: black;
 font-size: 14px;
 margin-bottom: 0px;
+background-color: #f7f7f8;
+color: rgba(0,0,0,.9);
+font-family : 'Inconsolata', monospace;
 }
 .cellsitech-configtxtinp {
 background-color:pink;

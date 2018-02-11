@@ -2268,12 +2268,55 @@ function update_login_api_rules($sso_flag,$username){
     }else{
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
-        for($i=0; $i <= count($resp_result_arr['switches']); $i++){
+        for($i=0; $i < count($resp_result_arr['switches']); $i++){
             $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
             //Node table status 3 added for live API active
             $sql = "UPDATE `nodes` SET status=3 WHERE switch_name = '".$resp_result_arr['switches'][$i]['switch_name']."'";
             $db2->query($sql);
             $db2->execute();
+            $swt_mswitch_arr[] = $resp_result_arr['switches'][$i]['switch_name'];
+        }
+        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
+        
+        
+        $sql = "SELECT id, username from users";
+        //$sql = $sql_select . $sql_condition;
+        $db2->query($sql);
+        $resultset['result'] = $db2->resultset();
+        foreach ($resultset['result'] as $resultsetku => $resultsetvu){
+            $users[$resultsetvu['username']] = $resultsetvu['id'];
+        }
+        
+        
+        /* Updating user devices table based on switch from API */
+        foreach ($swt_mswitch_arr as $key => $val){
+            $sql = "DELETE FROM userdevices WHERE listname='".$val."'";
+            $db2->query($sql);
+            $db2->execute();
+            
+            $sql = " SELECT * from nodes where status=3 and switch_name = '".$val."'";
+            $db2->query($sql);
+            $resultset['result'] = $db2->resultset();
+            $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+            $db2->query($sql);
+            $recordset = $db2->resultset();
+            $listid = $recordset[0]['listidmaxval']+1;
+            $oc = 1;
+            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+            foreach ($resultset['result'] as $resultsetk => $resultsetv){
+                if(count($resultset['result']) == $oc){
+                    $dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."')";
+                }else{
+                    $dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."'),";
+                }
+                $oc++;
+            }
+            if($oc > 1){
+                $db2->query($dsql);
+                $db2->execute();
+            }
+            
+            
         }
     }
 }

@@ -847,6 +847,23 @@ function get_user_mylist_name($userid,$listid) {
     }
 }
 
+function get_user_mylist_name_by_id($listid) {
+    global $db2;
+    
+    $sql = "SELECT ud.listname  FROM userdevices ud
+          WHERE ud.listid = " . $listid . "
+         limit 0,1 " ;
+    $db2->query($sql);
+    
+    $resultset = $db2->resultset();
+    if(isset($resultset[0]['listname']))  {
+        return($resultset[0]['listname']);
+    }
+    else {
+        return;
+    }
+}
+
 function user_mylist_devieslist_datatable($userid,$listid){
     
     

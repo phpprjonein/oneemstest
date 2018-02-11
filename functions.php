@@ -2301,7 +2301,7 @@ function update_login_api_rules($sso_flag,$username){
             $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
             $db2->query($sql);
             $recordset = $db2->resultset();
-            $listid = $recordset[0]['listidmaxval']+1;
+            $listid = $recordset[0]['listidmaxval'];
             $oc = 1;
             $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
             foreach ($resultset['result'] as $resultsetk => $resultsetv){

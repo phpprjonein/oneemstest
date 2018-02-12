@@ -105,10 +105,12 @@
                   ?> 
                     <tr style='cursor:pointer' class="del_<?php echo $value['listid'];?>">                            
                       <td width="70%" >
+                      <?php if(!in_array($value['listname'], $_SESSION['swt_mswitch_arr'])): ?>
                         <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
+                      <?php endif; ?>  
                       <?php echo $value['listname']; ?>
                       </td>
-                      <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
+                      <td>&nbsp;<?php if(!in_array($value['listname'], $_SESSION['swt_mswitch_arr'])): ?><a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a><?php endif; ?>
                       </td>                    
                       <td>&nbsp;<a href="switchtech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
                       </td>

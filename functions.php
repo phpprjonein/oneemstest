@@ -1212,12 +1212,12 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
         $sql_condition = " FROM nodes n
                       join userdevices ud on ud.nodeid = n.id
                       join users u on u.id = ud.userid
-                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid AND n.status = 3 ";
+                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid ";
     }
     else {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
-                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' ";
         
     }
     

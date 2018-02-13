@@ -2407,7 +2407,7 @@ function load_backup_information($deviceid){
 			  //[username] => ssf [password] => k [usertype] => k [firstname] => k [lastname] => k [phoneno] => k [emailid] => k ) 
 	function addUser($data) {
 			global $db2;	
-			$sql = "insert into users (username, password, userid, userlevel, email, fname, lname, phone ) values ('".$data['username']."','".$data['password']."','".$data['usertype']."','".$data['firstname']."','".$data['lastname']."','".$data['lastname']."','".$data['phoneno']."','".$data['emailid']."')"; 
+			$sql = "insert into users (username, password, userid, userlevel, email, fname, lname, phone ) values ('".$data['username']."','".md5($data['password'])."','".$data['username']."','".$data['usertype']."','".$data['emailid']."','".$data['firstname']."','".$data['lastname']."','".$data['phoneno']."')"; 
 			 //$data = array("username" => $_POST['uname'],"password" => $_POST['passwd'],"usertype" => $_POST['usertype'],"firstname"=>$_POST['firstname'],"lastname" => $_POST['lname'],"phoneno" => $_POST['phoneno'],"emailid" => $_POST['emailid']);
 			    //$sql = "insert into users ( username, password, userid, userlevel, email, fname, lname, phone ) values ('".$data['username']."''".$data['password']."''"..$data['userid']."''".$data['userlevel']."''".$data['email']."''".$data['fname']."''".$data['lname']."''".$data['phoneno']."')";
 			   $db2->query($sql);

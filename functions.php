@@ -2286,7 +2286,7 @@ function update_login_api_rules($sso_flag,$username){
     }else{
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
-        for($i=0; $i < count($resp_result_arr['switches']); $i++){
+        for($i=0; $i <= count($resp_result_arr['switches']); $i++){
             $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
             //Node table status 3 added for live API active
             $sql = "UPDATE `nodes` SET status=3 WHERE switch_name = '".$resp_result_arr['switches'][$i]['switch_name']."'";
@@ -2395,3 +2395,38 @@ function load_backup_information($deviceid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
+
+	function getUser($name) {
+			global $db2;	
+			//$sql = "SELECT id, p.name, p.description, p.price, p.created FROM items p WHERE p.name LIKE '%".$name."%' ORDER BY p.created DESC";
+				$sql = "select id, username, password, userlevel,fname,lname,phone from users p WHERE p.username = '".$name."'"; 
+				$db2->query($sql);
+			   $resultset['result'] = $db2->resultset();
+				return  $resultset['result'];    
+	}
+			  //[username] => ssf [password] => k [usertype] => k [firstname] => k [lastname] => k [phoneno] => k [emailid] => k ) 
+	function addUser($data) {
+			global $db2;	
+			$sql = "insert into users (username, password, userid, userlevel, email, fname, lname, phone ) values ('".$data['username']."','".$data['password']."','".$data['usertype']."','".$data['firstname']."','".$data['lastname']."','".$data['lastname']."','".$data['phoneno']."','".$data['emailid']."')"; 
+			 //$data = array("username" => $_POST['uname'],"password" => $_POST['passwd'],"usertype" => $_POST['usertype'],"firstname"=>$_POST['firstname'],"lastname" => $_POST['lname'],"phoneno" => $_POST['phoneno'],"emailid" => $_POST['emailid']);
+			    //$sql = "insert into users ( username, password, userid, userlevel, email, fname, lname, phone ) values ('".$data['username']."''".$data['password']."''"..$data['userid']."''".$data['userlevel']."''".$data['email']."''".$data['fname']."''".$data['lname']."''".$data['phoneno']."')";
+			   $db2->query($sql);
+			   $result=$db2->execute();
+			   
+			    //$resultset['result'] = $db2->resultset();
+				//return  $resultset['result'];    
+				 return $result;
+				  //$data = json_decode($data);
+				 // echo $result;  
+				 //print_r($data);
+				 //echo json_encode($sql);
+	} 
+			 
+	function deleteUser($data) {
+		global $db2;	
+		$sql = "delete from users where username = '".$data['username']."'";  
+		$db2->query($sql);
+		$result=$db2->execute(); 
+		return $result; 
+			
+	}

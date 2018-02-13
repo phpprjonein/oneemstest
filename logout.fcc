@@ -1,4 +1,4 @@
 <!--SiteMinder Encoding=ISO-8859-1; -->
 @smlogout=true
-@target=http://localhost/oneemstest/index.php
+@target=http://localhost/oneems/index.php
 @smretries=0

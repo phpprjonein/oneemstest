@@ -98,7 +98,7 @@ if (isset($_POST['username']) && $_POST['password']) {
         <a href ="#" class=" launch-modal" ><p class="message">Forgot your password?</p> </a>
 		-->       	
 	
-		<a href="javascript:WirelessWindowsForgotPassword("http://localhost/oneemstest/index.php",'SSOTOOLEIS')"><p class="message">Forgot your password?</p></a> 
+		<a href="javascript:WirelessWindowsForgotPassword("http://localhost/oneems/index.php",'SSOTOOLEIS')"><p class="message">Forgot your password?</p></a> 
 		
       </form>
     </div>

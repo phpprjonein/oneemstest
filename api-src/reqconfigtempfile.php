@@ -3,25 +3,17 @@ include '/var/www/html/oneemstest/classes/db2.class.php';
 include '/var/www/html/oneemstest/classes/paginator.class.php';
 include '/var/www/html/oneemstest/functions.php';
 header("Content-Type:application/json");
-$name = $_GET['name'];
-//$user = getUser($name);
-if (! empty($_GET['name'])) {
-    $name = $_GET['name'];
-    //$user = getUser($name);
-   // $user = file_get_contents('Gold_ASR920_Great-Lakes_All.txt');
-    //echo json_encode($user);
-    $user = file_get_contents('Gold_ASR920_Great-Lakes_All.txt');
-    //echo json_encode($user);
-    if (empty($user)) {
+if (! empty($_GET['tmplname'])) {
+    $tmplname = $_GET['tmplname'];
+    $tmplname = '/var/www/html/oneemstest/upload/'.$tmplname;
+    if (!file_exists($tmplname)) {
         jsonResponse(200, "Template Not Found", NULL);
     } else {
-        jsonResponse(200, "Template Found", json_encode(explode("\r\n",file_get_contents('Gold_ASR920_Great-Lakes_All.txt'))));
-        // jsonResponse(200, "Template Found", json_encode('test'));
+        jsonResponse(200, "Template Found", file_get_contents($tmplname));
     }
 } else {
     jsonResponse(400, "Invalid Request", NULL);
 }
-;
 
 /*
  * $status = $_GET['name'];

@@ -2,7 +2,8 @@
 if (isset($_POST['submitread'])) {
     $name = $_POST['name'];
     // $url = "http://phpzag.com/demo/how-to-create-simple-rest-api-in-php/items/read.php?name=".$name;
-    $url = "http://localhost/oneemstest/readuser.php?name=" . $name;
+    //$url = "http://localhost/oneemstest/readuser.php?name=" . $name;
+    $url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/readuser.php?name=" . $name;
     $client = curl_init($url);
     curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($client, CURLOPT_USERPWD, "admin:password");
@@ -14,7 +15,8 @@ if (isset($_POST['submitread'])) {
 
 if (isset($_POST['submitcreate'])) {
     // print_r($_POST);
-    $url = "http://localhost/oneemstest/createuser.php";
+    //$url = "http://localhost/oneemstest/createuser.php";
+    $url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src//createuser.php";
     $data = array(
         "username" => $_POST['uname'],
         "password" => $_POST['passwd'],
@@ -40,7 +42,8 @@ if (isset($_POST['submitcreate'])) {
 
 if (isset($_POST['submitdelete'])) {
     // print_r($_POST);
-    $url = "http://localhost/oneemstest/deleteuser.php";
+    //$url = "http://localhost/oneemstest/deleteuser.php";
+    $url ="http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/deleteuser.php";
     $data = array(
         "username" => $_POST['uname']
     );
@@ -50,13 +53,26 @@ if (isset($_POST['submitdelete'])) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, array(
         "customer" => $data_string
     ));
-    curl_setopt($client, CURLOPT_USERPWD, "admin:password");
+    curl_setopt($ch, CURLOPT_USERPWD, "admin:password");
     $result = curl_exec($ch);
     curl_close($ch);
     echo $result;
     exit();
-}
-;
+};
+if (isset($_POST['submitconfig'])) {
+    $name = $_POST['name'];
+    //$url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/reqconfigtempfile.php?name=" . $name;
+    //$url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/reqconfigtempfile.php?name=" . $name;
+    //$url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/readuser.php?name=" . $name;
+    $url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/reqconfigtempfile.php?name=" . $name;
+    $client = curl_init($url);
+    curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($client, CURLOPT_USERPWD, "admin:password");
+    $response = curl_exec($client);
+    $result = json_decode($response);
+    print_r($result);
+    exit();
+};
 
 ?>
 <div class="container">

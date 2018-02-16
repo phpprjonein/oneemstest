@@ -4,14 +4,19 @@ include '/var/www/html/oneemstest/classes/paginator.class.php';
 include '/var/www/html/oneemstest/functions.php';
 header("Content-Type:application/json");
 $name = $_GET['name'];
-$user = getUser($name);
+//$user = getUser($name);
 if (! empty($_GET['name'])) {
     $name = $_GET['name'];
-    $user = getUser($name);
+    //$user = getUser($name);
+   // $user = file_get_contents('Gold_ASR920_Great-Lakes_All.txt');
+    //echo json_encode($user);
+    $user = file_get_contents('Gold_ASR920_Great-Lakes_All.txt');
+    //echo json_encode($user);
     if (empty($user)) {
-        jsonResponse(200, "User Not Found", NULL);
+        jsonResponse(200, "Template Not Found", NULL);
     } else {
-        jsonResponse(200, "User Found", $user);
+        jsonResponse(200, "Template Found", json_encode(explode("\r\n",file_get_contents('Gold_ASR920_Great-Lakes_All.txt'))));
+        // jsonResponse(200, "Template Found", json_encode('test'));
     }
 } else {
     jsonResponse(400, "Invalid Request", NULL);

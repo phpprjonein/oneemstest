@@ -1,7 +1,7 @@
 <?php
-include '../classes/db2.class.php';
-include '../classes/paginator.class.php';
-include '../functions.php';
+include '/var/www/html/oneemstest/classes/db2.class.php';
+include '/var/www/html/oneemstest/classes/paginator.class.php';
+include '/var/www/html/oneemstest/functions.php';
 header("Content-Type:application/json");
 $name = $_GET['name'];
 $user = getUser($name);

@@ -450,6 +450,9 @@ $(document).ready(function() {
                         $('#detail_'+id).html(resdata);
                     }
                 });
+                  
+                  
+                  
             }
           }
 
@@ -460,19 +463,20 @@ $(document).ready(function() {
 	  //$(document).on('click', '#back_res button', function(event) {
 		  
 		  $(document).on('click', '#back_res #viewbtn', function(event) {
-			  $('#myModal #btn-copy').hide();
+			  $('#myModal #copybtn').hide();
 		  //alert('Restore button is clicked');
 		  	$('#myModal .modal-title').html('File Contents' + $(this).closest('tr').find("td:eq(0)").text());
 	    	$.post( "restore-api-test.php?act=view", { 'type': "api-ajax", 'filename':$(this).closest('tr').find("td:eq(0)").text(), 'region':$('tr.shown').find("td:eq(4)").text() 
 			}).done(function( data ) {
 				$('#myModal .modal-body').html(data);
-				$('#myModal #btn-copy').show();
+				$('#myModal #copybtn').show();
+				$('#cp1').html(data);
 			}); 
 	  });
 		  
 		  $(document).on('click', '#back_res #restorebtn', function(event) {
 			  //alert('Restore button is clicked');
-			  	$('#myModal #btn-copy').hide();
+			  	$('#myModal #copybtn').hide();
 			  	$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
 		    	$.post( "restore-api-test.php?act=restore", { type: "api-ajax"
 				}).done(function( data ) {
@@ -481,16 +485,12 @@ $(document).ready(function() {
 			  	
 			  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
 		  });
-		  /*
-		  $(document).on('click', '#myModal #btn-copy', function(event) {
-			  alert($('#myModal .modal-body').html());
-			  $('#myModal #model-body-txt').val($('#myModal .modal-body').html());
-			  var copyText = document.getElementById("model-body-txt");
-			  copyText.select();
-			  document.execCommand("Copy");
-			  alert("Copied the text: " + copyText.value);
+		  
+		  $(document).on('click', '#copybtn', function(event) {
+					copyToClipboard("#cp1");
+					alert("Content Copied in Clipboard");
 		  });
-		  */
+		  
 /*
 $(document).on('click', '#back_res #backupbtn', function(event) {
 	      //alert('Backup button is clicked');
@@ -573,7 +573,13 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
       });
 });
 
-
+function copyToClipboard(element) {
+	  var $temp = $("<input>");
+	  $("body").append($temp);
+	  $temp.val($(element).text()).select();
+	  document.execCommand("copy");
+	  $temp.remove();
+}
 
 
 function format ( d ) {

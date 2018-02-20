@@ -42,7 +42,7 @@ user_session_check();
 				<!--  <input type="text" style="display:none;" id="model-body-txt" value="">  -->
 			  <!-- Modal footer -->
 			  <div class="modal-footer">
-				<!--  <button type="button" id="btn-copy" style="display: none;" class="btn btn-secondary">Copy</button>   -->
+				<button type="button" id="copybtn" style="display: none;" class="btn btn-secondary">Copy</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			  </div>
 			</div>
@@ -111,6 +111,7 @@ user_session_check();
                             ?>
 						  </div>
 						</div>
+						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">
                             <table id="backuprestore"  class="table table-striped table-sm">

@@ -39,12 +39,10 @@ user_session_check();
 			  <div class="modal-body">
 				
 			  </div>
-
+				<!--  <input type="text" style="display:none;" id="model-body-txt" value="">  -->
 			  <!-- Modal footer -->
 			  <div class="modal-footer">
-	  			<!--<button type="button" class="btn btn-default">Cancel</button>
-				<button type="button" class="btn btn-default">Continue</button>
-				-->
+				<!--  <button type="button" id="btn-copy" style="display: none;" class="btn btn-secondary">Copy</button>   -->
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			  </div>
 			</div>

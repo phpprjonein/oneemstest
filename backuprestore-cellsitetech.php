@@ -44,8 +44,9 @@ for($i=0; $i<count($contents);$i++){
          <tr>                  
 			<td><b><?php echo basename($contents[$i]);?><b></td>                                              
             <!-- <td><b><?php //echo date ("Y-m-d H:i:s", filemtime($contents[$i]));?><b></td>  -->
-            <td><b><?php echo 'Manual';?><b><b></td> 
-			<td><button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">Restore </button></td>
+            <td><b><?php echo 'Manual';?><b><b></td>
+			<td><button type="button" id = "viewbtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View </button></td>
+			<td><button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Restore </button></td>
          </tr>
 <?php   
     }

@@ -465,7 +465,7 @@ $(document).ready(function() {
 		  $(document).on('click', '#back_res #viewbtn', function(event) {
 			  $('#myModal #copybtn').hide();
 		  //alert('Restore button is clicked');
-		  	$('#myModal .modal-title').html('File Contents' + $(this).closest('tr').find("td:eq(0)").text());
+		  	$('#myModal .modal-title').html('File Contents ' + $(this).closest('tr').find("td:eq(0)").text());
 	    	$.post( "restore-api-test.php?act=view", { 'type': "api-ajax", 'filename':$(this).closest('tr').find("td:eq(0)").text(), 'region':$('tr.shown').find("td:eq(4)").text() 
 			}).done(function( data ) {
 				$('#myModal .modal-body').html(data);

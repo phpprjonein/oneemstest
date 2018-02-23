@@ -30,7 +30,7 @@ $page_title = 'OneEMS';
 
         <!-- The Modal -->
 		<div class="modal fade" id="myModal">
-		  <div class="modal-dialog" >
+		  <div class="modal-dialog modal-lg" >
 			<div class="modal-content" id="manual-device-discovery">
 
 			  <!-- Modal Header -->
@@ -383,7 +383,7 @@ conflict table content -->
                       </div>
                     </div>
 
-      <div class="col-auto"> 
+      <div class="col-auto" style = "display:none;"> 
         <div class="btn-group" id="manual-disc-market">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT MARKET

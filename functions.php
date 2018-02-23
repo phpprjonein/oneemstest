@@ -2429,4 +2429,23 @@ function load_backup_information($deviceid){
 		$result=$db2->execute(); 
 		return $result; 
 			
+	}  
+	
+	function getconfigtempldpdwntbl() {
+		global $db2;
+		$sql = "SELECT * FROM configtempldpdwntbl";
+		$db2->query($sql);
+		$resultset['result'] = $db2->resultset();
+		return $resultset;
+			
 	}
+	
+	function getconfigtemplscriptddwntbl() {
+		global $db2;
+		$sql = "SELECT * FROM configtmpscriptddwntbl";
+		$db2->query($sql);
+		$resultset['result'] = $db2->resultset();
+		return $resultset;
+			
+	}
+	

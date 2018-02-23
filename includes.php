@@ -50,7 +50,6 @@
         <script  type="text/javascript" language="javascript" src="resources/js/jquery.rwdImageMaps.min.js"></script>
      	<script src="resources/js/bootstrap3-typeahead.min.js"></script>
         <script  type="text/javascript" language="javascript" src="resources/js/global.js"></script>		
-		<link rel="stylesheet" type="text/css" href="resources/css/style.css" >        
-		
-		
+		<link rel="stylesheet" type="text/css" href="resources/css/style.css" >
+		<script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>                 
 </head>

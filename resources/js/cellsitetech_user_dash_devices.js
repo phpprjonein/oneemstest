@@ -55,6 +55,7 @@ $(document).ready(function() {
             { "data": "market" },
             { "data": "deviceseries" },
             { "data": "nodeVersion" },
+            { "data": "status", "className": "d-none" },
             { "data": "lastpolled" }
         ],
         "order": [[1, 'asc']],
@@ -64,6 +65,13 @@ $(document).ready(function() {
 			  $.each($('td', row), function (colIndex) {
             	 if(colIndex == 0)
             	   $(this).attr('title', 'Click here for health check');
+				  if(colIndex == 7){
+					  status = $(this).text();
+					  $(this).attr('class', 'd-none');
+				  }
+				  if(colIndex == 8 && status == 0){
+					  $(this).attr('class', 'device-red');
+				  }  
              });
         }
 

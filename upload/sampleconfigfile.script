@@ -7,7 +7,7 @@ service timestamps log datetime msec localtime show-timezone
 service password-encryption
 no platform punt-keepalive disable-kernel-core
 !
-hostname tyttttttttttttt
+hostname 54446646464646XXXX
 !
 boot-start-marker
 boot system bootflash:asr920-universalk9_npe.03.17.01.S.156-1.S1-std.bin
@@ -24,7 +24,7 @@ vrf definition CELL_MGMT
  exit-address-family
  !
  address-family ipv6
-  route-target export XXXXX:3001
+  route-target export iyiyiyiyui:3001
   route-target import XXXXX:3001
  exit-address-family
 !

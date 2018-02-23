@@ -524,3 +524,81 @@ margin-left:210px;
 .card-body p , ul{
 	text-align: left;
 }
+
+/* dropdown menu nav styles */
+.dropdown-nav-menu li.dropdown {
+  position: static;
+  float: right;
+}
+
+.dropdown-nav-menu li.dropdown:hover {
+  background: #fff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.dropdown-nav-menu li.dropdown.show {
+  border-top: 0.125rem solid #dc3545;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.dropdown-nav-menu li.dropdown.show a:focus {
+  outline: none;
+}
+
+.dropdown-nav-menu li.dropdown .dropdown-item {
+  border-bottom: 0.125rem solid #dc3545 !important;
+}
+
+.dropdown-nav-menu li.dropdown .dropdown-toggle {
+  background: none;
+  color: #007bff;
+}
+
+.dropdown-nav-menu .dropdown-menu {
+  width: auto;
+}
+
+.dropdown-nav-menu .dropdown-menu.show {
+  background: none;
+  border: none;
+}
+
+.dropdown-nav-menu .dropdown-menu a {
+  background: #fff;
+  display: inline !important;
+  margin: 0 0.25rem;
+}
+
+.dropdown-nav-menu .dropdown-menu a:hover {
+  border: none;
+  background-color: #d8dada;
+}
+
+.dropdown-nav-menu .dropdown-menu > li {
+  display: inline-block;
+}
+
+.dropdown-nav-menu .dropdown-menu > li:hover {
+  border: none;
+}
+/* dropdown menu nav styles */
+
+/* ALL buttons will have UPPERCASE letters, universally across this application */ 
+button {
+  text-transform: uppercase;
+}
+/* ALL buttons will have UPPERCASE letters, universally across this application */
+
+.nav-pills .help.active {
+  background-color: #dc3545;
+}
+.nav-pills .help.active {
+  background-color: #dc3545;
+}
+
+/* ALL buttons will have UPPERCASE wording, so make ​this attribute global */
+button {
+  text-transform: uppercase;
+}

@@ -889,7 +889,8 @@ function user_mylist_devieslist_datatable($userid,$listid){
         'n.market',
         'n.deviceseries',
         'n.nodeVersion',
-        'n.lastpolled'
+        'n.lastpolled',
+        'n.status'
     );
     
     

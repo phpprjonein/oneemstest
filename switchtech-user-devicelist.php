@@ -74,6 +74,7 @@ modal.children[0].addEventListener('click', function(e) {
                                   <th>Market  </th>
                                   <th>Device series</th>
                                   <th>Version</th>
+                                  <th class="d-none">Status</th>
                                   <th>Last Polled</th>
                                 </tr>
                               </thead>

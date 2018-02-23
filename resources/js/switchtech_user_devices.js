@@ -55,16 +55,28 @@ $(document).ready(function() {
             { "data": "market" },
             { "data": "deviceseries" },
             { "data": "nodeVersion" },
-            { "data": "lastpolled" }
+            { "data": "status", "className": "d-none" },
+            { "data": "lastpolled" },
         ],
         "order": [[1, 'asc']],
             // Per-row function to iterate cells
         "createdRow": function (row, data, rowIndex) {
              $(row).addClass('device_row');
+             var status = ''; 
 			  $.each($('td', row), function (colIndex) {
             	/* if(colIndex == 0)
             	   $(this).attr('title', 'Click here for health check');
 			   */  // Temporarily not needed. Needed in future.
+				  
+				  if(colIndex == 7){
+					  status = $(this).text();
+					  $(this).attr('class', 'd-none');
+				  }
+				  if(colIndex == 8 && status == 0){
+							  $(this).attr('class', 'device-red');
+						  }  
+				  
+				  
              });
         }
 

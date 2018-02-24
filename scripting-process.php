@@ -3,17 +3,43 @@ include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
 
-// Static variable values set
-if (isset($_GET['clear'])) {
-    if (strtolower($_GET['clear']) == 'search') {
-        unset($_SESSION['search_term']);
-    }
-}
-
 user_session_check();
 check_user_authentication('1'); // cellsite tech type user
 
 $page_title = 'OneEMS';
+
+if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
+    if ($_FILES["file"]["type"] == "text/plain" && $_FILES["file"]["size"] < 65536) {
+        //Remove if config file exist
+        $filename = $_POST['filename']."_".$_SESSION['userid'].".txt";
+        if(file_exists(getcwd()."/upload/".$filename)){
+            unlink(getcwd()."/upload/".$filename);
+        }
+        if ($_FILES["file"]["error"] > 0) {
+            $_SESSION['msg'] = 'fe';
+            $_SESSION['msg-param']['fileerror'] = $_FILES["file"]["error"];
+        } else {
+            if (file_exists("upload/" . $filename)) {
+                $_SESSION['msg'] = 'fae';
+                $_SESSION['msg-param']['filename'] = $filename;
+            } else {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], "upload/".$filename)) {
+                    $_SESSION['msg'] = 'fus';
+                }
+            }
+        }
+    } else {
+        if ($_FILES["file"]["type"] != "text/plain"){
+            $_SESSION['msg'] = 'fte';
+        }
+        else if ($_FILES["file"]["size"] < 65536){
+            $_SESSION['msg'] = 'feps';
+        }
+    }
+    if($_SESSION['msg'] != 'fus'){
+        header("location:scripting.php");
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +60,6 @@ $page_title = 'OneEMS';
 					<div class="panel panel-default">
     					<div id="status" style="display: none;" class="alert"></div>
 						<!-- backup management content row -->
-	<form action="scripting-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">						
     <div class="row">
 
 <!-- router selection content row -->
@@ -53,10 +78,10 @@ $page_title = 'OneEMS';
 			?>
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
-              <select id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
+              <select disabled="disabled" id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
                 <option value="">- Select Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-				  <option value="<?php echo $val['purpose'];?>"><?php echo $val['purpose']; ?></option> 
+				  <option value="<?php echo $val['purpose'];?>" <?php if($_POST['f4'] == $val['purpose']) : ?>selected<?php endif; ?>><?php echo $val['purpose']; ?></option> 
 				 <?php }; ?>
               </select>
             </div>
@@ -146,10 +171,11 @@ $page_title = 'OneEMS';
             </div>
 <!-- /select market options -->
 
-
+<!-- submit button
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <button type="submit" class="btn btn-primary btn-lg config-submit" style="z-index: 1;">NEXT</button>
+              <button type="submit" class="btn btn-primary btn-lg" style="z-index: 1;">NEXT</button>
             </div>
+submit button -->
 
             <div class="clearfix"></div>
           </form>
@@ -163,39 +189,77 @@ $page_title = 'OneEMS';
 <!-- right side -->
 <!-- script output -->
       <div class="col">
-
-<!-- template name content -->
-        <div class="row">
-          <div class="col d-none" id="template_info">
-            <label for="inputRegion">TEMPLATE:</label>
-            <small><b><span id="filename"></span></b></small>
-            <!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
-          </div>
-        </div>
-<!-- /template name content -->
-
-<!-- browse / upload template -->
-        <div class="row">
-		
-			<input type="hidden" name="filename" id="upload_filename">
-        	<div class="form-group">
-		    <label for="file">Select a file to upload</label>
-		    <input type="file"  id="file" name="file">
-		    <p class="help-block">Please upload <b>.txt</b> files with a maximum size of 2 MB.</p>
-		    		  	<input type="submit" name="act" class="btn config-submit" value="Upload">
-		  				<!-- <input type="submit" name="act" class="btn config-submit" value="NEXT">  -->
-		  	</div>
-
-		
-        </div>
-<!-- /browse / upload template -->
-<!-- /right side -->
-<!-- /script output -->
+										<div class="col-lg-12 tags p-b-2">
+											<?php
+											$filename = getcwd()."/upload/".$filename;
+							if(!file_exists($filename)){
+							    $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
+							}
+							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
+							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
+							?>
+							<div id="file_process">
+							<?php
+							if(file_exists($filename)){
+									$fd = fopen ($filename, "r");
+									$line = 0;
+									while(!feof($fd))
+									{
+									    ++$line;
+    									$contents = fgets($fd,filesize ($filename));									
+    									$delimiter = "#";
+    									$splitcontents = explode($delimiter, $contents);
+    									$splitcontcount = count($splitcontents);
+    									if ($splitcontcount > 1) {
+    									    $output .= '<div class="form-group">';
+    									    $output_inner = '';
+    										foreach ( $splitcontents as $color )
+    										{
+    										    if(!empty($color)){
+    										        if (substr_count(strtolower('#'.$color),"#x") > 0 || substr_count(strtolower('#'.$color),"#y") > 0 || substr_count(strtolower('#'.$color),"#x.x.x.x") > 0 || substr_count(strtolower('#'.$color),"#y.y.y.y") > 0 || substr_count(strtolower('#'.$color), "#z.z.z.z") > 0  || substr_count(strtolower('#'.$color),"#a.a.a.a") > 0 || substr_count(strtolower('#'.$color), "#b.b.b.b") > 0 ){
+        											    $output_inner .= "<input type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_".$line."][]' value='1' >";
+        											}else{
+        											     if(strlen($color)!=0){
+        											         $orgcolor = $color;
+        											         $color = ($color == " ") ? '&nbsp;' : $color;
+        											         $output_inner .= "<label class='readonly'>".$color."</label><input type='text' style='display:none !important;' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' >";
+        											     }
+        										    }
+    										    }
+    										};
+    										
+    										
+    										$output .= '<span class="form-editable-fields">'.$output_inner.'</span>';
+    										
+    										$output .= '</div>';										
+    									} elseif($splitcontcount == 1) {
+    										foreach ( $splitcontents as $color )
+    										{   
+    										    if(!empty($color)){
+    										        $orgcolor = $color;
+    										        $color = ($color == " ") ? '&nbsp;' : $color;
+    										        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>".$color."</label><input style='display:none !important;' type='text' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' ></span></div>";
+    											}
+    										}; 
+    									};
+									};									
+									fclose($fd); 
+									echo $output;
+									?>  
+								</div>
+								<br>
+								<?php
+									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
+									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
+									$output .= '</form>'; 
+									echo $output;
+								?> 
+								<?php } ?>	
+								</div>
 
     </div>
 <!-- /backup management content row -->
 				</div>
-				</form>
 			</section>
 			<!-- /.content -->
 		</div>

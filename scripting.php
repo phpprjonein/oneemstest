@@ -33,6 +33,9 @@ $page_title = 'OneEMS';
 				<div class="col-md-12">
 					<div class="panel panel-default">
     					<div id="status" style="display: none;" class="alert"></div>
+    					<?php if($_SESSION['msg'] == 'dbs'){ ?>
+                                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
+                        <?php } unset($_SESSION['msg']); ?>
 						<!-- backup management content row -->
 	<form action="scripting-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">						
     <div class="row">

@@ -21,6 +21,7 @@ $page_title = 'OneEMS';
 <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
+   <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
@@ -64,6 +65,7 @@ $page_title = 'OneEMS';
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select OS</label>
               <select class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
+              	<option value="">- Select OS -</option>
                 <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['deviceos'];?>"><?php echo $val['deviceos']; ?></option> 
 			 <?php }; ?>	
@@ -76,6 +78,7 @@ $page_title = 'OneEMS';
               <!-- <label class="control-label" for="f8">Select OS Configuration</label> -->
               <label class="control-label" for="f8">Select Template Type</label>
               <select class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
+              	<option value="">- Select Template Type -</option>
 			   <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 
                 	<option value="<?php echo $val['templtype'];?>"><?php echo $val['templtype']; ?></option> 
 			 <?php }; ?>	
@@ -87,6 +90,7 @@ $page_title = 'OneEMS';
             <div class="form-group f9 required" data-fid="f9">
               <label class="control-label" for="f9">Select Region</label>
               <select class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
+              	<option value="">- Select Region -</option>
                 <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
                  <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
 			   <?php }; ?>		
@@ -98,6 +102,7 @@ $page_title = 'OneEMS';
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select RAN Vendor</label>
               <select class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
+              	<option value="">- Select RAN Vendor -</option>
                 <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['ranvendor'];?>"><?php echo $val['ranvendor']; ?></option> 
 				<?php }; ?>		
@@ -109,6 +114,7 @@ $page_title = 'OneEMS';
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Service</label>
               <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
+              <option value="">- Select Service -</option>
 			  <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['service'];?>"><?php echo $val['service']; ?></option> 
 			  <?php }; ?>		
@@ -120,6 +126,7 @@ $page_title = 'OneEMS';
             <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Site Type</label>
               <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
+              <option value="">- Select Site Type -</option>
               <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['sitetype'];?>"><?php echo $val['sitetype']; ?></option> 
 			  <?php }; ?>	
@@ -129,7 +136,6 @@ $page_title = 'OneEMS';
 
 <!-- submit button -->
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <!-- <label class="control-label sr-only" for="f0" style="display: block;">Submit Button</label> -->
               <button type="submit" class="btn btn-primary btn-lg" style="z-index: 1;">NEXT</button>
             </div>
 <!-- /submit button -->
@@ -137,7 +143,6 @@ $page_title = 'OneEMS';
             <div class="clearfix"></div>
           </form>
 <!-- /router scripting selection form div -->
-
         </div>
       </div>
 <!-- /router selection content row -->
@@ -146,11 +151,9 @@ $page_title = 'OneEMS';
 <!-- right side -->
 <!-- script output -->
       <div class="col">
-
 <!-- template output content -->
         <div class="row">
           <div class="col">
-
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -177,10 +180,8 @@ $page_title = 'OneEMS';
                       <input type="radio" name="radioGroup">
                     </td>
                   </tr>
-
                 </tbody>
               </table>
-
           </div>
         </div>
 <!-- /template name content -->
@@ -204,266 +205,4 @@ $page_title = 'OneEMS';
 
         <?php include ('footer.php'); ?> 
     </body>
-
-
-
-<!-- JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS. Must load stack in this order for this page; popovers will not work otherwise -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-<!-- form wizard scripting -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-<script src="js/vendor.js" ></script>
-<script src="js/form-wizard.js?ver=v2.1.0&id=wizard-75a3c2"></script>
-<script type="text/javascript">
-// dropdown fields values
-;
-(function() {
-    var dataSource= {
-        "f7": {
-            "dependOn":"f4", "remote":null, "options":[ {
-                "label": "- SELECT MODEL TYPE -", "value": "#novalue", "checked": false
-            }
-            , {
-                "4": null, "label": "#depend", "value": "asr920", "checked": null, "image": null
-            }
-            , {
-                "4": null, "label": "- Select Option -", "value": "#empty", "checked": null, "image": null
-            }
-            , {
-                "4": null, "label": "15.6(1)S1", "value": "15.6(1)S1", "checked": null, "image": null
-            }
-            , {
-                "4": null, "label": "15.5(3)S1a", "value": "15.5(3)S1a", "checked": null, "image": null
-            }
-            ]
-        }
-        , "f8": {
-            "dependOn":"f7", "remote":null, "options":[ {
-                "label": "- Select OS Version -", "value": "#novalue", "checked": false
-            }
-            , {
-                "label": "#depend", "value": "15.6(1)S1", "checked": null
-            }
-            , {
-                "label": "- Select Option -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "Golden", "value": "gold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "#depend", "value": "15.5(3)S1a", "checked": null
-            }
-            , {
-                "label": "- Select Option -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "Golden", "value": "gold15.5(3)S1aV1C1", "checked": null
-            }
-            ]
-        }
-        , "f9": {
-            "dependOn":"f8", "remote":null, "options":[ {
-                "label": "- Select Region -", "value": "#novalue", "checked": false
-            }
-            , {
-                "label": "#depend", "value": "gold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "- Select Option -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "South", "value": "southGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "South East", "value": "southEastGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "South Central", "value": "southCentralGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "Great Lakes", "value": "greatLakesGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "Midwest", "value": "midWestGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "North Central", "value": "northCentralsGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "North Central / South Central", "value": "northsouthCentralGold15.6(1)S1V1C1", "checked": null
-            }
-            , {
-                "label": "#depend", "value": "gold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "- Select Option -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "South", "value": "southGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "South East", "value": "southEastGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "South Central", "value": "southCentralGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "Great Lakes", "value": "greatLakesGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "Midwest", "value": "midWestGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "North Central", "value": "northCentralsGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "North Central / South Central", "value": "northsouthCentralGold15.6(1)S1V2C1", "checked": null
-            }
-            , {
-                "label": "#depend", "value": "gold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "- Select Option -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "South", "value": "southGoldGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "South East", "value": "southEastGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "South Central", "value": "southCentralGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "Great Lakes", "value": "greatLakesGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "Midwest", "value": "midWestGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "North Central", "value": "northCentralsGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "North Central / South Central", "value": "northsouthCentralGold15.5(3)S1aV1C1", "checked": null
-            }
-            , {
-                "label": "#depend", "value": "gold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "- Select 15.5(3)S1a V2 C1 Region -", "value": "#empty", "checked": null
-            }
-            , {
-                "label": "South", "value": "southGoldGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "South East", "value": "southEastGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "South Central", "value": "southCentralGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "Great Lakes", "value": "greatLakesGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "Midwest", "value": "midWestGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "North Central", "value": "northCentralsGold15.5(3)S1aV2C1", "checked": null
-            }
-            , {
-                "label": "North Central / South Central", "value": "northsouthCentralGold15.5(3)S1aV2C1", "checked": null
-            }
-            ]
-        }
-        , "f10": {
-            "dependOn":"f9", "remote":null, "options":[ {
-                "label": "- Select RAM -", "value": "#novalue", "checked": false
-            }
-            , {
-                "label": "#depend", "checked": false, "value": "southGold15.6(1)S1V1C1"
-            }
-            , {
-                "label": "- Select Option -", "checked": false, "value": "#empty"
-            }
-            , {
-                "label": "Motorola", "value": "asr920GPV1C1Moto", "checked": null
-            }
-            , {
-                "label": "Nokia", "value": "asr920GPV1C1Nokia", "checked": null
-            }
-            ]
-          }
-          , "f11": {
-            "dependOn":"f10", "remote":null, "options":[ {
-                "label": "- Select Service -", "value": "#novalue", "checked": false
-            }
-            , {
-                "label": "#depend", "checked": false, "value": "asr920GPV1C1Moto"
-            }
-            , {
-                "label": "- Select Option -", "checked": false, "value": "#empty"
-            }
-            , {
-                "label": "LTE", "value": "asr920MotoLTE", "checked": null
-            }
-            , {
-                "label": "No LTE", "value": "asr920NoLTE", "checked": null
-            }
-            ]
-          }
-          , "f12": {
-            "dependOn":"f11", "remote":null, "options":[ {
-                "label": "- Select Site Type -", "value": "#novalue", "checked": false
-            }
-            , {
-                "label": "#depend", "checked": false, "value": "asr920MotoLTE"
-            }
-            , {
-                "label": "- Select Option -", "checked": false, "value": "#empty"
-            }
-            , {
-                "label": "Standalone", "value": "siteStandalone", "checked": null
-            }
-            ]
-          }
-    }
-    ;
-    $(document).trigger( 'dependent:setup', dataSource);
-}
-
-)();
-</script>
-
-<script type="text/javascript">
-
-  // start form wizard initialization
-  // --------------------------------
-  JF.init('#wizard-75a3c2');
-
-  // watch form element change event to run form wizard's formlogic
-  // ---------------------------------------------------------------
-  var logics = [
-    {
-        "": false,
-        "action": "disable",
-        "selector": "f7",
-        "match": "any",
-        "rules": [
-            {
-                "": false,
-                "selector": "f4",
-                "condition": "contains",
-                "value": "#novalue"
-            }
-        ]
-    }
-];
-  $('input,input:radio,select').change(function(){
-    $.formlogic( {logics: logics} );
-  });
-</script>
-	
 </html>

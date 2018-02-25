@@ -1,4 +1,44 @@
 $(document).ready(function() {
+	$(document).on('change', "#cellsitech-generate-script select", function(event) {
+		$("#cellsitech-generate-script select").each(function()
+		{
+					if($(this).val() !=''){
+						$(this).removeClass('required');
+					}
+		});
+		return false;
+	});
+	
+	$(document).on('click', "#cellsitech-generate-script .generate-script-submit", function(event) {
+    	var req_err = false;
+    	$("#cellsitech-generate-script select").each(function(){
+			if($(this).val() ==''){
+				$(this).addClass('required');
+				req_err = true;
+			}else{
+				$(this).removeClass('required');
+			}
+		});
+    	if(req_err){
+    		$("#status").html("<strong>Error!</strong> 	 select fields are required.<br/>");
+    	}
+
+        if(req_err){
+        	$('#status').css("opacity","");
+        	$("#status").addClass('alert-danger');
+        	$("#status").show();
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+        	return false;
+        }
+        return true;
+    });
+
+	
+	
 	$(document).on('change', "#cellsitech-config select", function(event) {
 				var filename = 'Golden_'; sep = '';
 				$("#cellsitech-config select").each(function()

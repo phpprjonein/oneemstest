@@ -24,14 +24,14 @@ $page_title = 'OneEMS';
    <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
-	<div class="container-fluid" id="cellsitech-config">
+	<div class="container-fluid" id="cellsitech-generate-script">
 	<?php include ('menu.php'); ?> 
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-					
+					<div id="status" style="display: none;" class="alert"></div>
 <!-- backup management content row -->
     <div class="row">
 
@@ -136,7 +136,7 @@ $page_title = 'OneEMS';
 
 <!-- submit button -->
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <button type="submit" class="btn btn-primary btn-lg" style="z-index: 1;">NEXT</button>
+              <button type="submit" class="btn btn-primary btn-lg generate-script-submit" style="z-index: 1;">NEXT</button>
             </div>
 <!-- /submit button -->
 

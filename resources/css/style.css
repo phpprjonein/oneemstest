@@ -603,6 +603,6 @@ button {
   text-transform: uppercase;
 }
 .device-red{color:red;}
-#cellsitech-config .required{
+#cellsitech-config select.required, #cellsitech-generate-script select.required{
 	border-color: #dc3545;
 }

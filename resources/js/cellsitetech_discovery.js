@@ -415,11 +415,11 @@ $(document).ready(function() {
 	});
 	
 	$("#manual-disc-utils #manual-discovery").click(function(){
-		/*var req_err = false;
+		var req_err = false;
 		$('#v-pills-manual #status').html('');
 		$('#v-pills-manual #status').css("opacity","");
 		if($('#v-pills-manual #inputDeviceIPaddress').val() == ""){
-			$('#v-pills-manual #status').html("<strong>Error!</strong> IP Address field is required.<br/>");
+			$('#v-pills-manual #status').html("<strong>Error!</strong> Device IP Address field is required.<br/>");
 			$('#v-pills-manual #status').addClass('alert-danger');
 			$('#v-pills-manual #status').show();
 			req_err = true;
@@ -431,7 +431,7 @@ $(document).ready(function() {
 			$('#v-pills-manual #status').show();
 			req_err = true;
 		} */
-		/*if(req_err){ 
+		if(req_err){ 
 		    window.setTimeout(function() {
 		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
 		            $(this).hide(); 
@@ -439,7 +439,7 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
-		*/
+		
 		var myModal = $('#myModal');
     	//$.post( "api-test-manual-device-disc.php", { type: "api-ajax", 'market':$("#manual-disc-market .btn").html().trim(),'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
 		$.post( "api-test-manual-device-disc.php", { type: "api-ajax",'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  

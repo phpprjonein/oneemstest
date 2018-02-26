@@ -27,6 +27,30 @@ $page_title = 'OneEMS';
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include ('menu.php'); ?> 
+        <!-- The Modal -->
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog modal-lg" >
+			<div class="modal-content" id="manual-device-discovery">
+
+			  <!-- Modal Header -->
+		<div class="modal-header" id="restoremodalhdr">
+        <h5 class="modal-title text-center"  id="modalLabelLarge">Manual Device Discovery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+			  <!-- Modal body -->
+			  <div class="modal-body">
+				
+			  </div>
+
+			  <!-- Modal footer -->
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
 <!-- 
       <div class="form-row align-items-center justify-content-between">
 

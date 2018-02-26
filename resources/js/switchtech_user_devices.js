@@ -260,7 +260,7 @@ $(document).ready(function() {
 			  
 			  $(document).on('click', '#copybtn', function(event) {
 					copyToClipboard("#cp1");
-					alert("Content Copied in Clipboard");
+					alert("Content Copied into Clipboard");
 		  });
 			  
 			  $(document).on('click', '#backupbtn', function(event) {

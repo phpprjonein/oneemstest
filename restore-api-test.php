@@ -4,7 +4,8 @@
     echo '<PRE>' . $homepage . '</PRE>';
  }elseif($_GET['act'] == 'view'){
      $row_region = strtolower(str_replace(' ','', $_POST['region']));
-     $path = '/pysvrdevbakupfiles/'.$row_region.'/'.$_POST['filename'];
+     //$path = '/pysvrdevbakupfiles/'.$row_region.'/'.$_POST['filename'];
+     $path = '/usr/apps/oneems/config/bkup/'.$row_region.'/'.$_POST['filename'];
      if(file_exists($path)){
          echo file_get_contents($path);
      }

@@ -30,9 +30,15 @@ $row_device_name = $_GET['devicename']; //'AKROOH20T1A-P-CI-0382-01';
 //$contents = ftp_nlist($conn_id, '/home/suravve/usr/apps/oneems/config/bkup/'.$row_region.'/');
 //$contents = ftp_nlist($conn_id, '/home/suravve/');
 //print_r($contents);
-
-$path = '/pysvrdevbakupfiles/'.$row_region;
+//$path = '/pysvrdevbakupfiles/'.$row_region;
+//$path = '/usr/apps/oneems/config/bkup/'.$row_region;
+//$path = '/home/kesavsr/pysvrdevbakupfiles/'.$row_region;
+//$path = '/home/kesavsr/pysvrdevbakupfiles/'.$row_region;
+//$path = '/usr/apps/oneems/config/bkup/greatlakes/';
+//$path = '/usr/apps/oneems/config/bkup/';
+$path = '/usr/apps/oneems/config/bkup/'.$row_region;;
 $contents = array_values(array_diff(scandir($path), array('.', '..')));
+//print_r($contents);
 ?>
 <div class="ownfont box-body launch-modal">
 <table class="table table-bordered" id="back_res" cellspacing="0" cellpadding="0" >
@@ -46,7 +52,7 @@ for($i=0; $i<count($contents);$i++){
             <!-- <td><b><?php //echo date ("Y-m-d H:i:s", filemtime($contents[$i]));?><b></td>  -->
             <td><b><?php echo 'Manual';?><b><b></td>
 			<td><button type="button" id = "viewbtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View </button></td>
-			<td><button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Restore </button></td>
+			<td><!--<button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Restore </button> --></td>
          </tr>
 <?php   
     }

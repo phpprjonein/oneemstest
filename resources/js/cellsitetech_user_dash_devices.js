@@ -7,7 +7,7 @@ $(document).ready(function() {
               url:"healthchk-cellsitetech.php",
               data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
               beforeSend: function(){
-            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
               },
               complete: function() {
                   $thisdiv.addClass('loaded');
@@ -113,7 +113,7 @@ $(document).ready(function() {
                       url:"healthchk-load-table-data.php",
                       data: {deviceid:id, userid:$('#userid').val()},
                       beforeSend: function(){
-                          $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+                          $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
                       },
                       complete: function() {
                           $('#detail_'+id).addClass('loaded');
@@ -299,7 +299,7 @@ $(document).ready(function() {
 	                    data: {'deviceid':id, 'userid':$('#userid').val(), 'devicename': $(this).closest('tr').find("td:eq(1)").text(), 'region': $(this).closest('tr').find("td:eq(4)").text(), 'market' : $(this).closest('tr').find("td:eq(5)").text()},					
 	                    data: {deviceid:id, userid:$('#userid').val()},
 	                    beforeSend: function(){
-	                        $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+	                        $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
 	                    },
 	                    complete: function() {
 	                        $('#detail_'+id).addClass('loaded');

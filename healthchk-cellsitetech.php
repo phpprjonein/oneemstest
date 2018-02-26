@@ -31,7 +31,8 @@ include 'functions.php';
             $url_send =" http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
             $deviceid = $_GET['deviceid'];              
  	          $url_final = 'http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/'.$deviceid;			
-            $output = json_decode(sendPostData($url_final),true);   
+            $output = json_decode(sendPostData($url_final),true); 
+            insertorupdate_healthchk_info($deviceid, $output);
             $_SESSION['deviceidcs'] = $deviceid;                 
      ?>
 

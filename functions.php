@@ -2449,4 +2449,55 @@ function load_backup_information($deviceid){
 		return $resultset;
 			
 	}
-	
+	function select_healthchk_info($deviceid){
+	    global $db2;
+	    $sql = "SELECT * FROM healthcheck where deviceid = $deviceid";
+	    $db2->query($sql);
+	    $resultset = $db2->resultset();
+	    return $resultset[0];
+	}
+	function insertorupdate_healthchk_info($deviceid, $output){
+	    global $db2;
+	    $sql = "SELECT id FROM healthcheck WHERE deviceid = $deviceid";
+	    $db2->query($sql);
+	    $recordset = $db2->resultset();
+	    $cpuutilization = json_encode($output['cpuutilization']);
+	    $freememory = json_encode($output['freememory']);
+	    $buffers = json_encode($output['buffers']);
+	    $iosversion = json_encode($output['iosversion']);
+	    $bootstatement = json_encode($output['bootstatement']);
+	    $configregister = json_encode($output['configregister']);
+	    $environmental = json_encode($output['environmental']);
+	    $platform = json_encode($output['platform']);
+	    $bfdsession = json_encode($output['bfdsession']);
+	    $interfacestates = json_encode($output['interfacestates']);
+	    $interfacecounters = json_encode($output['interfacecounters']);
+	    $mplsinterfaces = json_encode($output['mplsinterfaces']);
+	    $mplsneighbors = json_encode($output['mplsneighbors']);
+	    $bgpvfourneighbors = json_encode($output['bgpvfourneighbors']);
+	    $bgpvsixneighbours = json_encode($output['bgpvsixneighbours']);
+	    $ran = json_encode($output['ran']);
+	    $bgpvsixroutes = json_encode($output['bgpvsixroutes']);
+	    $twothsndbyteping = json_encode($output['twothsndbyteping']);
+	    $fivethsndbyteping = json_encode($output['fivethsndbyteping']);
+	    $logentries = json_encode($output['logentries']);
+	    $xconnect = json_encode($output['xconnect']);
+	    $lightlevel = json_encode($output['lightlevel']);
+	    $userid = 1;
+	    if($recordset[0]['id'] == ""){
+	        $sql = "INSERT INTO `healthcheck` (`deviceid`, `cpuutilization`, `freememory`, `buffers`, `iosversion`, `bootstatement`, `configregister`, `environmental`, `platform`, `bfdsession`, `interfacestates`, `interfacecounters`, `mplsinterfaces`, `mplsneighbors`, `bgpvfourneighbors`, `bgpvsixneighbours`, `ran`, `bgpvsixroutes`, `twothsndbyteping`, `fivethsndbyteping`, `logentries`, `xconnect`, `lightlevel`, `userid`) 
+            VALUES($deviceid, '".$cpuutilization."','".$freememory."','".$buffers."','".$iosversion."','".$bootstatement."','".$configregister."',
+            '".$environmental."','".$platform."','".$bfdsession."','".$interfacestates."','".$interfacecounters."','".$mplsinterfaces."',
+            '".$mplsneighbors."','".$bgpvfourneighbors."','".$bgpvsixneighbours."','".$ran."','".$bgpvsixroutes."','".$twothsndbyteping."',
+            '".$fivethsndbyteping."','".$logentries."','".$xconnect."','".$lightlevel."',$userid)";
+	        $db2->query($sql);
+	        $db2->execute();
+	    }else{
+	        $sql = "UPDATE `healthcheck` SET cpuutilization='".$cpuutilization."', freememory='".$freememory."', buffers='".$buffers."', iosversion='".$iosversion."', bootstatement='".$bootstatement."', configregister='".$configregister."', environmental='".$environmental."',
+            platform='".$platform."', bfdsession='".$bfdsession."', interfacestates='".$interfacestates."', interfacecounters='".$interfacecounters."', mplsinterfaces='".$mplsinterfaces."', mplsneighbors='".$mplsneighbors."', bgpvfourneighbors='".$bgpvfourneighbors."', 
+            bgpvsixneighbours='".$bgpvsixneighbours."', ran='".$ran."', bgpvsixroutes='".$bgpvsixroutes."', twothsndbyteping='".$twothsndbyteping."', fivethsndbyteping='".$fivethsndbyteping."', logentries='".$logentries."', xconnect='".$xconnect."',
+            lightlevel='".$lightlevel."' WHERE deviceid = '".$deviceid."'";
+	        $db2->query($sql);
+	        $db2->execute();
+	    }
+	}

@@ -106,22 +106,36 @@ $(document).ready(function() {
                   if (!current_click_row ){
                   row.child( format(tr.attr('id')) ).show();
                   tr.addClass('shown');
-
                   var id = tr.attr('id').replace('row_','');
+                  
                   var ajs = $.ajax({
-                    type:"get",
-                    url:"healthchk-switchtech.php",
-                    data: {deviceid:id, userid:$('#userid').val()},
-                    beforeSend: function(){
-                        $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
-                    },
-                    complete: function() {
-                        $('#detail_'+id).addClass('loaded');
-                    },
-                    success: function(resdata){
-                        $('#detail_'+id).html(resdata);
-                    }
-                });
+                      type:"get",
+                      url:"healthchk-load-table-data.php",
+                      data: {deviceid:id, userid:$('#userid').val()},
+                      beforeSend: function(){
+                          $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+                      },
+                      complete: function() {
+                          $('#detail_'+id).addClass('loaded');
+                      },
+                      success: function(resdata){
+                          $('#detail_'+id).html(resdata);
+                      }
+                  });
+                  ajs = $.ajax({
+                      type:"get",
+                      url:"healthchk-switchtech.php",
+                      data: {deviceid:id, userid:$('#userid').val()},
+                      beforeSend: function(){
+                          $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+                      },
+                      complete: function() {
+                          $('#detail_'+id).addClass('loaded');
+                      },
+                      success: function(resdata){
+                          $('#detail_'+id).html(resdata);
+                      }
+                  }); 
             }
           } 
       });

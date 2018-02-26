@@ -1,6 +1,5 @@
 <?php
-//$url_final = 'http://63.49.0.192:8080/snmp/10.198.238.2';
-//$output = json_decode(sendPostData($url_final),true);
+/*
 $output = json_decode('{
   "data": {
     "devicename": "",
@@ -18,6 +17,27 @@ $output = json_decode('{
   },
   "deviceIpAddr": "10.198.238.19"
 }',1);
+*/
+//$url = 'http://63.49.0.192:8080/snmp/10.198.238.19';
+$url = 'http://63.49.0.192:8080/snmp/'.$_POST['ip-address'];
+//$url = 'http://txaroemsda2z.nss.vzwnet.com:8080/snmp/10.198.238.2';
+//  Initiate curl
+$ch = curl_init();
+// Disable SSL verification
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+// Will return the response, if false it print the response
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Set the url
+curl_setopt($ch, CURLOPT_URL,$url);
+// Execute
+$result=curl_exec($ch);
+// Closing
+curl_close($ch);
+
+// Will dump a beauty json :3
+//var_dump(json_decode($result, true));
+$output = json_decode($result, true);
+print_r($output['data']['data']);
 ?>
 <div class="container">
   <p><b>Device Ip Address : <?php echo $output['deviceIpAddr']; ?></b></p>            

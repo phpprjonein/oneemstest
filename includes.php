@@ -1,7 +1,6 @@
-<head>
+    <title><?php echo ($page_title) ? $page_title : 'title' ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo ($page_title) ? $page_title : 'title' ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap v4.0.0-beta.2 -->
@@ -50,6 +49,5 @@
         <script  type="text/javascript" language="javascript" src="resources/js/jquery.rwdImageMaps.min.js"></script>
      	<script src="resources/js/bootstrap3-typeahead.min.js"></script>
         <script  type="text/javascript" language="javascript" src="resources/js/global.js"></script>		
-		 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>​  
-		<link rel="stylesheet" type="text/css" href="resources/css/style.css" >
-</head>
+		 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>​
+		 <link rel="stylesheet" type="text/css" href="resources/css/style.css">

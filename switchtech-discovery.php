@@ -21,8 +21,8 @@ $page_title = 'OneEMS';
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/switchtech_discovery.js?t="<?php echo date('his'); ?>></script>
- </head>
+   <script src="resources/js/switchtech_discovery.js?t=<?php echo date('his'); ?>"></script>
+ 	</head>
      <body>
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
@@ -323,7 +323,7 @@ conflict table content -->
                     <th scope="col">OS Version</th>
                     <th scope="col">Last Polled</th>
                     <?php  if(count($resultset['result']) > 0): ?>
-                    <th scope="col" style="display:none;><a href="#" id="select_all" onclick="ok_all_item();" style="display:none;" >Select&nbsp;All</a></th>
+                    <th scope="col" style="display:none;"><a href="#" id="select_all" onclick="ok_all_item();" style="display:none;" >Select&nbsp;All</a></th>
                     <?php else:?>
                     <th scope="col" style="display:none;" >Select&nbsp;All</th>
                     <?php endif; ?>

@@ -423,6 +423,40 @@ $(document).ready(function() {
 			$('#v-pills-manual #status').addClass('alert-danger');
 			$('#v-pills-manual #status').show();
 			req_err = true;
+		}else{
+			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$('#v-pills-manual #inputDeviceIPaddress').val()})
+			  .done(function( data ) {
+				  if(data != 'success'){
+		    			$('#v-pills-manual #status').append("<strong>Error!</strong> Device IP Address is not valid.<br/>");
+		    			$('#v-pills-manual #status').addClass('alert-danger');
+		    			req_err = true;
+		        		if(req_err){ 
+		        			$('#v-pills-manual #status').show();
+		        		    window.setTimeout(function() {
+		        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		        		            $(this).hide(); 
+		        		        });
+		        		    }, 4000);
+		        			return false;
+		        		}
+				  }else{
+	        			var myModal = $('#myModal');
+	        	    	//$.post( "api-test-manual-device-disc.php", { type: "api-ajax", 'market':$("#manual-disc-market .btn").html().trim(),'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
+	        			$.post( "api-test-manual-device-disc.php", { type: "api-ajax",'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
+	        			}).done(function( data ) {
+	        				//var obj = jQuery.parseJSON( data );
+	        				/*
+	        				if(obj.result == true){
+	        					$('#myModal .modal-body').html('Device Discovered Successfully');
+	        				}else{
+	        					$('#myModal .modal-body').html('Device Discovery Failed');
+	        				}
+	        				*/
+	        				$('#myModal .modal-body').html(data);	
+	        			}); 
+	        	    	myModal.modal('show'); 
+	        		}
+			 });
 		}
 		/*
 		if(($("#v-pills-manual #manual-disc-market .btn").html().trim() == "SELECT MARKET")){
@@ -440,21 +474,7 @@ $(document).ready(function() {
 			return false;
 		}
 		
-		var myModal = $('#myModal');
-    	//$.post( "api-test-manual-device-disc.php", { type: "api-ajax", 'market':$("#manual-disc-market .btn").html().trim(),'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
-		$.post( "api-test-manual-device-disc.php", { type: "api-ajax",'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
-		}).done(function( data ) {
-			//var obj = jQuery.parseJSON( data );
-			/*
-			if(obj.result == true){
-				$('#myModal .modal-body').html('Device Discovered Successfully');
-			}else{
-				$('#myModal .modal-body').html('Device Discovery Failed');
-			}
-			*/
-			$('#myModal .modal-body').html(data);	
-		}); 
-    	myModal.modal('show'); 
+
 	});
     
 	$("#discovery-new-ip #add-new-ip").click(function(){

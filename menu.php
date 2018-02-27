@@ -14,7 +14,7 @@
     
       <li class="dropdown messages-menu">
         <a >
-         <b> Welcome </b><span class="hidden-xs"><?php echo $_SESSION['welcome_username'];?></span;>
+         <b> Welcome </b><span class="hidden-xs"><?php echo $_SESSION['welcome_username'];?></span>
         </a>
       </li> 
       <li class="dropdown messages-menu" onclick="location.href='index.php';">

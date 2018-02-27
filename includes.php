@@ -17,7 +17,7 @@
         <!-- Theme style -->
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. --> 
-        <link rel="stylesheet" type="text/css" href="resources/css/content.css">
+        <!--<link rel="stylesheet" type="text/css" href="resources/css/content.css"> -->
         <!-- <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">    -->
  
         <!-- jQuery 2.2.3-->

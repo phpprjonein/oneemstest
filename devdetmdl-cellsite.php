@@ -70,12 +70,12 @@
           break;
            case 'interfacecounters':
           $url='http://63.49.0.192:8080/healthcheck/ios/'.$deviceid.'/7';
-
-	  case 'logentries':
+		  break; 	
+		   case 'logentries':
           $url='http://63.49.0.192:8080/healthcheck/ios/'.$deviceid.'/15';
           break;
 
-            default: 
+         default: 
           break;
         }   
                   /*    Ends  */    

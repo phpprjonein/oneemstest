@@ -21,7 +21,7 @@ $page_title = 'OneEMS';
 <html>
     <head>
    <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_discovery.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_discovery.js?t="<?php echo date('his'); ?>></script>
  </head>
      <body>
 <!-- container div -->

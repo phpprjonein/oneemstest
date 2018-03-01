@@ -51,3 +51,4 @@
         <script  type="text/javascript" language="javascript" src="resources/js/global.js"></script>		
 		 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>​
 		 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+		 <script  type="text/javascript" language="javascript" src="resources/js/piwik-tracker.js"></script>

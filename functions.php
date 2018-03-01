@@ -2456,6 +2456,20 @@ function load_backup_information($deviceid){
 	    $resultset = $db2->resultset();
 	    return $resultset[0];
 	}
+	function config_get_templates(){
+	    global $db2;
+	    $sql = "SELECT distinct templname FROM configtemplate order by templname asc";
+	    $db2->query($sql);
+	    $resultset = $db2->resultset();
+	    return $resultset;
+	}
+	function config_get_templates_from_templname($templname){
+	    global $db2;
+	    $sql = "SELECT distinct(elemid),elemvalue, editable FROM configtemplate where templname='$templname' order by elemid asc";
+	    $db2->query($sql);
+	    $resultset = $db2->resultset();
+	    return $resultset;
+	}
 	function insertorupdate_healthchk_info($deviceid, $output){
 	    global $db2;
 	    $sql = "SELECT id FROM healthcheck WHERE deviceid = $deviceid";

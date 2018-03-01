@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	/*
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
 		$("#cellsitech-generate-script select").each(function()
 		{
@@ -36,7 +37,7 @@ $(document).ready(function() {
         }
         return true;
     });
-
+	*/
 	
 	
 	$(document).on('change', "#cellsitech-config select", function(event) {

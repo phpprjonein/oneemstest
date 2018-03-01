@@ -10,6 +10,9 @@ if (isset($_GET['clear'])) {
     }
 }
 
+$templname = $_POST['radioGroup'];
+$templname = 'Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1';
+
 user_session_check();
 check_user_authentication('1'); // cellsite tech type user
 
@@ -38,7 +41,7 @@ $page_title = 'OneEMS';
 
 <!-- router scripting selection form div -->
           <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='admin.php' method='post' enctype='multipart/form-data' novalidate autocomplete="on">
-            <small><b>Purpose_DeviceSeries_OS-Ver_RAN-Vendor_ScriptType_MopRef_Region_Switch_Market_DateTime</b></small>
+            <p style="word-wrap:break-word;"><small><b><?php echo $templname; ?></b></small></p>
             <hr>
             <input type="hidden" name="method" value="validateForm">
             <input type="hidden" id="serverValidationFields" name="serverValidationFields" value="">
@@ -123,7 +126,16 @@ $page_title = 'OneEMS';
 <!-- template output content -->
         <div class="row">
           <div class="col">
-
+			<?php $results = config_get_templates_from_templname($templname);?>
+			<?php //print '<pre>'; ?>
+			<?php foreach ($results as $key=>$val):?>
+			<?php //print_r($val); ?>
+			<?php endforeach;?>
+			
+			<?php  //die; ?>
+			
+			
+			
             <div class="scroller tags p-b-2">
                                     <div id="file_process">
               <form name="file_process" action="cellsite-config-process.php" method="post" class="border"><div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input value="1" id="show_hide_readonly" type="checkbox"></div><div class="form-group"><span class="form-non-editable-fields"><label class="readonly">testcase nagle

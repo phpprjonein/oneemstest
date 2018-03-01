@@ -150,6 +150,7 @@ $page_title = 'OneEMS';
 
 <!-- right side -->
 <!-- script output -->
+		<form name="loadtemplate" action="generate_script2.php" method="post" id="loadtemplate">
       <div class="col">
 <!-- template output content -->
         <div class="row">
@@ -162,18 +163,22 @@ $page_title = 'OneEMS';
                   </tr>
                 </thead>
                 <tbody>
+                <?php $results = config_get_templates(); ?>	
+                <?php foreach ($results as $key=>$val):?>
                   <tr>
-                    <td>Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418</td>
+                    <td><?php echo $val['templname'];?></td>
                     <td>
-                      <input type="radio" name="radioGroup">
+                      <input type="radio" value="<?php echo $val['templname'];?>" name="radioGroup">
                     </td>
                   </tr>
+                 <?php endforeach;?> 
                   <tr>
                     <td>Golden_ASR1K_15.6_ALL_standalone_GreatLakes_MICHIGAN_opw_021418</td>
                     <td>
                       <input type="radio" name="radioGroup">
                     </td>
                   </tr>
+                  
                   <tr>
                     <td>Golden_ASR910_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418</td>
                     <td>
@@ -182,6 +187,7 @@ $page_title = 'OneEMS';
                   </tr>
                 </tbody>
               </table>
+              
           </div>
         </div>
 <!-- /template name content -->
@@ -195,6 +201,7 @@ $page_title = 'OneEMS';
 <!-- /script output -->
 
     </div>
+    </form>
 <!-- /backup management content row -->
 				</div>
 			</section>

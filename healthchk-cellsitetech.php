@@ -90,7 +90,7 @@ echo $display; ?>
 </td>
 
                                               <td><b>BFD Sessions</b></td>
-                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bfdsession&deviceid=<?php echo $_SESSION['deviceidcs'];?>"><<i class="far fa-file-alt fa-2x text-primary"></i>​</a><?php $color = ($output['bfdsession']['R'] == 0) ? 'green':'red';  
+                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bfdsession&deviceid=<?php echo $_SESSION['deviceidcs'];?>"><i class="far fa-file-alt fa-2x text-primary"></i>​</a><?php $color = ($output['bfdsession']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bfdsession']['message'].'</span>';
 echo $display; ?></td>
 											  <td><b>Log Entries</b></td>

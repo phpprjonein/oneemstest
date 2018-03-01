@@ -57,6 +57,7 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-1">Missed IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-2">New IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-3">OK IP Addresses</a>
+			  <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-4">Manual Discovery</a>
             </nav>
             <a class="nav-link" href="help_backup.php">BACKUP</a>
             <a class="nav-link" href="help_config.php">CONFIGURATION</a>
@@ -180,113 +181,40 @@ $page_title = 'OneEMS';
 	</div>
 	<!-- container-fluid -->
 	
-	<!-- image modals -->
+<!-- image modals -->
   <div class="big-modal">
     <div class="modal fade show" id="screenshot-dashboard1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <img src="resources/img/screenshot-dashboard1_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-dashboard1.png" alt="" width="100%">
         </div>
       </div>
     </div>
     <div class="modal fade show" id="screenshot-map1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <img src="resources/img/screenshot-map1_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-map1.png" alt="" width="100%">
         </div>
       </div>
     </div>
     <div class="modal fade show" id="screenshot-healthcheck1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <img src="resources/img/screenshot-healthcheck1_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-healthcheck1.png" alt="" width="100%">
         </div>
       </div>
     </div>
     <div class="modal fade show" id="screenshot-healthcheck2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <img src="resources/img/screenshot-healthcheck2_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-healthcheck2.png" alt="" width="100%">
         </div>
       </div>
     </div>
     <div class="modal fade show" id="screenshot-healthcheck3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <img src="resources/img/screenshot-healthcheck3_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-ip_management" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-ip_management_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-ip_management_choose_Region-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm text-center">
-          <img src="resources/img/screenshot-ip_management_choose_Region-1_LARGE.png" alt="" width="">
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-ip_management_choose_Region-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm text-center">
-          <img src="resources/img/screenshot-ip_management_choose_Region-2_LARGE.png" alt="" width="">
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-ip_management_add_subnet-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-ip_management_add_subnet-1_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-ip_management_add_subnet-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-ip_management_add_subnet-2_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-discovery-missed" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-discovery-missed_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-discovery-new" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-discovery-new_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-discovery-ok" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-discovery-ok_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-backup1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-backup1_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-backup2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-backup2_LARGE.png" alt="" width="100%">
-        </div>
-      </div>
-    </div>
-    <div class="modal fade show" id="screenshot-config1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <img src="resources/img/screenshot-config1_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-healthcheck3.png" alt="" width="100%">
         </div>
       </div>
     </div>
@@ -294,11 +222,7 @@ $page_title = 'OneEMS';
 <!-- /image modals -->
 
 <!-- footer div -->
-  <footer class="footer">
-    <div class="container">
       <span class="text-muted"><?php include ('footer.php'); ?> </span>
-    </div>
-  </footer>
 <!-- /footer div -->
 
 <!-- JavaScript -->

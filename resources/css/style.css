@@ -583,10 +583,12 @@ button {
 /* ALL buttons will have UPPERCASE letters, universally across this application */
 
 .nav-pills .help.active {
-  background-color: #dc3545;
+  background-color: #dc3545 !important;
 }
-.nav-pills .help.active {
-  background-color: #dc3545;
+
+.scroller {
+	height: 30.375rem;
+	overflow-y: scroll;
 }
 
 /* ALL buttons will have UPPERCASE wording, so make ​this attribute global */

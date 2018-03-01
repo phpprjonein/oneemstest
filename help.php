@@ -57,6 +57,7 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-1">Missed IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-2">New IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-3">OK IP Addresses</a>
+			  <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-4">Manual Discovery</a>
             </nav>
             <a class="nav-link" href="help_backup.php">BACKUP</a>
             <a class="nav-link" href="help_backup.php#item-6">CONFIGURATION</a>
@@ -207,6 +208,9 @@ $page_title = 'OneEMS';
   </div>
 <!-- /image modals -->
 
-      <?php include ('footer.php'); ?> 
+<!-- footer div -->
+      <span class="text-muted"><?php include ('footer.php'); ?> </span>
+<!-- /footer div -->
+
     </body>
 </html>

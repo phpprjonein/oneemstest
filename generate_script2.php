@@ -127,12 +127,14 @@ $page_title = 'OneEMS';
         <div class="row">
           <div class="col">
 			<?php $results = config_get_templates_from_templname($templname);?>
-			<?php //print '<pre>'; ?>
+
+			
 			<?php foreach ($results as $key=>$val):?>
-			<?php //print_r($val); ?>
+			<?php //echo intval($val['elemid']/10). '  '.$val['elemid'].'<br>'; ?>
+			<?php $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']); ?>
 			<?php endforeach;?>
 			
-			<?php  //die; ?>
+			<?php  print '<pre>'; print_r($newarr); die; ?>
 			
 			
 			

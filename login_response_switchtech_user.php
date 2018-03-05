@@ -1,4 +1,22 @@
 <?php 
+$opts = array(
+    'http'=>array(
+        'method'=>"GET",
+        'header'=>"Accept-language: en\r\n" .
+        // "Cookie: foo=bar\r\n" .
+        // "User-agent: BROWSER-DESCRIPTION-HERE\r\n"
+        "Authorization: Bearer 45ca85df-a619-3a65-8d63-ab24cc56f173\r\n"
+    )
+);
+$context = stream_context_create($opts);
+$output = file_get_contents('https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$_GET['username'], false, $context);
+echo $output = json_decode($output);
+die;
+
+
+/*
+
+
 echo $data = '{
   "switches": [
     {

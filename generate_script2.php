@@ -148,20 +148,36 @@ $page_title = 'OneEMS';
 			<?php $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']); ?>
 			<?php endforeach;?>
 			
+			<?php 
+//			print '<pre>';
+//			print_r($newarr);die;
+			
+			?>
+			
+			
+			
 			<form name="file_process" action="cellsite-config-process.php" method="post" class="border">
 			<div class="scroller tags p-b-2">
 			<div id="file_process">
             <?php 
-			$output = '<div id="file_process"><div class="form-group">';
+			$output = '<div id="file_process">';
 			for ($k=1;$k<=count($newarr);$k++){
-			    $mode = intval($newarr[$k][0]['elemid'] / 10);
-			    $nmode = intval($newarr[$k+1][0]['elemid'] / 10);
-                if($mode != $nmode){
-                    $output .= '<label class="readonly">'.$newarr[$k][0]['elemvalue'].'</label></div><div class="form-group">';                
+			    if(count($newarr[$k]) == 1){
+                    $output .= '<div class="form-group"><input type="text" style="display:none !important;" name="loop[looper_'.$k.'][]" value="'.$newarr[$k][0]['elemvalue'].'">';
+                    
+                    $output .= '<label class="readonly">'.$newarr[$k][0]['elemvalue'].'</label></div>';
+                    
                 }else{
-                    $output .= '<label class="readonly">'.$newarr[$k][0]['elemvalue'];
+                    $output .= '<div class="form-group">';
+                    for ($l=0;$l<=count($newarr[$k][0]);$l++){
+                        
+                        $output .= '<label class="readonly">'.$newarr[$k][$l]['elemvalue'].'</label>';
+                        
+                        $output .= '<input type="text" style="display:none !important;" name="loop[looper_'.$k.'][]" value="'.$newarr[$k][$l]['elemvalue'].'">';
+                    }
+                    $output .= '</div>';
                 }
-                $output .= '</label><input type="text" style="display:none !important;" size="'.strlen($newarr[$k][0]['elemvalue']).'" name="loop[looper_'.$mode.'][]" value="'.$newarr[$k][0]['elemvalue'].'"  class="form-control cellsitech-configtxtdisp">';
+                
             }
             echo $output .= '</div></div>';
             ?>

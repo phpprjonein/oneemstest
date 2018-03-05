@@ -8,7 +8,7 @@ service password-encryption
 service compress-config
 service counters max age 5
 !
-hostname 
+hostname XXXXXXYY5RE-E-CI-3850-01
 !
-username 
+username XXXXXXX privilege 15 secret XXXXXXXXXX
 aaa new-model

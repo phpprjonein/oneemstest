@@ -10,5 +10,5 @@ service counters max age 5
 !
 hostname XXXXXXYY5RE-E-CI-3850-01
 !
-username XXXXXXX privilege 15 secret XXXXXXXXXX
+username XXXXXXX privilege 15 secret saravanan
 aaa new-model

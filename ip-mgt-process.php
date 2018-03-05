@@ -133,7 +133,14 @@ if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_te
 if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_id'])){
     echo get_csr_tech_mgr_id_from_tech_id($_POST['csr_tech_id']);
 }
-
-
-
-
+if(isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GenerateScript'){
+    $results = load_available_templates($_POST['filename']);
+    $output = '';
+    foreach ($results as $key=>$val){
+        $checked = (empty($output)) ? 'checked':'';
+        $output .= '<tr><td>'.$val['templname'].'</td><td><input type="radio" value="'.$val['templname'].'" '.$checked.' name="radioGroup"></td></tr>';
+    }
+    echo $output;
+    
+    //echo '<tr><td>Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1</td><td><input type="radio" value="Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1" name="radioGroup"></td></tr>';
+}

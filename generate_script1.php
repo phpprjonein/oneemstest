@@ -33,6 +33,7 @@ $page_title = 'OneEMS';
 				<div class="col-md-12">
 					<div id="status" style="display: none;" class="alert"></div>
 <!-- backup management content row -->
+<form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
     <div class="row">
 
 <!-- router selection content row -->
@@ -40,108 +41,115 @@ $page_title = 'OneEMS';
         <div class="jf-form">
 
 <!-- router scripting selection form div -->
-          <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='GET' enctype='multipart/form-data' novalidate autocomplete="on">
-            <h5>SELECT SCRIPT TYPE TO CREATE:</h5>
+            <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>
             <input type="hidden" name="method" value="validateForm">
-            <input type="hidden" id="serverValidationFields" name="serverValidationFields" value="">
+            <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
 
-<!-- select router model options -->
-			<?php 
-				$configtmpscriptddwndata =getconfigtemplscriptddwntbl(); 				
+<!-- select purpose options -->
+            <?php 
+				$configtmpddwndata =getconfigtempldpdwntbl(); 
 			?>
             <div class="form-group f4 required" data-fid="f4">
-              <label class="control-label" for="f4">Select Device Model</label>
-              <select class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
-                <option value="">- SELECT MODEL -</option>
-               <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
+              <label class="control-label" for="f4">Select Purpose</label>
+              <select id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
+                <option value="">- Select Purpose -</option>
+				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+				  <option value="<?php echo $val['purpose'];?>"><?php echo $val['purpose']; ?></option> 
+				 <?php }; ?>
+              </select>
+            </div>
+<!-- /select purpose options -->
+
+<!-- select device series options -->
+            <div class="form-group f7 required" data-fid="f7">
+              <label class="control-label" for="f7">Select Device Series</label>
+              <select id="select_device_series" class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
+              <option value="">- SELECT Device Series -</option>
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option> 
 			 <?php }; ?>	
               </select>
             </div>
-<!-- /select router model options -->
+<!-- /select device series options -->
 
-<!-- select router model options -->
-
-            <div class="form-group f7 required" data-fid="f7">
-              <label class="control-label" for="f7">Select OS</label>
-              <select class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
-              	<option value="">- Select OS -</option>
-                <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
-				<option value="<?php echo $val['deviceos'];?>"><?php echo $val['deviceos']; ?></option> 
-			 <?php }; ?>	
-              </select>
-            </div>
-<!-- /select router model options -->
-
-<!-- select template options -->
+<!-- select OS version options -->
             <div class="form-group f8 required" data-fid="f8">
-              <!-- <label class="control-label" for="f8">Select OS Configuration</label> -->
-              <label class="control-label" for="f8">Select Template Type</label>
-              <select class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
-              	<option value="">- Select Template Type -</option>
-			   <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 
-                	<option value="<?php echo $val['templtype'];?>"><?php echo $val['templtype']; ?></option> 
-			 <?php }; ?>	
+              <label class="control-label" for="f8">Select OS Version</label>
+              <select id="select_os_version" class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
+              	<option value="">- SELECT OS Version -</option>
+                <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option> 
+			 <?php }; ?>		
               </select>
             </div>
-<!-- /select template options -->
+<!-- /select OS version options -->
 
-<!-- select region options -->
+<!-- select RAN vendor options --> 
             <div class="form-group f9 required" data-fid="f9">
-              <label class="control-label" for="f9">Select Region</label>
-              <select class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
-              	<option value="">- Select Region -</option>
-                <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
-                 <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
-			   <?php }; ?>		
-              </select>
-            </div>
-<!-- /select region options -->
-
-<!-- select RAN vendor options -->
-            <div class="form-group f10 required" data-fid="f10">
-              <label class="control-label" for="f10">Select RAN Vendor</label>
-              <select class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
-              	<option value="">- Select RAN Vendor -</option>
-                <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
+              <label class="control-label" for="f9">Select RAN vendor</label>
+              <select id="select_ran_vendor" class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
+              	<option value="">- SELECT RAN vendor -</option>
+			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['ranvendor'];?>"><?php echo $val['ranvendor']; ?></option> 
 				<?php }; ?>		
               </select>
             </div>
 <!-- /select RAN vendor options -->
 
-<!-- select service options -->
+<!-- select RAN vendor options -->
+            <div class="form-group f10 required" data-fid="f10">
+              <label class="control-label" for="f10">Select Script Type</label>
+              <select id="select_script_type" class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
+                <option value="">- SELECT Script Type -</option>	
+			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                <option value="<?php echo $val['scripttype'];?>"><?php echo $val['scripttype']; ?></option> 
+				<?php }; ?>		
+              </select>
+            </div>
+<!-- /select RAN vendor options -->
+
+<!-- select region options --> 
             <div class="form-group f11 required" data-fid="f11">
-              <label class="control-label" for="f11">Select Service</label>
-              <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
-              <option value="">- Select Service -</option>
-			  <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['service'];?>"><?php echo $val['service']; ?></option> 
-			  <?php }; ?>		
+              <label class="control-label" for="f11">Select Region</label>
+              <select id="select_region" class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
+              	<option value="">- SELECT Region -</option>	
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                 <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
+			   <?php }; ?>		
               </select>
             </div>
-<!-- /select service options -->
+<!-- /select region options -->
 
-<!-- select site type options -->
+<!-- select switch type options -->
             <div class="form-group f12 required" data-fid="f12">
-              <label class="control-label" for="f12">Select Site Type</label>
-              <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
-              <option value="">- Select Site Type -</option>
-              <?php foreach($configtmpscriptddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['sitetype'];?>"><?php echo $val['sitetype']; ?></option> 
-			  <?php }; ?>	
+              <label class="control-label" for="f12">Select Switch Name</label>
+              <select id="select_switch_name" class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
+              <option value="">- SELECT  Switch Name -</option>
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
+			   <?php }; ?>			
               </select>
             </div>
-<!-- /select site type options -->
+<!-- /select switch type options -->
 
-<!-- submit button -->
+<!-- select market options -->
+            <div class="form-group f13 required" data-fid="f13">
+              <label class="control-label" for="f13">Select Market</label>
+              <select id="select_market" class="form-control custom-select" id="f13" name="f13" data-rule-required="true">
+              <option value="">- SELECT  Market -</option>
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                <option value="<?php echo $val['market'];?>"><?php echo $val['market']; ?></option> 
+			  <?php }; ?>				
+              </select>
+            </div>
+<!-- /select market options -->
+
+
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
               <button type="submit" class="btn btn-primary btn-lg generate-script-submit" style="z-index: 1;">NEXT</button>
             </div>
-<!-- /submit button -->
 
             <div class="clearfix"></div>
-          </form>
 <!-- /router scripting selection form div -->
         </div>
       </div>
@@ -150,60 +158,38 @@ $page_title = 'OneEMS';
 
 <!-- right side -->
 <!-- script output -->
-		<form name="loadtemplate" action="generate_script2.php" method="post" id="loadtemplate">
-      <div class="col">
-<!-- template output content -->
+      <div class="col d-none" id="template_info">
+        <!-- template output content -->
+                <div class="row">
+                  <div class="col">
+                    <table class="table table-striped te">
+                        <thead>
+                          <tr>
+                            <th scope="col">Template Name</th>
+                            <th scope="col">Select Template</th>
+                          </tr>
+                        </thead>
+                        <tbody id="loadtemplates">
+         
+                        </tbody>
+                      </table>
+                      
+                  </div>
+                </div>
+        <!-- /template name content -->
+        
         <div class="row">
           <div class="col">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Template Name</th>
-                    <th scope="col">Select Template</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php $results = config_get_templates(); ?>	
-                <?php foreach ($results as $key=>$val):?>
-                  <tr>
-                    <td><?php echo $val['templname'];?></td>
-                    <td>
-                      <input type="radio" value="<?php echo $val['templname'];?>" name="radioGroup">
-                    </td>
-                  </tr>
-                 <?php endforeach;?> 
-                  <tr>
-                    <td>Golden_ASR1K_15.6_ALL_standalone_GreatLakes_MICHIGAN_opw_021418</td>
-                    <td>
-                      <input type="radio" name="radioGroup">
-                    </td>
-                  </tr>
-                  
-                  <tr>
-                    <td>Golden_ASR910_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418</td>
-                    <td>
-                      <input type="radio" name="radioGroup">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
+            <button type="submit" class="btn btn-primary btn-lg generate-script-submit">SELECT</button>
           </div>
         </div>
-<!-- /template name content -->
-
-<div class="row">
-  <div class="col">
-    <button type="submit" class="btn btn-primary btn-lg">SELECT</button>
-  </div>
-</div>
-<!-- /right side -->
-<!-- /script output -->
-
+        <!-- /right side -->
+        <!-- /script output -->
     </div>
-    </form>
+    
 <!-- /backup management content row -->
 				</div>
+				</form>
 			</section>
 			<!-- /.content -->
 		</div>

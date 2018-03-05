@@ -2396,7 +2396,13 @@ function load_backup_information($deviceid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
-
+function load_available_templates($filename){
+    global $db2;
+    $sql = "SELECT distinct(templname) FROM configtemplate where templname like '%".$filename."%'";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return  $resultset['result'];
+}
 	function getUser($name) {
 			global $db2;	
 			//$sql = "SELECT id, p.name, p.description, p.price, p.created FROM items p WHERE p.name LIKE '%".$name."%' ORDER BY p.created DESC";

@@ -14,7 +14,6 @@ $(document).ready(function() {
 			//$('#template_info').removeClass('d-none');
 			//$("#cellsitech-generate-script #template_info #filename').html(filename);
 			//$("#cellsitech-generate-script #upload_filename').val(filename);
-			alert(filename);
 			$.post( "ip-mgt-process.php", { calltype: "trigger", 
 				'filename':filename,
 				'action':'GenerateScript'

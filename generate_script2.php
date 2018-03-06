@@ -155,41 +155,49 @@ $page_title = 'OneEMS';
 			?>
 			
 			
-			
-			<form name="file_process" action="cellsite-config-process.php" method="post" class="border">
-			<div class="scroller tags p-b-2">
 			<div id="file_process">
+			<form name="file_process" action="cellsite-config-process.php" method="post" class="border">
+			<div class="tags p-b-2">
+			<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>
+			
             <?php 
-			$output = '<div id="file_process">';
+			$output = '';
 			for ($k=1;$k<=count($newarr);$k++){
 			    if(count($newarr[$k]) == 1){
                     $output .= '<div class="form-group">';
                     if($newarr[$k][0]["editable"] == 0){
-                        $output .= "<input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][0]["elemvalue"]."'><label class='readonly'>".$newarr[$k][0]["elemvalue"]."</label>";
+                        $output .= "<input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][0]["elemvalue"]."'><span class='form-non-editable-fields'><label class='readonly'>".$newarr[$k][0]["elemvalue"]."</label></span>";
                     }else{
                         $output .= "<span class='form-editable-fields'><input type='text' size='".strlen($newarr[$k][0]["elemvalue"])."'  name='loop[looper_".$k."][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$newarr[$k][0]["elemvalue"]."'></span>";
                     }
                     $output .= '</div>';
                 }else{
                     $output .= '<div class="form-group">';
+                    $editable = 0; $outputin = '';
                     for ($l=0;$l<=count($newarr[$k]);$l++){
                         if($newarr[$k][$l]["editable"] == 0){
-                            $output .= "<label class='readonly'>".$newarr[$k][$l]["elemvalue"]."</label><input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][$l]["elemvalue"]."'>";
+                            $outputin .= "<label class='readonly'>".$newarr[$k][$l]["elemvalue"]."</label><input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][$l]["elemvalue"]."'>";
                         }else{
-                            $output .= "<span class='form-editable-fields'><input type='text' size='".strlen($newarr[$k][$l]["elemvalue"])."' name='loop[looper_".$k."][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$newarr[$k][$l]["elemvalue"]."'></span>";
+                            $editable = 1;
+                            $outputin .= "<input type='text' size='".strlen($newarr[$k][$l]["elemvalue"])."' name='loop[looper_".$k."][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$newarr[$k][$l]["elemvalue"]."'>";
                         }
                     }
+                        if($editable == 1){
+                            $output .= "<span class='form-editable-fields'>".$outputin."</span>";
+                        }else{
+                            $output .= "<span class='form-non-editable-fields'>".$outputin."</span>";
+                        }
                     $output .= '</div>';
                 }
                 
             }
-            echo $output .= '</div></div>';
+            echo $output .= '</div>';
             ?>
 			</div>
                 <br>
                 <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button></div>
-                </div>
                 </form>
+                </div>
             <p></p>
           </div>
         </div>

@@ -746,7 +746,7 @@ function insert_usrfavritedev($data){
     $_SESSION['switchlistid'] = $listid;
     $db2->query($sql);
     $result =$db2->execute();
-    if ($_SESSION['userlevel'] = "1" ){
+    if ($_SESSION['userlevel'] == "1" ){
        header("Location: cellsitetech-dashboard.php");
     } else {
        header("Location: switchtech-dashboard.php");

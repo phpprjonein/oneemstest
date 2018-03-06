@@ -164,19 +164,19 @@ $page_title = 'OneEMS';
 			for ($k=1;$k<=count($newarr);$k++){
 			    if(count($newarr[$k]) == 1){
                     $output .= '<div class="form-group">';
-                    if($newarr[$k][0]['editable'] == 0){
-                        $output .= '<input type="text" style="display:none !important;" name="loop[looper_'.$k.'][]" value="'.$newarr[$k][0]['elemvalue'].'"><label class="readonly">'.$newarr[$k][0]['elemvalue'].'</label>';
+                    if($newarr[$k][0]["editable"] == 0){
+                        $output .= "<input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][0]["elemvalue"]."'><label class='readonly'>".$newarr[$k][0]["elemvalue"]."</label>";
                     }else{
-                        $output .= '<span class="form-editable-fields"><input type="text" size="'.strlen($newarr[$k][0]['elemvalue']).'"  name="loop[looper_'.$k.'][]" class="form-control cellsitech-configtxtinp border border-dark" value="'.$newarr[$k][0]['elemvalue'].'"></span>';
+                        $output .= "<span class='form-editable-fields'><input type='text' size='".strlen($newarr[$k][0]["elemvalue"])."'  name='loop[looper_".$k."][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$newarr[$k][0]["elemvalue"]."'></span>";
                     }
                     $output .= '</div>';
                 }else{
                     $output .= '<div class="form-group">';
-                    for ($l=0;$l<=count($newarr[$k][0]);$l++){
-                        if($newarr[$k][$l]['editable'] == 0){
-                            $output .= '<label class="readonly">'.$newarr[$k][$l]['elemvalue'].'</label><input type="text" style="display:none !important;" name="loop[looper_'.$k.'][]" value="'.$newarr[$k][$l]['elemvalue'].'">';
+                    for ($l=0;$l<=count($newarr[$k]);$l++){
+                        if($newarr[$k][$l]["editable"] == 0){
+                            $output .= "<label class='readonly'>".$newarr[$k][$l]["elemvalue"]."</label><input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][$l]["elemvalue"]."'>";
                         }else{
-                            $output .= '<span class="form-editable-fields"><input type="text" size="'.strlen($newarr[$k][$l]['elemvalue']).'" name="loop[looper_'.$k.'][]" class="form-control cellsitech-configtxtinp border border-dark" value="'.$newarr[$k][$l]['elemvalue'].'"></span>';
+                            $output .= "<span class='form-editable-fields'><input type='text' size='".strlen($newarr[$k][$l]["elemvalue"])."' name='loop[looper_".$k."][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$newarr[$k][$l]["elemvalue"]."'></span>";
                         }
                     }
                     $output .= '</div>';

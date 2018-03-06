@@ -17,7 +17,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. --> 
         <!--<link rel="stylesheet" type="text/css" href="resources/css/content.css"> -->
-        <!-- <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">    -->
+        <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
  
         <!-- jQuery 2.2.3-->
         <script type="text/javascript" language="javascript" src="resources/js/jquery-3.2.1.slim.min.js"></script>
@@ -49,6 +49,5 @@
         <script  type="text/javascript" language="javascript" src="resources/js/jquery.rwdImageMaps.min.js"></script>
      	<script src="resources/js/bootstrap3-typeahead.min.js"></script>
         <script  type="text/javascript" language="javascript" src="resources/js/global.js"></script>		
-		 <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>​
 		 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 		 

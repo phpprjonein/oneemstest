@@ -1313,8 +1313,8 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type) {
     else {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
-                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
-        
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market'";
+					//WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
     }
     
     if ($search_term != '') {
@@ -1368,19 +1368,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type) {
     }
     
     return $resultset;
-}
-
-
-
-
-
-
-
-
-
-
-
-
+} 
 
 function get_market_list_new() {
     global $db2;

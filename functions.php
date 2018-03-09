@@ -2324,9 +2324,11 @@ function update_login_api_rules($sso_flag,$username){
             $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
             foreach ($resultset['result'] as $resultsetk => $resultsetv){
                 if(count($resultset['result']) == $oc){
-                    $dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."')";
+                    //$dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."')";
+					$dsql .= "('".$resultsetv['id']."',".$users[$_SESSION['username']].",'".$listid."','".$resultsetv['switch_name']."')";
                 }else{
-                    $dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."'),";
+                    //$dsql .= "('".$resultsetv['id']."',".$users[$resultsetv['swt_tech_id']].",'".$listid."','".$resultsetv['switch_name']."'),";
+					$dsql .= "('".$resultsetv['id']."',".$users[$_SESSION['username']].",'".$listid."','".$resultsetv['switch_name']."'),";
                 }
                 $oc++;
             }

@@ -272,7 +272,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           <!-- $show_map_flag is used to set default value invisiblie -->
           <div id="sw_result_without_map" class="" style='<?php echo ($show_map_flag) ? "display: block" : "display: block" ?>; '>
           <?php
-            if(isset($switch_device_name) && $switch_device_name != '' ) {
+            //if(isset($switch_device_name) && $switch_device_name != '' ) {
               
               if (!isset($str_marketname)) {  // IF No Market is selected
                 $list_type = 'user';
@@ -309,7 +309,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                 </thead>
               </table> 
               <?php
-            }
+           // }
           ?>                  
           </div> <!-- END : Switch results without map -->
  

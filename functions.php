@@ -1998,7 +1998,28 @@ function generic_get_market(){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-
+function generic_get_deviceseries(){
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM nodes ORDER BY deviceseries";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_switch_name(){
+    global $db2;
+    $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+/*nodeVersion or OSVersion*/
+function generic_get_nodeVersion(){
+    global $db2;
+    $sql = "SELECT distinct(nodeVersion) FROM nodes ORDER BY nodeVersion";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
 function generic_get_market_by_username($username){
     global $db2;
     $sql = "SELECT distinct(market) FROM nodes where csr_site_tech_id = '".$username."' ORDER BY market";
@@ -2428,7 +2449,7 @@ function load_available_templates($filename){
 			
 	}  
 	
-	function getconfigtempldpdwntbl() {
+	/*function getconfigtempldpdwntbl() {
 		global $db2;
 		$sql = "SELECT * FROM configtempldpdwntbl";
 		$db2->query($sql);
@@ -2436,6 +2457,18 @@ function load_available_templates($filename){
 		return $resultset;
 			
 	}
+	*/
+	function getconfigtempldpdwntbl($table, $order = 'desc') {
+	    global $db2;
+	    $sql = "SELECT * FROM ".$table." order by `".$order."` asc";
+	    $db2->query($sql);
+	    $resultset['result'] = $db2->resultset();
+	    return $resultset;
+	}
+	
+	
+	
+	
 	
 	function getconfigtemplscriptddwntbl() {
 		global $db2;

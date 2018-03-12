@@ -17,7 +17,7 @@ function get_user_info($username, $password) {
     
     if (trim($username) !='' && trim($password) != '') {
         $password= md5($password);
-        $sql = "SELECT * FROM users WHERE username='" .$username. "' AND password='" .$password. "'";
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" .$username. "' AND u.password='" .$password. "' AND ul.id = u.userlevel";
         
         $db2->query($sql);
         $rows = $db2->resultset();
@@ -35,7 +35,7 @@ function get_user_info_sso($username) {
     global $db2;
     
     if (trim($username) !='') {
-        $sql = "SELECT * FROM users WHERE username='" .$username. "'";
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" .$username. "' AND ul.id = u.userlevel";
         $db2->query($sql);
         $rows = $db2->resultset();
         $result = $rows[0];

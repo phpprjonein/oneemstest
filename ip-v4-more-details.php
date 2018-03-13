@@ -104,23 +104,31 @@ user_session_check();
               </thead>
               <tbody>             
 			  <?php $region = $_GET['region']; $market = $_GET['market']; $subnetmask = $_GET['subnetmask'];  ?>
-			  <?php $devicelist = get_nodes_list_ipmgmt($region,$market,$subnetmask); ?>
-              <?php if(!empty($devicelist['devicerecords'])) {  foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
-			  <?php  foreach ($devicelist['devicerecords'] as $key1 => $val1){ ?>
-			  <?php if ($val1['deviceIpAddr'] == $val) { ?>
-                <tr>
-                  <td><?php echo $val; ?></td> 					  
-                  <td><?php echo $val1['devicename'];?></td>
-                  <td><?php echo $val1['csr_site_id'];?></td>
-                  <td><?php echo $val1['csr_site_name'];?></td>
-                  <td><?php echo $val1['deviceseries'];?></td>
-                  <td><?php echo $val1['deviceos'];?></td>
-                  <td><?php echo $val1['nodeVersion'];?></td>
-                  <td><?php echo $val1['lastpolled'];?></td>
+			  <?php $ipvfour_details = getipvfour_details($subnetmask);?>
+			  <?php $ipvfour_node_details = get_nodes_list_ipmgmt($region,$market,$subnetmask);?>
+			  <?php 
+			  foreach ($ipvfour_node_details as $key => $val){
+			      $ipvfour_node_details[$val['deviceIpAddr']] = $val;
+			      unset($ipvfour_node_details[$key]);
+			  }
+			  
+			  foreach ($ipvfour_details as $ipkey => $ipval){
+			      if(array_key_exists($ipval, $ipvfour_node_details)): ?>
+			      <tr>
+			      <td><?php echo $ipval; ?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['devicename'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['csr_site_id'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['csr_site_name'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['deviceseries'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['deviceos'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['nodeVersion'];?></td>
+                  <td><?php echo $ipvfour_node_details[$ipval]['lastpolled'];?></td>
                 </tr>
-			  <?php } else { ?>
-			  <tr>
-                  <td><?php echo $val; ?></td> 					  
+			 <?php      
+			      else:
+			 ?>
+			 	<tr>
+                  <td><?php echo $ipval; ?></td> 					  
                   <td><?php echo ""?></td>
                   <td><?php echo ""?></td>
                   <td><?php echo ""?></td>
@@ -128,22 +136,11 @@ user_session_check();
                   <td><?php echo ""?></td>
                   <td><?php echo ""?></td>
                   <td><?php echo ""?></td>
-                </tr> 
-			  <?php }; ?> 
-			  <?php };};};?>
-			   <?php if(empty($devicelist['devicerecords'])) { ?>
-			   <?php foreach ($devicelist['ipaddrlst'] as $key => $val) { ?>
-				<tr>
-                  <td><?php echo $val; ?></td> 					  
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo "Not in use";?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                  <td><?php echo ""?></td>
-                </tr>  
-			  <?php };};?> 			  
+                </tr>  	
+			 <?php      
+			      endif;
+			  }
+			  ?>
               </tbody>
             </table> 
           </div>

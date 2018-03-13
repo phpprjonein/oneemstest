@@ -35,7 +35,7 @@ define('LOW_LIMIT', 14);
 
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'oneemsdev');
+define('DB_NAME', 'oneemsdev_v1');
 define('DB_USER', 'root');
 define('DB_PASSWORD','root');
 define('HIGH_LIMIT', 25);

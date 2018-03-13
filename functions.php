@@ -1825,18 +1825,7 @@ function get_nodes_list_ipmgmt($region,$market,$subnetmask) {
 	//echo '<br>'.$sql.'<br>';
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
-	$k =array_values($resultset['result']);
-	$i =0;
-	$outputres = Array();
-	foreach ($k as $key1 => $val1){ 
-		$m = $val1['deviceIpAddr'];
-		for ($j=0;$j<count($ipvfour_details); $j++) {
-			if  ($ipvfour_details[$j] == $m) { $outputres[] = $val1; }
-		}; 
-	}; 
-	$output['devicerecords'] = $outputres;
-	$output['ipaddrlst']   = $ipvfour_details; 	
-	return $output; 
+    return $resultset['result'];
 }
 function get_nodes_list_ipmgmtv6($region,$market,$subnetmask) {
     global $db2;

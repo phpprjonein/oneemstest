@@ -756,7 +756,7 @@ function insert_usrfavritedev($data){
 
 function usrfavritecondev_display($userid,$listid){
     $db2 = new db2();
-    $sql_select = " SELECT ud.id, ud.listid, ud.listname, ud.nodeid, n.devicename ";
+    $sql_select = " SELECT distinct(ud.id), ud.listid, ud.listname, ud.nodeid, n.devicename ";
     $sql_condition = "
   FROM
   userdevices ud

@@ -256,7 +256,32 @@
             if (!isset($str_marketname)) { 
             ?>
               <!-- Displays user assigned switch name -->
-              <span style="padding-left: 20px; "><font color="black"><label><b>Switch Name : &nbsp; </label><?php echo $switch_device_name ?></b></font></span>
+              <span style="padding-left: 20px; "><font color="black"><label><b>Switch Name : &nbsp; </label></b></font></span>
+              <?php if(count($_SESSION['swt_mswitch_arr']) > 0):?>
+          
+          
+          <div class="btn-group" id="dash-switches">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?php echo $switch_device_name;?>
+          </button>
+          <div class="dropdown-menu">
+          
+          
+          <?php 
+          foreach ($_SESSION['swt_mswitch_arr'] as $rkey => $rvalue):
+            if(!empty($rvalue)):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $rvalue; ?></a>
+          <?php 
+          endif;
+          endforeach;
+            ?>
+          </div>
+          </div>
+
+              	
+              <?php endif;?>
+              
             <?php 
             } 
             elseif (isset($str_marketname)) {

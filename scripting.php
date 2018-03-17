@@ -157,7 +157,7 @@ $page_title = 'OneEMS';
 
 
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <button type="submit" class="btn btn-primary btn-lg config-submit" style="z-index: 1;">NEXT</button>
+              <input type="submit" name="act" class="btn config-submit" value="NEXT">
             </div>
 
             <div class="clearfix"></div>

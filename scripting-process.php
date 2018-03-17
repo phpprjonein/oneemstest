@@ -47,7 +47,6 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 <head>
    <?php include("includes.php");  ?>
    <script src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
-   <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
@@ -58,12 +57,43 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<section class="content">
 				<div class="col-md-12">
 					<div class="panel panel-default">
-    					<div id="status" style="display: none;" class="alert"></div>
-						<!-- backup management content row -->
-    <div class="row">
-
-<!-- router selection content row -->
-      <div class="col-4">
+						<div class="panel-heading">Configuration Management</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<?php if($_SESSION['msg'] == 'ss'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-success">Script File Generated Successfully
+										in Upload Path</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-success">Configurations Saved Successfully</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fus'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-success">File Saved Successfully</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fae'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-danger">
+										<strong>Error!</strong> <?php echo $_SESSION['msg-param']['filename']." already exists. "; ?></div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fe'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-danger">
+										<strong>Error!</strong> <?php echo $_SESSION['msg-param']['fileerror'];?></div>
+                                  	<?php }elseif($_SESSION['msg'] == 'fte'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-danger">
+										<strong>Error!</strong> File MUST be a <b>.txt</b> file!
+									</div>
+                                  	<?php }elseif($_SESSION['msg'] == 'feps'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-danger">
+										<strong>Error!</strong> File cannot be larger than 2MB!
+									</div>
+                                  	<?php }unset($_SESSION['msg']);?>
+                                  	<div id="upload_status"
+										style="display: none;" class="alert"></div>
+									<div class="row">
+										<div class="col-lg-4 tags p-b-2">
         <div class="jf-form">
 
 <!-- router scripting selection form div -->
@@ -189,18 +219,13 @@ submit button -->
 <!-- /router scripting selection form div -->
 
         </div>
-      </div>
-<!-- /router selection content row -->
-
-
-<!-- right side -->
-<!-- script output -->
-      <div class="col">
-										<div class="col-lg-12 tags p-b-2">
+										</div>
+										<div class="col-lg-8 tags p-b-2">
 											<?php
-											$filename = getcwd()."/upload/".$filename;
+							$filename = getcwd()."/upload/".$filename;
 							if(!file_exists($filename)){
 							    $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
+							    $_POST['filename'] = 'Default_Gold_ASR920_Great-Lakes_Allnew';
 							}
 							$output = '<form name="file_process" action="scripting-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
@@ -264,9 +289,11 @@ submit button -->
 								?> 
 								<?php } ?>	
 								</div>
-
-    </div>
-<!-- /backup management content row -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- /.content -->

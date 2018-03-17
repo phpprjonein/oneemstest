@@ -19,12 +19,11 @@ $page_title = 'OneEMS';
 <!DOCTYPE html>
 <html>
 <head>
-   <?php include("includes.php");  ?>
-   <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
+   <?php //include("includes.php");  ?>
 </head>
 <body>
-	<div class="container-fluid" id="cellsitech-config">
-	<?php include ('menu.php'); unset($_SESSION['filename']);  ?> 
+	<?php //include ('menu.php'); 
+        unset($_SESSION['filename']);  ?> 
 	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
 		<div id="status" style="display: none;" class="alert"></div>
                <input type="submit" name="act" class="btn config-submit1" value="NEXT">
@@ -36,10 +35,9 @@ $page_title = 'OneEMS';
           </div>
         </div>
 	</form>
-	</div>
 
 	<!-- container-fluid -->
 
-        <?php include ('footer.php'); ?> 
+        <?php //include ('footer.php'); ?> 
     </body>
 </html>

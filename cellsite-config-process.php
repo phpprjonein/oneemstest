@@ -5,23 +5,17 @@ $userid = $_SESSION['userid'];
 ini_set('display_errors', 'ON');    
 if($_POST['action'] == 'Save Configuration'){
     $db2 = new db2();
-    $templname = 'templ_'.generateRandomString();
-    $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`) VALUES';
+    $templname = $_POST['templname'];
+    $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) VALUES';
     $oc = 0;
-    
-    
-    
     foreach ($_POST['loop'] as $key => $val){
         $oc++;$inc = 0;
         foreach($val as $linekey => $lineval){
             $inc++;
-            //print_r($lineval);
-            //print '<br/>';
-            //echo 'Count '. count($_POST['loop']) .' INC '. $inc.' OC '. $oc.' count($lineval) '. count($lineval) .' <br/>';
             if(count($_POST['loop']) == $oc && count($val) == $inc){
-                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."')";
+                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','','".$_SESSION['userid']."','','','','')";
             }else{
-                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."'),";
+                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','','".$_SESSION['userid']."','','','',''),";
             }
         }
     }
@@ -63,7 +57,7 @@ if($_POST['action'] == 'Save Configuration'){
     header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
     readfile($file_url); // do the double-download-dance (dirty but worky)
 }elseif ($_POST['action'] == 'Upload'){
-    if ($_FILES["file"]["type"] == "text/plain" && $_FILES["file"]["size"] < 65536) {
+    if ($_FILES["file"]["type"] == "text/plain") {
         //Remove if config file exist
         if(file_exists(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt")){
             unlink(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt");
@@ -72,11 +66,14 @@ if($_POST['action'] == 'Save Configuration'){
             $_SESSION['msg'] = 'fe';
             $_SESSION['msg-param']['fileerror'] = $_FILES["file"]["error"];
         } else {
-            if (file_exists("upload/" . $_FILES["file"]["name"])) {
+            if(file_exists($_POST['filename'])){
+                unlink($_POST['filename']);
+            }
+            if (file_exists($_POST['filename'])) {
                 $_SESSION['msg'] = 'fae';
                 $_SESSION['msg-param']['filename'] = $_FILES["file"]["name"];
             } else {
-                if (move_uploaded_file($_FILES["file"]["tmp_name"], "upload/sampleconfigfile_".$_SESSION['userid'].".txt")) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $_POST['filename'])) {
                     $_SESSION['msg'] = 'fus';
                 }
             }

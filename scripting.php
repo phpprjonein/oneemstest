@@ -37,7 +37,7 @@ $page_title = 'OneEMS';
                                   		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
                         <?php } unset($_SESSION['msg']); ?>
 						<!-- backup management content row -->
-	<form action="scripting-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">						
+	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">						
     <div class="row">
 
 <!-- router selection content row -->
@@ -51,6 +51,7 @@ $page_title = 'OneEMS';
 
 <!-- select purpose options -->
             <?php 
+                unset($_SESSION['filename']);
 				$configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose'); 
 			?>
             <div class="form-group f4 required" data-fid="f4">
@@ -186,14 +187,14 @@ $page_title = 'OneEMS';
         <div class="row">
 		
 			<input type="hidden" name="filename" id="upload_filename">
+			<!-- 
         	<div class="form-group">
 		    <label for="file">Select a file to upload</label>
 		    <input type="file"  id="file" name="file">
 		    <p class="help-block">Please upload <b>.txt</b> files with a maximum size of 2 MB.</p>
 		    		  	<input type="submit" name="act" class="btn config-submit" value="Upload">
-		  				<!-- <input type="submit" name="act" class="btn config-submit" value="NEXT">  -->
 		  	</div>
-
+             -->
 		
         </div>
 <!-- /browse / upload template -->

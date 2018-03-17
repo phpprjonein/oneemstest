@@ -64,11 +64,30 @@ $page_title = 'OneEMS';
 										<strong>Error!</strong> File cannot be larger than 2MB!
 									</div>
                                   	<?php }unset($_SESSION['msg']);?>
+									<?php 
+                                  	if(empty($_SESSION['filename'])){
+                                  	     $_SESSION['filename'] = isset($_POST['filename']) ? $_POST['filename']:'';
+                                  	}
+                                  	if(empty($_SESSION['filename'])){
+                                  	    $filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
+                                  	    $templname = 'templ_'.generateRandomString();
+                                  	}else{
+                                  	    $filename = getcwd()."/upload/".$_SESSION['filename'].".txt";
+                                  	    $templname = $_SESSION['filename'];
+                                  	}
+                                  	?>
                                   	<div id="upload_status"
 										style="display: none;" class="alert"></div>
+										<?php if(!empty($_SESSION['filename'])): ?>
+                                      <div class="col" id="template_info">
+                                        <label for="inputRegion">TEMPLATE:</label>
+                                        <small><b><span id="filename"><?php echo $_SESSION['filename']; ?></span></b></small>
+                                      </div>
+                                    <?php endif; ?>
 									<div class="row">
 										<div class="col-lg-4 tags p-b-2">
     										<form action="cellsite-config-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
+        							        	<input type="hidden" name="filename" value="<?php echo $filename;?>" id="upload_filename">
         							        	<div class="form-group">
                             				    <label for="file">Select a file to upload</label>
                             				    <input type="file"  id="file" name="file">
@@ -79,12 +98,12 @@ $page_title = 'OneEMS';
 										</div>
 										<div class="col-lg-8 tags p-b-2">
 											<?php
-							$filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
 							if(!file_exists($filename)){
 							    $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
 							}
 							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
+							$output .= '<input type="hidden" name="templname" value="'.$templname.'" />';
 							?>
 							<div id="file_process">
 							<?php

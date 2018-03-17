@@ -97,7 +97,7 @@ $(document).ready(function() {
     	if(req_err){
     		$("#status").html("<strong>Error!</strong> Template category select fields are required.<br/>");
     	}
-    	if($("#file").val() == ""){
+    	/*if($("#file").val() == ""){
         	$("#status").append("<strong>Error!</strong> File input field is required.<br/>");
         	req_err = true;
     	}else{
@@ -108,7 +108,7 @@ $(document).ready(function() {
 	        	req_err = true;
 	        	$("#status").append("<strong>Error!</strong> Please upload files having extensions: <b>" + allowedFiles.join(', ') + "</b> only.<br/>");
 	        }
-    	}
+    	}*/
         if(req_err){
         	$('#status').css("opacity","");
         	$("#status").addClass('alert-danger');

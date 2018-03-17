@@ -26,89 +26,24 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include ('menu.php'); ?> 
-        <!-- Content Wrapper. Contains page content -->
-		<div class="content">
-			<!-- Main content -->
-			<section class="content">
-    					<div id="status" style="display: none;" class="alert"></div>
-    					<?php if($_SESSION['msg'] == 'dbs'){ ?>
-                                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
-                        <?php } unset($_SESSION['msg']); ?>
-						<!-- backup management content row -->
-	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">						
-    <div class="row">
-
-<!-- router selection content row -->
-      <div class="col-4">
-        <div class="jf-form">
-
-<!-- router scripting selection form div -->
-            <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>
-<!-- select purpose options -->
-            <?php 
-                unset($_SESSION['filename']);
-				$configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose'); 
-			?>
-            <div class="form-group">
-              <label class="control-label" for="f4">Select Purpose</label>
-              <select>
+	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
+		<div id="status" style="display: none;" class="alert"></div>
+		              <select>
                 <option value="">- Select Purpose -</option>
 				  <option value="one">one</option> 
               </select>
-            </div>
-<!-- /select purpose options -->
-            <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <input type="submit" name="act" class="btn config-submit" value="NEXT">
-            </div>
-
-            <div class="clearfix"></div>
-<!-- /router scripting selection form div -->
-
-        </div>
-      </div>
-<!-- /router selection content row -->
-
-
-<!-- right side -->
-<!-- script output -->
-      <div class="col">
-
-<!-- template name content -->
-        <div class="row">
+               <input type="submit" name="act" class="btn config-submit" value="NEXT">
+                       <div class="row">
           <div class="col d-none" id="template_info">
             <label for="inputRegion">TEMPLATE:</label>
             <small><b><span id="filename"></span></b></small>
             <!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
+            <input type="hidden" name="filename" id="upload_filename">
           </div>
         </div>
-<!-- /template name content -->
-
-<!-- browse / upload template -->
-        <div class="row">
-		
-			<input type="hidden" name="filename" id="upload_filename">
-			<!-- 
-        	<div class="form-group">
-		    <label for="file">Select a file to upload</label>
-		    <input type="file"  id="file" name="file">
-		    <p class="help-block">Please upload <b>.txt</b> files with a maximum size of 2 MB.</p>
-		    		  	<input type="submit" name="act" class="btn config-submit" value="Upload">
-		  	</div>
-             -->
-		
-        </div>
-<!-- /browse / upload template -->
-<!-- /right side -->
-<!-- /script output -->
-
-    </div>
-<!-- /backup management content row -->
-				</div>
-				</form>
-			</section>
-			<!-- /.content -->
-		</div>
+	</form>
 	</div>
+
 	<!-- container-fluid -->
 
         <?php include ('footer.php'); ?> 

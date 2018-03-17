@@ -59,7 +59,7 @@ $page_title = 'OneEMS';
               <select id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
                 <option value="">- Select Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
+				  <option value="<?php echo htmlentities($val['desc']);?>"><?php echo htmlentities($val['desc']); ?></option> 
 				 <?php }; ?>
               </select>
             </div>
@@ -72,7 +72,7 @@ $page_title = 'OneEMS';
               <select id="select_device_series" class="form-control custom-select" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option> 
+				<option value="<?php echo htmlentities($val['deviceseries']);?>"><?php echo htmlentities($val['deviceseries']); ?></option> 
 			 <?php }; ?>	
               </select>
             </div>
@@ -85,7 +85,7 @@ $page_title = 'OneEMS';
               <select id="select_os_version" class="form-control custom-select" name="f8" data-rule-required="true">
               	<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option> 
+				<option value="<?php echo htmlentities($val['nodeVersion']);?>"><?php echo htmlentities($val['nodeVersion']); ?></option> 
 			 <?php }; ?>		
               </select>
             </div>
@@ -98,7 +98,7 @@ $page_title = 'OneEMS';
               <select id="select_ran_vendor" class="form-control custom-select" name="f9" data-rule-required="true">
               	<option value="">- SELECT RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
+                <option value="<?php echo htmlentities($val['desc']);?>"><?php echo htmlentities($val['desc']); ?></option> 
 				<?php }; ?>		
               </select>
             </div>
@@ -111,7 +111,7 @@ $page_title = 'OneEMS';
               <select id="select_script_type" class="form-control custom-select" name="f10" data-rule-required="true">
                 <option value="">- SELECT Script Type -</option>	
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['type'];?>"><?php echo $val['type']; ?></option> 
+                <option value="<?php echo htmlentities($val['type']);?>"><?php echo htmlentities($val['type']); ?></option> 
 				<?php }; ?>		
               </select>
             </div>
@@ -124,7 +124,7 @@ $page_title = 'OneEMS';
               <select id="select_region" class="form-control custom-select" name="f11" data-rule-required="true">
               	<option value="">- SELECT Region -</option>	
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                 <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
+                 <option value="<?php echo htmlentities($val['region']);?>"><?php echo htmlentities($val['region']); ?></option> 
 			   <?php }; ?>		
               </select>
             </div>
@@ -137,7 +137,7 @@ $page_title = 'OneEMS';
               <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
               <option value="">- SELECT  Switch Name -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
+                <option value="<?php echo htmlentities($val['switch_name']);?>"><?php echo htmlentities($val['switch_name']); ?></option> 
 			   <?php }; ?>			
               </select>
             </div>
@@ -150,7 +150,7 @@ $page_title = 'OneEMS';
               <select id="select_market" class="form-control custom-select" name="f13" data-rule-required="true">
               <option value="">- SELECT  Market -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['market'];?>"><?php echo $val['market']; ?></option> 
+                <option value="<?php echo htmlentities($val['market']);?>"><?php echo htmlentities($val['market']); ?></option> 
 			  <?php }; ?>				
               </select>
             </div>

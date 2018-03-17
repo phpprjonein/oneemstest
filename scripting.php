@@ -56,7 +56,7 @@ $page_title = 'OneEMS';
 			?>
             <div class="form-group">
               <label class="control-label" for="f4">Select Purpose</label>
-              <select id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
+              <select>
                 <option value="">- Select Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 

@@ -108,7 +108,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			?>
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
-              <select disabled="disabled" id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
+              <select disabled="disabled" id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
                 <option value="">- Select Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				  <option value="<?php echo $val['desc'];?>" <?php if($_POST['f4'] == $val['desc']) : ?>selected<?php endif; ?>><?php echo $val['desc']; ?></option> 
@@ -121,7 +121,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
-              <select disabled="disabled" id="select_device_series" class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
+              <select disabled="disabled" id="select_device_series" class="form-control custom-select" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['deviceseries'];?>" <?php if($_POST['f7'] == $val['deviceseries']) : ?>selected<?php endif; ?>><?php echo $val['deviceseries']; ?></option> 
@@ -134,7 +134,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
-              <select disabled="disabled" id="select_os_version" class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
+              <select disabled="disabled" id="select_os_version" class="form-control custom-select" name="f8" data-rule-required="true">
               	<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['nodeVersion'];?>" <?php if($_POST['f8'] == $val['nodeVersion']) : ?>selected<?php endif; ?>><?php echo $val['nodeVersion']; ?></option> 
@@ -147,7 +147,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php  $configtmpddwndata =getconfigtempldpdwntbl('configscriptranvendor'); ?>
             <div class="form-group f9 required" data-fid="f9">
               <label class="control-label" for="f9">Select RAN vendor</label>
-              <select disabled="disabled" id="select_ran_vendor" class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
+              <select disabled="disabled" id="select_ran_vendor" class="form-control custom-select" name="f9" data-rule-required="true">
               	<option value="">- SELECT RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['desc'];?>" <?php if($_POST['f9'] == $val['desc']) : ?>selected<?php endif; ?>><?php echo $val['desc']; ?></option> 
@@ -160,7 +160,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php  $configtmpddwndata = getconfigtempldpdwntbl('configscripttype', 'type'); ?>
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select Script Type</label>
-              <select disabled="disabled" id="select_script_type" class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
+              <select disabled="disabled" id="select_script_type" class="form-control custom-select" name="f10" data-rule-required="true">
                 <option value="">- SELECT Script Type -</option>	
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['type'];?>" <?php if($_POST['f10'] == $val['type']) : ?>selected<?php endif; ?>><?php echo $val['type']; ?></option> 
@@ -173,7 +173,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php  $configtmpddwndata = generic_get_region(); ?>
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
-              <select disabled="disabled" id="select_region" class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
+              <select disabled="disabled" id="select_region" class="form-control custom-select" name="f11" data-rule-required="true">
               	<option value="">- SELECT Region -</option>	
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                  <option value="<?php echo $val['region'];?>" <?php if($_POST['f11'] == $val['region']) : ?>selected<?php endif; ?>><?php echo $val['region']; ?></option> 
@@ -186,7 +186,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
             <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Name</label>
-              <select disabled="disabled" id="select_switch_name" class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
+              <select disabled="disabled" id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
               <option value="">- SELECT  Switch Name -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['switch_name'];?>" <?php if($_POST['f12'] == $val['switch_name']) : ?>selected<?php endif; ?>><?php echo $val['switch_name']; ?></option> 
@@ -199,7 +199,7 @@ if ($_POST['act'] == 'Upload' || $_POST['act'] == 'NEXT'){
 			<?php  $configtmpddwndata = generic_get_market(); ?>
             <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
-              <select disabled="disabled" id="select_market" class="form-control custom-select" id="f13" name="f13" data-rule-required="true">
+              <select disabled="disabled" id="select_market" class="form-control custom-select" name="f13" data-rule-required="true">
               <option value="">- SELECT  Market -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['market'];?>" <?php if($_POST['f13'] == $val['market']) : ?>selected<?php endif; ?>><?php echo $val['market']; ?></option> 

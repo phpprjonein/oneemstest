@@ -55,7 +55,7 @@ $page_title = 'OneEMS';
 			?>
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
-              <select id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
+              <select id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
                 <option value="">- Select Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
@@ -68,7 +68,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
-              <select id="select_device_series" class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
+              <select id="select_device_series" class="form-control custom-select" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option> 
@@ -81,7 +81,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
-              <select id="select_os_version" class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
+              <select id="select_os_version" class="form-control custom-select" name="f8" data-rule-required="true">
               	<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option> 
@@ -94,7 +94,7 @@ $page_title = 'OneEMS';
 			<?php  $configtmpddwndata =getconfigtempldpdwntbl('configscriptranvendor'); ?>
             <div class="form-group f9 required" data-fid="f9">
               <label class="control-label" for="f9">Select RAN vendor</label>
-              <select id="select_ran_vendor" class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
+              <select id="select_ran_vendor" class="form-control custom-select" name="f9" data-rule-required="true">
               	<option value="">- SELECT RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
@@ -107,7 +107,7 @@ $page_title = 'OneEMS';
 			<?php  $configtmpddwndata = getconfigtempldpdwntbl('configscripttype', 'type'); ?>
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select Script Type</label>
-              <select id="select_script_type" class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
+              <select id="select_script_type" class="form-control custom-select" name="f10" data-rule-required="true">
                 <option value="">- SELECT Script Type -</option>	
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['type'];?>"><?php echo $val['type']; ?></option> 
@@ -120,7 +120,7 @@ $page_title = 'OneEMS';
 			<?php  $configtmpddwndata = generic_get_region(); ?>
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
-              <select id="select_region" class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
+              <select id="select_region" class="form-control custom-select" name="f11" data-rule-required="true">
               	<option value="">- SELECT Region -</option>	
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                  <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
@@ -133,7 +133,7 @@ $page_title = 'OneEMS';
 			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
             <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Name</label>
-              <select id="select_switch_name" class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
+              <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
               <option value="">- SELECT  Switch Name -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
@@ -146,7 +146,7 @@ $page_title = 'OneEMS';
 			<?php  $configtmpddwndata = generic_get_market(); ?>
             <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
-              <select id="select_market" class="form-control custom-select" id="f13" name="f13" data-rule-required="true">
+              <select id="select_market" class="form-control custom-select" name="f13" data-rule-required="true">
               <option value="">- SELECT  Market -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['market'];?>"><?php echo $val['market']; ?></option> 

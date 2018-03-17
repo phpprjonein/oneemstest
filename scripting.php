@@ -30,8 +30,6 @@ $page_title = 'OneEMS';
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
-				<div class="col-md-12">
-					<div class="panel panel-default">
     					<div id="status" style="display: none;" class="alert"></div>
     					<?php if($_SESSION['msg'] == 'dbs'){ ?>
                                   		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>

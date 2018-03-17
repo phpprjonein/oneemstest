@@ -46,9 +46,6 @@ $page_title = 'OneEMS';
 
 <!-- router scripting selection form div -->
             <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>
-            <input type="hidden" name="method" value="validateForm">
-            <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
-
 <!-- select purpose options -->
             <?php 
                 unset($_SESSION['filename']);
@@ -58,9 +55,7 @@ $page_title = 'OneEMS';
               <label class="control-label" for="f4">Select Purpose</label>
               <select>
                 <option value="">- Select Purpose -</option>
-				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
-				 <?php }; ?>
+				  <option value="one">one</option> 
               </select>
             </div>
 <!-- /select purpose options -->

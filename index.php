@@ -31,6 +31,23 @@ $headers = apache_request_headers();
 
 $_SESSION['sso_flag'] = $sso_flag;
 
+if($_POST['userimp'] == 'imp' && isset($_POST['username'])){
+    $userinfo = get_user_info_sso($_POST['username']);
+    $_SESSION['userid'] = $userinfo['id'];
+    $_SESSION['username'] = $userinfo['username'];
+    $_SESSION['userlevel'] = $userinfo['userlevel'];
+    $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+    update_login_api_rules($sso_flag,$_SESSION['username']);
+    //Remove if config file exist
+    if(file_exists(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt")){
+        unlink(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt");
+    }
+    if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
+        $location_href = get_landing_page();
+        header('Location:' . $location_href );
+        exit;
+    }  
+}
 if($sso_flag == 1){
     $userinfo = get_user_info_sso($username);
     $_SESSION['userid'] = $userinfo['id'];

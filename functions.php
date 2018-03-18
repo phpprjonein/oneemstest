@@ -2028,6 +2028,17 @@ function generic_get_csr_site_tech_name($query){
     return json_encode($Result);
 }
 
+function generic_get_usernames_ac($query){
+    global $db2;
+    $sql = "SELECT distinct(username) FROM users WHERE username LIKE '".$query."%'";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result[] = $val["username"];
+    }
+    return json_encode($Result);
+}
+
 function get_csr_site_names($region, $market){
     global $db2;
     $sql = "SELECT distinct(csr_site_name) FROM nodes where region like '".$region."' AND market like '".$market."' ORDER BY csr_site_name"; 

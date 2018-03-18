@@ -127,6 +127,13 @@ if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['re
 if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'site-tech-name'){
     echo generic_get_csr_site_tech_name($query);
 }
+
+if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'name'){
+    echo generic_get_usernames_ac($query);
+}
+
+
+
 if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_name'])){
     echo get_csr_tech_mgr_name_from_tech_name($_POST['csr_tech_name']);
 }

@@ -151,3 +151,7 @@ if(isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST[
     
     //echo '<tr><td>Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1</td><td><input type="radio" value="Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1" name="radioGroup"></td></tr>';
 }
+
+if(isset($_POST['region']) &&  isset($_POST['category']) && ($_POST['category'] == 'cellsitetech' || $_POST['category'] == 'switchtech')  && isset($_POST['act']) && $_POST['act'] == 'ip-del' && isset($_POST['subnet'])){
+    echo delete_ipallocation_by_subnet($_POST['region'], $_POST['subnet']);    
+}

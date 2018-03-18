@@ -3,7 +3,7 @@ $(document).ready(function() {
 		$('#export-v-pills-profile').hide();
 		$('#search-v-pills-profile').hide();
         var table1 =  $('#ipmgt-ipv4').DataTable( {
-        "aoColumns": [{ "bSortable": true },{ "bSortable": true, "bVisible": false },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false }],	
+        "aoColumns": [{ "bSortable": true },{ "bSortable": true, "bVisible": false },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": true },{ "bSortable": false },{ "bSortable": false }],	
          "processing": true,
          "pageLength": 5,
          "dom": 'Bfrtip',
@@ -129,6 +129,15 @@ $(document).ready(function() {
     		 location.reload();
     	})
     	
+    	$(document).on('click', "#ipmgt-ipv4 #deleteip", function(event) {
+    		if(confirm("Are you sure want to delete subnet mask " + $(this).closest('tr').find("td:eq(4)").text() + " ?")){
+    			$.post( "ip-mgt-process.php", {"region": $("#ip-allocation-region-dt-filter .btn").html().trim(), "category": "switchtech", "act": "ip-del", "subnet": $(this).closest('tr').find("td:eq(4)").text()})
+      		  .done(function( data ) {
+      			alert("Subnetmask "+ $(this).closest('tr').find("td:eq(4)").text() +" deleted successfully");
+      			 location.reload();
+      		  });
+    		}
+    	});
     	
     	$(document).on('click', '#ip-allocation-market a', function(event) {
     		$("#ip-allocation-market .btn").html($(this).text());

@@ -19,7 +19,7 @@
       </li> 
       <li class="dropdown messages-menu" onclick="location.href='index.php';">
         <?php if ($_SESSION['sso_flag'] == 0) { ?>
-        <a href="index.php">                      
+        <a href="logout.php">                      
           <img src="resources/img/logout.jpg"  width="15" alt="Logo"/>
         </a>
        <?php }; ?> 

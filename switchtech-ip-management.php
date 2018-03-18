@@ -200,6 +200,7 @@ table pill navigation -->
                   <th scope="col" class="table_center_text">To</th>
                   <th scope="col">Subnet</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -214,6 +215,9 @@ table pill navigation -->
                           <td>'.count($ipvfour_details).'</td>
                           <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
                           <td>'.$value['subnetmask'].'</td>
+                          <td>
+                            <a href="#" id="deleteip" class="btn">Delete</a>
+                          </td>
                           <td>
                             <a href="ip-v4-more-details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>
                           </td>

@@ -44,11 +44,11 @@ function get_user_info_sso($username) {
     return false;
 }
 
-function check_user_authentication($usertype) {
+function check_user_authentication($usertype = array()) {
     global $db2;
     
     if ($_SESSION['userid']) {
-        if ($_SESSION['userlevel']  == $usertype) {
+        if (in_array($_SESSION['userlevel'], $usertype)) {
             return true;
         }
         else {
@@ -63,11 +63,14 @@ function get_landing_page() {
         return 'index.php';
     }
     else {
-        if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+        if (in_array($_SESSION['userlevel'], array(1,3))) { // fieldsite technician
             $location_href = "cellsitetech-dashboard.php";
         }
-        if ($_SESSION['userlevel'] === "2") {
+        if (in_array($_SESSION['userlevel'], array(2,4,5))) { 
             $location_href = "switchtech-dashboard.php";
+        }
+        if (in_array($_SESSION['userlevel'], array(10))) {
+            $location_href = "login-impersonate.php";
         }
         return $location_href;
     }
@@ -746,11 +749,13 @@ function insert_usrfavritedev($data){
     $_SESSION['switchlistid'] = $listid;
     $db2->query($sql);
     $result =$db2->execute();
-    if ($_SESSION['userlevel'] == "1" ){
+    if (in_array($_SESSION['userlevel'], array(1,3))) {
        header("Location: cellsitetech-dashboard.php");
-    } else {
+    }elseif (in_array($_SESSION['userlevel'], array(2,4,5))) { 
        header("Location: switchtech-dashboard.php");
-    };
+    }elseif (in_array($_SESSION['userlevel'], array(10))) {
+        header("Location: login-impersonate.php");
+    }
     //return $result; 
 }
 
@@ -2261,10 +2266,10 @@ function update_login_api_rules($sso_flag,$username){
     global $db2;
      //$_SESSION['userlevel'] = 2; 
      echo "inside the update_login_api".$username.$ssoflag.$_SESSION['userlevel'];
-    if ($_SESSION['userlevel'] == 1) { // fieldsite technician
+     if (in_array($_SESSION['userlevel'], array(1,3))) {
         //$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
 		$output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
-     } elseif ($_SESSION['userlevel'] == 2) {
+     } elseif (in_array($_SESSION['userlevel'], array(2,4,5))) {
 	//$output = 'https://nssapigateway.vh.vzwnet.com/iop/switchbytech/v1.0.0/switch/tech/'.$username.''';	
         //$output = @file_get_contents('https://ohtwoemsda3z.nss.vzwnet.com/oneemstest/login_response_switchtech_user.php');
          $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username='.$username);
@@ -2278,7 +2283,7 @@ function update_login_api_rules($sso_flag,$username){
 		//exit();
      };
      
-    if ($_SESSION['userlevel'] == 1) {
+     if (in_array($_SESSION['userlevel'], array(1,3))) {
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
         for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
@@ -2293,7 +2298,7 @@ function update_login_api_rules($sso_flag,$username){
                 }
             }
         }
-    }else{
+     } elseif (in_array($_SESSION['userlevel'], array(2,4,5))) {
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
         for($i=0; $i <= count($resp_result_arr['switches']); $i++){
@@ -2389,11 +2394,11 @@ function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
         return 'index.php';
     }
     else {
-        if ($_SESSION['userlevel'] === "1") { // fieldsite technician
+        if (in_array($_SESSION['userlevel'], array(1,3))) { // fieldsite technician
        //  echo 'inside the cellsite tech url';
             $location_href = "cellsitetech-dashboard.php";
         }
-        if ($_SESSION['userlevel'] === "2") {
+        if (in_array($_SESSION['userlevel'], array(2,4,5))) {
             $location_href = "switchtech-dashboard.php";
         }
      // echo '<br>'.'value of location href inside the function'.$location_href.'<br>';

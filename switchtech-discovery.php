@@ -12,7 +12,7 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-check_user_authentication('2');
+check_user_authentication(array(2,4,5));
 
 $page_title = 'OneEMS';
 

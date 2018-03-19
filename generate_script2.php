@@ -14,7 +14,7 @@ $templname = $_POST['radioGroup'];
 //$templname = 'Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1';
 
 user_session_check();
-check_user_authentication('1'); // cellsite tech type user
+check_user_authentication(array(1,3));
 
 $page_title = 'OneEMS';
 ?>

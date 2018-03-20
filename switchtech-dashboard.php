@@ -288,6 +288,27 @@
             ?>
               <!-- Displays user selected market name -->
               <span style="padding-left: 20px; "><label>Market Name :&nbsp;</label><?php echo $str_marketname; ?></span>
+              
+		  <?php 
+		  $switchlistbymarket = generic_get_switch_name_by_market($str_marketname);
+		  if(count($switchlistbymarket['result']) > 0):?>
+          <div class="btn-group" id="dash-switches">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Switch
+          </button>
+          <div class="dropdown-menu">
+          <?php 
+          foreach ($switchlistbymarket['result'] as $srkey => $srvalue):
+          if(!empty($srvalue['switch_name'])):          
+          ?>
+          <a class="dropdown-item" href="#"><?php echo $srvalue['switch_name']; ?></a>
+          <?php 
+          endif;
+          endforeach;
+            ?>
+          </div>
+          </div>
+          <?php endif;?>
             <?php 
             }
           ?>
@@ -301,7 +322,7 @@
           <?php
             //if(isset($switch_device_name) && $switch_device_name != '' ) {
               
-              if (!isset($str_marketname)) {  // IF No Market is selected
+            if (!isset($str_marketname)) {  // IF No Market is selected
                 $list_type = 'user';
                 // Get  Routersfor users assigned switch
                 ?>

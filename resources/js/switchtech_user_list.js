@@ -244,7 +244,10 @@ $(document).ready(function() {
   
 	$("#dash-switches a").click(function(){
 		$("#dash-switches .btn").html($(this).text());
-		$('#hidd_list_for').val($(this).text());
+		if($('#hidd_list_type').val() != 'market'){
+			$('#hidd_list_for').val($(this).text());
+		}
+		var selswitch = $('#dash-switches button').text();
 		
         var default_pagelen = 14;
         if( $('#hidd_list_type').val() == 'market') {
@@ -265,7 +268,7 @@ $(document).ready(function() {
             "infoEmpty": "",
             "infoFiltered": ""
             },
-          "ajax":"swtchtech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val(),
+          "ajax":"swtchtech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val()+"&selswitch="+selswitch,
              "columns": [
             {  "className":  'device_row',
                 "orderable":      false,

@@ -1187,7 +1187,7 @@ function getSWroutersDetails_all($swich_devince_name, $search_term='', $userid, 
 /*
  *
  */
-function get_swt_user_routers_list_datatable($list_for, $list_type) {
+function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) {
     global $db2;
     
     
@@ -1224,6 +1224,10 @@ function get_swt_user_routers_list_datatable($list_for, $list_type) {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
                         WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' ";
+        
+        if($selswitch != ''){
+            $sql_condition .= " AND switch_name ='$selswitch'";
+        }
         
     }
     
@@ -2000,6 +2004,13 @@ function generic_get_deviceseries(){
     return $resultset;
 }
 function generic_get_switch_name(){
+    global $db2;
+    $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_switch_name_by_market($market){
     global $db2;
     $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
     $db2->query($sql);

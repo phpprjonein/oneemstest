@@ -27,11 +27,12 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-            { "data": "id" },            
-            { "data": "devicename" },
-            { "data": "deviceIpAddr" }, 
+            { "data": "id" },     
+            { "data": "csr_site_tech_name" },            
             { "data": "csr_site_id" },
-            { "data": "csr_site_name" }
+            { "data": "csr_site_name" }, 
+            { "data": "devicename" },
+            { "data": "deviceIpAddr" }
         ],
         
         "order": [[1, 'asc']],
@@ -274,11 +275,12 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-            { "data": "id" },            
-            { "data": "devicename" },
-            { "data": "deviceIpAddr" }, 
-            { "data": "csr_site_id" },
-            { "data": "csr_site_name" }
+                { "data": "id" }, 
+	            { "data": "csr_site_tech_name" },            
+	            { "data": "csr_site_id" },
+	            { "data": "csr_site_name" }, 
+	            { "data": "devicename" },
+	            { "data": "deviceIpAddr" }
         ],
         
         "order": [[1, 'asc']],

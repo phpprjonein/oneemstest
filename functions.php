@@ -1202,10 +1202,11 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
     $columns = array(
         'DISTINCT(n.id)',
         'n.id',
+        'n.csr_site_tech_name',
+        'CONCAT(n.csr_site_id,"#",n.switch_name) as csr_site_id',
+        'n.csr_site_name',
         'n.devicename',
         'n.deviceIpAddr',
-        'n.csr_site_name',
-        'n.csr_site_id'
     );
     
     
@@ -1233,11 +1234,12 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n.devicename LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n.csr_site_tech_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= " ) ";
     }
     
@@ -1251,7 +1253,11 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
     
     $sql_order = "";
     if ($order_col != ''){
-        $sql_order = " ORDER BY " . $columns[$order_col];
+        if($order_col == 3){
+            $sql_order = " ORDER BY csr_site_id";
+        }else{
+            $sql_order = " ORDER BY " . $columns[$order_col];
+        }    
     }
     
     if ($order_dir != ''){
@@ -1260,7 +1266,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
     
     $sql_limit = " LIMIT $start, $length ";
     
-    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
+    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ; 
     $db2->query($sql);
     
     $resultset['draw'] = $draw;

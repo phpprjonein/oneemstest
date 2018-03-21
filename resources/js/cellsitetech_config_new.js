@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
-		var filename = 'Golden_'; sep = '';
+		var filename = ''; sep = '';
 		$("#cellsitech-generate-script select").each(function()
 		{
 			if($(this).val() !=''){
@@ -10,7 +10,7 @@ $(document).ready(function() {
 			}
 		});
 		filename = filename.replace(/[^a-z0-9_-]/gi,'');
-		if(filename != 'Golden_'){
+		if(filename != ''){
 			//$('#template_info').removeClass('d-none');
 			//$("#cellsitech-generate-script #template_info #filename').html(filename);
 			//$("#cellsitech-generate-script #upload_filename').val(filename);
@@ -33,20 +33,18 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	
+	/*
 	$(document).on('click', "#cellsitech-generate-script .generate-script-submit", function(event) {
-    	var req_err = false;
+    	var req_err = true;
     	$("#status").html('');
     	$("#cellsitech-generate-script select").each(function(){
-			if($(this).val() ==''){
-				$(this).addClass('required');
-				req_err = true;
-			}else{
-				$(this).removeClass('required');
+			if($(this).val() !=''){
+				req_err = false;
 			}
 		});
     	if(req_err){
-    		$("#status").html("<strong>Error!</strong> 	 select fields are required.<br/>");
+    		$('#cellsitech-generate-script select').addClass('required');
+    		$("#status").html("<strong>Error!</strong> select atleast one required field.<br/>");
     	}
         if(req_err){
         	$('#status').css("opacity","");
@@ -61,7 +59,7 @@ $(document).ready(function() {
         }
         return true;
     });
-	
+	*/
 	
 	$(document).on('change', "#cellsitech-config select", function(event) {
 				var filename = 'Golden_'; sep = '';

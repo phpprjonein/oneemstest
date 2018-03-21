@@ -2434,7 +2434,19 @@ function load_backup_information($deviceid){
 }
 function load_available_templates($filename){
     global $db2;
-    $sql = "SELECT distinct(templname) FROM configtemplate where templname like '%".$filename."%'";
+    $filename_arr = explode('_',$filename);
+    if(count($filename_arr) > 0){
+        $condition = '';
+        foreach ($filename_arr as $key => $val):
+            if($condition == '' && isset($val)){
+                $condition .= "templname like '%".$val."%'";
+            }elseif($condition != ''  && isset($val)){
+                $condition .= "AND templname like '%".$val."%'";
+            }
+        endforeach;
+    }
+    
+    $sql = "SELECT distinct(templname) FROM configtemplate where $condition";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];

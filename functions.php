@@ -1292,7 +1292,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
 
 
 
-function get_cellsitetech_user_routers_list_datatable($list_for, $list_type) {
+function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $selswitch) {
     global $db2;
     
     
@@ -1330,6 +1330,10 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type) {
         $sql_condition = " FROM nodes n
                         WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market'";
 					//WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
+        if($selswitch != ''){
+            $sql_condition .= " AND switch_name ='$selswitch'";
+        }
+        
     }
     
     if ($search_term != '') {
@@ -2303,6 +2307,7 @@ function update_login_api_rules($sso_flag,$username){
      if (in_array($_SESSION['userlevel'], array(1,3,4))) {
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
+        $swt_mswitch_arr = array();
         for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
             if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
                 foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
@@ -2312,9 +2317,13 @@ function update_login_api_rules($sso_flag,$username){
                     $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
                     $db2->query($sql);
                     $db2->execute();
+                    if(!in_array($resp_result_arr['site_devices'][$i]['switch'], $swt_mswitch_arr)){
+                        $swt_mswitch_arr[] = $resp_result_arr['site_devices'][$i]['switch'];
+                    }                    
                 }
             }
         }
+        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
      } elseif (in_array($_SESSION['userlevel'], array(2,5,6,7))) {
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
@@ -2434,7 +2443,19 @@ function load_backup_information($deviceid){
 }
 function load_available_templates($filename){
     global $db2;
-    $sql = "SELECT distinct(templname) FROM configtemplate where templname like '%".$filename."%'";
+    $filename_arr = explode('_',$filename);
+    if(count($filename_arr) > 0){
+        $condition = '';
+        foreach ($filename_arr as $key => $val):
+            if($condition == '' && isset($val)){
+                $condition .= "templname like '%".$val."%'";
+            }elseif($condition != ''  && isset($val)){
+                $condition .= "AND templname like '%".$val."%'";
+            }
+        endforeach;
+    }
+    
+    $sql = "SELECT distinct(templname) FROM configtemplate where $condition";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];

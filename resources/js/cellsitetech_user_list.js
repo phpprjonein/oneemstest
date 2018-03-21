@@ -238,6 +238,65 @@ $(document).ready(function() {
     // else {
     //    show_hide_map_n_result('show');
     // }
+  
+  
+  
+  
+  
+  $("#dash-switches a").click(function(){
+		$("#dash-switches .btn").html($(this).text());
+		if($('#hidd_list_type').val() != 'market'){
+			$('#hidd_list_for').val($(this).text());
+		}
+	  var selswitch = $('#dash-switches button').text();
+		
+      var default_pagelen = 14;
+      if( $('#hidd_list_type').val() == 'market') {
+        default_pagelen = 25;
+      }
+      var table =  $('#cellsitetech_user_devices').DataTable( {
+          "processing": true,
+          "lengthChange": true,
+          "destroy": true,
+          "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
+          "pageLength": default_pagelen,
+          "serverSide": true, 
+          "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
+          "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "No records found",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "",
+            "infoFiltered": ""
+            },
+          "ajax":"cellsitetech-user-list-server-process.php?list_for="+$('#hidd_list_for').val()+"&list_type="+$('#hidd_list_type').val()+"&selswitch="+selswitch,
+             "columns": [
+            {  "className":  'device_row',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
+            { "data": "id" },            
+            { "data": "devicename" },
+            { "data": "deviceIpAddr" }, 
+            { "data": "csr_site_id" },
+            { "data": "csr_site_name" }
+        ],
+        
+        "order": [[1, 'asc']],
+        "createdRow": function (row, data, rowIndex) {
+             // var r = row;
+             // $(row).addClass('device_row'); 
+             $(row).attr('data-devicename', data.devicename);
+             $(row).attr('data-deviceid', data.id);
+
+        }           
+      });
+	});
+  
+  
+  
+  
+  
 });
 
 function reconstruct($item) {   

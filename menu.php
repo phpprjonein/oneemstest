@@ -1,4 +1,4 @@
-s<header class="main-header"> 
+<header class="main-header"> 
   <div class="nav top-menu">
     <div class="float-left box logo-box"><a class="navbar-brand" href="#" >
         <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>

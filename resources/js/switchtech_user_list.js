@@ -292,21 +292,6 @@ $(document).ready(function() {
 
         }           
       });
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	});
   
   

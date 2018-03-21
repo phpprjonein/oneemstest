@@ -12,7 +12,7 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-check_user_authentication(array(10)); //cellsite tech type user 
+check_user_authentication(array(8)); //cellsite tech type user 
 
     $page_title = 'OneEMS';
  

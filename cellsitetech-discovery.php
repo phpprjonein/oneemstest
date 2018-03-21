@@ -1,8 +1,8 @@
 <?php
 
-include "classes/db2.class.php";
-include "classes/paginator.class.php";
-include 'functions.php';
+include_once "classes/db2.class.php";
+include_once "classes/paginator.class.php";
+include_once 'functions.php';
 
 //Static variable values set
 if (isset($_GET['clear']) ) {
@@ -12,7 +12,7 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-check_user_authentication(array(1,3));
+include_once ('config/session_check_cellsite_tech.php');
 
 $page_title = 'OneEMS';
 
@@ -20,13 +20,13 @@ $page_title = 'OneEMS';
 <!DOCTYPE html>
 <html>
     <head>
-   <?php include("includes.php");  ?>
+   <?php include_once("includes.php");  ?>
    <script src="resources/js/cellsitetech_discovery.js?t="<?php echo date('his'); ?>></script>
  </head>
      <body>
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
-<?php include ('menu.php'); ?> 
+<?php include_once ('menu.php'); ?> 
 
         <!-- The Modal -->
 		<div class="modal fade" id="myModal">
@@ -433,7 +433,7 @@ conflict table content -->
     </div>
 <!-- /IP management table row -->
 
-<?php include ('footer.php'); ?> 
+<?php include_once ('footer.php'); ?> 
 
 <!-- Missed Modal -->
 <div class="modal fade">

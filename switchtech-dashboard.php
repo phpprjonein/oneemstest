@@ -1,10 +1,10 @@
 <?php
-  include ("classes/db2.class.php");
-  include "classes/paginator.class.php";  
-  include ("functions.php");   
+  include_once ("classes/db2.class.php");
+  include_once "classes/paginator.class.php";  
+  include_once ("functions.php");   
   user_session_check(); 
   //Check for switch tech type user
-  check_user_authentication(array(2,4,5));
+  include_once ('config/session_check_switch_tech.php');
   $page_title =  'OneEMS';
   // Default map dispaly flag true
   $show_map_flag = true;
@@ -45,15 +45,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
-<?php include("includes.php");  ?>
+<?php include_once("includes.php");  ?>
 <script src="resources/js/switchtech_user_list.js?t=<?php echo date('his'); ?>"></script>
 </head>  
 <body>
 <div class="container-fluid">
   
     <?php 
-    // Include menu bar htmls [ Logo, welcome text, menu ]
-    include ('menu.php'); 
+    // include_once menu bar htmls [ Logo, welcome text, menu ]
+    include_once ('menu.php'); 
     ?>   
   
   <div class="row">
@@ -377,15 +377,15 @@
   <!-- Hidden field for user id value -->
   <input type="hidden" id="hidd_userid" value="<?php echo $_SESSION['userid'] ?>">     
   
-  <!-- Include custom js file for switchtech_devicelist page -->  
+  <!-- include_once custom js file for switchtech_devicelist page -->  
   <div style="clear:both;"></div>
   </div>
 </div>
   
 
  <?php 
-    // Footder section include file
-    include ('footer.php');
+    // Footder section include_once file
+    include_once ('footer.php');
   ?> 
 </body>
 </html>

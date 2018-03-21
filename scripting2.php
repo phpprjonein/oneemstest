@@ -1,7 +1,7 @@
 <?php
-include "classes/db2.class.php";
-include "classes/paginator.class.php";
-include 'functions.php';
+include_once "classes/db2.class.php";
+include_once "classes/paginator.class.php";
+include_once 'functions.php';
 // Static variable values set
 if (isset($_GET['clear'])) {
     if (strtolower($_GET['clear']) == 'search') {
@@ -10,7 +10,7 @@ if (isset($_GET['clear'])) {
 }
 
 user_session_check();
-check_user_authentication(array(1,3));
+include_once ('config/session_check_cellsite_tech.php');
 
 $page_title = 'OneEMS';
 
@@ -18,12 +18,12 @@ $page_title = 'OneEMS';
 <!DOCTYPE html>
 <html>
 <head>
-   <?php include("includes.php");  ?>
+   <?php include_once("includes.php");  ?>
    <script src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
-	<?php include ('menu.php'); ?> 
+	<?php include_once ('menu.php'); ?> 
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
@@ -532,7 +532,7 @@ $page_title = 'OneEMS';
 	</div>
 	<!-- container-fluid -->
 
-        <?php include ('footer.php'); ?> 
+        <?php include_once ('footer.php'); ?> 
     </body>
 	
 	<!-- JavaScript -->

@@ -1,8 +1,8 @@
 <?php
 
-include "classes/db2.class.php";
-include "classes/paginator.class.php";
-include 'functions.php';
+include_once "classes/db2.class.php";
+include_once "classes/paginator.class.php";
+include_once 'functions.php';
 
 //Static variable values set
 if (isset($_GET['clear']) ) {
@@ -12,7 +12,7 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-check_user_authentication(array(2,4,5));
+include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
@@ -20,7 +20,7 @@ $page_title = 'OneEMS';
 <!DOCTYPE html>
 <html>
     <head>
-   <?php include("includes.php");  ?>
+   <?php include_once("includes.php");  ?>
    <script src="resources/js/switchtech_user_devices.js?t="<?php echo date('his'); ?>></script>
  </head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
@@ -35,7 +35,7 @@ $page_title = 'OneEMS';
         </div>
 
         <div class="container-fluid">
-            <?php include ('menu.php'); ?> 
+            <?php include_once ('menu.php'); ?> 
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
@@ -269,7 +269,7 @@ $page_title = 'OneEMS';
         </div>
         <!-- ./wrapper -->
 
-        <?php include ('footer.php'); ?> 
+        <?php include_once ('footer.php'); ?> 
     </body>
 	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	<script src="http://localhost/oneemstest/resources/js/vendor.js" ></script>

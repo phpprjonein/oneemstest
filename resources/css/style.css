@@ -599,3 +599,15 @@ button {
 #cellsitech-config select.required, #cellsitech-generate-script select.required{
 	border-color: #dc3545;
 }
+
+.logout {
+	border: 0.25rem solid #0088ce !important;
+}
+
+.logout .logout-left {
+	background-color: #0088ce;
+}
+
+.logout .fa-2x {
+	color: #fff;
+}

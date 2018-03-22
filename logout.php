@@ -36,8 +36,18 @@ user_session_check();
 						    exit;
 						}
 						?>       
-						<div><p class="box-title">Are you sure want to Logout?</p></div>
-						<div><p><a href="index.php">Logout</a>&nbsp;|&nbsp;<a href="<?php echo $location_href;?>">Home</a></p></div>
+						
+						
+						<!-- Logut page content row main -->
+          <div class="row logout">
+            <div class="col-1 col-md-1 col-sm-1 logout-left d-flex justify-content-center align-items-center"><i class="fas fa-info-circle"></i></div>
+            <div class="col-10 col-md-10 col-sm-10">
+              <p><b> <a href="index.php"> Wanna to logout!!</a>. Any automatic login has also been stopped.</b></p>
+              <p>Didn't mean to log out? Log in again.<a href="<?php echo $location_href;?>">Home</a></p>
+            </div>
+          </div>
+<!-- /Loogut page content row main -->
+
                     </div>
   		</div>
 	<?php include ('footer.php'); ?> 

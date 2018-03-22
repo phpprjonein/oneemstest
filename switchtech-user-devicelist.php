@@ -21,7 +21,7 @@ $page_title = 'OneEMS';
 <html>
     <head>
    <?php include("includes.php");  ?>
- <script src="resources/js/switchtech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+ <script src="resources/js/switchtech_user_devices.js?t=<?php echo date('his'); ?>"></script>
  <script type="text/javascript">
 function modalClose() {
     if (location.hash == '#mycmdModal') {

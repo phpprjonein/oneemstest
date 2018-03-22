@@ -4,7 +4,7 @@ $(document).ready(function() {
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
           $.ajax({
               type:"get",
-              url:"healthchk-cellsitetech.php",
+              url:"healthchk-switchtech.php",
               data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
               beforeSend: function(){
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
@@ -114,19 +114,33 @@ $(document).ready(function() {
 
                   var id = tr.attr('id').replace('row_','');
                   var ajs = $.ajax({
-                    type:"get",
-                    url:"healthchk-switchtech.php",
-                    data: {deviceid:id, userid:$('#userid').val()},
-                    beforeSend: function(){
-                        $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
-                    },
-                    complete: function() {
-                        $('#detail_'+id).addClass('loaded');
-                    },
-                    success: function(resdata){
-                        $('#detail_'+id).html(resdata);
-                    }
-                });
+                      type:"get",
+                      url:"healthchk-load-table-data.php",
+                      data: {deviceid:id, userid:$('#userid').val()},
+                      beforeSend: function(){
+                          $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+                      },
+                      complete: function() {
+                          $('#detail_'+id).addClass('loaded');
+                      },
+                      success: function(resdata){
+                          $('#detail_'+id).html(resdata);
+                      }
+                  });
+                  ajs = $.ajax({
+                      type:"get",
+                      url:"healthchk-switchtech.php",
+                      data: {deviceid:id, userid:$('#userid').val()},
+                      beforeSend: function(){
+                          $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+                      },
+                      complete: function() {
+                          $('#detail_'+id).addClass('loaded');
+                      },
+                      success: function(resdata){
+                          $('#detail_'+id).html(resdata);
+                      }
+                  }); 
             }
           } 
       });

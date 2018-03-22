@@ -601,13 +601,12 @@ button {
 }
 
 .logout {
-	border: 0.25rem solid #0088ce !important;
+  border: 0.125rem solid #0088ce !important;
 }
 
 .logout .logout-left {
-	background-color: #0088ce;
-}
-
+  background-color: #0088ce;
+}​
 .logout .fa-2x {
 	color: #fff;
 }

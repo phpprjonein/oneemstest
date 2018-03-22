@@ -9,21 +9,19 @@
     ?>
 
     <div class="float-right box profile-box">
-   
-    <ul class="nav navbar-nav">
-    
-      <li class="dropdown messages-menu">
+    <div class="nav navbar-nav">
+      <div class="dropdown messages-menu">
         <a >
          <b> Welcome </b><span class="hidden-xs"><?php echo $_SESSION['welcome_username'];?></span>
         </a>
-      </li> 
-      <li class="dropdown messages-menu" onclick="location.href='index.php';">
+      </div> 
+      <div class="dropdown messages-menu">
         <?php if ($_SESSION['sso_flag'] == 0) { ?>
         <a href="logout.php">                      
           <img src="resources/img/logout.jpg"  width="15" alt="Logo"/>
         </a>
        <?php }; ?> 
-      </li>
+      </div>
     </ul>
   </div>
   <?php

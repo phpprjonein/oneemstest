@@ -124,7 +124,7 @@ $(document).ready(function() {
                   });
                   ajs = $.ajax({
                       type:"get",
-                      url:"healthchk-switchtech.php",
+                      url:"healthchk-cellsitetech.php",
                       data: {deviceid:id, userid:$('#userid').val()},
                       beforeSend: function(){
                           $('#detail_'+id).html('<div class="text-center overlay box-body">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');

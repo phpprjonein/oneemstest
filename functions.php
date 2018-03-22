@@ -44,6 +44,20 @@ function get_user_info_sso($username) {
     return false;
 }
 
+function get_user_info_sso_imp($fname, $lname, $userlevel) {
+    
+    global $db2;
+    
+    if (trim($fname) !='' && trim($lname) !='' && trim($userlevel)) {
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.fname='" .trim($fname). "' AND  u.lname='" .trim($lname). "' AND  ul.userlevel='" .trim($userlevel). "' AND ul.id = u.userlevel"; 
+        $db2->query($sql);
+        $rows = $db2->resultset();
+        $result = $rows[0];
+        return $result;
+    }
+    return false;
+}
+
 function check_user_authentication($usertype = array()) {
     global $db2;
     
@@ -2061,6 +2075,17 @@ function generic_get_usernames_ac($query){
     $resultset['result'] = $db2->resultset();
     foreach ($resultset['result'] as $key => $val){
         $Result[] = $val["username"];
+    }
+    return json_encode($Result);
+}
+
+function generic_get_usernames_ac_fn_ln_ro($query){
+    global $db2;
+    $sql = "SELECT u.fname, u.lname, ul.userlevel FROM users u, userlevels ul WHERE (u.fname LIKE '%".$query."%' OR u.lname LIKE '%".$query."%' OR ul.userlevel LIKE '%".$query."%') AND u.userlevel = ul.id";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result[] = $val["fname"].' '.$val["lname"].' <'.$val["userlevel"].'>';
     }
     return json_encode($Result);
 }

@@ -32,7 +32,10 @@ $headers = apache_request_headers();
 $_SESSION['sso_flag'] = $sso_flag;
 
 if($_POST['userimp'] == 'imp' && isset($_POST['username'])){
-    $userinfo = get_user_info_sso($_POST['username']);
+    $name_exp_1 = explode(' <',$_POST['username']);
+    $name_exp = explode(' ',$name_exp_1[0]);
+    $name_exp_role = str_replace('>','',$name_exp_1[1]);
+    $userinfo = get_user_info_sso_imp($name_exp[0],$name_exp[1],trim($name_exp_role));
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];

@@ -129,7 +129,7 @@ if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['qu
 }
 
 if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'name'){
-    echo generic_get_usernames_ac($query);
+    echo generic_get_usernames_ac_fn_ln_ro($query);
 }
 
 

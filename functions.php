@@ -1321,10 +1321,11 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
     $columns = array(
         'DISTINCT(n.id)',
         'n.id',
+        'n.csr_site_tech_name',
+        'CONCAT(n.csr_site_id,"#",n.switch_name) as csr_site_id',
+        'n.csr_site_name',
         'n.devicename',
         'n.deviceIpAddr',
-        'n.csr_site_name',
-        'n.csr_site_id'
     );
     
     
@@ -1352,11 +1353,12 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n.devicename LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n.csr_site_tech_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= " ) ";
     }
     

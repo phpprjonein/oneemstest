@@ -44,6 +44,20 @@ function get_user_info_sso($username) {
     return false;
 }
 
+function get_user_info_sso_imp($fname, $lname, $userlevel) {
+    
+    global $db2;
+    
+    if (trim($fname) !='' && trim($lname) !='' && trim($userlevel)) {
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.fname='" .trim($fname). "' AND  u.lname='" .trim($lname). "' AND  ul.userlevel='" .trim($userlevel). "' AND ul.id = u.userlevel"; 
+        $db2->query($sql);
+        $rows = $db2->resultset();
+        $result = $rows[0];
+        return $result;
+    }
+    return false;
+}
+
 function check_user_authentication($usertype = array()) {
     global $db2;
     
@@ -1307,10 +1321,11 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
     $columns = array(
         'DISTINCT(n.id)',
         'n.id',
+        'n.csr_site_tech_name',
+        'CONCAT(n.csr_site_id,"#",n.switch_name) as csr_site_id',
+        'n.csr_site_name',
         'n.devicename',
         'n.deviceIpAddr',
-        'n.csr_site_name',
-        'n.csr_site_id'
     );
     
     
@@ -1338,11 +1353,12 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
     
     if ($search_term != '') {
         $sql_condition .= " AND ( ";
-        $sql_condition .= "  n.devicename LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  n.csr_site_tech_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_id LIKE '%". addslashes($search_term) ."%' " ;
-        $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= " ) ";
     }
     
@@ -2061,6 +2077,17 @@ function generic_get_usernames_ac($query){
     $resultset['result'] = $db2->resultset();
     foreach ($resultset['result'] as $key => $val){
         $Result[] = $val["username"];
+    }
+    return json_encode($Result);
+}
+
+function generic_get_usernames_ac_fn_ln_ro($query){
+    global $db2;
+    $sql = "SELECT u.fname, u.lname, ul.userlevel FROM users u, userlevels ul WHERE (u.fname LIKE '%".$query."%' OR u.lname LIKE '%".$query."%' OR ul.userlevel LIKE '%".$query."%') AND u.userlevel = ul.id";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val){
+        $Result[] = $val["fname"].' '.$val["lname"].' <'.$val["userlevel"].'>';
     }
     return json_encode($Result);
 }

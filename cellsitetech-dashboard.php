@@ -346,11 +346,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                   <tr>        
                     <th></th>
                     <th><b>ID</b></th>
-                    <th><b>Device Name</th>
-                    <th><b>Ip Address</th>
-                  <!--  <th><b>Custom Location</th> -->
-					<th><b>Site ID</th>
-					<th><b>Site Name</th>
+                    <th><b>Tech name</th>
+                    <th><b>Site#/Switch</th>
+                    <th><b>Site Name</th>
+					<th><b>Hostname</th>
+					<th><b>IP address</th>
                   </tr>
                 </thead>
               </table> 

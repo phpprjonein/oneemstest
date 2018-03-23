@@ -41,7 +41,7 @@ $page_title = 'OneEMS';
         <div class="jf-form">
 
 <!-- router scripting selection form div -->
-            <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>
+            <!--<h5>SELECT TEMPLATE TYPE TO CREATE:</h5> -->
             <input type="hidden" name="method" value="validateForm">
             <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
 
@@ -65,7 +65,7 @@ $page_title = 'OneEMS';
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
               <select id="select_device_series" class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
-              <option value="">- SELECT Device Series -</option>
+              <option value="">- Select Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option> 
 			 <?php }; ?>	
@@ -78,7 +78,7 @@ $page_title = 'OneEMS';
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
               <select id="select_os_version" class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
-              	<option value="">- SELECT OS Version -</option>
+              	<option value="">- Select OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
 				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option> 
 			 <?php }; ?>		
@@ -91,7 +91,7 @@ $page_title = 'OneEMS';
             <div class="form-group f9 required" data-fid="f9">
               <label class="control-label" for="f9">Select RAN vendor</label>
               <select id="select_ran_vendor" class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
-              	<option value="">- SELECT RAN vendor -</option>
+              	<option value="">- Select RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option> 
 				<?php }; ?>		
@@ -104,7 +104,7 @@ $page_title = 'OneEMS';
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select Script Type</label>
               <select id="select_script_type" class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
-                <option value="">- SELECT Script Type -</option>	
+                <option value="">- Select Script Type -</option>	
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['type'];?>"><?php echo $val['type']; ?></option> 
 				<?php }; ?>		
@@ -117,7 +117,7 @@ $page_title = 'OneEMS';
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
               <select id="select_region" class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
-              	<option value="">- SELECT Region -</option>	
+              	<option value="">- Select Region -</option>	
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                  <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option> 
 			   <?php }; ?>		
@@ -125,25 +125,12 @@ $page_title = 'OneEMS';
             </div>
 <!-- /select region options -->
 
-<!-- select switch type options -->
-			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
-            <div class="form-group f12 required" data-fid="f12">
-              <label class="control-label" for="f12">Select Switch Name</label>
-              <select id="select_switch_name" class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
-              <option value="">- SELECT  Switch Name -</option>
-			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
-			   <?php }; ?>			
-              </select>
-            </div>
-<!-- /select switch type options -->
-
 <!-- select market options -->
 			<?php  $configtmpddwndata = generic_get_market(); ?>
             <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
               <select id="select_market" class="form-control custom-select" id="f13" name="f13" data-rule-required="true">
-              <option value="">- SELECT  Market -</option>
+              <option value="">- Select  Market -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
                 <option value="<?php echo $val['market'];?>"><?php echo $val['market']; ?></option> 
 			  <?php }; ?>				
@@ -152,10 +139,24 @@ $page_title = 'OneEMS';
 <!-- /select market options -->
 
 
-            <div class="form-group submitf0" data-fid="f0" style="position: relative;">
+<!-- select switch type options -->
+			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
+            <div class="form-group f12 required" data-fid="f12">
+              <label class="control-label" for="f12">Select Switch Name</label>
+              <select id="select_switch_name" class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
+              <option value="">- Select  Switch Name -</option>
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
+			   <?php }; ?>			
+              </select>
+            </div>
+<!-- /select switch type options -->
+
+
+          <!--  <div class="form-group submitf0" data-fid="f0" style="position: relative;">
               <button type="submit" class="btn btn-primary btn-lg generate-script-submit" style="z-index: 1;">NEXT</button>
             </div>
-
+           -->
             <div class="clearfix"></div>
 <!-- /router scripting selection form div -->
         </div>
@@ -187,7 +188,7 @@ $page_title = 'OneEMS';
         
         <div class="row">
           <div class="col">
-            <button type="submit" class="btn btn-primary btn-lg generate-script-submit">SELECT</button>
+            <button type="submit" class="btn btn-primary btn-lg generate-script-submit">Select</button>
           </div>
         </div>
         <!-- /right side -->

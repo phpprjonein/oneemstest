@@ -2042,7 +2042,7 @@ function generic_get_switch_name(){
 }
 function generic_get_switch_name_by_market($market){
     global $db2;
-    $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
+    $sql = "SELECT distinct(switch_name) FROM nodes where REPLACE(market,' ','') = '".str_replace(' ','',$market)."' ORDER BY switch_name";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

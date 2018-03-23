@@ -347,10 +347,10 @@
                 <thead>
                   <tr>        
                     <th></th>
-                    <th><b>ID</b></th>
-                    <th><b>Tech name</th>
-                    <th><b>Site#/Switch</th>
-                    <th><b>Site Name</th>
+                    <th style="display: none;"><b>ID</b></th>
+                    <th><b>Techname</th>
+                    <th><b>SiteID/Switch</th>
+                    <th><b>SiteName</th>
 					<th><b>Hostname</th>
 					<th><b>IP address</th>
                   </tr>

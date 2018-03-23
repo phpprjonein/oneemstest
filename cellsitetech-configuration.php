@@ -41,10 +41,10 @@ $page_title = 'OneEMS';
 										in Upload Path</div>
                                   	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
                                   		<div id="main-status"
-										class="alert alert-success">Configuration template stored into database Successfully</div>
+										class="alert alert-success">Configuration Template Stored Into Database Successfully</div>
                                   	<?php }elseif($_SESSION['msg'] == 'fus'){ ?>
                                   		<div id="main-status"
-										class="alert alert-success">Configuration template uploaded Successfully</div>
+										class="alert alert-success">Configuration Template Uploaded Successfully</div>
                                   	<?php }elseif($_SESSION['msg'] == 'fae'){ ?>
                                   		<div id="main-status"
 										class="alert alert-danger">

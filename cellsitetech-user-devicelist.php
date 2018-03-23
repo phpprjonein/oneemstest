@@ -15,7 +15,7 @@ if ( $_SESSION['userid'] && isset($_POST['search_term']) && trim($_POST['search_
 $userid = $_SESSION['userid'];
 $listid = $_GET['listid'];
 //$device_list = get_device_list_from_nodes($_SESSION['userid']);
-$title = get_user_mylist_name($userid,$listid);
+$title = get_user_mylist_name_by_id($listid);
 $page_title = 'OneEMS';
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ modal.children[0].addEventListener('click', function(e) {
                       <div class="panel">
                           <div class="panel-info panel-default">
                             <!-- Page title -->
-                            <div class="panel-heading panel-heading-myswtlst" > <?php if ($title == 0) echo 'My routers'; else echo $title; ?>  </div>
+                            <div class="panel-heading panel-heading-myswtlst" > <?php if ($title === "0" ) echo 'My routers'; else echo $title; ?>  </div>
                           </div>
                          	<input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">

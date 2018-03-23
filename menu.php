@@ -45,7 +45,7 @@
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>" href="cellsitetech-restorebackup.php">Backup</a></li>
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-configuration.php"); ?>" href="cellsitetech-configuration.php">Configuration</a></li> -->
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-scripting.php"); ?>" href="cellsitetech-scripting.php">Scripting</a></li> -->
-        <li class="nav-item"><a class="nav-link <?php print activemenu(array("scripting.php","scripting-process.php")); ?>" href="scripting.php">Scripting</a></li>
+        <li class="nav-item"><a class="nav-link <?php print activemenu(array("scripting.php","scripting-process.php")); ?>" href="scripting.php">Load Template</a></li>
         <li class="nav-item"><a class="nav-link <?php print activemenu("generate_script1.php"); ?>" href="generate_script1.php">Generate Script</a>
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-compliances.php"); ?>" href="cellsitetech-compliances.php">Compliances</a></li> -->
     	<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>
@@ -56,7 +56,7 @@
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-restorebackup.php"); ?>" href="switchtech-restorebackup.php">Backup</a></li>
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-configuration.php"); ?>" href="switchtech-configuration.php">Configuration</a></li>-->
     	<!-- <li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-scripting.php"); ?>" href="switchtech-scripting.php">Scripting</a></li>  -->
-        <li class="nav-item"><a class="nav-link <?php print activemenu("scripting.php"); ?>" href="scripting.php">Scripting</a></li>
+        <li class="nav-item"><a class="nav-link <?php print activemenu("scripting.php"); ?>" href="scripting.php">Load Template</a></li>
         <li class="nav-item"><a class="nav-link <?php print activemenu("generate_script1.php"); ?>" href="generate_script1.php">Generate Script</a></li>
 <!--<li class="nav-item"><a class="nav-link <?php //print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li> -->
 		<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li> 

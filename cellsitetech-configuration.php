@@ -41,10 +41,10 @@ $page_title = 'OneEMS';
 										in Upload Path</div>
                                   	<?php }elseif($_SESSION['msg'] == 'dbs'){ ?>
                                   		<div id="main-status"
-										class="alert alert-success">Configurations Saved Successfully</div>
+										class="alert alert-success">Configuration template stored into database Successfully</div>
                                   	<?php }elseif($_SESSION['msg'] == 'fus'){ ?>
                                   		<div id="main-status"
-										class="alert alert-success">File Saved Successfully</div>
+										class="alert alert-success">Configuration template uploaded Successfully</div>
                                   	<?php }elseif($_SESSION['msg'] == 'fae'){ ?>
                                   		<div id="main-status"
 										class="alert alert-danger">
@@ -157,7 +157,8 @@ $page_title = 'OneEMS';
 								<br>
 								<?php
 									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
-									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
+									//$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
+									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration"></div>';
 									$output .= '</form>'; 
 									echo $output;
 								?> 

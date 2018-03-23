@@ -125,7 +125,7 @@ include_once ('config/session_check_cellsite_tech.php');
       
         <div class="btn-group" id="ip-allocation-region-dt-filter">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Great Lakes
+          GreatLakes
           </button>
           <div class="dropdown-menu">
           <?php 

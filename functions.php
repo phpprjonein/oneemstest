@@ -2619,7 +2619,7 @@ function load_available_templates($filename){
 	}
 	function delete_ipallocation_by_subnet($region, $subnetmask){
         global $db2;
-        echo $sql = "DELETE FROM ipallocation WHERE region='$region' and subnetmask='$subnetmask'";
+        $sql = "DELETE FROM ipallocation WHERE region='$region' and subnetmask='$subnetmask'";
         $db2->query($sql);
         $db2->execute();
     }

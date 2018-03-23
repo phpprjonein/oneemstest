@@ -126,7 +126,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           ?>
           <div class="col-md-6 panel-warning panel-default" id="listedit-wrap">
             <div class="panel-heading panel-heading-editlst" id="mylist_delete">
-            <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete" style="cursor: pointer;" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></span>
+            <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete" style="cursor: pointer;" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
              <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == '0' ? 'My routers' : $switchlist['mylistname']); ?> </b>
                 <!-- Deleted selected list by drag   and drop area -->
                 <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b>

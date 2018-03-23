@@ -1621,7 +1621,7 @@ function getipvfour_details($snm)
 */
 function getipvfour_details($range){
     $range=rtrim($range);
-    if (preg_match("/",$range)){  //if cidr type mask
+    if (preg_match("/\//",$range)){  //if cidr type mask
         $dq_host = strtok("$range", "/");
         $cdr_nmask = strtok("/");
         if (!($cdr_nmask >= 0 && $cdr_nmask <= 32)){
@@ -1636,10 +1636,10 @@ function getipvfour_details($range){
         $dq_host=$dqs[0];
         $bin_nmask=dqtobin($dqs[1]);
         $bin_wmask=binnmtowm($bin_nmask);
-        if (preg_match("0",rtrim($bin_nmask, "0"))) {  //Wildcard mask then? hmm?
+        if (preg_match("/0/",rtrim($bin_nmask, "0"))) {  //Wildcard mask then? hmm?
             $bin_wmask=dqtobin($dqs[1]);
             $bin_nmask=binwmtonm($bin_wmask);
-            if (preg_match("0",rtrim($bin_nmask, "0"))){ //If it's not wcard, whussup?
+            if (preg_match("/0/",rtrim($bin_nmask, "0"))){ //If it's not wcard, whussup?
                 print("Invalid Netmask.");
                 print "$end";
                 exit ;
@@ -1649,7 +1649,7 @@ function getipvfour_details($range){
     }
     
     //Check for valid $dq_host
-    if(! preg_match('^0.',$dq_host)){
+    if(! preg_match('/^0./',$dq_host)){
         foreach( explode(".",$dq_host) as $octet ){
             if($octet > 255){
                 print("Invalid IP Address");
@@ -1673,16 +1673,16 @@ function getipvfour_details($range){
     }
     
     //Determine Class
-    if (preg_match('^0',$bin_net)){
+    if (preg_match('/^0/',$bin_net)){
         $class="A";
         $dotbin_net= "<font color=\"Green\">0</font>" . substr(dotbin($bin_net,$cdr_nmask),1) ;
-    }elseif (preg_match('^10',$bin_net)){
+    }elseif (preg_match('/^10/',$bin_net)){
         $class="B";
         $dotbin_net= "<font color=\"Green\">10</font>" . substr(dotbin($bin_net,$cdr_nmask),2) ;
-    }elseif (preg_match('^110',$bin_net)){
+    }elseif (preg_match('/^110/',$bin_net)){
         $class="C";
         $dotbin_net= "<font color=\"Green\">110</font>" . substr(dotbin($bin_net,$cdr_nmask),3) ;
-    }elseif (preg_match('^1110',$bin_net)){
+    }elseif (preg_match('/^1110/',$bin_net)){
         $class="D";
         $dotbin_net= "<font color=\"Green\">1110</font>" . substr(dotbin($bin_net,$cdr_nmask),4) ;
         $special="<font color=\"Green\">Class D = Multicast Address Space.</font>";
@@ -1692,7 +1692,7 @@ function getipvfour_details($range){
         $special="<font color=\"Green\">Class E = Experimental Address Space.</font>";
     }
     
-    if (preg_match('^(00001010)|(101011000001)|(1100000010101000)',$bin_net)){
+    if (preg_match('/^(00001010)|(101011000001)|(1100000010101000)/',$bin_net)){
         $special='<a href="http://www.ietf.org/rfc/rfc1918.txt">( RFC-1918 Private Internet Address. )</a>';
     }
     
@@ -1702,7 +1702,7 @@ function getipvfour_details($range){
 
 function binnmtowm($binin){
     $binin=rtrim($binin, "0");
-    if (!preg_match("0",$binin) ){
+    if (!preg_match("/0/",$binin) ){
         return str_pad(str_replace("1","0",$binin), 32, "1");
     } else return "1010101010101010101010101010101010101010";
 }
@@ -1726,7 +1726,7 @@ function bintoint ($binin){
 
 function binwmtonm($binin){
     $binin=rtrim($binin, "1");
-    if (!preg_match("1",$binin)){
+    if (!preg_match("/1/",$binin)){
         return str_pad(str_replace("0","1",$binin), 32, "0");
     } else return "1010101010101010101010101010101010101010";
 }

@@ -1217,7 +1217,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
         'DISTINCT(n.id)',
         'n.id',
         'n.csr_site_tech_name',
-        'CONCAT(n.csr_site_id,"#",n.switch_name) as csr_site_id',
+        'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
         'n.deviceIpAddr',
@@ -1322,7 +1322,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
         'DISTINCT(n.id)',
         'n.id',
         'n.csr_site_tech_name',
-        'CONCAT(n.csr_site_id,"#",n.switch_name) as csr_site_id',
+        'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
         'n.deviceIpAddr',
@@ -1372,7 +1372,11 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
     
     $sql_order = "";
     if ($order_col != ''){
-        $sql_order = " ORDER BY " . $columns[$order_col];
+        if($order_col == 3){
+            $sql_order = " ORDER BY csr_site_id";
+        }else{
+            $sql_order = " ORDER BY " . $columns[$order_col];
+        }
     }
     
     if ($order_dir != ''){

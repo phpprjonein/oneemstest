@@ -26,7 +26,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-                { "data": "id" },     
+                { "data": "id", "visible": false  },     
                 { "data": "csr_site_tech_name" },            
                 { "data": "csr_site_id" },
                 { "data": "csr_site_name" }, 
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 { "data": "deviceIpAddr" }
         ],
         
-        "order": [[1, 'asc']],
+        "order": [[2, 'asc']],
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
              // $(row).addClass('device_row'); 
@@ -276,7 +276,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-                { "data": "id" },     
+                { "data": "id", "visible": false },    
                 { "data": "csr_site_tech_name" },            
                 { "data": "csr_site_id" },
                 { "data": "csr_site_name" }, 
@@ -284,7 +284,7 @@ $(document).ready(function() {
                 { "data": "deviceIpAddr" }
         ],
         
-        "order": [[1, 'asc']],
+        "order": [[2, 'asc']],
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
              // $(row).addClass('device_row'); 

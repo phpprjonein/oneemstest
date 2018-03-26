@@ -128,7 +128,7 @@
           ?>
           <div class="col-md-6 panel-warning panel-default" id="listedit-wrap">
             <div class="panel-heading panel-heading-editlst" id="mylist_delete">
-            <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete" style="cursor: pointer;" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
+            <span type="button" class="box box-danger border pull-right btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('switchtech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
              <b>Edit List&nbsp;:&nbsp;<?php echo $switchlist['mylistname']; ?></b>
                 <!-- Deleted selected list by drag   and drop area -->
                 <b><span type="button" class="box box-danger border pull-right btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b>
@@ -159,6 +159,7 @@
           <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_SESSION['switchlistid']; ?>">
           <input type="hidden" name="hidd_userid" id="hidd_userid" value="<?php echo  $_SESSION['userid']; ?>">
           <?php
+          unset($_SESSION['switchlistid']);
           }
           ?>
           </div>

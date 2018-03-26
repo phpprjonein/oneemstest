@@ -133,19 +133,6 @@ $page_title = 'OneEMS';
             </div>
 <!-- /select region options -->
 
-<!-- select switch type options -->
-			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
-            <div class="form-group f12 required" data-fid="f12">
-              <label class="control-label" for="f12">Select Switch Name</label>
-              <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
-              <option value="">- SELECT  Switch Name -</option>
-			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
-                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
-			   <?php }; ?>			
-              </select>
-            </div>
-<!-- /select switch type options -->
-
 <!-- select market options -->
 			<?php  $configtmpddwndata = generic_get_market(); ?>
             <div class="form-group f13 required" data-fid="f13">
@@ -159,6 +146,18 @@ $page_title = 'OneEMS';
             </div>
 <!-- /select market options -->
 
+<!-- select switch type options -->
+			<?php  $configtmpddwndata = generic_get_switch_name(); ?>
+            <div class="form-group f12 required" data-fid="f12">
+              <label class="control-label" for="f12">Select Switch Name</label>
+              <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
+              <option value="">- SELECT  Switch Name -</option>
+			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?> 			  
+                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option> 
+			   <?php }; ?>			
+              </select>
+            </div>
+<!-- /select switch type options -->
 
             <div class="form-group submitf0" data-fid="f0" style="position: relative;">
               <input type="submit" name="act" class="btn config-submit" value="NEXT">

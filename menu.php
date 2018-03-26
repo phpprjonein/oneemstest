@@ -48,6 +48,15 @@
         <li class="nav-item"><a class="nav-link <?php print activemenu(array("scripting.php","scripting-process.php")); ?>" href="scripting.php">Load Template</a></li>
         <li class="nav-item"><a class="nav-link <?php print activemenu("generate_script1.php"); ?>" href="generate_script1.php">Generate Script</a>
     	<!--<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-compliances.php"); ?>" href="cellsitetech-compliances.php">Compliances</a></li> -->
+    	<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  <?php print activemenu(array("cellsitetech-ip-management.php", "cellsitetech-discovery.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Discovery
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="cellsitetech-ip-management.php">Discovery IPs</a>
+          <a class="dropdown-item" href="cellsitetech-discovery.php">Discovery Results</a>
+        </div>
+      </li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>
     <?php }elseif(check_user_authentication(array(2,5,6,7))){  ?>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>" href="switchtech-dashboard.php">Network Elements</a></li>
@@ -59,6 +68,16 @@
         <li class="nav-item"><a class="nav-link <?php print activemenu("scripting.php"); ?>" href="scripting.php">Load Template</a></li>
         <li class="nav-item"><a class="nav-link <?php print activemenu("generate_script1.php"); ?>" href="generate_script1.php">Generate Script</a></li>
 <!--<li class="nav-item"><a class="nav-link <?php //print activemenu("switchtech-compliances.php"); ?>" href="switchtech-compliances.php">Compliances</a></li> -->
+    	<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  <?php print activemenu(array("switchtech-ip-management.php", "switchtech-discovery.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Discovery
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="switchtech-ip-management.php">Discovery IPs</a>
+          <a class="dropdown-item" href="switchtech-discovery.php">Discovery Results</a>
+        </div>
+      </li>
+
 		<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li> 
     <?php } ?>
   <?php  } ?>

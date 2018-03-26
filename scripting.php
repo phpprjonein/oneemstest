@@ -48,7 +48,7 @@ $page_title = 'OneEMS';
         <div class="jf-form">
 
 <!-- router scripting selection form div -->
-            <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>
+            <!-- <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>  -->
             <input type="hidden" name="method" value="validateForm">
             <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
 

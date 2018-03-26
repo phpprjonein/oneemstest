@@ -122,7 +122,7 @@ $(document).ready(function() {
     			'templname':$('#cellsitech-config #upload_filename').val(), 
     		}).done(function( data ) {
     			if(data == 'exist'){
-    	        	if(confirm("Template name already exist, Do you want to overwrite?")){
+    	        	if(confirm("Template already exist, Are you  sure do you want to overwrite it ?")){
     	        		$('#config_file_uploader').submit();
     	        		return true;
     	        	}

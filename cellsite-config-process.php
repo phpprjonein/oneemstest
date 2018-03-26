@@ -4,8 +4,9 @@ include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors', 'ON');    
 if($_POST['action'] == 'Save Configuration'){
-    $db2 = new db2();
     $templname = $_POST['templname'];
+    delete_templname_already_exist($templname);
+    $db2 = new db2();
     $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) VALUES';
     $oc = 0;
     foreach ($_POST['loop'] as $key => $val){

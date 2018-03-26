@@ -2569,6 +2569,19 @@ function load_available_templates($filename){
 	    $resultset = $db2->resultset();
 	    return $resultset;
 	}
+	function check_templname_already_exist($templname){
+	    global $db2;
+	    $sql = "SELECT count(*) as cnt FROM configtemplate where templname = '".$templname."'";
+	    $db2->query($sql);
+	    $resultset = $db2->resultset();
+	    return $resultset;
+	}
+	function delete_templname_already_exist($templname){
+	    global $db2;
+	    $sql = "DELETE FROM configtemplate where templname = '".$templname."'";
+	    $db2->query($sql);
+	    $db2->execute();
+	}
 	function config_get_templates_from_templname($templname){
 	    global $db2;
 	    $sql = "SELECT distinct(elemid),elemvalue, editable FROM configtemplate where templname='$templname' order by elemid asc";

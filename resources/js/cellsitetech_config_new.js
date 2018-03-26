@@ -117,8 +117,23 @@ $(document).ready(function() {
 		        });
 		    }, 4000);
         	return false;
+        }else{
+    		$.post( "ip-mgt-process.php", { type: "templduplicateschk", 
+    			'templname':$('#cellsitech-config #upload_filename').val(), 
+    		}).done(function( data ) {
+    			if(data == 'exist'){
+    	        	if(confirm("Template name already exist, Do you want to overwrite?")){
+    	        		$('#config_file_uploader').submit();
+    	        		return true;
+    	        	}
+    	        	return false;
+    			}else{
+    				$('#config_file_uploader').submit();
+	        		return true;
+    			}
+    		});
         }
-        return true;
+        return false;
     });
 	
 	

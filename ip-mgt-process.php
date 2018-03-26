@@ -132,7 +132,12 @@ if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['qu
     echo generic_get_usernames_ac_fn_ln_ro($query);
 }
 
-
+if(isset($_POST['type']) && $_POST['type'] == 'templduplicateschk' && isset($_POST['templname']) && $_POST['templname'] != ''){
+    $resultset = check_templname_already_exist($_POST['templname']);
+    if($resultset[0]['cnt'] > 0){
+        echo 'exist';
+    }
+}
 
 if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_tech_name'])){
     echo get_csr_tech_mgr_name_from_tech_name($_POST['csr_tech_name']);

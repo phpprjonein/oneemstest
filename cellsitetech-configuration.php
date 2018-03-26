@@ -11,7 +11,12 @@ if (isset($_GET['clear'])) {
 }
 
 user_session_check();
+
+if ($_SESSION['userlevel'] == 1 )
 include_once ('config/session_check_cellsite_tech.php');
+else  if ($_SESSION['userlevel'] == 2 )
+include_once ('config/session_check_switch_tech.php');
+
 
 $page_title = 'OneEMS';
 

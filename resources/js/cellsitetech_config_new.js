@@ -62,7 +62,7 @@ $(document).ready(function() {
 	*/
 	
 	$(document).on('change', "#cellsitech-config select", function(event) {
-				var filename = 'Golden_'; sep = '';
+				var filename = ''; sep = '';
 				$("#cellsitech-config select").each(function()
 				{
 					if($(this).val() !=''){
@@ -72,7 +72,7 @@ $(document).ready(function() {
 					}
 				});
 				filename = filename.replace(/[^a-z0-9_-]/gi,'');
-				if(filename != 'Golden_'){
+				if(filename != ''){
 					$('#template_info').removeClass('d-none');
 					$('#cellsitech-config #template_info #filename').html(filename);
 					$('#cellsitech-config #upload_filename').val(filename);

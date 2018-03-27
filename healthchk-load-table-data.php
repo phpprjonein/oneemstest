@@ -4,7 +4,7 @@ $(document).ready(function(){
             		var myModal = $('#mycmdModal');
             		myModal.find('.modal-content').css('border', 'none'); 
                     //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
-                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;"><b>Running health checks. Takes several minutes</b></div>');
+                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
                     myModal.modal('show'); 
                 	$.ajax({url: $(this).attr('href'), success: function(result){
                 		var myModal = $('#mycmdModal');
@@ -119,7 +119,7 @@ $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['loge
 											  echo $display;}; ?></td>
                                             </tr>
                                             <tr>                  
-                                              <td><b>5000 Byte Ping</b></td>                                              
+                                              <td><b>VRF</b></td>                                              
                                               <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['fivethsndbyteping']['message'].'</span>';
 echo $display; ?> 

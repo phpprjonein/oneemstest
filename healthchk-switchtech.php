@@ -3,8 +3,8 @@ $(document).ready(function(){
 			$(document).on('click', '.anchorcmd', function(event) {
             		var myModal = $('#mycmdModal');
             		myModal.find('.modal-content').css('border', 'none'); 
-                    //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
-                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;"><b>Running health checks. Takes several minutes</b></div>');
+                    myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
+                    //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;"><b>Running health checks. Takes several minutes</b></div>');
                     myModal.modal('show'); 
                 	$.ajax({url: $(this).attr('href'), success: function(result){
                 		var myModal = $('#mycmdModal');
@@ -38,7 +38,7 @@ include 'functions.php';
             $url_send =" http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";  
  	          $url_final = 'http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/'.$deviceid;			
             $output = json_decode(sendPostData($url_final),true);
-            //insertorupdate_healthchk_info($deviceid, $output);
+            insertorupdate_healthchk_info($deviceid, $output);
 	         $_SESSION['deviceidswusr'] = $deviceid;
                         
                         ?>

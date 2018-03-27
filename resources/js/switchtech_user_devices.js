@@ -127,7 +127,7 @@ $(document).ready(function() {
                           $('#detail_'+id).html(resdata);
                       }
                   });
-                  ajs = $.ajax({
+                  /*ajs = $.ajax({
                       type:"get",
                       url:"healthchk-switchtech.php",
                       data: {deviceid:id, userid:$('#userid').val()},
@@ -140,7 +140,7 @@ $(document).ready(function() {
                       success: function(resdata){
                           $('#detail_'+id).html(resdata);
                       }
-                  }); 
+                  });*/ 
             }
           } 
       });

@@ -25,6 +25,10 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
 
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'IP-Validate') {
     $ipaddress = $_POST['subnet'];
+    $resultset = check_subnet_already_exist($ipaddress.'/'.$_POST['mask']);
+    if($resultset[0]['cnt'] > 0){
+        echo 'duplicates'; exit();
+    }
     if($_POST['type'] == 'IPv4' && filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)){
        echo 'success';
     }elseif($_POST['type'] == 'IPv6' && filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)){

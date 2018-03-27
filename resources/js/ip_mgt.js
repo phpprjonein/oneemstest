@@ -183,10 +183,24 @@ $(document).ready(function() {
     			req_err = true;
     		}
     		if(($(this).text() == 'COMPUTE' || $(this).text() == 'ADD') && $('#exampleModalIPM #inputSubnet').val() != ""){
+    			var req_err = false;
     			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate", type: $('#v-pills-tab .active').html(), subnet: $("#exampleModalIPM #inputSubnet").val(), mask: $("#exampleModalIPM #inputMask").val()})
 	    		  .done(function( data ) {
-	    			  if(data != 'success'){
+	    			  if(data != 'success' && data != 'duplicates' ){
 	    	    			$('#exampleModalIPM #status').append("<strong>Error!</strong> Subnet field " + $('#v-pills-tab .active').html() + " address is Invalid.<br/>");
+	    	    			$('#exampleModalIPM #status').addClass('alert-danger');
+	    	    			req_err = true;
+	    	        		if(req_err){ 
+	    	        			$('#exampleModalIPM #status').show();
+	    	        		    window.setTimeout(function() {
+	    	        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    	        		            $(this).hide(); 
+	    	        		        });
+	    	        		    }, 4000);
+	    	        			return false;
+	    	        		}
+	    			  }else if(data == 'duplicates'){
+	    				    $('#exampleModalIPM #status').append("<strong>Error!</strong> Subnet field " + $('#v-pills-tab .active').html() + " address is already exist.<br/>");
 	    	    			$('#exampleModalIPM #status').addClass('alert-danger');
 	    	    			req_err = true;
 	    	        		if(req_err){ 

@@ -2576,6 +2576,13 @@ function load_available_templates($filename){
 	    $resultset = $db2->resultset();
 	    return $resultset;
 	}
+	function check_subnet_already_exist($ipaddress){
+	    global $db2;
+	    $sql = "SELECT count(*) as cnt FROM ipallocation where subnetmask = '".$ipaddress."'";
+	    $db2->query($sql);
+	    $resultset = $db2->resultset();
+	    return $resultset;
+	}
 	function delete_templname_already_exist($templname){
 	    global $db2;
 	    $sql = "DELETE FROM configtemplate where templname = '".$templname."'";

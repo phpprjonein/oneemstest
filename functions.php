@@ -2222,7 +2222,7 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '') {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'n.id',
+        'distinct(n.id)',
         'n.csr_site_id',
         'n.csr_site_name',
         'n.devicename',
@@ -2231,7 +2231,7 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '') {
         'n.deviceseries',
         'n.nodeVersion'        
     ); 
-    $sql_count = "SELECT COUNT(*) ";
+    $sql_count = "SELECT COUNT(distinct(n.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
     $sql_condition = " FROM userdevices ud

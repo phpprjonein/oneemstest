@@ -20,7 +20,7 @@ include_once ('config/session_check_cellsite_tech.php');
 <html>
     <head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/cellsitetech_user_devices.js?t=<?php echo date('his'); ?>"></script>
  </head>
      <body>
         <!-- The Modal -->

@@ -7,7 +7,7 @@ $(document).ready(function() {
               url:"healthchk-switchtech.php",
               data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
               beforeSend: function(){
-            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several seconds...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
               },
               complete: function() {
                   $thisdiv.addClass('loaded');

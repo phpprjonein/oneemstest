@@ -226,6 +226,11 @@ $(document).ready(function() {
     $("#marketname").val($(this).data('market')); 
     $("#market-region").text($(this).data('market')); 
     $(location).attr("href","switchtech-dashboard.php?markets=" + $(this).data('market'))
+    if($("#hidd_mylistid").length > 0){
+    	$(location).attr("href","switchtech-dashboard.php?markets=" + $(this).data('market') + "&switchlistid=" + $("#hidd_mylistid").val()+"&action=editmylist");
+    }else{
+    	$(location).attr("href","switchtech-dashboard.php?markets=" + $(this).data('market'))
+    }
     
   });
 

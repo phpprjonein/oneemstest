@@ -224,8 +224,11 @@ $(document).ready(function() {
   $(".map_region").click(function(marketid) {
     $("#marketname").val($(this).data('market')); 
     $("#market-region").text($(this).data('market')); 
-    $(location).attr("href","cellsitetech-dashboard.php?markets=" + $(this).data('market'))
-    
+    if($("#hidd_mylistid").length > 0){
+    	$(location).attr("href","cellsitetech-dashboard.php?markets=" + $(this).data('market') + "&switchlistid=" + $("#hidd_mylistid").val()+"&action=editmylist");
+    }else{
+    	$(location).attr("href","cellsitetech-dashboard.php?markets=" + $(this).data('market'))
+    }
   });
 
     // if ($.session.get('map_show_status') !== undefined) {

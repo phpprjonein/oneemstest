@@ -110,16 +110,6 @@ $page_title = 'OneEMS';
             </div>
 <!-- /select region options -->
 
-<!-- select switch type options -->
-            <div class="form-group f12 required" data-fid="f12">
-              <label class="control-label" for="f12">Select Switch Type</label>
-              <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true" disabled>
-                <option value="<?php echo $_POST['f12'];?>"><?php echo $_POST['f12'];?></option> 
-                <option></option>
-              </select>
-            </div>
-<!-- /select switch type options -->
-
 <!-- select market options -->
             <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
@@ -129,6 +119,16 @@ $page_title = 'OneEMS';
               </select>
             </div>
 <!-- /select market options -->
+
+<!-- select switch type options -->
+            <div class="form-group f12 required" data-fid="f12">
+              <label class="control-label" for="f12">Select Switch Type</label>
+              <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true" disabled>
+                <option value="<?php echo $_POST['f12'];?>"><?php echo $_POST['f12'];?></option> 
+                <option></option>
+              </select>
+            </div>
+<!-- /select switch type options -->
 
             <div class="clearfix"></div>
           </form>

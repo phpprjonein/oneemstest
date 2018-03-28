@@ -2026,6 +2026,13 @@ function generic_get_market(){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+function generic_get_market_by_region($region){
+    global $db2;
+    $sql = "SELECT distinct(market) FROM nodes where region like '".$region."' ORDER BY market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
 function generic_get_deviceseries(){
     global $db2;
     $sql = "SELECT distinct(deviceseries) FROM nodes ORDER BY deviceseries";
@@ -2036,6 +2043,22 @@ function generic_get_deviceseries(){
 function generic_get_switch_name(){
     global $db2;
     $sql = "SELECT distinct(switch_name) FROM nodes ORDER BY switch_name";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function generic_get_switch_name_by_region_market($region = '', $market = ''){
+    global $db2;
+    
+    $sql_condition = 'where 1';
+    
+    if(!empty($region))
+        $sql_condition .= " AND region like '".$region."' ";
+    
+    if(!empty($market))
+        $sql_condition .= " AND market like '".$market."' ";
+        
+    $sql = "SELECT distinct(switch_name) FROM nodes ".$sql_condition." ORDER BY switch_name";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

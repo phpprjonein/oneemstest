@@ -3,6 +3,27 @@ include "classes/db2.class.php";
 include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors',1);
+if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-market') {
+    $region = $_POST['region'];
+    $markets = generic_get_market_by_region($region);
+    $output = '<option value="">- SELECT  Market -</option>';
+    foreach ($markets['result'] as $key => $val):
+    $output .= '<option value="'.$val['market'].'">'.$val['market'].'</option>';
+    endforeach;
+    echo $output;
+}
+
+if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-switch') {
+    $region = $_POST['region'];
+    $market = $_POST['market'];
+    $switch_names = generic_get_switch_name_by_region_market($region, $market);
+    $output = '<option value="">- SELECT  Switch Name -</option>';
+    foreach ($switch_names['result'] as $key => $val):
+    $output .= '<option value="'.$val['switch_name'].'">'.$val['switch_name'].'</option>';
+    endforeach;
+    echo $output;
+}
+
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['region']) && empty($_POST['action'])) {
     $market_list = get_ipallocation_market_list($_POST['region']);
     foreach ($market_list['result'] as $mkey => $mvalue) {

@@ -82,6 +82,32 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$(document).on('change', "#select_region", function(event) {
+    		$.post( "ip-mgt-process.php", { type: "autocomplete", 
+    			'region':$("#select_region").val(),
+    			'case':'refresh-market'
+    		}).done(function( data ) {
+    			$("#select_market").html(data);	
+    		});
+    		$.post( "ip-mgt-process.php", { type: "autocomplete", 
+    			'region':$("#select_region").val(),
+    			'market':$("#select_market").val(),
+    			'case':'refresh-switch'
+    		}).done(function( data ) {
+    			$("#select_switch_name").html(data);	
+    		});
+	});
+	
+	$(document).on('change', "#select_market", function(event) {
+		$.post( "ip-mgt-process.php", { type: "autocomplete", 
+			'region':$("#select_region").val(),
+			'market':$("#select_market").val(),
+			'case':'refresh-switch'
+		}).done(function( data ) {
+			$("#select_switch_name").html(data);	
+		});
+	});
+	
     $(document).on('click', "#cellsitech-config .config-submit", function(event) {
     	var req_err = false;
     	$("#cellsitech-config select").each(function(){

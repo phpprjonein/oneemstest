@@ -104,7 +104,6 @@ $page_title = 'OneEMS';
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
               <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true" disabled>
-                <option value="">Great Lakes</option>
                 <option value="<?php echo $_POST['f11'];?>"><?php echo $_POST['f11'];?></option> 
               </select>
             </div>

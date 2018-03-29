@@ -108,7 +108,7 @@ if($sso_flag == 1){
      <header class="main-header">
           <div class="nav">
                 <div class="pull-left box"><a class="navbar-brand" href="#" >
-                        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
+                        <img src="resources/img/ncmlogo.png"  height = "24px"  alt="NCM Logo"/>
                   </a>
                 </div>
           </div>
@@ -154,8 +154,8 @@ if($sso_flag == 1){
         <!--
         
         <a href ="#" class=" launch-modal" ><p class="message">Forgot your password?</p> </a>
--->       <a href="#"><p class="message">Forgot your password?</p></a>
-
+       <a href="#"><p class="message">Forgot your password?</p></a>
+-->
       
       </form>
     </div>

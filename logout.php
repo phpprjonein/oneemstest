@@ -32,6 +32,7 @@ user_session_check();
 						if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
 						    $location_href = get_landing_page();
 						}else{
+                                                    session_destroy();
 						    header('Location:index.php' );
 						    exit;
 						}

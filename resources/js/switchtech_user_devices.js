@@ -177,6 +177,7 @@ $(document).ready(function() {
 	        {
             "className":      'center',
             "data":           null,
+            "orderable":      false,
             "defaultContent": "<button type='button' id = 'backupbtn' class='btn btn-primary' data-toggle='modal' data-target='#backupModal' data-remote='remote-page.html'>Backup </button>"
 			// "defaultContent":   "<input id='btnDetails' class='btn btn-success' width='25px' value='Get Details' />"
 			} 

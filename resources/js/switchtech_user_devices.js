@@ -201,7 +201,7 @@ $(document).ready(function() {
 	  		$("#backup-restore-list-dt-filter a").click(function(){			
 	    		$("#backup-restore-list-dt-filter .btn").html($(this).text());
 	    		var listname = '';
-	    		if($(this).text() != 'My List'){
+	    		if($(this).text() != 'My routers'){
 	    			listname = $(this).text();
 	    		}
 	    		

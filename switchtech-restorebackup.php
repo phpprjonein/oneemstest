@@ -20,7 +20,7 @@ include_once ('config/session_check_switch_tech.php');
 <html>
     <head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/switchtech_user_devices.js?t=".<?php echo date('his'); ?>></script>
+   <script src="resources/js/switchtech_user_devices.js?t=<?php echo date('his'); ?>"></script>
  </head>
      <body>
         <!-- The Modal -->
@@ -30,7 +30,7 @@ include_once ('config/session_check_switch_tech.php');
 
 			  <!-- Modal Header -->
 		<div class="modal-header" id="restoremodalhdr">
-        <h5 class="modal-title text-center"  id="modalLabelLarge"><span id = "restoremodalhdrtxt"><strong>Back up to be restored - <span id="bkup-fileid"></span><strong></span></h5>
+        <h5 class="modal-title text-center"  id="modalLabelLarge"><span id = "restoremodalhdrtxt"><strong>Back up to be restored - <span id="bkup-fileid"></span></strong></span></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

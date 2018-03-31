@@ -30,7 +30,8 @@ include 'functions.php';
 ?>
     <?php  
             $deviceid = $_GET['deviceid'];
-            $result = select_healthchk_info(4033);
+            //$result = select_healthchk_info(4033);
+			$result = select_healthchk_info($deviceid);
             
             //print '<pre>';
             //print_r($result);

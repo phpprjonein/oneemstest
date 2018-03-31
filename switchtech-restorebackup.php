@@ -95,7 +95,7 @@ include_once ('config/session_check_switch_tech.php');
 						  -->
 						  <div class="btn-group" id="backup-restore-list-dt-filter">						  
 						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	
-                           My List 						  
+                           My routers 						  
 						  </button>
 						  <div class="dropdown-menu">
 						  <?php 
@@ -108,7 +108,7 @@ include_once ('config/session_check_switch_tech.php');
 						  endif;
 						  endforeach;
 						  if(count($switchtech_list) > 0): ?>
-          					<a class="dropdown-item" href="#">My List</a>
+          					<a class="dropdown-item" href="#">My routers</a>
           					<?php endif; 
 						 
                             ?>

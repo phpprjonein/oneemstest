@@ -92,22 +92,18 @@ include_once ('config/session_check_cellsite_tech.php');
 						  -->
 						  <div class="btn-group" id="backup-restore-list-dt-filter">						  
 						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	
-                           My List 						  
+                           My routers 						  
 						  </button>
 						  <div class="dropdown-menu">
 						  <?php 
 						  $celltuser_list = get_celltechusers_list($_SESSION['userid']);
 						  foreach ($celltuser_list as $key => $value):
-							if(isset($value['listname'])):          
+							if(isset($value['listname'])):
 						  ?>
 						  <a class="dropdown-item" href="#"><?php echo ($value['listname'] == "0") ? 'My routers' : $value['listname'] ; ?></a>
 						  <?php 
 						  endif;
 						  endforeach;
-						  if(count($celltuser_list) > 0): ?>
-          					<a class="dropdown-item" href="#">My List</a>
-          					<?php endif; 
-						 
                             ?>
 						  </div>
 						</div>

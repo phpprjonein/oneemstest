@@ -75,7 +75,7 @@ echo $display; ?></td>
                                             
                                             <tr>                  
                                               <td><b>Environmental</b></td>
-                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=environment&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="far fa-file-alt fa-2x text-primary"></i>​<?php $color = ($output['environmental']['R'] == 0) ? 'green':'red';  
+                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=environment&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img><i class="far fa-file-alt fa-2x text-primary"></i>​<?php $color = ($output['environmental']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['environmental']['message'].'</span>';
 echo $display; ?></td>
                                               <td><b>Config Register</b></td>
@@ -145,7 +145,7 @@ echo $display; ?></td>
 $display ="<span style='color:".$color."'>".$output['mplsneighbors']['message'].'</span>';
 echo $display; ?></td>
                                               <td><b>IPV6 BGP Neighbors</b></td>
-                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="far fa-file-alt fa-2x text-primary"></i>​<?php
+                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img><i class="far fa-file-alt fa-2x text-primary"></i>​<?php
 $color = ($output['bgpvsixneighbors']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bgpvsixneighbours']['neighbours'].'</span>';
 echo $display; ?></td>

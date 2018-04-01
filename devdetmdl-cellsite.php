@@ -2,6 +2,11 @@
         $command  = $_GET['commandname'];
         $deviceid = $_GET['deviceid'];
        
+        $result = select_healthchk_info($deviceid);
+        $output = '{"bfdsession":"'.$result['bfdsession'].'","bgpvfourneighbors":"'.$result['bgpvfourneighbors'].'","bgpvsixneighbours":"'.$result['bgpvsixneighbours'].'","bgpvsixroutes":"'.$result['bgpvsixroutes'].'","bootstatement":"'.$result['bootstatement'].'","buffers":"'.$result['buffers'].'","configregister":"'.$result['configregister'].'","cpuutilization":"'.$result['cpuutilization'].'","environmental":"'.$result['environmental'].'","fivethsndbyteping":"'.$result['fivethsndbyteping'].'","freememory":"'.$result['freememory'].'","interfacecounters":"'.$result['interfacecounters'].'","interfacestates":"'.$result['interfacestates'].'","iosversion":"'.$result['iosversion'].'","logentries":"'.$result['logentries'].'","mplsinterfaces":"'.$result['mplsinterfaces'].'","mplsneighbors":"'.$result['mplsneighbors'].'","platform":"'.$result['platform'].'","ran":"'.$result['ran'].'","twothsndbyteping":"'.$result['twothsndbyteping'].'","xconnect":"'.$result['xconnect'].'"}';
+        $output = json_decode($output,true);
+        
+        /*
         switch($command) { 
           
             case 'freememory':
@@ -77,7 +82,7 @@
 
          default: 
           break;
-        }   
+        }   */
                   /*    Ends  */    
         ?>
 <div class="modal-header">
@@ -89,6 +94,7 @@
 
 <div class="modal-body">    
 <?php
+        /*
         if (isset($url)) {
            if (!$data = @file_get_contents($url)) {
              $error = error_get_last(); 
@@ -96,8 +102,8 @@
            } 
         } else 
             $data = "CLI command needs is in progress.";
-          
-     echo "<span style='font-family:courier;font-size:12px;font-weight:500;'> $data</span>";
+        */  
+        echo '<span style="font-family:courier;font-size:12px;font-weight:500;">'.$output[$command].'</span>';
 ?>  
 </div>
 <div class="modal-footer">

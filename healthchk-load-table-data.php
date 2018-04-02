@@ -59,102 +59,79 @@ $userid = $_GET['userid'];
                                             <tr>                  
                                               <td><b>IOS Version </b></td>
                                               <td>
-<?php if(!empty($output['iosversion']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=iosversion&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png"  alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['iosversion']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['iosversion']['message'].'</span>';echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>CPU Utilization</b></td>
                                               <td>
-<?php if(!empty($output['cpuutilization']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=cpuutilization&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"></img></a><?php $color = ($output['cpuutilization']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['cpuutilization']['message'].'</span>';
-echo $display; ?>  
-<?php endif; ?>
+echo $display; ?>
 </td>
                                               <td><b>Free Memory</b> </td>
                                               <td>
-<?php if(!empty($output['freememory']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=freememory&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['freememory']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['freememory']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                             </tr>
                                             <tr>                  
                                               <td><b>Buffers</b></td>
                                               <td>
-<?php if(!empty($output['buffers']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=buffers&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['buffers']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['buffers']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>Boot statement</b></td>
                                               <td>
-<?php if(!empty($output['bootstatement']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bootstatement&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['bootstatement']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bootstatement']['message'].'</span>';
 echo $display; ?> 
-<?php endif; ?>
 </td>
                                               <td><b>Platform </b></td>
                                               <td>
-<?php if(!empty($output['platform']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['platform']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['platform']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                             </tr>
                                             
                                             <tr>                  
                                               <td><b>Environmental</b></td>
                                               <td>
-<?php if(!empty($output['environmental']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=environmental&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['environmental']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['environmental']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>Config Register</b></td>
                                               <td>
-<?php if(!empty($output['configregister']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=configregister&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['configregister']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['configregister']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>Interface Counters</b> </td>
                                               <td>
-<?php if(!empty($output['interfacecounters']['count'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=interfacecounters&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['interfacecounters']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['interfacecounters']['count'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                             </tr>
                                             <tr>                  
                                               <td><b>2000 Byte Ping</b></td>                                              
                                               <td>
-<?php if(!empty($output['twothsndbyteping']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=twothsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['twothsndbyteping']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['twothsndbyteping']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?> 
 </td>
 
                                               <td><b>BFD Sessions</b></td>
                                               <td>
-<?php if(!empty($output['bfdsession']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bfdsession&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['bfdsession']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bfdsession']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
 											  <td><b>Log Entries</b></td>
                                               <td>
-<?php if(!empty($output['bfdsession']['message'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=logentries&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php if (isset($output['logentries']['buffer_logging']['R'])){
 													$color = ($output['logentries']['buffer_logging']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>"." Buffer Logging : ".$output['logentries']['buffer_logging']['value'].'</span>';
@@ -163,88 +140,69 @@ $display ="<span style='color:".$color."'>"." Buffer Logging : ".$output['logent
 												  $color = ($output['logentries']['trap_logging']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['logentries']['trap_logging']['value'].'</span>';
 											  echo $display;}; ?>
-<?php endif; ?>											  
 											  </td>
                                             </tr>
                                             <tr>                  
                                               <td><b>VRF</b></td>                                              
                                               <td>
-<?php if(!empty($output['fivethsndbyteping']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['fivethsndbyteping']['message'].'</span>';
 echo $display; ?> 
-<?php endif; ?>
 </td>
                                               <td><b>Interface State</b></td>
                                               <td>
-<?php if(!empty($output['interfacestates']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=interfacestates&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['interfacestates']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['interfacestates']['message'].'</span>';
 echo $display; ?> 
-<?php endif; ?>
 </td>
                                               <td><b>Xconnect</b></td>
                                               <td>
-<?php if(!empty($output['xconnect']['count'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=xconnect&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['xconnect']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['xconnect']['count'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                             </tr>
                                             <tr>                  
                                               <td><b>MPLS Interfaces</b></td>                                              
                                               <td>
-<?php if(!empty($output['mplsinterfaces']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=mplsinterfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['mplsinterfaces']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['mplsinterfaces']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>IPV4 BGP Neighbors</b></td>
                                               <td>
-<?php if(!empty($output['bgpvfourneighbors']['neighbours'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvfourneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['bgpvfourneighbors']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bgpvfourneighbors']['neighbours'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>IPV4 BGP Routes</b></td>
                                               <td>
-<?php if(!empty($output['ran']['count'])): ?>                                              
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=ran&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a> <?php
 $color = ($output['ran']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['ran']['count'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td> 
                                             </tr>                  
                                             <tr>   
                                               <td><b>MPLS Neighbors</b></td>                                              
                                               <td>
-<?php if(!empty($output['mplsneighbors']['message'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['mplsneighbors']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['mplsneighbors']['message'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>IPV6 BGP Neighbors</b></td>
                                               <td>
-<?php if(!empty($output['bgpvsixneighbours']['neighbours'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixneighbours&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php
 $color = ($output['bgpvsixneighbors']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bgpvsixneighbours']['neighbours'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                               <td><b>IPV6 BGP Routes</b></td>
                                               <td>
-<?php if(!empty($output['bgpvsixroutes']['count'])): ?>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixroutes&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a> <?php
 $color = ($output['bgpvsixroutes']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bgpvsixroutes']['count'].'</span>';
 echo $display; ?>
-<?php endif; ?>
 </td>
                                             </tr>                  
                                             <tr>  

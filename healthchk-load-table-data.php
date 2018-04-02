@@ -35,7 +35,8 @@ $userid = $_GET['userid'];
             //print '<pre>';
             //print_r($result);
             //die;
-            $output = '{"bfdsession":"'.$result['bfdsession'].'","bgpvfourneighbors":"'.$result['bgpvfourneighbors'].'","bgpvsixneighbours":"'.$result['bgpvsixneighbours'].'","bgpvsixroutes":"'.$result['bgpvsixroutes'].'","bootstatement":"'.$result['bootstatement'].'","buffers":"'.$result['buffers'].'","configregister":"'.$result['configregister'].'","cpuutilization":"'.$result['cpuutilization'].'","environmental":"'.$result['environmental'].'","fivethsndbyteping":"'.$result['fivethsndbyteping'].'","freememory":"'.$result['freememory'].'","interfacecounters":"'.$result['interfacecounters'].'","interfacestates":"'.$result['interfacestates'].'","iosversion":"'.$result['iosversion'].'","logentries":"'.$result['logentries'].'","mplsinterfaces":"'.$result['mplsinterfaces'].'","mplsneighbors":"'.$result['mplsneighbors'].'","platform":"'.$result['platform'].'","ran":"'.$result['ran'].'","twothsndbyteping":"'.$result['twothsndbyteping'].'","xconnect":"'.$result['xconnect'].'"}';
+            $output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"fivethsndbyteping":'.$result['fivethsndbyteping'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
+            //die;
             $output = json_decode($output,true); 
             //print_r($output);
             //die;
@@ -59,7 +60,7 @@ $userid = $_GET['userid'];
                                               <td><b>IOS Version </b></td>
                                               <td>
 <?php if(!empty($output['iosversion']['message'])): ?>
-<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=showversion&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png"  alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['iosversion']['R'] == 0) ? 'green':'red';  
+<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=iosversion&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png"  alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['iosversion']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['iosversion']['message'].'</span>';echo $display; ?>
 <?php endif; ?>
 </td>
@@ -111,7 +112,7 @@ echo $display; ?>
                                               <td><b>Environmental</b></td>
                                               <td>
 <?php if(!empty($output['environmental']['message'])): ?>                                              
-<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=environment&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['environmental']['R'] == 0) ? 'green':'red';  
+<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=environmental&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['environmental']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['environmental']['message'].'</span>';
 echo $display; ?>
 <?php endif; ?>
@@ -211,7 +212,7 @@ echo $display; ?>
                                               <td><b>IPV4 BGP Routes</b></td>
                                               <td>
 <?php if(!empty($output['ran']['count'])): ?>                                              
-<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvfourroutes&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a> <?php
+<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=ran&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a> <?php
 $color = ($output['ran']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['ran']['count'].'</span>';
 echo $display; ?>
@@ -230,7 +231,7 @@ echo $display; ?>
                                               <td><b>IPV6 BGP Neighbors</b></td>
                                               <td>
 <?php if(!empty($output['bgpvsixneighbours']['neighbours'])): ?>
-<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php
+<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bgpvsixneighbours&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php
 $color = ($output['bgpvsixneighbors']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['bgpvsixneighbours']['neighbours'].'</span>';
 echo $display; ?>

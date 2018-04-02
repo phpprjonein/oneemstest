@@ -1,10 +1,20 @@
 <?php 
+include "classes/db2.class.php";
+include "classes/paginator.class.php";
+include 'functions.php';
+
         $command  = $_GET['commandname'];
         $deviceid = $_GET['deviceid'];
        
         $result = select_healthchk_info($deviceid);
-        $output = '{"bfdsession":"'.$result['bfdsession'].'","bgpvfourneighbors":"'.$result['bgpvfourneighbors'].'","bgpvsixneighbours":"'.$result['bgpvsixneighbours'].'","bgpvsixroutes":"'.$result['bgpvsixroutes'].'","bootstatement":"'.$result['bootstatement'].'","buffers":"'.$result['buffers'].'","configregister":"'.$result['configregister'].'","cpuutilization":"'.$result['cpuutilization'].'","environmental":"'.$result['environmental'].'","fivethsndbyteping":"'.$result['fivethsndbyteping'].'","freememory":"'.$result['freememory'].'","interfacecounters":"'.$result['interfacecounters'].'","interfacestates":"'.$result['interfacestates'].'","iosversion":"'.$result['iosversion'].'","logentries":"'.$result['logentries'].'","mplsinterfaces":"'.$result['mplsinterfaces'].'","mplsneighbors":"'.$result['mplsneighbors'].'","platform":"'.$result['platform'].'","ran":"'.$result['ran'].'","twothsndbyteping":"'.$result['twothsndbyteping'].'","xconnect":"'.$result['xconnect'].'"}';
+        $output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"fivethsndbyteping":'.$result['fivethsndbyteping'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
         $output = json_decode($output,true);
+        
+//         print '<pre>';
+//         print_r($output[$command]);
+//         print_r($output);
+//         die;
+        
         
         /*
         switch($command) { 
@@ -103,7 +113,7 @@
         } else 
             $data = "CLI command needs is in progress.";
         */  
-        echo '<span style="font-family:courier;font-size:12px;font-weight:500;">'.$output[$command].'</span>';
+        echo '<span style="font-family:courier;font-size:12px;font-weight:500;">'.json_encode($output[$command]).'</span>';
 ?>  
 </div>
 <div class="modal-footer">

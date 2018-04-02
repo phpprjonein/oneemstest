@@ -143,7 +143,7 @@ $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['loge
 											  </td>
                                             </tr>
                                             <tr>                  
-                                              <td><b>VRF</b></td>                                              
+                                              <td><b>5000 Byte Ping</b></td>                                              
                                               <td>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';  
 $display ="<span style='color:".$color."'>".$output['fivethsndbyteping']['message'].'</span>';
@@ -211,7 +211,7 @@ echo $display; ?>
                                               <td>&nbsp;&nbsp;&nbsp;</td>                 
                                               <td>&nbsp;&nbsp;&nbsp;</td>      
                                               <td>&nbsp;&nbsp;&nbsp;</td>                                                 
-                                          <td class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"> <b> Rerun All checks </b></td>
+                                          <td class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"> <b> Run All Health Checks </b></td>
                                               <td colspan="2">&nbsp;&nbsp;&nbsp;</td>         
                                             </tr>
                                           </tbody>

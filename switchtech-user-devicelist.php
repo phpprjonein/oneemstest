@@ -99,6 +99,7 @@ modal.children[0].addEventListener('click', function(e) {
             immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
         </div>
+		<br/>
         <!-- ./wrapper -->
         <?php include ('footer.php'); ?>
 

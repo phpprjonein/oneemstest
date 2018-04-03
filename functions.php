@@ -2619,6 +2619,17 @@ function load_available_templates($filename){
 	    $resultset = $db2->resultset();
 	    return $resultset;
 	}
+	function update_healthchk_info($deviceid, $output){
+	    global $db2;
+	    $cols = array();
+	    foreach($output as $key=>$val) {
+	        $val = json_encode($val);
+	        $cols[] = "$key = '$val'";
+	    }
+	    $sql = "UPDATE  `healthcheck` SET " . implode(', ', $cols) . " WHERE deviceid = '".$deviceid."'";
+	    $db2->query($sql);
+	    $db2->execute();
+	}
 	function insertorupdate_healthchk_info($deviceid, $output){
 	    global $db2;
 	    $sql = "SELECT id FROM healthcheck WHERE deviceid = $deviceid";

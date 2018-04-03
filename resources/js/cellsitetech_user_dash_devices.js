@@ -18,6 +18,36 @@ $(document).ready(function() {
           });
       }); 
     
+    $('body').on('click', '#health-chk-div-wrap .run_custom_checks', function(){
+    	var allVals = [];
+    	$(this).parents('table:first').children().find('input[type=checkbox]:checked').each(function(index){
+    		 allVals.push($(this).val());
+    	});		
+    	$thisdiv = $(this);
+        $.ajax({
+            type:"get",
+            url:"healthchk-cellsitetech-custom.php",
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals}, 
+            beforeSend: function(){
+          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+            },
+            complete: function() {
+                $thisdiv.addClass('loaded');
+            },
+            success: function(resdata){
+          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+            }
+        });
+    	
+    	alert(allVals  + '   '  + allVals.length + ' -  ' + $(this).data('deviceid'));
+    	
+    	
+    	
+    	
+    	
+    	
+    });
+    
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true, 

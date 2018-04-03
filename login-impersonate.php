@@ -33,7 +33,7 @@ check_user_authentication(array(8)); //cellsite tech type user
           	        <div class="row">
                     <div class="form-group col-md-12">
                       <label for="inputName">User Name</label>
-                      <input type="inputName" name="username" class="form-control-plaintext" id="inputName" placeholder="User Name">
+                      <input type="inputName" name="username" class="form-control-plaintext border border-dark" id="inputName" placeholder="User Name" >
                     </div>
                     <div class="form-check col-md-12">
                       <div class="btn-group" role="group" aria-label="">

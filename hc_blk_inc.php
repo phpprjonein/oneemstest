@@ -172,7 +172,7 @@ echo $display; ?>
                                               <td colspan="2" class="run_custom_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run Custom Health Checks</b></td>
                                               <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run Preventive Health Checks</b></td>                 
                                               <td colspan="2" class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run All Health Checks</b></td>
-                                              <td colspan="3"><b>Last Run On - <?php echo $result['lastupdated'];?></b></td>
+                                              <td colspan="3"><b>Last Run On - <?php echo $lastupdated;?></b></td>
                                             </tr>
                                           </tbody>
                                        </table>

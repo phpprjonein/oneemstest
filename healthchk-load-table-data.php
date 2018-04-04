@@ -31,7 +31,7 @@ $userid = $_GET['userid'];
     <?php  
             $deviceid = $_GET['deviceid'];
             $result = select_healthchk_info($deviceid);
-            
+            $lastupdated = $result['lastupdated'];
             //print '<pre>';
             //print_r($result);
             //die;

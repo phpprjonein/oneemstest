@@ -19,6 +19,7 @@ $(document).ready(function(){
             });        
 </script>
 <?php
+ini_set('display_errors',1);
 include "classes/db2.class.php";
 include "classes/paginator.class.php";  
 include 'functions.php';
@@ -45,7 +46,8 @@ if(count($_GET['category']) > 0){
         }
     }';
     $output = json_decode($output, 1);
-    update_healthchk_info($deviceid, $output);
+    $lastupdated = date('Y-m-d H:i:s');
+    update_healthchk_info($deviceid, $output, $lastupdated);
 }            
             $result = select_healthchk_info($deviceid);
             if(!in_array(2, $_GET['category']) || !isset($output['iosversion'])){

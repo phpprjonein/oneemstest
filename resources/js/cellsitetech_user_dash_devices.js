@@ -38,15 +38,13 @@ $(document).ready(function() {
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
             }
         });
-    	
-    	alert(allVals  + '   '  + allVals.length + ' -  ' + $(this).data('deviceid'));
-    	
-    	
-    	
-    	
-    	
-    	
+    	//alert(allVals  + '   '  + allVals.length + ' -  ' + $(this).data('deviceid'));
     });
+    
+    
+    
+    
+    
     
          var table =  $('#example').DataTable( {
           "processing": true,

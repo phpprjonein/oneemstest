@@ -38,9 +38,25 @@ $(document).ready(function() {
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
             }
         });
-    	//alert(allVals  + '   '  + allVals.length + ' -  ' + $(this).data('deviceid'));
     });
     
+    $('body').on('click', '#health-chk-div-wrap .run_preventive_checks', function(){
+    	$thisdiv = $(this);
+        $.ajax({
+            type:"get",
+            url:"healthchk-cellsitetech-preventive.php",
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')}, 
+            beforeSend: function(){
+          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+            },
+            complete: function() {
+                $thisdiv.addClass('loaded');
+            },
+            success: function(resdata){
+          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+            }
+        });
+    });
     
     
     

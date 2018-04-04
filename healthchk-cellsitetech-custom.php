@@ -48,8 +48,51 @@ if(count($_GET['category']) > 0){
     update_healthchk_info($deviceid, $output);
 }            
             $result = select_healthchk_info($deviceid);
+            if(!in_array(2, $_GET['category']) || !isset($output['iosversion'])){
+                $result['iosversion'] = '{"R":"","message":""}';
+            }if(!in_array(1, $_GET['category']) || !isset($output['cpuutilization'])){
+                $result['cpuutilization'] = '{"R":"","message":""}';
+            }if(!in_array(8, $_GET['category']) || !isset($output['freememory'])){
+                $result['freememory'] = '{"R":"","message":""}';
+            }if(!in_array(5, $_GET['category']) || !isset($output['buffers'])){
+                $result['buffers'] = '{"R":"","message":""}';
+            }if(!in_array(16, $_GET['category']) || !isset($output['bootstatement'])){
+                $result['bootstatement'] = '{"R":"","message":""}';
+            }if(!in_array(6, $_GET['category']) || !isset($output['platform'])){
+                $result['platform'] = '{"R":"","message":""}';
+            }if(!in_array(4, $_GET['category']) || !isset($output['environmental'])){
+                $result['environmental'] = '{"R":"","message":""}';
+            }if(!in_array(3, $_GET['category']) || !isset($output['configregister'])){
+                $result['configregister'] = '{"R":"","message":""}';
+            }if(!in_array(7, $_GET['category']) || !isset($output['interfacecounters'])){
+                $result['interfacecounters'] = '{"R":"","message":""}';
+            }if(!in_array(22, $_GET['category']) || !isset($output['twothsndbyteping'])){
+                $result['twothsndbyteping'] = '{"R":"","message":""}';
+            }if(!in_array(10, $_GET['category']) || !isset($output['bfdsession'])){
+                $result['bfdsession'] = '{"R":"","message":""}';
+            }if(!in_array(15, $_GET['category']) || !isset($output['logentries'])){
+                $result['logentries'] = '{"R":"","message":""}';
+            }if(!in_array(23, $_GET['category']) || !isset($output['fivethsndbyteping'])){
+                $result['fivethsndbyteping'] = '{"R":"","message":""}';
+            }if(!in_array(9, $_GET['category']) || !isset($output['interfacestates'])){
+                $result['interfacestates'] = '{"R":"","message":""}';
+            }if(!in_array(20, $_GET['category']) || !isset($output['xconnect'])){
+                $result['xconnect'] = '{"R":"","message":""}';
+            }if(!in_array(12, $_GET['category']) || !isset($output['mplsinterfaces'])){
+                $result['mplsinterfaces'] = '{"R":"","message":""}';
+            }if(!in_array(13, $_GET['category']) || !isset($output['bgpvfourneighbors'])){
+                $result['bgpvfourneighbors'] = '{"R":"","message":""}';
+            }if(!in_array(19, $_GET['category']) || !isset($output['mplsneighbors'])){
+                $result['ran'] = '{"R":"","message":""}';
+            }if(!in_array(11, $_GET['category']) || !isset($output['configregister'])){
+                $result['mplsneighbors'] = '{"R":"","message":""}';
+            }if(!in_array(14, $_GET['category']) || !isset($output['bgpvsixneighbours'])){
+                $result['bgpvsixneighbours'] = '{"R":"","message":""}';
+            }if(!in_array(17, $_GET['category']) || !isset($output['bgpvsixroutes'])){
+                $result['bgpvsixroutes'] = '{"R":"","message":""}';
+            }
             $output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"fivethsndbyteping":'.$result['fivethsndbyteping'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
             $output = json_decode($output,true); 
-	         $_SESSION['deviceidswusr'] = $deviceid;
+	        $_SESSION['deviceidswusr'] = $deviceid;
 ?>
 <?php include_once 'hc_blk_inc.php';?>

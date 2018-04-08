@@ -29,8 +29,10 @@ if(count($_GET['category']) > 0){
     $category_imp = implode(',',$_GET['category']);
     /*Custom HealthCheck API API Call*/
     $devicetype='ios';
-    //$url_final = 'http://10.134.179.82:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/'.$category_imp; 
-    //$output = json_decode(sendPostData($url_final),true);
+    $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/'.$category_imp; 
+   // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/1,2,3'; 
+    $output = json_decode(sendPostData($url_final),true);
+   /*
     $output = '{
         "configregister": {
         "R": 0,
@@ -44,7 +46,7 @@ if(count($_GET['category']) > 0){
         "R": 0,
         "message": "15.6(1)S1"
         }
-    }';
+    }'; */
     $output = json_decode($output, 1);
     $lastupdated = date('Y-m-d H:i:s');
     update_healthchk_info($deviceid, $output, $lastupdated);

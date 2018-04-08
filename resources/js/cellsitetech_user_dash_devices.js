@@ -66,6 +66,14 @@ $(document).ready(function() {
           "processing": true,
           "serverSide": true, 
           "ajax":"swt-server-process.php?listid="+$('#example').data('listid'),
+		   "columnDefs": [{
+            "targets": 4,
+            "render": function ( data, type, row, meta ) {
+                //var itemID = row[0];                   
+                //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
+				return '<a target="blank" href="ssh://' + data + '">' + 	data + '</a>';
+            }
+        }],    
           "pageLength": 25,
           //"dom": 'lBfrtip',
           "dom": 'Bfrtip',
@@ -96,6 +104,7 @@ $(document).ready(function() {
 			{ "data": "csr_site_id" },
             { "data": "csr_site_name" },
             { "data": "devicename" },
+			//{"render": function (data, type, full, meta) { return '<a href="ab.aspx?emp_id=' + data + '">"' + data + '"</a>'; } },
             { "data": "market" },
             { "data": "deviceseries" },
             { "data": "nodeVersion" },

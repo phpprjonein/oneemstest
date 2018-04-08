@@ -2621,17 +2621,20 @@ function load_available_templates($filename){
 	}
 	function update_healthchk_info($deviceid, $output, $lastupdated){
 	    global $db2;
-	    $cols = array();
-	    foreach($output as $key=>$val) {
-	        $val = json_encode($val);
-	        $cols[] = "$key = '$val'";
-	    }
-	    $sql = "UPDATE  `healthcheck` SET " . implode(', ', $cols) . ",lastupdated='".$lastupdated."' WHERE deviceid = '".$deviceid."'";
-	    $db2->query($sql);
-	    $db2->execute();
+	    if(count($output) > 0 && isset($output)):
+    	    $cols = array();
+    	    foreach($output as $key=>$val) {
+    	        $val = json_encode($val);
+    	        $cols[] = "$key = '$val'";
+    	    }
+    	    $sql = "UPDATE  `healthcheck` SET " . implode(', ', $cols) . ",lastupdated='".$lastupdated."' WHERE deviceid = '".$deviceid."'";
+    	    $db2->query($sql);
+    	    $db2->execute();
+	    endif;
 	}
 	function insertorupdate_healthchk_info($deviceid, $output, $lastupdated){
 	    global $db2;
+	    if(count($output) > 0 && isset($output)):
 	    $sql = "SELECT id FROM healthcheck WHERE deviceid = $deviceid";
 	    $db2->query($sql);
 	    $recordset = $db2->resultset();
@@ -2674,6 +2677,7 @@ function load_available_templates($filename){
 	        $db2->query($sql);
 	        $db2->execute();
 	    }
+	    endif;
 	}
 	function delete_ipallocation_by_subnet($region, $subnetmask){
         global $db2;

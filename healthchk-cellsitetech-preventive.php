@@ -29,9 +29,11 @@ include 'functions.php';
             $deviceid = $_GET['deviceid'];               
             $devicetype='ios';
             $deviceid = $_GET['deviceid'];              
- 	        //$url_final = ' http://10.134.179.82:8080/healthcheck/'.$devicetype.'/preventive/'.$deviceid;
-            //$output = sendPostData($url_final);
-            $output = '{
+ 	    $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/preventive/'.$deviceid;
+            logToFile('preventive.log',$url_final);
+ 	   //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/preventive/4050';
+            $output = sendPostData($url_final);
+    /*        $output = '{
   "1xrtt": {
     "R": 0,
     "count": 2
@@ -121,6 +123,7 @@ include 'functions.php';
     "count": "BGPv4 Routes= 3"
   }
 }';
+*/
             $output = json_decode($output,true);
             $lastupdated = date('Y-m-d H:i:s');
             insertorupdate_healthchk_info($deviceid, $output, $lastupdated);

@@ -22,6 +22,7 @@ user_session_check();
     <head>
 	<?php include("includes.php");  ?>
 	<script src="resources/js/login_impersonate.js?t="<?php echo date('his'); ?>></script>
+	<script defer src="resources/js/all.js"></script>
 	</head>
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->

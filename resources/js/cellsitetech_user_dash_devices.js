@@ -71,7 +71,7 @@ $(document).ready(function() {
             "render": function ( data, type, row, meta ) {
                 //var itemID = row[0];                   
                 //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
-				return '<a target="blank" href="ssh://' + data + '@10.198.238.19">' + 	data +'</a>';
+				return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
             }
         }],    
           "pageLength": 25,

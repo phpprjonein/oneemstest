@@ -51,7 +51,7 @@ $page_title = 'OneEMS';
             <!-- <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>  -->
             <input type="hidden" name="method" value="validateForm">
             <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
-
+			<input type="hidden" id="username" value="<?php echo $_SESSION['username']; ?>" name="username">
 <!-- select purpose options -->
             <?php
                 unset($_SESSION['filename']);
@@ -72,7 +72,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
-              <select id="select_device_series" class="form-control custom-select" name="f7" data-rule-required="true">
+              <select id="select_device_series" class="form-control custom-select form-required" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option>
@@ -85,7 +85,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
-              <select id="select_os_version" class="form-control custom-select" name="f8" data-rule-required="true">
+              <select id="select_os_version" class="form-control custom-select form-required" name="f8" data-rule-required="true">
               	<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	document.forms['config_file_uploader'].reset();	
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
 		var filename = ''; sep = '';
 		$("#cellsitech-generate-script select").each(function()

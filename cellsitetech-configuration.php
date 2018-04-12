@@ -72,6 +72,8 @@ $page_title = 'OneEMS';
 									<?php 
                                   	if(empty($_SESSION['filename'])){
                                   	     $_SESSION['filename'] = isset($_POST['filename']) ? $_POST['filename']:'';
+                                  	     $_SESSION['alias'] = isset($_POST['alias']) ? $_POST['alias']:'';
+                                  	     $_SESSION['refmop'] = isset($_POST['refmop']) ? $_POST['refmop']:'';
                                   	}
                                   	if(empty($_SESSION['filename'])){
                                   	    $filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
@@ -79,6 +81,8 @@ $page_title = 'OneEMS';
                                   	}else{
                                   	    $filename = getcwd()."/upload/".$_SESSION['filename'].".txt";
                                   	    $templname = $_SESSION['filename'];
+                                  	    $alias = $_SESSION['alias'];
+                                  	    $refmop = $_SESSION['refmop'];
                                   	}
                                   	?>
                                   	<div id="upload_status"
@@ -109,6 +113,9 @@ $page_title = 'OneEMS';
 							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							$output .= '<input type="hidden" name="templname" value="'.$templname.'" />';
+							$output .= '<input type="hidden" name="alias" value="'.$alias.'" />';
+							$output .= '<input type="hidden" name="refmop" value="'.$refmop.'" />';
+							
 							?>
 							<div id="file_process">
 							<?php

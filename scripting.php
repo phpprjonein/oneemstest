@@ -13,6 +13,8 @@ if (isset($_GET['clear'])) {
 user_session_check();
 if ($_SESSION['userlevel'] == 1 )
 include_once ('config/session_check_cellsite_tech.php');
+
+
 else  if ($_SESSION['userlevel'] == 2 )
 include_once ('config/session_check_switch_tech.php');
 
@@ -40,7 +42,7 @@ $page_title = 'OneEMS';
                                   		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
                         <?php } unset($_SESSION['msg']); ?>
 						<!-- backup management content row -->
-	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
+	<form action="cellsitetech-configuration.php" method="post" name="config_file_uploader" id="config_file_uploader" enctype="multipart/form-data">
     <div class="row">
 
 <!-- router selection content row -->
@@ -55,6 +57,8 @@ $page_title = 'OneEMS';
 <!-- select purpose options -->
             <?php
                 unset($_SESSION['filename']);
+                unset($_SESSION['alias']);
+                unset($_SESSION['refmop']);
 				$configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose');
 			?>
             <div class="form-group f4 required" data-fid="f4">
@@ -173,6 +177,16 @@ $page_title = 'OneEMS';
             <label for="inputRegion">TEMPLATE:</label>
             <small><b><span id="filename"></span></b></small>
             <!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
+            <div class="row">
+				<div class="col-lg-4 tags p-b-2">
+                    <div class="form-group">
+                      <input type="inputAlias" name="alias" class="form-control" id="aliasName" placeholder="Alias Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="inputRefMOP" name="refmop" class="form-control" id="aliasRefMOP" placeholder="Ref MOP">
+                    </div>
+                </div>
+             </div>
           </div>
         </div>
 <!-- /template name content -->

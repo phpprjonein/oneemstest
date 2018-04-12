@@ -14,9 +14,9 @@ if($_POST['action'] == 'Save Configuration'){
         foreach($val as $linekey => $lineval){
             $inc++;
             if(count($_POST['loop']) == $oc && count($val) == $inc){
-                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','','".$_SESSION['userid']."','','','','')";
+                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','".$_POST['alias']."','".$_SESSION['userid']."','".$_POST['refmop']."','','','')";
             }else{
-                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','','".$_SESSION['userid']."','','','',''),";
+                $sql .= "('".$templname."','".str_replace('looper_','',$key).$linekey."','".$lineval."','".$_POST['hidden'][$key][$linekey]."','".$_POST['alias']."','".$_SESSION['userid']."','".$_POST['refmop']."','','',''),";
             }
         }
     }

@@ -163,6 +163,9 @@ $page_title = 'OneEMS';
 <!-- script output -->
       <div class="col-sm-12 col-md-8 d-none" id="template_info">
         <!-- template output content -->
+        		<div class="form-group col-md-8">
+                	<input type="inputAlias" name="alias" class="form-control" id="aliasName" placeholder="Alias Name">
+                </div>
                 <div class="row">
                   <div class="col">
                     <table class="table table-striped table-responsive">

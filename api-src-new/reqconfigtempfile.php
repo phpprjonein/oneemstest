@@ -9,7 +9,13 @@ if (! empty($_GET['tmplname'])) {
     if (!file_exists($tmplname)) {
         jsonResponse(200, "Template Not Found", NULL);
     } else {
-        jsonResponse(200, "Template Found", file_get_contents($tmplname));
+        $tmplname = $_GET['tmplname'];
+        $tmplname = '/var/www/html/oneemstest/upload/'.$tmplname;
+        $lines  = @file($tmplname);
+        foreach($lines  as $line ){
+            $line_arr[] = preg_replace('~[\r\n]+~', '', $line);
+        }
+        jsonResponse(200, "Template Found", $line_arr);
     }
 } else {
     jsonResponse(400, "Invalid Request", NULL);

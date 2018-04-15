@@ -21,6 +21,7 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemstest/");
 
 //define('DB_HOST', 'txaroemsda3z');
 /*
+<<<<<<< HEAD
  define('DB_HOST', $_SERVER['DB_HOST']);
  define('DB_PORT', $_SERVER['DB_PORT']);
  define('DB_NAME', $_SERVER['DB_NAME']);
@@ -30,6 +31,17 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemstest/");
  define('LOW_LIMIT', 14);
  
  */
+=======
+define('DB_HOST', $_SERVER['DB_HOST']);
+define('DB_PORT', $_SERVER['DB_PORT']);
+define('DB_NAME', $_SERVER['DB_NAME']);
+define('DB_USER', $_SERVER['DB_USER']);
+define('DB_PASSWORD', $_SERVER['DB_PASSWORD']);
+define('HIGH_LIMIT', 25);
+define('LOW_LIMIT', 14);
+
+*/
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
 //define('DB_USER', 'reader');
 //define('DB_PASSWORD','redaer1103');
 

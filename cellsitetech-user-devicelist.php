@@ -61,7 +61,11 @@ modal.children[0].addEventListener('click', function(e) {
                       <div class="panel">
                           <div class="panel-info panel-default">
                             <!-- Page title -->
+<<<<<<< HEAD
                             <div class="panel-heading panel-heading-myswtlst" > <?php if ($title === "0" ) echo 'My routers'; else echo $title; ?>  </div>
+=======
+                            <div class="panel-heading panel-heading-myswtlst" > <?php if ($title === "0" ) echo 'My Routers'; else echo $title; ?>  </div>
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
                           </div>
                          	<input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                          	<input type="hidden" id='username' value="<?php echo $username ?>" name="">
@@ -69,6 +73,7 @@ modal.children[0].addEventListener('click', function(e) {
                             <table id="example" class="display" data-listid="<?php echo $listid ?>" cellspacing="0" width="100%">
                               <thead>
                                 <tr>
+<<<<<<< HEAD
                                   <th class="noExport">Health check</th>
 								  <th>Id</th>
                                   <th>Site Id</th>
@@ -76,6 +81,15 @@ modal.children[0].addEventListener('click', function(e) {
                                   <th>Device Name</th>
                                   <th>Market  </th>
                                   <th>Device series</th>
+=======
+                                  <th class="noExport">Health Check</th>
+								                  <th>ID</th>
+                                  <th>Site ID</th>
+                                  <th width="25%">Site Name</th>
+                                  <th>Device Name</th>
+                                  <th>Market</th>
+                                  <th>Device Series</th>
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
                                   <th>Version</th>
                                   <th class="d-none">Status</th>
                                   <th>Last Polled</th>
@@ -103,7 +117,11 @@ modal.children[0].addEventListener('click', function(e) {
             <div class="control-sidebar-bg"></div>
         </div>
  <br/>
+<<<<<<< HEAD
  <a href ="ssh://njbbcpnebh@10.198.238.19" target="blank">  SSH Session Test </a>
+=======
+ <!--<a href ="ssh://njbbcpnebh@10.198.238.19" target="blank">  SSH Session Test </a>  -->
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
       <!-- ./wrapper -->
         <?php include ('footer.php'); ?>
 

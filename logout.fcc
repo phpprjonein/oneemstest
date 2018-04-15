@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <!--SiteMinder Encoding=ISO-8859-1; -->
 @smlogout=true
 @target=http://localhost/oneems/index.php
+=======
+<!--SiteMinder Encoding=ISO-8859-1; -->
+@smlogout=true
+@target=http://localhost/oneems/index.php
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
 @smretries=0

@@ -52,7 +52,7 @@ if($_POST['action'] == 'Save Configuration'){
         fwrite($file,$line."\n");
     }
     fclose($file);
-    $file_url = getcwd()."/upload/sampleconfigfile.cfg";
+    $file_url = getcwd()."/upload/sampleconfigfile.script";
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: Binary");
     header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");

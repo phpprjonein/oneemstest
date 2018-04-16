@@ -13,6 +13,8 @@ if (isset($_GET['clear'])) {
 user_session_check();
 if ($_SESSION['userlevel'] == 1 )
 include_once ('config/session_check_cellsite_tech.php');
+
+
 else  if ($_SESSION['userlevel'] == 2 )
 include_once ('config/session_check_switch_tech.php');
 
@@ -34,14 +36,13 @@ $page_title = 'OneEMS';
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-          <h5>Load Template</h5>
 					<div class="panel panel-default">
     					<div id="status" style="display: none;" class="alert"></div>
     					<?php if($_SESSION['msg'] == 'dbs'){ ?>
                                   		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
                         <?php } unset($_SESSION['msg']); ?>
 						<!-- backup management content row -->
-	<form action="cellsitetech-configuration.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
+	<form action="cellsitetech-configuration.php" method="post" name="config_file_uploader" id="config_file_uploader" enctype="multipart/form-data">
     <div class="row">
 
 <!-- router selection content row -->
@@ -52,10 +53,12 @@ $page_title = 'OneEMS';
             <!-- <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>  -->
             <input type="hidden" name="method" value="validateForm">
             <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
-
+			<input type="hidden" id="username" value="<?php echo $_SESSION['username']; ?>" name="username">
 <!-- select purpose options -->
             <?php
                 unset($_SESSION['filename']);
+                unset($_SESSION['alias']);
+                unset($_SESSION['refmop']);
 				$configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose');
 			?>
             <div class="form-group f4 required" data-fid="f4">
@@ -73,7 +76,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
-              <select id="select_device_series" class="form-control custom-select" name="f7" data-rule-required="true">
+              <select id="select_device_series" class="form-control custom-select form-required" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option>
@@ -86,7 +89,7 @@ $page_title = 'OneEMS';
 			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
-              <select id="select_os_version" class="form-control custom-select" name="f8" data-rule-required="true">
+              <select id="select_os_version" class="form-control custom-select form-required" name="f8" data-rule-required="true">
               	<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option>
@@ -174,6 +177,16 @@ $page_title = 'OneEMS';
             <label for="inputRegion">TEMPLATE:</label>
             <small><b><span id="filename"></span></b></small>
             <!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
+            <div class="row">
+				<div class="col-lg-4 tags p-b-2">
+                    <div class="form-group">
+                      <input type="inputAlias" name="alias" class="form-control" id="aliasName" placeholder="Alias Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="inputRefMOP" name="refmop" class="form-control" id="aliasRefMOP" placeholder="Ref MOP">
+                    </div>
+                </div>
+             </div>
           </div>
         </div>
 <!-- /template name content -->

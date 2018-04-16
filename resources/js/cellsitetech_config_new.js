@@ -1,4 +1,12 @@
 $(document).ready(function() {
+	if($('#config_file_uploader').length > 0){
+		document.forms['config_file_uploader'].reset();
+	}
+	if($('#wizard-75a3c2').length > 0){
+		document.forms['wizard-75a3c2'].reset();
+	}
+	
+	
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
 		var filename = ''; sep = '';
 		$("#cellsitech-generate-script select").each(function()
@@ -33,6 +41,40 @@ $(document).ready(function() {
 		}
 		return false;
 	});
+	
+	
+	jQuery('#cellsitech-generate-script #aliasName').on('input', function() {
+		var filename = ''; sep = '';
+		$("#cellsitech-generate-script select").each(function()
+		{
+			if($(this).val() !=''){
+			filename = filename + sep + $(this).val();
+			sep = '_';	
+			$(this).removeClass('required');
+			}
+		});
+		filename = filename.replace(/[^a-z0-9_-]/gi,'');
+		if(filename != ''){
+			$.post( "ip-mgt-process.php", { calltype: "trigger", 
+				'filename':filename,
+				'alias': $(this).val(),
+				'action':'GenerateScript'
+			}).done(function( data ) {
+				if(data != ""){
+					$('#loadtemplates').html(data);
+					$('#loadtemplates').removeClass('d-none');
+				}else{
+					$('#loadtemplates').html('<tr><td colspan="2">Template not found</td></tr>');
+				}
+			});
+		}else{
+			$('#loadtemplates').addClass('d-none');
+			$('#template_info').addClass('d-none');
+		}
+		return false;
+	});
+	
+	
 	/*
 	$(document).on('click', "#cellsitech-generate-script .generate-script-submit", function(event) {
     	var req_err = true;
@@ -74,8 +116,8 @@ $(document).ready(function() {
 				filename = filename.replace(/[^a-z0-9_-]/gi,'');
 				if(filename != ''){
 					$('#template_info').removeClass('d-none');
-					$('#cellsitech-config #template_info #filename').html(filename);
-					$('#cellsitech-config #upload_filename').val(filename);
+					$('#cellsitech-config #template_info #filename').html(filename + '_' + $('#username').val());
+					$('#cellsitech-config #upload_filename').val(filename + '_' + $('#username').val());
 				}else{
 					$('#template_info').addClass('d-none');
 				}
@@ -110,7 +152,7 @@ $(document).ready(function() {
 	
     $(document).on('click', "#cellsitech-config .config-submit", function(event) {
     	var req_err = false;
-    	$("#cellsitech-config select").each(function(){
+    	$("#cellsitech-config select.form-required").each(function(){
 			if($(this).val() ==''){
 				$(this).addClass('required');
 				req_err = true;
@@ -119,7 +161,13 @@ $(document).ready(function() {
 			}
 		});
     	if(req_err){
-    		$("#status").html("<strong>Error!</strong> Template category select fields are required.<br/>");
+    		$("#status").html('');
+    		if($('#select_device_series').val() == ''){
+    			$("#status").html("<strong>Error!</strong> Device series field is required.<br/>");
+    		}
+    		if($('#select_os_version').val() == ''){
+    			$("#status").append("<strong>Error!</strong> OS Version field is required.<br/>");
+    		}
     	}
     	/*if($("#file").val() == ""){
         	$("#status").append("<strong>Error!</strong> File input field is required.<br/>");

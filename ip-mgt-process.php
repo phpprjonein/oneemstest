@@ -171,7 +171,7 @@ if(isset($_POST['type']) && $_POST['type'] == 'loadauto' && isset($_POST['csr_te
     echo get_csr_tech_mgr_id_from_tech_id($_POST['csr_tech_id']);
 }
 if(isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GenerateScript'){
-    $results = load_available_templates($_POST['filename']);
+    $results = load_available_templates($_POST['filename'], $_POST['alias']);
     $output = '';
     foreach ($results as $key=>$val){
         $checked = (empty($output)) ? 'checked':'';

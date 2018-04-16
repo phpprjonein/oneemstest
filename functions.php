@@ -2495,7 +2495,7 @@ function load_backup_information($deviceid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
-function load_available_templates($filename){
+function load_available_templates($filename, $alias = ''){
     global $db2;
     $filename_arr = explode('_',$filename);
     if(count($filename_arr) > 0){
@@ -2507,6 +2507,10 @@ function load_available_templates($filename){
                 $condition .= "AND templname like '%".$val."%'";
             }
         endforeach;
+    }
+    
+    if(!empty($alias)){
+        $condition .= "AND alias like '%".$alias."%'";
     }
     
     $sql = "SELECT distinct(templname) FROM configtemplate where $condition";

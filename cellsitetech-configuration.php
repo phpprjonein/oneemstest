@@ -29,14 +29,13 @@ $page_title = 'OneEMS';
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
-	<?php include_once ('menu.php'); ?>
+	<?php include_once ('menu.php'); ?> 
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
 					<div class="panel panel-default">
-            <h5>Load Template</h5>
 						<div class="panel-heading">Configuration Management</div>
 						<div class="panel-body">
 							<div class="row">
@@ -70,9 +69,11 @@ $page_title = 'OneEMS';
 										<strong>Error!</strong> File cannot be larger than 2MB!
 									</div>
                                   	<?php }unset($_SESSION['msg']);?>
-									<?php
+									<?php 
                                   	if(empty($_SESSION['filename'])){
                                   	     $_SESSION['filename'] = isset($_POST['filename']) ? $_POST['filename']:'';
+                                  	     $_SESSION['alias'] = isset($_POST['alias']) ? $_POST['alias']:'';
+                                  	     $_SESSION['refmop'] = isset($_POST['refmop']) ? $_POST['refmop']:'';
                                   	}
                                   	if(empty($_SESSION['filename'])){
                                   	    $filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
@@ -80,6 +81,8 @@ $page_title = 'OneEMS';
                                   	}else{
                                   	    $filename = getcwd()."/upload/".$_SESSION['filename'].".txt";
                                   	    $templname = $_SESSION['filename'];
+                                  	    $alias = $_SESSION['alias'];
+                                  	    $refmop = $_SESSION['refmop'];
                                   	}
                                   	?>
                                   	<div id="upload_status"
@@ -110,6 +113,9 @@ $page_title = 'OneEMS';
 							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
 							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
 							$output .= '<input type="hidden" name="templname" value="'.$templname.'" />';
+							$output .= '<input type="hidden" name="alias" value="'.$alias.'" />';
+							$output .= '<input type="hidden" name="refmop" value="'.$refmop.'" />';
+							
 							?>
 							<div id="file_process">
 							<?php
@@ -119,7 +125,7 @@ $page_title = 'OneEMS';
 									while(!feof($fd))
 									{
 									    ++$line;
-    									$contents = fgets($fd,filesize ($filename));
+    									$contents = fgets($fd,filesize ($filename));									
     									$delimiter = "#";
     									$splitcontents = explode($delimiter, $contents);
     									$splitcontcount = count($splitcontents);
@@ -140,35 +146,35 @@ $page_title = 'OneEMS';
         										    }
     										    }
     										};
-
-
+    										
+    										
     										$output .= '<span class="form-editable-fields">'.$output_inner.'</span>';
-
-    										$output .= '</div>';
+    										
+    										$output .= '</div>';										
     									} elseif($splitcontcount == 1) {
     										foreach ( $splitcontents as $color )
-    										{
+    										{   
     										    if(!empty($color)){
     										        $orgcolor = $color;
     										        $color = ($color == " ") ? '&nbsp;' : $color;
     										        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>".$color."</label><input style='display:none !important;' type='text' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' ></span></div>";
     											}
-    										};
+    										}; 
     									};
-									};
-									fclose($fd);
+									};									
+									fclose($fd); 
 									echo $output;
-									?>
+									?>  
 								</div>
 								<br>
 								<?php
 									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
 									//$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
 									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration"></div>';
-									$output .= '</form>';
+									$output .= '</form>'; 
 									echo $output;
-								?>
-								<?php } ?>
+								?> 
+								<?php } ?>	
 								</div>
 									</div>
 								</div>
@@ -182,6 +188,6 @@ $page_title = 'OneEMS';
 	</div>
 	<!-- container-fluid -->
 
-        <?php include_once ('footer.php'); ?>
+        <?php include_once ('footer.php'); ?> 
     </body>
 </html>

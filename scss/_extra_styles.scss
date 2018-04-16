@@ -163,12 +163,23 @@ body {
   border-top: 0.375rem solid $red;
   color: $pill-blue;
   font-size: small;
+<<<<<<< HEAD
   padding-bottom: 0.125rem;
+=======
+  padding-bottom: 0;
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
   padding-top: 0.3125rem;
   .nav-item {
     .dropdown-toggle {
       background-color: $btn-gray;
       color: $pill-blue;
+<<<<<<< HEAD
+=======
+      &.active {
+        background-color: $white;
+        color: $black;
+      }
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
     }
   }
 }
@@ -346,6 +357,10 @@ tr.shown {
   }
 }
 .modal-body {
+<<<<<<< HEAD
+=======
+  // overflow-y: auto;
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
   table {
     font-weight: 400;
   }
@@ -476,12 +491,21 @@ div {
 }
 .dropdown-item {
   border-bottom: 0.0625rem solid $btn-gray !important;
+<<<<<<< HEAD
   a:last-child {
     border-bottom: none !important;
   }
 }
 .dropdown-menu {
   border: 0.0625rem solid $black;
+=======
+}
+.dropdown-menu {
+  border: 0.0625rem solid $black;
+  :last-child {
+    border-bottom: none !important;
+  }
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
 }
 .dropdown-item:focus, .dropdown-item:hover {
   background: transparent;
@@ -538,6 +562,13 @@ div {
 
 // form wizard styling
 .jf-form {
+<<<<<<< HEAD
+=======
+    p {
+      word-wrap: break-word;
+    }
+
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
   .form-group {
     margin-bottom: 0;
   }
@@ -570,6 +601,7 @@ div {
 // logout styles
 .logout {
    border: 0.125rem solid $pill-blue !important;
+<<<<<<< HEAD
    .logout-left {
     background-color: $pill-blue;
     // text-align: center;
@@ -577,6 +609,15 @@ div {
    .fa-2x {
     color: $white;
    }
+=======
+  .logout-left {
+    background-color: $pill-blue;
+    // text-align: center;
+  }
+  i {
+    color: $white;
+  }
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
 }
 
 .footer {

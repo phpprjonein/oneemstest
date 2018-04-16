@@ -2,8 +2,13 @@
 if (isset($_GET['submitread'])) {
     $name = $_GET['name'];
     // $url = "http://phpzag.com/demo/how-to-create-simple-rest-api-in-php/items/read.php?name=".$name;
+<<<<<<< HEAD
     $url = "http://localhost/oneemstest/api-src-new/readuser.php?name=" . $name;
     //$url = "http://ohtwoemsda3z.nss.vzwnet.com/oneemstest/api-src/readuser.php?name=" . $name;
+=======
+   // $url = "http://localhost/oneemstest/api-src-new/readuser.php?name=" . $name;
+    $url = "https://njbboemsda1v.nss.vzwnet.com/oneemstest/api-src/readuser.php?name=" . $name;
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
     header('Location:'.$url);
     /*
     $client = curl_init($url);

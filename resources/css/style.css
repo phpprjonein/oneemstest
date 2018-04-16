@@ -8423,6 +8423,13 @@ div #my_swt_devlist {
   border: none;
 }
 
+<<<<<<< HEAD
+=======
+.jf-form p {
+  word-wrap: break-word;
+}
+
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
 .jf-form .form-group {
   margin-bottom: 0;
 }
@@ -8458,7 +8465,11 @@ div #my_swt_devlist {
   background-color: #0088ce;
 }
 
+<<<<<<< HEAD
 .logout .fa-2x {
+=======
+.logout i {
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
   color: #fff;
 }
 

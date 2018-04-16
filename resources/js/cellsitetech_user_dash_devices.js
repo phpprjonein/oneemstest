@@ -68,11 +68,19 @@ $(document).ready(function() {
           "ajax":"swt-server-process.php?listid="+$('#example').data('listid'),
 		   "columnDefs": [{
             "targets": 4,
+<<<<<<< HEAD
             "render": function ( data, type, row, meta ) {
                 //var itemID = row[0];                   
                 //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
 				return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
             }
+=======
+           // "render": function ( data, type, row, meta ) {
+                //var itemID = row[0];                   
+                //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
+			//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
+           // }
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46
         }],    
           "pageLength": 25,
           //"dom": 'lBfrtip',

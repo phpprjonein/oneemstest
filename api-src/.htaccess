@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 AuthType Basic
 AuthName "Restricted Content"
 #AuthUserFile /home/saravanan/source/oneemstest/api-src/.htpasswd
 AuthUserFile /var/www/html/oneemstest/api-src/.htpasswd
 Require valid-user
+=======
+AuthType Basic
+AuthName "Restricted Content"
+#AuthUserFile /home/saravanan/source/oneemstest/api-src/.htpasswd
+AuthUserFile /var/www/html/oneemstest/api-src/.htpasswd
+Require valid-user
+>>>>>>> f925d24473e59e9234a9eee7f64f09b390f58d46

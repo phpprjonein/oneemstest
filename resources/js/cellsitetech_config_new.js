@@ -64,7 +64,7 @@ $(document).ready(function() {
 					$('#loadtemplates').html(data);
 					$('#loadtemplates').removeClass('d-none');
 				}else{
-					$('#loadtemplates').html('<tr><td colspan="2">Template not found</td></tr>');
+					$('#loadtemplates').html('<tr><td colspan="3">Template not found</td></tr>');
 				}
 			});
 		}else{
@@ -73,6 +73,54 @@ $(document).ready(function() {
 		}
 		return false;
 	});
+	
+	//generate-script-delete
+	$('body').on('click', '.generate-script-delete', function(){
+		var filename = ''; sep = '';
+		$("#cellsitech-generate-script select").each(function()
+		{
+			if($(this).val() !=''){
+			filename = filename + sep + $(this).val();
+			sep = '_';	
+			$(this).removeClass('required');
+			}
+		});
+		filename = filename.replace(/[^a-z0-9_-]/gi,'');
+		if(filename != ''){
+			$.post( "ip-mgt-process.php", { calltype: "trigger", 
+				'filename':filename,
+				'alias': $('#aliasName').val(),
+				'deltemp': $(this).closest('tr').find("td:eq(0)").text(),
+				'action':'DelGenerateScript'
+			}).done(function( data ) {
+				if(data != ""){
+					$("#status").html("Template deleted successfully.<br/>");
+					$('#loadtemplates').html(data);
+					$('#loadtemplates').removeClass('d-none');
+					$('#status').css("opacity","");
+		        	$("#status").addClass('alert-success');
+		        	$("#status").show();
+				    window.setTimeout(function() {
+				        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+				            $(this).hide(); 
+				        });
+				    }, 4000);
+				}else{
+					$('#loadtemplates').html('<tr><td colspan="3">Template not found</td></tr>');
+				}
+			});
+		}else{
+			$('#loadtemplates').addClass('d-none');
+			$('#template_info').addClass('d-none');
+		}
+		
+		return false;
+	})
+	
+	
+	
+	
+	
 	
 	
 	/*

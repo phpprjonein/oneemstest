@@ -173,6 +173,7 @@ $page_title = 'OneEMS';
                           <tr>
                             <th scope="col">Template Name</th>
                             <th scope="col">Select Template</th>
+                            <th scope="col">Delete</th>
                           </tr>
                         </thead>
                         <tbody id="loadtemplates">

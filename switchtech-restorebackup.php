@@ -123,7 +123,7 @@ include_once ('config/session_check_switch_tech.php');
                                   <th class="noExport">Backup & Restore </th>
                                   <th>Device Name</th>
                                   <th>Site ID</th>
-                                  <th width="25%">Site Name</th>
+                                  <th>Site Name</th>
                                   <th>Region</th>
                                   <th>Market</th>
                                   <th>Device Series</th>

@@ -164,11 +164,38 @@ $(document).ready(function() {
 				filename = filename.replace(/[^a-z0-9_-]/gi,'');
 				if(filename != ''){
 					$('#template_info').removeClass('d-none');
-					$('#cellsitech-config #template_info #filename').html(filename + '_' + $('#username').val());
-					$('#cellsitech-config #upload_filename').val(filename + '_' + $('#username').val());
+					var aliasName = '';
+					if($('#aliasName').val() != '')
+						aliasName = '_' + $('#aliasName').val();
+					
+					$('#cellsitech-config #template_info #filename').html(filename + aliasName + '_' + $('#username').val());
+					$('#cellsitech-config #upload_filename').val(filename + aliasName + '_' + $('#username').val());
 				}else{
 					$('#template_info').addClass('d-none');
 				}
+		return false;
+	});
+	jQuery('#cellsitech-config #aliasName').on('input', function() {
+		var filename = ''; sep = '';
+		$("#cellsitech-config select").each(function()
+		{
+			if($(this).val() !=''){
+			filename = filename + sep + $(this).val();
+			sep = '_';	
+			$(this).removeClass('required');
+			}
+		});
+		filename = filename.replace(/[^a-z0-9_-]/gi,'');
+		if(filename != ''){
+			$('#template_info').removeClass('d-none');
+			var aliasName = '';
+			if($('#aliasName').val() != '')
+				aliasName = '_' + $('#aliasName').val();
+			$('#cellsitech-config #template_info #filename').html(filename + aliasName + '_' + $('#username').val());
+			$('#cellsitech-config #upload_filename').val(filename + aliasName + '_' + $('#username').val());
+		}else{
+			$('#template_info').addClass('d-none');
+		}
 		return false;
 	});
 	

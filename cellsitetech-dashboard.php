@@ -110,7 +110,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                     <tr style='cursor:pointer' class="del_<?php echo $value['listid'];?>">
                       <td width="70%" >
                         <i data-listid="<?php echo $value['listid'] ?>" data-listname=" <?php echo $value['listname']; ?>" data-deviceid="<?php echo $value['nodeid'] ?>" class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
-                      <?php echo ($value['listname'] == '0' ? 'My routers' : $value['listname']); ?>
+                      <?php echo ($value['listname'] == '0' ? 'My Routers' : $value['listname']); ?>
                       </td>
                       <td>&nbsp;<a href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i class="fa fa-edit"></i></a>
                       </td>
@@ -131,7 +131,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
           <div class="col-md-6 panel-warning panel-default" id="listedit-wrap">
             <div class="alert alert-secondary panel-heading-editlst text-center" id="mylist_delete">
               <div>
-                <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == '0' ? 'My routers' : $switchlist['mylistname']); ?> </b>
+                <b>Edit List&nbsp;:&nbsp;<?php echo ($switchlist['mylistname'] == '0' ? 'My Routers' : $switchlist['mylistname']); ?> </b>
               </div>
               <div>
 

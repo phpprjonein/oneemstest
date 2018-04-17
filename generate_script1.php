@@ -35,6 +35,7 @@ $page_title = 'OneEMS';
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
+          <h5>Generate Script</h5>
 					<div id="status" style="display: none;" class="alert"></div>
 <!-- backup management content row -->
 <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
@@ -153,6 +154,7 @@ $page_title = 'OneEMS';
             </div>
            -->
             <div class="clearfix"></div>
+            <p>&nbsp;</p>
 <!-- /router scripting selection form div -->
         </div>
       </div>
@@ -173,7 +175,6 @@ $page_title = 'OneEMS';
                           <tr>
                             <th scope="col">Template Name</th>
                             <th scope="col">Select Template</th>
-                            <th scope="col">Delete</th>
                           </tr>
                         </thead>
                         <tbody id="loadtemplates">

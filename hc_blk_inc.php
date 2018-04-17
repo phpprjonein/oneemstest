@@ -167,13 +167,13 @@ $color = ($output['bgpvsixroutes']['R'] == 0) ? 'green':'red';
 $display ="<span style='color:".$color."'>".$output['bgpvsixroutes']['count'].'</span>';
 echo $display; ?>
 </td>
-                                            </tr>
-                                              <tr>
-                                              <td colspan="2" class="run_custom_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run Selective Health Checks</b></td>
-                                              <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;">&nbsp;<!--<b>Run Preventive Health Checks</b>--></td>
-                                              <td colspan="2" class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run All Health Checks</b></td>
-                                              <td colspan="3"><b>Last Run On - <?php echo $lastupdated;?></b></td>
-                                            </tr>
-                                          </tbody>
-                                       </table>
-                                    </div>
+  </tr>
+    <tr>
+    <td colspan="3" class="run_custom_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run Selective Health Checks</b></td>
+    <td colspan="3" class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run All Health Checks</b></td>
+    <td colspan="3"><b>Last Run On - <?php echo $lastupdated;?></b></td>
+    <!-- <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;">&nbsp;<!--<b>Run Preventive Health Checks</b></td> -->
+  </tr>
+</tbody>
+</table>
+</div>

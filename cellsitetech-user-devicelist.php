@@ -72,7 +72,7 @@ modal.children[0].addEventListener('click', function(e) {
                                   <th class="noExport">Health Check</th>
 								                  <th>ID</th>
                                   <th>Site ID</th>
-                                  <th width="25%">Site Name</th>
+                                  <th>Site Name</th>
                                   <th>Device Name</th>
                                   <th>Market</th>
                                   <th>Device Series</th>

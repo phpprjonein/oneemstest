@@ -23,12 +23,13 @@ $page_title = 'OneEMS';
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
-	<?php include_once ('menu.php'); ?> 
+	<?php include_once ('menu.php'); ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
+          <h5>Load Template</h5>
 				<!-- backup management content row -->
 
 
@@ -63,7 +64,7 @@ $page_title = 'OneEMS';
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
               <select class="form-control custom-select" id="f4" name="f4" data-rule-required="true" disabled>
-                <option value="<?php echo $_GET['f4'];?>"><?php echo $_GET['f4']; ?></option> 
+                <option value="<?php echo $_GET['f4'];?>"><?php echo $_GET['f4']; ?></option>
                 <!-- <option value="asr920">XXXX</option> -->
               </select>
             </div>
@@ -74,7 +75,7 @@ $page_title = 'OneEMS';
               <label class="control-label" for="f7">Select Device Series</label>
               <select class="form-control custom-select" id="f7" name="f7" data-rule-required="true" disabled>
                 <!-- <option value="">ASR9210</option>  -->
-               <option value="<?php echo $_GET['f7'];?>"><?php echo $_GET['f7'];?></option> 
+               <option value="<?php echo $_GET['f7'];?>"><?php echo $_GET['f7'];?></option>
               </select>
             </div>
 <!-- /select device series options -->
@@ -83,7 +84,7 @@ $page_title = 'OneEMS';
             <div class="form-group f8 required" data-fid="f8">
               <label class="control-label" for="f8">Select OS Version</label>
               <select class="form-control custom-select" id="f8" name="f8" data-rule-required="true" disabled>
-                <option value="<?php echo $_GET['f8'];?>"><?php echo $_GET['f8'];?></option> 
+                <option value="<?php echo $_GET['f8'];?>"><?php echo $_GET['f8'];?></option>
                 <option></option>
               </select>
             </div>
@@ -94,7 +95,7 @@ $page_title = 'OneEMS';
               <label class="control-label" for="f9">Select RAN vendor</label>
               <select class="form-control custom-select" id="f9" name="f9" data-rule-required="true" disabled>
                 <!-- <option value="">ALL</option> -->
-                <option value="<?php echo $_GET['f9'];?>"><?php echo $_GET['f9'];?></option> 
+                <option value="<?php echo $_GET['f9'];?>"><?php echo $_GET['f9'];?></option>
               </select>
             </div>
 <!-- /select RAN vendor options -->
@@ -103,7 +104,7 @@ $page_title = 'OneEMS';
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select Script Type</label>
               <select class="form-control custom-select" id="f10" name="f10" data-rule-required="true" disabled>
-                <option value="<?php echo $_GET['f10'];?>"><?php echo $_GET['f10'];?></option> 
+                <option value="<?php echo $_GET['f10'];?>"><?php echo $_GET['f10'];?></option>
                 <option></option>
               </select>
             </div>
@@ -114,7 +115,7 @@ $page_title = 'OneEMS';
               <label class="control-label" for="f11">Select Region</label>
               <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true" disabled>
                 <option value="">Great Lakes</option>
-                <option value="<?php echo $_GET['f11'];?>"><?php echo $_GET['f11'];?></option> 
+                <option value="<?php echo $_GET['f11'];?>"><?php echo $_GET['f11'];?></option>
               </select>
             </div>
 <!-- /select region options -->
@@ -123,7 +124,7 @@ $page_title = 'OneEMS';
             <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Type</label>
               <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true" disabled>
-                <option value="<?php echo $_GET['f12'];?>"><?php echo $_GET['f12'];?></option> 
+                <option value="<?php echo $_GET['f12'];?>"><?php echo $_GET['f12'];?></option>
                 <option></option>
               </select>
             </div>
@@ -133,7 +134,7 @@ $page_title = 'OneEMS';
             <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
               <select class="form-control custom-select" id="f13" name="f13" data-rule-required="true" disabled>
-                <option value="<?php echo $_GET['f13'];?>"><?php echo $_GET['f13'];?></option> 
+                <option value="<?php echo $_GET['f13'];?>"><?php echo $_GET['f13'];?></option>
                 <option></option>
               </select>
             </div>
@@ -532,9 +533,9 @@ $page_title = 'OneEMS';
 	</div>
 	<!-- container-fluid -->
 
-        <?php include_once ('footer.php'); ?> 
+        <?php include_once ('footer.php'); ?>
     </body>
-	
+
 	<!-- JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS. Must load stack in this order for this page; popovers will not work otherwise -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

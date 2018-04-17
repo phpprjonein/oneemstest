@@ -113,10 +113,10 @@ include_once ('config/session_check_cellsite_tech.php');
                             <table id="backuprestore"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
-                                  <th class="noExport">Backup & Restore </th>
+                                  <th class="noExport">Backup & Restore</th>
                                   <th>Device Name</th>
                                   <th>Site ID</th>
-                                  <th width="25%">Site Name</th>
+                                  <th>Site Name</th>
                                   <th>Region</th>
                                   <th>Market</th>
                                   <th>Device Series</th>

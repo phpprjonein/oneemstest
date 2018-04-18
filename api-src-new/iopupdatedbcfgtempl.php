@@ -12,54 +12,54 @@ $headers = apache_request_headers();
 //print_r($headers);
 //exit;
 logToFile('postmanapi.log', $headers['Authorization']);
-if($category == 'full'){
+
     $results = config_get_templates_from_templname($name);
-if (!empty($_GET['name']) && count($results) > 0) {
-        foreach ($results as $key=>$val):
-            $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']);
-        endforeach;
-        foreach ($newarr as $key=>$val):
-            $line = ''; 
+    
+    foreach ($results as $key=>$val):
+    $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']);
+    if($newarr[intval($val['elemid']/10)]['editablem'] == 0){
+        $newarr[intval($val['elemid']/10)]['editablem'] = ($val['editable'] == 1) ? 1 : 0;
+    }
+    endforeach;
+    
+    foreach ($newarr as $key=>$val):
+        $line = '';
+        if($val[editablem] == 1):
             foreach ($val as $keyin=>$valin):
-                $line .= $valin['elemvalue'];
+            $line .= $valin['elemvalue'];
             endforeach;
             $line_arr[] = $line;
-        endforeach;
-        jsonResponse(200, "Template Found", $line_arr);
-    } else {
-        jsonResponse(400, "Invalid Request", NULL);
-    }
-    ;
-}else{
-    $results = config_get_templates_from_templname($name);
-    if (!empty($_GET['name']) && count($results) > 0 && $category == 'short') {
-        foreach ($results as $key=>$val):
-        $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']);
-        if($newarr[intval($val['elemid']/10)]['editablem'] == 0){
-            $newarr[intval($val['elemid']/10)]['editablem'] = ($val['editable'] == 1) ? 1 : 0;
-        }
-        endforeach;
-        
-        foreach ($newarr as $key=>$val):
-            $line = '';
-            if($val[editablem] == 1):
-                foreach ($val as $keyin=>$valin):
-                $line .= $valin['elemvalue'];
-                endforeach;
-                $line_arr[] = $line;
-            endif;
-        endforeach;
-        
+        endif;
+    endforeach;
 
+//     print '<pre>';
+//     print_r($line_arr);
+//     die;
+    
+    
+    $data_string = json_encode($line_arr);
+    $ch = curl_init('http://localhost/oneemstest/config-temp.api.php');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        "data" => $data_string
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = json_decode(curl_exec($ch));
+    
+    
+    $replace_pos = 0;
+    foreach ($result as $key=>$val):
+        if(!empty($val)):
+            $line_arr[$replace_pos] = $val;
+        endif;
+        $replace_pos++;
+    endforeach;
+    
         
-        jsonResponse(200, "Template Found", $line_arr);
-    } else {
-        jsonResponse(400, "Invalid Request", NULL);
-    }
-    ;
-}
-
-
+    print json_encode($line_arr);
+    
+    
+    
 
 /*
  * $status = $_GET['name'];

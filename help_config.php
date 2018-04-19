@@ -796,6 +796,9 @@ event manager applet LOOP_GIG authorization bypass
     <div class="modal fade show" id="screenshot-config1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-config1_LARGE.png" alt="" width="100%">
         </div>
       </div>

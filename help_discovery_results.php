@@ -132,6 +132,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-discovery-missed" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-discovery-missed.png" alt="" width="100%">
         </div>
       </div>
@@ -139,6 +142,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-discovery-new" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-discovery-new.png" alt="" width="100%">
         </div>
       </div>
@@ -146,6 +152,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-discovery-ok" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-discovery-ok.png" alt="" width="100%">
         </div>
       </div>
@@ -153,6 +162,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-discovery-manual" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-discovery-manual.png" alt="" width="100%">
         </div>
       </div>

@@ -186,6 +186,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-dashboard1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-dashboard1.png" alt="" width="100%">
         </div>
       </div>
@@ -193,6 +196,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-map1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-map1.png" alt="" width="100%">
         </div>
       </div>
@@ -200,6 +206,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-healthcheck1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-healthcheck1.png" alt="" width="100%">
         </div>
       </div>
@@ -207,6 +216,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-healthcheck2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-healthcheck2.png" alt="" width="100%">
         </div>
       </div>
@@ -214,6 +226,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-healthcheck3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-healthcheck3.png" alt="" width="100%">
         </div>
       </div>

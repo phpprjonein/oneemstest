@@ -12,14 +12,14 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
- //check_user_authentication('1'); //cellsite tech type user 
+ //check_user_authentication('1'); //cellsite tech type user
     $page_title = 'OneEMS';
 /*
 $userleveldesc = get_user_level_desc($_SESSION['userlevel']);
 $username = $_SESSION['username'];
 $logmesgdesccode  = logmessages_codes('C002');
 $mesg = " User name: $username | User type : $userleveldesc | Log Message Code : 'C002' | Message : $logmesgdesccode";
-write_log($mesg); 
+write_log($mesg);
 */
 ?>
 
@@ -32,9 +32,9 @@ write_log($mesg);
      <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
         <div class="container-fluid">
-            <?php include ('menu.php'); ?> 
+            <?php include ('menu.php'); ?>
                     <div class="col-auto">
-						<?php 
+						<?php
 						if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {
 						    $location_href = get_landing_page();
 						}else{
@@ -42,20 +42,24 @@ write_log($mesg);
 						    header('Location:index.php' );
 						    exit;
 						}
-						?>       
-						
-						
-						<!-- Logut page content row main -->
-          <div class="row logout">
-            <div class="col-1 col-md-1 col-sm-1 logout-left d-flex justify-content-center align-items-center"><i class="fas fa-info-circle"></i></div>
-            <div class="col-10 col-md-10 col-sm-10">
-              <p><b> <a class="fa fa-sign-out fa-lg" href="index.php"> Logout!!</a></b> &nbsp;&nbsp;&nbsp;<b>Didn't mean to log out? &nbsp;<a href="<?php echo $location_href;?>">Home</a></b>
-            </div>
-          </div>
+						?>
+
+
+<!-- Logut page content row main -->
+              <div class="row logout text-center">
+                <div class="col-sm-2 col-2 logout-left d-flex justify-content-center align-items-center">
+                  <i class="fa fa-sign-out fa-3x"></i>
+                </div>
+                <div class="col-sm-10 col-10">
+                  <a href="index.php"><h5>CLICK HERE TO LOG OUT</h5></a>
+                  <p class="font-weight-bold">Didn't mean to log out?</p>
+                  <p><a href="<?php echo $location_href;?>"><i class="fa fa-sign-in fa-lg text-primary"></i> HOME</a></p>
+                </div>
+              </div>
 <!-- /Loogut page content row main -->
 
                     </div>
   		</div>
-	<?php include ('footer.php'); ?> 
+	<?php include ('footer.php'); ?>
     </body>
 </html>

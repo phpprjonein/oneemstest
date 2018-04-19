@@ -116,6 +116,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-backup1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-backup1_LARGE.png" alt="" width="100%">
         </div>
       </div>
@@ -123,6 +126,9 @@ $page_title = 'OneEMS';
     <div class="modal fade show" id="screenshot-backup2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
           <img src="resources/img/screenshot-backup2_LARGE.png" alt="" width="100%">
         </div>
       </div>

@@ -188,7 +188,7 @@ $page_title = 'OneEMS';
 
         <div class="row">
           <div class="col">
-            <button type="submit" class="btn btn-primary btn-lg generate-script-submit">Select</button>
+            <button type="submit" class="btn btn-lg generate-script-submit">Select</button>
           </div>
         </div>
         <!-- /right side -->

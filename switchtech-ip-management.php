@@ -22,7 +22,7 @@ $page_title = 'OneEMS';
     <head>
    <?php include_once("includes.php");  ?>
    <script src="resources/js/ip_mgt.js?t="<?php echo date('his'); ?>></script>
-   <script defer src="resources/js/all.js"></script>
+   <!-- <script defer src="resources/js/all.js"></script> -->
  </head>
      <body>
         <!-- Modal HTML -->

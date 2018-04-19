@@ -3,14 +3,11 @@ include "classes/db2.class.php";
 include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors',1);
-if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-market') {
-    $region = $_POST['region'];
-    $markets = generic_get_market_by_region($region);
-    $output = '<option value="">- SELECT  Market -</option>';
-    foreach ($markets['result'] as $key => $val):
-    $output .= '<option value="'.$val['market'].'">'.$val['market'].'</option>';
-    endforeach;
-    echo $output;
+
+
+
+if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
+    update_dev_batch($_POST['batchid'], $_POST['category']);
 }
 
 if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-switch') {

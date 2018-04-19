@@ -1,7 +1,7 @@
 $(document).ready(function() {
-		if($('#backuprestore').length > 0){
+		if($('#batchpro').length > 0){
 		$('#ip-mgt-utils #ajax_loader').show();
-         var table =  $('#backuprestore').DataTable( {
+         var table =  $('#batchpro').DataTable( {
           "processing": true,
           "serverSide": true,
           "ajax":"batch-process.php",      
@@ -27,13 +27,6 @@ $(document).ready(function() {
             { "data": "nodeVersion" },
         ],
         "order": [[4, 'asc']],
-        "createdRow": function (row, data, rowIndex) {
-             $(row).addClass('device_row');
-			  $.each($('td', row), function (colIndex) {
-            	 if(colIndex == 0)
-            	   $(this).attr('title', 'Click here for health check');
-             }); 
-        }
       } );
 	}
 		
@@ -45,8 +38,20 @@ $(document).ready(function() {
     	})
     	
     	$(document).on('click', '#batch-submit', function(event) {
-    		var myModal = $('#batchModal');
-    		myModal.modal('show'); 
+        	var allVals = [];
+        	$('#batchpro').children().find('input[type=checkbox]:checked').each(function(index){
+        		 allVals.push(($(this).closest('tr').attr('id')).replace('row_',''));
+        	});
+        	
+            $.ajax({
+                type:"post",
+                url:"ip-mgt-process.php",
+                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val()}, 
+                success: function(resdata){
+                	var myModal = $('#batchModal');
+            		myModal.modal('show'); 
+                }
+            });
     	}); 
 
 		  
@@ -57,7 +62,7 @@ $(document).ready(function() {
 				listname = 0;
 			}
     		
-            var table =  $('#backuprestore').DataTable( {
+            var table =  $('#batchpro').DataTable( {
                 "processing": true,
                 "serverSide": true,
                 "ajax":"batch-process.php?listname="+listname,      

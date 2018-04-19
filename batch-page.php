@@ -38,6 +38,7 @@ include_once ('config/session_check_cellsite_tech.php');
       </div>
 			  <!-- Modal body -->
 			  <div class="modal-body">
+			  Please check the status in Batch Page
 			  </div>
 			  <!-- Modal footer -->
 			  <div class="modal-footer">
@@ -80,8 +81,9 @@ include_once ('config/session_check_cellsite_tech.php');
 						</div>
 						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
+                          <input type="hidden" value="<?php echo $_GET['batchid'];?>" name="batchid" id="batchid">
                           <div class="panel-body">
-                            <table id="backuprestore"  class="table table-striped table-sm">
+                            <table id="batchpro"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
                                   <th class="noExport">Select</th>

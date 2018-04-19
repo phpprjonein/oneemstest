@@ -2436,6 +2436,24 @@ function update_login_api_rules($sso_flag,$username){
     }
 }
 
+function update_dev_batch($batchid, $deviceid){
+    global $db2;
+    $oc = 1;
+    $dsql = 'INSERT INTO `devbatch` (`batchid`, `deviceid`, `status`) VALUES';
+    foreach ($deviceid as $key => $val){
+        if(count($deviceid) == $oc){
+            $dsql .= "('".$batchid."','".$val."','f')";
+        }else{
+            $dsql .= "('".$batchid."','".$val."','f'),";
+        }
+        $oc++;
+    }
+    if($oc > 1){
+        $db2->query($dsql);
+        $db2->execute();
+    }
+}
+
 function get_landing_page_sso($username,$eid,$email,$fname,$lname,$vzid) {
     echo 'inside the get_landing_page_sso function'.$username,$eid,$email,$fname,$lname,$vzid.'<br>';
 /*

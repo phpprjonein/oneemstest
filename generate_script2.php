@@ -161,6 +161,7 @@ $page_title = 'OneEMS';
 
 			<div id="file_process">
 			<form name="file_process" action="cellsite-config-process.php" method="post" class="border">
+			<input type="hidden" value="<?php echo $templname; ?>" name="templname"/>
 			<div class="tags p-b-2">
 			<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>
 
@@ -199,7 +200,7 @@ $page_title = 'OneEMS';
             ?>
 			</div>
                 <br>
-                <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button></div>
+                <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button><button type="submit" value="Execute Script" name="action" class="m-2 btn btn-primary btn-lg">Execute</button></div>
                 </form>
                 </div>
             <p></p>

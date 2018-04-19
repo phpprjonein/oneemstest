@@ -1,8 +1,9 @@
 <?php
-include "classes/db2.class.php";
-include 'functions.php';
+ini_set('display_errors', 'ON'); 
+include_once 'classes/db2.class.php';
+include_once 'functions.php';
 $userid = $_SESSION['userid'];
-ini_set('display_errors', 'ON');    
+   
 if($_POST['action'] == 'Save Configuration'){
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
@@ -29,6 +30,18 @@ if($_POST['action'] == 'Save Configuration'){
         header("location:switchtech-configuration.php");
     }else{
         header("location:cellsitetech-configuration.php");
+    }
+}elseif ($_POST['action'] == 'Execute Script'){
+    $templname = $_POST['templname'];
+    $db2 = new db2();
+    $batchid = time();
+    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT 1524109982 AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
+    $db2->query($sql);
+    $db2->execute();
+    if(isset($_POST['usertype']) && $_POST['usertype'] == 2){
+        header("location:batch-page.php?batchid=".$batchid);
+    }else{
+        header("location:batch-page.php?batchid=".$batchid);
     }
 }elseif ($_POST['action'] == 'Save Script'){
     $file = fopen(getcwd()."/upload/sampleconfigfile.script","w");

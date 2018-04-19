@@ -43,12 +43,13 @@
 		<li  class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-dashboard.php", "cellsitetech-user-devicelist.php"); ?>" href="cellsitetech-dashboard.php">Network Elements</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>" href="cellsitetech-restorebackup.php">Backup</a></li>
  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Configuration
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="scripting.php">Load Template</a>
           <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
+          <a class="dropdown-item" href="batch-page.php">Batch Page </a>
         </div>
       </li>
  <li class="nav-item dropdown">

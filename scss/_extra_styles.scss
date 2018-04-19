@@ -4,17 +4,18 @@ Extra Styles
 PLEASE NOTE:
 This is where all the magic happens.
 
-These following lines are the compiled result of changes made in the "/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default NCM attributes and all bespoke variables are created.
+These following lines are the compiled result of changes made in the "/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default Verizon attributes and all bespoke variables are created.
 
 Making changes in the .SCSS file instead of the compiled .CSS file helps keep the code as clean as possible. Also, it's pretty much standard, accepted best practice!
 
 PLEASE PLEASE PRETTY PLEASE DO NOT MAKE ANY CHANGES TO ANY CSS OR SCSS FILES ANYWHERE ELSE!!! It's almost impossible to reverse engineer .CSS code back into .SCSS format!!!
 *************************************************************************************************************/
 
-//NCM-specific fonts
-$font-family-sans-serif:      Arial, sans-serif !default;
+//Verizon-specific fonts
+$font-family-sans-serif:      Roboto, sans-serif !default;
+// @font-face { font-family: "Roboto"; font-weight: 300; src: url("../font/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Light.woff2") format("woff2"), url("../font/roboto/Roboto-Light.woff") format("woff"), url("../font/roboto/Roboto-Light.ttf") format("truetype"); }
 
-// button colors (NCM specific)
+// button colors (Verizon specific)
 $red:       #d52b1e !default;
 $gray:      #333333 !default;
 $btn-gray:  #d8dada !default;
@@ -140,9 +141,6 @@ body {
   /* main nav styling */
   font-size: 0.9375rem;
   padding-top: 0.25rem;
-//   .dropdown-toggle {
-//   @include nav-link-border-radius;
-// }
   .nav-link {
     /* main nav link styling */
     color: $pill-blue;
@@ -201,10 +199,10 @@ span.export {
   height: 1.875rem;
 }
 
+// ID styling
 #filename {
   overflow-wrap: break-word;
 }
-
 #listedit-wrap {
   .panel-heading-editlst {
     padding: 0.75rem 0.25rem !important;
@@ -215,7 +213,6 @@ span.export {
     background-color: $btn-gray;
   }
 }
-
 #backuprestore_wrapper, #ipmgt-ipv4_wrapper {
   .dataTables_filter {
     visibility: hidden;
@@ -251,7 +248,7 @@ span.export {
   }
 }
 input:focus {
-  /* custom NCM form styles for input fields */
+  /* custom Verizon form styles for input fields */
   outline: none !important;
   border: 0.0625rem solid $black !important;
   @include no-box-shadow;
@@ -292,16 +289,23 @@ input:focus {
     vertical-align: top;
   }
 }
+
 .scroller {
   height: 30.375rem;
   overflow-y: scroll;
 }
+
 .fa-search {
-  /* search icon coloring using non-standard NCM coloring #dc3545 */
+  /* search icon coloring using non-standard Verizon coloring #dc3545 */
   color: $red;
 }
+
 .btn-light {
   background-color: transparent !important;
+}
+
+.anchorcmd {
+  padding-right: 0.5rem;
 }
 
 // editable tables
@@ -320,7 +324,6 @@ tbody {
 .thead-light {
   background-color: #D8DADA;
 }
-
 td.details-control {
   background: url('../img/details_open.png') no-repeat center center;
   cursor: pointer;
@@ -330,12 +333,10 @@ tr.shown {
     background: url('../img/details_close.png') no-repeat center center;
   }
 }
-
 .table-striped tbody tr:nth-of-type(2n+1) {
   /* double row striping for IP Conflicts table */
   background-color: #f6f6f6;
 }
-
 .plus-button::before {
   display: none;
   font-family: 'Font Awesome 5 Solid';
@@ -386,7 +387,6 @@ tr.shown {
       }
   }
 }
-
 .big-modal {
   .modal-dialog {
     max-width: 95vw;
@@ -425,6 +425,11 @@ tr.shown {
 
 button {
   text-transform: uppercase;
+
+}
+.img-close {
+  padding-right: 0.5rem !important;
+  text-align: right;
 }
 
 .dt-buttons {
@@ -542,10 +547,19 @@ div {
 }
 
 // form wizard styling
+
+.generate-script-submit {
+  margin: 1rem 0;
+}
+
 .jf-form {
     p {
       word-wrap: break-word;
     }
+
+.config-submit {
+  margin: 1rem 0;
+}
 
   .form-group {
     margin-bottom: 0;

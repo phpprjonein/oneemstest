@@ -7898,7 +7898,7 @@ Extra Styles
 PLEASE NOTE:
 This is where all the magic happens.
 
-These following lines are the compiled result of changes made in the "/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default NCM attributes and all bespoke variables are created.
+These following lines are the compiled result of changes made in the "/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default Verizon attributes and all bespoke variables are created.
 
 Making changes in the .SCSS file instead of the compiled .CSS file helps keep the code as clean as possible. Also, it's pretty much standard, accepted best practice!
 
@@ -8104,7 +8104,7 @@ span.export {
 }
 
 input:focus {
-  /* custom NCM form styles for input fields */
+  /* custom Verizon form styles for input fields */
   outline: none !important;
   border: 0.0625rem solid #000 !important;
   -webkit-box-shadow: none !important;
@@ -8153,12 +8153,16 @@ input:focus {
 }
 
 .fa-search {
-  /* search icon coloring using non-standard NCM coloring #dc3545 */
+  /* search icon coloring using non-standard Verizon coloring #dc3545 */
   color: #dc3545;
 }
 
 .btn-light {
   background-color: transparent !important;
+}
+
+.anchorcmd {
+  padding-right: 0.5rem;
 }
 
 table {
@@ -8288,6 +8292,11 @@ tr.shown td.details-control {
 
 button {
   text-transform: uppercase;
+}
+
+.img-close {
+  padding-right: 0.5rem !important;
+  text-align: right;
 }
 
 .dt-buttons a {
@@ -8423,8 +8432,16 @@ div #my_swt_devlist {
   border: none;
 }
 
+.generate-script-submit {
+  margin: 1rem 0;
+}
+
 .jf-form p {
   word-wrap: break-word;
+}
+
+.jf-form .config-submit {
+  margin: 1rem 0;
 }
 
 .jf-form .form-group {

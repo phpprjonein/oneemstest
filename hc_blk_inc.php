@@ -99,10 +99,10 @@ $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['loge
                                             </tr>
                                             <tr>
                                               <td><input type="checkbox" id="fivethsndbyteping" name="fivethsndbyteping" value="23" <?php if(in_array(23, $_GET['category'])):?> checked="checked" <?php endif;?>></td>
-                                              <td><b>5000 Byte Ping</b></td>
+                                              <td><b>VRF</b></td>
                                               <td>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="fa fa-file-text-o fa-lg text-primary"></i></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';
-$display ="<span style='color:".$color."'>".$output['fivethsndbyteping']['message'].'</span>';
+$display ="<span style='color:".$color."'>".$output['vrfstates']['message'].'</span>';
 echo $display; ?>
 </td>
 											  <td><input type="checkbox" id="interfacestates" name="interfacestates" value="9" <?php if(in_array(9, $_GET['category'])):?> checked="checked" <?php endif;?>></td>

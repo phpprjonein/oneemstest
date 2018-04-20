@@ -33,6 +33,9 @@ $background_color_1: #f6f6f6;
 // help page image box shadow variables
 $help-box-shadow: 0.5125rem 0.5125rem 0.5125rem 0 rgba(0,0,0,0.75);
 
+// general button box shadow variables
+$button-box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(0,0,0,0.50);
+
 // forced no box shadow variables
 @mixin no-box-shadow {
   -webkit-box-shadow: none !important;
@@ -404,6 +407,11 @@ tr.shown {
 // custom buttons, dropdowns
 .btn {
   border-radius: 0 !important;
+  border: 0.0625rem solid #000;
+    cursor: pointer;
+    -webkit-box-shadow: $button-box-shadow;
+    -moz-box-shadow: $button-box-shadow;
+    box-shadow: $button-box-shadow;
   border-color: $btn-gray;
   background-color: $btn-gray;
   color: $black;
@@ -420,11 +428,19 @@ tr.shown {
 .panel-heading-myswtlst, .panel-heading-editlst {
   .btn {
     padding: 0 0.625rem;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
   }
 }
 
 button {
   text-transform: uppercase;
+  &.search-details {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
 
 }
 .img-close {

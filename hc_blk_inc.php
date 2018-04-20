@@ -32,7 +32,7 @@ $display ="<span style='color:".$color."'>".$output['buffers']['message'].'</spa
 echo $display; ?>
 </td>
 											  <td><input type="checkbox" id="bootstatement" name="bootstatement" value="16" <?php if(in_array(16, $_GET['category'])):?> checked="checked" <?php endif;?>></td>
-                                              <td><b>Boot statement</b></td>
+                                              <td><b>Boot Statement</b></td>
                                               <td>
 <a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=bootstatement&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="fa fa-file-text-o fa-lg text-primary"></i></a><?php $color = ($output['bootstatement']['R'] == 0) ? 'green':'red';
 $display ="<span style='color:".$color."'>".$output['bootstatement']['message'].'</span>';
@@ -169,9 +169,9 @@ echo $display; ?>
 </td>
   </tr>
     <tr>
-    <td colspan="3" class="run_custom_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run Selective Health Checks</b></td>
-    <td colspan="3" class="run_all_checks"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;"><b>Run All Health Checks</b></td>
-    <td colspan="3"><b>Last Run On - <?php echo $lastupdated;?></b></td>
+    <td colspan="3" class="run_custom_checks text-center" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run Selective Health Checks</button></td>
+    <td colspan="3" class="run_all_checks text-center"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run All Health Checks</button></td>
+    <td colspan="3" class="text-center"><b>Last Run On - <?php echo $lastupdated;?></b></td>
     <!-- <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;">&nbsp;<!--<b>Run Preventive Health Checks</b></td> -->
   </tr>
 </tbody>

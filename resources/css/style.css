@@ -8271,6 +8271,11 @@ tr.shown td.details-control {
 
 .btn {
   border-radius: 0 !important;
+  border: 0.0625rem solid #000;
+  cursor: pointer;
+  -webkit-box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.5);
   border-color: #d8dada;
   background-color: #d8dada;
   color: #000;
@@ -8288,10 +8293,19 @@ tr.shown td.details-control {
 
 .panel-heading-myswtlst .btn, .panel-heading-editlst .btn {
   padding: 0 0.625rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 button {
   text-transform: uppercase;
+}
+
+button.search-details {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .img-close {

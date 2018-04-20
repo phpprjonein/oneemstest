@@ -98,7 +98,7 @@ $page_title = 'OneEMS';
 	<!-- container-fluid -->
 
 <!-- footer div -->
-      <span class="text-muted"><?php include_once ('footer.php'); ?> </span>
+      <?php include_once ('footer.php'); ?>
 <!-- /footer div -->
 
     </body>

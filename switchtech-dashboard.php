@@ -92,7 +92,7 @@ write_log($mesg);
               <b>My Device List </b>
               <!-- Deleted selected switch list by drag and drop area -->
               <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger btn">
-                <i class="fa fa-trash"></i>&nbsp; <b>Delete</b>
+                <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
               </span>
             </div>
             <div class ="panel-body border">
@@ -139,7 +139,7 @@ write_log($mesg);
             <div>
 
               <!-- Deleted selected list by drag   and drop area -->
-                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Delete</b>
+                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>DELETE</b>
                 </span>
                 <span type="button" class="box box-danger border btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('switchtech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
               </div>

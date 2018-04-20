@@ -23,7 +23,7 @@ $page_title = 'OneEMS';
    <script src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
-	<div class="container-fluid" id="cellsitech-config">
+	<div class="container-fluid">
 	<?php include_once ('menu.php'); ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
@@ -60,7 +60,7 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-3">OK IP Addresses</a>
 			  <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-4">Manual Discovery</a>
             </nav>
-            <a class="nav-link" href="help_backup_config.php">BACKUP</a>
+            <a class="nav-link" href="help_backup.php">BACKUP</a>
             <a class="nav-link" href="help_config.php">CONFIGURATION</a>
             <a class="nav-link help active" href="#item-7">FAQs</a>
           </nav>
@@ -282,14 +282,8 @@ $page_title = 'OneEMS';
 	<!-- container-fluid -->
 
 <!-- footer div -->
-      <span class="text-muted"><?php include_once ('footer.php'); ?> </span>
+      <?php include_once ('footer.php'); ?>
 <!-- /footer div -->
-
-<!-- JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS. Must load stack in this order for this page; popovers will not work otherwise -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
     </body>
 </html>

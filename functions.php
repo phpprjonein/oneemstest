@@ -2842,12 +2842,9 @@ function get_batch_process_datatable($userid, $listname = '') {
     }
     return $resultset;
 }
-function get_devicebatch_list_from_devicebatch_datatable($userid, $listname = '') {
-	//function get_devicebatch_list_from_devicebatch_datatable($userid, $listname = '') {
-    
+function get_devicebatch_list_from_devicebatch_datatable() {
     global $db2, $pages;
     
-    //print_r($_GET);
     $draw = $_GET['draw'];
     $start = isset($_GET['start']) ? $_GET['start'] : 0;
     $length = isset($_GET['length']) ? $_GET['length'] : 10;
@@ -2857,43 +2854,32 @@ function get_devicebatch_list_from_devicebatch_datatable($userid, $listname = ''
     
     $columns = array(
         'distinct(d.id)',
-		'd.batchid', 
-		'd.deviceid', 
-		'd.scriptname',
+        'd.batchid',
+        'd.deviceid',
+        'd.scriptname',
         'd.deviceseries',
         'd.deviceos',
         'd.batchcreated',
-		'd.batchcompleted',
-		'd.status' 		 		
-    ); 
+        'd.batchcompleted',
+        'd.status'
+    );
     $sql_count = "SELECT COUNT(distinct(d.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
-    /*
-    $sql_condition = " FROM devbatch ud
-       JOIN nodes n on ud.nodeid = n.id
-       WHERE ud.userid = " . $userid ;
-    */
-	$sql_condition = " FROM devbatch d ";
-    if($listname != ''){
-       //$sql_condition .= " AND(ud.listname = '".$listname."')";
-    }
-    //die;
-    
+    $sql_condition = " FROM devbatch d ";
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " d.id LIKE '%". $search ."%'";
         $sql_condition .=  " OR d.batchid LIKE '%". $search ."%'";
         $sql_condition .=  " OR d.deviceid  LIKE '%". $search ."%'";
-		$sql_condition .=  " OR d.scriptname  LIKE '%". $search ."%'";
-		$sql_condition .=  " OR d.deviceseries LIKE '%". $search ."%'";
-		$sql_condition .=  " OR d.deviceos  LIKE '%". $search ."%'";
-		$sql_condition .=  " OR d.batchcreated  LIKE '%". $search ."%'";
-		$sql_condition .=  " OR d.batchcompleted  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR d.status  LIKE '%". $search ."%'";        
+        $sql_condition .=  " OR d.scriptname  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR d.deviceseries LIKE '%". $search ."%'";
+        $sql_condition .=  " OR d.deviceos  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR d.batchcreated  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR d.batchcompleted  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR d.status  LIKE '%". $search ."%'";
         $sql_condition .=  " ) ";
     }
     $count_sql = $sql_count . $sql_condition;
-    // echo $count_sql;
     $db2->query($count_sql);
     $row = $db2->resultsetCols();
     
@@ -2911,10 +2897,7 @@ function get_devicebatch_list_from_devicebatch_datatable($userid, $listname = ''
     
     $sql_limit = " LIMIT $start, $length ";
     
-    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
-    // echo '<br>';
-    // echo $sql;
-    
+    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;    
     $db2->query($sql);
     
     
@@ -2933,6 +2916,7 @@ function get_devicebatch_list_from_devicebatch_datatable($userid, $listname = ''
         $resultset['data'] = array();
         $resultset['recordsTotal'] = 10;
         $resultset['recordsFiltered'] =0;
-    } 
+    }
     return $resultset;
 }
+

@@ -86,33 +86,10 @@ include_once ('config/session_check_cellsite_tech.php');
                   <div class="col-md-12">
                       <div class="panel">
                           <div class="panel-info">
-                            <!-- Page title -->
-                          <!--  <div class="panel-heading"> My Devices List </div>
-                          </div>
-						  -->
-						  <div class="btn-group" id="backup-restore-list-dt-filter">
-						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           My routers
-						  </button>
-						  <div class="dropdown-menu">
-						  <?php
-						  $celltuser_list = get_celltechusers_list($_SESSION['userid']);
-						  foreach ($celltuser_list as $key => $value):
-							if(isset($value['listname'])):
-						  ?>
-						  <a class="dropdown-item" href="#"><?php echo ($value['listname'] == "0") ? 'My routers' : $value['listname'] ; ?></a>
-						  <?php
-						  endif;
-						  endforeach;
-                            ?>
-						  </div>
-						</div>
-						
-		 
 						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">
-                            <table id="devicebatch_datatable"  class="table table-striped table-sm">
+                            <table id="devicebatchtrack"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
                                   <th class="noExport">Batch details</th>

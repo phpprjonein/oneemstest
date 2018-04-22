@@ -1220,7 +1220,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
         'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
-        'n.deviceIpAddr',
+        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
     );
     
     
@@ -1253,6 +1253,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
         $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.deviceIpAddrsix LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= " ) ";
     }
@@ -1325,7 +1326,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
         'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
-        'n.deviceIpAddr',
+        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
     );
     
     
@@ -1358,6 +1359,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
         $sql_condition .= "  OR n.csr_site_name LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.devicename LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search_term) ."%' " ;
+        $sql_condition .= "  OR n.deviceIpAddrsix LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= "  OR n.market LIKE '%". addslashes($search_term) ."%' " ;
         $sql_condition .= " ) ";
     }

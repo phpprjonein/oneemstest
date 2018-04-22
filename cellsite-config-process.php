@@ -38,10 +38,12 @@ if($_POST['action'] == 'Save Configuration'){
     $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT 1524109982 AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
     $db2->query($sql);
     $db2->execute();
+    empty($_SESSION['batch_vars']);
+    $_SESSION['batch_vars'] = array('batchid' => $batchid, 'templname' => $templname, 'deviceseries' => $_POST['deviceseries'], 'deviceos' => $_POST['deviceos']);
     if(isset($_POST['usertype']) && $_POST['usertype'] == 2){
-        header("location:batch-page.php?batchid=".$batchid);
+        header("location:batch-page.php");
     }else{
-        header("location:batch-page.php?batchid=".$batchid);
+        header("location:batch-page.php");
     }
 }elseif ($_POST['action'] == 'Save Script'){
     $file = fopen(getcwd()."/upload/sampleconfigfile.script","w");

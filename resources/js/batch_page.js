@@ -46,7 +46,7 @@ $(document).ready(function() {
             $.ajax({
                 type:"post",
                 url:"ip-mgt-process.php",
-                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val()}, 
+                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val()}, 
                 success: function(resdata){
                 	var myModal = $('#batchModal');
             		myModal.modal('show'); 

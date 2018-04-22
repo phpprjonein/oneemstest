@@ -81,7 +81,11 @@ include_once ('config/session_check_cellsite_tech.php');
 						</div>
 						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
-                          <input type="hidden" value="<?php echo $_GET['batchid'];?>" name="batchid" id="batchid">
+                          <input type="hidden" value="<?php echo $_SESSION['batch_vars']['batchid'];?>" name="batchid" id="batchid">
+                          <input type="hidden" value="<?php echo $_SESSION['batch_vars']['templname']; ?>" name="scriptname" id="scriptname" />
+                          <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceseries']; ?>" name="deviceseries" id="deviceseries"/>
+						  <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceos']; ?>" name="deviceos" id="deviceos"/>
+                          
                           <div class="panel-body">
                             <table id="batchpro"  class="table table-striped table-sm">
                               <thead>
@@ -96,7 +100,23 @@ include_once ('config/session_check_cellsite_tech.php');
                               </thead>
                               
                             </table>
-                            <div><input type="button" value="Submit" class="btn-lg btn-success" id="batch-submit"></div>
+							<div class="input-group row" >
+                            <div class="form-inline col-md-6 col-sm-12">
+                            <select class="form-control" id="sel-priority">
+        						<option>1</option>
+            					<option>2</option>
+            					<option>3</option>
+            					<option>4</option>
+								<option>5</option>
+            					<option>6</option>
+            					<option>7</option>
+            					<option>8</option>
+            					<option>9</option>
+            					<option>10</option>
+          					</select>
+                            <input type="button" value="Submit" class="btn-lg btn-success" id="batch-submit">
+                            </div>
+                          </div>
                           </div>
                         <!-- /.box-body -->
                       </div>

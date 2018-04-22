@@ -162,6 +162,8 @@ $page_title = 'OneEMS';
 			<div id="file_process">
 			<form name="file_process" action="cellsite-config-process.php" method="post" class="border">
 			<input type="hidden" value="<?php echo $templname; ?>" name="templname"/>
+			<input type="hidden" value="<?php echo $_POST['f7']; ?>" name="deviceseries"/>
+			<input type="hidden" value="<?php echo $_POST['f8']; ?>" name="deviceos"/>
 			<div class="tags p-b-2">
 			<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>
 

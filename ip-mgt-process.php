@@ -7,7 +7,7 @@ ini_set('display_errors',1);
 
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
-    update_dev_batch($_POST['batchid'], $_POST['category']);
+    update_dev_batch($_POST['batchid'], $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'],  $_POST['priority']);
 }
 
 if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-switch') {

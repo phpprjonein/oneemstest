@@ -2436,15 +2436,16 @@ function update_login_api_rules($sso_flag,$username){
     }
 }
 
-function update_dev_batch($batchid, $deviceid){
+function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $deviceos, $priority){
     global $db2;
     $oc = 1;
-    $dsql = 'INSERT INTO `devbatch` (`batchid`, `deviceid`, `status`) VALUES';
+    $date_op = date('Y-m-d H:i:s');
+    $dsql = 'INSERT INTO `devbatch` (`batchid`, `deviceid`, `status`, `scriptname`, `deviceseries`, `deviceos`, `batchcreated`, `batchcompleted`, `priority`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
-            $dsql .= "('".$batchid."','".$val."','f')";
+            $dsql .= "('".$batchid."','".$val."','f','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."')";
         }else{
-            $dsql .= "('".$batchid."','".$val."','f'),";
+            $dsql .= "('".$batchid."','".$val."','f','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."'),";
         }
         $oc++;
     }

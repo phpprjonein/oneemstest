@@ -904,6 +904,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
         'n.id',
         'n.csr_site_id',
         'n.csr_site_name',
+        'n.csr_site_tech_id',
         'n.devicename',
         'n.market',
         'n.deviceseries',
@@ -918,7 +919,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
     
     $sql_condition = " FROM userdevices ud
        JOIN nodes n on ud.nodeid = n.id
-       WHERE ud.userid = " . $userid ." and ud.listid = " . $listid ;
+       WHERE ud.userid = " . $userid ." and ud.listid = " . $listid ." and n.csr_site_tech_id = '".$_SESSION['username']."'" ;
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.devicename LIKE '%". $search ."%'";
@@ -2370,7 +2371,7 @@ function update_login_api_rules($sso_flag,$username){
                     $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
                     $records_to_update[] =  array('devicename' => $val, 'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'], 'switch_name' => $resp_result_arr['site_devices'][$i]['switch'], 'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']);
                     //Node table status 3 added for live API active
-                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
+                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_tech_id = '".$_SESSION['username']."',csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
                     $db2->query($sql);
                     $db2->execute();
                     if(!in_array($resp_result_arr['site_devices'][$i]['switch'], $swt_mswitch_arr)){
@@ -2379,6 +2380,10 @@ function update_login_api_rules($sso_flag,$username){
                 }
             }
         }
+
+        $sql = "update nodes set csr_site_tech_id = '' where switch_name not in ('".implode("','",$swt_mswitch_arr)."') and csr_site_tech_id = '".$_SESSION['username']."'"; 
+        $db2->query($sql);
+        $db2->execute();
         $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
      } elseif (in_array($_SESSION['userlevel'], array(2,5,6,7))) {
         $resp_result_arr = json_decode($output, 1);

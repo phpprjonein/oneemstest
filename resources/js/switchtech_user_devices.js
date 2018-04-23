@@ -98,6 +98,7 @@ $(document).ready(function() {
             { "data": "deviceseries" },
             { "data": "nodeVersion" },
             { "data": "status", "className": "d-none" },
+            { "data": "deviceIpAddr" },
             { "data": "lastpolled" },
         ],
         "order": [[1, 'asc']],
@@ -114,7 +115,7 @@ $(document).ready(function() {
 					  status = $(this).text();
 					  $(this).attr('class', 'd-none');
 				  }
-				  if(colIndex == 8 && status == 0){
+				  if(colIndex == 9 && status == 0){
 							  $(this).attr('class', 'device-red');
 						  }  
 				  

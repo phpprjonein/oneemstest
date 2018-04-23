@@ -76,6 +76,7 @@ modal.children[0].addEventListener('click', function(e) {
                                   <th>Device Series</th>
                                   <th>Version</th>
                                   <th class="d-none">Status</th>
+                                  <th>IP Address</th>
                                   <th>Last Polled</th>
                                 </tr>
                               </thead>

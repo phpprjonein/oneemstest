@@ -900,6 +900,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
+        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
         'n.model',
         'n.id',
         'n.csr_site_id',
@@ -933,6 +934,8 @@ function user_mylist_devieslist_datatable($userid,$listid){
         $sql_condition .=  " OR n.deviceseries  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.nodeVersion  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.lastpolled  LIKE '%". $search ."%'";
+        $sql_condition .= "  OR n.deviceIpAddr LIKE '%". addslashes($search) ."%' " ;
+        $sql_condition .= "  OR n.deviceIpAddrsix LIKE '%". addslashes($search) ."%' " ;
         $sql_condition .=  " ) ";
     }
     $count_sql = $sql_count . $sql_condition;

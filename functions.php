@@ -917,9 +917,13 @@ function user_mylist_devieslist_datatable($userid,$listid){
     $sql_count = "SELECT COUNT(*) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
-    $sql_condition = " FROM userdevices ud
+    /*$sql_condition = " FROM userdevices ud
        JOIN nodes n on ud.nodeid = n.id
        WHERE ud.userid = " . $userid ." and ud.listid = " . $listid ." and n.csr_site_tech_id = '".$_SESSION['username']."'" ;
+    */
+    
+    $sql_condition = " FROM nodes n where n.csr_site_tech_id = '".$_SESSION['username']."'" ;
+    
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.devicename LIKE '%". $search ."%'";

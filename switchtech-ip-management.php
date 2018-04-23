@@ -150,13 +150,13 @@ $page_title = 'OneEMS';
         <div class="input-group" id="search-v-pills-home">
           <input type="text" class="form-control" placeholder="Search IP V4 Table" aria-label="Search Table">
           <span class="input-group-btn">
-            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
           </span>
         </div>
         <div class="input-group" style="display: none;" id="search-v-pills-profile">
           <input type="text" class="form-control" placeholder="Search IP V6 Table" aria-label="Search Table">
           <span class="input-group-btn">
-            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
           </span>
         </div>
 

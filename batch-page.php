@@ -85,7 +85,7 @@ include_once ('config/session_check_cellsite_tech.php');
                           <input type="hidden" value="<?php echo $_SESSION['batch_vars']['templname']; ?>" name="scriptname" id="scriptname" />
                           <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceseries']; ?>" name="deviceseries" id="deviceseries"/>
 						  <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceos']; ?>" name="deviceos" id="deviceos"/>
-                          
+
                           <div class="panel-body">
                             <table id="batchpro"  class="table table-striped table-sm">
                               <thead>
@@ -98,11 +98,11 @@ include_once ('config/session_check_cellsite_tech.php');
                                   <th>OS Version</th>
                                 </tr>
                               </thead>
-                              
+
                             </table>
 							<div class="input-group row" >
                             <div class="form-inline col-md-6 col-sm-12">
-                            <select class="form-control" id="sel-priority">
+                            <select class="form-control custom-select" id="sel-priority">
         						<option>1</option>
             					<option>2</option>
             					<option>3</option>
@@ -114,13 +114,14 @@ include_once ('config/session_check_cellsite_tech.php');
             					<option>9</option>
             					<option>10</option>
           					</select>
-                            <input type="button" value="Submit" class="btn-lg btn-success" id="batch-submit">
+                             <button type="submit" value="SUBMIT" class="btn btn-default" id="batch-submit">SUBMIT</button>
                             </div>
                           </div>
                           </div>
                         <!-- /.box-body -->
                       </div>
                   </div>
+                  <p>&nbsp;</p>
                 </section> <!-- /.content -->
               </div>
             <!-- /.content-wrapper -->

@@ -141,7 +141,7 @@ $page_title = 'OneEMS';
           <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
-          <img src="resources/img/screenshot-ip_management_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-ip_management.png" alt="" width="100%">
         </div>
       </div>
     </div>

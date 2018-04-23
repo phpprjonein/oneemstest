@@ -1,8 +1,10 @@
 <header class="main-header">
   <div class="nav top-menu">
-    <div class="float-left box logo-box"><a class="navbar-brand" href="#" >
-        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
-      </a>
+    <div class="float-left box logo-box">
+      <!-- <a class="navbar-brand" href="#" > -->
+        <img src="resources/img/verizonlogo.png"  height = "24px"  alt=" Verizon Logo"/>
+        <h4>OneEMS</h4>
+      <!-- </a> -->
     </div>
     <?php
     if (isset($_SESSION['welcome_username']) && $_SESSION['welcome_username']!= '') {
@@ -16,7 +18,7 @@
         </a>|
          <?php //if ($_SESSION['sso_flag'] == 0) { ?>
         <a href="logout.php">
-          <i class="fa fa-sign-out fa-lg"></i>LOGOUT
+          <!-- <i class="fa fa-sign-out fa-lg"> --><i class="fa fa-power-off"></i> LOGOUT
         </a>
        <?php //}; ?>
       </li>
@@ -30,8 +32,9 @@
   ?>
   </div>
 
-  <hr>
+  <hr class="border border-danger">
 
+<!-- <p>Breadcrumb > Breadcrumb > Breadcrumb</p> -->
     <div class="breadcrumb">
 
 
@@ -43,14 +46,13 @@
 		<li  class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-dashboard.php", "cellsitetech-user-devicelist.php"); ?>" href="cellsitetech-dashboard.php">Network Elements</a></li>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>" href="cellsitetech-restorebackup.php">Backup</a></li>
  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php", "batch-tracking-devices.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Configuration
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="scripting.php">Load Template</a>
           <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
-          <a class="dropdown-item" href="batch-page.php">Batch Creation </a>
-		  <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
+          <a class="dropdown-item" href="batch-page.php">Batch Page </a>
         </div>
       </li>
  <li class="nav-item dropdown">

@@ -108,7 +108,7 @@ if($sso_flag == 1){
      <header class="main-header">
           <div class="nav">
                 <div class="pull-left box"><a class="navbar-brand" href="#" >
-                        <img src="resources/img/verizonlogo.png"  height = "24px"  alt="Verizon Logo"/>
+                        <img src="resources/img/ncmlogo.png"  height = "24px"  alt="NCM Logo"/>
                   </a>
                 </div>
           </div>

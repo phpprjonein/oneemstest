@@ -2387,6 +2387,7 @@ function update_login_api_rules($sso_flag,$username){
                     $sql = "UPDATE `nodes` SET csr_site_tech_name = '".$resp_result_arr['site_devices'][$i]['techname']."', switch_name ='".$resp_result_arr['site_devices'][$i]['switch']."', csr_site_tech_id = '".$_SESSION['username']."',csr_site_id ='".$resp_result_arr['site_devices'][$i]['siteid']."', status=3 WHERE devicename = '".$val."'";
                     $db2->query($sql);
                     $db2->execute();
+                    $devicename_arr[] = $val;
                     if(!in_array($resp_result_arr['site_devices'][$i]['switch'], $swt_mswitch_arr)){
                         $swt_mswitch_arr[] = $resp_result_arr['site_devices'][$i]['switch'];
                     }                    
@@ -2394,7 +2395,7 @@ function update_login_api_rules($sso_flag,$username){
             }
         }
 
-        $sql = "update nodes set csr_site_tech_id = '' where switch_name not in ('".implode("','",$swt_mswitch_arr)."') and csr_site_tech_id = '".$_SESSION['username']."'"; 
+        $sql = "update nodes set csr_site_tech_id = '' where devicename not in ('".implode("','",$devicename_arr)."') and csr_site_tech_id = '".$_SESSION['username']."'"; 
         $db2->query($sql);
         $db2->execute();
         $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;

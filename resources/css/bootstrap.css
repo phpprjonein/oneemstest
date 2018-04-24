@@ -7999,6 +7999,24 @@ body {
   }
 }
 
+.main-header .box h4 {
+  border-left: 0.1rem solid #d8dada;
+  display: inline-block;
+  font-size: 1.35rem;
+  margin: 1.65rem 0 0 0.5rem;
+  padding-left: 0.3rem;
+  position: absolute;
+}
+
+@media (max-width: 575px) {
+  .main-header .box h4 {
+    border: none;
+    display: block;
+    margin: 0;
+    position: relative;
+  }
+}
+
 .main-header .profile-box {
   text-align: right;
   padding: 0.625rem 0.625rem 0 0;
@@ -8098,18 +8116,18 @@ span.export {
   visibility: hidden;
 }
 
-#cellsitetech_user_devices_wrapper input, #example_filter input {
+#cellsitetech_user_devices_wrapper input, #swt_user_devices_filter input, #example_filter input {
   border: 1px solid #ced4da;
   border-bottom: 0.125rem solid #000;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-#cellsitetech_user_devices_wrapper .dataTables_length, #example_filter .dataTables_length {
+#cellsitetech_user_devices_wrapper .dataTables_length, #swt_user_devices_filter .dataTables_length, #example_filter .dataTables_length {
   display: none;
 }
 
-#cellsitetech_user_devices_wrapper .dataTables_filter, #example_filter .dataTables_filter {
+#cellsitetech_user_devices_wrapper .dataTables_filter, #swt_user_devices_filter .dataTables_filter, #example_filter .dataTables_filter {
   float: left;
 }
 

@@ -94,11 +94,11 @@ $(document).ready(function() {
 			{ "data": "csr_site_id" },
             { "data": "csr_site_name" },
             { "data": "devicename" },
+            { "data": "deviceIpAddr" },
             { "data": "market" },
             { "data": "deviceseries" },
             { "data": "nodeVersion" },
             { "data": "status", "className": "d-none" },
-            { "data": "deviceIpAddr" },
             { "data": "lastpolled" },
         ],
         "order": [[1, 'asc']],
@@ -111,7 +111,7 @@ $(document).ready(function() {
             	   $(this).attr('title', 'Click here for health check');
 			   */  // Temporarily not needed. Needed in future.
 				  
-				  if(colIndex == 7){
+				  if(colIndex == 8){
 					  status = $(this).text();
 					  $(this).attr('class', 'd-none');
 				  }

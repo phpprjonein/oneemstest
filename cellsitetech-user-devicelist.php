@@ -72,11 +72,11 @@ modal.children[0].addEventListener('click', function(e) {
                                   <th>Site ID</th>
                                   <th>Site Name</th>
                                   <th>Device Name</th>
+                                  <th>IP Address</th>
                                   <th>Market</th>
                                   <th>Device Series</th>
                                   <th>Version</th>
                                   <th class="d-none">Status</th>
-                                  <th>IP Address</th>
                                   <th>Last Polled</th>
                                 </tr>
                               </thead>

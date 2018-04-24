@@ -69,6 +69,22 @@ $(document).ready(function() {
 	                   row.child( format(tr.attr('id')) ).show();
 	                   tr.addClass('shown');
 	                   var id = tr.attr('id').replace('row_','');
+	                   var ajs = $.ajax({
+	                       type:"post",
+	                       url:"batchtrack-load-table-data.php",
+	                       data: {deviceid:id, userid:$('#userid').val(), 'exestatus':$(this).closest('tr').find("td:eq(8)").text()},
+	                       beforeSend: function(){
+	                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+	                       },
+	                       complete: function() {
+	                           $('#detail_'+id).addClass('loaded');
+	                       },
+	                       success: function(resdata){
+	                           $('#detail_'+id).html(resdata);
+	                       }
+	                   });
+	                   
+	                   
 	             }
 	           } 
 	       });

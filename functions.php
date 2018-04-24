@@ -1986,7 +1986,13 @@ function get_csr_site_tech_mgr_id($username){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-
+function generic_get_node_info_by_deviceid($deviceid){
+    global $db2;
+    $sql = "SELECT * FROM nodes where id = ".$deviceid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
 function generic_get_categories(){
     global $db2;
     $sql = "SELECT id,categoryName FROM categories where status = 1 ORDER BY categoryName";
@@ -2920,7 +2926,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
     
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
-            $value['DT_RowId'] = "row_" . $value['id'] ;
+            $value['DT_RowId'] = "row_" . $value['deviceid'] ;
             $records[$key] = $value;
         }
         $resultset['data'] = $records;

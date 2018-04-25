@@ -110,8 +110,8 @@ $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['loge
                                             </tr>
                                             <tr>                  
                                               <td><b>5000 Byte Ping</b></td>                                              
-                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';  
-$display ="<span style='color:".$color."'>".$output['fivethsndbyteping']['message'].'</span>';
+                                              <td><a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=vrfstates&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><img src="resources/img/RDimage.png" alt="Smiley face" height="22" width="22"> </img></a><?php $color = ($output['vrfstates']['R'] == 0) ? 'green':'red';  
+$display ="<span style='color:".$color."'>".$output['vrfstates']['message'].'</span>';
 echo $display; ?> 
 </td>
                                               <td><b>Interface State</b></td>

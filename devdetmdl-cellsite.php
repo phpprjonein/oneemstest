@@ -49,7 +49,7 @@ switch($command) {
     case 'cpuutilization':
         $url='http://10.134.179.82:8080/healthcheck/ios/'.$deviceid.'/1';
         break;
-    case 'fivethsndbyteping':
+    case 'vrfstates':
         $url='http://10.134.179.82:8080/healthcheck/ios/'.$deviceid.'/23';
         break;
     case 'twothsndbyteping':

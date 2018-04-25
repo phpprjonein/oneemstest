@@ -76,8 +76,8 @@ if(count($_GET['category']) > 0){
                 $output['bfdsession'] = array('R' => '', 'message' => '');
             }if(!in_array(15, $_GET['category']) || !isset($output['logentries'])){
                 $output['logentries'] = array('R' => '', 'message' => '');
-            }if(!in_array(23, $_GET['category']) || !isset($output['fivethsndbyteping'])){
-                $output['fivethsndbyteping'] = array('R' => '', 'message' => '');
+            }if(!in_array(23, $_GET['category']) || !isset($output['vrfstates'])){
+                $output['vrfstates'] = array('R' => '', 'message' => '');
             }if(!in_array(9, $_GET['category']) || !isset($output['interfacestates'])){
                 $output['interfacestates'] = array('R' => '', 'message' => '');
             }if(!in_array(20, $_GET['category']) || !isset($output['xconnect'])){
@@ -95,7 +95,7 @@ if(count($_GET['category']) > 0){
             }if(!in_array(17, $_GET['category']) || !isset($output['bgpvsixroutes'])){
                 $output['bgpvsixroutes'] = array('R' => '', 'message' => '');
             }
-            //$output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"fivethsndbyteping":'.$result['fivethsndbyteping'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
+            //$output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"vrfstates":'.$result['vrfstates'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
             //$output = json_decode($output,true); 
             //print '<pre>';
             //print_r($output); die;

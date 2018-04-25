@@ -98,10 +98,10 @@ $display ="<span style='color:".$color."'>"."<br> Trap Logging : ".$output['loge
 											  </td>
                                             </tr>
                                             <tr>
-                                              <td><input type="checkbox" id="fivethsndbyteping" name="fivethsndbyteping" value="23" <?php if(in_array(23, $_GET['category'])):?> checked="checked" <?php endif;?>></td>
+                                              <td><input type="checkbox" id="vrfstates" name="vrfstates" value="23" <?php if(in_array(23, $_GET['category'])):?> checked="checked" <?php endif;?>></td>
                                               <td><b>VRF</b></td>
                                               <td>
-<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=fivethsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="fa fa-file-text-o fa-lg text-primary"></i></a><?php $color = ($output['fivethsndbyteping']['R'] == 0) ? 'green':'red';
+<a id="anchorcmd" class="anchorcmd" href="devdetmdl-cellsite.php?commandname=vrfstates&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i class="fa fa-file-text-o fa-lg text-primary"></i></a><?php $color = ($output['vrfstates']['R'] == 0) ? 'green':'red';
 $display ="<span style='color:".$color."'>".$output['vrfstates']['message'].'</span>';
 echo $display; ?>
 </td>

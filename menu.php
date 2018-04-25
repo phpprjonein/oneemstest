@@ -52,7 +52,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="scripting.php">Load Template</a>
           <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
-        <!--  <a class="dropdown-item" href="batch-page.php">Batch Page </a>  -->
+         <a class="dropdown-item" href="batch-page.php">Batch Page </a>
         </div>
       </li>
  <li class="nav-item dropdown">

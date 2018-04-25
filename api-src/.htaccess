@@ -1,5 +1,0 @@
-AuthType Basic
-AuthName "Restricted Content"
-#AuthUserFile /home/saravanan/source/oneemstest/api-src/.htpasswd
-AuthUserFile /var/www/html/oneemstest/api-src/.htpasswd
-Require valid-user

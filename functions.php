@@ -1986,9 +1986,9 @@ function get_csr_site_tech_mgr_id($username){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-function generic_get_node_info_by_deviceid($deviceid){
+function batch_accordion_details($deviceid){
     global $db2;
-    $sql = "SELECT * FROM nodes where id = ".$deviceid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where n.id = '.$deviceid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -2464,9 +2464,9 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
     $dsql = 'INSERT INTO `devbatch` (`batchid`, `deviceid`, `status`, `scriptname`, `deviceseries`, `deviceos`, `batchcreated`, `batchcompleted`, `priority`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
-            $dsql .= "('".$batchid."','".$val."','f','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."')";
+            $dsql .= "('".$batchid."','".$val."','s','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."')";
         }else{
-            $dsql .= "('".$batchid."','".$val."','f','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."'),";
+            $dsql .= "('".$batchid."','".$val."','s','".$scriptname."','".$deviceseries."','".$deviceos."','".$date_op."','".$date_op."','".$priority."'),";
         }
         $oc++;
     }
@@ -2475,7 +2475,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->execute();
         
         /*insert in to devbatchmst table*/
-        $dsql = "INSERT INTO `devbatchmst` (`batchid`, `batchstatus`, `batchscheddate`) VALUES ('".$batchid."','f','".$date_op."')";
+        $dsql = "INSERT INTO `devbatchmst` (`batchid`, `batchstatus`, `batchscheddate`) VALUES ('".$batchid."','s','".$date_op."')";
         $db2->query($dsql);
         $db2->execute();
         
@@ -2889,11 +2889,15 @@ function get_devicebatch_list_from_devicebatch_datatable() {
         'd.deviceos',
         'd.batchcreated',
         'd.batchcompleted',
-        'd.status'
+        'dm.batchstatus'
     );
     $sql_count = "SELECT COUNT(distinct(d.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
-    $sql_condition = " FROM devbatch d ";
+    
+    $sql_condition = " FROM devbatch d 
+       JOIN devbatchmst dm on dm.batchid = d.batchid ";
+
+    
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " d.id LIKE '%". $search ."%'";
@@ -2904,7 +2908,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
         $sql_condition .=  " OR d.deviceos  LIKE '%". $search ."%'";
         $sql_condition .=  " OR d.batchcreated  LIKE '%". $search ."%'";
         $sql_condition .=  " OR d.batchcompleted  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR d.status  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR dm.batchstatus  LIKE '%". $search ."%'";
         $sql_condition .=  " ) ";
     }
     $count_sql = $sql_count . $sql_condition;

@@ -27,7 +27,7 @@ $(document).ready(function() {
 			{ "data": "deviceos" },
             { "data": "batchcreated" },
 			{ "data": "batchcompleted" },
-            { "data": "status" },
+            { "data": "batchstatus" },
         ],
         "order": [[4, 'asc']],
         "createdRow": function (row, data, rowIndex) {
@@ -72,7 +72,7 @@ $(document).ready(function() {
 	                   var ajs = $.ajax({
 	                       type:"post",
 	                       url:"batchtrack-load-table-data.php",
-	                       data: {deviceid:id, userid:$('#userid').val(), 'exestatus':$(this).closest('tr').find("td:eq(8)").text()},
+	                       data: {deviceid:id, userid:$('#userid').val()},
 	                       beforeSend: function(){
 	                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
 	                       },

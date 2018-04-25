@@ -3,7 +3,7 @@ include "classes/db2.class.php";
 include "classes/paginator.class.php";  
 include 'functions.php';
 $deviceid = $_POST['deviceid'];
-$deviceinfo = generic_get_node_info_by_deviceid($deviceid);
+$deviceinfo = batch_accordion_details($deviceid);
 ?>                
                 
                 <div class="ownfont box-body launch-modal">
@@ -17,7 +17,7 @@ $deviceinfo = generic_get_node_info_by_deviceid($deviceid);
                                             <tr>
                                               <td><?php echo $deviceinfo['result'][0]['deviceIpAddr'].$deviceinfo['result'][0]['deviceIpAddrsix'];?></td>
                                               <td><?php echo $deviceinfo['result'][0]['systemname']; ?></td>
-                                              <td><?php echo $_POST['exestatus']; ?></td>
+                                              <td><?php echo $deviceinfo['result'][0]['status']; ?></td>
                                             </tr>
 					</tbody>
 				</table>

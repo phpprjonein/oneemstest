@@ -1,1 +1,0 @@
-<b> hello!! This is a remote page </b>

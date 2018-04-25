@@ -2473,6 +2473,12 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
     if($oc > 1){
         $db2->query($dsql);
         $db2->execute();
+        
+        /*insert in to devbatchmst table*/
+        $dsql = "INSERT INTO `devbatchmst` (`batchid`, `batchstatus`, `batchscheddate`) VALUES ('".$batchid."','f','".$date_op."')";
+        $db2->query($dsql);
+        $db2->execute();
+        
     }
 }
 

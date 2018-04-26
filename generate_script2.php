@@ -102,32 +102,32 @@ $page_title = 'OneEMS';
 <!-- /select RAN vendor options -->
 
 <!-- select region options -->
-            <div class="form-group f11 required" data-fid="f11">
+            <!-- <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
               <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true" disabled>
                 <option value="<?php echo $_POST['f11'];?>"><?php echo $_POST['f11'];?></option>
               </select>
-            </div>
+            </div> -->
 <!-- /select region options -->
 
 <!-- select market options -->
-            <div class="form-group f13 required" data-fid="f13">
+            <!-- <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
               <select class="form-control custom-select" id="f13" name="f13" data-rule-required="true" disabled>
                 <option value="<?php echo $_POST['f13'];?>"><?php echo $_POST['f13'];?></option>
                 <option></option>
               </select>
-            </div>
+            </div> -->
 <!-- /select market options -->
 
 <!-- select switch type options -->
-            <div class="form-group f12 required" data-fid="f12">
+            <!-- <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Type</label>
               <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true" disabled>
                 <option value="<?php echo $_POST['f12'];?>"><?php echo $_POST['f12'];?></option>
                 <option></option>
               </select>
-            </div>
+            </div> -->
 <!-- /select switch type options -->
 
             <div class="clearfix"></div>
@@ -202,7 +202,7 @@ $page_title = 'OneEMS';
             ?>
 			</div>
                 <br>
-                <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button> <button type="submit" value="Execute Script" name="action" class="m-2 btn btn-primary btn-lg">Execute</button> </div>
+                <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button><!-- <button type="submit" value="Execute Script" name="action" class="m-2 btn btn-primary btn-lg">Execute</button> --></div>
                 </form>
                 </div>
             <p></p>

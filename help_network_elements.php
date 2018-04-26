@@ -43,24 +43,28 @@ $page_title = 'OneEMS';
           <nav class="nav nav-pills flex-column">
             <h6 class="text-center">CONTENTS</h6>
             <a class="nav-link" href="help.php">GETTING STARTED</a>
-            <a class="nav-link help active" href="#item-2">NETWORK ELEMENTS</a>
+            <a class="nav-link" href="#item-2">NETWORK ELEMENTS</a>
             <nav class="nav nav-pills flex-column">
               <a class="nav-link ml-3 my-1" href="#item-2-2-1">List Management Options</a>
               <a class="nav-link ml-3 my-1" href="#item-2-3">Health Check Details View</a>
             </nav>
+            <a class="nav-link" href="help_backup.php">BACKUP</a>
+            <a class="nav-link help active" href="help_config.php">CONFIGURATION</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+            </nav>
             <a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-3-1">Subnet Addition</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
             </nav>
-            <a class="nav-link" href="help_discovery_results.php#item-4">DISCOVERY RESULTS</a>
+            <a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-1">Missed IP Addresses</a>
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-2">New IP Addresses</a>
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-3">OK IP Addresses</a>
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-4">Manual Discovery</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
             </nav>
-            <a class="nav-link" href="help_backup.php">BACKUP</a>
-            <a class="nav-link" href="help_config.php">CONFIGURATION</a>
             <a class="nav-link" href="help_faqs.php">FAQs</a>
           </nav>
         </nav>
@@ -164,7 +168,7 @@ $page_title = 'OneEMS';
             <a href="help.php" class="border"><b><< PREV: Getting Started</b></a>
           </div>
           <div class="col-6 text-right">
-            <a href="help_discovery_ips.php" class="border"><b>NEXT: Discovery IPs >></b></a>
+            <a href="help_backup.php" class="border"><b>NEXT: Backup >></b></a>
           </div>
         </div>
         <hr>

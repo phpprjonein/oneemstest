@@ -48,19 +48,23 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
               <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
             </nav>
+            <a class="nav-link" href="help_backup.php">BACKUP</a>
+            <a class="nav-link help active" href="#item-4">CONFIGURATION</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3 my-1" href="#item-4-1">Load Template</a>
+              <a class="nav-link ml-3 my-1" href="#item-4-2">Generate Script</a>
+            </nav>
             <a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-3-1">Subnet Addition</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
             </nav>
             <a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-1">Missed IP Addresses</a>
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-2">New IP Addresses</a>
-              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-3">OK IP Addresses</a>
-			  <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-4-4">Manual Discovery</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
+              <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
             </nav>
-            <a class="nav-link" href="help_backup.php">BACKUP</a>
-            <a class="nav-link help active" href="#item-6">CONFIGURATION</a>
             <a class="nav-link" href="help_faqs.php">FAQs</a>
           </nav>
         </nav>
@@ -70,24 +74,25 @@ $page_title = 'OneEMS';
 <!-- help guide -->
       <div class="col-md-9 col-sm-12 scrollspy-example" data-spy="scroll" data-target="#navbar-help" data-offset="0">
         <hr class="d-md-none" />
-        <h4 id="item-6">CONFIGURATION</h4>
+        <h4 id="item-4">CONFIGURATION</h4>
         <p>This Dashboard consists of a file upload interface that allows a user to manage <b>Configuration Scripts</b> for any device within the OneEMS system. On this screen, a user can:</p>
         <ul>
           <li>Enter values into editable fields</li>
-          <li>Download your edits as a script</li>
+          <li>Download edits as a script</li>
         </ul>
         <p class="alert alert-danger"><b class="text-danger">NOTE:</b> The ASR 920 series Routers for the Great Lakes Region is provided as a default template. This is the first Region available in the OneEMS system. Future enhancements will permit users to select templates for other Vendors, Markets and other filtering criteria.</p>
+        <h5 id="item-4-1">Load Template</h5>
         <img src="resources/img/screenshot-config1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
         <p></p>
-        <span class="font-italic"><b>FIG. 6.1 - Configuration Dashboard</b></span>
+        <span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard With Sample Values Selected</b></span>
         <p></p>
         <p>To manage device scripts, a user can upload one from their hard drive. Doing so produces a form on the right in which a user can edit values.</p>
-        <p class="alert alert-danger"><b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that have anything besides <b>.txt</b> extensions.
+        <p class="alert alert-danger"><b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that end in anything besides <b>.txt</b> extensions.
         <br><br>
         Additionally, editable fields <b>MUST</b> be encapsulated by a hash ( <b>#</b> ) symbol. This symbol must appear on both the left and right sides of an editable field. Acceptable values within the encapsulated area are the letters "X", "Y", "A", "B" or "C". These characters must be capitalized. The OneEMS application recognizes strings configured in this way as editable.</p>
         <p>Once a user has either manipulated the default values in the form on the right or changed the values of the script they have uploaded, they can then download this edited script for application on devices of their choosing.</p>
         <p>Here is an example of a properly formatted script file:</p>
-        <div class="scroller">
+        <div class="scroller border">
           <samp>
             <pre>
               service nagle
@@ -767,15 +772,34 @@ event manager applet LOOP_GIG authorization bypass
             </pre>
           </samp>
         </div>
+        <p>&nbsp;</p>
+        <img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config2">
+        <p></p>
+        <span class="font-italic"><b>FIG. 4.2 - Editable Configuration Template</b></span>
+        <p></p>
+        <h5 id="item-4-2">Generate Script</h5>
+        <p>In this view, a user can select an existing template with which to create a script for use on a particular device.</p>
+        <img src="resources/img/screenshot-generate-script1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1">
+        <p></p>
+        <span class="font-italic"><b>FIG. 4.3 - Script Template Selection</b></span>
+        <p></p>
+        <p>You can select parameters from the dropdown menu on the right side of the screen, which will reveal associated templates to choose from. You can further drill down into the results by typing in the <b>Alias Name</b> input field above the table. You can also choose to delete a specific template by clicking on the <b>Delete</b> button next to the template you wish to remove.</p>
+        <p class="alert alert-danger"><b class="text-danger">NOTE:</b> Deleting a template is <b>permanent</b> and cannot be undone. Please be sure you wish to actually remove the selected template from the table.</p>
+        <b>Edited Template Selection / Download</b>
+        <p>Once you select a template from the list, that template will appear with editable fields highlighted in <span class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere.</p>
+        <img src="resources/img/screenshot-generate-script2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
+        <p></p>
+        <span class="font-italic"><b>FIG. 4.4 - Generated Template Edit Screen</b></span>
+        <p></p>
         <hr>
         <a href="#top" class="border"><b>Back to top</b></a>
         <hr>
         <div class="row">
           <div class="col-6">
-            <a href="help_backup.php" class="border"><b><< PREV: Backups</b></a>
+            <a href="help_backup.php" class="border"><b><< PREV: Backup</b></a>
           </div>
           <div class="col-6 text-right">
-            <a href="help_faqs.php" class="border"><b>NEXT: FAQs  >></b></a>
+            <a href="help_discovery_ips.php" class="border"><b>NEXT: Discovery IPs  >></b></a>
           </div>
         </div>
         <hr>
@@ -799,7 +823,37 @@ event manager applet LOOP_GIG authorization bypass
           <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
-          <img src="resources/img/screenshot-config1_LARGE.png" alt="" width="100%">
+          <img src="resources/img/screenshot-config1.png" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class="modal fade show" id="screenshot-config2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <img src="resources/img/screenshot-config2.png" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class="modal fade show" id="screenshot-generate1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <img src="resources/img/screenshot-generate-script1.png" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class="modal fade show" id="screenshot-generate2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <img src="resources/img/screenshot-generate-script2.png" alt="" width="100%">
         </div>
       </div>
     </div>

@@ -1,0 +1,699 @@
+/*************************************************************************************************************
+Extra Styles
+
+PLEASE NOTE:
+This is where all the magic happens.
+
+These following lines are the compiled result of changes made in the "/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default Verizon attributes and all bespoke variables are created.
+
+Making changes in the .SCSS file instead of the compiled .CSS file helps keep the code as clean as possible. Also, it's pretty much standard, accepted best practice!
+
+PLEASE PLEASE PRETTY PLEASE DO NOT MAKE ANY CHANGES TO ANY CSS OR SCSS FILES ANYWHERE ELSE!!! It's almost impossible to reverse engineer .CSS code back into .SCSS format!!!
+*************************************************************************************************************/
+
+//Verizon-specific fonts
+
+$font-family-sans-serif:      Arial, sans-serif !default;
+// @import url('https://fonts.googleapis.com/css?family=Roboto');
+// $font-family-sans-serif:      Roboto, sans-serif !default;
+// @font-face { font-family: "Roboto"; font-weight: 300; src: url("../font/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Light.woff2") format("woff2"), url("../font/roboto/Roboto-Light.woff") format("woff"), url("../font/roboto/Roboto-Light.ttf") format("truetype"); }
+
+// button colors (Verizon specific)
+$red:       #d52b1e !default;
+$gray:      #333333 !default;
+$btn-gray:  #d8dada !default;
+$pill-blue: #0088ce !default;
+$orange:    #ed7000 !default;
+$yellow:    #ffbc3d !default;
+$pink2:     #ffc0cb !default;
+
+// border radius reset
+$border-radius: 0 !default;
+
+// background color for Switch Tech Dev List
+$background_color_1: #f6f6f6;
+
+// help page image box shadow variables
+$help-box-shadow: 0.5125rem 0.5125rem 0.5125rem 0 rgba(0,0,0,0.75);
+
+// general button box shadow variables
+$button-box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(0,0,0,0.50);
+
+// forced no box shadow variables
+@mixin no-box-shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+//mixins
+@mixin table-backup {
+  font-size: 0.70rem;
+}
+@mixin nav-pill-conflict {
+  background-color: transparent;
+  border: 0.1875rem solid $red;
+  color: $black !important;
+  padding: 0.5rem 0.109rem;
+}
+@mixin nav-link-border-radius {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+html {
+  /* html fix for sticky footer */
+  position: relative;
+  min-height: 100%;
+}
+
+// body height
+body {
+  // font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+/* Margin bottom by footer height */
+  margin-bottom: 3.750rem;
+}
+
+// h1,h2,h3,h4,h5,h6 {
+//   font-family: 'Roboto', sans-serif;
+// }
+
+.login-page {
+  margin: auto;
+  max-width: 22.5rem;
+  padding: 8% 0 0;
+    button {
+      background-color: $red;
+      color: $white;
+      font-weight: 600;;
+    }
+    .form {
+      margin: 0 auto 6.25rem;
+      padding: 2.813rem;
+      border: 0.0625rem solid $btn-gray;
+      p {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      button {
+        margin-top: 1rem;
+      }
+      .input {
+        border-radius: 0.3125rem;
+        margin: 0 0 1.25rem;
+        width: 100%;
+      }
+      .message {
+        padding-top: 1.5rem;
+        text-align: center;
+      }
+    }
+}
+
+.main-header {
+  .top-menu {
+    .navbar-brand {
+      display: inline-block;
+      padding: 1.25rem 0 0.3125rem 0.9rem;
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      line-height: inherit;
+      white-space: nowrap;
+      &:focus, &:hover {
+        tex-decoration: none;
+      }
+    }
+
+    .nav > li {
+      display: block;
+      position: relative;
+      padding: 1.25rem;
+      @include border-radius;
+      &:hover {
+        background-color: $btn-gray;
+        text-decoration: none;
+      }
+    }
+    .navbar-nav {
+      display: inline-flex;
+      flex-direction: unset;
+    }
+  }
+  .box {
+    width: 50%;
+    img {
+      margin-top: 1.5rem;
+      @include media-breakpoint-only(xs) {
+        margin-top: 2rem;
+      }
+    }
+    h4 {
+      border-left: 0.1rem solid $btn-gray;
+      display: inline-block;
+      font-size: 1.35rem;
+      margin: 1.65rem 0 0 0.5rem;
+      padding-left: 0.3rem;
+      position: absolute;
+      @include media-breakpoint-only(xs) {
+        border: none;
+        display: block;
+        margin: 0;
+        position: relative;
+      }
+    }
+  }
+  .profile-box {
+    text-align: right;
+    padding: 0.625rem 0.625rem 0 0;
+  }
+}
+
+// navigation styles
+.nav-tabs {
+  /* main nav styling */
+  font-size: 0.9375rem;
+  @include border-radius;
+  // padding-top: 0.25rem;
+  padding: 0;
+  .nav-link {
+    /* main nav link styling */
+    color: $pill-blue;
+    @include border-radius;
+    // @include nav-link-border-radius;
+    &:hover {
+      background-color: #fff;
+      border-color: #ddd #ddd #fff;
+    }
+  }
+  .nav-link.active, .nav-item.show .nav-link {
+    // border-top-left-radius: 0.5rem !important;
+    // border-top-right-radius: 0.5rem !important;
+    color: $red;
+    border-radius: 0 !important;
+    border-top: 0.15rem solid $red;
+    font-weight: 600;
+  }
+}
+
+.breadcrumb {
+  background-color: #f6f6f6;
+  // border-top: 0.375rem solid $red;
+  color: $pill-blue;
+  font-size: small;
+  // padding-bottom: 0;
+  // padding-top: 0.3125rem;
+  padding: 0;
+  .nav-item {
+    border-left: 0.0125rem solid #dddfe2;
+    border-right: 0.0125rem solid #dddfe2;
+    margin-bottom: 0;
+    &:first-child {
+      border-left: none;
+    }
+      .dropdown-toggle {
+        // background-color: $btn-gray;
+        background-color: #f6f6f6;
+        // border: 0.25rem solid $blue;
+        color: $pill-blue;
+        &.active {
+          background-color: $white;
+          color: $red;
+          @include border-radius;
+        }
+      }
+  }
+}
+
+// nav pill styles
+.nav-pills {
+  .help {
+    &.active {
+      background-color: $red;
+    }
+  }
+  .nav-link.active {
+    box-shadow: none;
+    color: $white !important;
+  }
+  .btn-conflicts {
+    padding: 0.5rem;
+    &.active {
+      @include nav-pill-conflict;
+    }
+  }
+}
+
+span.export {
+  margin-top: 15%;
+  height: 1.875rem;
+}
+
+// ID styling
+#filename {
+  overflow-wrap: break-word;
+}
+#listedit-wrap {
+  .panel-heading-editlst {
+    padding: 0.75rem 0.25rem !important;
+  }
+}
+#cellsitech-backup {
+  .modal-header {
+    background-color: $btn-gray;
+  }
+}
+#backuprestore_wrapper, #ipmgt-ipv4_wrapper {
+  .dataTables_filter {
+    visibility: hidden;
+  }
+}
+#cellsitetech_user_devices_wrapper, #swt_user_devices_filter, #example_filter {
+  input {
+    border: 1px solid #ced4da;
+    border-bottom: 0.125rem solid #000;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .dataTables_length {
+    display: none;
+  }
+  .dataTables_filter {
+    float: left;
+  }
+}
+#login-impersonate {
+  button {
+    @include no-box-shadow;
+  }
+}
+
+header {
+  hr {
+    background-color: $red;
+    height: 0.15rem;
+    margin-top: 0 !important;
+  }
+}
+// Dashboard styles
+.drag_selected {
+  background-color: $btn-gray !important;
+}
+.sec_without_map, .sec_with_map {
+  cursor: pointer;
+}
+
+.myswlist {
+  tr, td {
+    max-height: 1.25rem !important;
+    padding: 0.75rem 0.55rem;
+  }
+}
+input:focus {
+  /* custom Verizon form styles for input fields */
+  outline: none !important;
+  border: 0.0625rem solid $black !important;
+  @include no-box-shadow;
+}
+.form-control {
+  border-bottom: 0.125rem solid $black;
+  border-radius: 0;
+}
+.form-control-plaintext {
+  padding: 0;
+}
+@include media-breakpoint-only(xs) {
+  .form-control::placeholder {
+    font-size: xx-small;
+  }
+}
+.form-editable-fields, .form-non-editable-fields {
+  .form-control {
+    background-color: $pink2;
+    display: inline;
+    margin: 0.25rem 0.25rem;
+    width: auto;
+  }
+  .form-control-plaintext {
+    background-color: $btn-gray;
+    border-radius: 0.25rem;
+    display: inline;
+  }
+}
+
+.cb-control {
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0.1rem;
+    vertical-align: top;
+  }
+}
+
+.scroller {
+  background-color: $btn-gray;
+  height: 15.5rem;
+  overflow-y: scroll;
+}
+
+.fa-search {
+  /* search icon coloring using non-standard Verizon coloring #dc3545 */
+  color: $red;
+}
+
+.btn-light {
+  background-color: transparent !important;
+}
+
+.anchorcmd {
+  padding-right: 0.5rem;
+}
+
+// editable tables
+table {
+  font-weight: 400 !important;
+}
+tbody {
+  height: auto !important;
+}
+.table th, .table td {
+  vertical-align: middle !important;
+}
+.table_center_text {
+  text-align: center !important;
+}
+.thead-light {
+  background-color: #D8DADA;
+}
+td.details-control {
+  background: url('../img/details_open.png') no-repeat center center;
+  cursor: pointer;
+}
+tr.shown {
+  td.details-control {
+    background: url('../img/details_close.png') no-repeat center center;
+  }
+}
+.table-striped tbody tr:nth-of-type(2n+1) {
+  /* double row striping for IP Conflicts table */
+  background-color: #f6f6f6;
+}
+.plus-button::before {
+  display: none;
+  font-family: 'Font Awesome 5 Solid';
+  content: '\f055';
+}
+
+// modal styles
+.modal-dialog {
+  z-index: inherit;
+  hr {
+    margin: 0.1875rem 0;
+  }
+}
+.modal-body {
+  // overflow-y: auto;
+  table {
+    font-weight: 400;
+  }
+  &.scroller {
+    height: 50vh;
+    overflow-y: scroll;
+  }
+  .row {
+    margin-bottom: 0.25rem;
+  }
+  .modal-table td {
+    font-size: 0.80rem;
+  }
+  .form-group {
+    margin-bottom: 0;
+    hr {
+      margin-top: 0.1rem;
+      margin-bottom: 0.1rem;
+    }
+  }
+  label {
+    font-weight: 600;
+    margin-bottom: 0.1875rem;
+    /* fix for Google Chrome wrapping input field labels */
+    white-space: nowrap;
+  }
+  .form-control-plaintext {
+    color: $black;
+    line-height: 1;
+    width:100%;
+      &:focus {
+        border: none !important;
+      }
+  }
+}
+.big-modal {
+  .modal-dialog {
+    max-width: 95vw;
+  }
+}
+
+#accordion .card-body {
+  text-align: left;
+}
+.card-body {
+  /* card positioning */
+  text-align: center;
+}
+
+// custom buttons, dropdowns
+.btn {
+  border-radius: 0 !important;
+  border: 0.0625rem solid #000;
+    cursor: pointer;
+    -webkit-box-shadow: $button-box-shadow;
+    -moz-box-shadow: $button-box-shadow;
+    box-shadow: $button-box-shadow;
+  border-color: $btn-gray;
+  background-color: $btn-gray;
+  color: $black;
+    &:hover {
+      border: 0.0625rem solid $black;
+      background-color: transparent;
+      color: $black;
+    }
+    &.upload-scripting {
+      padding: 0.30rem 1.25rem;
+    }
+    &.btn-link {
+      @include no-box-shadow;
+    }
+}
+
+.panel-heading-myswtlst, .panel-heading-editlst {
+  .btn {
+    padding: 0 0.625rem;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+button {
+  text-transform: uppercase;
+  &.search-details {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+}
+.img-close {
+  padding-right: 0.5rem !important;
+  text-align: right;
+}
+
+.dt-buttons {
+  a {
+    width: 2.5rem;
+    height: 2rem;
+    border: none !important;
+  }
+  span {
+    display: none;
+  }
+}
+.dtexcelbtn {
+  background: url(../img/xlsx.jpg) no-repeat center right !important;
+}
+.dtpdfbtn {
+  background: url(../img/pdf.jpg) no-repeat center right !important;
+}
+.dtprintbtn {
+  background: url(../img/print.png) no-repeat center right !important;
+}
+div.dt-buttons {
+  float: right;
+}
+div {
+  #my_swt_devlist {
+    background-color: $background_color_1 !important;
+  }
+}
+
+.btn-danger.dropdown-toggle {
+  background-color: transparent;
+  border: 0.0625rem solid $black;
+  border-bottom: 0.125rem solid $black;
+  box-shadow: none;
+  color: $gray;
+  margin-bottom: 0;
+}
+.dropdown-toggle {
+  background-color: $white;
+  border: 0.0625rem solid $gray;
+  border-bottom: 0.125rem solid $black;
+  border-radius: 0 !important;
+  color: #000;
+    @include hover {
+      color: $link-hover-color;
+      background-color: transparent;
+      border-color: $black;
+    }
+    &:focus, &.focus {
+      border-color: $black;
+      box-shadow: none;
+    }
+}
+.dropdown-item {
+  border-bottom: 0.0625rem solid $btn-gray !important;
+}
+.dropdown-menu {
+  border: 0.0625rem solid $black;
+  :last-child {
+    border-bottom: none !important;
+  }
+}
+.dropdown-item:focus, .dropdown-item:hover {
+  background: transparent;
+  border-left: 0.125rem solid $black;
+}
+
+// navigation dropdown styling
+.dropdown-nav-menu {
+  li.dropdown {
+    position: static;
+    float: right;
+    &:hover {
+      background: $white;
+      @include nav-link-border-radius;
+    }
+    &.show {
+      border-top: 0.125rem solid $red;
+      @include nav-link-border-radius;
+        a:focus {
+          outline: none;
+        }
+    }
+    .dropdown-item {
+      border-bottom: 0.125rem solid $red !important;
+    }
+    .dropdown-toggle {
+      background: none;
+      color: $blue;
+    }
+  }
+  .dropdown-menu {
+    width: auto;
+    &.show {
+      background: none;
+      border: none;
+    }
+    a {
+      background: $white;
+      display: inline !important;
+      margin: 0 0.25rem;
+      &:hover {
+        border: none;
+        background-color: $btn-gray;
+      }
+    }
+    > li {
+      display: inline-block;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+}
+
+// form wizard styling
+.generate-script-submit {
+  margin: 1rem 0;
+}
+
+.jf-form {
+  p {
+    word-wrap: break-word;
+  }
+  .config-submit {
+    margin: 1rem 0;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+  // .custom-select {
+  //   background-color: transparent;
+  //   -moz-appearance: none;
+  //   -webkit-appearance: none;
+  // }
+  .control-label {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+
+.custom-select {
+  background-color: transparent;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+// help page styles
+.scrollspy-example {
+  img {
+    border: 1px solid #000;
+    cursor: pointer;
+    -webkit-box-shadow: $help-box-shadow;
+    -moz-box-shadow: $help-box-shadow;
+    box-shadow: $help-box-shadow;
+  }
+  .mb-0 button {
+    cursor: pointer;
+  }
+}
+
+// logout styles
+.logout {
+   border: 0.125rem solid $pill-blue !important;
+  .logout-left {
+    background-color: $pill-blue;
+    // text-align: center;
+  }
+  i {
+    color: $white;
+  }
+}
+
+.footer {
+  /* sticky footer */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer */
+  height: 3.75rem;
+  /* Vertically center the text */
+  line-height: 3.75rem;
+  background-color: #f5f5f5;
+  // Small devices
+  @include media-breakpoint-only(xs) {
+    height: 2.75rem;
+    line-height: 1.25rem;
+  }
+}

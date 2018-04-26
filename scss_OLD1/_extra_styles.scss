@@ -12,10 +12,7 @@ PLEASE PLEASE PRETTY PLEASE DO NOT MAKE ANY CHANGES TO ANY CSS OR SCSS FILES ANY
 *************************************************************************************************************/
 
 //Verizon-specific fonts
-
-$font-family-sans-serif:      Arial, sans-serif !default;
-// @import url('https://fonts.googleapis.com/css?family=Roboto');
-// $font-family-sans-serif:      Roboto, sans-serif !default;
+$font-family-sans-serif:      Roboto, sans-serif !default;
 // @font-face { font-family: "Roboto"; font-weight: 300; src: url("../font/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Light.woff2") format("woff2"), url("../font/roboto/Roboto-Light.woff") format("woff"), url("../font/roboto/Roboto-Light.ttf") format("truetype"); }
 
 // button colors (Verizon specific)
@@ -69,15 +66,10 @@ html {
 
 // body height
 body {
-  // font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
 /* Margin bottom by footer height */
   margin-bottom: 3.750rem;
 }
-
-// h1,h2,h3,h4,h5,h6 {
-//   font-family: 'Roboto', sans-serif;
-// }
 
 .login-page {
   margin: auto;
@@ -129,7 +121,6 @@ body {
       display: block;
       position: relative;
       padding: 1.25rem;
-      @include border-radius;
       &:hover {
         background-color: $btn-gray;
         text-decoration: none;
@@ -142,26 +133,6 @@ body {
   }
   .box {
     width: 50%;
-    img {
-      margin-top: 1.5rem;
-      @include media-breakpoint-only(xs) {
-        margin-top: 2rem;
-      }
-    }
-    h4 {
-      border-left: 0.1rem solid $btn-gray;
-      display: inline-block;
-      font-size: 1.35rem;
-      margin: 1.65rem 0 0 0.5rem;
-      padding-left: 0.3rem;
-      position: absolute;
-      @include media-breakpoint-only(xs) {
-        border: none;
-        display: block;
-        margin: 0;
-        position: relative;
-      }
-    }
   }
   .profile-box {
     text-align: right;
@@ -169,59 +140,41 @@ body {
   }
 }
 
-// navigation styles
 .nav-tabs {
   /* main nav styling */
   font-size: 0.9375rem;
-  @include border-radius;
-  // padding-top: 0.25rem;
-  padding: 0;
+  padding-top: 0.25rem;
   .nav-link {
     /* main nav link styling */
     color: $pill-blue;
-    @include border-radius;
-    // @include nav-link-border-radius;
+    @include nav-link-border-radius;
     &:hover {
       background-color: #fff;
       border-color: #ddd #ddd #fff;
     }
   }
   .nav-link.active, .nav-item.show .nav-link {
-    // border-top-left-radius: 0.5rem !important;
-    // border-top-right-radius: 0.5rem !important;
-    color: $red;
-    border-radius: 0 !important;
-    border-top: 0.15rem solid $red;
-    font-weight: 600;
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
   }
 }
 
 .breadcrumb {
-  background-color: #f6f6f6;
-  // border-top: 0.375rem solid $red;
+  background-color: $btn-gray;
+  border-top: 0.375rem solid $red;
   color: $pill-blue;
   font-size: small;
-  // padding-bottom: 0;
-  // padding-top: 0.3125rem;
-  padding: 0;
+  padding-bottom: 0;
+  padding-top: 0.3125rem;
   .nav-item {
-    border-left: 0.0125rem solid #dddfe2;
-    border-right: 0.0125rem solid #dddfe2;
-    margin-bottom: 0;
-    &:first-child {
-      border-left: none;
-    }
-      .dropdown-toggle {
-        // background-color: $btn-gray;
-        background-color: #f6f6f6;
-        // border: 0.25rem solid $blue;
-        color: $pill-blue;
-        &.active {
-          background-color: $white;
-          color: $red;
-          @include border-radius;
-        }
+    .dropdown-toggle {
+      background-color: $btn-gray;
+      color: $pill-blue;
+      &.active {
+        background-color: $white;
+        color: $black;
       }
+    }
   }
 }
 
@@ -268,7 +221,7 @@ span.export {
     visibility: hidden;
   }
 }
-#cellsitetech_user_devices_wrapper, #swt_user_devices_filter, #example_filter {
+#cellsitetech_user_devices_wrapper, #example_filter {
   input {
     border: 1px solid #ced4da;
     border-bottom: 0.125rem solid #000;
@@ -282,19 +235,7 @@ span.export {
     float: left;
   }
 }
-#login-impersonate {
-  button {
-    @include no-box-shadow;
-  }
-}
 
-header {
-  hr {
-    background-color: $red;
-    height: 0.15rem;
-    margin-top: 0 !important;
-  }
-}
 // Dashboard styles
 .drag_selected {
   background-color: $btn-gray !important;
@@ -335,8 +276,10 @@ input:focus {
     width: auto;
   }
   .form-control-plaintext {
+    // background-color: $white;
     background-color: $btn-gray;
     border-radius: 0.25rem;
+    // color: $btn-gray;
     display: inline;
   }
 }
@@ -351,8 +294,7 @@ input:focus {
 }
 
 .scroller {
-  background-color: $btn-gray;
-  height: 15.5rem;
+  height: 30.375rem;
   overflow-y: scroll;
 }
 
@@ -480,9 +422,6 @@ tr.shown {
     }
     &.upload-scripting {
       padding: 0.30rem 1.25rem;
-    }
-    &.btn-link {
-      @include no-box-shadow;
     }
 }
 
@@ -624,35 +563,32 @@ div {
 }
 
 // form wizard styling
+
 .generate-script-submit {
   margin: 1rem 0;
 }
 
 .jf-form {
-  p {
-    word-wrap: break-word;
-  }
-  .config-submit {
-    margin: 1rem 0;
-  }
+    p {
+      word-wrap: break-word;
+    }
+
+.config-submit {
+  margin: 1rem 0;
+}
+
   .form-group {
     margin-bottom: 0;
   }
-  // .custom-select {
-  //   background-color: transparent;
-  //   -moz-appearance: none;
-  //   -webkit-appearance: none;
-  // }
+  .custom-select {
+    background-color: transparent;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
   .control-label {
     font-weight: 600;
     margin-bottom: 0;
   }
-}
-
-.custom-select {
-  background-color: transparent;
-  -moz-appearance: none;
-  -webkit-appearance: none;
 }
 
 // help page styles
@@ -664,6 +600,7 @@ div {
     -moz-box-shadow: $help-box-shadow;
     box-shadow: $help-box-shadow;
   }
+
   .mb-0 button {
     cursor: pointer;
   }

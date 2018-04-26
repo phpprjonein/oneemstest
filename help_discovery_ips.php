@@ -85,14 +85,20 @@ $page_title = 'OneEMS';
               <span class="font-italic"><b>FIG. 3.1 - IP Management Dashboard</b></span>
               <p></p>
               <p>To view subnets by Region, choose a Region from the dropdown menu to the right of the <b>IP Type</b> button. When this Dashboard first loads, your default Region is selected.</p>
-              <img src="resources/img/screenshot-ip_management_choose_Region-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
+              <!--
+               <img src="resources/img/screenshot-ip_management_choose_Region-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
+              -->
+              <img src="resources/img/screenshot-ip_mgmt_region_1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
               <p></p>
               <span class="font-italic"><b>FIG. 3.2 - Choose Region</b></span>
               <p></p>
               <h5 id="item-3-1">Subnet Addition</h5>
               <p></p>
               <p>To add a Subnet, choose a Region from the <b>Select Region</b> dropdown at the top of the page.</p>
+              <!--
               <img src="resources/img/screenshot-ip_management_choose_Region-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-2">
+               -->
+              <img src="resources/img/screenshot-ip_mgmt_regionlg_2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-2">
               <p></p>
               <span class="font-italic"><b>FIG. 3.3 - Choose Region For Subnet Addition</b></span>
               <p></p>

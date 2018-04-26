@@ -35,9 +35,20 @@ if($_POST['action'] == 'Save Configuration'){
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
-    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT 1524109982 AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
+    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT ".$batchid." AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
     $db2->query($sql);
     $db2->execute();
+    foreach ($_POST['edit'] as $key => $val):
+        if($val[0] == 1):
+            $location = str_replace("looper_","",$key);
+            foreach ($_POST['loop'][$key] as $ink => $inv):
+                $update_pos = intval($location.$ink);
+                $sql = "UPDATE `batchconfigtemplate` SET elemvalue = '".$inv."' WHERE elemid = ".$update_pos." AND templname = '".$_POST['templname']."' AND batchid = ".$batchid; 
+                $db2->query($sql);
+                $db2->execute();
+            endforeach;
+        endif;
+    endforeach;
     empty($_SESSION['batch_vars']);
     $_SESSION['batch_vars'] = array('batchid' => $batchid, 'templname' => $templname, 'deviceseries' => $_POST['deviceseries'], 'deviceos' => $_POST['deviceos']);
     if(isset($_POST['usertype']) && $_POST['usertype'] == 2){

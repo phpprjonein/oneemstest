@@ -181,7 +181,7 @@ $page_title = 'OneEMS';
                 }else{
                     $output .= '<div class="form-group">';
                     $editable = 0; $outputin = '';
-                    for ($l=0;$l<=count($newarr[$k]);$l++){
+                    for ($l=0;$l<count($newarr[$k]);$l++){
                         if($newarr[$k][$l]["editable"] == 0){
                             $outputin .= "<label class='readonly'>".$newarr[$k][$l]["elemvalue"]."</label><input type='text' style='display:none !important;' name='loop[looper_".$k."][]' value='".$newarr[$k][$l]["elemvalue"]."'>";
                         }else{
@@ -190,7 +190,7 @@ $page_title = 'OneEMS';
                         }
                     }
                         if($editable == 1){
-                            $output .= "<span class='form-editable-fields'>".$outputin."</span>";
+                            $output .= "<span class='form-editable-fields'>".$outputin."</span><input type='hidden' name='edit[looper_".$k."][]' value='1'>";
                         }else{
                             $output .= "<span class='form-non-editable-fields'>".$outputin."</span>";
                         }

@@ -44,6 +44,8 @@ logToFile('postmanapi.log', $headers['Authorization']);
         "data" => $data_string
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_exec($ch)
+    /*
     $result = json_decode(curl_exec($ch));
     
     
@@ -57,7 +59,7 @@ logToFile('postmanapi.log', $headers['Authorization']);
     
         
     print json_encode($line_arr);
-    
+    */
     
     
 

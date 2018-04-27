@@ -15,6 +15,11 @@ logToFile('postmanapi.log', $headers['Authorization']);
 
     $results = config_get_templates_from_templname($name);
     
+    if (count($results) == 0) {
+        jsonResponse(200, "Template Not Added", NULL);
+        exit;
+    }
+    
     foreach ($results as $key=>$val):
     $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable']);
     if($newarr[intval($val['elemid']/10)]['editablem'] == 0){
@@ -75,19 +80,10 @@ logToFile('postmanapi.log', $headers['Authorization']);
  */
 function jsonResponse($status, $status_message, $data)
 {
-    $username = $_SERVER['PHP_AUTH_USER'];
-    $password = $_SERVER['PHP_AUTH_PW'];
     header("HTTP/1.1 " . $status_message);
     $response['status'] = $status;
     $response['status_message'] = $status_message;
     $response['data'] = $data;
-   //Bearer oneemscarmsapi
-   /* if ($username != 'admin') {
-        $response['status'] = 700;
-        $response['status_message'] = ' Invalid credentials';
-        $response['data'] = $data . 'Username' . $username . 'Password' . $password;
-    }
-    ; */
     $json_response = json_encode($response);
     echo $json_response;
 }

@@ -2405,7 +2405,7 @@ function update_login_api_rules($sso_flag,$username){
         for($i=0; $i <= count($resp_result_arr['switches']); $i++){
             $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
             //Node table status 3 added for live API active
-            $sql = "UPDATE `nodes` SET status=3 WHERE switch_name = '".$resp_result_arr['switches'][$i]['switch_name']."'";
+            $sql = "UPDATE `nodes` SET status=3, csr_site_tech_id = '".$_SESSION['username']."' WHERE switch_name = '".$resp_result_arr['switches'][$i]['switch_name']."'";
             $db2->query($sql);
             $db2->execute();
             $swt_mswitch_arr[] = $resp_result_arr['switches'][$i]['switch_name'];

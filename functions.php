@@ -2383,7 +2383,7 @@ function update_login_api_rules($sso_flag,$username){
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name']  = '';
         $swt_mswitch_arr = array();
-        for($i=0; $i <= count($resp_result_arr['site_devices']); $i++){
+        for($i=0; $i < count($resp_result_arr['site_devices']); $i++){
             if(count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0){
                 foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val){
                     $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];

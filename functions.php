@@ -923,8 +923,13 @@ function user_mylist_devieslist_datatable($userid,$listid){
        WHERE ud.userid = " . $userid ." and ud.listid = " . $listid ." and n.csr_site_tech_id = '".$_SESSION['username']."'" ;
     */
     
-    $sql_condition = " FROM nodes n where n.csr_site_tech_id = '".$_SESSION['username']."' OR n.swt_tech_id = '".$_SESSION['username']."'";
-    
+    if (in_array($_SESSION['userlevel'], array(1,2))){
+        $sql_condition = " FROM nodes n where n.csr_site_tech_id = '".$_SESSION['username']."' OR n.swt_tech_id = '".$_SESSION['username']."'";
+    }else{
+        $sql_condition = " FROM userdevices ud
+       JOIN nodes n on ud.nodeid = n.id
+       WHERE ud.userid = " . $userid ." and ud.listid = " . $listid;
+    }
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.devicename LIKE '%". $search ."%'";

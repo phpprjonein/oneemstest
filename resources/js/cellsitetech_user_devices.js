@@ -534,6 +534,9 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 		    $('#backupModal .modal-body').html('');
 	    	$('#backupModal #bkup-deviceid').html('<br/><h6> <b><span id ="backupmoddet"> Device Name:' + $(this).closest('tr').find("td:eq(1)").text() + '</span><b></h6>');
 		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
+	    	var myModal = $('#backupModal');
+            myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 40%; top: 10%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
+            
  	    	$.post( "backup-api-process.php", { type: "api-ajax", deviceid: $(this).closest('tr').attr('id').replace('row_','')
 			}).done(function( data ) {
 				$('#backupModal .modal-body').html(data);

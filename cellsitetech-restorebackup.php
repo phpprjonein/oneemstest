@@ -63,7 +63,7 @@ include_once ('config/session_check_cellsite_tech.php');
         </button>
       </div>
 			  <!-- Modal body -->
-			  <div class="modal-body">
+			  <div class="modal-body modal-content" style="min-height:125px;">
 			  </div>
 			  <!-- Modal footer -->
 			  <div class="modal-footer">

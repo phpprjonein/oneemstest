@@ -350,7 +350,7 @@ function switchlistdel(userid, switchlistid) {
         'userid': userid
       },
       success: function() {
-        $(location).attr("href", 'switchtech-devicelist.php'); 
+        $(location).attr("href", 'switchtech-dashboard.php'); 
       }
     });
   }

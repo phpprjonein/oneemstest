@@ -29,15 +29,12 @@ write_log($mesg);
   $userid = $_SESSION['userid'];
   $succss_msg  = '';
 
-  if (isset($_POST['addlist']) && $_POST['addlist'] ) {
-    $_SESSION['succss_msg'] = '';
-
-    if ($_SESSION['mylistname'] != $_POST['addlist']){
+  if (isset($_POST['addlist']) && !empty($_POST['addlist']) ) {
+      $_SESSION['succss_msg'] = '';
       $data=array('listname'=>$_POST['addlist'],'userid'=>$userid);
       $result = insert_usrfavritedev($data);
       $_SESSION['mylistname'] = $_POST['addlist'];
       $_SESSION['succss_msg'] = 'Created succesfully';
-    }
   }
 
   if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {

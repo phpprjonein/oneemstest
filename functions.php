@@ -1246,12 +1246,12 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
         $sql_condition = " FROM nodes n
                       join userdevices ud on ud.nodeid = n.id
                       join users u on u.id = ud.userid
-                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid ";
+                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid AND csr_site_name != 'None' ";
     }
     else {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
-                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' ";
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND csr_site_name != 'None' ";
         
         if($selswitch != ''){
             $sql_condition .= " AND switch_name ='$selswitch'";
@@ -1352,12 +1352,12 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
         $sql_condition = " FROM nodes n
                       join userdevices ud on ud.nodeid = n.id
                       join users u on u.id = ud.userid
-                      WHERE n.switch_name ='$switch_device_name' AND n.status = 3 ";
+                      WHERE n.switch_name ='$switch_device_name' AND n.status = 3 AND csr_site_name != 'None' ";
     }
     else {
         $market = addslashes($list_for);
         $sql_condition = " FROM nodes n
-                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market'";
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND csr_site_name != 'None'  ";
 					//WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market' AND n.status = 3";
         if($selswitch != ''){
             $sql_condition .= " AND switch_name ='$selswitch'";

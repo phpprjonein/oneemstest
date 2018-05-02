@@ -196,7 +196,9 @@ $(document).ready(function() {
         "ui-droppable-hover": "ui-state-hover"
       },*/
       drop: function(event, ui) { 
-      switchesdel($('#hidd_userid').val(), ui.draggable.data('listid')  ,  ui.draggable.data('deviceid')); 
+    	  if(ui.draggable.data('listid') > 0){
+    		  switchesdel($('#hidd_userid').val(), ui.draggable.data('listid')  ,  ui.draggable.data('deviceid'));
+    	  }
       }
     });
 

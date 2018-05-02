@@ -56,6 +56,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     // include_once menu bar htmls [ Logo, welcome text, menu ]
     include_once ('menu.php');
     ?>
+	
+	<?php echo generate_site_breadcrumb(); ?>
 
   <div class="row">
     <div id="lhspanel"  class="col-sm-6 col-md-6" >

@@ -33,6 +33,10 @@ write_log($mesg);
         <!-- Modal HTML -->
         <div class="container-fluid">
             <?php include ('menu.php'); ?>
+        <?php 
+        $values = array('Logout' => '#');
+        echo generate_site_breadcrumb($values); 
+        ?>
                     <div class="col-auto">
 						<?php
 						if (isset($_SESSION['userlevel']) && $_SESSION['userlevel']) {

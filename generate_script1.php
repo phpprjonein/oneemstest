@@ -30,6 +30,10 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-generate-script">
 	<?php include_once ('menu.php'); ?>
+		    <?php 
+            $values = array('Generate Script' => '#');
+            echo generate_site_breadcrumb($values); 
+            ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->

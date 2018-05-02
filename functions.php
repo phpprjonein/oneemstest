@@ -2956,4 +2956,16 @@ function get_devicebatch_list_from_devicebatch_datatable() {
     }
     return $resultset;
 }
-
+function generate_site_breadcrumb($values = array()){
+    $output = '<nav class="breadcrumb">';
+    if (in_array($_SESSION['userlevel'], array(1,3,4))) {
+        $output .= '<a class="breadcrumb-item" href="cellsitetech-dashboard.php">Home</a>';
+    }elseif (in_array($_SESSION['userlevel'], array(2,5,6,7))) {
+        $output .= '<a class="breadcrumb-item" href="switchtech-dashboard.php">Home</a>';
+    }
+    foreach ($values as $key => $val):
+        $output .= '<a class="breadcrumb-item" href="'.$val.'">'.$key.'</a>';
+    endforeach;
+    $output .= '</nav>';
+    return $output;
+}

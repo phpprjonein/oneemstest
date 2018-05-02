@@ -27,6 +27,10 @@ $page_title = 'OneEMS';
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include_once ('menu.php'); ?>
+		<?php 
+        $values = array('Discovery Results' => '#');
+        echo generate_site_breadcrumb($values); 
+        ?>
         <!-- The Modal -->
 		<div class="modal fade" id="myModal">
 		  <div class="modal-dialog modal-lg" >

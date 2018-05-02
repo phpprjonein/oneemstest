@@ -36,7 +36,10 @@ user_session_check();
 
         <div class="container-fluid">
             <?php include_once ('menu.php'); ?> 
-
+			<?php 
+            $values = array('IP-V4 Details' => '#');
+            echo generate_site_breadcrumb($values); 
+            ?>
 <!-- container div -->
   <div class="content container-fluid">
 

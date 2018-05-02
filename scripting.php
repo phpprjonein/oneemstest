@@ -31,6 +31,10 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
+	            <?php 
+            $values = array('Load Template' => '#');
+            echo generate_site_breadcrumb($values); 
+            ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->

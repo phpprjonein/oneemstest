@@ -2,7 +2,7 @@
   <div class="nav top-menu">
     <div class="float-left box logo-box">
       <!-- <a class="navbar-brand" href="#" > -->
-        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
+        <img src="resources/img/verizonlogo.png"  height = "24px"  alt=" Verizon Logo"/>
         <h4>OneEMS</h4>
       <!-- </a> -->
     </div>
@@ -53,7 +53,7 @@
           <a class="dropdown-item" href="scripting.php">Load Template</a>
           <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
          <!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a>  -->
-		 <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>		 
+         <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a> 		 
         </div>
       </li>
  <li class="nav-item dropdown">
@@ -65,6 +65,17 @@
           <a class="dropdown-item" href="cellsitetech-discovery.php">Discovery Results</a>
         </div>
       </li>
+ <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Maintenance
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	 <a class="dropdown-item" href="software-upload-devices.php">Software Upload </a> 		 
+	 <a class="dropdown-item" href="software-delivery-devices.php">Software Delivery</a> 		 
+        </div>
+      </li>
+      </li>
+ <li class="nav-item dropdown">
     	<li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>
     <?php }elseif(check_user_authentication(array(2,5,6,7))){  ?>
     	<li class="nav-item"><a class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>" href="switchtech-dashboard.php">Network Elements</a></li>

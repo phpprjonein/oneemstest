@@ -2969,3 +2969,11 @@ function generate_site_breadcrumb($values = array()){
     $output .= '</nav>';
     return $output;
 }
+function load_node_vendor_id_from_deviceid($deviceid){
+    global $db2;
+    $sql = "SELECT vendorId FROM nodes where id = ". $deviceid;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return 2;
+    return $resultset[0]['vendorId'];
+}

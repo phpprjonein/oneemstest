@@ -2820,6 +2820,15 @@ function get_batch_process_datatable($userid, $listname = '') {
     if($listname != ''){
         $sql_condition .= " AND(ud.listname = '".$listname."')";
     }
+    
+    if($_SESSION['batch_vars']['deviceseries'] != ''){
+        $sql_condition .= " AND(n.deviceseries = '".$_SESSION['batch_vars']['deviceseries']."')";
+    }
+    
+    if($_SESSION['batch_vars']['deviceseries'] != ''){
+        $sql_condition .= " AND(n.nodeVersion = '".$_SESSION['batch_vars']['deviceos']."')";
+    }
+    
     //die;
     
     if ($search) {

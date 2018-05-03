@@ -2983,6 +2983,20 @@ function load_node_vendor_id_from_deviceid($deviceid){
     $sql = "SELECT vendorId FROM nodes where id = ". $deviceid;
     $db2->query($sql);
     $resultset = $db2->resultset();
-    return 2;
     return $resultset[0]['vendorId'];
 }
+function batch_accordion_details_new($batchid){
+    global $db2;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where d.batchid = '.$batchid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function get_batch_details(){
+    global $db2;
+    $sql = "SELECT d.id, d.batchid, d.deviceid, d.scriptname, d.deviceseries, d.deviceos, d.batchcreated, d.batchcompleted, dm.batchstatus FROM devbatch d JOIN devbatchmst dm on dm.batchid = d.batchid ORDER BY d.deviceseries asc";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+

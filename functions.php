@@ -900,7 +900,7 @@ function user_mylist_devieslist_datatable($userid,$listid){
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
+        'CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
         'n.model',
         'n.id',
         'n.csr_site_id',
@@ -1233,7 +1233,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch) 
         'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
-        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
+        'CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
     );
     
     
@@ -1339,7 +1339,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
         'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
         'n.csr_site_name',
         'n.devicename',
-        'CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
+        'CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
     );
     
     
@@ -1993,7 +1993,7 @@ function get_csr_site_tech_mgr_id($username){
 }
 function batch_accordion_details($deviceid){
     global $db2;
-    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where n.id = '.$deviceid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where n.id = '.$deviceid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -2987,7 +2987,7 @@ function load_node_vendor_id_from_deviceid($deviceid){
 }
 function batch_accordion_details_new($batchid){
     global $db2;
-    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""), IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where d.batchid = '.$batchid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where d.batchid = '.$batchid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

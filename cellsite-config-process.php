@@ -49,6 +49,17 @@ if($_POST['action'] == 'Save Configuration'){
             endforeach;
         endif;
     endforeach;
+    $newlinearr = array();
+    $sql = "SELECT distinct(elemid),elemvalue, templname FROM batchconfigtemplate where batchid = '".$batchid."' order by elemid asc";
+    $db2->query($sql);
+    $results = $db2->resultset();
+    foreach ($results as $key=>$val):
+    $newlinearr[intval($val['elemid']/10)] .= $val['elemvalue'];
+    endforeach;
+    $values = implode('|',$newlinearr);
+    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`,`tmplvalues`)  VALUES ('".$batchid."','".$val['templname']."', '".$values."')";
+    $db2->query($sql);
+    $db2->execute();
     empty($_SESSION['batch_vars']);
     $_SESSION['batch_vars'] = array('batchid' => $batchid, 'templname' => $templname, 'deviceseries' => $_POST['deviceseries'], 'deviceos' => $_POST['deviceos']);
     if(isset($_POST['usertype']) && $_POST['usertype'] == 2){

@@ -56,7 +56,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     // include_once menu bar htmls [ Logo, welcome text, menu ]
     include_once ('menu.php');
     ?>
-	
+
 	<?php echo generate_site_breadcrumb(); ?>
 
   <div class="row">
@@ -87,12 +87,16 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
       <div class="col-md-12">
         <div class="row">
           <div id="switchlist" class="panel-warning  panel-default col-md-6 ">
-            <div class="alert alert-secondary panel-heading-myswtlst" id="delete_mylists">
+            <div class="alert alert-secondary panel-heading-myswtlst text-center" id="delete_mylists">
+              <div>
               <b>My Device List </b>
+              </div>
               <!-- Deleted selected switch list by drag and drop area -->
-              <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger btn">
-                <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
-              </span>
+              <div>
+                <span id="myswitchlist_delete" type="button" class="droppable box box-danger btn">
+                  <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
+                </span>
+              </div>
             </div>
             <div class ="panel-body border">
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
@@ -359,8 +363,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
                   <tr>
                     <th></th>
                     <th style="display: none;"><b>ID</b></th>
-                    <th><b>Techname</th>
-                    <th><b>SiteID/Switch</th>
+                    <th><b>Tech Name</th>
+                    <th><b>SiteID / Switch</th>
                     <th><b>Site Name</th>
                     <th><b>Host Name</th>
 					          <th><b>IP Address</th>

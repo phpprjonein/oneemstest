@@ -1,0 +1,3 @@
+ALTER TABLE `devbatchmst` ADD `region` VARCHAR(50) NOT NULL , ADD `batchtype` VARCHAR(5) NOT NULL , ADD `priority` INT(2) NOT NULL , ADD `username` VARCHAR(30) NOT NULL , ADD `batchcreated` DATETIME NOT NULL , ADD `deviceseries` TEXT NOT NULL , ADD `nodeVersion` VARCHAR(255) NOT NULL , ADD `scriptname` TEXT NOT NULL , ADD `refmop` VARCHAR(15) NOT NULL ;
+ALTER TABLE `devbatch` DROP `scriptname`, DROP `deviceseries`, DROP `deviceos`, DROP `batchcreated`, DROP `batchcompleted`, DROP `priority`;
+CREATE TABLE IF NOT EXISTS `batchconfigtemplate` ( `id` int(11) NOT NULL AUTO_INCREMENT, `batchid` int(11) NOT NULL, `scriptlist` text , PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=12283 

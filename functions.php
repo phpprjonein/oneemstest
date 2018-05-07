@@ -780,15 +780,13 @@ function usrfavritecondev_display($userid,$listid){
   FROM
   userdevices ud
   LEFT JOIN nodes n on ud.nodeid = n.id
-  WHERE ud.listid = $listid and ud.userid = $userid and ud.listid != 0  order by ud.id desc ";
+  WHERE ud.listid = $listid and ud.userid = $userid and ud.listid != 0 and ud.nodeid !=0 order by ud.id desc ";
     $sql = $sql_select . $sql_condition;
     
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     
     $resultset['mylistname'] = $resultset['result'][0]['listname'];
-    
-    array_pop($resultset['result']);
     
     return $resultset;
 }
@@ -800,16 +798,11 @@ function usrfavritecondev_celt_display($userid,$listid){
   FROM
   userdevices ud
   LEFT JOIN nodes n on ud.nodeid = n.id
-  WHERE ud.listid = $listid and ud.userid = $userid and ud.listid >= 0  order by ud.id desc ";
+  WHERE ud.listid = $listid and ud.userid = $userid and ud.listid >= 0 and ud.nodeid !=0  order by ud.id desc ";
     $sql = $sql_select . $sql_condition;
-    
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
-    
     $resultset['mylistname'] = $resultset['result'][0]['listname'];
-    
-    array_pop($resultset['result']);
-    
     return $resultset;
 }
 

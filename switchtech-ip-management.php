@@ -37,9 +37,9 @@ $page_title = 'OneEMS';
 
         <div class="container-fluid" id="ip-mgt-screen">
             <?php include_once ('menu.php'); ?>
-			<?php 
+			<?php
             $values = array('Discovery IPs' => '#');
-            echo generate_site_breadcrumb($values); 
+            echo generate_site_breadcrumb($values);
             ?>
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
@@ -296,7 +296,7 @@ table pill navigation -->
 		<!-- add subnet mask modal -->
 <div class="modal fade" id="exampleModalIPM" tabindex="-1" role="dialog" aria-labelledby="exampleModalIPMLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
+    <div class="modal-content table-responsive">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalIPMLabel"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

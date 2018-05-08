@@ -56,8 +56,8 @@ write_log($mesg);
     // include_once menu bar htmls [ Logo, welcome text, menu ]
     include_once ('menu.php');
     ?>
-	        <?php 
-            echo generate_site_breadcrumb(); 
+	        <?php
+            echo generate_site_breadcrumb();
             ?>
   <div class="row">
     <div id="lhspanel"  class="col-sm-6 col-md-6" >
@@ -87,13 +87,17 @@ write_log($mesg);
       <div class="col-md-12">
         <div class="row">
           <div id="switchlist" class="panel-warning  panel-default col-md-6 ">
-            <div class="alert alert-secondary panel-heading-myswtlst" id="delete_mylists">
+            <div class="alert alert-secondary panel-heading-myswtlst text-center" id="delete_mylists">
+              <div>
               <b>My Device List </b>
+              </div>
               <!-- Deleted selected switch list by drag and drop area -->
-              <span id="myswitchlist_delete" type="button" class="droppable pull-right box box-danger btn">
+              <div>
+              <span id="myswitchlist_delete" type="button" class="droppable box box-danger btn">
                 <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
               </span>
             </div>
+          </div>
             <div class ="panel-body border">
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
                 <thead>

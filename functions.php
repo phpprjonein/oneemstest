@@ -1986,9 +1986,9 @@ function get_csr_site_tech_mgr_id($username){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-function batch_accordion_details($deviceid){
+function batch_accordion_details($batchid){
     global $db2;
-    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where n.id = '.$deviceid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,d.status  FROM nodes n JOIN devbatch d on d.deviceid = n.id where d.batchid = '.$batchid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -2878,9 +2878,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'distinct(dm.id)',
-        'dm.batchid',
-        'd.deviceid',
+        'distinct(dm.batchid)',
         'dm.scriptname',
         'dm.deviceseries',
         'dm.nodeVersion',
@@ -2888,18 +2886,16 @@ function get_devicebatch_list_from_devicebatch_datatable() {
         'dm.batchcompleted',
         'dm.batchstatus'
     );
-    $sql_count = "SELECT COUNT(distinct(d.id)) ";
+    $sql_count = "SELECT COUNT(distinct(dm.batchid)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
-    $sql_condition = " FROM devbatch d
-       JOIN devbatchmst dm on dm.batchid = d.batchid ";
+    $sql_condition = " FROM devbatchmst dm ";
     
     
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " dm.id LIKE '%". $search ."%'";
         $sql_condition .=  " OR dm.batchid LIKE '%". $search ."%'";
-        $sql_condition .=  " OR d.deviceid  LIKE '%". $search ."%'";
         $sql_condition .=  " OR dm.scriptname  LIKE '%". $search ."%'";
         $sql_condition .=  " OR dm.deviceseries LIKE '%". $search ."%'";
         $sql_condition .=  " OR dm.nodeVersion  LIKE '%". $search ."%'";
@@ -2934,7 +2930,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
     
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
-            $value['DT_RowId'] = "row_" . $value['deviceid'] ;
+            $value['DT_RowId'] = "row_" . $value['batchid'] ;
             $records[$key] = $value;
         }
         $resultset['data'] = $records;

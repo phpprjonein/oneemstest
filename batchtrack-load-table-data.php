@@ -2,8 +2,8 @@
 include "classes/db2.class.php";
 include "classes/paginator.class.php";  
 include 'functions.php';
-$deviceid = $_POST['deviceid'];
-$deviceinfo = batch_accordion_details($deviceid);
+$batchid = $_POST['batchid'];
+$deviceinfo = batch_accordion_details($batchid);
 ?>                
                 
                 <div class="ownfont box-body launch-modal">
@@ -14,11 +14,14 @@ $deviceinfo = batch_accordion_details($deviceid);
                                               <td><b>Sys Name</b></td>
                                               <td><b>Execution Status</b></td>
                                             </tr>
+                                            <?php foreach ($deviceinfo['result'] as $key => $val): ?>
                                             <tr>
-                                              <td><?php echo $deviceinfo['result'][0]['deviceIpAddr'].$deviceinfo['result'][0]['deviceIpAddrsix'];?></td>
-                                              <td><?php echo $deviceinfo['result'][0]['systemname']; ?></td>
-                                              <td><?php echo $deviceinfo['result'][0]['status']; ?></td>
+                                              <td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
+                                              <td><?php echo $val['systemname']; ?></td>
+                                              <td><?php echo $val['status']; ?></td>
                                             </tr>
+                                            <?php endforeach;?>
+                                            
 					</tbody>
 				</table>
 				</div>

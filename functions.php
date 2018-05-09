@@ -2446,7 +2446,7 @@ function update_login_api_rules($sso_flag,$username){
     }
 }
 
-function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $deviceos, $priority){
+function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $deviceos, $priority, $refmop){
     global $db2;
     $oc = 1;
     $date_op = date('Y-m-d H:i:s');
@@ -2464,7 +2464,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->execute();
         /*insert in to devbatchmst table*/
         $dsql = "INSERT INTO `devbatchmst` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `batchcompleted`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`) 
-        VALUES('".$batchid."','s','".$date_op."', '', '', '".$priority."','".$_SESSION['username']."','".$date_op."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','' )";
+        VALUES('".$batchid."','s','".$date_op."', '', '', '".$priority."','".$_SESSION['username']."','".$date_op."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
         $db2->execute();
     }

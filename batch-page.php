@@ -88,7 +88,7 @@ include_once ('config/session_check_cellsite_tech.php');
                           <input type="hidden" value="<?php echo $_SESSION['batch_vars']['templname']; ?>" name="scriptname" id="scriptname" />
                           <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceseries']; ?>" name="deviceseries" id="deviceseries"/>
 						  <input type="hidden" value="<?php echo $_SESSION['batch_vars']['deviceos']; ?>" name="deviceos" id="deviceos"/>
-
+						  <input type="hidden" value="<?php echo $_SESSION['batch_vars']['refmop']; ?>" name="refmop" id="refmop"/>
                           <div class="panel-body">
                             <table id="batchpro"  class="table table-striped table-sm">
                               <thead>

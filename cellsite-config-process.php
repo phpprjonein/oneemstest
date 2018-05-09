@@ -35,7 +35,7 @@ if($_POST['action'] == 'Save Configuration'){
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
-    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT ".$batchid." AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
+    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT ".$batchid." AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '".$templname."'";
     $db2->query($sql);
     $db2->execute();
     foreach ($_POST['edit'] as $key => $val):
@@ -43,25 +43,25 @@ if($_POST['action'] == 'Save Configuration'){
             $location = str_replace("looper_","",$key);
             foreach ($_POST['loop'][$key] as $ink => $inv):
                 $update_pos = intval($location.$ink);
-                $sql = "UPDATE `batchconfigtemplate` SET elemvalue = '".$inv."' WHERE elemid = ".$update_pos." AND templname = '".$_POST['templname']."' AND batchid = ".$batchid; 
+                $sql = "UPDATE `tmpbatchconfigtemplate` SET elemvalue = '".$inv."' WHERE elemid = ".$update_pos." AND templname = '".$_POST['templname']."' AND batchid = ".$batchid; 
                 $db2->query($sql);
                 $db2->execute();
             endforeach;
         endif;
     endforeach;
     $newlinearr = array();
-    $sql = "SELECT distinct(elemid),elemvalue, templname FROM batchconfigtemplate where batchid = '".$batchid."' order by elemid asc";
+    $sql = "SELECT distinct(elemid),elemvalue, templname, refmop FROM tmpbatchconfigtemplate where batchid = '".$batchid."' order by elemid asc";
     $db2->query($sql);
     $results = $db2->resultset();
     foreach ($results as $key=>$val):
     $newlinearr[intval($val['elemid']/10)] .= $val['elemvalue'];
     endforeach;
     $values = implode('|',$newlinearr);
-    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`,`tmplvalues`)  VALUES ('".$batchid."','".$val['templname']."', '".$values."')";
+    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`scriptlist`)  VALUES ('".$batchid."', '".$values."')";
     $db2->query($sql);
     $db2->execute();
     empty($_SESSION['batch_vars']);
-    $_SESSION['batch_vars'] = array('batchid' => $batchid, 'templname' => $templname, 'deviceseries' => $_POST['deviceseries'], 'deviceos' => $_POST['deviceos']);
+    $_SESSION['batch_vars'] = array('batchid' => $batchid, 'refmop' => $val['refmop'], 'templname' => $templname, 'deviceseries' => $_POST['deviceseries'], 'deviceos' => $_POST['deviceos']);
     if(isset($_POST['usertype']) && $_POST['usertype'] == 2){
         header("location:batch-page.php");
     }else{

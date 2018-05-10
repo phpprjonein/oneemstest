@@ -188,10 +188,10 @@ $(document).ready(function() {
           } 
       });
 	  
-	  		if($('#backuprestore').length > 0){
+	  		if($('#backuprestoredt').length > 0){
 		//$('#ip-mgt-utils div').hide(); 
 		$('#ip-mgt-utils #ajax_loader').show();
-         var table =  $('#backuprestore').DataTable( {
+         var table =  $('#backuprestoredt').DataTable( {
           "processing": true,
           "serverSide": true,
           "ajax":"switchtech-server-backuprestoreprocess.php",      
@@ -248,7 +248,7 @@ $(document).ready(function() {
 	    			listname = $(this).text();
 	    		}
 	    		
-	            var table =  $('#backuprestore').DataTable( {
+	            var table =  $('#backuprestoredt').DataTable( {
 	                "processing": true,
 	                "serverSide": true,
 	                "ajax":"switchtech-server-backuprestoreprocess.php?listname="+listname,      
@@ -337,10 +337,10 @@ $(document).ready(function() {
 			  });	 
 	  		
 	  	  
-	  		$(document).on('click', '#backuprestore tbody td.details-control', function(event) {
+	  		$(document).on('click', '#backuprestoredt tbody td.details-control', function(event) {
 				//alert(' reach here');
 	 	       //  Temporarily commented on 31 jan 2018. Needed in future.
-	     		var table =  $('#backuprestore').DataTable();
+	     		var table =  $('#backuprestoredt').DataTable();
 	          var tr = $(this).closest('tr');
 	          var row = table.row( tr ); 
 	          var current_click_row = row.child.isShown();

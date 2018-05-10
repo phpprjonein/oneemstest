@@ -120,7 +120,7 @@ include_once ('config/session_check_switch_tech.php');
 						<p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
                           <div class="panel-body">
-                            <table id="backuprestore"  class="table table-striped table-sm">
+                            <table id="backuprestoredt"  class="table table-striped table-sm">
                               <thead>
                                 <tr>
                                   <th class="noExport">Backup & Restore </th>

@@ -57,7 +57,7 @@ if($_POST['action'] == 'Save Configuration'){
     $newlinearr[intval($val['elemid']/10)] .= $val['elemvalue'];
     endforeach;
     $values = implode('|',$newlinearr);
-    $sql = "INSERT INTO `batchconfigtemplate` (`batchid`,`scriptlist`)  VALUES ('".$batchid."', '".$values."')";
+    $sql = "INSERT INTO `scriptmaster` (`batchid`,`scriptlist`)  VALUES ('".$batchid."', '".$values."')";
     $db2->query($sql);
     $db2->execute();
     empty($_SESSION['batch_vars']);

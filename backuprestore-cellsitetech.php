@@ -53,7 +53,7 @@ for($i=0; $i<count($contents);$i++){
             <td><b><?php echo 'Manual';?><b><b></td>
             <td><a href="download.php?file=<?php echo '/usr/apps/oneems/config/bkup/'.$row_region.'/'.basename($contents[$i]);?>" id="downloadbtn" class="btn btn-primary">Download</a></td>
 			<!--  <td><button type="button" id = "viewbtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View </button></td>  -->
-			<td><button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Restore </button></td> 
+			<td><button type="button" id = "restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#restoreModal">Restore </button></td> 
          </tr>
 <?php   
     }

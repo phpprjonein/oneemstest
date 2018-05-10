@@ -102,7 +102,6 @@ include_once ('config/session_check_cellsite_tech.php');
                                   <th>Device series</th>
                                   <th>Device os</th>
                                   <th>Created date</th>
-                                  <th>Completed date </th>
                                   <th>Status</th>
                                  <!-- <th>Backup </th>  -->
                                 </tr>

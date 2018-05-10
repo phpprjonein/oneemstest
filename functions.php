@@ -2463,8 +2463,8 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->query($dsql);
         $db2->execute();
         /*insert in to batchmaster table*/
-        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `batchcompleted`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`) 
-        VALUES('".$batchid."','s','".$date_op."', '', '', '".$priority."','".$_SESSION['username']."','".$date_op."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`) 
+        VALUES('".$batchid."','s','".$date_op."', '', '', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
         $db2->execute();
     }
@@ -2883,7 +2883,6 @@ function get_devicebatch_list_from_devicebatch_datatable() {
         'bm.deviceseries',
         'bm.nodeVersion',
         'bm.batchcreated',
-        'bm.batchcompleted',
         'bm.batchstatus'
     );
     $sql_count = "SELECT COUNT(distinct(bm.batchid)) ";
@@ -2900,7 +2899,6 @@ function get_devicebatch_list_from_devicebatch_datatable() {
         $sql_condition .=  " OR bm.deviceseries LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.nodeVersion  LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.batchcreated  LIKE '%". $search ."%'";
-        $sql_condition .=  " OR bm.batchcompleted  LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.batchstatus  LIKE '%". $search ."%'";
         $sql_condition .=  " ) ";
     }
@@ -2973,7 +2971,7 @@ function batch_accordion_details_new($batchid){
 }
 function get_batch_details(){
     global $db2;
-    $sql = "SELECT d.id, d.batchid, d.deviceid, d.scriptname, d.deviceseries, d.deviceos, d.batchcreated, d.batchcompleted, bm.batchstatus FROM batchmembers d JOIN batchmaster bm on bm.batchid = d.batchid ORDER BY d.deviceseries asc";
+    $sql = "SELECT d.id, d.batchid, d.deviceid, d.scriptname, d.deviceseries, d.deviceos, d.batchcreated, bm.batchstatus FROM batchmembers d JOIN batchmaster bm on bm.batchid = d.batchid ORDER BY d.deviceseries asc";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

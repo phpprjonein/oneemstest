@@ -26,7 +26,6 @@ $(document).ready(function() {
             { "data": "deviceseries" },
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
-			{ "data": "batchcompleted" },
             { "data": "batchstatus" },
         ],
         "order": [[4, 'asc']],

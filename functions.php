@@ -2464,7 +2464,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->execute();
         /*insert in to batchmaster table*/
         $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`) 
-        VALUES('".$batchid."','s','".$date_op."', '', '', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
+        VALUES('".$batchid."','s','".$date_op."', '', 'se', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
         $db2->execute();
     }

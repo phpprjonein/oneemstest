@@ -4,8 +4,9 @@ $(document).ready(function() {
          var table =  $('#devicebatchtrack').DataTable( {
           "processing": true,
           "serverSide": true,
-          "ajax":"batch-tracking-devices-server.php",      
+          "ajax":"batch-tracking-devices-server.php?batchtype=se",      
           "pageLength": 25,
+          "destroy": true,
           "dom": 'Bfrtip',
 	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
             "language": {
@@ -159,6 +160,57 @@ $(document).ready(function() {
 	             }
 	           } 
 	       });
+	      
+	      $("#batchtype-dt-filter a").click(function(){			
+	    		$("#batchtype-dt-filter .btn").html($(this).text());
+	    		var batchtype = '';
+				if($(this).text() == 'SE'){
+					batchtype = 'se';
+				}else{
+					batchtype = 'sd';
+				}
+				
+		         var table =  $('#devicebatchtrack').DataTable( {
+		             "processing": true,
+		             "serverSide": true,
+		             "destroy": true,
+		             "ajax":"batch-tracking-devices-server.php?batchtype="+batchtype,     
+		             "pageLength": 25,
+		             "dom": 'Bfrtip',
+		   	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+		               "language": {
+		               "lengthMenu": "Display _MENU_ records per page",
+		               "zeroRecords": "No records found",
+		               "info": "Showing page _PAGE_ of _PAGES_",
+		               "infoEmpty": "",
+		               "infoFiltered": ""
+		               },
+		             "columns": [
+		                 {  "className":      'details-control',
+		                     "orderable":      false,
+		                     "data":           null,
+		                     "defaultContent": ''},
+		   			{ "data": "batchid" },
+		               { "data": "batchid" },
+		               { "data": "scriptname" },
+		               { "data": "deviceseries" },
+		   			{ "data": "nodeVersion" },
+		               { "data": "batchcreated" },
+		               { "data": "batchstatus" },
+		           ],
+		           "order": [[4, 'asc']],
+		           "createdRow": function (row, data, rowIndex) {
+		               $(row).addClass('device_row');
+		   			  $.each($('td', row), function (colIndex) {
+		              	 if(colIndex == 0)
+		              	   $(this).attr('title', 'Click for more details'); 
+		               });
+		          }
+		         } );
+				
+	      });		
+	      
+	      
 	      
 	      
 });

@@ -12,7 +12,11 @@
      }
      ]';
      $arr = json_decode($response,1);
-     sleep(5);
+     if($arr[0]['data']['output']['status'] == 'SUCCESS'):
+        $status = 'Restore done successfully'; 
+     else:
+        $status = 'Restore has failed';
+     endif;
      echo '<table class="table table-striped">
      <thead>
      <tr>
@@ -22,6 +26,7 @@
      </tr>
      </tuhead>
      <tbody>
+     <tr><td align="center" colspan="3"><b>'.$status.'</b></td>
      <tr>
      <td>'.$arr[0]['data']['output']['scp'].'</td>
      <td>'.$arr[0]['data']['output']['ssh'].'</td>

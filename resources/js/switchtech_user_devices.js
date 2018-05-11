@@ -305,17 +305,6 @@ $(document).ready(function() {
 				}); 
 		  });
 	  		
-			  $(document).on('click', '#back_res #restorebtn', function(event) {
-				  //alert('Restore button is clicked');
-				  $('#myModal #copybtn').hide();
-				  	$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
-			    	$.post( "restore-api-test.php", { type: "api-ajax"
-					}).done(function( data ) {
-						$('#myModal .modal-body').html(data);
-					}); 
-				  	
-				  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
-			  });
 			  
 			  $(document).on('click', '#copybtn', function(event) {
 					copyToClipboard("#cp1");
@@ -335,7 +324,24 @@ $(document).ready(function() {
 				  	
 				  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
 			  });	 
-	  		
+			  	 
+			  	  $(document).on('click', '#restorebtn', function(event) {
+			  		    $('#restoreModal .modal-body').html('');
+			  		    $('#restoreModal #bkup-deviceid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
+			  		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
+			  	    	var myModal = $('#restoreModal');
+			            myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 40%; top: 10%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
+			            
+			            $.post( "restore-api-test.php?act=restore", { type: "api-ajax"
+			  			}).done(function( data ) {
+			  				
+			  				$('#restoreModal .modal-body').html(data);
+			  			}); 
+			  		  	
+			  		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+			  	  });	  
+			  	 
+			  	 
 	  	  
 	  		$(document).on('click', '#backuprestoredt tbody td.details-control', function(event) {
 				//alert(' reach here');

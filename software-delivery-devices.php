@@ -211,8 +211,8 @@ $(document).ready(function(){
 <label for="os_version">Node Version</label>
 <select class="custom-select" id ="node_version">
 <option selected>Choose OS Version </option>
-<?php print_r($swreponodeversions);foreach ($swreponodeversions as $key => $val){ ?>
-<option value="<?php //echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion'];?></option>
+<?php foreach ($swreponodeversions as $key => $val){ ?>
+<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion'];?></option>
 <?php }; ?>
 </select>
 </fieldset>
@@ -221,7 +221,7 @@ $(document).ready(function(){
 <label for="sw_filename">File Name</label>
 <select class="custom-select" id ="sw_filename">
 <option selected>Choose Filename</option>
-<?php print_r($swrepogetfilenames);foreach ($swrepogetfilenames as $key => $val){ ?>
+<?php foreach ($swrepogetfilenames as $key => $val){ ?>
 <option value="<?php echo $val['filename'];?>"><?php echo $val['filename'];?></option>
 <?php }; ?>
 </select>

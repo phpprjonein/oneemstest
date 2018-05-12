@@ -205,15 +205,15 @@ $(document).ready(function(){
 </select>
 </fieldset>
 
-<?php //$swreponodeversions = swrepo_get_nodeversions(); print_r($swreponodeversions); ?>
+<?php $swreponodeversions = swrepo_get_nodeversions(); print_r($swreponodeversions); ?>
 
 <fieldset class="form-group">
 <label for="os_version">Node Version</label>
 <select class="custom-select" id ="node_version">
 <option selected>Choose OS Version </option>
-<?php //print_r($swreponodeversions);foreach ($swreponodeversions as $key => $val){ ?>
-<option value="<?php //echo $val['nodeVersion'];?>"><?php //echo $val['nodeVersion'];?></option>
-<?php //}; ?>
+<?php print_r($swreponodeversions);foreach ($swreponodeversions as $key => $val){ ?>
+<option value="<?php //echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion'];?></option>
+<?php }; ?>
 </select>
 </fieldset>
 <?php $swrepogetfilenames = swrepo_get_filenames(); print_r($swrepogetfilenames); ?>

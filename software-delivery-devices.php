@@ -1,4 +1,4 @@
- <?php
+<?php
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
  function swrepo_get_deviceseries() {
@@ -7,7 +7,23 @@ include_once "classes/paginator.class.php";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
-} ?>
+ };	
+ function swrepo_get_nodeversions() {
+	  global $db2;
+    $sql = "SELECT * FROM swrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;	
+};
+
+function swrepo_get_filenames() {
+	  global $db2;
+    $sql = "SELECT * FROM swrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;	
+}; 
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,8 +79,7 @@ $(document).ready(function () {
                 url: 'software-delivery-process.php',
                 type: 'POST'
             },
-            "columns": [ 
-			 
+            "columns": [ 			 
                 {"data": "id"},
                 {"data": "deviceIpAddr"},
                 {"data": "systemname"},
@@ -76,7 +91,7 @@ $(document).ready(function () {
 			
         });
     });	
-	
+	/*
 	$(document).on('click', '#batch-submit', function(event) {
         	var allVals = [];
         	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
@@ -109,8 +124,43 @@ function get_nodeversion(val){
     });
   };
 		
-		
- 
+
+function get_swrepofiles(val){
+    $.ajax({
+      type: "POST",
+      url: 'getswrepofiles.php',
+      //data: ({deviceseries:val}),
+      success: function(data) {
+        alert(data);
+      }
+    });
+  };
+*/		
+ $(document).ready(function(){
+            $('#device_series').change(function(){
+                //Selected value
+                var deviceseries = $(this).val();
+                alert("value in js "+deviceseries);
+
+                //Ajax for calling php function
+              //  $.post('getnodeversion.php', { dropdownValue: deviceseries }, function(data){
+                   //alert('ajax completed. Response:  '+data);
+                    //do after submission operation in DOM
+                });
+            })
+$(document).ready(function(){
+            $('#node_version').change(function(){
+                //Selected value
+                var inputValue = $(this).val();
+                alert("value in js "+inputValue);
+
+                //Ajax for calling php function
+                //$.post('submit.php', { dropdownValue: inputValue }, function(data){
+                  //  alert('ajax completed. Response:  '+data);
+                    //do after submission operation in DOM
+                })
+            })			
+			
 </script>
 </head>
 <body>
@@ -137,7 +187,7 @@ function get_nodeversion(val){
 			</div>
 		  </div>
 		</div>
-<h2>Two Equal Columns</h2>
+<h2>Software Delivery</h2>
 
 <div class="row">
 <div class="column" style="background-color:#aaa;">
@@ -155,18 +205,23 @@ function get_nodeversion(val){
 </select>
 </fieldset>
 
+<?php //$swreponodeversions = swrepo_get_nodeversions(); print_r($swreponodeversions); ?>
+
 <fieldset class="form-group">
 <label for="os_version">Node Version</label>
 <select class="custom-select" id ="node_version">
 <option selected>Choose OS Version </option>
-
+<?php //print_r($swreponodeversions);foreach ($swreponodeversions as $key => $val){ ?>
+<option value="<?php //echo $val['nodeVersion'];?>"><?php //echo $val['nodeVersion'];?></option>
+<?php //}; ?>
 </select>
 </fieldset>
+<?php $swrepogetfilenames = swrepo_get_filenames(); print_r($swrepogetfilenames); ?>
 <fieldset class="form-group">
 <label for="sw_filename">File Name</label>
 <select class="custom-select" id ="sw_filename">
 <option selected>Choose Filename</option>
-<?php print_r($swrepolist);foreach ($swrepolist as $key => $val){ ?>
+<?php print_r($swrepogetfilenames);foreach ($swrepogetfilenames as $key => $val){ ?>
 <option value="<?php echo $val['filename'];?>"><?php echo $val['filename'];?></option>
 <?php }; ?>
 </select>
@@ -201,8 +256,7 @@ function get_nodeversion(val){
    
 <table id="swdelvrybatchpro" class="display" style="width:100%">
         <thead>
-            <tr>
-				<th>Select</th>
+            <tr> 
 			    <th>id</th>
                 <th>deviceIpAddr</th>
                 <th>systemname</th>

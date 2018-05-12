@@ -1,5 +1,4 @@
-
-    <?php
-    $temp = $_POST['deviceseries'];
-    echo $temp;
-    ?>
+<?php
+    $temp = $_POST['dropdownValue'];
+    echo 'hello';
+?>

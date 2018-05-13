@@ -195,7 +195,6 @@ $(document).ready(function() {
             'swrp_filename'    : $('#swrp_filename').val(),
 			'sw_selpriority'   : $('#sw_selpriority').val()
         };
-		
 
         // process the form
         $.ajax({
@@ -204,9 +203,11 @@ $(document).ready(function() {
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
                         encode          : true
-        }).done(function(data) {
+        })
+		.done(function(data) {
 			   alert('response'); 
                 alert(data);   
+				$.each( data, function( key, value ) {  });
                 // log data to the console so we can see
                 console.log(data); 
 

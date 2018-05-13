@@ -1,33 +1,19 @@
 <?php
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
- function swrepo_get_deviceseries() {
+ function swrepo_get_details() {
 	  global $db2;
     $sql = "SELECT * FROM swrepository";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
- };	
- function swrepo_get_nodeversions() {
-	  global $db2;
-    $sql = "SELECT * FROM swrepository";
-    $db2->query($sql);
-    $resultset = $db2->resultset();
-    return $resultset;	
-};
-
-function swrepo_get_filenames() {
-	  global $db2;
-    $sql = "SELECT * FROM swrepository";
-    $db2->query($sql);
-    $resultset = $db2->resultset();
-    return $resultset;	
-}; 
+ }
  ?>
 <!DOCTYPE html>
 <html>
 <head>
- <?php //include_once("includes.php")?>;
+<title>Software Delivery</title>
+ <?php //include_once("includes.php")?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -61,6 +47,12 @@ function swrepo_get_filenames() {
     display: table;
     clear: both;
 }
+td {word-wrap: break-word;word-break: break-all;} 
+.dt-buttons button{width:2.5rem;height:2rem;border:none !important}
+.dt-buttons span{display:none}
+
+.dtexcelbtn{background:url(resources/img/xlsx.jpg) no-repeat center right !important}.dtpdfbtn{background:url(resources/img/pdf.jpg) no-repeat center right !important}.dtprintbtn{background:url(resources/img/print.png) no-repeat center right !important}div.dt-buttons{float:right}
+.dt-buttons button{text-content:.;}
 </style>
 <script >
     
@@ -69,12 +61,10 @@ $(document).ready(function () {
             "processing": true,
             "serverSide": true,
 			 "dom": 'Bfrtip',
-        "buttons": [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],
+			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
+				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
+				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+				 ],
             "ajax": {
                 url: 'software-delivery-process.php',
                 type: 'POST'
@@ -223,6 +213,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<div class="container-fluid">
 <!-- The Modal -->
 		<div class="modal fade" id="batchModal">
 		  <div class="modal-dialog" >
@@ -246,43 +237,31 @@ $(document).ready(function() {
 			</div>
 		  </div>
 		</div>
+		<div class="col-md-12">
 <h2>Software Delivery</h2>
 
 <div class="row">
-<div class="column" style="background-color:#aaa;">
+<div class="column col-sm-4" style="background-color:#aaa;">
 <!-- <form action="software/html/tags/html_form_tag_action.cfm"> -->
-<?php $swrepolist = swrepo_get_deviceseries(); print_r($swrepolist); ?>
- <form action="software-delivery-batch-process.php" method="POST">
+<?php $swrepolist = swrepo_get_details(); ?>
+<form action="software-delivery-batch-process.php" method="POST">
 <fieldset class="form-group">
 <label for="device_series">Device Series</label>
 <select class="custom-select" id ="device_series" name ="device_series"> 
-<!-- <select class="custom-select" id ="device_series" >    -->
 <option selected>Choose Device Series</option>
-<?php print_r($swrepolist);foreach ($swrepolist as $key => $val){ ?>
-<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
-<?php }; ?>
 </select>
 </fieldset>
-
-<?php $swreponodeversions = swrepo_get_nodeversions(); print_r($swreponodeversions); ?>
 
 <fieldset class="form-group">
 <label for="os_version">Node Version</label>
 <select class="custom-select" id ="node_version" name ="node_version">
 <option selected>Choose OS Version </option>
-<?php //foreach ($swreponodeversions as $key => $val){ ?>
-<option value="<?php //echo $val['nodeVersion'];?>"><?php //echo $val['nodeVersion'];?></option>
-<?php //}; ?>
 </select>
 </fieldset>
-<?php $swrepogetfilenames = swrepo_get_filenames(); print_r($swrepogetfilenames); ?>
 <fieldset class="form-group">
 <label for="swrp_filename">File Name</label>
 <select class="custom-select" id ="swrp_filename" name ="swrp_filename">
 <option selected>Choose Filename</option>
-<?php //foreach ($swrepogetfilenames as $key => $val){ ?>
-<option value="<?php //echo $val['filename'];?>"><?php //echo $val['filename'];?></option>
-<?php //}; ?>
 </select>
 </fieldset>
 <fieldset class="form-group">
@@ -303,15 +282,9 @@ $(document).ready(function() {
 </fieldset>							
  
 </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Column 2</h2>
-<p id="cp1" style="display: none"></p>
+  <div class="column col-sm-8" style="background-color:#bbb;">
 <input type="hidden" id='userid' value="<?php echo "testuser";//echo $userid ?>" name="">
 <input type="hidden" value="<?php echo time();?>" name="batchid" id="batchid">
-<!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['templname']; ?>" name="scriptname" id="scriptname" /> -->
-<!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['deviceseries']; ?>" name="deviceseries" id="deviceseries"/> -->
-<!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['deviceos']; ?>" name="deviceos" id="deviceos"/>	 -->
-   
 <table id="swdelvrybatchpro" class="display" style="width:100%">
         <thead>
             <tr> 
@@ -323,12 +296,13 @@ $(document).ready(function() {
                 <th>nodeVersion</th>
             </tr>
         </thead>        
-</table> 	
+</table> 
+<button type="submit" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
   </div>
 </div>
-<div class="text-center">
-<button type="submit" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
-</div>
+
 </form>
+</div>
+</div>
 </body>
 </html>

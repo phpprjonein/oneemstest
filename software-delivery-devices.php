@@ -1,14 +1,29 @@
 <?php
+ini_set('display_errors',1);
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
- function swrepo_get_details() {
-	  global $db2;
-    $sql = "SELECT * FROM swrepository";
+function swrepo_get_deviceseries() {
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM swrepository order by deviceseries asc";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
- }
- ?>
+}
+function swrepo_get_nodeversions() {
+    global $db2;
+    $sql = "SELECT distinct(nodeVersion) FROM swrepository order by nodeVersion asc";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+function swrepo_get_filenames() {
+    global $db2;
+    $sql = "SELECT distinct(filename) FROM swrepository order by filename asc";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +84,11 @@ $(document).ready(function () {
                 url: 'software-delivery-process.php',
                 type: 'POST'
             },
-            "columns": [ 			 
+            "columns": [ 		
+                {  "className":      'batch-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
                 {"data": "id"},
                 {"data": "deviceIpAddr"},
                 {"data": "systemname"},
@@ -78,7 +97,6 @@ $(document).ready(function () {
                 {"data": "nodeVersion"}
             ],
 			"order": [[4, 'asc']]
-			
         });
     });	
 	/*
@@ -243,25 +261,35 @@ $(document).ready(function() {
 <div class="row">
 <div class="column col-sm-4" style="background-color:#aaa;">
 <!-- <form action="software/html/tags/html_form_tag_action.cfm"> -->
-<?php $swrepolist = swrepo_get_details(); ?>
 <form action="software-delivery-batch-process.php" method="POST">
+<?php $swrepods = swrepo_get_deviceseries();?>
 <fieldset class="form-group">
 <label for="device_series">Device Series</label>
 <select class="custom-select" id ="device_series" name ="device_series"> 
 <option selected>Choose Device Series</option>
+<?php foreach ($swrepods as $key=>$val):?>
+	<option><?php echo $val['deviceseries']; ?></option>
+<?php endforeach;?>
 </select>
 </fieldset>
-
+<?php $swreponv = swrepo_get_nodeversions();?>
 <fieldset class="form-group">
 <label for="os_version">Node Version</label>
 <select class="custom-select" id ="node_version" name ="node_version">
 <option selected>Choose OS Version </option>
+<?php foreach ($swreponv as $key=>$val):?>
+	<option><?php echo $val['nodeVersion']; ?></option>
+<?php endforeach;?>
 </select>
 </fieldset>
+<?php $swrepofn = swrepo_get_filenames();?>
 <fieldset class="form-group">
 <label for="swrp_filename">File Name</label>
 <select class="custom-select" id ="swrp_filename" name ="swrp_filename">
 <option selected>Choose Filename</option>
+<?php foreach ($swrepofn as $key=>$val):?>
+	<option><?php echo $val['filename']; ?></option>nv
+<?php endforeach;?>
 </select>
 </fieldset>
 <fieldset class="form-group">
@@ -287,7 +315,8 @@ $(document).ready(function() {
 <input type="hidden" value="<?php echo time();?>" name="batchid" id="batchid">
 <table id="swdelvrybatchpro" class="display" style="width:100%">
         <thead>
-            <tr> 
+            <tr>
+                <th></th> 
 			    <th>id</th>
                 <th>deviceIpAddr</th>
                 <th>systemname</th>

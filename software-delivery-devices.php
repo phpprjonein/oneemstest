@@ -110,6 +110,8 @@ $(document).ready(function () {
 						data: {dropdownValue: deviceseries},
 						success: function(data){
 						//alert(data);
+						// $('#node_version').remove();
+						$('#node_version').children('option:not(:first)').remove();
 						$('#node_version').append(data);	
 						}
 					});	
@@ -127,6 +129,7 @@ $(document).ready(function(){
 						data: {deviceseries:deviceseries,nodeversion: nodeversion},
 						success: function(data){
 						//alert(data);
+						$('#swrp_filename').children('option:not(:first)').remove();
 						$('#swrp_filename').append(data);	
 						}
 					});	

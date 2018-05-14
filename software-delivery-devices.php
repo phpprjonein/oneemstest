@@ -3,14 +3,14 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
  function swrepo_get_deviceseries() {
 	  global $db2;
-    $sql = "SELECT * FROM swrepository";
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
  };	
  function swrepo_get_nodeversions() {
 	  global $db2;
-    $sql = "SELECT * FROM swrepository";
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;	
@@ -18,7 +18,7 @@ include_once "classes/paginator.class.php";
 
 function swrepo_get_filenames() {
 	  global $db2;
-    $sql = "SELECT * FROM swrepository";
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;	
@@ -167,6 +167,11 @@ $(document).ready(function(){
         	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
         		allVals.push($(this).closest('tr').find("td:eq(1)").text());
         	});
+
+        	if(allVals.length == 0){
+            	alert('Error! Device selection is required');
+            	return false;	
+        	}
             $.ajax({
                 type:"post",
                 url:"software-delivery-batch-process.php",
@@ -284,7 +289,7 @@ $(document).ready(function() {
 <label for="device_series">Device Series</label>
 <select class="custom-select" id ="device_series" name ="device_series"> 
 <option selected>Choose Device Series</option>
-<?php print_r($swrepolist);foreach ($swrepolist as $key => $val){ ?>
+<?php foreach ($swrepolist as $key => $val){ ?>
 <option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
 <?php }; ?>
 </select>

@@ -14,7 +14,7 @@ include "classes/db2.class.php";
 	
 function swrepo_get_nodeversions($deviceseries) {
 	  global $db2;
-    $sql = "SELECT * FROM swrepository where deviceseries  = '".$deviceseries."'";
+    $sql = "SELECT distinct(nodeVersion) FROM swrepository where deviceseries  = '".$deviceseries."'";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;	

@@ -3010,7 +3010,7 @@ if (!empty($_POST) ) {
     if(!empty($_POST['search']['value'])){
 
         /* WHERE Clause for searching */
-        for($i=0 ; $i<count($_POST['columns']);$i++){
+        for($i=1 ; $i<count($_POST['columns']);$i++){
             $column = $_POST['columns'][$i]['data'];//we get the name of each column using its index from POST request
             $where[]="$column like '%".$_POST['search']['value']."%'";
         }

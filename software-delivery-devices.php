@@ -29,7 +29,7 @@ function swrepo_get_filenames() {
 <head>
   <title>One Ems</title>
   <meta charset="utf-8">
-
+<?php //include_once("includes.php");  ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
@@ -43,6 +43,10 @@ function swrepo_get_filenames() {
 <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"> </script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"> 
+<script type="text/javascript" language="javascript" src="resources/js/popper.min.js"></script>
+<script  type="text/javascript" language="javascript" src="resources/js/bootstrap.min.js"></script> 
+        
+        
 <style>
 * {
     box-sizing: border-box;
@@ -158,50 +162,56 @@ $(document).ready(function(){
 					});	
                 });
             }) 
-			
-$(document).ready(function() {
+			$(document).on('click', '#batch-submit', function(event) {
+        	var allVals = [];
+        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
+        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
+        	});
+            $.ajax({
+                type:"post",
+                url:"software-delivery-batch-process.php",
+                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':$('#device_series').val(), 'node_version':$('#node_version').val(), 'priority':$('#sw_selpriority').val()}, 
+                success: function(resdata){
+                	var myModal = $('#batchModal');
+            		myModal.modal('show'); 
+                }
+            });
+        	return false;
+    	}); 
 
-    // process the form
+	
+$(document).ready(function() {
+	
+
+	
+	/*
 	 $('form').submit(function(event) {  
         alert('value of node version is' + $('#node_version').val());
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-       /* var formData = {
-            'device_series'    : $('input[name=device_series]').val(),
-            'node_version'     : $('input[name=node_version]').val(),
-            'swrp_filename'    : $('input[name=swrp_filename]').val(),
-			'sw_selpriority'   : $('input[name=sw_selpriority]').val()
-        };
-		*/
 		var formData = {
             'device_series'    : $('#device_series]').val(),
             'node_version'     : $('#node_version').val(),
             'swrp_filename'    : $('#swrp_filename').val(),
 			'sw_selpriority'   : $('#sw_selpriority').val()
-        };
-
-        // process the form
+        }
         $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
             url         : 'software-delivery-batch-process.php', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
-                        encode          : true
+            encode      : true
         })
 		.done(function(data) {
 			   alert('response'); 
                 alert(data);   
 				$.each( data, function( key, value ) {  });
-                // log data to the console so we can see
                 console.log(data); 
-
-                // here we will handle errors and validation messages
             });
-
-        // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
     });
-
+	*/
+	$('#batchModal').on('hidden.bs.modal', function () {
+		 location.reload();
+	})
 });		
 			
 </script>
@@ -264,7 +274,7 @@ $(document).ready(function() {
 </nav>
 
 <div class="container" style="margin-top:30px">
-<form action="software-delivery-batch-process.php" method="POST">
+<form action="#" method="POST">
   <div class="row">
     <div class="col-lg-4">
  <!--<form action="software/html/tags/html_form_tag_action.cfm">-->
@@ -315,8 +325,7 @@ $(document).ready(function() {
     <div class="col-lg-8">
         <h2> Devices List </h2>
 <p id="cp1" style="display: none"></p>
-<input type="hidden" id='userid' value="<?php echo "testuser";//echo $userid ?>" name="">
-<input type="hidden" value="<?php echo time();?>" name="batchid" id="batchid">
+<input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
 <!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['templname']; ?>" name="scriptname" id="scriptname" /> -->
 <!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['deviceseries']; ?>" name="deviceseries" id="deviceseries"/> -->
 <!-- <input type="hidden" value="<?php //echo $_SESSION['batch_vars']['deviceos']; ?>" name="deviceos" id="deviceos"/>	 -->
@@ -334,7 +343,7 @@ $(document).ready(function() {
             </tr>
         </thead>        
 </table> 	
-<button type="submit" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
+<button type="button" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
   </div>
 </div>
 </form>

@@ -29,53 +29,76 @@ function swrepo_get_filenames() {
 <head>
   <title>One Ems</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  
-  
-<!--  <script src="https://code.jquery.com/jquery-1.12.4.js"> </script> -->
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"> </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"> </script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"> </script>
 <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"> </script>
-<!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"> 
 <style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  /*  height: 300px; */ /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+td {word-wrap: break-word;word-break: break-all;} 
+.dt-buttons button{width:2.5rem;height:2rem;border:none !important}
+.dt-buttons span{display:none}
+
+.dtexcelbtn{background:url(resources/img/xlsx.jpg) no-repeat center right !important}.dtpdfbtn{background:url(resources/img/pdf.jpg) no-repeat center right !important}.dtprintbtn{background:url(resources/img/print.png) no-repeat center right !important}div.dt-buttons{float:right}
+.dt-buttons button{text-content:.;}
 </style>
   <script >
     
-$(document).ready(function () {
-        $('#swdelvrybatchpro').DataTable({
-            "processing": true,
-            "serverSide": true,
+  $(document).ready(function () {
+      $('#swdelvrybatchpro').DataTable({
+          "processing": true,
+          "serverSide": true,
 			 "dom": 'Bfrtip',
-        "buttons": [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],
-            "ajax": {
-                url: 'software-delivery-process.php',
-                type: 'POST'
-            },
-            "columns": [ 			 
-                {"data": "id"},
-                {"data": "deviceIpAddr"},
-                {"data": "systemname"},
-                {"data": "deviceseries"},
-                {"data": "market"},
-                {"data": "nodeVersion"}
-            ],
+			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
+				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
+				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+				 ],
+          "ajax": {
+              url: 'software-delivery-process.php',
+              type: 'POST'
+          },
+          "columns": [ 		
+              {  "className":      'batch-control',
+                  "orderable":      false,
+                  "data":           null,
+                  "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
+              {"data": "id"},
+              {"data": "deviceIpAddr"},
+              {"data": "systemname"},
+              {"data": "deviceseries"},
+              {"data": "market"},
+              {"data": "nodeVersion"}
+          ],
 			"order": [[4, 'asc']]
-			
-        });
-    });	
+      });
+  });	
 	/*
 	$(document).on('click', '#batch-submit', function(event) {
         	var allVals = [];
@@ -301,6 +324,7 @@ $(document).ready(function() {
 <table id="swdelvrybatchpro" class="display" style="width:100%">
         <thead>
             <tr> 
+            	<th></th>
 			    <th>id</th>
                 <th>deviceIpAddr</th>
                 <th>systemname</th>
@@ -310,10 +334,8 @@ $(document).ready(function() {
             </tr>
         </thead>        
 </table> 	
-  </div>
-<div class="text-center">
 <button type="submit" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
-</div>
+  </div>
 </div>
 </form>
 </div>  

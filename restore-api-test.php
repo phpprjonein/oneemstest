@@ -1,9 +1,14 @@
  <?php 
  if($_GET['act'] == 'restore'){
+     //print '<pre>';print_r($_POST);
 //  Get the curl response from the file and display it from modal restore-api-response.php. Either include that 
 //file over here and display the json response Or use the curl and display the json values here. 
 
-$url = http://10.134.179.82:8080/2/greatlakes/asr920/AKROOH20T1A-P-CI-0021-01-10.198.238.19-RUNNING_CONFIG-23-0-20180406211736.cfg
+$region = strtolower(str_replace(' ','',$_POST['region'])); 
+$device_series = strtolower(str_replace(' ','',$_POST['device_series'])); 
+$filename = $_POST['filename'];
+     
+$url = 'http://10.134.179.82:8080/2/'.$region.'/'.$device_series.'/'.$filename;
 //  Initiate curl
 $ch = curl_init();
 // Disable SSL verification
@@ -18,8 +23,7 @@ $result=curl_exec($ch);
 curl_close($ch);
 // Will dump a beauty json :3
 $output = json_decode($result, true);
-print_r($output['data']['data']);
-     $arr = json_decode($response,1);
+$arr = json_decode($response,1);
 /*
  $response = '[
      {

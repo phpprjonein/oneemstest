@@ -541,14 +541,16 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
 	    	var myModal = $('#restoreModal');
           myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 40%; top: 10%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
-          
-          $.post( "restore-api-test.php?act=restore", { type: "api-ajax"
+          var rowid = $('.shown').attr('id');
+          $.post( "restore-api-test.php?act=restore", { 'type': "api-ajax", 'region': $('#'+rowid).find("td:eq(4)").text(), 'device_series': $('#'+rowid).find("td:eq(6)").text(), 'device_id': rowid.replace('row_',''), 'filename':$(this).closest('tr').find("td:eq(0)").text(),
 			}).done(function( data ) {
-				
 				$('#restoreModal .modal-body').html(data);
-			}); 
-		  	
-		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+			});
+          /*	
+          alert("Region " + $('#'+rowid).find("td:eq(4)").text() + "Region " + $('#'+rowid).find("td:eq(6)").text() + "device ID " +  rowid.replace('row_',''));
+          alert($(this).closest('tr').find("td:eq(0)").text());
+          return false;
+		  */	
 	  });	  
 	 
 	 

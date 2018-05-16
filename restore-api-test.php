@@ -22,8 +22,9 @@ $result=curl_exec($ch);
 // Closing
 curl_close($ch);
 // Will dump a beauty json :3
-$output = json_decode($result, true);
-$arr = json_decode($response,1);
+//$output = json_decode($result, true);
+$arr = json_decode($result,1);
+//print_r($arr);
 /*
  $response = '[
      {
@@ -37,12 +38,19 @@ $arr = json_decode($response,1);
      }
      ]';
      $arr = json_decode($response,1);
+     //$scp = (string)(isset($arr[0]['data']['output']['scp'])) == 1 ) ? 'Success' : 'Failed';
+     //echo 'value of scp is '.$scp;
 */
+     $scp = $arr[0]['data']['output']['scp'] == 1 ? 'Success' : 'Failed';
+     $ssh = $arr[0]['data']['output']['ssh']  == 1 ? 'Success' : 'Failed';;
+     $status = $arr[0]['data']['output']['status'] == 'SUCCESS' ? 'Success' : 'Failed';;
+    /*
      if($arr[0]['data']['output']['status'] == 'SUCCESS'):
         $status = 'Restore done successfully'; 
      else:
         $status = 'Restore has failed';
      endif;
+    */
      echo '<table class="table table-striped">
      <thead>
      <tr>
@@ -52,11 +60,10 @@ $arr = json_decode($response,1);
      </tr>
      </tuhead>
      <tbody>
-     <tr><td align="center" colspan="3"><b>'.$status.'</b></td>
      <tr>
-     <td>'.$arr[0]['data']['output']['scp'].'</td>
-     <td>'.$arr[0]['data']['output']['ssh'].'</td>
-     <td>'.$arr[0]['data']['output']['status'].'</td>
+     <td>'.$scp.'</td>
+     <td>'.$ssh.'</td>
+     <td>'.$status.'</td>
      </tr>
      </tbody>
      </table>';

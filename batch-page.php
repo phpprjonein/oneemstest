@@ -38,7 +38,7 @@ include_once ('config/session_check_cellsite_tech.php');
       </div>
 			  <!-- Modal body -->
 			  <div class="modal-body">
-			  Please check the status in Batch Page
+			  Please do keep track the status on Batch Page
 			  </div>
 			  <!-- Modal footer -->
 			  <div class="modal-footer">

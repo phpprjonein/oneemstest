@@ -10,12 +10,19 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $d
     global $db2;
     $oc = 1;
     $date_op = date('Y-m-d H:i:s');
-    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`) VALUES';
+    $sql = "SELECT id, deviceIpAddr FROM nodes order by id";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    foreach ($resultset as $key=>$val){
+        $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
+    }
+
+    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
-            $dsql .= "('".$batchid."','".$val."','s')";
+            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."')";
         }else{
-            $dsql .= "('".$batchid."','".$val."','s'),";
+            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."'),";
         }
         $oc++;
     }

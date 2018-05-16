@@ -2457,7 +2457,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
     }
     
-    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`) VALUES';
+    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
             $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."')";

@@ -103,23 +103,24 @@ include_once ('config/session_check_cellsite_tech.php');
                               </thead>
 
                             </table>
-							<div class="input-group row" >
-                            <div class="form-inline col-md-6 col-sm-12">
-                            <select class="form-control custom-select" id="sel-priority">
-        						<option>1</option>
-            					<option>2</option>
-            					<option>3</option>
-            					<option>4</option>
-								<option>5</option>
-            					<option>6</option>
-            					<option>7</option>
-            					<option>8</option>
-            					<option>9</option>
-            					<option>10</option>
-          					</select>
-                             <button type="submit" value="SUBMIT" class="btn btn-default" id="batch-submit">SUBMIT</button>
-                            </div>
-                          </div>
+                            <div class="form-group">
+                                <div class="col-md-2 pb-1 col-sm-12">
+        						<label for="Priority" class="font-weight-bold">Select Priority</label>
+                                <select class="form-control custom-select" id="sel-priority">
+            						<option>1</option>
+                					<option>2</option>
+                					<option>3</option>
+                					<option>4</option>
+    								<option>5</option>
+                					<option>6</option>
+                					<option>7</option>
+                					<option>8</option>
+                					<option>9</option>
+                					<option>10</option>
+              					</select>
+              					</div>
+              					<div  class="col-md-2 pb-5 col-sm-12"><button type="submit" value="SUBMIT" class="btn btn-default" id="batch-submit">SUBMIT</button></div>
+  							</div>
                           </div>
                         <!-- /.box-body -->
                       </div>

@@ -91,11 +91,11 @@ include_once ('config/session_check_cellsite_tech.php');
                           <div class="panel-info">
                           <div class="btn-group" id="batchtype-dt-filter">
 						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          SE
+                          Script Execution
 						  </button>
 						  <div class="dropdown-menu">
-						  <a class="dropdown-item" href="#">SE</a>
-						  <a class="dropdown-item" href="#">SD</a>
+						  <a class="dropdown-item" href="#">Script Execution</a>
+						  <a class="dropdown-item" href="#">Software delivery</a>
 						  </div>
 						</div>
 						  <p id="cp1" style="display: none"></p>

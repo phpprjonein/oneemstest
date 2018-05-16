@@ -11,8 +11,6 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-//include_once ('config/session_check_cellsite_tech.php');
-
     $page_title = 'OneEMS';
 
 ?>
@@ -39,6 +37,9 @@ user_session_check();
 			  <!-- Modal body -->
 			  <div class="modal-body">
 			  Please do keep track the status on Batch Page
+			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
+			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
+			  <?php endif;?>
 			  </div>
 			  <!-- Modal footer -->
 			  <div class="modal-footer">

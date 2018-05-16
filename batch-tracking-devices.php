@@ -11,8 +11,6 @@ if (isset($_GET['clear']) ) {
 }
 
 user_session_check();
-//include_once ('config/session_check_cellsite_tech.php');
-
     $page_title = 'OneEMS';
 
 ?>

@@ -15,6 +15,13 @@ $deviceinfo = batch_accordion_details($batchid);
                                               <td><b>Execution Status</b></td>
                                             </tr>
                                             <?php foreach ($deviceinfo['result'] as $key => $val): ?>
+                                            <?php 
+                                                if(strtolower($val['status']) == 's'){
+                                                    $val['status'] = 'Scheduled';
+                                                }elseif (strtolower($val['status']) == 'd'){
+                                                    $val['status'] = 'Cancelled';
+                                                }
+                                            ?>
                                             <tr>
                                               <td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
                                               <td><?php echo $val['systemname']; ?></td>

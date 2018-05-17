@@ -88,7 +88,7 @@ user_session_check();
                       <div class="panel">
                           <div class="panel-info">
                           <div class="btn-group" id="batchtype-dt-filter">
-						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button type="button" style="text-transform: none;" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Script Execution
 						  </button>
 						  <div class="dropdown-menu">
@@ -103,14 +103,13 @@ user_session_check();
                               <thead>
                                 <tr>
                                   <th class="noExport">Batch details</th>
-								  <th>Id</th>
                                   <th>Batch id</th>
                                   <th>Script name</th>
                                   <th>Device series</th>
                                   <th>Device os</th>
                                   <th>Created date</th>
                                   <th>Status</th>
-                                 <!-- <th>Backup </th>  -->
+                                  <th>Delete</th>
                                 </tr>
                               </thead>
                             </table>

@@ -21,26 +21,37 @@ $(document).ready(function() {
                   "orderable":      false,
                   "data":           null,
                   "defaultContent": ''},
-			{ "data": "batchid" },
             { "data": "batchid" },
             { "data": "scriptname" },
             { "data": "deviceseries" },
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
             { "data": "batchstatus" },
+            { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">DELETE</a>' },
         ],
         "order": [[4, 'asc']],
         "createdRow": function (row, data, rowIndex) {
             $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
-           	 if(colIndex == 0)
-           	   $(this).attr('title', 'Click for more details'); 
-           	 if(colIndex == 7 && $(this).html() == 's') 
+           	 if(colIndex == 6 && $(this).html() == 's'){ 
            	   $(this).html('Scheduled');
+         	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
+           	   $(this).html('Cancelled');
+         	 }
             });
        }
       } );
 	}
+		
+		$('#devicebatchtrack tbody').on('click', '#deletebatch', function () {
+    		if(confirm("Are you sure want to delete batch " + $(this).closest('tr').find("td:eq(1)").text() + " ?")){
+    			$.post( "ip-mgt-process.php", {"act": "batch-del", "batchid": $(this).closest('tr').find("td:eq(1)").text()})
+      		  .done(function( data ) {
+      			 alert("Batch "+ $(this).closest('tr').find("td:eq(1)").text() +" deleted successfully");
+      			 location.reload();
+      		  });
+    		}
+		});
 		
 	      $('#devicebatchtrack tbody').on('click', 'td.details-control', function () {
 				//alert(' reach here');
@@ -125,29 +136,30 @@ $(document).ready(function() {
 		               "infoEmpty": "",
 		               "infoFiltered": ""
 		               },
-		             "columns": [
-		                 {  "className":      'details-control',
-		                     "orderable":      false,
-		                     "data":           null,
-		                     "defaultContent": ''},
-		   			{ "data": "batchid" },
-		               { "data": "batchid" },
-		               { "data": "scriptname" },
-		               { "data": "deviceseries" },
-		   			{ "data": "nodeVersion" },
-		               { "data": "batchcreated" },
-		               { "data": "batchstatus" },
-		           ],
-		           "order": [[4, 'asc']],
-		           "createdRow": function (row, data, rowIndex) {
-		               $(row).addClass('device_row');
-		   			  $.each($('td', row), function (colIndex) {
-		              	 if(colIndex == 0)
-		              	   $(this).attr('title', 'Click for more details');
-		               	 if(colIndex == 7 && $(this).html() == 's') 
-		                 	   $(this).html('Scheduled');
-		               });
-		          }
+		               "columns": [
+		                   {  "className":      'details-control',
+		                       "orderable":      false,
+		                       "data":           null,
+		                       "defaultContent": ''},
+		                 { "data": "batchid" },
+		                 { "data": "scriptname" },
+		                 { "data": "deviceseries" },
+		     			{ "data": "nodeVersion" },
+		                 { "data": "batchcreated" },
+		                 { "data": "batchstatus" },
+		                 { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">DELETE</a>' },
+		             ],
+		             "order": [[4, 'asc']],
+		             "createdRow": function (row, data, rowIndex) {
+		                 $(row).addClass('device_row');
+		     			  $.each($('td', row), function (colIndex) {
+		                	 if(colIndex == 6 && $(this).html() == 's'){ 
+		                	   $(this).html('Scheduled');
+		              	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
+		                	   $(this).html('Cancelled');
+		              	 }
+		                 });
+		            }
 		         } );
 				
 	      });		

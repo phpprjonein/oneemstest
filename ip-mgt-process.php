@@ -195,3 +195,7 @@ if(isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST[
 if(isset($_POST['region']) &&  isset($_POST['category']) && ($_POST['category'] == 'cellsitetech' || $_POST['category'] == 'switchtech')  && isset($_POST['act']) && $_POST['act'] == 'ip-del' && isset($_POST['subnet'])){
     echo delete_ipallocation_by_subnet($_POST['region'], $_POST['subnet']);    
 }
+
+if(isset($_POST['act']) && $_POST['act'] == 'batch-del' && isset($_POST['batchid'])){
+    echo delete_batchid($_POST['batchid']);
+}

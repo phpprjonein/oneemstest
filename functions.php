@@ -2471,7 +2471,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->execute();
         /*insert in to batchmaster table*/
         $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`)
-        VALUES('".$batchid."','s','".$date_op."', '', 'se', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
+        VALUES('".$batchid."','s','".$date_op."', '', 'se', '".$priority."','".$_SESSION['username']."','".$date_op."','".$_SESSION['batch_vars']['deviceseries']."','".$_SESSION['batch_vars']['deviceos']."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
         $db2->execute();
     }
@@ -2730,6 +2730,17 @@ function delete_ipallocation_by_subnet($region, $subnetmask){
     $db2->query($sql);
     $db2->execute();
 }
+
+function delete_batchid($batchid){
+    global $db2;
+    $sql = "UPDATE `batchmaster` SET batchstatus = 'd' WHERE batchid = '".$batchid."'";
+    $db2->query($sql);
+    $db2->execute();
+    $sql = "UPDATE `batchmembers` SET status = 'd' WHERE batchid = '".$batchid."'";
+    $db2->query($sql);
+    $db2->execute();
+}
+
 function write_log($message, $logfile='') {
     // Determine log file
     // Filename of log to use when none is given to write_log
@@ -2903,7 +2914,6 @@ function get_devicebatch_list_from_devicebatch_datatable() {
 
     if ($search) {
         $sql_condition .=  " AND ( ";
-        $sql_condition .=  " bm.id LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.batchid LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.scriptname  LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.deviceseries LIKE '%". $search ."%'";

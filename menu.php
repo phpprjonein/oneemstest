@@ -53,7 +53,7 @@
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
   <a class="dropdown-item" href="scripting.php">Load Template</a>
   <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
-  <a class="dropdown-item" href="batch-page.php">Batch Page </a>
+ <!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
   <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
   </div>
   </li>
@@ -64,7 +64,7 @@
   <a class="dropdown-item" href="cellsitetech-discovery.php">Discovery Results</a>
   </div>
   </li>
-  <!--
+  
   <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   Maintenance</a>
@@ -74,7 +74,7 @@
   </div>
   </li>
   </li>
-  -->
+  
   <li class="nav-item dropdown">
   <li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>
   <?php }elseif(check_user_authentication(array(2,5,6,7))){  ?>
@@ -101,12 +101,7 @@
   <li class="nav-item"><a class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_faqs.php")); ?>" href="help.php">Help</a></li>
   <?php } ?>
   <?php  } ?>
-  </ul>
-
-
-
-
-
+  </ul>  
   </div>
   </div>
   </nav>

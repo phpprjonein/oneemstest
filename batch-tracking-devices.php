@@ -93,7 +93,7 @@ user_session_check();
 						  </button>
 						  <div class="dropdown-menu">
 						  <a class="dropdown-item" href="#">Script Execution</a>
-						  <a class="dropdown-item" href="#">Software delivery</a>
+						  <a class="dropdown-item" href="#">Software Delivery</a>
 						  </div>
 						</div>
 						  <p id="cp1" style="display: none"></p>

@@ -4,7 +4,7 @@ include_once 'classes/db2.class.php';
 include_once 'functions.php';
 $userid = $_SESSION['userid'];
 
-if($_POST['action'] == 'Save Configuration'){
+if($_POST['action'] == 'SAVE CONFIGURATION'){
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
     $db2 = new db2();

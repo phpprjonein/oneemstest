@@ -123,19 +123,25 @@ $(document).ready(function() {
 	
 	
 	
-	/*
+	
 	$(document).on('click', "#cellsitech-generate-script .generate-script-submit", function(event) {
-    	var req_err = true;
+    	var req_err = false;
     	$("#status").html('');
-    	$("#cellsitech-generate-script select").each(function(){
-			if($(this).val() !=''){
-				req_err = false;
-			}
-		});
-    	if(req_err){
-    		$('#cellsitech-generate-script select').addClass('required');
-    		$("#status").html("<strong>Error!</strong> select atleast one required field.<br/>");
-    	}
+    	
+		if($('.gscript1 #select_device_series').val() == ""){
+			$('.gscript1 #status').html("<strong>Error!</strong> Device Series field is required.<br/>");
+			$('.gscript1 #status').addClass('alert-danger');
+			$('.gscript1 #status').show();
+			$('.gscript1 #select_device_series').addClass('required');
+			req_err = true;
+		}
+		if($('.gscript1 #select_os_version').val() == ""){
+			$('.gscript1 #status').append("<strong>Error!</strong> Device Os Verion field is required.<br/>");
+			$('.gscript1 #status').addClass('alert-danger');
+			$('.gscript1 #select_os_version').addClass('required');
+			$('.gscript1 #status').show();
+			req_err = true;
+		}
         if(req_err){
         	$('#status').css("opacity","");
         	$("#status").addClass('alert-danger');
@@ -149,7 +155,7 @@ $(document).ready(function() {
         }
         return true;
     });
-	*/
+	
 	
 	$(document).on('change', "#cellsitech-config select", function(event) {
 				var filename = ''; sep = '';

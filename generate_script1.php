@@ -28,7 +28,7 @@ $page_title = 'OneEMS';
    <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
-	<div class="container-fluid" id="cellsitech-generate-script">
+	<div class="container-fluid gscript1" id="cellsitech-generate-script">
 	<?php include_once ('menu.php'); ?>
 		    <?php
             $values = array('Generate Script' => '#');

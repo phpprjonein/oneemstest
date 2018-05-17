@@ -1988,7 +1988,7 @@ function get_csr_site_tech_mgr_id($username){
 }
 function batch_accordion_details($batchid){
     global $db2;
-    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname, bm.status  FROM nodes n JOIN batchmembers bm on bm.deviceid = n.id where bm.batchid = '.$batchid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,n.devicename, bm.status  FROM nodes n JOIN batchmembers bm on bm.deviceid = n.id where bm.batchid = '.$batchid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

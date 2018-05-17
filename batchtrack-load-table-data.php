@@ -11,7 +11,7 @@ $deviceinfo = batch_accordion_details($batchid);
                     <tbody>
                                             <tr>
                                               <td><b>IP Address</b></td>
-                                              <td><b>Sys Name</b></td>
+                                              <td><b>Device Name</b></td>
                                               <td><b>Execution Status</b></td>
                                             </tr>
                                             <?php foreach ($deviceinfo['result'] as $key => $val): ?>
@@ -24,7 +24,7 @@ $deviceinfo = batch_accordion_details($batchid);
                                             ?>
                                             <tr>
                                               <td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
-                                              <td><?php echo $val['systemname']; ?></td>
+                                              <td><?php echo $val['devicename']; ?></td>
                                               <td><?php echo $val['status']; ?></td>
                                             </tr>
                                             <?php endforeach;?>

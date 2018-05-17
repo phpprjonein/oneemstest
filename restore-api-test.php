@@ -51,19 +51,10 @@ $arr = json_decode($result,1);
         $status = 'Restore has failed';
      endif;
     */
-     echo '<table class="table table-striped">
+ echo '<table class="table table-striped">
      <thead>
      <tr>
-     <th>scp</th>
-     <th>ssh</th>
-     <th>Status</th>
-     </tr>
-     </tuhead>
-     <tbody>
-     <tr>
-     <td>'.$scp.'</td>
-     <td>'.$ssh.'</td>
-     <td>'.$status.'</td>
+     <td>'.'<b>Restore Status : </b> '.$status.'</td>
      </tr>
      </tbody>
      </table>';

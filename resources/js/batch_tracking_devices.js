@@ -44,10 +44,10 @@ $(document).ready(function() {
 	}
 		
 		$('#devicebatchtrack tbody').on('click', '#deletebatch', function () {
-    		if(confirm("Are you sure want to delete batch " + $(this).closest('tr').find("td:eq(1)").text() + " ?")){
+    		if(confirm("Are you sure, do you want to cancel the  batch " + $(this).closest('tr').find("td:eq(1)").text() + " ?")){
     			$.post( "ip-mgt-process.php", {"act": "batch-del", "batchid": $(this).closest('tr').find("td:eq(1)").text()})
       		  .done(function( data ) {
-      			 alert("Batch "+ $(this).closest('tr').find("td:eq(1)").text() +" deleted successfully");
+      			 alert("Batch "+ $(this).closest('tr').find("td:eq(1)").text() +" cancelled successfully");
       			 location.reload();
       		  });
     		}

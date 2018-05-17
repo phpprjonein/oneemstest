@@ -31,16 +31,15 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
-	            <?php 
+	            <?php
             $values = array('Load Template' => '#');
-            echo generate_site_breadcrumb($values); 
+            echo generate_site_breadcrumb($values);
             ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-          <h5>Load Template</h5>
 					<div class="panel panel-default">
     					<div id="status" style="display: none;" class="alert"></div>
     					<?php if($_SESSION['msg'] == 'dbs'){ ?>
@@ -69,7 +68,7 @@ $page_title = 'OneEMS';
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
               <select id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
-                <option value="">- Select Purpose -</option>
+                <option value="">- SELECT Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
 				 <?php }; ?>
@@ -80,7 +79,7 @@ $page_title = 'OneEMS';
 <!-- select device series options -->
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
-              <label class="control-label" for="f7">Select Device Series</label>
+              <label class="control-label" for="f7">SELECT Device Series</label>
               <select id="select_device_series" class="form-control custom-select form-required" name="f7" data-rule-required="true">
               <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
@@ -141,11 +140,11 @@ $page_title = 'OneEMS';
 			   <?php }; ?>
               </select>
             </div>
--->			
+-->
 <!-- /select region options -->
 
 <!-- select market options -->
-<!--   
+<!--
    <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
               <select id="select_market" class="form-control custom-select" name="f13" data-rule-required="true">
@@ -156,7 +155,7 @@ $page_title = 'OneEMS';
 <!-- /select market options -->
 
 <!-- select switch type options -->
-<!--   
+<!--
    <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Name</label>
               <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">

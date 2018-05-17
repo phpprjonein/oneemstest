@@ -69,7 +69,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
             <div class="input-group add-on">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">
-                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><b>Submit</b></button>
+                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit">Submit</button>
               </span>
             </div>
           </form>
@@ -94,7 +94,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
               <!-- Deleted selected switch list by drag and drop area -->
               <div>
                 <span id="myswitchlist_delete" type="button" class="droppable box box-danger btn">
-                  <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
+                  <i class="fa fa-trash"></i>&nbsp; <b>Drag Here To<br>DELETE</b>
                 </span>
               </div>
             </div>
@@ -141,9 +141,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
 
 
                 <!-- Deleted selected list by drag   and drop area -->
-                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>DELETE</b>
+                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>Drag Here To<br>DELETE</b>
                 </span>
-                <span type="button" class="box box-danger border btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('cellsitetech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
+                <span type="button" class="box box-danger border btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('cellsitetech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert">close list<span aria-hidden="true"><b>&times;</b></span></span>
 
               </div>
 

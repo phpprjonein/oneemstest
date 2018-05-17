@@ -31,16 +31,15 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
-			<?php 
+			<?php
             $values = array('Generate Script' => '#');
-            echo generate_site_breadcrumb($values); 
+            echo generate_site_breadcrumb($values);
             ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-          <h5>Generate Script</h5>
 <!-- backup management content row -->
     <div class="row">
 
@@ -205,7 +204,12 @@ $page_title = 'OneEMS';
             echo $output .= '</div>';
             ?>
 			</div>
-                <br>
+                <div>
+                  <br>
+                  <hr>
+                  <a href="#top" class="border"><b>^ Back to top</b></a>
+                  <hr>
+                </div>
                 <div class="form-group"><button type="submit" value="Download Script" name="action" class="btn btn-primary btn-lg">DOWNLOAD</button><button type="submit" value="Execute Script" name="action" class="m-2 btn btn-primary btn-lg">Execute</button> </div>
                 </form>
                 </div>

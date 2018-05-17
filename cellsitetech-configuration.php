@@ -103,7 +103,7 @@ $page_title = 'OneEMS';
                             				    <input type="file"  id="file" name="file">
                             				    <p class="help-block">Please upload <b>.txt</b> files with a maximum size of 2 MB.</p>
                             				  	</div>
-                            				  	<input type="submit" name="action" id="config-submit" class="btn" value="Upload">
+                            				  	<input type="submit" name="action" id="config-submit" class="btn" value="UPLOAD">
                         					</form>
 										</div>
 										<div class="col-lg-8 tags p-b-2">
@@ -167,11 +167,16 @@ $page_title = 'OneEMS';
 									echo $output;
 									?>
 								</div>
-								<br>
+								<div>
+                  <br>
+                  <hr>
+                  <a href="#top" class="border"><b>^ Back to top</b></a>
+                  <hr>
+                </div>
 								<?php
 									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
 									//$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
-									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration"></div>';
+									$output = '<div class="form-group"> <input class="btn btn-lg" name="action" type = "submit" value = "SAVE CONFIGURATION"></div>';
 									$output .= '</form>';
 									echo $output;
 								?>

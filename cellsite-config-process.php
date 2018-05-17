@@ -1,9 +1,9 @@
 <?php
-ini_set('display_errors', 'ON'); 
+ini_set('display_errors', 'ON');
 include_once 'classes/db2.class.php';
 include_once 'functions.php';
 $userid = $_SESSION['userid'];
-   
+
 if($_POST['action'] == 'Save Configuration'){
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
@@ -43,7 +43,7 @@ if($_POST['action'] == 'Save Configuration'){
             $location = str_replace("looper_","",$key);
             foreach ($_POST['loop'][$key] as $ink => $inv):
                 $update_pos = intval($location.$ink);
-                $sql = "UPDATE `tmpbatchconfigtemplate` SET elemvalue = '".$inv."' WHERE elemid = ".$update_pos." AND templname = '".$_POST['templname']."' AND batchid = ".$batchid; 
+                $sql = "UPDATE `tmpbatchconfigtemplate` SET elemvalue = '".$inv."' WHERE elemid = ".$update_pos." AND templname = '".$_POST['templname']."' AND batchid = ".$batchid;
                 $db2->query($sql);
                 $db2->execute();
             endforeach;
@@ -94,7 +94,7 @@ if($_POST['action'] == 'Save Configuration'){
     header("Content-Transfer-Encoding: Binary");
     header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
     readfile($file_url); // do the double-download-dance (dirty but worky)
-}elseif ($_POST['action'] == 'Upload'){
+}elseif ($_POST['action'] == 'UPLOAD'){
     if ($_FILES["file"]["type"] == "text/plain") {
         //Remove if config file exist
         if(file_exists(getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt")){

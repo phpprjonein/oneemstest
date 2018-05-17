@@ -23,8 +23,8 @@ $display ="<span style='color:".$color."'>".$output['freememory']['message'].'</
 echo $display; ?>
 </td>
                                             </tr>
-                                            
-                                            
+
+
                                             <tr>
 											  <td><input type="checkbox" id="bootstatement" name="bootstatement" value="16" <?php if(in_array(16, $_GET['category'])):?> checked="checked" <?php endif;?>></td>
                                               <td><b>Boot Statement</b></td>
@@ -136,14 +136,14 @@ echo $display; ?>
 $display ="<span style='color:".$color."'>".$output['mplsneighbors']['message'].'</span>';
 echo $display; ?>
 </td>
-												
+
                                             </tr>
-                                            
-                                            
-                                            
+
+
+
 
     <tr>
-    <td colspan="3" class="run_custom_checks text-center" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run Selective Health Checks</button></td>
+    <td colspan="3" class="run_custom_checks text-center" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run selected health Checks</button></td>
     <td colspan="3" class="run_all_checks text-center"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run All Health Checks</button></td>
     <td colspan="3" class="text-center"><b>Last Run On - <?php echo $lastupdated;?></b></td>
     <!-- <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;">&nbsp;<!--<b>Run Preventive Health Checks</b></td> -->

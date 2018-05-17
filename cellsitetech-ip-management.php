@@ -219,7 +219,7 @@ table pill navigation -->
                           <td>'.$ipvfour_details[count($ipvfour_details)-1].'</td>
                           <td>'.$value['subnetmask'].'</td>
                           <td>
-                            <a href="#" id="deleteip" class="btn">Delete</a>
+                            <a href="#" id="deleteip" class="btn">DELETE</a>
                           </td>
                           <td>
                             <a href="ip-v4-more-details.php?region='.$value['region'].'&market='.$value['market'].'&subnetmask='.$value['subnetmask'].'" class="btn">GO</a>

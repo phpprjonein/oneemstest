@@ -30,16 +30,15 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid" id="cellsitech-generate-script">
 	<?php include_once ('menu.php'); ?>
-		    <?php 
+		    <?php
             $values = array('Generate Script' => '#');
-            echo generate_site_breadcrumb($values); 
+            echo generate_site_breadcrumb($values);
             ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-          <h5>Generate Script</h5>
 					<div id="status" style="display: none;" class="alert"></div>
 <!-- backup management content row -->
 <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
@@ -61,7 +60,7 @@ $page_title = 'OneEMS';
             <div class="form-group f4 required" data-fid="f4">
               <label class="control-label" for="f4">Select Purpose</label>
               <select id="select_purpose" class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
-                <option value="">- Select Purpose -</option>
+                <option value="">- SELECT Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
 				 <?php }; ?>
@@ -74,7 +73,7 @@ $page_title = 'OneEMS';
             <div class="form-group f7 required" data-fid="f7">
               <label class="control-label" for="f7">Select Device Series</label>
               <select id="select_device_series" class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
-              <option value="">- Select Device Series -</option>
+              <option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option>
 			 <?php }; ?>
@@ -100,7 +99,7 @@ $page_title = 'OneEMS';
             <div class="form-group f9 required" data-fid="f9">
               <label class="control-label" for="f9">Select RAN vendor</label>
               <select id="select_ran_vendor" class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
-              	<option value="">- Select RAN vendor -</option>
+              	<option value="">- SELECT RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
                 <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
 				<?php }; ?>
@@ -113,7 +112,7 @@ $page_title = 'OneEMS';
             <div class="form-group f10 required" data-fid="f10">
               <label class="control-label" for="f10">Select Script Type</label>
               <select id="select_script_type" class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
-                <option value="">- Select Script Type -</option>
+                <option value="">- SELECT Script Type -</option>
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
                 <option value="<?php echo $val['type'];?>"><?php echo $val['type']; ?></option>
 				<?php }; ?>

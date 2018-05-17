@@ -49,7 +49,6 @@ if(count($_GET['category']) > 0){
     }'; */
     //$output = json_decode($output, 1);
     $lastupdated = date('Y-m-d H:i:s');
-    update_healthchk_info($deviceid, $output, $lastupdated);
 }            
             //$result = select_healthchk_info($deviceid);
             if(!in_array(2, $_GET['category']) || !isset($output['iosversion'])){
@@ -99,6 +98,7 @@ if(count($_GET['category']) > 0){
             //$output = json_decode($output,true); 
             //print '<pre>';
             //print_r($output); die;
+            update_healthchk_info($deviceid, $output, $lastupdated);
 	        $_SESSION['deviceidswusr'] = $deviceid;
 ?>
 <?php include_once 'hc_blk_inc.php';?>

@@ -104,10 +104,11 @@ user_session_check();
                               </thead>
 
                             </table>
-                            <div class="form-group">
-                                <div class="col-md-2 pb-1 col-sm-12">
-        						<label for="Priority" class="font-weight-bold">Select Priority</label>
-                                <select class="form-control custom-select" id="sel-priority">
+                            <form>
+  <div class="form-group row">
+    <label for="Priority" class="col-sm-2 col-form-label font-weight-bold">Select Priority</label>
+    <div class="col-sm-1">
+                                      <select class="form-control custom-select" id="sel-priority">
             						<option>1</option>
                 					<option>2</option>
                 					<option>3</option>
@@ -119,9 +120,11 @@ user_session_check();
                 					<option>9</option>
                 					<option>10</option>
               					</select>
-              					</div>
-              					<div  class="col-md-2 pb-5 col-sm-12"><button type="submit" value="SUBMIT" class="btn btn-default" id="batch-submit">SUBMIT</button></div>
-  							</div>
+    </div>
+  </div>
+  <div  class="col-md-2 pb-5 col-sm-12"><button type="submit" value="SUBMIT" class="btn btn-default" id="batch-submit">SUBMIT</button></div>
+</form>
+
                           </div>
                         <!-- /.box-body -->
                       </div>

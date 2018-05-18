@@ -3,10 +3,10 @@ include "classes/db2.class.php";
 include 'functions.php';
 $data = $_POST; 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
-    update_dev_batch_sd(time(), $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'],  $_POST['priority'],  $_POST['refmop'] );
+    update_dev_batch_sd(time(), $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'],  $_POST['priority'],  $_POST['refmop'] );
 }
 
-function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $deviceos, $priority, $refmop){
+function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop){
     global $db2;
     $oc = 1;
     $date_op = date('Y-m-d H:i:s');
@@ -31,8 +31,13 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $d
         $db2->execute();
         /*insert in to batchmaster table*/
         echo $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`)
-        VALUES('".$batchid."','s','".$date_op."', '', 'sd', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$deviceos."','".$scriptname."','".$refmop."' )";
+        VALUES('".$batchid."','s','".$date_op."', '', 'sd', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$node_version."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
+        $db2->execute();
+        
+        /*update sw repo table*/
+        $sql = "UPDATE `swrepository` SET batchid = '".$batchid."' WHERE deviceseries = '".$deviceseries."' and nodeVersion = '".$node_version."'";
+        $db2->query($sql);
         $db2->execute();
     }
 }

@@ -224,8 +224,7 @@ $page_title = 'OneEMS';
 				</div>
 				</form>
 				</div>
-				</div>
-				
+				</div>				
 			</section>
 			<!-- /.content -->
 		</div>

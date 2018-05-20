@@ -30,6 +30,11 @@ function get_celltechusers_list($userid){
     $resultset['result'] = $db2->resultset();
     return  $resultset['result'];
 }
+if ( ! isset($_SESSION['userid'])) {
+    
+    header("Location: index.php?msg=User session expired");
+    exit();
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">

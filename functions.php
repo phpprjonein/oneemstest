@@ -3064,3 +3064,101 @@ if (!empty($_POST) ) {
     echo "NO POST Query from DataTable";
 }
 }
+
+
+function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries = '', $nodeVersion = '') {
+    
+    global $db2, $pages;
+    
+    //print_r($_GET);
+    $draw = $_GET['draw'];
+    $start = isset($_GET['start']) ? $_GET['start'] : 0;
+    $length = isset($_GET['length']) ? $_GET['length'] : 10;
+    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
+    $order_col = $_GET['order'][0]['column'];
+    $order_dir = $_GET['order'][0]['dir'];
+    
+    $columns = array(
+        'distinct(n.id)',
+        'n.deviceIpAddr',
+        'n.systemname',
+        'n.deviceseries',
+        'n.market',
+        'n.nodeVersion'
+    );
+    $sql_count = "SELECT COUNT(distinct(n.id)) ";
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM userdevices ud
+       JOIN nodes n on ud.nodeid = n.id
+       WHERE ud.userid = " . $userid ;
+    
+    if($listname != ''){
+        $sql_condition .= " AND(ud.listname = '".$listname."')";
+    }
+    
+    if($deviceseries != ''){
+        $sql_condition .= " AND(n.deviceseries = '".$deviceseries."')";
+    }
+    
+    if($nodeVersion != ''){
+        $sql_condition .= " AND(n.nodeVersion = '".$nodeVersion."')";
+    }
+    
+    //die;
+    
+    if ($search) {
+        $sql_condition .=  " AND ( ";
+        $sql_condition .=  " n.id LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.deviceIpAddr LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.systemname  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.deviceseries  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.market  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.nodeVersion  LIKE '%". $search ."%'";
+        $sql_condition .=  " ) ";
+    }
+    $count_sql = $sql_count . $sql_condition;
+     //echo $count_sql; die;
+    $db2->query($count_sql);
+    $row = $db2->resultsetCols();
+    
+    $total_rec = $row[0];
+    
+    
+    $sql_order = "";
+    if ($order_col != ''){
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != ''){
+        $sql_order .= $order_dir != '' ? " $order_dir ": " asc ";
+    }
+    
+    $sql_limit = " LIMIT $start, $length ";
+    
+    $sql = $sql_select . $sql_condition  . $sql_order . $sql_limit ;
+    // echo '<br>';
+    // echo $sql;
+    
+    $db2->query($sql);
+    
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'] ;
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    }
+    else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] =0;
+    }
+    return $resultset;
+}
+

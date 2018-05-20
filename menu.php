@@ -73,7 +73,7 @@
   <a class="dropdown-item" href="software-delivery-devices.php">Software Delivery</a>
   </div>
   </li>
-  </li>
+
   
   <li class="nav-item dropdown">
   <li class="nav-item"><a class="nav-link <?php print activemenu("help.php"); ?>" href="help.php">Help</a></li>

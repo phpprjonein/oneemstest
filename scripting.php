@@ -223,6 +223,9 @@ $page_title = 'OneEMS';
 <!-- /backup management content row -->
 				</div>
 				</form>
+				</div>
+				</div>
+				
 			</section>
 			<!-- /.content -->
 		</div>

@@ -109,7 +109,7 @@ user_session_check();
                                   <th>Device os</th>
                                   <th>Created date</th>
                                   <th>Status</th>
-                                  <th>Delete</th>
+                                  <th>Cancel</th>
                                 </tr>
                               </thead>
                             </table>

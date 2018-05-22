@@ -339,12 +339,12 @@ $(document).ready(function() {
         <thead>
             <tr> 
             	<th></th>
-			    <th>id</th>
-                <th>deviceIpAddr</th>
-                <th>systemname</th>
-                <th>deviceseries</th>
-                <th>market</th>
-                <th>nodeVersion</th>
+			    <th>Id</th>
+                <th>IP Address</th>
+                <th>Device Name</th>
+                <th>Device Series</th>
+                <th>Market</th>
+                <th>Version</th>
             </tr>
         </thead>        
 </table> 	

@@ -96,10 +96,10 @@ user_session_check();
                                 <tr>
                                   <th class="noExport">Select</th>
                                   <th>IP Address</th>
-                                  <th>SysName</th>
+                                  <th>Device Name</th>
                                   <th>Device Series</th>
                                   <th>Market</th>
-                                  <th>OS Version</th>
+                                  <th>Version</th>
                                 </tr>
                               </thead>
 

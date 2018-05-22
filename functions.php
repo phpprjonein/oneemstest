@@ -2897,6 +2897,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
 
     $columns = array(
         'distinct(bm.batchid)',
+        'bm.batchid',
         'bm.scriptname',
         'bm.deviceseries',
         'bm.nodeVersion',
@@ -3080,6 +3081,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     
     $columns = array(
         'distinct(n.id)',
+        'n.id',
         'n.deviceIpAddr',
         'n.systemname',
         'n.deviceseries',
@@ -3161,4 +3163,30 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     }
     return $resultset;
 }
+
+
+
+function swrepo_get_deviceseries() {
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+};
+function swrepo_get_nodeversions() {
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+};
+
+function swrepo_get_filenames() {
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM swrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+};
+
 

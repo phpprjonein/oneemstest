@@ -65,12 +65,14 @@
   </div>
   </li>
   
+  
   <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="nav-link dropdown-toggle  <?php //print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   Maintenance</a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
   <a class="dropdown-item" href="software-upload-devices.php">Software Upload </a>
   <a class="dropdown-item" href="software-delivery-devices.php">Software Delivery</a>
+
   </div>
   </li>
 

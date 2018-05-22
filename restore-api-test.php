@@ -8,7 +8,7 @@ $region = strtolower(str_replace(' ','',$_POST['region']));
 $device_series = strtolower(str_replace(' ','',$_POST['device_series'])); 
 $filename = $_POST['filename'];
      
-$url = 'http://10.134.179.82:8080/2/'.$region.'/'.$device_series.'/'.$filename;
+$url = 'http://10.134.179.82:8080/'.$device_id.'/'.$region.'/'.$device_series.'/'.$filename;
 //  Initiate curl
 $ch = curl_init();
 // Disable SSL verification

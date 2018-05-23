@@ -104,7 +104,7 @@ user_session_check();
                                 <tr>
                                   <th class="noExport">Batch details</th>
                                   <th>Batch id</th>
-                                  <th>Script name</th>
+                                  <th>Script Name</th>
                                   <th>Device series</th>
                                   <th>Device os</th>
                                   <th>Created date</th>

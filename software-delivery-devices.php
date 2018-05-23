@@ -95,7 +95,7 @@ td {word-wrap: break-word;word-break: break-all;}
                   "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
               {"data": "id"},
               {"data": "deviceIpAddr"},
-              {"data": "systemname"},
+              {"data": "devicename"},
               {"data": "deviceseries"},
               {"data": "market"},
               {"data": "nodeVersion"}

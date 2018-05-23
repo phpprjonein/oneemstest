@@ -2806,7 +2806,7 @@ function get_batch_process_datatable($userid, $listname = '') {
     $columns = array(
         'distinct(n.id)',
         'n.deviceIpAddr',
-        'n.systemname',
+        'n.devicename',
         'n.deviceseries',
         'n.market',
         'n.nodeVersion'
@@ -2835,7 +2835,7 @@ function get_batch_process_datatable($userid, $listname = '') {
     if ($search) {
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.deviceIpAddr LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.systemname  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.devicename  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceseries  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.market  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.nodeVersion  LIKE '%". $search ."%'";
@@ -3022,7 +3022,7 @@ if (!empty($_POST) ) {
     $length = $_POST['length'];//Number of records that the table can display in the current draw
     /* END of POST variables */
 
-    $recordsTotal = count(getData("SELECT id, deviceIpAddr, systemname, deviceseries, market, nodeVersion  FROM ".MyTable));
+    $recordsTotal = count(getData("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion  FROM ".MyTable));
 
     /* SEARCH CASE : Filtered data */
     if(!empty($_POST['search']['value'])){
@@ -3035,17 +3035,17 @@ if (!empty($_POST) ) {
         $where = "WHERE ".implode(" OR " , $where);// id like '%searchValue%' or name like '%searchValue%' ....
         /* End WHERE */
 
-        $sql = sprintf("SELECT id, deviceIpAddr, systemname, deviceseries, market, nodeVersion FROM %s %s", MyTable , $where);//Search query without limit clause (No pagination)
+        $sql = sprintf("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion FROM %s %s", MyTable , $where);//Search query without limit clause (No pagination)
 
         $recordsFiltered = count(getData($sql));//Count of search result
 
         /* SQL Query for search with limit and orderBy clauses*/
-        $sql = sprintf("SELECT id, deviceIpAddr, systemname, deviceseries, market, nodeVersion FROM %s %s ORDER BY %s %s limit %d , %d ", MyTable , $where ,$orderBy, $orderType ,$start,$length  );
+        $sql = sprintf("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion FROM %s %s ORDER BY %s %s limit %d , %d ", MyTable , $where ,$orderBy, $orderType ,$start,$length  );
         $data = getData($sql);
     }
     /* END SEARCH */
     else {
-        $sql = sprintf("SELECT id, deviceIpAddr, systemname, deviceseries, market, nodeVersion FROM %s ORDER BY %s %s limit %d , %d ", MyTable ,$orderBy,$orderType ,$start , $length);
+        $sql = sprintf("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion FROM %s ORDER BY %s %s limit %d , %d ", MyTable ,$orderBy,$orderType ,$start , $length);
         $data = getData($sql);
 
         $recordsFiltered = $recordsTotal;
@@ -3083,7 +3083,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
         'distinct(n.id)',
         'n.id',
         'n.deviceIpAddr',
-        'n.systemname',
+        'n.devicename',
         'n.deviceseries',
         'n.market',
         'n.nodeVersion'
@@ -3113,7 +3113,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
         $sql_condition .=  " AND ( ";
         $sql_condition .=  " n.id LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceIpAddr LIKE '%". $search ."%'";
-        $sql_condition .=  " OR n.systemname  LIKE '%". $search ."%'";
+        $sql_condition .=  " OR n.devicename  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.deviceseries  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.market  LIKE '%". $search ."%'";
         $sql_condition .=  " OR n.nodeVersion  LIKE '%". $search ."%'";

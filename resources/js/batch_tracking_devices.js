@@ -27,7 +27,7 @@ $(document).ready(function() {
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
             { "data": "batchstatus" },
-            { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">DELETE</a>' },
+            { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
         "order": [[4, 'asc']],
         "createdRow": function (row, data, rowIndex) {
@@ -147,7 +147,7 @@ $(document).ready(function() {
 		     			{ "data": "nodeVersion" },
 		                 { "data": "batchcreated" },
 		                 { "data": "batchstatus" },
-		                 { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">DELETE</a>' },
+		                 { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
 		             ],
 		             "order": [[4, 'asc']],
 		             "createdRow": function (row, data, rowIndex) {

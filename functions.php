@@ -255,14 +255,14 @@ function get_device_list_from_nodes_datatable($userid) {
     $order_dir = $_GET['order'][0]['dir'];
 
     $columns = array(
-        'DISTINCT(n.id)',
+        'distinct(n.id)',
+        'n.devicename',
         'n.csr_site_id',
         'n.csr_site_name',
-        'n.devicename',
+        'n.region',
         'n.market',
         'n.deviceseries',
-        'n.nodeVersion',
-        'n.lastpolled'
+        'n.nodeVersion'
     );
 
     $sql_count = "SELECT COUNT(DISTINCT(n.id)) ";
@@ -2262,9 +2262,9 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '') {
 
     $columns = array(
         'distinct(n.id)',
+        'n.devicename',
         'n.csr_site_id',
         'n.csr_site_name',
-        'n.devicename',
         'n.region',
         'n.market',
         'n.deviceseries',

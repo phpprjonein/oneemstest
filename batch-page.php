@@ -66,6 +66,8 @@ user_session_check();
                           <!--  <div class="panel-heading"> My Devices List </div>
                           </div>
 						  -->
+						  <div class="row">
+  							<div class="col-sm-3">
 						  <div class="btn-group" id="backup-restore-list-dt-filter">
 						  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            My routers
@@ -82,6 +84,14 @@ user_session_check();
 						  endforeach;
                             ?>
 						  </div>
+						</div>
+						</div>
+							<div class="col-sm-6">
+						  	<p class="text-center"><b>Selected Template: <?php echo $_SESSION['batch_vars']['templname']; ?></b></p>
+							</div>
+							<div class="col-sm-3">
+							</div>
+							
 						</div>
 						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">

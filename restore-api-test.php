@@ -7,6 +7,7 @@
 $region = strtolower(str_replace(' ','',$_POST['region'])); 
 $device_series = strtolower(str_replace(' ','',$_POST['device_series'])); 
 $filename = $_POST['filename'];
+$device_id = $_POST['device_id'];
      
 $url = 'http://10.134.179.82:8080/'.$device_id.'/'.$region.'/'.$device_series.'/'.$filename;
 //  Initiate curl

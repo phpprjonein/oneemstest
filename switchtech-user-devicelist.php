@@ -50,7 +50,10 @@ modal.children[0].addEventListener('click', function(e) {
 
         <div class="container-fluid">
             <?php include ('menu.php'); ?>
-
+			<?php 
+            $values = array('Health Check' => '#');
+            echo generate_site_breadcrumb($values); 
+            ?>
             <!-- Content Wrapper. Contains page content -->
             <div class="content">
                 <!-- Main content -->

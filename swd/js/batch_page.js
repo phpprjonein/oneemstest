@@ -237,7 +237,8 @@ $(document).ready(function(){
 $(document).ready(function() {
 
 	$('#batchModal').on('hidden.bs.modal', function () {
-		 location.reload();
+		 //location.reload();
+		window.location.href = 'batch-tracking-devices.php';
 	})
 });		
 			

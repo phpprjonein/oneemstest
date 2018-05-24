@@ -40,7 +40,10 @@ $page_title = 'OneEMS';
       </div>
 			  <!-- Modal body -->
 			  <div class="modal-body">
-			  Please check the status on Batch Tracking Page
+			  Please do keep track the status on Batch Page
+			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
+			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
+			  <?php endif;?>
 			  </div>
 			  <!-- Modal footer -->
 			  <div class="modal-footer">

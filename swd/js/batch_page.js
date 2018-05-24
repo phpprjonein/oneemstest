@@ -200,36 +200,39 @@ $(document).ready(function(){
             
             }) 
 			$(document).on('click', '#batch-submit', function(event) {
-        	var allVals = [];
-        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
-        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
-        	});
-
-        	if(allVals.length == 0){
-            	alert('Error! Device selection is required');
-            	return false;	
-        	}
-        	
-	  		  if($('#device_series').val() == 'Choose Device Series'){ 	
-				  deviceseries = '';
-			  }else{
-				  deviceseries = $('#device_series').val();
-			  }	  
-			  if($('#node_version').val() == 'Choose OS Version'){
-				  nodeVersion = '';	
-			  }else{
-				  nodeVersion = $('#node_version').val();
-			  }
-        	
-            $.ajax({
-                type:"post",
-                url:"software-delivery-batch-process.php",
-                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':nodeVersion, 'priority':$('#sw_selpriority').val()}, 
-                success: function(resdata){
-                	var myModal = $('#batchModal');
-            		myModal.modal('show'); 
-                }
-            });
+				if(confirm("Are you sure, do you want to create a batch ?"))
+				{
+		        	var allVals = [];
+		        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
+		        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
+		        	});
+		
+		        	if(allVals.length == 0){
+		            	alert('Error! Device selection is required');
+		            	return false;	
+		        	}
+		        	
+			  		  if($('#device_series').val() == 'Choose Device Series'){ 	
+						  deviceseries = '';
+					  }else{
+						  deviceseries = $('#device_series').val();
+					  }	  
+					  if($('#node_version').val() == 'Choose OS Version'){
+						  nodeVersion = '';	
+					  }else{
+						  nodeVersion = $('#node_version').val();
+					  }
+		        	
+		            $.ajax({
+		                type:"post",
+		                url:"software-delivery-batch-process.php",
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':nodeVersion, 'priority':$('#sw_selpriority').val()}, 
+		                success: function(resdata){
+		                	var myModal = $('#batchModal');
+		            		myModal.modal('show'); 
+		                }
+		            });
+				}
         	return false;
     	}); 
 

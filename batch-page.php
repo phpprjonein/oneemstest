@@ -86,12 +86,13 @@ user_session_check();
 						  </div>
 						</div>
 						</div>
+							<?php if($_SESSION['batch_vars']['templname'] != ''): ?>
 							<div class="col-sm-6">
 						  	<p class="text-center"><b>Selected Template: <?php echo $_SESSION['batch_vars']['templname']; ?></b></p>
 							</div>
 							<div class="col-sm-3">
 							</div>
-							
+							<?php endif; ?>
 						</div>
 						  <p id="cp1" style="display: none"></p>
                           <input type="hidden" id='userid' value="<?php echo $userid ?>" name="">

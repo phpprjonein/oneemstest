@@ -39,20 +39,22 @@ $(document).ready(function() {
     	})
     	
     	$(document).on('click', '#batch-submit', function(event) {
-        	var allVals = [];
-        	$('#batchpro').children().find('input[type=checkbox]:checked').each(function(index){
-        		 allVals.push(($(this).closest('tr').attr('id')).replace('row_',''));
-        	});
-        	
-            $.ajax({
-                type:"post",
-                url:"ip-mgt-process.php",
-                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
-                success: function(resdata){
-                	var myModal = $('#batchModal');
-            		myModal.modal('show'); 
-                }
-            });
+    		if(confirm("Are you sure, do you want to create a batch ?")){
+	        	var allVals = [];
+	        	$('#batchpro').children().find('input[type=checkbox]:checked').each(function(index){
+	        		 allVals.push(($(this).closest('tr').attr('id')).replace('row_',''));
+	        	});
+	        	
+	            $.ajax({
+	                type:"post",
+	                url:"ip-mgt-process.php",
+	                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
+	                success: function(resdata){
+	                	var myModal = $('#batchModal');
+	            		myModal.modal('show'); 
+	                }
+	            });
+    		}
             return false;
     	}); 
 

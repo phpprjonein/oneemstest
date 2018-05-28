@@ -4,7 +4,7 @@ div.fixed button{background-color: #286090;border-color: #204d74;color: #ffffff;
 div.fixed button:hover{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
 </style>
 <div class="fixed">
-<a href="jira.php"><button type="button" class="btn">Support</button></a>
+<a href="jira.php"><button type="button" class="btn">open ticket</button></a>
 </div>
 <footer class="footer">
   <div class="container">

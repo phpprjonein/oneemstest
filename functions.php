@@ -2915,7 +2915,7 @@ function get_devicebatch_list_from_devicebatch_datatable() {
 
     if ($search) {
         $sql_condition .=  " AND ( ";
-        $sql_condition .=  " OR bm.batchid LIKE '%". $search ."%'";
+        $sql_condition .=  " bm.batchid LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.scriptname  LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.deviceseries LIKE '%". $search ."%'";
         $sql_condition .=  " OR bm.nodeVersion  LIKE '%". $search ."%'";

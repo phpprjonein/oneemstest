@@ -4,7 +4,7 @@ div.fixed a{background-color: #286090;border-color: #204d74;color: #ffffff;font-
 div.fixed a:hover{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
 </style>
 <div class="fixed">
-<a id="feedback-button" href="#" type="button" class="btn">Support</a>
+<a id="feedback-button" href="#" type="button" class="btn">open ticket</a>
 </div>
 <footer class="footer">
   <div class="container">

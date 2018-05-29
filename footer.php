@@ -1,10 +1,10 @@
 <style>
 div.fixed {position: fixed;bottom: 10px;right: 0;z-index: 9999;}
-div.fixed button{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
-div.fixed button:hover{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
+div.fixed a{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
+div.fixed a:hover{background-color: #286090;border-color: #204d74;color: #ffffff;font-weight: bold;}
 </style>
 <div class="fixed">
-<a href="jira.php"><button type="button" class="btn">Support</button></a>
+<a id="feedback-button" href="#" type="button" class="btn">Support</a>
 </div>
 <footer class="footer">
   <div class="container">

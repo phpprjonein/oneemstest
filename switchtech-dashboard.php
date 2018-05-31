@@ -69,7 +69,7 @@ write_log($mesg);
             <div class="input-group add-on">
               <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
               <span class="input-group-btn">
-                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn"  value="Submit"><b>Submit</b></button>
+                <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn" data-toggle="tooltip" data-placement="right" title="List must be &lt;21 characters long and may contain letters, spaces, and numbers. No special characters." value="Submit">Submit</button>
               </span>
             </div>
           </form>
@@ -94,7 +94,7 @@ write_log($mesg);
               <!-- Deleted selected switch list by drag and drop area -->
               <div>
               <span id="myswitchlist_delete" type="button" class="droppable box box-danger btn">
-                <i class="fa fa-trash"></i>&nbsp; <b>DELETE</b>
+                <i class="fa fa-trash"></i>&nbsp;Drag Here To<br>DELETE
               </span>
             </div>
           </div>
@@ -102,7 +102,9 @@ write_log($mesg);
               <table  width="100%"  id="<?php echo $device['id'] ?>" class="myswlist table table-border">
                 <thead>
                   <tr>
-                    <td width="60%" >List name </td><td  width="20%"> Edit </td><td  width="20%">View</td>
+                    <td width="60%">List Name</td>
+                    <td width="20%">Edit</td>
+                    <td width="20%">View</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -142,17 +144,22 @@ write_log($mesg);
             <div>
 
               <!-- Deleted selected list by drag   and drop area -->
-                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;<b>DELETE</b>
+                <span type="button" class="box box-danger border btn btn-edit-list-delete"><i class="fa fa-trash"></i>&nbsp;Drag Here To<br>DELETE
                 </span>
-                <span type="button" class="box box-danger border btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('switchtech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert"> <span aria-hidden="true"><b>&times;</b></span></span>
+                <span type="button" class="box box-danger btn btn-edit-list-delete" style="cursor: pointer;" onclick="javascript:window.location.assign('switchtech-dashboard.php');" data-target="#listedit-wrap" data-dismiss="alert">close list<span aria-hidden="true"><b>&times;</b></span></span>
               </div>
 
 
             </div>
             <div class ="panel-body border">
               <!-- Start : View devices list table -->
-              <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?> width="100%" >
-                <thead><tr><td ><b> Device Id</b> </td><td><b>Device Name</b>     </td></tr></thead>
+              <table id="deviceslist" class="droppable myswlist table table-border" <?php echo ($_SESSION['switchlistid']!='') ? 'data-mylistid="'.$_SESSION['switchlistid'] .'"':'' ?> width="100%">
+                <thead>
+                  <tr>
+                    <td><b>Device ID</b></td>
+                    <td><b>Device Name</b></td>
+                  </tr>
+                </thead>
                 <tbody id="mydevicestbl">
                 <?php
                   foreach ($switchlist['result'] as $key => $listitem) {

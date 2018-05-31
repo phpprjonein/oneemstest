@@ -75,7 +75,7 @@ if($sso_flag == 1){
         $userinfo = get_user_info($username, $password);
         //exit(print_r( $userinfo));
         if ( ! $userinfo ) {
-            $message['error'] = 'Username or Password is incorrect ';
+            $message['error'] = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle fa-lg"></i> The Username and/or Password you have entered is incorrect.</div>';
         }
         else {
             $_SESSION['userid'] = $userinfo['id'];
@@ -108,7 +108,7 @@ if($sso_flag == 1){
      <header class="main-header">
           <div class="nav">
                 <div class="pull-left box"><a class="navbar-brand" href="#" >
-                        <img src="resources/img/ncmlogo.png"  height = "24px"  alt="NCM Logo"/>
+                        <img src="resources/img/verizonlogo.png"  height = "24px"  alt="Verizon Logo"/>
                   </a>
                 </div>
           </div>

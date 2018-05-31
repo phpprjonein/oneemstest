@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+$(document).ready(function() {
 
   setHeight();
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
           "lengthChange": true,
           "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
           "pageLength": default_pagelen,
-          "serverSide": true, 
+          "serverSide": true,
           "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
@@ -26,24 +26,24 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-                { "data": "id", "visible": false  },     
-                { "data": "csr_site_tech_name" },            
+                { "data": "id", "visible": false  },
+                { "data": "csr_site_tech_name" },
                 { "data": "csr_site_id" },
-                { "data": "csr_site_name" }, 
+                { "data": "csr_site_name" },
                 { "data": "devicename" },
                 { "data": "deviceIpAddr" }
         ],
-        
+
         "order": [[2, 'asc']],
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
-             // $(row).addClass('device_row'); 
+             // $(row).addClass('device_row');
              $(row).attr('data-devicename', data.devicename);
              $(row).attr('data-deviceid', data.id);
 
-        }           
+        }
       });
- 
+
       $('#cellsitetech_user_devices').on( 'click', 'tbody tr',function(){
           $(this).toggleClass('drag_selected');
 
@@ -60,34 +60,34 @@ $(document).ready(function() {
                     indderdiv += "<div class='box' style='border:1px solid gray; background-color:lightblue;width:200px'><i data-deviceid='"+ $(this).data('deviceid')+"' data-devicename='"+ $(this).data('devicename')+"' class='fa fa-plus'></i> &nbsp; " + $(this).data('devicename')  +  "</div>";
                   });
                   return $(str).html(indderdiv);
-                
+
                 }
           });
       });
 
-      $('#cellsitetech_user_devices').on('mouseover', 'tbody', function (){      
+      $('#cellsitetech_user_devices').on('mouseover', 'tbody', function (){
 
           /*Droppable option enabled for My Device List box in MyList section*/
         $("#deviceslist.droppable").droppable({
-          drop: function(event, ui) { 
+          drop: function(event, ui) {
 
            var tr_item = ui.helper.children();
 
            var deviceslist_item = $(this);
-           
-            
+
+
 
           tr_item.each(function(e){
 
             var dragged_records =  $(this).find('i');
             if (!deviceslist_item.find('tr').hasClass('del_' + dragged_records.data('deviceid'))) {
 
-                deviceslist_item.find('#mydevicestbl').append(reconstruct(dragged_records)); 
+                deviceslist_item.find('#mydevicestbl').append(reconstruct(dragged_records));
                 add_item_my_devices($('#hidd_userid').val(),$('#hidd_mylistid').val(), dragged_records.data('deviceid'))
-            
-             
 
-             }  
+
+
+             }
            });
           }
         });
@@ -123,13 +123,13 @@ $(document).ready(function() {
       });
     }
   });
- 
+
 
 
   $('#usrmyfavlstfrm').submit(function () {
     var str = $('#addlist').val();
     if (/^[a-zA-Z0-9- ]*$/.test(str) == false) {
-      alert('Your String Contains illegal Characters.');
+      alert('Your naming convention contains illegal characters. Please make sure your entry is <21 characters long and contains only letters, spaces, or numbers with no special characters.');
       return false;
     }
   });
@@ -138,7 +138,7 @@ $(document).ready(function() {
     setHeight();
   });
 
-   
+
   $('#switch_item_name').on('change', function(){
       $('#srch-term').val('');
       $('#switch_list_form').submit();
@@ -165,12 +165,12 @@ $(document).ready(function() {
       drop: function( event, ui ) {
       }
     });
-    $("#myswitchlist_delete.droppable").droppable({ 
+    $("#myswitchlist_delete.droppable").droppable({
       /*classes: {
         "ui-droppable-active": "ui-state-active",
         "ui-droppable-hover": "ui-state-hover"
       },*/
-      drop: function(event, ui) {   
+      drop: function(event, ui) {
         switchlistdel( $('#hidd_userid').val() , ui.draggable.data('listid'));
       }
     });
@@ -178,7 +178,7 @@ $(document).ready(function() {
 // My Device List Section
     $("#mydevicestbl .draggable").draggable({
       cursor: "move",
-       
+
       cursorAt: {
         top: 15,
         left: 15
@@ -189,13 +189,13 @@ $(document).ready(function() {
 
     });
 
-    $("#mylist_delete").droppable({ 
+    $("#mylist_delete").droppable({
     	/*
       classes: {
         "ui-droppable-active": "ui-state-active",
         "ui-droppable-hover": "ui-state-hover"
       },*/
-      drop: function(event, ui) { 
+      drop: function(event, ui) {
     	  if(ui.draggable.data('listid') > 0){
     		  switchesdel($('#hidd_userid').val(), ui.draggable.data('listid')  ,  ui.draggable.data('deviceid'));
     	  }
@@ -220,12 +220,12 @@ $(document).ready(function() {
       }
     });
 
-    
+
   });
 
   $(".map_region").click(function(marketid) {
-    $("#marketname").val($(this).data('market')); 
-    $("#market-region").text($(this).data('market')); 
+    $("#marketname").val($(this).data('market'));
+    $("#market-region").text($(this).data('market'));
     if($("#hidd_mylistid").length > 0){
     	$(location).attr("href","cellsitetech-dashboard.php?markets=" + $(this).data('market') + "&switchlistid=" + $("#hidd_mylistid").val()+"&action=editmylist");
     }else{
@@ -244,18 +244,18 @@ $(document).ready(function() {
     // else {
     //    show_hide_map_n_result('show');
     // }
-  
-  
-  
-  
-  
+
+
+
+
+
   $("#dash-switches a").click(function(){
 		$("#dash-switches .btn").html($(this).text());
 		if($('#hidd_list_type').val() != 'market'){
 			$('#hidd_list_for').val($(this).text());
 		}
 	  var selswitch = $('#dash-switches button').text();
-		
+
       var default_pagelen = 14;
       if( $('#hidd_list_type').val() == 'market') {
         default_pagelen = 25;
@@ -266,7 +266,7 @@ $(document).ready(function() {
           "destroy": true,
           "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
           "pageLength": default_pagelen,
-          "serverSide": true, 
+          "serverSide": true,
           "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
@@ -281,32 +281,32 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           null,
                 "defaultContent": '<i class="fa fa-arrows-alt" aria-hidden="true"></i>'},
-                { "data": "id", "visible": false },    
-                { "data": "csr_site_tech_name" },            
+                { "data": "id", "visible": false },
+                { "data": "csr_site_tech_name" },
                 { "data": "csr_site_id" },
-                { "data": "csr_site_name" }, 
+                { "data": "csr_site_name" },
                 { "data": "devicename" },
                 { "data": "deviceIpAddr" }
         ],
-        
+
         "order": [[2, 'asc']],
         "createdRow": function (row, data, rowIndex) {
              // var r = row;
-             // $(row).addClass('device_row'); 
+             // $(row).addClass('device_row');
              $(row).attr('data-devicename', data.devicename);
              $(row).attr('data-deviceid', data.id);
 
-        }           
+        }
       });
 	});
-  
-  
-  
-  
-  
+
+
+
+
+
 });
 
-function reconstruct($item) {   
+function reconstruct($item) {
 
   return "<tr class=del_" + $item.data('deviceid') + ">" + "<td class='col-md-4'><i data-listid='" +  $('#hidd_mylistid').val() + "' data-deviceid='" + $item.data('deviceid') + "' data-devicename='" +  $item.data('devicename') + "' class='fa fa-arrows-alt draggable'></i>&nbsp;" + $item.data('deviceid') + "</td>" +
     "<td 'col-md-8'>" +  $item.data('devicename') + "</td></tr>";
@@ -323,9 +323,9 @@ function add_item_my_devices(userid, switchlistid, deviceid) {
       'userid': userid,
       'operation': 'add'
     },
-    success: function(data) { 
+    success: function(data) {
       var len = data.length;
-      for (var i = 0; i < len; i++) {     
+      for (var i = 0; i < len; i++) {
         var tr_str = "<tr class=del_" + data[i].nodeid + ">" + "<td align='center'>" + data[i].nodeid +
           "</td>" + "<td align='center'>" + '<i class="fa fa-trash" onclick="switchesdel(' +
           userid + ',' + switchlistid + ',' + data[i].nodeid + ');" width="22" height="22">' +
@@ -338,7 +338,7 @@ function add_item_my_devices(userid, switchlistid, deviceid) {
 
 
 function switchlistdel(userid, switchlistid) {
-  if (confirm('Are you sure you want to delete list?')) {
+  if (confirm('Are you sure you want to delete this list?')) {
     $.ajax({
       type: "POST",
       url: 'usrfavlistdel.php',
@@ -347,14 +347,14 @@ function switchlistdel(userid, switchlistid) {
         'userid': userid
       },
       success: function() {
-        $(location).attr("href", 'cellsitetech-dashboard.php'); 
+        $(location).attr("href", 'cellsitetech-dashboard.php');
       }
     });
   }
 }
 
-function switchesdel(userid, listid, switchid) { 
-  if (confirm('Are you sure you want to delete device?')) {
+function switchesdel(userid, listid, switchid) {
+  if (confirm('Are you sure you want to delete this device?')) {
     $.ajax({
       type: "POST",
       url: 'usrfavswitchdel.php',
@@ -390,7 +390,7 @@ function show_hide_map_n_result(show_status) {
 
   if (show_status == 'show'){
     $('.sec_without_map').hide();
-    $('.sec_with_map').show();    
+    $('.sec_with_map').show();
   }
   else {
     $('.sec_with_map').hide();
@@ -422,7 +422,7 @@ function setHeight() {
       // alert($(this).offset().top);
 
     return window.innerHeight - $(this).offset().top + 215;
-    }); 
+    });
 
- 
-} 
+
+}

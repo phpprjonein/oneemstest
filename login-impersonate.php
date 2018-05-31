@@ -25,7 +25,7 @@ check_user_authentication(array(8)); //cellsite tech type user
 	</head>
     <body class="hold-transition skin-blue sidebar-mini ownfont">
         <!-- Modal HTML -->
-      <div class="container-fluid">
+      <div class="container-fluid admin-only-login">
         <?php include ('menu.php'); ?>
         <div class="content container-fluid" id="login-impersonate">
 

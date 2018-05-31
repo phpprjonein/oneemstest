@@ -1,4 +1,4 @@
-<script type ="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 			$(document).on('click', '.anchorcmd', function(event) {
             		var myModal = $('#mycmdModal');
@@ -20,43 +20,44 @@ $(document).ready(function(){
 </script>
 <?php
 include "classes/db2.class.php";
-include "classes/paginator.class.php";  
+include "classes/paginator.class.php";
 include 'functions.php';
 $userid = $_GET['userid'];
-//$deviceid = $_GET['deviceid'];
-//$arr_res = getDetailViewData($userid, $deviceid );  
-//$output = $arr_res['result'][0];
-// print_r($output); 
+// $deviceid = $_GET['deviceid'];
+// $arr_res = getDetailViewData($userid, $deviceid );
+// $output = $arr_res['result'][0];
+// print_r($output);
 ?>
-    <?php  
-            $deviceid = $_GET['deviceid'];
-            $result = select_healthchk_info($deviceid);
-            $lastupdated = $result['lastupdated'];
-            //print '<pre>';
-            //print_r($result);
-            //die;
-            $output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"vrfstates":'.$result['vrfstates'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
-            //die;
-            $output = json_decode($output,true); 
-            //print_r($output);
-            //die;
-        
-                                               //  Python API Request using curl Begins                    
-
-            /*
- 	          $userid = $_GET['userid'];
-            $deviceid = $_GET['deviceid'];               
-            $devicetype='ios';
-            $url_send =" http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";  
- 	          $url_final = 'http://njbboemsda1v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/'.$deviceid;			
-            $output = json_decode(sendPostData($url_final),true);     */                     
-	         $_SESSION['deviceidswusr'] = $deviceid;
-                      
-                        ?>
-<?php 
-if(load_node_vendor_id_from_deviceid($deviceid) == 1){
+    <?php
+    $deviceid = $_GET['deviceid'];
+    $result = select_healthchk_info($deviceid);
+    $lastupdated = $result['lastupdated'];
+    // print '<pre>';
+    // print_r($result);
+    // die;
+    $output = '{"bfdsession":' . $result['bfdsession'] . ',"bgpvfourneighbors":' . $result['bgpvfourneighbors'] . ',"bgpvsixneighbours":' . $result['bgpvsixneighbours'] . ',"bgpvsixroutes":' . $result['bgpvsixroutes'] . ',"bootstatement":' . $result['bootstatement'] . ',"buffers":' . $result['buffers'] . ',"configregister":' . $result['configregister'] . ',"cpuutilization":' . $result['cpuutilization'] . ',"environmental":' . $result['environmental'] . ',"vrfstates":' . $result['vrfstates'] . ',"freememory":' . $result['freememory'] . ',"interfacecounters":' . $result['interfacecounters'] . ',"interfacestates":' . $result['interfacestates'] . ',"iosversion":' . $result['iosversion'] . ',"logentries":' . $result['logentries'] . ',"mplsinterfaces":' . $result['mplsinterfaces'] . ',"mplsneighbors":' . $result['mplsneighbors'] . ',"platform":' . $result['platform'] . ',"ran":' . $result['ran'] . ',"twothsndbyteping":' . $result['twothsndbyteping'] . ',"xconnect":' . $result['xconnect'] . '}';
+    // die;
+    $output = json_decode($output, true);
+    // print_r($output);
+    // die;
+    
+    // Python API Request using curl Begins
+    
+    /*
+     * $userid = $_GET['userid'];
+     * $deviceid = $_GET['deviceid'];
+     * $devicetype='ios';
+     * $url_send =" http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+     * $url_final = 'http://njbboemsda1v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/'.$deviceid;
+     * $output = json_decode(sendPostData($url_final),true);
+     */
+    $_SESSION['deviceidswusr'] = $deviceid;
+    
+    ?>
+<?php
+if (load_node_vendor_id_from_deviceid($deviceid) == 1) {
     include_once 'hc_blk_inc.php';
-}else{
+} else {
     include_once 'hc_blk_inc2.php';
 }
 

@@ -44,36 +44,41 @@ $contents = array_values(array_diff(scandir($path), array(
 // print_r($contents);
 ?>
 <div class="ownfont box-body launch-modal">
-    <table class="table table-bordered" id="back_res" cellspacing="0" cellpadding="0">
-    	<tbody>
+	<table class="table table-bordered" id="back_res" cellspacing="0"
+		cellpadding="0">
+		<tbody>
 <?php
 $found = false;
 for ($i = 0; $i < count($contents); $i ++) {
     if (substr(basename($contents[$i]), 0, strlen($row_device_name)) === $row_device_name) {
         $found = true;
-?>
+        ?>
             <tr>
-        		<td><b><?php echo basename($contents[$i]);?><b></td>
-        		<!-- <td><b><?php //echo date ("Y-m-d H:i:s", filemtime($contents[$i]));?><b></td>  -->
-        		<td><b><?php echo 'Manual';?><b><b></td>
-        		<td><a href="download.php?file=<?php echo '/usr/apps/oneems/config/bkup/'.$row_region.'/'.basename($contents[$i]);?>" id="downloadbtn" class="btn btn-primary">Download</a></td>
-        		<!--  <td><button type="button" id = "viewbtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View </button></td>  -->
-        		<td><button type="button" id="restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#restoreModal">Restore</button></td>
-        	</tr>
+				<td><b><?php echo basename($contents[$i]);?><b></td>
+				<!-- <td><b><?php //echo date ("Y-m-d H:i:s", filemtime($contents[$i]));?><b></td>  -->
+				<td><b><?php echo 'Manual';?><b><b></td>
+				<td><a
+					href="download.php?file=<?php echo '/usr/apps/oneems/config/bkup/'.$row_region.'/'.basename($contents[$i]);?>"
+					id="downloadbtn" class="btn btn-primary">Download</a></td>
+				<!--  <td><button type="button" id = "viewbtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View </button></td>  -->
+				<td><button type="button" id="restorebtn" class="btn btn-primary"
+						data-toggle="modal" data-target="#restoreModal">Restore</button></td>
+			</tr>
 <?php
     }
 }
 if (! $found) {
     ?>
             <tr>
-        		<td colspan="4">Backup doesn't exist</td>
-        	</tr>
+				<td colspan="4">Backup doesn't exist</td>
+			</tr>
 <?php
-}?>
+}
+?>
 		</tbody>
 	</table>
 </div>
-<?php 
+<?php
 exit();
 ?>
 <?php
@@ -81,18 +86,21 @@ include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
 $results = load_backup_information($_GET['deviceid']);
-?>    
+?>
 <div class="ownfont box-body launch-modal">
-<table class="table table-bordered" id="back_res" cellspacing="0" cellpadding="0">
-<tbody>
+	<table class="table table-bordered" id="back_res" cellspacing="0"
+		cellpadding="0">
+		<tbody>
     <?php foreach ($results as $key => $val){ ?>
     <tr>
-    <td><b><?php echo $val['name'];?><b></td>
-    <td><b><?php echo $val['date'];?><b></td>
-    <td><b><?php echo $val['type'];?><b><b></td>
-    <td><button type="button" id="restorebtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-remote="remote-page.html">Restore</button></td>
-    </tr>
+				<td><b><?php echo $val['name'];?><b></td>
+				<td><b><?php echo $val['date'];?><b></td>
+				<td><b><?php echo $val['type'];?><b><b></td>
+				<td><button type="button" id="restorebtn" class="btn btn-primary"
+						data-toggle="modal" data-target="#myModal"
+						data-remote="remote-page.html">Restore</button></td>
+			</tr>
     <?php } ?>
 </tbody>
-</table>
+	</table>
 </div>

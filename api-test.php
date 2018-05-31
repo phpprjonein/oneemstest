@@ -6,6 +6,6 @@ if (rand(1, 99) % 2 == 0) {
 }
 $myObject = array(
     'result' => $ret
-)e
+);
 echo json_encode($myObject); // outputs JSON text
 ?>

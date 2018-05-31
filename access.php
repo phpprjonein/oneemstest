@@ -25,7 +25,6 @@ include 'functions.php';
 					</div>
 				</div>
 				<!-- /.error-page -->
-
 			</section>
 		</div>
 	</div>

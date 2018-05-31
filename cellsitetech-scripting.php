@@ -1,279 +1,282 @@
 <?php
-
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 
-//Static variable values set
-if (isset($_GET['clear']) ) {
-  if (strtolower($_GET['clear']) == 'search') {
-    unset($_SESSION['search_term']);
-  }
+// Static variable values set
+if (isset($_GET['clear'])) {
+    if (strtolower($_GET['clear']) == 'search') {
+        unset($_SESSION['search_term']);
+    }
 }
-
 user_session_check();
 include_once ('config/session_check_cellsite_tech.php');
-
-    $page_title = 'OneEMS';
- 
+$page_title = 'OneEMS';
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/cellsitetech_user_devices.js?t="<?php echo date('his'); ?>></script>
- </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
-        <!-- Modal HTML -->
-        
-        <div id="mycmdModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
-            </div>
-        </div>
-        </div>
+   <script src="resources/js/cellsitetech_user_devices.js?t="
+	<?php echo date('his'); ?>></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini ownfont">
+	<!-- Modal HTML -->
 
-        <div class="container-fluid">
+	<div id="mycmdModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Content will be loaded here from "remote.php" file -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
             <?php include_once ('menu.php'); ?> 
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content">
-                <!-- Main content -->
-                <section class="content"> 
-                  <div class="col-md-12">
-                      <div class="panel"> 
-                          <div class="panel-info">
-                            <!-- Page title -->
+		<div class="content">
+			<!-- Main content -->
+			<section class="content">
+				<div class="col-md-12">
+					<div class="panel">
+						<div class="panel-info">
+							<!-- Page title -->
 							<!---
                             <div class="panel-heading"> My Devices List </div>
 							-->
-                          </div>                  
-                          
- 							<div id="mylist" class="panel-heading"><b>Coming soon.</b>
-							
+						</div>
+
+						<div id="mylist" class="panel-heading">
+							<b>Coming soon.</b>
+
 							<!-- backup management content row -->
-    <div class="row">
+							<div class="row">
 
-<!-- router selection content row -->
-      <div class="col-4">
-        <div class="jf-form">
+								<!-- router selection content row -->
+								<div class="col-4">
+									<div class="jf-form">
 
-<!-- router scripting selection form div -->
-          <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='admin.php' method='post' enctype='multipart/form-data' novalidate autocomplete="on">
-            <input type="hidden" name="method" value="validateForm">
-            <input type="hidden" id="serverValidationFields" name="serverValidationFields" value="">
+										<!-- router scripting selection form div -->
+										<form data-licenseKey="" name="wizard-75a3c2"
+											id="wizard-75a3c2" action='admin.php' method='post'
+											enctype='multipart/form-data' novalidate autocomplete="on">
+											<input type="hidden" name="method" value="validateForm"> <input
+												type="hidden" id="serverValidationFields"
+												name="serverValidationFields" value="">
 
-<!-- select router model options -->
-            <div class="form-group f4 required" data-fid="f4">
-              <label class="control-label" for="f4">Select Device Model</label>
-              <select class="form-control custom-select" id="f4" name="f4" data-rule-required="true">
-                <option value="">- SELECT MODEL -</option>
-                <option value="asr920">ASR 920</option>
-              </select>
-            </div>
-<!-- /select router model options -->
+											<!-- select router model options -->
+											<div class="form-group f4 required" data-fid="f4">
+												<label class="control-label" for="f4">Select Device Model</label>
+												<select class="form-control custom-select" id="f4" name="f4"
+													data-rule-required="true">
+													<option value="">- SELECT MODEL -</option>
+													<option value="asr920">ASR 920</option>
+												</select>
+											</div>
+											<!-- /select router model options -->
 
-<!-- select router model options -->
-            <div class="form-group f7 required" data-fid="f7">
-              <label class="control-label" for="f7">Select OS</label>
-              <select class="form-control custom-select" id="f7" name="f7" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select router model options -->
+											<!-- select router model options -->
+											<div class="form-group f7 required" data-fid="f7">
+												<label class="control-label" for="f7">Select OS</label> <select
+													class="form-control custom-select" id="f7" name="f7"
+													data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select router model options -->
 
-<!-- select template options -->
-            <div class="form-group f8 required" data-fid="f8">
-              <!-- <label class="control-label" for="f8">Select OS Configuration</label> -->
-              <label class="control-label" for="f8">Select Template Type</label>
-              <select class="form-control custom-select" id="f8" name="f8" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select template options -->
+											<!-- select template options -->
+											<div class="form-group f8 required" data-fid="f8">
+												<!-- <label class="control-label" for="f8">Select OS Configuration</label> -->
+												<label class="control-label" for="f8">Select Template Type</label>
+												<select class="form-control custom-select" id="f8" name="f8"
+													data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select template options -->
 
-<!-- select region options -->
-            <div class="form-group f9 required" data-fid="f9">
-              <label class="control-label" for="f9">Select Region</label>
-              <select class="form-control custom-select" id="f9" name="f9" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select region options -->
+											<!-- select region options -->
+											<div class="form-group f9 required" data-fid="f9">
+												<label class="control-label" for="f9">Select Region</label>
+												<select class="form-control custom-select" id="f9" name="f9"
+													data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select region options -->
 
-<!-- select RAN vendor options -->
-            <div class="form-group f10 required" data-fid="f10">
-              <label class="control-label" for="f10">Select RAN Vendor</label>
-              <select class="form-control custom-select" id="f10" name="f10" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select RAN vendor options -->
+											<!-- select RAN vendor options -->
+											<div class="form-group f10 required" data-fid="f10">
+												<label class="control-label" for="f10">Select RAN Vendor</label>
+												<select class="form-control custom-select" id="f10"
+													name="f10" data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select RAN vendor options -->
 
-<!-- select service options -->
-            <div class="form-group f11 required" data-fid="f11">
-              <label class="control-label" for="f11">Select Service</label>
-              <select class="form-control custom-select" id="f11" name="f11" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select service options -->
+											<!-- select service options -->
+											<div class="form-group f11 required" data-fid="f11">
+												<label class="control-label" for="f11">Select Service</label>
+												<select class="form-control custom-select" id="f11"
+													name="f11" data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select service options -->
 
-<!-- select site type options -->
-            <div class="form-group f12 required" data-fid="f12">
-              <label class="control-label" for="f12">Select Site Type</label>
-              <select class="form-control custom-select" id="f12" name="f12" data-rule-required="true">
-                <option></option>
-              </select>
-            </div>
-<!-- /select site type options -->
+											<!-- select site type options -->
+											<div class="form-group f12 required" data-fid="f12">
+												<label class="control-label" for="f12">Select Site Type</label>
+												<select class="form-control custom-select" id="f12"
+													name="f12" data-rule-required="true">
+													<option></option>
+												</select>
+											</div>
+											<!-- /select site type options -->
 
-<!-- submit button -->
-            <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <label class="control-label sr-only" for="f0" style="display: block;">Submit Button</label>
-              <button type="submit" class="btn btn-primary btn-lg" style="z-index: 1;">SELECT TEMPLATE</button>
-            </div>
-<!-- /submit button -->
+											<!-- submit button -->
+											<div class="form-group submitf0" data-fid="f0"
+												style="position: relative;">
+												<label class="control-label sr-only" for="f0"
+													style="display: block;">Submit Button</label>
+												<button type="submit" class="btn btn-primary btn-lg"
+													style="z-index: 1;">SELECT TEMPLATE</button>
+											</div>
+											<!-- /submit button -->
 
-            <div class="clearfix"></div>
-          </form>
-<!-- /router scripting selection form div -->
+											<div class="clearfix"></div>
+										</form>
+										<!-- /router scripting selection form div -->
 
-        </div>
-      </div>
-<!-- /router selection content row -->
+									</div>
+								</div>
+								<!-- /router selection content row -->
 
 
-<!-- right side -->
-<!-- script output -->
-      <div class="col">
+								<!-- right side -->
+								<!-- script output -->
+								<div class="col">
 
-<!-- template table content -->
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Template Name</th>
-              <th scope="col">Select Template(s)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Template ABC</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template DEF</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template XYZ</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template 123</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template ABC</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template DEF</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template XYZ</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Template 123</td>
-              <td>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                </label>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+									<!-- template table content -->
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th scope="col">Template Name</th>
+												<th scope="col">Select Template(s)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Template ABC</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template DEF</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template XYZ</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template 123</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template ABC</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template DEF</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template XYZ</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+											<tr>
+												<td>Template 123</td>
+												<td><label class="form-check-label"> <input
+														class="form-check-input" type="checkbox"
+														id="inlineCheckbox1" value="option1">
+												</label></td>
+											</tr>
+										</tbody>
+									</table>
 
-<!-- pagination -->
-        <nav aria-label="Pagination example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-<!-- /pagination -->
+									<!-- pagination -->
+									<nav aria-label="Pagination example">
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+													<span class="sr-only">Previous</span>
+											</a></li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+													class="sr-only">Next</span>
+											</a></li>
+										</ul>
+									</nav>
+									<!-- /pagination -->
 
-<!-- /template table content -->
+									<!-- /template table content -->
 
-<!-- /right side -->
-<!-- /script output -->
+									<!-- /right side -->
+									<!-- /script output -->
 
-    </div>
-<!-- /backup management content row -->
-							
-							</div> 
-                        <!-- /.box-body -->
-                      </div>
-                  </div> 
-                </section> <!-- /.content -->
-              </div>
-            <!-- /.content-wrapper --> 
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
+								</div>
+								<!-- /backup management content row -->
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+					</div>
+			
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+		<!-- /.control-sidebar -->
+		<!-- Add the sidebar's background. This div must be placed
             immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-        </div>
-        <!-- ./wrapper -->
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<!-- ./wrapper -->
 
         <?php include_once ('footer.php'); ?> 
     </body>
-	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-	<script src="http://njbboemsda1v/oneemstest/resources/js/vendor.js" ></script>
-<script src="http://njbboemsda1v/oneemstest/resources/js/form-wizard.js?ver=v2.1.0&id=wizard-75a3c2"></script>
+<script
+	src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script src="http://njbboemsda1v/oneemstest/resources/js/vendor.js"></script>
+<script
+	src="http://njbboemsda1v/oneemstest/resources/js/form-wizard.js?ver=v2.1.0&id=wizard-75a3c2"></script>
 emsda1vn
 
 

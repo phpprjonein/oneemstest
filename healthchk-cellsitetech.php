@@ -1,4 +1,4 @@
-<script type ="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 				$(document).on('click', '.anchorcmd', function(event) {
             		var myModal = $('#mycmdModal');
@@ -20,20 +20,20 @@ $(document).ready(function(){
 </script>
 <?php
 include "classes/db2.class.php";
-include "classes/paginator.class.php";  
-include 'functions.php'; 
+include "classes/paginator.class.php";
+include 'functions.php';
 ?>
-    <?php  
-                                               //  Python API Request using curl Begins                    
-            $userid = $_GET['userid'];
-            $deviceid = $_GET['deviceid'];               
-            $devicetype='ios';
-            $url_send =" http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
-            $deviceid = $_GET['deviceid'];              
- 	        $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/'.$deviceid;			
-            $output = json_decode(sendPostData($url_final),true); 
-            $lastupdated = date('Y-m-d H:i:s');
-            insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
-            $_SESSION['deviceidcs'] = $deviceid;                 
-     ?>
+    <?php
+    // Python API Request using curl Begins
+    $userid = $_GET['userid'];
+    $deviceid = $_GET['deviceid'];
+    $devicetype = 'ios';
+    $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+    $deviceid = $_GET['deviceid'];
+    $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
+    $output = json_decode(sendPostData($url_final), true);
+    $lastupdated = date('Y-m-d H:i:s');
+    insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
+    $_SESSION['deviceidcs'] = $deviceid;
+    ?>
 <?php include_once 'hc_blk_inc.php';?>                

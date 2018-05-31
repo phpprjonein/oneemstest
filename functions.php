@@ -17,6 +17,7 @@ function logToFile($filename, $msg)
 }
 
 /**
+ *
  * @param unknown $username
  * @param unknown $password
  * @return unknown|boolean
@@ -39,6 +40,7 @@ function get_user_info($username, $password)
 }
 
 /**
+ *
  * @param unknown $username
  * @return unknown|boolean
  */
@@ -57,6 +59,7 @@ function get_user_info_sso($username)
 }
 
 /**
+ *
  * @param unknown $fname
  * @param unknown $lname
  * @param unknown $userlevel
@@ -77,6 +80,7 @@ function get_user_info_sso_imp($fname, $lname, $userlevel)
 }
 
 /**
+ *
  * @param array $usertype
  * @return boolean
  */
@@ -94,6 +98,7 @@ function check_user_authentication($usertype = array())
 }
 
 /**
+ *
  * @return string
  */
 function get_landing_page()
@@ -126,6 +131,7 @@ function get_landing_page()
 }
 
 /**
+ *
  * @param unknown $filename
  * @return string
  */
@@ -158,7 +164,6 @@ function activemenu($filename)
  * User Login check and user session creation
  */
 /**
- * 
  */
 function user_session_check()
 {
@@ -196,6 +201,7 @@ function user_session_check()
 }
 
 /**
+ *
  * @return unknown
  */
 function get_user_type()
@@ -213,6 +219,7 @@ function get_user_type()
  * Checks for session live or not
  */
 /**
+ *
  * @param unknown $sessid
  * @return unknown
  */
@@ -231,6 +238,7 @@ function is_live_session($sessid)
  * Nodes table for devices list
  */
 /**
+ *
  * @param unknown $user_id
  * @return unknown
  */
@@ -289,6 +297,7 @@ function get_device_list_from_nodes($user_id)
 }
 
 /**
+ *
  * @param unknown $userid
  * @return number|unknown
  */
@@ -379,6 +388,7 @@ function get_device_list_from_nodes_datatable($userid)
  * get device details for the current users
  */
 /**
+ *
  * @param unknown $user_id
  * @param string $usertype
  * @return unknown
@@ -424,6 +434,7 @@ function get_device_list($user_id, $usertype = 'ME')
  * current_users table
  */
 /**
+ *
  * @param unknown $userid
  * @param unknown $usertype
  * @param unknown $device_details
@@ -466,6 +477,7 @@ function update_devicedetails($userid, $usertype, $device_details)
  *
  */
 /**
+ *
  * @param unknown $userid
  * @param unknown $usertype
  * @param unknown $sessionid
@@ -497,6 +509,7 @@ function update_sessions($userid, $usertype, $sessionid)
  *
  */
 /**
+ *
  * @return unknown[]
  */
 function delete_idleuser()
@@ -530,7 +543,6 @@ function delete_idleuser()
  *
  */
 /**
- * 
  */
 function delete_alluser()
 {
@@ -554,6 +566,7 @@ function delete_alluser()
  * Api call
  */
 /**
+ *
  * @param unknown $url
  * @return unknown
  */
@@ -585,6 +598,7 @@ function sendPostData($url)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $deviceid
  * @return unknown
@@ -614,6 +628,7 @@ function getDetailViewData($userid, $deviceid)
  * Function to get the Switches list of user
  */
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -636,6 +651,7 @@ function getSwitchDevicesList($userid)
  * Functin to get the switch devices list by city wise for the user
  */
 /**
+ *
  * @param unknown $userid
  * @param unknown $city
  * @return unknown
@@ -670,6 +686,7 @@ function getSwitchDevicesListByCity($userid, $city)
  * Functin to get the switch devices list by market and subregion wise for the user
  */
 /**
+ *
  * @param unknown $userid
  * @param unknown $market
  * @param unknown $subregion
@@ -718,6 +735,7 @@ function get_switchlist_for_market_subregion($userid, $market, $subregion)
  *
  */
 /**
+ *
  * @param unknown $deviceid
  * @param unknown $userid
  * @return unknown
@@ -744,6 +762,7 @@ function getSWroutersDetails($deviceid, $userid)
  * Function to get the Switch Technician city list
  */
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -763,6 +782,7 @@ function getSEuserCityList($userid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -784,6 +804,7 @@ function usrfavritelist_display($userid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -805,6 +826,7 @@ function usrcellsitefavritelist_display($userid)
 }
 
 /**
+ *
  * @param unknown $data
  * @return unknown
  */
@@ -831,6 +853,7 @@ function insert_my_device_record($data)
 }
 
 /**
+ *
  * @param unknown $data
  * @return unknown
  */
@@ -848,6 +871,7 @@ function insert_ipaddrmgmt_record($data)
 }
 
 /**
+ *
  * @param unknown $data
  */
 function insert_usrfavritedev($data)
@@ -892,6 +916,7 @@ function insert_usrfavritedev($data)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $listid
  * @return unknown
@@ -916,6 +941,7 @@ function usrfavritecondev_display($userid, $listid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $listid
  * @return unknown
@@ -937,6 +963,7 @@ function usrfavritecondev_celt_display($userid, $listid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $listid
  * @return unknown
@@ -972,6 +999,7 @@ function user_mylist_devieslist($userid, $listid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $listid
  * @return void|unknown
@@ -997,6 +1025,7 @@ function get_user_mylist_name($userid, $listid)
 }
 
 /**
+ *
  * @param unknown $listid
  * @return void|unknown
  */
@@ -1018,6 +1047,7 @@ function get_user_mylist_name_by_id($listid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $listid
  * @return boolean|number|unknown
@@ -1122,6 +1152,7 @@ function user_mylist_devieslist_datatable($userid, $listid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $switchlistid
  */
@@ -1135,6 +1166,7 @@ function usrfavritelistdel($userid, $switchlistid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param unknown $switchlistid
  * @param unknown $switchid
@@ -1149,6 +1181,7 @@ function usrfavritelistswdel($userid, $switchlistid, $switchid)
 }
 
 /**
+ *
  * @param unknown $market_name
  * @return unknown
  */
@@ -1168,6 +1201,7 @@ function get_market_subregion_list($market_name)
 }
 
 /**
+ *
  * @param unknown $emailid
  * @return unknown
  */
@@ -1183,6 +1217,7 @@ function userexist($emailid)
 }
 
 /**
+ *
  * @param unknown $mailbody
  * @param unknown $pwrurl
  */
@@ -1218,6 +1253,7 @@ function sendmail($mailbody, $pwrurl)
 }
 
 /**
+ *
  * @param unknown $emailid
  * @param unknown $password
  * @return boolean
@@ -1240,6 +1276,7 @@ function updateuserpassword($emailid, $password)
 }
 
 /**
+ *
  * @return unknown
  */
 function get_market_list()
@@ -1261,6 +1298,7 @@ function get_market_list()
  * Functin to get the switch devices list by market and subregion wise for the user
  */
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -1306,6 +1344,7 @@ function get_switchlist_all_market($userid)
  *
  */
 /**
+ *
  * @param unknown $swich_devince_name
  * @param string $search_term
  * @param unknown $userid
@@ -1384,6 +1423,7 @@ function getSWroutersDetails_all($swich_devince_name, $search_term = '', $userid
  *
  */
 /**
+ *
  * @param unknown $list_for
  * @param unknown $list_type
  * @param unknown $selswitch
@@ -1487,6 +1527,7 @@ function get_swt_user_routers_list_datatable($list_for, $list_type, $selswitch)
 }
 
 /**
+ *
  * @param unknown $list_for
  * @param unknown $list_type
  * @param unknown $selswitch
@@ -1590,6 +1631,7 @@ function get_cellsitetech_user_routers_list_datatable($list_for, $list_type, $se
 }
 
 /**
+ *
  * @return unknown
  */
 function get_market_list_new()
@@ -1608,6 +1650,7 @@ function get_market_list_new()
 }
 
 /**
+ *
  * @param unknown $market
  * @param unknown $search_term
  * @param unknown $page_limit
@@ -1680,6 +1723,7 @@ function getmarketroutersDetails_all($market, $search_term, $page_limit)
 }
 
 /**
+ *
  * @param unknown $table_name
  * @param array $table_fields
  * @return unknown
@@ -1700,6 +1744,7 @@ function export_table($table_name, $table_fields = array())
  * Function to get the Switches list of user
  */
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -1713,6 +1758,7 @@ function getIpAddrMgmtList($userid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @return number|unknown
  */
@@ -1795,6 +1841,7 @@ function get_discovery_list_datatable($userid)
 }
 
 /**
+ *
  * @param unknown $type
  * @return unknown
  */
@@ -1823,6 +1870,7 @@ function load_ipv_dataset($type)
  * }
  */
 /**
+ *
  * @param unknown $range
  * @return unknown
  */
@@ -1910,6 +1958,7 @@ function getipvfour_details($range)
 }
 
 /**
+ *
  * @param unknown $binin
  * @return unknown|string
  */
@@ -1923,6 +1972,7 @@ function binnmtowm($binin)
 }
 
 /**
+ *
  * @param unknown $binin
  * @return unknown
  */
@@ -1932,6 +1982,7 @@ function bintocdr($binin)
 }
 
 /**
+ *
  * @param unknown $binin
  * @return unknown
  */
@@ -1947,6 +1998,7 @@ function bintodq($binin)
 }
 
 /**
+ *
  * @param unknown $binin
  * @return unknown
  */
@@ -1956,6 +2008,7 @@ function bintoint($binin)
 }
 
 /**
+ *
  * @param unknown $binin
  * @return unknown|string
  */
@@ -1969,6 +2022,7 @@ function binwmtonm($binin)
 }
 
 /**
+ *
  * @param unknown $cdrin
  * @return unknown
  */
@@ -1978,6 +2032,7 @@ function cdrtobin($cdrin)
 }
 
 /**
+ *
  * @param unknown $binin
  * @param unknown $cdr_nmask
  * @return unknown|string
@@ -1997,6 +2052,7 @@ function dotbin($binin, $cdr_nmask)
 }
 
 /**
+ *
  * @param unknown $dqin
  * @return unknown
  */
@@ -2010,6 +2066,7 @@ function dqtobin($dqin)
 }
 
 /**
+ *
  * @param unknown $intin
  * @return unknown
  */
@@ -2019,6 +2076,7 @@ function inttobin($intin)
 }
 
 /**
+ *
  * @param unknown $range
  * @return unknown
  */
@@ -2083,6 +2141,7 @@ function getipvsix_details($range)
 }
 
 /**
+ *
  * @param unknown $ip
  * @return unknown
  */
@@ -2096,6 +2155,7 @@ function ipv6_numeric($ip)
 }
 
 /**
+ *
  * @param unknown $cidr
  * @return NULL[]
  */
@@ -2109,6 +2169,7 @@ function cidrToRange($cidr)
 }
 
 /**
+ *
  * @param unknown $ip
  * @param unknown $range
  * @return boolean
@@ -2128,6 +2189,7 @@ function ip_in_range($ip, $range)
 }
 
 /**
+ *
  * @param unknown $region
  * @param unknown $market
  * @param unknown $subnetmask
@@ -2150,6 +2212,7 @@ function get_nodes_list_ipmgmt($region, $market, $subnetmask)
 }
 
 /**
+ *
  * @param unknown $region
  * @param unknown $market
  * @param unknown $subnetmask
@@ -2175,6 +2238,7 @@ function get_nodes_list_ipmgmtv6($region, $market, $subnetmask)
 }
 
 /**
+ *
  * @return unknown
  */
 function get_ipallocation_region_list()
@@ -2187,6 +2251,7 @@ function get_ipallocation_region_list()
 }
 
 /**
+ *
  * @param unknown $region
  * @return unknown
  */
@@ -2200,6 +2265,7 @@ function get_ipallocation_market_list($region)
 }
 
 /**
+ *
  * @param unknown $values
  */
 function insert_ip_allocation($values)
@@ -2213,6 +2279,7 @@ function insert_ip_allocation($values)
 }
 
 /**
+ *
  * @param string $class
  * @return unknown|string
  */
@@ -2234,6 +2301,7 @@ function load_discovery_dataset($class = 'C')
 }
 
 /**
+ *
  * @param unknown $status
  * @param unknown $id
  * @return string
@@ -2252,6 +2320,7 @@ function discovery_status_update($status, $id)
 }
 
 /**
+ *
  * @param string $ipaddress
  * @return unknown
  */
@@ -2261,6 +2330,7 @@ function test_ipv6_address($ipaddress = '')
 }
 
 /**
+ *
  * @param unknown $values
  */
 function discovery_add_new_device($values)
@@ -2285,6 +2355,7 @@ function discovery_add_new_device($values)
 }
 
 /**
+ *
  * @return unknown
  */
 function get_managers()
@@ -2297,6 +2368,7 @@ function get_managers()
 }
 
 /**
+ *
  * @return unknown
  */
 function get_csr_technames()
@@ -2309,6 +2381,7 @@ function get_csr_technames()
 }
 
 /**
+ *
  * @param unknown $username
  * @return unknown
  */
@@ -2322,6 +2395,7 @@ function get_csr_site_tech_mgr_id($username)
 }
 
 /**
+ *
  * @param unknown $batchid
  * @return unknown
  */
@@ -2335,6 +2409,7 @@ function batch_accordion_details($batchid)
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_categories()
@@ -2347,6 +2422,7 @@ function generic_get_categories()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_vendors()
@@ -2359,6 +2435,7 @@ function generic_get_vendors()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_site_ids()
@@ -2371,6 +2448,7 @@ function generic_get_site_ids()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_csr_site_names()
@@ -2383,6 +2461,7 @@ function generic_get_csr_site_names()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_csr_switch_names()
@@ -2395,6 +2474,7 @@ function generic_get_csr_switch_names()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_region()
@@ -2407,6 +2487,7 @@ function generic_get_region()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_market()
@@ -2419,6 +2500,7 @@ function generic_get_market()
 }
 
 /**
+ *
  * @param unknown $region
  * @return unknown
  */
@@ -2432,6 +2514,7 @@ function generic_get_market_by_region($region)
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_deviceseries()
@@ -2444,6 +2527,7 @@ function generic_get_deviceseries()
 }
 
 /**
+ *
  * @return unknown
  */
 function generic_get_switch_name()
@@ -2456,6 +2540,7 @@ function generic_get_switch_name()
 }
 
 /**
+ *
  * @param string $region
  * @param string $market
  * @return unknown
@@ -2479,6 +2564,7 @@ function generic_get_switch_name_by_region_market($region = '', $market = '')
 }
 
 /**
+ *
  * @param unknown $market
  * @return unknown
  */
@@ -2493,6 +2579,7 @@ function generic_get_switch_name_by_market($market)
 
 /* nodeVersion or OSVersion */
 /**
+ *
  * @return unknown
  */
 function generic_get_nodeVersion()
@@ -2505,6 +2592,7 @@ function generic_get_nodeVersion()
 }
 
 /**
+ *
  * @param unknown $username
  * @return unknown
  */
@@ -2518,6 +2606,7 @@ function generic_get_market_by_username($username)
 }
 
 /**
+ *
  * @param unknown $query
  * @return unknown
  */
@@ -2534,6 +2623,7 @@ function generic_get_csr_site_tech_name($query)
 }
 
 /**
+ *
  * @param unknown $query
  * @return unknown
  */
@@ -2550,6 +2640,7 @@ function generic_get_usernames_ac($query)
 }
 
 /**
+ *
  * @param unknown $query
  * @return unknown
  */
@@ -2566,6 +2657,7 @@ function generic_get_usernames_ac_fn_ln_ro($query)
 }
 
 /**
+ *
  * @param unknown $region
  * @param unknown $market
  * @return unknown
@@ -2583,6 +2675,7 @@ function get_csr_site_names($region, $market)
 }
 
 /**
+ *
  * @param unknown $csr_tech_name
  * @return unknown
  */
@@ -2600,6 +2693,7 @@ function get_csr_tech_mgr_name_from_tech_name($csr_tech_name)
 }
 
 /**
+ *
  * @param unknown $csr_tech_id
  * @return unknown
  */
@@ -2612,6 +2706,7 @@ function get_csr_tech_mgr_id_from_tech_id($csr_tech_id)
 }
 
 /**
+ *
  * @param unknown $csr_site_name
  * @return unknown
  */
@@ -2624,6 +2719,7 @@ function get_csr_site_id_from_csr_site_name($csr_site_name)
 }
 
 /**
+ *
  * @param unknown $ip_address
  * @param unknown $process
  * @return string
@@ -2647,6 +2743,7 @@ function process_missed_ip($ip_address, $process)
 }
 
 /**
+ *
  * @param unknown $trigger
  * @param unknown $path
  * @param array $allowed_ext
@@ -2710,6 +2807,7 @@ function upload_file_to_disk($trigger, $path, $allowed_ext = array('jpg','jpeg',
 }
 
 /**
+ *
  * @param number $length
  * @return string
  */
@@ -2725,6 +2823,7 @@ function generateRandomString($length = 10)
 }
 
 /**
+ *
  * @param unknown $userid
  * @param string $listname
  * @return number|unknown
@@ -2817,6 +2916,7 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '')
 }
 
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -2830,6 +2930,7 @@ function get_celltechusers_list($userid)
 }
 
 /**
+ *
  * @param unknown $userid
  * @return unknown
  */
@@ -2843,6 +2944,7 @@ function get_switchtechusers_list($userid)
 }
 
 /**
+ *
  * @param unknown $sso_flag
  * @param unknown $username
  */
@@ -2956,6 +3058,7 @@ function update_login_api_rules($sso_flag, $username)
 }
 
 /**
+ *
  * @param unknown $batchid
  * @param unknown $deviceid
  * @param unknown $scriptname
@@ -2997,6 +3100,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
 }
 
 /**
+ *
  * @param unknown $username
  * @param unknown $eid
  * @param unknown $email
@@ -3046,7 +3150,7 @@ function get_landing_page_sso($username, $eid, $email, $fname, $lname, $vzid)
             3,
             4
         ))) { // fieldsite technician
-                                                              // echo 'inside the cellsite tech url';
+              // echo 'inside the cellsite tech url';
             $location_href = "cellsitetech-dashboard.php";
         }
         if (in_array($_SESSION['userlevel'], array(
@@ -3068,6 +3172,7 @@ function get_landing_page_sso($username, $eid, $email, $fname, $lname, $vzid)
 }
 
 /**
+ *
  * @param unknown $deviceid
  * @return unknown
  */
@@ -3081,6 +3186,7 @@ function load_backup_information($deviceid)
 }
 
 /**
+ *
  * @param unknown $filename
  * @param string $alias
  * @return unknown
@@ -3112,6 +3218,7 @@ function load_available_templates($filename, $alias = '')
 }
 
 /**
+ *
  * @param unknown $name
  * @return unknown
  */
@@ -3127,6 +3234,7 @@ function getUser($name)
 
 // [username] => ssf [password] => k [usertype] => k [firstname] => k [lastname] => k [phoneno] => k [emailid] => k )
 /**
+ *
  * @param unknown $data
  * @return unknown
  */
@@ -3149,6 +3257,7 @@ function addUser($data)
 }
 
 /**
+ *
  * @param unknown $data
  * @return unknown
  */
@@ -3172,6 +3281,7 @@ function deleteUser($data)
  * }
  */
 /**
+ *
  * @param unknown $table
  * @param string $order
  * @return unknown
@@ -3186,6 +3296,7 @@ function getconfigtempldpdwntbl($table, $order = 'desc')
 }
 
 /**
+ *
  * @return unknown
  */
 function getconfigtemplscriptddwntbl()
@@ -3198,6 +3309,7 @@ function getconfigtemplscriptddwntbl()
 }
 
 /**
+ *
  * @param unknown $deviceid
  * @return unknown
  */
@@ -3211,6 +3323,7 @@ function select_healthchk_info($deviceid)
 }
 
 /**
+ *
  * @return unknown
  */
 function config_get_templates()
@@ -3223,6 +3336,7 @@ function config_get_templates()
 }
 
 /**
+ *
  * @param unknown $templname
  * @return unknown
  */
@@ -3236,6 +3350,7 @@ function check_templname_already_exist($templname)
 }
 
 /**
+ *
  * @param unknown $ipaddress
  * @return unknown
  */
@@ -3249,6 +3364,7 @@ function check_subnet_already_exist($ipaddress)
 }
 
 /**
+ *
  * @param unknown $templname
  */
 function delete_templname_already_exist($templname)
@@ -3260,6 +3376,7 @@ function delete_templname_already_exist($templname)
 }
 
 /**
+ *
  * @param unknown $templname
  * @return unknown
  */
@@ -3273,6 +3390,7 @@ function config_get_templates_from_templname($templname)
 }
 
 /**
+ *
  * @param unknown $deviceid
  * @param unknown $output
  * @param unknown $lastupdated
@@ -3294,6 +3412,7 @@ function update_healthchk_info($deviceid, $output, $lastupdated)
 }
 
 /**
+ *
  * @param unknown $deviceid
  * @param unknown $output
  * @param unknown $lastupdated
@@ -3349,6 +3468,7 @@ function insertorupdate_healthchk_info($deviceid, $output, $lastupdated)
 }
 
 /**
+ *
  * @param unknown $region
  * @param unknown $subnetmask
  */
@@ -3361,6 +3481,7 @@ function delete_ipallocation_by_subnet($region, $subnetmask)
 }
 
 /**
+ *
  * @param unknown $batchid
  */
 function delete_batchid($batchid)
@@ -3375,6 +3496,7 @@ function delete_batchid($batchid)
 }
 
 /**
+ *
  * @param unknown $message
  * @param string $logfile
  * @return boolean[]|string[]|boolean[]
@@ -3389,7 +3511,7 @@ function write_log($message, $logfile = '')
         // checking if the constant for the log file is defined
         if (isset($default_log)) {
             $logfile = $default_log;
-        }        // the constant is not defined and there is no log file given as input
+        } // the constant is not defined and there is no log file given as input
         else {
             error_log('No log file defined!', 0);
             return array(
@@ -3445,6 +3567,7 @@ function write_log($message, $logfile = '')
 }
 
 /**
+ *
  * @param unknown $userid
  * @param string $listname
  * @return number|unknown
@@ -3542,6 +3665,7 @@ function get_batch_process_datatable($userid, $listname = '')
 }
 
 /**
+ *
  * @return number|unknown
  */
 function get_devicebatch_list_from_devicebatch_datatable()
@@ -3622,6 +3746,7 @@ function get_devicebatch_list_from_devicebatch_datatable()
 }
 
 /**
+ *
  * @param array $values
  * @return string
  */
@@ -3651,6 +3776,7 @@ function generate_site_breadcrumb($values = array())
 }
 
 /**
+ *
  * @param unknown $deviceid
  * @return unknown
  */
@@ -3664,6 +3790,7 @@ function load_node_vendor_id_from_deviceid($deviceid)
 }
 
 /**
+ *
  * @param unknown $batchid
  * @return unknown
  */
@@ -3677,6 +3804,7 @@ function batch_accordion_details_new($batchid)
 }
 
 /**
+ *
  * @return unknown
  */
 function get_batch_details()
@@ -3694,6 +3822,7 @@ function get_batch_details()
  *
  */
 /**
+ *
  * @param unknown $sql
  * @return unknown
  */
@@ -3707,6 +3836,7 @@ function getData($sql)
 }
 
 /**
+ *
  * @return NULL[]|unknown[]
  */
 function get_swdelvry_process_datatable()
@@ -3743,7 +3873,7 @@ function get_swdelvry_process_datatable()
             /* SQL Query for search with limit and orderBy clauses */
             $sql = sprintf("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion FROM %s %s ORDER BY %s %s limit %d , %d ", MyTable, $where, $orderBy, $orderType, $start, $length);
             $data = getData($sql);
-        }        /* END SEARCH */
+        } /* END SEARCH */
         else {
             $sql = sprintf("SELECT id, deviceIpAddr, devicename, deviceseries, market, nodeVersion FROM %s ORDER BY %s %s limit %d , %d ", MyTable, $orderBy, $orderType, $start, $length);
             $data = getData($sql);
@@ -3766,6 +3896,7 @@ function get_swdelvry_process_datatable()
 }
 
 /**
+ *
  * @param unknown $userid
  * @param string $listname
  * @param string $deviceseries
@@ -3867,6 +3998,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
 }
 
 /**
+ *
  * @return unknown
  */
 function swrepo_get_deviceseries()
@@ -3878,8 +4010,8 @@ function swrepo_get_deviceseries()
     return $resultset;
 }
 
-
 /**
+ *
  * @return unknown
  */
 function swrepo_get_nodeversions()
@@ -3891,8 +4023,8 @@ function swrepo_get_nodeversions()
     return $resultset;
 }
 
-
 /**
+ *
  * @return unknown
  */
 function swrepo_get_filenames()

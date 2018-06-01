@@ -2,6 +2,25 @@
 include "classes/db2.class.php"; 
 include 'functions.php';
 $data = $_POST; 
+
+if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
+    $dsql = 'INSERT INTO `osrepository` (`osid`, `filename`, `filesize`, `mdfive`) VALUES';
+    $oc = 1;
+    foreach ($_POST['filenames'] as $key=>$val):
+        if(count($_POST['filenames']) == $oc){
+            $dsql .= "('1','".$val."','".$_POST['filesizes'][$key]."','".md5($val)."')";
+        }else{
+            $dsql .= "('1','".$val."','".$_POST['filesizes'][$key]."','".md5($val)."'),";
+        }
+        $oc++;
+    endforeach;
+    if($oc > 1){
+        //echo $dsql; die;
+        $db2->query($dsql);
+        $db2->execute();
+    }
+}
+
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
     update_dev_batch_sd(time(), $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'],  $_POST['priority'],  $_POST['refmop'] );
 }

@@ -4035,3 +4035,67 @@ function swrepo_get_filenames()
     $resultset = $db2->resultset();
     return $resultset;
 }
+
+
+/**
+ *
+ * @return unknown
+ */
+function os_repository_vendor()
+{
+    global $db2;
+    $sql = "SELECT distinct(vendor) FROM osversion";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+/**
+ *
+ * @return unknown
+ */
+function os_repository_deviceseries()
+{
+    global $db2;
+    $sql = "SELECT distinct(deviceseries) FROM deviceseries";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+/**
+ *
+ * @return unknown
+ */
+function os_repository_patches()
+{
+    global $db2;
+    $sql = "SELECT distinct(ospatch) FROM osversion";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+/**
+ *
+ * @return unknown
+ */
+function os_repository_minverreq()
+{
+    global $db2;
+    $sql = "SELECT distinct(minverreq) FROM osversion";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+/**
+ *
+ * @return unknown
+ */
+function os_repository_versions()
+{
+    global $db2;
+    $sql = "SELECT distinct(osversion) FROM osversion";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+

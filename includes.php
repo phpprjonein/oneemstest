@@ -18,7 +18,7 @@
              folder instead of downloading all of them to reduce the load. --> 
         <!--<link rel="stylesheet" type="text/css" href="resources/css/content.css"> -->
         <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
- 
+ 		<link href = "resources/css/jquery-ui.css" rel = "stylesheet">
         <!-- jQuery 2.2.3-->
         <script type="text/javascript" language="javascript" src="resources/js/jquery-3.2.1.slim.min.js"></script>
         <script type="text/javascript" language="javascript" src="resources/js/popper.min.js"></script>

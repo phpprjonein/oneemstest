@@ -11,6 +11,22 @@ $(document).ready(function(){
 	$('#batchModal').on('hidden.bs.modal', function () {
 		 location.reload();
 	});
+	
+	$('#applydate').typeahead({
+        source: function (query, result) {
+            $.ajax({
+                url: "software-delivery-batch-process.php",
+                data: 'type=autocomplete&category=osdate&query=' + query,            
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+					result($.map(data, function (index, value) {
+						return index;
+                    }));
+                }
+            });
+        }
+    });
 });
 $(document).on(
 		'click',
@@ -38,6 +54,12 @@ $(document).on(
 						'ctype' : 'OsRepoUPdate',
 						'filenames' : fileNames,
 						'filesizes' : fileSizes,
+						'vendorname' : $('#vendorname').val(),
+						'ospatch': $('#ospatch').val(),
+						'applydate': $('#applydate').val(),
+						'ospatch': $('#ospatch').val(),
+						'deviceseries':$('#deviceseries').val(),
+						'minverreq':$('#minverreq').val(),
 						'osid': 1,
 					},
 					success : function(resdata) {

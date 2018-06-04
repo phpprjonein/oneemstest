@@ -3,9 +3,16 @@ include "classes/db2.class.php";
 include 'functions.php';
 $data = $_POST; 
 
+if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'osdate'){
+    echo get_os_ver_applydate($_POST['csrsitetechid']);
+}
+
 if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
-    $dsql = 'INSERT INTO `osrepository` (`osid`, `filename`, `filesize`, `mdfive`) VALUES';
-    $oc = 1;
+    $dsql = "INSERT INTO `osrepository` (`osid`, `filename`, `filesize`, `mdfive`, `vendorname`, `ospatch`, `applydate`, `deviceseries`, `minverreq`)VALUES ('1','".implode('|',$_POST['filenames'])."','".implode('|',$_POST['filesizes'])."','".md5(time())."','".$_POST['vendorname']."','".$_POST['ospatch']."','".$_POST['applydate']."','".implode('|',$_POST['deviceseries'])."','".$_POST['minverreq']."')";
+    $db2->query($dsql);
+    $db2->execute();
+    
+    /*$oc = 1;
     foreach ($_POST['filenames'] as $key=>$val):
         if(count($_POST['filenames']) == $oc){
             $dsql .= "('1','".$val."','".$_POST['filesizes'][$key]."','".md5($val)."')";
@@ -18,7 +25,7 @@ if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
         //echo $dsql; die;
         $db2->query($dsql);
         $db2->execute();
-    }
+    }*/
 }
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {

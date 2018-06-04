@@ -4099,3 +4099,19 @@ function os_repository_versions()
 }
 
 
+/**
+ *
+ * @param unknown $query
+ * @return unknown
+ */
+function get_os_ver_applydate($query)
+{
+    global $db2;
+    $sql = "SELECT distinct(applydate) FROM osrepository WHERE (applydate LIKE '%" . $query . "%')";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    foreach ($resultset['result'] as $key => $val) {
+        $Result[] = $val["applydate"];
+    }
+    return json_encode($Result);
+}

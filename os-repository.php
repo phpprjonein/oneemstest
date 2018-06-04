@@ -70,7 +70,7 @@ $page_title = 'OneEMS';
             <?php $os_repository_vendor = os_repository_vendor(); ?>
             <div class="form-group f1 required" data-fid="f4">
 										<label class="control-label" for="f1">Vendor</label> <select
-											id="vendor" name="vendor" class="form-control custom-select"
+											id="vendorname" name="vendor" class="form-control custom-select"
 											data-rule-required="true">
 											<option value="">Choose Vendor</option>
                 <?php foreach ($os_repository_vendor as $key => $val){ ?>
@@ -81,24 +81,23 @@ $page_title = 'OneEMS';
 									<!-- /select purpose options -->
 
 									<!-- select device series options -->
-			<?php $os_repository_deviceseries = os_repository_deviceseries();?>
-            <div class="form-group f2 required" data-fid="f2">
-										<label class="control-label" for="f2">Device Series</label> <select
-											id="deviceseries" name="deviceseries"
+			<?php $os_repository_minverreq = os_repository_minverreq();?>
+            <div class="form-group f4 required" data-fid="f4">
+										<label class="control-label" for="f4">Minimum Os Version</label>
+										<select id="minverreq" name="minverreq"
 											class="form-control custom-select" data-rule-required="true">
-											<option value="">Choose Device Series</option>
-                <?php foreach ($os_repository_deviceseries as $key => $val){ ?>
-				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
+											<option value="">Choose Minimum Os Version</option>
+                <?php foreach ($os_repository_minverreq as $key => $val){ ?>
+				<option value="<?php echo $val['minverreq'];?>"><?php echo $val['minverreq'];?></option>
 				<?php }; ?>
               </select>
 									</div>
 									<!-- /select device series options -->
 
-
 									<!-- select device series options -->
 			<?php $os_repository_patches = os_repository_patches();?>
             <div class="form-group f3 required" data-fid="f3">
-										<label class="control-label" for="f3">Os Patch</label> <select
+										<label class="control-label" for="f3">Patch</label> <select
 											id="ospatch" name="ospatch"
 											class="form-control custom-select" data-rule-required="true">
 											<option value="">Choose Patches</option>
@@ -110,14 +109,14 @@ $page_title = 'OneEMS';
 									<!-- /select device series options -->
 
 									<!-- select device series options -->
-			<?php $os_repository_minverreq = os_repository_minverreq();?>
-            <div class="form-group f4 required" data-fid="f4">
-										<label class="control-label" for="f4">Minimum Ver Required</label>
-										<select id="minverreq" name="minverreq"
+			<?php $os_repository_deviceseries = os_repository_deviceseries();?>
+            <div class="form-group f2 required" data-fid="f2">
+										<label class="control-label" for="f2">Device Series</label> <select
+											id="deviceseries" multiple name="deviceseries"
 											class="form-control custom-select" data-rule-required="true">
-											<option value="">Choose Minimum Ver Required</option>
-                <?php foreach ($os_repository_minverreq as $key => $val){ ?>
-				<option value="<?php echo $val['minverreq'];?>"><?php echo $val['minverreq'];?></option>
+											<option value="">Choose Device Series</option>
+                <?php foreach ($os_repository_deviceseries as $key => $val){ ?>
+				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
 				<?php }; ?>
               </select>
 									</div>
@@ -125,29 +124,14 @@ $page_title = 'OneEMS';
 
 									<!-- datepicker -->
 									<div class="form-group f9 required">
-										<script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  // });
-  $(".chosen-select").chosen({
-    disable_search_threshold: 10,
-    no_results_text: "Oops, nothing found!",
-    width: "95%"
-  });
-  
-});
-  </script>
 										<p>
-											<b>Activate By Date: <input type="text" id="datepicker"
+											<b>Apply By Date: <input type="text" id="applydate"
 												class="form-control"></b>
 										</p>
 									</div>
 									<!-- datepicker -->
 
-									<!-- select device series options -->
+									<!-- select device series options
 			<?php $os_repository_versions = os_repository_versions();?>
             <div class="form-group f5 required" data-fid="f5">
 										<label class="control-label" for="f5">Os Version</label> <select
@@ -159,7 +143,7 @@ $page_title = 'OneEMS';
 				<?php }; ?>
               </select>
 									</div>
-									<!-- /select device series options -->
+									select device series options -->
 
 
 

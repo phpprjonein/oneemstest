@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
@@ -17,8 +18,26 @@ $page_title = 'OneEMS';
 <head>
 <?php include_once("includes.php");  ?>
 <script src="resources/js/os_repository.js?t=<?php echo date('his'); ?>"></script>
+<!-- multiselect dropdown script, styling -->
+<script src="resources/js/chosen.jquery.js"></script>
+<link rel="stylesheet" href="resources/css/chosen.css" class="ref ">
+<!-- multiselect dropdown script, styling -->
+
+<!-- datepicker styling -->
+<link rel="stylesheet" href="resources/css/jquery-ui.css" class="ref">
+<!-- datepicker styling -->
 </head>
 <body>
+  <script>
+  $(function() {
+    $(".chosen-select").chosen({
+      disable_search_threshold: 10,
+      inherit_select_classes: true,
+      no_results_text: "No results found! Please try searching again...",
+      width: "100%"
+    });
+});
+  </script>
 	<div class="container-fluid sw-delivery-devices"
 		id="sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
@@ -111,9 +130,8 @@ $page_title = 'OneEMS';
 									<!-- select device series options -->
 			<?php $os_repository_deviceseries = os_repository_deviceseries();?>
             <div class="form-group f2 required" data-fid="f2">
-										<label class="control-label" for="f2">Device Series</label> <select
-											id="deviceseries" multiple name="deviceseries"
-											class="form-control custom-select" data-rule-required="true">
+										<label class="control-label" for="f2">Device Series</label> 
+										<select data-placeholder="Choose a Device Series..." class="form-control custom-select chosen-select" id="deviceseries" multiple name="deviceseries" tabindex="4">
 											<option value="">Choose Device Series</option>
                 <?php foreach ($os_repository_deviceseries as $key => $val){ ?>
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
@@ -164,7 +182,7 @@ $page_title = 'OneEMS';
 								<div class="row">
 									<div class="col">
                   	<?php
-                //$path = '/home/saravanan/source/oneemstest/osrepository/';
+                $path = '/home/saravanan/source/oneemstest/osrepository/';
 				//$path  ='O:\wamp\www\oneemstest\upload';
                 $contents = array_values(array_diff(scandir($path), array(
                     '.',

@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors',1);
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';

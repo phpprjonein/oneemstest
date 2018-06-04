@@ -164,7 +164,8 @@ $page_title = 'OneEMS';
 								<div class="row">
 									<div class="col">
                   	<?php
-                $path = '/home/saravanan/source/oneemstest/osrepository/';
+                //$path = '/home/saravanan/source/oneemstest/osrepository/';
+				//$path  ='O:\wamp\www\oneemstest\upload';
                 $contents = array_values(array_diff(scandir($path), array(
                     '.',
                     '..'

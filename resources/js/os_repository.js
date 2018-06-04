@@ -1,9 +1,8 @@
 $(document).ready(function(){
 	if($('#osrepository').length > 0){
 		var ipmissedtable =  $('#osrepository').DataTable( {
-		 "aoColumns": [{"bSortable": false}, {},{}],	
+		 "aoColumns": [{"bSortable": false}, {},{}],
 		 "processing": true,
-		 "pageLength": 20,
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2]}}], 
 		 "order": [[1, 'asc']],
 		 } );

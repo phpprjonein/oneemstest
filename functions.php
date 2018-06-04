@@ -4044,7 +4044,7 @@ function swrepo_get_filenames()
 function os_repository_vendor()
 {
     global $db2;
-    $sql = "SELECT distinct(vendor) FROM osversion";
+    $sql = "SELECT distinct(vendorname) FROM osversion";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

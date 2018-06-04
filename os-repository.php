@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors',1);
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
@@ -74,7 +75,7 @@ $page_title = 'OneEMS';
 											data-rule-required="true">
 											<option value="">Choose Vendor</option>
                 <?php foreach ($os_repository_vendor as $key => $val){ ?>
-				<option value="<?php echo $val['vendor'];?>"><?php echo $val['vendor'];?></option>
+				<option value="<?php echo $val['vendorname'];?>"><?php echo $val['vendorname'];?></option>
 				<?php }; ?>
               </select>
 									</div>

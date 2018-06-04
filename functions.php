@@ -4097,6 +4097,25 @@ function os_repository_versions()
     $resultset = $db2->resultset();
     return $resultset;
 }
+/**
+ *
+ * @return unknown
+ */
+function os_repository_get_existing_filenames()
+{
+    global $db2;
+    $filenames = array();
+    $sql = "SELECT distinct(filename) FROM osrepository";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    foreach ($resultset as $key=>$val):
+        $filenames_arr = explode('|', $val['filename']);
+        foreach ($filenames_arr as $key=>$val):
+            $filenames[] = $val;
+        endforeach;
+    endforeach;
+    return array_unique($filenames);
+}
 
 
 /**
@@ -4107,7 +4126,7 @@ function os_repository_versions()
 function get_os_ver_applydate($query)
 {
     global $db2;
-    $sql = "SELECT distinct(applydate) FROM osrepository WHERE (applydate LIKE '%" . $query . "%')";
+    $sql = "SELECT distinct(applydate) FROM osversion WHERE (applydate LIKE '%" . $query . "%')";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     foreach ($resultset['result'] as $key => $val) {
@@ -4115,3 +4134,5 @@ function get_os_ver_applydate($query)
     }
     return json_encode($Result);
 }
+
+

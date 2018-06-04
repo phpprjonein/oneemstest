@@ -169,6 +169,7 @@ $page_title = 'OneEMS';
                     '.',
                     '..'
                 )));
+                $existing_filenames = os_repository_get_existing_filenames();
                 ?>
                     <table id="osrepository" class="display"
 											style="width: 100%">
@@ -181,13 +182,15 @@ $page_title = 'OneEMS';
 											</thead>
 											<tbody>
                             <?php $i=1;?>
-                            <?php foreach ($contents as $key=>$val): ?>
+                            <?php foreach ($contents as $key=>$val):
+                            if(!in_array($val, $existing_filenames)): ?>
                             <tr id="row_<?php echo $i;?>">
 													<td><input type="checkbox" value="" name="category"></td>
 													<td><?php echo $val; ?></td>
 													<td><?php echo filesize($path.$val); ?></td>
-												</tr>
-                            <?php $i++; endforeach; ?>
+							</tr>
+							
+                            <?php endif; $i++; endforeach; ?>
                             </tbody>
 										</table>
 									</div>

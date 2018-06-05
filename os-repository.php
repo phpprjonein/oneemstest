@@ -139,6 +139,15 @@ $page_title = 'OneEMS';
               </select>
 									</div>
 									<!-- /select device series options -->
+			
+				<!-- datepicker -->
+				<div class="form-group f10 required">
+					<p>
+						<b>New Os Version: <input type="text" id="newosversion"
+							class="form-control"></b>
+					</p>
+				</div>
+				<!-- datepicker -->									
 
 									<!-- datepicker -->
 									<div class="form-group f9 required">

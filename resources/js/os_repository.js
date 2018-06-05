@@ -60,6 +60,7 @@ $(document).on(
 						'deviceseries':$('#deviceseries').val(),
 						'minverreq':$('#minverreq').val(),
 						'osid': 1,
+						'newosversion': $('#newosversion').val()
 					},
 					success : function(resdata) {
 						var myModal = $('#batchModal');

@@ -17,8 +17,22 @@ $page_title = 'OneEMS';
 <head>
 <?php include_once("includes.php");  ?>
 <script src="resources/js/swd_batch_page.js?t=<?php echo date('his'); ?>"></script>
+<!-- multiselect dropdown script, styling -->
+<script src="resources/js/chosen.jquery.js"></script>
+<link rel="stylesheet" href="resources/css/chosen.css" class="ref">
+<!-- multiselect dropdown script, styling -->
 </head>
 <body>
+<script>
+    $(function() {
+        $(".chosen-select").chosen({
+          disable_search_threshold: 10,
+          inherit_select_classes: true,
+          no_results_text: "No results found! Please try searching again...",
+          width: "100%"
+        });
+    });
+</script>
 <div class="container-fluid sw-delivery-devices" id="sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
       <?php
@@ -92,7 +106,7 @@ $page_title = 'OneEMS';
 <!-- select device series options -->
                   <?php $swreponodeversions = swrepo_get_nodeversions();?>
                   <div class="form-group f7 required" data-fid="f7">
-                    <label class="control-label" for="f7">Select Node Version</label>
+                    <label class="control-label" for="f7">Select Os Version</label>
                     <select id ="node_version" name ="node_version" class="form-control custom-select" data-rule-required="true">
                       <option value="">- SELECT OS Version -</option>
                     </select>
@@ -103,7 +117,7 @@ $page_title = 'OneEMS';
                   <?php $swrepogetfilenames = swrepo_get_filenames(); ?>
                   <div class="form-group f8 required" data-fid="f8">
                     <label class="control-label" for="f8">Select File Name</label>
-                    <select class="form-control custom-select" id ="swrp_filename" name ="swrp_filename" data-rule-required="true">
+                    <select class="form-control custom-select chosen-select" multiple id ="swrp_filename" name ="swrp_filename" data-rule-required="true">
                     	<option value="">- SELECT Filename -</option>
                     </select>
                   </div>
@@ -171,7 +185,7 @@ $page_title = 'OneEMS';
                         <th>Device Name</th>
                         <th>Device Series</th>
                         <th>Market</th>
-                        <th>Version</th>
+                        <th>Current Version</th>
                       </tr>
                     </thead>
                   </table>

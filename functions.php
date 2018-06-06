@@ -4004,7 +4004,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
 function swrepo_get_deviceseries()
 {
     global $db2;
-    $sql = "SELECT distinct(deviceseries) FROM swrepository";
+    $sql = "SELECT distinct(deviceseries) FROM deviceseries";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

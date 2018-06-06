@@ -3,7 +3,7 @@ $(document).ready(function(){
 		var ipmissedtable =  $('#osrepository').DataTable( {
 		 "aoColumns": [{"bSortable": false}, {},{}],
 		 "processing": true,
-		 "dom": 'ftipr',
+		 "dom": 'Bfrtip',
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2]}}], 
 		 "order": [[1, 'asc']],
 		 } );

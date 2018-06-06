@@ -102,7 +102,7 @@ $page_title = 'OneEMS';
 <!-- select OS Version options -->
                   <?php $swrepolist = swrepo_get_deviceseries(); ?>
                     <div class="form-group f1 required" data-fid="f1">
-                      <label class="control-label" for="f1">OS Version</label>
+                      <label class="control-label" for="f1">Select OS Version</label>
                         <select id="device_series" name ="device_series" class="form-control custom-select" data-rule-required="true">
                           <option value="">- SELECT OS Version -</option>
                           <?php foreach ($swrepolist as $key => $val){ ?>
@@ -193,7 +193,7 @@ $page_title = 'OneEMS';
                       </div>
 <!-- retired? -->
 
-                      <p>&nbsp;</p>
+                      <br>
 
                       <input name="OSVersion" class="btn configsubmit" value="add" type="submit">
 

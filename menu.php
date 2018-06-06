@@ -1,7 +1,7 @@
 <header class="main-header">
   <div class="nav top-menu">
     <div class="float-left box logo-box">
-        <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" NCM Logo"/>
+        <img src="resources/img/verizonlogo.png"  height = "24px"  alt=" Verizon Logo"/>
         <h4>OneEMS</h4>
     </div>
     <?php
@@ -59,11 +59,11 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle  <?php print activemenu(array("software-master.php", "software-upload-devices.php", "sw-delivery-devices.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
+              <a class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php", "software-upload-master.php", "software-master.php", "software-upload-devices.php", "sw-delivery-devices.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
                 <!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
-				<a class="dropdown-item" href="os-repository.php">Software Upload</a>
+                <a class="dropdown-item" href="os-repository.php">Software Upload</a>
                 <!-- <a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
                 <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a> -->
                 <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>

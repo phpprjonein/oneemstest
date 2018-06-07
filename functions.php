@@ -3111,7 +3111,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
  */
 function get_landing_page_sso($username, $eid, $email, $fname, $lname, $vzid)
 {
-    echo 'inside the get_landing_page_sso function' . $username, $eid, $email, $fname, $lname, $vzid . '<br>';
+    //echo 'inside the get_landing_page_sso function' . $username, $eid, $email, $fname, $lname, $vzid . '<br>';
     /*
      *
      * $userinfo = array('id'=>159,'username' => $username,'userlevel'=>1,'fname'=>$fname,'lname'=>$lname');
@@ -3497,7 +3497,8 @@ function delete_batchid($batchid)
 
 /**
  *
- * @param unknown $message
+ *
+ @param unknown $message
  * @param string $logfile
  * @return boolean[]|string[]|boolean[]
  */
@@ -3506,7 +3507,11 @@ function write_log($message, $logfile = '')
     // Determine log file
     // Filename of log to use when none is given to write_log
     $default_log = "/var/www/html/oneemstest/logs/oneemsdefault.log";
-    $upload_log = "/var/www/html/oneemstest/logs/oneems.log";
+    $upload_log = "/var/www/html/oneemstest/logs/oneems.log";	
+	$default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault.log";
+	$upload_log = "O:\wamp\www\oneemstest\logs\oneems.log";
+	//echo 'reach here inside the write_log function';
+	
     if ($logfile == '') {
         // checking if the constant for the log file is defined
         if (isset($default_log)) {

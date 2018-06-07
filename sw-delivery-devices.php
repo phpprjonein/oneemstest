@@ -106,9 +106,9 @@ $page_title = 'OneEMS';
 <!-- select device series options -->
                   <?php $swreponodeversions = swrepo_get_nodeversions();?>
                   <div class="form-group f7 required" data-fid="f7">
-                    <label class="control-label" for="f7">Select Os Version</label>
+                    <label class="control-label" for="f7">Select NEW OS Version</label>
                     <select id ="node_version" name ="node_version" class="form-control custom-select" data-rule-required="true">
-                      <option value="">- SELECT OS Version -</option>
+                      <option value="">- SELECT NEW OS Version -</option>
                     </select>
                   </div>
 <!-- /select device series options -->

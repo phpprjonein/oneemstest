@@ -33,6 +33,12 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         header("location:cellsitetech-configuration.php");
     }
 } elseif ($_POST['action'] == 'Execute Script') {
+	$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+	$username = $_SESSION['username'];
+	$mesg = " User name: $username User type : $usertype Page:  Generate Script page Description: User has executed the script.";
+	write_log($mesg);
+	
+	//exit();
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();

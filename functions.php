@@ -4122,6 +4122,20 @@ function os_repository_get_existing_filenames()
     return array_unique($filenames);
 }
 
+/**
+ *
+ * @return unknown
+ */
+function os_repository_get_records()
+{
+    global $db2;
+    $filenames = array();
+    $sql = "SELECT * FROM osrepository where status = 's'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
 
 /**
  *

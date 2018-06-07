@@ -1,14 +1,29 @@
 $(document).ready(function(){
 	if($('#osrepository').length > 0){
-		var ipmissedtable =  $('#osrepository').DataTable( {
+		var osrepository =  $('#osrepository').DataTable( {
 		 "aoColumns": [{"bSortable": false}, {},{}],
 		 "processing": true,
+		 "destroy": true,
 		 "dom": 'Bfrtip',
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [1]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [1]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [1]}}], 
 		 "order": [[1, 'asc']],
 		 } );
 	}
-	$('#batchModal').on('hidden.bs.modal', function () {
+	
+	if($('#retrosrepository').length > 0){
+		var retrosrepository =  $('#retrosrepository').DataTable( {
+		 "aoColumns": [{"bSortable": false}, {},{},{"bSortable": false}],
+		 "processing": true,
+		 "destroy": true,
+		 "dom": 'Bfrtip',
+		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [1]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [1]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [1]}}], 
+		 "order": [[1, 'asc']],
+		 } );
+	}
+	
+	
+	
+	$('#batchModal,#retModal').on('hidden.bs.modal', function () {
 		 location.reload();
 	});
 	

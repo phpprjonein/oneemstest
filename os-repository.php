@@ -178,7 +178,53 @@ select device series options -->
 
 <!-- script output -->
                                 <div class="col-sm-12 col-md-8" id="listname-dd">
-
+          		<div class="form-group col-md-8">
+  						    <button type="button" class="btn" data-toggle="modal" data-target="#retModal">RETRIEVE</button>
+                </div>
+                 <!-- The Modal -->
+<div class="container">                 
+  <div class="modal fade" id="retModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Retrieve OS Repository</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+                                                      <?php 
+                                                $records = os_repository_get_records();
+                                            ?>
+                                            <table id="retrosrepository" class="display" style="width: 100%">
+    											<thead>
+    												<tr>
+    													<th>Filename</th>
+    													<th>Deviceseries</th>
+    													<th>newosversion</th>
+    													<th>Delete</th>
+    												</tr>
+    											</thead>
+    											<tbody>
+                                                    <?php foreach ($records as $key=>$val): ?>
+                                                        <tr id="row_<?php echo $val['fid'];?>">
+        													<td><?php echo $val['filename']; ?></td>
+        													<td><?php echo $val['deviceseries']; ?></td>
+        													<td><?php echo $val['newosversion']; ?></td>
+        													<td><button type="button" class="btn" id="#retModaldelete">Delete</button></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- template name content -->
                                     <div class="row">
                                         <div class="col">

@@ -191,9 +191,10 @@ select device series options -->
           <h4 class="modal-title">Retrieve OS Repository</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+        <div id="modelstatus" style="display: none;" class="alert"></div>
         <!-- Modal body -->
         <div class="modal-body">
-                                                      <?php 
+			                                                      <?php 
                                                 $records = os_repository_get_records();
                                             ?>
                                             <table id="retrosrepository" class="display" style="width: 100%">
@@ -207,11 +208,11 @@ select device series options -->
     											</thead>
     											<tbody>
                                                     <?php foreach ($records as $key=>$val): ?>
-                                                        <tr id="row_<?php echo $val['fid'];?>">
+                                                        <tr id="row_<?php echo $val['fileid'];?>">
         													<td><?php echo $val['filename']; ?></td>
         													<td><?php echo $val['deviceseries']; ?></td>
         													<td><?php echo $val['newosversion']; ?></td>
-        													<td><button type="button" class="btn" id="#retModaldelete">Delete</button></td>
+        													<td><button type="button" class="btn retModaldelete">Delete</button></td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
@@ -267,6 +268,7 @@ select device series options -->
     									</div>
     								</div>
 <!-- /right side -->
+
 
                                 </div>
 <!-- /script output -->

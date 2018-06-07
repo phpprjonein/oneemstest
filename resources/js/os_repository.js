@@ -17,7 +17,7 @@ $(document).ready(function(){
 		 "destroy": true,
 		 "dom": 'Bfrtip',
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [1]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [1]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [1]}}], 
-		 "order": [[1, 'asc']],
+		 "order": [[0, 'asc']],
 		 } );
 	}
 	
@@ -43,6 +43,43 @@ $(document).ready(function(){
         }
     });
 });
+
+$(document).on('click', ".retModaldelete", function(event) {
+	if(confirm("Are you sure want to delete file " + $(this).closest('tr').find("td:eq(0)").text() + " ?")){
+		$('#retModal #modelstatus').html('');
+		$('#retModal #modelstatus').css("opacity","");
+		var tr = $(this).closest('tr');
+		var fileid = tr.attr('id').replace('row_','');
+		var myModal = $('#retModal');
+		$.post( "software-delivery-batch-process.php", {'fileid': fileid, 'case':'delete-os-repo-by-fileid'})
+		  .done(function( data ) {
+			  $.post( "software-delivery-batch-process.php", {'fileid': fileid, 'case':'reload-os-repo'}).done(function( data ) {
+				  var myModal = $('#retModal');
+				  myModal.find('.modal-body').html(data);
+				  var retrosrepository =  $('#retrosrepository').DataTable( {
+						 "aoColumns": [{"bSortable": false}, {},{},{"bSortable": false}],
+						 "processing": true,
+						 "destroy": true,
+						 "dom": 'Bfrtip',
+						 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [1]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [1]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [1]}}], 
+						 "order": [[0, 'asc']],
+						 } );
+				  myModal.modal('show');
+				  $('#retModal #modelstatus').append("<strong>Success!</strong> File name deleted successfully.");
+				  $('#retModal #modelstatus').show();
+	    			$('#retModal #modelstatus').addClass('alert-success');
+	    		    window.setTimeout(function() {
+	    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    		            $(this).hide(); 
+	    		        });
+	    		    }, 4000);
+			  });
+		});
+		return false;
+	}
+}); 
+
+
 $(document).on(
 		'click',
 		'#osrepo-submit',

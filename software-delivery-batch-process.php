@@ -3,6 +3,33 @@ include "classes/db2.class.php";
 include 'functions.php';
 $data = $_POST; 
 
+if(isset($_POST['fileid']) && $_POST['case'] == 'delete-os-repo-by-fileid'){
+    $sql = "UPDATE `osrepository` SET status = 'd' WHERE fileid = '" . $_POST['fileid'] . "'";
+    $db2->query($sql);
+    $db2->execute();
+    echo "success";
+}
+
+if(isset($_POST['fileid']) && $_POST['case'] == 'reload-os-repo'){
+$records = os_repository_get_records();
+$output = '<table id="retrosrepository" class="display" style="width: 100%">
+    											<thead>
+    												<tr>
+    													<th>Filename</th>
+    													<th>Deviceseries</th>
+    													<th>newosversion</th>
+    													<th>Delete</th>
+    												</tr>
+    											</thead>
+    											<tbody>';
+
+                                                    foreach ($records as $key=>$val):
+                                                    $output .= '<tr id="row_'.$val['fileid'].'"><td>'.$val['filename'].'</td><td>'.$val['deviceseries'].'</td><td>'.$val['newosversion'].'</td><td><button type="button" class="btn retModaldelete">Delete</button></td></tr>';
+                                                    endforeach;
+                                                    $output .= '</tbody></table>';
+echo $output;                                                    
+}
+
 if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'osdate'){
     echo get_os_ver_applydate($_POST['csrsitetechid']);
 }
@@ -30,7 +57,8 @@ if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
     $_POST['scriptname'] = implode(',',$_POST['scriptname']);
-    update_dev_batch_sd(time(), $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'],  $_POST['priority'],  $_POST['refmop'] );
+    $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    update_dev_batch_sd($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'],  $_POST['priority'],  $_POST['refmop'] );
 }
 
 function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop){

@@ -3,6 +3,23 @@ include "classes/db2.class.php";
 include 'functions.php';
 $data = $_POST; 
 
+if(isset($_POST['ctype']) && $_POST['ctype'] == 'MasterDeviceSeries' && $_POST['deviceseries'] != '' && $_POST['osid'] != ''){
+    $dsql = "INSERT INTO `deviceseries` (`deviceseries`, `osid`, `vendorname`)VALUES ('".$_POST['deviceseries']."','".$_POST['osid']."','')";
+    $db2->query($dsql);
+    $db2->execute();
+    echo "success";
+}
+
+if(isset($_POST['ctype']) && $_POST['ctype'] == 'MasterOSVersion'  && $_POST['vendorname'] != '' && $_POST['ospatch'] != '' && $_POST['minverreq'] != '' && $_POST['applydate'] != '' && $_POST['ospatch'] != ''){
+    $applydate_arr = explode('/',$_POST['applydate']);
+    $applydate = $applydate_arr[2].'-'.$applydate_arr[1].'-'.$applydate_arr[0];
+    $dsql = "INSERT INTO `osversion` (`osversion`, `vendorname`, `ospatch`,`minverreq`, `applydate`, `retired`) VALUES ('".$_POST['osversion']."','".$_POST['vendorname']."','".$_POST['ospatch']."','".$_POST['minverreq']."','".$applydate."','".$_POST['retired']."')";
+    $db2->query($dsql);
+    $db2->execute();
+    echo "success";
+}
+
+
 if(isset($_POST['fileid']) && $_POST['case'] == 'delete-os-repo-by-fileid'){
     $sql = "UPDATE `osrepository` SET status = 'd' WHERE fileid = '" . $_POST['fileid'] . "'";
     $db2->query($sql);

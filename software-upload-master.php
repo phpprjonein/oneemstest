@@ -22,7 +22,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <html>
 <head>
 <?php include_once("includes.php");?>
-<script src="resources/js/swd_batch_page.js?t=<?php echo date('his'); ?>"></script>
+<script src="resources/js/os_repository.js?t=<?php echo date('his'); ?>"></script>
 
 <!-- datepicker styling -->
 <link rel="stylesheet" href="resources/css/jquery-ui.css" class="ref">
@@ -41,7 +41,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
   });
 </script>
 
-<div class="container-fluid sw-delivery-devices" id="sw-delivery-devices">
+<div class="container-fluid sw-delivery-devices" id="sw-delivery-devices-master">
   <?php include_once ('menu.php'); ?>
   <?php
     $values = array('Software Master' => '#');
@@ -50,55 +50,18 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content">
-      <div class="modal fade" id="batchModal">
-		    <div class="modal-dialog" >
-
-<!-- Modal content -->
-          <div class="modal-content" id="batchModalContent">
-
-<!-- Modal Header -->
-        		<div class="modal-header" id ="backupmodalhdr">
-              <h5 class="modal-title">Batch Success</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-<!-- /Modal Header -->
-
-<!-- Modal body -->
-    			  <div class="modal-body">
-      			  Please do keep track of the status on the Batch Page
-      			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
-      			  <br>
-              Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
-      			  <?php endif;?>
-    			  </div>
-<!-- /Modal body -->
-
-<!-- Modal footer -->
-    			  <div class="modal-footer">
-    				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    			  </div>
-<!-- /Modal footer -->
-
-          </div>
-<!-- /Modal content -->
-
-        </div>
-		  </div>
-
 <!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-					<div id="status" style="display: none;" class="alert"></div>
+					<div id="status" style="display: none;" class="alert errmsg"></div>
 <!-- backup management content row -->
-            <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
+            <form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action="#" method='POST'>
 
               <div class="row">
 
 <!-- left side -->
 <!-- router selection content row -->
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6" id="lsform">
                   <div class="jf-form">
 
                     <div class="alert alert-secondary">
@@ -106,13 +69,13 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                     </div>
 
 <!-- select OS Version options -->
-                  <?php $swrepolist = swrepo_get_deviceseries(); ?>
+                  <?php $swrepo_get_osversion = swrepo_get_osversion(); ?>
                     <div class="form-group f1 required" data-fid="f1">
                       <label class="control-label" for="f1">Select OS Version</label>
-                        <select id="device_series" name ="device_series" class="form-control custom-select" data-rule-required="true">
+                        <select id="dsosversion" name ="dsosversion" class="form-control custom-select" data-rule-required="true">
                           <option value="">- SELECT OS Version -</option>
-                          <?php foreach ($swrepolist as $key => $val){ ?>
-                          <option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
+                          <?php foreach ($swrepo_get_osversion as $key => $val){ ?>
+                          <option value="<?php echo $val['osid'];?>"><?php echo $val['osversion'];?></option>
                           <?php }; ?>
                         </select>
                     </div>
@@ -122,11 +85,11 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                   
                     <div class="form-group f2 required" data-fid="f2">
                       <label class="control-label" for="f2">Device Series</label>
-                      <input class="form-control inline" id="deviceSeries" type="deviceSeries" placeholder="Enter Device Series">
+                      <input class="form-control inline" id="dsdeviceseries" type="deviceSeries" value="" placeholder="Enter Device Series">
                     </div>
 <!-- /select device series options -->
 
-                    <input name="deviceSeries" class="btn config-submit" value="add" type="submit">
+                    <input name="deviceSeries" id="deviceseriessubmit" class="btn config-submit" value="add" type="submit">
 
 <!-- /select OS version options -->
                     <div class="clearfix"></div>
@@ -140,7 +103,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 <!-- right side -->
 <!-- script output -->
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6" id="rsform">
                   <div class="jf-form">
 
                     <div class="alert alert-secondary">
@@ -148,27 +111,26 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                     </div>
 
 <!-- select OS Version options -->
-                  <?php $swrepolist = swrepo_get_deviceseries(); ?>
                     <div class="form-group f3 required" data-fid="f3">
                       <label class="control-label" for="f3">OS Version</label>
-                      <input class="form-control inline" id="" type="" placeholder="Enter OS Version">
+                      <input class="form-control inline" id="osversion" name="osversion" type="" placeholder="Enter OS Version">
                     </div>
 <!-- select OS Version options -->
 
 <!-- select RAN Vendor options -->
-                  <?php $swreponodeversions = swrepo_get_nodeversions();?>
                     <div class="form-group f4 required" data-fid="f4">
-                      <label class="control-label" for="f4">RAN Vendor</label>
-                      <input class="form-control inline" id="" type="" placeholder="Enter RAN Vendor">
+                      <label class="control-label" for="f4">Vendor Name</label>
+                      <input class="form-control inline" id="vendorname" name="vendorname" type="" placeholder="Enter Vendor Name">
                     </div>
 <!-- /select RAN Vendor options -->
 
 <!-- select OS Patch options -->
-                    <?php $swrepogetfilenames = swrepo_get_filenames(); ?>
                       <div class="form-group f5 required" data-fid="f5">
-                        <label class="control-label" for="f5">Select Patch / OS Version</label>
-                          <select class="form-control custom-select" id ="swrp_filename" name ="swrp_filename" data-rule-required="true">
-                            <option value="">- SELECT Patch / OS Version -</option>
+                        <label class="control-label" for="f5">Select Patch</label>
+                          <select class="form-control custom-select" id="ospatch" name="ospatch" data-rule-required="true">
+                            <option value="">- SELECT Patch -</option>
+                            <option value="y">Yes</option>
+                            <option value="n">No</option>
                           </select>
                       </div>
 <!-- select OS Patch options -->
@@ -176,13 +138,13 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <!-- select Minimum OS Version options -->
                       <div class="form-group f7 required" data-fid="f7">
                         <label class="control-label" for="f6">Minimum OS Version</label>
-                        <input class="form-control inline" id="" type="" placeholder="Enter Minimum OS Version">
+                        <input class="form-control inline" id="minverreq" type="" placeholder="Enter Minimum OS Version">
                       </div>
 <!-- select Minimum OS Version options -->
 
 <!-- activate by date -->
                       <div class="form-group f8 required">
-                        <p><b>Activate By Date: <input type="text" id="datepicker" class="form-control"></b></p>
+                        <p><b>Activate By Date: <input type="text" id="datepicker" placeholder="Apply date" class="form-control applydate"></b></p>
                       </div>
 <!-- activate by date -->
 
@@ -190,18 +152,18 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                       <div class="form-check form-check-inline">
                         <label class="control-label" for="f9">Retire this OS?</label>
                         <br>
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="checked" id="inlineRadio1" value="y">
                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="n">
                         <label class="form-check-label" for="inlineRadio2">No</label>
                       </div>
 <!-- retired? -->
 
                       <br>
 
-                      <input name="OSVersion" class="btn configsubmit" value="add" type="submit">
+                      <input name="OSVersion" class="btn configsubmit" id="osversubmit" value="add" type="submit">
 
 <!-- /select OS version options -->
                       <div class="clearfix"></div>

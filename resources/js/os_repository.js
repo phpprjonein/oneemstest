@@ -82,6 +82,138 @@ $(document).on('click', ".retModaldelete", function(event) {
 
 $(document).on(
 		'click',
+		'#deviceseriessubmit',
+		function(event) {
+			var req_err = false;
+			$('#sw-delivery-devices-master #status').html('');
+			$('#sw-delivery-devices-master #status').css("opacity","");
+			if($('#sw-delivery-devices-master #lsform  #dsosversion').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Os Version field is required.<br/>");
+				req_err = true;
+			}
+			if($('#sw-delivery-devices-master #lsform #dsdeviceseries').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Device Series field is required.<br/>");
+				req_err = true;
+			}
+			
+			if(req_err){ 
+    			$('#sw-delivery-devices-master #status').show();
+    			$('#sw-delivery-devices-master #status').addClass('alert-danger');
+    		    window.setTimeout(function() {
+    		        $(".errmsg").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
+    		
+    		
+			if (confirm("Are you sure, do you want to create the device series ?")) {
+				$.ajax({
+					type : "post",
+					url : "software-delivery-batch-process.php",
+					data : {
+						'ctype' : 'MasterDeviceSeries',
+						'deviceseries':$('#sw-delivery-devices-master #lsform #dsdeviceseries').val(),
+						'osid': $('#sw-delivery-devices-master #lsform  #dsosversion').val(),
+					},
+					success : function(resdata) {
+						$('#sw-delivery-devices-master #status').append("<strong>Success!</strong> Device Series added successfully.<br/>");
+						$('#sw-delivery-devices-master #status').show();
+						$('#sw-delivery-devices-master #status').removeClass('alert-error');
+		    			$('#sw-delivery-devices-master #status').addClass('alert-success');
+		    			$('#sw-delivery-devices-master form')[0].reset();
+		    			window.setTimeout(function() {
+		    		        $(".errmsg").fadeTo(500, 0).slideUp(500, function(){
+		    		            $(this).hide(); 
+		    		        });
+		    		    }, 4000);
+					}
+				});
+				
+			}
+			
+			return false;
+}); 
+
+
+$(document).on(
+		'click',
+		'#osversubmit',
+		function(event) {
+			
+			//alert($("#rsform input[type='radio']:checked").val());
+			var req_err = false;
+			$('#sw-delivery-devices-master #status').html('');
+			$('#sw-delivery-devices-master #status').css("opacity","");
+			if($('#sw-delivery-devices-master #rsform #osversion').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Os Version field is required.<br/>");
+				req_err = true;
+			}
+			if($('#sw-delivery-devices-master #rsform #vendorname').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Vendor Name field is required.<br/>");
+				req_err = true;
+			}
+			if($('#sw-delivery-devices-master #rsform #ospatch').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Patch field is required.<br/>");
+				req_err = true;
+			}
+			if($('#sw-delivery-devices-master #rsform #minverreq').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Minimum OS Version field is required.<br/>");
+				req_err = true;
+			}
+			if($('#sw-delivery-devices-master #rsform .applydate').val() == ""){
+				$('#sw-delivery-devices-master #status').append("<strong>Error!</strong> Apply date field is required.<br/>");
+				req_err = true;
+			}
+			
+    		if(req_err){ 
+    			$('#sw-delivery-devices-master #status').show();
+    			$('#sw-delivery-devices-master #status').addClass('alert-danger');
+    		    window.setTimeout(function() {
+    		        $(".errmsg").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
+    		
+			if (confirm("Are you sure, do you want to create the os version entry ?")) {
+				$.ajax({
+					type : "post",
+					url : "software-delivery-batch-process.php",
+					data : {
+						'ctype' : 'MasterOSVersion',
+						'osversion':$('#osversion').val(),
+						'deviceseries':$('#deviceseries').val(),
+						'vendorname': $('#vendorname').val(),
+						'ospatch': $('#ospatch').val(),
+						'minverreq': $('#minverreq').val(),
+						'applydate': $('.applydate').val(),
+						'retired': $("#rsform input[type='radio']:checked").val(),
+					},
+					success : function(resdata) {
+						$('#sw-delivery-devices-master #status').append("<strong>Success!</strong> Os Version Entry added successfully.<br/>");
+						$('#sw-delivery-devices-master #status').show();
+						$('#sw-delivery-devices-master #status').removeClass('alert-error');
+		    			$('#sw-delivery-devices-master #status').addClass('alert-success');
+		    			$('#sw-delivery-devices-master form')[0].reset();
+		    			window.setTimeout(function() {
+		    		        $(".errmsg").fadeTo(500, 0).slideUp(500, function(){
+		    		            $(this).hide(); 
+		    		        });
+		    		    }, 4000);
+					}
+				});
+				
+			}
+			
+			return false;
+}); 
+
+
+$(document).on(
+		'click',
 		'#osrepo-submit',
 		function(event) {
 			var req_err = false;

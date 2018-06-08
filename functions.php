@@ -4019,6 +4019,19 @@ function swrepo_get_deviceseries()
  *
  * @return unknown
  */
+function swrepo_get_osversion()
+{
+    global $db2;
+    $sql = "SELECT distinct(osversion), osid FROM osversion";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @return unknown
+ */
 function os_repository_vendor()
 {
     global $db2;

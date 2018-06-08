@@ -89,11 +89,6 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
         VALUES('".$batchid."','s','".$date_op."', '', 'sd', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$node_version."','".$scriptname."','".$refmop."' )";
         $db2->query($dsql);
         $db2->execute();
-        
-        /*update sw repo table*/
-        $sql = "UPDATE `swrepository` SET batchid = '".$batchid."' WHERE deviceseries = '".$deviceseries."' and nodeVersion = '".$node_version."'";
-        $db2->query($sql);
-        $db2->execute();
     }
 }
 

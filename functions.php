@@ -4019,33 +4019,6 @@ function swrepo_get_deviceseries()
  *
  * @return unknown
  */
-function swrepo_get_nodeversions()
-{
-    global $db2;
-    $sql = "SELECT distinct(deviceseries) FROM swrepository";
-    $db2->query($sql);
-    $resultset = $db2->resultset();
-    return $resultset;
-}
-
-/**
- *
- * @return unknown
- */
-function swrepo_get_filenames()
-{
-    global $db2;
-    $sql = "SELECT distinct(deviceseries) FROM swrepository";
-    $db2->query($sql);
-    $resultset = $db2->resultset();
-    return $resultset;
-}
-
-
-/**
- *
- * @return unknown
- */
 function os_repository_vendor()
 {
     global $db2;

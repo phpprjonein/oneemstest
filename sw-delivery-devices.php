@@ -110,7 +110,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <!-- /select purpose options -->
 
 <!-- select device series options -->
-                  <?php $swreponodeversions = swrepo_get_nodeversions();?>
                   <div class="form-group f7 required" data-fid="f7">
                     <label class="control-label" for="f7">Select NEW OS Version</label>
                     <select id ="node_version" name ="node_version" class="form-control custom-select" data-rule-required="true">
@@ -120,7 +119,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <!-- /select device series options -->
 
 <!-- select OS version options -->
-                  <?php $swrepogetfilenames = swrepo_get_filenames(); ?>
                   <div class="form-group f8 required" data-fid="f8">
                     <label class="control-label" for="f8">Select File Name</label>
                     <select class="form-control custom-select chosen-select" multiple id ="swrp_filename" name ="swrp_filename" data-rule-required="true">

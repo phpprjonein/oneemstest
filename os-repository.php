@@ -234,7 +234,7 @@ select device series options -->
 <!-- template name content -->
                                     <div class="row">
                                         <div class="col">
-                                            <?php //$path = '/home/saravanan/source/oneemstest/osrepository/';
+                                            <?php  
                                             $path  ='O:\wamp\www\oneemstest\upload';
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
@@ -258,7 +258,11 @@ select device series options -->
                                                         <tr id="row_<?php echo $i;?>">
         													<td><input type="checkbox" value="" name="category"></td>
         													<td><?php echo $val; ?></td>
-        													<td><?php echo filesize($path.$val); ?></td>
+        													<td> 
+															<?php $path = $path .'\\'; 
+																  echo filesize($path.$val); 
+															?> 
+															</td>
                                                         </tr>
                                                     <?php endif; $i++; endforeach; ?>
                                                 </tbody>

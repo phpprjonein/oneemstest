@@ -19,6 +19,12 @@ else if ($_SESSION['userlevel'] == 2)
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Load Template file upload page Description: Cell Site Tech has chosen their configuration and is ready to select a file to upload.";
+  write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -127,7 +133,7 @@ $page_title = 'OneEMS';
         $output .= '<input type="hidden" name="templname" value="' . $templname . '" />';
         $output .= '<input type="hidden" name="alias" value="' . $alias . '" />';
         $output .= '<input type="hidden" name="refmop" value="' . $refmop . '" />';
-        
+
         ?>
 							<div id="file_process">
 							<?php
@@ -157,9 +163,9 @@ $page_title = 'OneEMS';
                     }
                 }
                 ;
-                
+
                 $output .= '<span class="form-editable-fields">' . $output_inner . '</span>';
-                
+
                 $output .= '</div>';
             } elseif ($splitcontcount == 1) {
                 foreach ($splitcontents as $color) {

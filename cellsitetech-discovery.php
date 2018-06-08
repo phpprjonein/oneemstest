@@ -15,6 +15,11 @@ include_once ('config/session_check_cellsite_tech.php');
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Discovery Results page Description: Cell Site Tech has navigated to the Discovery Results page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +83,7 @@ echo generate_site_breadcrumb($values);
           <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
           <?php
           endif;
-            
+
         endforeach
         ;
         if (count($region_list['result']) > 1) :
@@ -451,7 +456,7 @@ conflict table content -->
           <a class="dropdown-item" href="#"><?php echo $rvalue['market']; ?></a>
           <?php
           endif;
-            
+
         endforeach
         ;
         if (count($market_list['result']) > 0) :

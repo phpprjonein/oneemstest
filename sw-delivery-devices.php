@@ -11,6 +11,12 @@ if (isset($_GET['clear'])) {
 }
 user_session_check();
 $page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Software Delivery page Description: Cell Site Tech has navigated to the Software Delivery page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,9 +66,9 @@ $page_title = 'OneEMS';
 <!-- Modal body -->
       			  <div class="modal-body">
         			  Please do keep track the status on Batch Page
-        			  <?php $batchid = time(); ?>
-        			  <br>Batch ID : <?php echo $batchid; ?></b>
-        			  <input type="hidden" value="<?php echo $batchid; ?>" id="batchid"/>
+        			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
+        			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
+        			  <?php endif;?>
       			  </div>
 <!-- /Modal body -->
 

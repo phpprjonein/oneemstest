@@ -21,6 +21,12 @@ else if ($_SESSION['userlevel'] == 2)
     include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Generate script 2 page Description: Cell Site Tech has chosen their configuration and is ready to edit their script's editable fields.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>

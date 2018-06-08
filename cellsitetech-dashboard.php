@@ -41,7 +41,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'editmylist') {
     $switchlistid = $_SESSION['switchlistid'] = $_GET['switchlistid'];
 }
 
-
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Network Elements page Description: Cell Site Tech has logged into the application.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html lang="en">

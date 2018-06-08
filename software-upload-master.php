@@ -11,6 +11,12 @@ if (isset($_GET['clear'])) {
 }
 user_session_check();
 $page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Software Master page Description: Cell Site Tech has navigated to the Software Upload Master page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -160,7 +166,7 @@ $page_title = 'OneEMS';
 <!-- select OS Patch options -->
                     <?php $swrepogetfilenames = swrepo_get_filenames(); ?>
                       <div class="form-group f5 required" data-fid="f5">
-                        <label class="control-label" for="f5">Patch / OS Version</label>
+                        <label class="control-label" for="f5">Select Patch / OS Version</label>
                           <select class="form-control custom-select" id ="swrp_filename" name ="swrp_filename" data-rule-required="true">
                             <option value="">- SELECT Patch / OS Version -</option>
                           </select>

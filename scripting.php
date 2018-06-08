@@ -20,6 +20,11 @@ include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Load Template config page Description: Cell Site Tech has initiated the Load Template process.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -224,7 +229,7 @@ $page_title = 'OneEMS';
 				</div>
 				</form>
 				</div>
-				</div>				
+				</div>
 			</section>
 			<!-- /.content -->
 		</div>

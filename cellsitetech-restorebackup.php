@@ -15,6 +15,11 @@ include_once ('config/session_check_cellsite_tech.php');
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+	$username = $_SESSION['username'];
+	$mesg = " User name: $username User type : $usertype Page:  Backup page Description: Cell Site Tech has navigated to the Backup page.";
+	write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -119,7 +124,7 @@ $page_title = 'OneEMS';
 						  <a class="dropdown-item" href="#"><?php echo ($value['listname'] == "0") ? 'My routers' : $value['listname'] ; ?></a>
 						  <?php
 						  endif;
-            
+
         endforeach
         ;
         ?>
@@ -148,7 +153,7 @@ $page_title = 'OneEMS';
 							<!-- /.box-body -->
 						</div>
 					</div>
-			
+
 			</section>
 			<!-- /.content -->
 		</div>

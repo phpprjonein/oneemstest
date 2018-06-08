@@ -12,6 +12,12 @@ if (isset($_GET['clear'])) {
 }
 user_session_check();
 $page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  OS Repository page Description: Cell Site Tech has navigated to the OS Repository Software Upload page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -182,7 +188,7 @@ select device series options -->
   						    <button type="button" class="btn" data-toggle="modal" data-target="#retModal">RETRIEVE</button>
                 </div>
                  <!-- The Modal -->
-<div class="container">                 
+<div class="container">
   <div class="modal fade" id="retModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -191,10 +197,9 @@ select device series options -->
           <h4 class="modal-title">Retrieve OS Repository</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div id="modelstatus" style="display: none;" class="alert"></div>
         <!-- Modal body -->
         <div class="modal-body">
-			                                                      <?php 
+                                                      <?php
                                                 $records = os_repository_get_records();
                                             ?>
                                             <table id="retrosrepository" class="display" style="width: 100%">
@@ -208,11 +213,11 @@ select device series options -->
     											</thead>
     											<tbody>
                                                     <?php foreach ($records as $key=>$val): ?>
-                                                        <tr id="row_<?php echo $val['fileid'];?>">
+                                                        <tr id="row_<?php echo $val['fid'];?>">
         													<td><?php echo $val['filename']; ?></td>
         													<td><?php echo $val['deviceseries']; ?></td>
         													<td><?php echo $val['newosversion']; ?></td>
-        													<td><button type="button" class="btn retModaldelete">Delete</button></td>
+        													<td><button type="button" class="btn" id="#retModaldelete">Delete</button></td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
@@ -268,7 +273,6 @@ select device series options -->
     									</div>
     								</div>
 <!-- /right side -->
-
 
                                 </div>
 <!-- /script output -->

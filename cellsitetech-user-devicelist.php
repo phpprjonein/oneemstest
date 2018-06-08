@@ -16,6 +16,12 @@ $listid = $_GET['listid'];
 // $device_list = get_device_list_from_nodes($_SESSION['userid']);
 $title = get_user_mylist_name_by_id($listid);
 $page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+    $username = $_SESSION['username'];
+    $mesg = " User name: $username User type : $usertype Page:  Health Check (cell site technician) page Description: Cell Site Tech has executed Health Check.";
+    write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +63,7 @@ modal.children[0].addEventListener('click', function(e) {
             );
             echo generate_site_breadcrumb($values);
             ?>
-            
+
             <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->

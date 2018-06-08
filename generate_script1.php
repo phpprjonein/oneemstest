@@ -19,6 +19,12 @@ else if ($_SESSION['userlevel'] == 2)
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Generate script page Description: Cell Site Tech has navigated to the Generate Script page.";
+  write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -225,7 +231,7 @@ $page_title = 'OneEMS';
 							<!-- /backup management content row -->
 						</div>
 					</form>
-			
+
 			</section>
 			<!-- /.content -->
 		</div>

@@ -16,6 +16,12 @@ include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Switch Technician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Discovery IPs page Description: Switch Tech has navigated to the Discovery IPs page.";
+  write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -16,6 +16,12 @@ include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Switch Technician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Discovery Results page Description: Switch Tech has navigated to the Discovery Results page.";
+  write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,9 +33,9 @@ $page_title = 'OneEMS';
 <!-- container div -->
   <div class="container-fluid" id="disc-mgt-screen">
 <?php include_once ('menu.php'); ?>
-		<?php 
+		<?php
         $values = array('Discovery Results' => '#');
-        echo generate_site_breadcrumb($values); 
+        echo generate_site_breadcrumb($values);
         ?>
         <!-- The Modal -->
 		<div class="modal fade" id="myModal">

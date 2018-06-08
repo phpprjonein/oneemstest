@@ -15,6 +15,12 @@ include_once ('config/session_check_switch_tech.php');
 
     $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Switch Technician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Backup page Description: Switch Tech has navigated to the Backup page.";
+  write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,9 +83,9 @@ include_once ('config/session_check_switch_tech.php');
 
         <div class="container-fluid">
             <?php include_once ('menu.php'); ?>
-            <?php 
+            <?php
             $values = array('Backup' => '#');
-            echo generate_site_breadcrumb($values); 
+            echo generate_site_breadcrumb($values);
             ?>
             <!-- Content Wrapper. Contains page content -->
             <div class="content">

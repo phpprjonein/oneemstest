@@ -41,7 +41,11 @@ write_log($mesg);
     $switchlistid = $_SESSION['switchlistid'] = $_GET['switchlistid'];
   }
 
-
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Switch Technician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Network Elements page Description: Switch Tech has logged in to the OneEMS application.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html lang="en">

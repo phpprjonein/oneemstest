@@ -119,7 +119,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <!-- select OS Version options -->
 
 <!-- select device series options -->
-                  <?php $swreponodeversions = swrepo_get_nodeversions();?>
+                  
                     <div class="form-group f2 required" data-fid="f2">
                       <label class="control-label" for="f2">Device Series</label>
                       <input class="form-control inline" id="deviceSeries" type="deviceSeries" placeholder="Enter Device Series">

@@ -64,9 +64,11 @@
                 <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
                 <!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
                 <a class="dropdown-item" href="os-repository.php">Software Upload</a>
-                <!-- <a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
-                <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a> -->
-                <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>
+				<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
+                <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
+                <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>  
+				<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
+				<!-- <a class="dropdown-item" href="bootorder-sequence.php">Boot Order Sequence</a>  -->
               </div>
             </li>
             <li class="nav-item dropdown">

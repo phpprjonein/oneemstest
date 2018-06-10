@@ -199,3 +199,10 @@ if(isset($_POST['region']) &&  isset($_POST['category']) && ($_POST['category'] 
 if(isset($_POST['act']) && $_POST['act'] == 'batch-del' && isset($_POST['batchid'])){
     echo delete_batchid($_POST['batchid']);
 }
+
+if ($_POST['ctype'] == 'SchedBakupSettings') {	   	
+	 //update_schedbackup_settings($_POST['username'],$_POST['backup_occur'], $_POST['backup_day'], $_POST['backup_hours'],  $_POST['backup_minutes'],  $_POST['backup_timezone'],$_POST['backup_market'] );
+	 logToFile('schedbak.log',$_POST['schedbackup_type']);		
+	 update_schedbackup_settings($_POST['username'],$_POST['backup_occur'], $_POST['backup_day'], $_POST['backup_hours'],  $_POST['backup_minutes'], $_POST['schedbackup_type'], $_POST['backup_timezone'],$_POST['backup_market'] );
+	 echo "success";
+}

@@ -113,14 +113,23 @@ $(document).ready(function() {
 	      
 	      
 	      $("#batchtype-dt-filter a").click(function(){			
-	    		$("#batchtype-dt-filter .btn").html($(this).text());
+	    		/*$("#batchtype-dt-filter .btn").html($(this).text());
 	    		var batchtype = '';
 				if($(this).text() == 'Script Execution'){
 					batchtype = 'se';
 				}else{
 					batchtype = 'sd';
-				}
+				} */				 
 				
+				$("#batchtype-dt-filter .btn").html($(this).text());
+	    		var batchtype = '';
+				if($(this).text() == 'Script Execution'){
+					batchtype = 'se';
+				}else if($(this).text() == 'Software Delivery'){
+					batchtype = 'sd';
+				}else if($(this).text() == 'Boot Order'){
+					batchtype = 'bo';
+				}; 
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,
 		             "serverSide": true,

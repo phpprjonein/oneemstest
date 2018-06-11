@@ -94,7 +94,7 @@ user_session_check();
 						  <div class="dropdown-menu">
 						  <a class="dropdown-item" href="#">Script Execution</a>
 						  <a class="dropdown-item" href="#">Software Delivery</a>
-						  <a class="dropdown-item" href="#">BootOrder</a>
+						  <a class="dropdown-item" href="#">Boot Order</a>
 						  </div>
 						</div>
 						  <p id="cp1" style="display: none"></p>

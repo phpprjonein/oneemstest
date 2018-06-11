@@ -127,8 +127,7 @@ $(document).ready(function() {
 					batchtype = 'se';
 				}else if($(this).text() == 'Software Delivery'){
 					batchtype = 'sd';
-				}else if($(this).text() == 'BootOrder'){
-					alert('reach here');
+				}else if($(this).text() == 'Boot Order'){					
 					batchtype = 'bo';
 				}; 
 		         var table =  $('#devicebatchtrack').DataTable( {

@@ -217,7 +217,7 @@ select device series options -->
         													<td><?php echo $val['filename']; ?></td>
         													<td><?php echo $val['deviceseries']; ?></td>
         													<td><?php echo $val['newosversion']; ?></td>
-        													<td><button type="button" class="btn" id="#retModaldelete">Delete</button></td>
+        													<td><button type="button" class="btn retModaldelete">Delete</button></td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>

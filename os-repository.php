@@ -236,7 +236,7 @@ select device series options -->
                                         <div class="col">
                                             <?php  
                                             $path  ='O:\wamp\www\oneemstest\upload';
-                                            $path  ='/var/www/html/oneemstest/osrepository/';
+                                           // $path  ='/var/www/html/oneemstest/osrepository/';
                                             
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
@@ -262,7 +262,7 @@ select device series options -->
         													<td><?php echo $val; ?></td>
         													<td> 
 															<?php  
-																  echo filesize($path.$val); 
+																  echo filesize($path."//$val"); 
 															?> 
 															</td>
                                                         </tr>

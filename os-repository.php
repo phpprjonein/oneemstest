@@ -108,31 +108,31 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                                         </div>
 <!-- /select purpose options -->
 
-<!-- select device series options -->
-                                    <?php $os_repository_minverreq = os_repository_minverreq();?>
+<!-- select device series options
+                                    <?php //$os_repository_minverreq = os_repository_minverreq();?>
                                         <div class="form-group f4 required" data-fid="f4">
                                             <label class="control-label" for="f4">Select Minimum OS Version</label>
                                             <select id="minverreq" name="minverreq" class="form-control custom-select" data-rule-required="true">
                                                 <option value="">- SELECT Minimum OS Version -</option>
-                                                <?php foreach ($os_repository_minverreq as $key => $val){ ?>
-                                                <option value="<?php echo $val['minverreq'];?>"><?php echo $val['minverreq'];?></option>
-                                                <?php }; ?>
+                                                <?php //foreach ($os_repository_minverreq as $key => $val){ ?>
+                                                <option value="<?php //echo $val['minverreq'];?>"><?php //echo $val['minverreq'];?></option>
+                                                <?php //}; ?>
                                             </select>
                                         </div>
-<!-- /select device series options -->
+select device series options -->
 
-<!-- select device series options -->
-                                    <?php $os_repository_patches = os_repository_patches();?>
+<!-- select device series options
+                                    <?php //$os_repository_patches = os_repository_patches();?>
                                         <div class="form-group f3 required" data-fid="f3">
                                         <label class="control-label" for="f3">Select Patch</label>
                                         <select id="ospatch" name="ospatch" class="form-control custom-select" data-rule-required="true">
                                             <option value="">- SELECT Patch -</option>
-                                            <?php foreach ($os_repository_patches as $key => $val){ ?>
-                                            <option value="<?php echo $val['ospatch'];?>"><?php echo $val['ospatch'];?></option>
-                                            <?php }; ?>
+                                            <?php //foreach ($os_repository_patches as $key => $val){ ?>
+                                            <option value="<?php //echo $val['ospatch'];?>"><?php //echo $val['ospatch'];?></option>
+                                            <?php //}; ?>
                                         </select>
                                         </div>
-<!-- /select device series options -->
+select device series options -->
 
 <!-- select device series options -->
                         			<?php $os_repository_deviceseries = os_repository_deviceseries();?>
@@ -147,17 +147,17 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
     									</div>
 <!-- /select device series options -->
 
-<!-- New OS Version options -->
+<!-- New OS Version options
                         				<div class="form-group f10 required">
                         					<p><b>New OS Version: <input type="text" id="newosversion" class="form-control"></b></p>
                         				</div>
-<!-- New OS Version options -->
+New OS Version options -->
 
-<!-- datepicker -->
+<!-- datepicker
     									<div class="form-group f9 required">
     										<p><b>Apply By Date: <input type="text" id="applydate" class="form-control" readonly value= "2018-07-06"></b></p>
     									</div>
-<!-- datepicker -->
+datepicker -->
 
 <!-- select device series options
                             			<?php $os_repository_versions = os_repository_versions();?>

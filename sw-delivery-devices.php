@@ -109,14 +109,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                     </div>
 <!-- /select purpose options -->
 
-<!-- select device series options -->
+<!-- select device series options
                   <div class="form-group f7 required" data-fid="f7">
                     <label class="control-label" for="f7">Select NEW OS Version</label>
                     <select id ="node_version" name ="node_version" class="form-control custom-select" data-rule-required="true">
                       <option value="">- SELECT NEW OS Version -</option>
                     </select>
                   </div>
-<!-- /select device series options -->
+select device series options -->
 
 <!-- select OS version options -->
                   <div class="form-group f8 required" data-fid="f8">

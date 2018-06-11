@@ -53,7 +53,7 @@ if(isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['qu
 }
 
 if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
-    $dsql = "INSERT INTO `osrepository` (`osid`, `filename`, `filesize`, `mdfive`, `vendorname`, `ospatch`, `applydate`, `deviceseries`, `minverreq`,`username`, `uploadeddate`, `status`, `batchid`, `newosversion`)VALUES ('1','".implode('|',$_POST['filenames'])."','".implode('|',$_POST['filesizes'])."','".md5(time())."','".$_POST['vendorname']."','".$_POST['ospatch']."','".$_POST['applydate']."','".implode('|',$_POST['deviceseries'])."','".$_POST['minverreq']."', '".$_SESSION['username']."', '".date("Y-m-d H:i:s")."', 's', '','".$_POST['newosversion']."')";
+    $dsql = "INSERT INTO `osrepository` (`osid`, `filename`, `filesize`, `mdfive`, `vendorname`, `ospatch`, `applydate`, `deviceseries`, `minverreq`,`username`, `uploadeddate`, `status`, `batchid`, `newosversion`)VALUES ('1','".implode('|',$_POST['filenames'])."','".implode('|',$_POST['filesizes'])."','".md5(time())."','".$_POST['vendorname']."','".$_POST['ospatch']."','2018-07-06','".implode('|',$_POST['deviceseries'])."','".$_POST['minverreq']."', '".$_SESSION['username']."', '".date("Y-m-d H:i:s")."', 's', '','".$_POST['newosversion']."')";
     $db2->query($dsql);
     $db2->execute();
     

@@ -47,7 +47,7 @@
     		    }, 4000);
     			return false;
     		}
-		     alert('backuptype' + $('#schedbackup_type').val());
+		   //  alert('backuptype' + $('#schedbackup_type').val());
     		if(confirm("Are you sure, do you want to save the settings ?")){	        			
 	            $.ajax({
 	                type:"post",

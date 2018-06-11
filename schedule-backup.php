@@ -1,6 +1,21 @@
 <?php
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
+$market_list = get_market_list();
+function get_market_list()
+{
+    global $db2;
+    
+    $sql_select = "SELECT market as market_name ";
+    $sql_condition = " FROM nodes
+                      where market != ''
+                      GROUP BY market ";
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    // echo $sql;
+    $resultset = $db2->resultset();
+    return $resultset;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -240,7 +255,9 @@ include_once "classes/paginator.class.php";
 <label for="backup_market">Market</label>
 <select class="form-control custom-select" id="backup_market" name="backup_market">        						
 <option selected></option>
-<option>OPW</option>
+<?php foreach ($market_list as $key=>$value) { ?>
+<option = <?php echo $value['market_name'] ?>><?php echo $value['market_name'] ?></option>
+<?php };?> 
 </select>
 </fieldset>							
 <button type="button" value="SUBMIT" class="btn btn-default text-center"  id="schedbackup_submit" name="backup-submit">Apply Changes</button>

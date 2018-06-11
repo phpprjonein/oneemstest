@@ -8,6 +8,9 @@ $(document).ready(function(){
 		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [1]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [1]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [1]}}], 
 		 "order": [[1, 'asc']],
 		 } );
+		
+		$('.dt-buttons').append('<div class="form-group col-md-8"><button type="button" class="btn" data-toggle="modal" data-target="#retModal">RETRIEVE</button></div>');
+		
 	}
 	
 	if($('#retrosrepository').length > 0){

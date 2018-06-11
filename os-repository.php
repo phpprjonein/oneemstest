@@ -184,9 +184,9 @@ select device series options -->
 
 <!-- script output -->
                                 <div class="col-sm-12 col-md-8" id="listname-dd">
-          		<div class="form-group col-md-8">
+          		<!-- <div class="form-group col-md-8">
   						    <button type="button" class="btn" data-toggle="modal" data-target="#retModal">RETRIEVE</button>
-                </div>
+                </div>  -->
                  <!-- The Modal -->
 <div class="container">
   <div class="modal fade" id="retModal">
@@ -213,7 +213,7 @@ select device series options -->
     											</thead>
     											<tbody>
                                                     <?php foreach ($records as $key=>$val): ?>
-                                                        <tr id="row_<?php echo $val['fid'];?>">
+                                                        <tr id="row_<?php echo $val['fileid'];?>">
         													<td><?php echo $val['filename']; ?></td>
         													<td><?php echo $val['deviceseries']; ?></td>
         													<td><?php echo $val['newosversion']; ?></td>

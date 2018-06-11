@@ -1,6 +1,7 @@
 <?php 
 include "classes/db2.class.php"; 
 include 'functions.php';
+ini_set('display_errors',1);
 $data = $_POST; 
 
 if(isset($_POST['ctype']) && $_POST['ctype'] == 'MasterDeviceSeries' && $_POST['deviceseries'] != '' && $_POST['osid'] != ''){
@@ -89,12 +90,12 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
     }
 
-    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`) VALUES';
+    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
-            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."')";
+            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."','')";
         }else{
-            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."'),";
+            $dsql .= "('".$batchid."','".$val."','s','".$nodes[$val]['deviceIpAddr']."',''),";
         }
         $oc++;
     }
@@ -102,8 +103,8 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
         $db2->query($dsql);
         $db2->execute();
         /*insert in to batchmaster table*/
-        echo $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`)
-        VALUES('".$batchid."','s','".$date_op."', '', 'sd', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$node_version."','".$scriptname."','".$refmop."' )";
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`)
+        VALUES('".$batchid."','s','".$date_op."', '', 'sd', '".$priority."','".$_SESSION['username']."','".$date_op."','".$deviceseries."','".$node_version."','".$scriptname."','".$refmop."','','' )";
         $db2->query($dsql);
         $db2->execute();
     }

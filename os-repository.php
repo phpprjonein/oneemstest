@@ -155,7 +155,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 <!-- datepicker -->
     									<div class="form-group f9 required">
-    										<p><b>Apply By Date: <input type="text" id="applydate" class="form-control" readonly value= "07-jun-2018"></b></p>
+    										<p><b>Apply By Date: <input type="text" id="applydate" class="form-control" readonly value= "2018-07-06"></b></p>
     									</div>
 <!-- datepicker -->
 
@@ -236,6 +236,7 @@ select device series options -->
                                         <div class="col">
                                             <?php  
                                             $path  ='O:\wamp\www\oneemstest\upload';
+                                            $path  ='/var/www/html/oneemstest/osrepository';
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
                                                 '..'

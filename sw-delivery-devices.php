@@ -66,9 +66,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <!-- Modal body -->
       			  <div class="modal-body">
         			  Please do keep track the status on Batch Page
-        			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
-        			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
-        			  <?php endif;?>
+                     <?php $batchid = time(); ?>
+                     <br>Batch ID : <?php echo $batchid; ?></b>
+                     <input type="hidden" value="<?php echo $batchid; ?>" id="batchid"/>
       			  </div>
 <!-- /Modal body -->
 

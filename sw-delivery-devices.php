@@ -126,6 +126,21 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                     </select>
                   </div>
 <!-- /select OS version options -->
+				
+				<?php $destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/');?>
+				<!-- select device series options -->
+                  <div class="form-group f7 required" data-fid="f17">
+                    <label class="control-label" for="f17">Destination Drive</label>
+                    <select id ="destdrive" name ="destdrive" class="form-control custom-select" data-rule-required="true">
+                      <option value="">- SELECT Destination Drive -</option>
+                      <?php foreach ($destdrive_arr as $key => $val){ ?>
+        			  <option value="<?php echo $key;?>"><?php echo $val;?></option>
+        			  <?php }; ?>
+                    </select>
+                  </div>
+<!-- /select device series options -->
+
+					
 
 <!-- select RAN vendor options -->
                   <?php  $configtmpddwndata =getconfigtempldpdwntbl('configscriptranvendor'); ?>

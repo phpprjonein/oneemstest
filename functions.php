@@ -3695,13 +3695,21 @@ function get_devicebatch_list_from_devicebatch_datatable()
     );
     $sql_count = "SELECT COUNT(distinct(bm.batchid)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
-    
+    /*
     if ($_GET['batchtype'] == 'se') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'se'";
     } else {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'sd'";
     }
-    
+	
+	*/ 
+    if ($_GET['batchtype'] == 'se') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'se'";
+    } else if ($_GET['batchtype'] == 'sd') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'sd'";
+    } else if ($_GET['batchtype'] == 'bo') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'bo'";
+    }	 	 
     if ($search) {
         $sql_condition .= " AND ( ";
         $sql_condition .= " bm.batchid LIKE '%" . $search . "%'";

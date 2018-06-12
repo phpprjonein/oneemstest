@@ -97,7 +97,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                   <div class="jf-form">
 
 <!-- select purpose options -->
-                  <?php $swrepolist = swrepo_get_deviceseries(); ?>
+                  <?php $swrepolist = swrepo_get_deviceseries();?>
                     <div class="form-group f4 required" data-fid="f4">
                       <label class="control-label" for="f4">Select Device Series</label>
                       <select id="device_series" name ="device_series" class="form-control custom-select" data-rule-required="true">

@@ -35,7 +35,7 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemstest/");
 
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'svn');
+define('DB_NAME', 'oneems');
 define('DB_USER', 'root');
 define('DB_PASSWORD','root');
 define('HIGH_LIMIT', 25);

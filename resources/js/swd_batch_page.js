@@ -37,9 +37,6 @@
 		  if($('#device_series').val() != 'Choose Device Series'){ 	
 			  deviceseries = $('#device_series').val();
 		  }	  
-		  if($('#node_version').val() != 'Choose OS Version'){
-			  nodeVersion = $('#node_version').val();	
-		  }
           var table = $('#swdelvrybatchpro').DataTable({
               "processing": true,
               "serverSide": true,
@@ -50,7 +47,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries+'&nodeVersion='+nodeVersion,
+                  url: 'software-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries,
                   type: 'GET'
               },
               "columns": [ 		

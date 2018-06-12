@@ -3916,7 +3916,7 @@ function get_swdelvry_process_datatable()
  * @param string $nodeVersion
  * @return number|unknown
  */
-function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries = '', $nodeVersion = '')
+function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries = '')
 {
     global $db2, $pages;
     
@@ -3952,9 +3952,6 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
         $sql_condition .= " AND(n.deviceseries = '" . $deviceseries . "')";
     }
     
-    if ($nodeVersion != '') {
-        $sql_condition .= " AND(n.nodeVersion = '" . $nodeVersion . "')";
-    }
     
     // die;
     

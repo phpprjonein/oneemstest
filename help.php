@@ -15,6 +15,11 @@ user_session_check();
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  Main help page Description: User has navigated the first Help page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,9 +31,9 @@ $page_title = 'OneEMS';
 	<!-- <div class="container-fluid" id="cellsitech-config"> -->
     <div class="container-fluid">
 	<?php include_once ('menu.php'); ?>
-		<?php 
+		<?php
         $values = array('Help' => '#');
-        echo generate_site_breadcrumb($values); 
+        echo generate_site_breadcrumb($values);
         ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
@@ -69,6 +74,12 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
+            </nav>
+            <a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Upload - Master</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Software Upload</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Software Delivery</a>
             </nav>
             <a class="nav-link" href="help_faqs.php">FAQs</a>
           </nav>

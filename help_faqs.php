@@ -15,6 +15,11 @@ user_session_check();
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+  $username = $_SESSION['username'];
+  $mesg = " User name: $username User type : $usertype Page:  FAQs Help page Description: User has navigated to the FAQs help page.";
+  write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,6 +30,10 @@ $page_title = 'OneEMS';
 <body>
 	<div class="container-fluid">
 	<?php include_once ('menu.php'); ?>
+  <?php
+        $values = array('FAQs Help' => '#');
+        echo generate_site_breadcrumb($values);
+      ?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
@@ -66,6 +75,12 @@ $page_title = 'OneEMS';
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
               <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
             </nav>
+            <a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Upload - Master</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Software Upload</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Software Delivery</a>
+            </nav>
             <a class="nav-link" href="#item-7">FAQs</a>
           </nav>
         </nav>
@@ -79,6 +94,7 @@ $page_title = 'OneEMS';
 <!-- FAQs -->
         <h4 id="item-7">FAQs</h4>
           <div id="accordion">
+
             <div class="card">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0 table-responsive">
@@ -97,6 +113,7 @@ $page_title = 'OneEMS';
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="card-header" id="headingThree">
                 <h5 class="mb-0 table-responsive">
@@ -110,32 +127,35 @@ $page_title = 'OneEMS';
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="card-header" id="headingFour">
                 <h5 class="mb-0 table-responsive">
                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Where do I view ALL the devices I'm assigned to?</button>
                 </h5>
               </div>
-              <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                 <div class="card-body">
                     <p>The <b><a href="help_network_elements.php">Network Elements Dashboard</a></b> exposes all the devices assigned to a specific user as per the <b>OpsTracks</b> database.</p>
                     <p class="alert alert-danger"><b class="text-danger">NOTE:</b> For Cell Site Technicians, the <b>My Routers</b> list on the <b>Network Elements Dashboard</b> contains routers assigned to a specific user by <b>Ops Tracker</b>.</p>
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="card-header" id="headingFive">
                 <h5 class="mb-0 table-responsive">
                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How do I add more devices to the OneEMS Application?</button>
                 </h5>
               </div>
-              <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                 <div class="card-body">
                   <p>The OneEMS application does not allow for addition of devices to the network from any of the Dashboards contained within it. Devices are added during a discovery session. The list of devices to be discovered are governed by the <b><a href="help_discovery_ips.php">Discovery IPs list</a></b>.</p>
                   <p>A user can run scripts from the <b><a href="help_discovery_results.php">Discovery Results Dashboard</a></b> in order to rediscover devices that may have been newly added to the IOP database, but this action in and of itself does <b>NOT</b> actually add a device to the network. It only <i>rediscovers</i> a device that may have been missed during the last polling session carried out by the OneEMS application.</p>
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="card-header" id="headingSix">
                 <h5 class="mb-0 table-responsive">
@@ -260,14 +280,36 @@ $page_title = 'OneEMS';
                       </table>
                     </div>
 <!-- /browser/OS support table -->
+
                 </div>
               </div>
             </div>
+
+
+            <div class="card">
+              <div class="card-header" id="headingSeven">
+                <h5 class="mb-0 table-responsive">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">I have an issue or question that isn't addressed here in these FAQ<span style="text-transform: lowercase;">s</style>...</button>
+                </h5>
+              </div>
+              <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                <div class="card-body">
+                  <p>On <i>every</i> page of the OneEMS application, there is an option to raise a <b>JIRA Ticket</b> by clicking the persistent "<b>OPEN TICKET</b>" button at the bottom of the screen.</p>
+                  <img src="resources/img/screenshot-jira-button-link.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-jira-button-link">
+                  <p></p>
+                  <span class="font-italic"><b>FIG. 7.1 - JIRA Ticketing Button</b></span>
+                  <p></p>
+                  <p>Upon clicking this button, you will be redirected to an external JIRA ticketing system, where you can open a ticket relevant to an issue you may be having with the OneEMS application. There, you can relay all the pertinent information that applies to whatever issue you may be having within the OneEMS application.</p>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         <hr>
         <div class="row">
           <div class="col-6">
-            <a href="help_discovery_results.php" class="border"><b><< PREV: Discovery Results</b></a>
+            <a href="help_maintenance.php" class="border"><b><< PREV: Maintenance</b></a>
           </div>
           <div class="col-6 text-right"></div>
         </div>
@@ -284,6 +326,23 @@ $page_title = 'OneEMS';
 		</div>
 	</div>
 	<!-- container-fluid -->
+
+  <!-- image modals -->
+  <div class="big-modal">
+    <div class="modal fade show" id="screenshot-jira-button-link" tabindex="-1"
+      role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <button type="button" class="close img-close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <img src="resources/img/screenshot-jira-button-link.png" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /image modals -->
 
 <!-- footer div -->
       <?php include_once ('footer.php'); ?>

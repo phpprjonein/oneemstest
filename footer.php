@@ -1,6 +1,6 @@
 
 <div class="fixed">
-<a id="feedback-button" href="https://onejira.ncm.com/secure/Dashboard.jspa" type="button" class="">open ticket</a>
+<a id="feedback-button" href="https://onejira.verizon.com/secure/Dashboard.jspa" type="button" class="" target="_blank">open ticket</a>
 </div>
 <footer class="footer">
   <div class="container">

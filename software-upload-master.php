@@ -103,7 +103,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 <!-- right side -->
 <!-- script output -->
-      <div class="col-sm-12 col-md-6" id="rsform">
+      <div class="col-sm-12 col-md-6" id="rsform" style="display:none;">
                   <div class="jf-form">
 
                     <div class="alert alert-secondary">

@@ -73,7 +73,7 @@ if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
     }*/
 }
 
-if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] != 'bootorder') {
+if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
     $_POST['scriptname'] = implode(',',$_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
     update_dev_batch_sd($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'],  $_POST['priority'],  $_POST['refmop'], $_POST['destdrive'] );

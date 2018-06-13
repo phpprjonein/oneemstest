@@ -34,9 +34,7 @@
         
         
         <!-- Bootstrap 3.3.6 -->
-        <script  type="text/javascript" language="javascript" src="resources/js/bootstrap.min.js"></script> 
-        
-        
+        <script  type="text/javascript" language="javascript" src="resources/js/bootstrap.min.js"></script>             
         
         <!-- FastClick -->
         <script  type="text/javascript" language="javascript" src="resources/js/fastclick.js"></script>
@@ -50,5 +48,12 @@
      	<script src="resources/js/bootstrap3-typeahead.min.js"></script>
      	<script type="text/javascript" src="https://onejira.ncm.com/s/7c327c63ac96e0e9fc91ad412d9005b8-T/-2ww38y/72014/c7aa29275592192ce069072bdefe4e22/2.0.23/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=10a5834a"></script>
         <script  type="text/javascript" language="javascript" src="resources/js/global.js"></script>		
-		 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-		 
+		 <link rel="stylesheet" type="text/css" href="resources/css/style.css">		 
+				 <!-- multiselect dropdown script, styling -->
+		<script src="resources/js/chosen.jquery.js"></script>
+		<link rel="stylesheet" href="resources/css/chosen.css" class="ref">
+		<!-- multiselect dropdown script, styling -->
+
+		<!-- datepicker styling -->
+		<link rel="stylesheet" href="resources/css/jquery-ui.css" class="ref">
+		<!-- datepicker styling -->

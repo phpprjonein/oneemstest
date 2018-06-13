@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @param unknown $filename
  * @param unknown $msg
@@ -4157,4 +4156,19 @@ function update_schedbackup_settings($username,$backup_occur,$backup_day,$backup
 		$db2->query($dsql);
         $db2->execute(); 
    
+}
+
+function get_market_list_backup()
+{
+    global $db2;
+    
+    $sql_select = "SELECT market as market_name ";
+    $sql_condition = " FROM nodes
+                      where market != ''
+                      GROUP BY market ";
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    // echo $sql;
+    $resultset = $db2->resultset();
+    return $resultset;
 }

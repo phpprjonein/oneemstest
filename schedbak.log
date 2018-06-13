@@ -15,3 +15,6 @@
 [2018/06/11 02:16:42] Configuration
 [2018/06/11 02:16:42] Inside the update_schedbackup function
 [2018/06/11 02:16:42] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Month','Saturday','23:00','60','Configuration','UTC 08:00 EST USA & Canada','GeorgiaAlabama')
+[2018/06/13 05:58:59] Configuration
+[2018/06/13 05:58:59] Inside the update_schedbackup function
+[2018/06/13 05:58:59] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Month','Saturday','23:00','60','Configuration','UTC 08:00 EST USA & Canada','OPW')

@@ -23,10 +23,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <head>
 <?php include_once("includes.php");  ?>
 <script src="resources/js/swd_batch_page.js?t=<?php echo date('his'); ?>"></script>
-<!-- multiselect dropdown script, styling -->
-<script src="resources/js/chosen.jquery.js"></script>
-<link rel="stylesheet" href="resources/css/chosen.css" class="ref">
-<!-- multiselect dropdown script, styling -->
 </head>
 <body>
 <script>

@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
@@ -12,7 +11,6 @@ if (isset($_GET['clear'])) {
 }
 user_session_check();
 $page_title = 'OneEMS';
-
 // page logging
 $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
   $username = $_SESSION['username'];
@@ -24,16 +22,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <head>
 <?php include_once("includes.php");  ?>
 <script src="resources/js/os_repository.js?t=<?php echo date('his'); ?>"></script>
-
-<!-- multiselect dropdown script, styling -->
-<script src="resources/js/chosen.jquery.js"></script>
-<link rel="stylesheet" href="resources/css/chosen.css" class="ref">
-<!-- multiselect dropdown script, styling -->
-
-<!-- datepicker styling -->
-<link rel="stylesheet" href="resources/css/jquery-ui.css" class="ref">
-<!-- datepicker styling -->
-
 </head>
 <body>
 <script>

@@ -61,7 +61,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php", "software-upload-master.php", "software-master.php", "software-upload-devices.php", "sw-delivery-devices.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			    <!--  
                 <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
+				-->
                 <!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
                 <a class="dropdown-item" href="os-repository.php">Software Upload</a>
 				<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>

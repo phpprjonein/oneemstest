@@ -1,13 +1,9 @@
 <?php
 include_once "classes/db2.class.php";
 include_once 'functions.php';
-ini_set('display_errors',1);
+// ini_set('display_errors',1);
 
-$sql = "SELECT * FROM users WHERE username = '" . $_SESSION['username'] . "'";
-$db2->query($sql);
-$recordset = $db2->resultset();
-
-if ($recordset[0]['zones'] == 0) {
+if ($_SESSION['zones'] == 0) {
     $output_callout_zone_list = @file_get_contents('http://localhost/oneemstest/' . $_SESSION['username'] . '_callout_zone_list.php');
     $resp_zones_result_arr_callout_zone_list = json_decode($output_callout_zone_list, 1);
     $resp_zones_result_arr = array();
@@ -48,8 +44,8 @@ if ($recordset[0]['zones'] == 0) {
         $device_info[$val['devicename']] = $val['id'];
     }
     
+    $oc = 1;
     $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
-    $oco = 1;
     foreach ($records_to_update_zones as $key => $val) {
         $sql = "DELETE FROM userdevices WHERE listname='" . $key . "'";
         $db2->query($sql);
@@ -58,23 +54,20 @@ if ($recordset[0]['zones'] == 0) {
         $db2->query($sql);
         $recordset = $db2->resultset();
         $listid = $recordset[0]['listidmaxval'];
-        
-        $oc = 1;
         foreach ($val as $keyd => $vald) {
             $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];
-            if (count($val) == $oc && $oco == count($records_to_update_zones)) {
-                $dsql .= "('" . $device_info[$vald['devicename']] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $key . "')";
-            } else {
+            if (! empty($device_info[$vald['devicename']])) {
                 $dsql .= "('" . $device_info[$vald['devicename']] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $key . "'),";
+                $oc ++;
             }
-            $oc ++;
         }
-        $oco ++;
     }
     if ($oc > 1) {
+        $dsql = substr_replace($dsql, '', - 1);
         $db2->query($dsql);
         $db2->execute();
         $sql = "update users set zones = 1 WHERE username = '" . $_SESSION['username'] . "'";
+        $_SESSION['zones'] = 1;
         $db2->query($sql);
         $db2->execute();
     }

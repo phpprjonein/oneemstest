@@ -2941,121 +2941,6 @@ function get_switchtechusers_list($userid)
     $resultset['result'] = $db2->resultset();
     return $resultset['result'];
 }
-
-/**
- *
- * @param unknown $sso_flag
- * @param unknown $username
- */
-function update_login_api_rules($sso_flag, $username)
-{
-    global $db2;
-    if (in_array($_SESSION['userlevel'], array(
-        1,
-        3,
-        4
-    ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
-        $resp_result_arr = json_decode($output, 1);
-        $_SESSION['sel_switch_name'] = '';
-        $swt_mswitch_arr = array();
-        for ($i = 0; $i < count($resp_result_arr['site_devices']); $i ++) {
-            if (count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0) {
-                foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val) {
-                    $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
-                    $records_to_update[] = array(
-                        'devicename' => $val,
-                        'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'],
-                        'switch_name' => $resp_result_arr['site_devices'][$i]['switch'],
-                        'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']
-                    );
-                    // Node table status 3 added for live API active
-                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $resp_result_arr['site_devices'][$i]['techname'] . "', switch_name ='" . $resp_result_arr['site_devices'][$i]['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
-                    $db2->query($sql);
-                    $db2->execute();
-                    $devicename_arr[] = $val;
-                    if (! in_array($resp_result_arr['site_devices'][$i]['switch'], $swt_mswitch_arr)) {
-                        $swt_mswitch_arr[] = $resp_result_arr['site_devices'][$i]['switch'];
-                    }
-                }
-            }
-        }
-        
-        $sql = "update nodes set csr_site_tech_id = '' where devicename not in ('" . implode("','", $devicename_arr) . "') and csr_site_tech_id = '" . $_SESSION['username'] . "'";
-        $db2->query($sql);
-        $db2->execute();
-        
-        $sql = "DELETE FROM userdevices WHERE listname='0' and userid = " . $_SESSION['userid'];
-        $db2->query($sql);
-        $db2->execute();
-        $sql = " SELECT * from nodes where status=3 and devicename in  ('" . implode("','", $devicename_arr) . "') and csr_site_tech_id = '" . $_SESSION['username'] . "'";
-        $db2->query($sql);
-        $resultset['result'] = $db2->resultset();
-        
-        $oc = 1;
-        $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
-        foreach ($resultset['result'] as $resultsetk => $resultsetv) {
-            if (count($resultset['result']) == $oc) {
-                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'0','0')";
-            } else {
-                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'0','0'),";
-            }
-            $oc ++;
-        }
-        if ($oc > 1) {
-            $db2->query($dsql);
-            $db2->execute();
-        }
-        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
-    } elseif (in_array($_SESSION['userlevel'], array(
-        2,
-        5,
-        6,
-        7
-    ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username=' . $username);
-        $resp_result_arr = json_decode($output, 1);
-        $_SESSION['sel_switch_name'] = '';
-        for ($i = 0; $i < count($resp_result_arr['switches']); $i ++) {
-            $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
-            // Node table status 3 added for live API active
-            $sql = "UPDATE `nodes` SET status=3, swt_tech_id = '" . $_SESSION['username'] . "' WHERE switch_name = '" . $resp_result_arr['switches'][$i]['switch_name'] . "'";
-            $db2->query($sql);
-            $db2->execute();
-            $swt_mswitch_arr[] = $resp_result_arr['switches'][$i]['switch_name'];
-        }
-        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
-        
-        /* Updating user devices table based on switch from API */
-        foreach ($swt_mswitch_arr as $key => $val) {
-            $sql = "DELETE FROM userdevices WHERE listname='" . $val . "'";
-            $db2->query($sql);
-            $db2->execute();
-            $sql = " SELECT * from nodes where status=3 and switch_name = '" . $val . "'";
-            $db2->query($sql);
-            $resultset['result'] = $db2->resultset();
-            $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
-            $db2->query($sql);
-            $recordset = $db2->resultset();
-            $listid = $recordset[0]['listidmaxval'];
-            $oc = 1;
-            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
-            foreach ($resultset['result'] as $resultsetk => $resultsetv) {
-                if (count($resultset['result']) == $oc) {
-                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "')";
-                } else {
-                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "'),";
-                }
-                $oc ++;
-            }
-            if ($oc > 1) {
-                $db2->query($dsql);
-                $db2->execute();
-            }
-        }
-    }
-}
-
 /**
  *
  * @param unknown $batchid
@@ -4172,3 +4057,214 @@ function get_market_list_backup()
     $resultset = $db2->resultset();
     return $resultset;
 }
+
+
+
+/**
+ *
+ * @param unknown $sso_flag
+ * @param unknown $username
+ */
+function update_login_api_rules($sso_flag, $username)
+{
+    global $db2;
+    if (in_array($_SESSION['userlevel'], array(
+        1,
+        3,
+        4
+    ))) {
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
+        $resp_result_arr = json_decode($output, 1);
+        $_SESSION['sel_switch_name'] = '';
+        $swt_mswitch_arr = array();
+        for ($i = 0; $i < count($resp_result_arr['site_devices']); $i ++) {
+            if (count($resp_result_arr['site_devices'][$i]['csr_hostnames']) > 0) {
+                foreach ($resp_result_arr['site_devices'][$i]['csr_hostnames'] as $key => $val) {
+                    $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['site_devices'][$i]['switch'] : $_SESSION['sel_switch_name'];
+                    $records_to_update[] = array(
+                        'devicename' => $val,
+                        'csr_site_tech_name' => $resp_result_arr['site_devices'][$i]['techname'],
+                        'switch_name' => $resp_result_arr['site_devices'][$i]['switch'],
+                        'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']
+                    );
+                    // Node table status 3 added for live API active
+                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $resp_result_arr['site_devices'][$i]['techname'] . "', switch_name ='" . $resp_result_arr['site_devices'][$i]['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
+                    $db2->query($sql);
+                    $db2->execute();
+                    $devicename_arr[] = $val;
+                    if (! in_array($resp_result_arr['site_devices'][$i]['switch'], $swt_mswitch_arr)) {
+                        $swt_mswitch_arr[] = $resp_result_arr['site_devices'][$i]['switch'];
+                    }
+                }
+            }
+        }
+        
+        $sql = "update nodes set csr_site_tech_id = '' where devicename not in ('" . implode("','", $devicename_arr) . "') and csr_site_tech_id = '" . $_SESSION['username'] . "'";
+        $db2->query($sql);
+        $db2->execute();
+        
+        $sql = "DELETE FROM userdevices WHERE listname='0' and userid = " . $_SESSION['userid'];
+        $db2->query($sql);
+        $db2->execute();
+        $sql = " SELECT * from nodes where status=3 and devicename in  ('" . implode("','", $devicename_arr) . "') and csr_site_tech_id = '" . $_SESSION['username'] . "'";
+        $db2->query($sql);
+        $resultset['result'] = $db2->resultset();
+        
+        $oc = 1;
+        $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+        foreach ($resultset['result'] as $resultsetk => $resultsetv) {
+            if (count($resultset['result']) == $oc) {
+                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'0','0')";
+            } else {
+                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'0','0'),";
+            }
+            $oc ++;
+        }
+        if ($oc > 1) {
+            $db2->query($dsql);
+            $db2->execute();
+        }
+        
+        
+        
+        /*Zones API calls*/
+        //if ($_SESSION['zones'] == 0) {
+            $output_callout_zone_list = @file_get_contents('http://localhost/oneemstest/' . $_SESSION['username'] . '_callout_zone_list.php');
+            $resp_zones_result_arr_callout_zone_list = json_decode($output_callout_zone_list, 1);
+            $resp_zones_result_arr = array();
+            if (isset($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'])) {
+                foreach ($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'] as $key => $val) {
+                    $valrc = rawurlencode($val);
+                    $output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
+                    $output_zones_resp_result_arr = json_decode($output_zones, 1);
+                    $resp_zones_result_arr[$val] = $output_zones_resp_result_arr['site_devices'];
+                }
+            }
+            
+            foreach ($resp_zones_result_arr as $key => $val) {
+                foreach ($val as $dkey => $dval) {
+                    if (count($dval['csr_hostnames']) > 0) {
+                        foreach ($dval['csr_hostnames'] as $hkey => $hval) {
+                            $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $dval['switch'] : $_SESSION['sel_switch_name'];
+                            if ($_SESSION['zones'] == 0) {
+                            $records_to_update_zones[$key][] = array(
+                                'devicename' => $hval,
+                                'csr_site_tech_name' => $dval['techname'],
+                                'switch_name' => $dval['switch'],
+                                'csr_site_id' => $dval['siteid']
+                            );
+                            
+                                $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $dval['techname'] . "', switch_name ='" . $dval['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $dval['siteid'] . "', status=3 WHERE devicename = '" . $hval . "'";
+                                $db2->query($sql);
+                                $db2->execute();
+                            
+                            $devicename_arr[] = $hval;
+                            }
+                            if (! in_array($dval['switch'], $swt_mswitch_arr)) {
+                                $swt_mswitch_arr[] = $dval['switch'];
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            
+            if(isset($devicename_arr) && $_SESSION['zones'] == 0){
+            $sql = "SELECT id, devicename from nodes where devicename in ('" . implode("','", $devicename_arr) . "')";
+            $db2->query($sql);
+            $resultset = $db2->resultset();
+            
+            foreach ($resultset as $key => $val) {
+                $device_info[$val['devicename']] = $val['id'];
+            }
+            
+            $oc = 1;
+            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+            foreach ($records_to_update_zones as $key => $val) {
+                $sql = "DELETE FROM userdevices WHERE listname='" . $key . "'";
+                $db2->query($sql);
+                $db2->execute();
+                $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+                $db2->query($sql);
+                $recordset = $db2->resultset();
+                $listid = $recordset[0]['listidmaxval'];
+                foreach ($val as $keyd => $vald) {
+                    $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];
+                    if (! empty($device_info[$vald['devicename']])) {
+                        $dsql .= "('" . $device_info[$vald['devicename']] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $key . "'),";
+                        $oc ++;
+                    }
+                }
+            }
+            if ($oc > 1) {
+                $dsql = substr_replace($dsql, '', - 1);
+                $db2->query($dsql);
+                $db2->execute();
+                $sql = "update users set zones = 1 WHERE username = '" . $_SESSION['username'] . "'";
+                $_SESSION['zones'] = 1;
+                $db2->query($sql);
+                $db2->execute();
+            }
+            }
+        //}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
+    } elseif (in_array($_SESSION['userlevel'], array(
+        2,
+        5,
+        6,
+        7
+    ))) {
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username=' . $username);
+        $resp_result_arr = json_decode($output, 1);
+        $_SESSION['sel_switch_name'] = '';
+        for ($i = 0; $i < count($resp_result_arr['switches']); $i ++) {
+            $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
+            // Node table status 3 added for live API active
+            $sql = "UPDATE `nodes` SET status=3, swt_tech_id = '" . $_SESSION['username'] . "' WHERE switch_name = '" . $resp_result_arr['switches'][$i]['switch_name'] . "'";
+            $db2->query($sql);
+            $db2->execute();
+            $swt_mswitch_arr[] = $resp_result_arr['switches'][$i]['switch_name'];
+        }
+        $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
+        
+        /* Updating user devices table based on switch from API */
+        foreach ($swt_mswitch_arr as $key => $val) {
+            $sql = "DELETE FROM userdevices WHERE listname='" . $val . "'";
+            $db2->query($sql);
+            $db2->execute();
+            $sql = " SELECT * from nodes where status=3 and switch_name = '" . $val . "'";
+            $db2->query($sql);
+            $resultset['result'] = $db2->resultset();
+            $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+            $db2->query($sql);
+            $recordset = $db2->resultset();
+            $listid = $recordset[0]['listidmaxval'];
+            $oc = 1;
+            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+            foreach ($resultset['result'] as $resultsetk => $resultsetv) {
+                if (count($resultset['result']) == $oc) {
+                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "')";
+                } else {
+                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "'),";
+                }
+                $oc ++;
+            }
+            if ($oc > 1) {
+                $db2->query($dsql);
+                $db2->execute();
+            }
+        }
+    }
+}
+
+

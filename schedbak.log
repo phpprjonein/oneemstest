@@ -18,3 +18,33 @@
 [2018/06/13 05:58:59] Configuration
 [2018/06/13 05:58:59] Inside the update_schedbackup function
 [2018/06/13 05:58:59] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Month','Saturday','23:00','60','Configuration','UTC 08:00 EST USA & Canada','OPW')
+[2018/06/16 01:24:09] Configuration
+[2018/06/16 01:24:09] Inside the update_schedbackup function
+[2018/06/16 01:24:09] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Month','Saturday','23:00','60','Configuration','UTC 08:00 EST USA & Canada','OPW')
+[2018/06/16 02:22:53] 
+[2018/06/16 02:22:53] Inside the update_schedbackup function
+[2018/06/16 02:22:53] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','','','','','','','')
+[2018/06/16 05:59:05] 
+[2018/06/16 05:59:05] Inside the update_schedbackup function
+[2018/06/16 05:59:05] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','','','','','','','')
+[2018/06/16 06:26:48] Healthcheck
+[2018/06/16 06:26:48] Inside the update_schedbackup function
+[2018/06/16 06:26:48] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Week','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:27:11] Healthcheck
+[2018/06/16 06:27:11] Inside the update_schedbackup function
+[2018/06/16 06:27:11] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Week','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:27:28] Healthcheck
+[2018/06/16 06:27:28] Inside the update_schedbackup function
+[2018/06/16 06:27:28] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Week','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:28:03] Healthcheck
+[2018/06/16 06:28:03] Inside the update_schedbackup function
+[2018/06/16 06:28:03] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Week','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:28:24] Healthcheck
+[2018/06/16 06:28:24] Inside the update_schedbackup function
+[2018/06/16 06:28:24] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Select','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:28:55] Healthcheck
+[2018/06/16 06:28:55] Inside the update_schedbackup function
+[2018/06/16 06:28:55] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Select','Monday','20:00','56','Healthcheck','UTC 08:00 EST USA & Canada','mktval')
+[2018/06/16 06:29:44] Configuration
+[2018/06/16 06:29:44] Inside the update_schedbackup function
+[2018/06/16 06:29:44] INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES('debarle','Select','Saturday','23:00','60','Configuration','UTC 08:00 EST USA & Canada','OPW')

@@ -27,6 +27,70 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
    <?php include_once("includes.php");  ?>
    <script src="resources/js/cellsitetech_discovery.js?t="
 	<?php echo date('his'); ?>></script>
+	
+	<script type="text/javascript">	
+	$(document).ready(function(){ 
+	$("#mandiscsubmit").click(function(){
+   // alert('savechanges clicked');
+	//$('selector expression').text('content');	
+	$('#devnameval').text('devnameval');
+	$('#devosval').text('devosval');
+	$('#devseriesval').text('devseriesval');
+	$('#devstatusval').text('devstatusval');
+	$('#lastpollval').text('lastpollval');
+	$('#modelval').text('modelval');
+	$('#nodeverval').text('nodeverval');
+	$('#statval').text('statval');
+	$('#sysconval').text('sysconval');
+	$('#syslocval').text('syslocval');
+	$('#upsinceval').text('upsinceval');
+	//$('#mktval').text(1);
+	
+	//alert('value of devnameval is' + $('#devnameval').html());
+	/*alert ('final string' + $('#devosval').text() +
+	$('#devseriesval').text() +
+	$('#devstatusval').text()  +
+	$('#lastpollval').text()+
+	$('#modelval').text() +
+	$('#nodeverval').text() +
+	$('#statval').text() +
+	$('#sysconval').text() +
+	$('#syslocval').text() +
+	$('#upsinceval').text() +
+	$('#mktval').val());
+   */
+//   	alert( 'value of market' + $('#mktval').val());
+
+
+
+	$.ajax({
+	                type:"post",
+	                url:"ip-mgt-process.php",					
+	                data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), syslocval : $('#syslocval').text(),upsinceval : $('#upsinceval').text(), mktval : $('#mktval').val()},
+					//data: {'ctype':'manualdisc', 'devosval':$('#devosval').text()},
+	                success: function(resdata){						
+	                	//var myModal = $('#schedbackupModal');
+	            		//myModal.modal('show');  
+			
+			//var obj = jQuery.parseJSON( data );
+	        				/*
+	        				if(obj.result == true){
+	        					$('#myModal .modal-body').html('Device Discovered Successfully');
+	        				}else{
+	        					$('#myModal .modal-body').html('Device Discovery Failed');
+	        				}
+	        				*/
+	        				//$('#myModal .modal-body').html(data);	
+							$('#mandiscsubmit').hide();
+					$('#myModal .modal-body').html('Device added Successfully');
+						//alert ('record inserted into nodes table');
+						
+	                }
+	            });
+	
+  });
+}); 
+</script>
 </head>
 <body>
 	<!-- container div -->
@@ -59,6 +123,8 @@ echo generate_site_breadcrumb($values);
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id = "mandiscsubmit">Save
+              changes</button>		
 					</div>
 				</div>
 			</div>

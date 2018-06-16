@@ -45,8 +45,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 <!-- Content Wrapper. Contains page content -->
 		<div class="content">
-
-<!-- Modal -->
             <div class="modal fade" id="batchModal">
                 <div class="modal-dialog">
                     <div class="modal-content" id="batchModalContent">
@@ -71,7 +69,6 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                     </div>
                 </div>
             </div>
-<!-- Modal -->
 
 <!-- Main content -->
 			<section class="content">
@@ -225,10 +222,10 @@ select device series options -->
 <!-- template name content -->
                                     <div class="row">
                                         <div class="col">
-                                            <?php
+                                            <?php  
                                             $path  ='O:\wamp\www\oneemstest\upload';
                                            // $path  ='/var/www/html/oneemstest/osrepository/';
-
+                                            
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
                                                 '..'
@@ -251,10 +248,10 @@ select device series options -->
                                                         <tr id="row_<?php echo $i;?>">
         													<td><input type="checkbox" value="" name="category"></td>
         													<td><?php echo $val; ?></td>
-        													<td>
-															<?php
-																  echo filesize($path."//$val");
-															?>
+        													<td> 
+															<?php  
+																  echo filesize($path."//$val"); 
+															?> 
 															</td>
                                                         </tr>
                                                     <?php endif; $i++; endforeach; ?>

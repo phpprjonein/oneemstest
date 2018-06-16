@@ -71,6 +71,8 @@
                 <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>
 				<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
 				<!--<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a> -->
+				<a class="dropdown-item" href="schedule-backup-new.php">Schedule Backup</a>
+				<a class="dropdown-item" href="sw-bootorder-sequence-new.php">Boot Order Sequence</a> 
               </div>
             </li>
             <li class="nav-item dropdown">

@@ -2335,7 +2335,7 @@ function test_ipv6_address($ipaddress = '')
 function discovery_add_new_device($values)
 {
     global $db2;
-    $sqlc = "SELECT  max(id) + 1  as id FROM nodes WHERE id <> 0 ";
+  /*  $sqlc = "SELECT  max(id) + 1  as id FROM nodes WHERE id <> 0 ";
     $db2->query($sqlc);
     $recordset = $db2->resultset();
     $values['id'] = $recordset[0]['id'];
@@ -2349,6 +2349,12 @@ function discovery_add_new_device($values)
                 '" . $values['deviceos'] . "','" . $values['csr_site_tech_id'] . "', '" . $values['csr_site_tech_mgr_id'] . "','" . $values['csr_site_name'] . "',
                 '" . $values['nodeVersion'] . "', '" . $values['lastpolled'] . "', '" . $values['deviceDateAdded'] . "', '" . $values['deviceLastUpdated'] . "',
                 '" . $values['upsince'] . "','" . $values['switch_name'] . "','')";
+*/				
+	$sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market)".
+"values ('". $values['devicename']."','". $values['deviceos']."','". $valus['deviceseries']."','". $values['status']."','" .$values['lastpolled']."','". $values['model']."','". $values['nodeVersion']."','".$values['sys_contact']."','".$values['sys_location']."','".$values['market']."')"; 
+$db2->query($sql);	
+$db2->execute();			
+				
     $db2->query($sql);
     $db2->execute();
 }
@@ -4266,5 +4272,18 @@ function update_login_api_rules($sso_flag, $username)
         }
     }
 }
-
+function get_market_list_manualdisc()
+{
+    global $db2;
+    
+    $sql_select = "SELECT market as market_name ";
+    $sql_condition = " FROM nodes
+                      where market != ''
+                      GROUP BY market ";
+    $sql = $sql_select . $sql_condition;
+    $db2->query($sql);
+    // echo $sql;
+    $resultset = $db2->resultset();
+    return $resultset;
+}
 

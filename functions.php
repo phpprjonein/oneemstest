@@ -3820,7 +3820,6 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     
     $columns = array(
         'distinct(n.id)',
-        'n.id',
         'n.deviceIpAddr',
         'n.devicename',
         'n.deviceseries',
@@ -3847,7 +3846,6 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     
     if ($search) {
         $sql_condition .= " AND ( ";
-        $sql_condition .= " n.id LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.deviceIpAddr LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.devicename  LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";

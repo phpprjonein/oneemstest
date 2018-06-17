@@ -79,7 +79,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 		    </div>
 
 <!-- Main content -->
-        <section class="content">
+        <section class="content" id="sw-delivery-devices">
 				  <div class="col-md-12">
             <div id="status" style="display: none;" class="alert"></div>
 
@@ -195,7 +195,6 @@ select device series options -->
                     <thead>
                       <tr>
                       	<th></th>
-                        <th>Id</th>
                         <th>IP Address</th>
                         <th>Device Name</th>
                         <th>Device Series</th>

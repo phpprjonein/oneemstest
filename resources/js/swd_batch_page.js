@@ -17,7 +17,6 @@
                   "orderable":      false,
                   "data":           null,
                   "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
-              {"data": "id"},
               {"data": "deviceIpAddr"},
               {"data": "devicename"},
               {"data": "deviceseries"},
@@ -55,7 +54,6 @@
                       "orderable":      false,
                       "data":           null,
                       "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
-                  {"data": "id"},
                   {"data": "deviceIpAddr"},
                   {"data": "devicename"},
                   {"data": "deviceseries"},
@@ -123,7 +121,6 @@
 	                      "orderable":      false,
 	                      "data":           null,
 	                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
-	                  {"data": "id"},
 	                  {"data": "deviceIpAddr"},
 	                  {"data": "devicename"},
 	                  {"data": "deviceseries"},
@@ -135,17 +132,30 @@
             });
             })
 			$(document).on('click', '#batch-submit', function(event) {
+				var req_err = false;
+				$('#sw-delivery-devices #status').html('');
+				$('#sw-delivery-devices #status').css("opacity","");
+				
+	        	var allVals = [];
+	        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
+	        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
+	        	});
+	        	if(allVals.length == 0){
+	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
+	            	req_err = true;	
+	        	}
+				if(req_err){ 
+	    			$('#sw-delivery-devices #status').show();
+	    			$('#sw-delivery-devices #status').addClass('alert-danger');
+	    		    window.setTimeout(function() {
+	    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    		            $(this).hide(); 
+	    		        });
+	    		    }, 4000);
+	    			return false;
+	    		}
+	        	
 				if(confirm("Are you sure, do you want to create a batch ?")){
-		        	var allVals = [];
-		        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
-		        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
-		        	});
-		
-		        	if(allVals.length == 0){
-		            	alert('Error! Device selection is required');
-		            	return false;	
-		        	}
-		        	
 			  		  if($('#device_series').val() == 'Choose Device Series'){ 	
 						  deviceseries = '';
 					  }else{

@@ -2,45 +2,34 @@
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
+  $output = json_decode('{
+  "data": {
+  "devicename": "dummydevicename",
+  "deviceos": "dummydeviceos",
+  "deviceseries": "dummydeviceseries",
+  "discoverystatus": "Failed",
+  "lastpolled": "2018-02-21 21:56",
+  "model": "dummymodel",
+  "nodeVersion": "dummynodeversion",
+  "nodestatus": "C",
+  "status": false,
+  "sys_contact": "dummysyscontact",
+  "sys_location": "dummysyslocation",
+  "upsince": "dummyupsince"
+  },
+  "deviceIpAddr": "10.198.238.19"
+  }',1); 
 /*
- * $output = json_decode('{
- * "data": {
- * "devicename": "",
- * "deviceos": "",
- * "deviceseries": "",
- * "discoverystatus": "Failed",
- * "lastpolled": "2018-02-21 21:56",
- * "model": "",
- * "nodeVersion": "",
- * "nodestatus": "C",
- * "status": false,
- * "sys_contact": "",
- * "sys_location": "",
- * "upsince": ""
- * },
- * "deviceIpAddr": "10.198.238.19"
- * }',1);
- */
-// $url = 'http://10.134.179.82:8089/snmp/10.198.238.19';
 $url = 'http://10.134.179.82:8089/snmp/' . $_POST['ip-address'];
-// $url = 'http://txaroemsda2z.nss.vzwnet.com:8080/snmp/10.198.238.2';
-// Initiate curl
 $ch = curl_init();
-// Disable SSL verification
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// Will return the response, if false it print the response
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Set the url
 curl_setopt($ch, CURLOPT_URL, $url);
-// Execute
 $result = curl_exec($ch);
-// Closing
 curl_close($ch);
-
-// Will dump a beauty json :3
-// var_dump(json_decode($result, true));
 $output = json_decode($result, true);
 print_r($output['data']['data']);
+*/
 $market_list = get_market_list_manualdisc();
 ?>
 <div class="container">
@@ -55,7 +44,7 @@ $market_list = get_market_list_manualdisc();
 			</tr>
 			<tr>
 				<td >Device OS</td>
-				<td id ="devosval"><?php echo 'dummy'; //echo $output['data']['deviceos']; ?></td>
+				<td id ="devosval"><?php echo $output['data']['deviceos']; ?></td>
 			</tr>
 			<tr>
 				<td>Device Series</td>

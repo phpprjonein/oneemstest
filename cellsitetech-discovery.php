@@ -33,7 +33,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 	$("#mandiscsubmit").click(function(){
    // alert('savechanges clicked');
 	//$('selector expression').text('content');	
-	$('#devnameval').text('devnameval');
+	/*$('#devnameval').text('devnameval');
 	$('#devosval').text('devosval');
 	$('#devseriesval').text('devseriesval');
 	$('#devstatusval').text('devstatusval');
@@ -44,6 +44,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 	$('#sysconval').text('sysconval');
 	$('#syslocval').text('syslocval');
 	$('#upsinceval').text('upsinceval');
+	*/
 	//$('#mktval').text(1);
 	
 	//alert('value of devnameval is' + $('#devnameval').html());

@@ -16,13 +16,13 @@
 				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Hours field is required.<br/>");
 				req_err = true;
 		}
-		if($('#schedule-backup-devices #backup_hours').val() == ""){
-				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Hours field is required.<br/>");
-				req_err = true;
-		}
 		if($('#schedule-backup-devices #backup_minutes').val() == ""){
 				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Minutes field is required.<br/>");
 				req_err = true;
+		}
+		if($('#schedule-backup-devices #schedbackup_type').val() == ""){
+			$('#schedule-backup-devices #status').append("<strong>Error!</strong> Backup Type field is required.<br/>");
+			req_err = true;
 		}
 		if($('#schedule-backup-devices #backup_timezone').val() == ""){
 				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Timezone field is required.<br/>");
@@ -32,10 +32,7 @@
 				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Market field is required.<br/>");
 				req_err = true;
 		} 
-		if($('#schedule-backup-devices #schedbackup_type').val() == ""){
-				$('#schedule-backup-devices #status').append("<strong>Error!</strong> Market field is required.<br/>");
-				req_err = true;
-		}
+		
 			if(req_err){ 
 			    // alert('reach here 100;');
     			$('#schedule-backup-devices #status').show();

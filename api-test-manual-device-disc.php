@@ -30,6 +30,7 @@ curl_close($ch);
 $output = json_decode($result, true);
 print_r($output['data']['data']);
 */
+ $output['data']['status'] = 1; //needs to be sorted out.
 $market_list = get_market_list_manualdisc();
 ?>
 <div class="container">

@@ -537,7 +537,8 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 	 
 	  $(document).on('click', '#restorebtn', function(event) {
 		    $('#restoreModal .modal-body').html('');
-		    $('#restoreModal #bkup-deviceid').html('Restoring the below file : <br>' + $(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
+		    //$('#restoreModal #bkup-deviceid').html('Restoring the below file : <br>' + $(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
+			 $('#restoreModal #bkup-deviceid').html('Restoring the below file : <br>' + $(this).closest('tr').find("td:eq(0)").text());
 		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
 	    	var myModal = $('#restoreModal');
           myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 40%; top: 10%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');

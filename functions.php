@@ -2351,12 +2351,9 @@ function discovery_add_new_device($values)
                 '" . $values['upsince'] . "','" . $values['switch_name'] . "','')";
 */				
 	$sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market)".
-"values ('". $values['devicename']."','". $values['deviceos']."','". $valus['deviceseries']."','". $values['status']."','" .$values['lastpolled']."','". $values['model']."','". $values['nodeVersion']."','".$values['sys_contact']."','".$values['sys_location']."','".$values['market']."')"; 
+"values ('". $values['devicename']."','". $values['deviceos']."','". $valus['deviceseries']."',1,'" .$values['lastpolled']."','". $values['model']."','". $values['nodeVersion']."','".$values['sys_contact']."','".$values['sys_location']."','".$values['market']."')"; 
 $db2->query($sql);	
 $db2->execute();			
-				
-    $db2->query($sql);
-    $db2->execute();
 }
 
 /**

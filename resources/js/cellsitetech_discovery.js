@@ -166,7 +166,10 @@ $(document).ready(function() {
 		  });
 	});
 	
-
+	$('#myModal').on('hidden.bs.modal', function () {
+		 location.reload();
+	});
+	
 	ok_all_item = function() {
         var confirmation = confirm('Are you sure you want to proceed?');
         if (confirmation) {

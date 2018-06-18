@@ -207,7 +207,8 @@ if ($_POST['ctype'] == 'SchedBakupSettings') {
 	 echo "success";
 }
  ////data: {'ctype':'manualdisc', 'devosval':$('#devosval').val(), 'devseriesval':$('#devseriesval').val(),'devstatusval':$('#devstatusval').val(), 'lastpollval':$('#lastpollval').val(), 'modelval':$('#modelval').val(), 'nodeverval': $('#nodeverval').val(),'statval':$('#statval').val(), 'sysconval':$('#sysconval').val(), syslocval : $('#syslocval').val(),upsinceval : $('#upsinceval').val(), mktval : $('#mktval').val()},
-if ($_POST['ctype'] == 'manualdisc') {	   		  
+if ($_POST['ctype'] == 'manualdisc') {
+    $_SESSION['disc_page_tab'] = 'Manual Discovery';
 	 //add_nodes_table($_POST['devosval'],$_POST['devseriesval'], $_POST['devstatusval'], $_POST['lastpollval'],  $_POST['modelval'], $_POST['nodeverval'], $_POST['statval'],$_POST['sysconval'],$_POST['syslocval'],$_POST['upsinceval'],$_POST['mktval'] );
 	 //$test = $_POST['devosval'].$_POST['devseriesval'].$_POST['devstatusval'].$_POST['lastpollval']. $_POST['modelval'] . $_POST['nodeverval'] . $_POST['statval'] . $_POST['sysconval'] . $_POST['syslocval'] . $_POST['upsinceval'] . $_POST['mktval'];
 /*
@@ -250,7 +251,7 @@ $values_arr = array(
         'nodeCatId' => '',
         'vendorId' => '',
         'deviceseries' => $_POST['devseriesval'],
-        'status' => $_POST['statval'],
+        'status' => $_POST['status'],
         'csr_site_tech_name' => "",
         'csr_site_tech_mgr_name' => "",
         'csr_site_id' => "",
@@ -260,7 +261,7 @@ $values_arr = array(
         'csr_site_tech_mgr_id' => "",
         'csr_site_name' => "",
         'nodeVersion' => $_POST['nodeverval'],
-        'lastpolled' => date('Y-m-d H:i:s',strtotime($_POST['lastpolled'])),        
+        'lastpolled' => date('Y-m-d H:i:s',strtotime($_POST['lastpollval'])),        
         'deviceDateAdded'=>  $_POST['deviceDateAdded'],
         'deviceLastUpdated'=> date('Y-m-d H:i:s',strtotime($_POST['deviceLastUpdated'])),
         'upsince' => $_POST['upsinceval'],

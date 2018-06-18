@@ -102,6 +102,23 @@
                     <a class="dropdown-item" href="switchtech-discovery.php">Discovery Results</a>
                   </div>
                 </li>
+				<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php", "software-upload-master.php", "software-master.php", "software-upload-devices.php", "sw-delivery-devices.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			    <!--  
+                <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
+				-->
+                <!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
+                <a class="dropdown-item" href="os-repository.php">Software Upload</a>
+				<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
+                <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
+                <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>
+				<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
+				<!--<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a> -->
+				<a class="dropdown-item" href="schedule-backup-new.php">Schedule Backup</a>
+				<a class="dropdown-item" href="sw-bootorder-sequence-new.php">Boot Order Sequence</a> 
+              </div>
+            </li>
                 <li class="nav-item">
                   <a class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_faqs.php")); ?>" href="help.php">Help</a>
                 </li>

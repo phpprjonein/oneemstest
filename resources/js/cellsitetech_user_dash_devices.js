@@ -294,7 +294,9 @@ $(document).ready(function() {
 	  		
 			  $(document).on('click', '#back_res #restorebtn', function(event) {
 				  //alert('Restore button is clicked');
-				  	$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
+				  	//$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');
+					$('#myModal #bkup-fileid').html($(this).closest('tr').find("td:eq(0)").text());
+					
 			    	$.post( "restore-api-test.php", { type: "api-ajax"
 					}).done(function( data ) {
 						$('#myModal .modal-body').html(data);

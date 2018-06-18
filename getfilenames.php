@@ -1,13 +1,13 @@
 <?php
 include "classes/db2.class.php";
-$html = '<option value="">- SELECT OS Version -</option>';
+$html = '<option value="">- SELECT File Name -</option>';
 $deviceseries = $_POST['deviceseries'];
 $nodeVersion = $_POST['nodeVersion'];
 
 //echo $deviceseries.$nodeVersion;die;
 
 // echo 'hello';
-$filenames = swrepo_get_nodeversions($deviceseries, $nodeVersion);
+$filenames = swrepo_get_filenames($deviceseries, $nodeVersion);
 //print_r($nodeversions); die;
 // echo 'hello';
 foreach ($filenames as $val)
@@ -15,10 +15,10 @@ foreach ($filenames as $val)
 echo $html;
 
 // exit(json_encode($output));
-function swrepo_get_nodeversions($deviceseries, $nodeVersion = '')
+function swrepo_get_filenames($deviceseries, $nodeVersion = '')
 {
     global $db2;
-    $sql = "SELECT distinct(filename) FROM osrepository where deviceseries  like '%" . $deviceseries . "%'";
+    $sql = "SELECT distinct(filename) FROM osrepository where deviceseries  like '%" . $deviceseries . "%' and status != 'd'";
 
     if($nodeVersion != '')
        $sql .= " or newosversion like '%".$nodeVersion."%'";

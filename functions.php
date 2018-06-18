@@ -3988,7 +3988,7 @@ function os_repository_get_existing_filenames()
 {
     global $db2;
     $filenames = array();
-    $sql = "SELECT distinct(filename) FROM osrepository";
+    $sql = "SELECT distinct(filename) FROM osrepository where status != 'd'";
     $db2->query($sql);
     $resultset = $db2->resultset();
     foreach ($resultset as $key=>$val):

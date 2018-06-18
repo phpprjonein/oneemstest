@@ -197,17 +197,19 @@ select device series options -->
     											<thead>
     												<tr>
     													<th>Filename</th>
+    													<th>Filesize</th>
     													<th>Deviceseries</th>
-    													<th>newosversion</th>
     													<th>Delete</th>
     												</tr>
     											</thead>
     											<tbody>
-                                                    <?php foreach ($records as $key=>$val): ?>
+                                                    <?php foreach ($records as $key=>$val): 
+                                                            $filesize_arr = explode('|', $val['filesize']);
+                                                    ?>
                                                         <tr id="row_<?php echo $val['fileid'];?>">
         													<td><?php echo $val['filename']; ?></td>
+        													<td><?php echo array_sum($filesize_arr); ?></td>
         													<td><?php echo $val['deviceseries']; ?></td>
-        													<td><?php echo $val['newosversion']; ?></td>
         													<td><button type="button" class="btn retModaldelete">Delete</button></td>
                                                         </tr>
                                                     <?php endforeach; ?>

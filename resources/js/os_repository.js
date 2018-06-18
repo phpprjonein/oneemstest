@@ -15,7 +15,7 @@ $(document).ready(function(){
 	
 	if($('#retrosrepository').length > 0){
 		var retrosrepository =  $('#retrosrepository').DataTable( {
-		 "aoColumns": [{"bSortable": false}, {},{},{"bSortable": false}],
+		 "aoColumns": [{}, {},{},{"bSortable": false}],
 		 "processing": true,
 		 "destroy": true,
 		 "dom": 'Bfrtip',
@@ -60,7 +60,7 @@ $(document).on('click', ".retModaldelete", function(event) {
 				  var myModal = $('#retModal');
 				  myModal.find('.modal-body').html(data);
 				  var retrosrepository =  $('#retrosrepository').DataTable( {
-						 "aoColumns": [{"bSortable": false}, {},{},{"bSortable": false}],
+						 "aoColumns": [{}, {},{},{"bSortable": false}],
 						 "processing": true,
 						 "destroy": true,
 						 "dom": 'Bfrtip',

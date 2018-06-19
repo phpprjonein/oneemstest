@@ -1,5 +1,6 @@
 <header class="main-header">
   <div class="nav top-menu">
+  	<img src="http://piwik.vh.vzwnet.com/piwik.php?idsite=77amp;rec=1" style="border:0" alt="" />
     <div class="float-left box logo-box">
         <img src="resources/img/ncmlogo.png"  height = "24px"  alt=" Verizon Logo"/>
         <h4>OneEMS</h4>

@@ -67,11 +67,11 @@ $market_list = get_market_list_manualdisc();
 				<td>Node Version</td>
 				<td id = "nodeverval"><?php echo $output['data']['nodeVersion']; ?></td>
 			</tr>
-			<tr>
+			<tr style = "display:none;">
 				<td>Node Status</td>
 				<td id = "nodestatval"><?php echo $output['data']['nodestatus']; ?></td>
 			</tr>
-			<tr>
+			<tr style = "display:none;">
 				<td>Status</td>
 				<td id = "statval"><?php echo $output['data']['status']; ?></td>
 			</tr>

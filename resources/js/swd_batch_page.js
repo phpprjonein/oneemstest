@@ -1,4 +1,20 @@
   $(document).ready(function () {
+	  var allVals = [];
+	  
+	  $(document).on('change', '.selector', function(event) {
+		  var tr = $(this).closest('tr');
+		  var id = tr.attr('id').replace('row_',''); 
+		  if($(this).is(':checked')){
+			  if(jQuery.inArray(id, allVals ) == -1){ 
+			  		allVals.push(id);
+			  }
+		  }else{
+			  	allVals.splice($.inArray(id, allVals), 1);
+		  }	
+		  	//console.log(allVals);
+	        $('#textbox1').val(allVals);
+	    });
+	  
       $('#swdelvrybatchpro').DataTable({
           "processing": true,
           "serverSide": true,
@@ -16,14 +32,28 @@
               {  "className":      'batch-control',
                   "orderable":      false,
                   "data":           null,
-                  "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
+                  "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
               {"data": "deviceIpAddr"},
               {"data": "devicename"},
               {"data": "deviceseries"},
               {"data": "market"},
               {"data": "nodeVersion"}
           ],
-			"order": [[4, 'asc']]
+			"order": [[4, 'asc']],
+	        "createdRow": function (row, data, rowIndex) {
+	        	 console.log(allVals);
+	             $(row).addClass('device_row');
+				  $.each($('td', row), function (colIndex) {
+					  //console.log($(this).closest('tr').attr('id').replace('row_',''));
+	            	 if(colIndex == 0){
+	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+	            		 }else{
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	            		 }
+	            	 }
+	             }); 
+	        }
       });
       $("#backup-restore-list-dt-filter a").click(function(){			
   		$("#backup-restore-list-dt-filter .btn").html($(this).text());

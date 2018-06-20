@@ -191,6 +191,7 @@ select device series options -->
               </div>
               <div class="row">
                 <div class="col">
+                  <input type="text" value="" name="textbox1" id="textbox1"/>
                   <table id="swdelvrybatchpro" class="display" style="width:100%">
                     <thead>
                       <tr>

@@ -167,6 +167,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               </div>
               <div class="row">
                 <div class="col">
+                  <input type="hidden" value="" name="cbvals" id="cbvals"/>
                   <table id="swdelvrybatchpro" class="display" style="width:100%">
                     <thead>
                       <tr>

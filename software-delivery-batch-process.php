@@ -128,7 +128,7 @@ function update_dev_batch_bo($batchid, $deviceid, $scriptname, $deviceseries, $n
     foreach ($resultset as $key=>$val){
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
     }
-
+    $deviceid = explode(',',$deviceid);
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){

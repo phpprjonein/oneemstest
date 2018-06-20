@@ -1,4 +1,17 @@
   $(document).ready(function () {
+	  var allVals = [];	  
+	  $(document).on('change', '.selector', function(event) {
+		  var tr = $(this).closest('tr');
+		  var id = tr.attr('id').replace('row_',''); 
+		  if($(this).is(':checked')){
+			  if(jQuery.inArray(id, allVals ) == -1){ 
+			  		allVals.push(id);
+			  }
+		  }else{
+			  	allVals.splice($.inArray(id, allVals), 1);
+		  }	
+	      $('#cbvals').val(allVals);
+	    });
       $('#swdelvrybatchpro').DataTable({
           "processing": true,
           "serverSide": true,
@@ -24,9 +37,23 @@
               {"data": "market"},
               {"data": "nodeVersion"}
           ],
-			"order": [[4, 'asc']]
+			"order": [[4, 'asc']],
+	        "createdRow": function (row, data, rowIndex) {
+	             $(row).addClass('device_row');
+				  $.each($('td', row), function (colIndex) {
+	            	 if(colIndex == 0){
+	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+	            		 }else{
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	            		 }
+	            	 }
+	             }); 
+	        }
       });
-      $("#backup-restore-list-dt-filter a").click(function(){			
+      $("#backup-restore-list-dt-filter a").click(function(){
+    	  allVals = [];	 
+    	  $('#cbvals').val('');
   		$("#backup-restore-list-dt-filter .btn").html($(this).text());
   		var listname = $(this).text().trim();
 			if($(this).text() == 'My routers'){
@@ -65,16 +92,25 @@
                   {"data": "market"},
                   {"data": "nodeVersion"}
               ],
-    			"order": [[4, 'asc']]
+    			"order": [[4, 'asc']],
+    	        "createdRow": function (row, data, rowIndex) {
+    	             $(row).addClass('device_row');
+    				  $.each($('td', row), function (colIndex) {
+    	            	 if(colIndex == 0){
+    	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+    	            		 }else{
+    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+    	            		 }
+    	            	 }
+    	             }); 
+    	        }
           });;
     });
       
-      
-  });	
-  
-  
- $(document).ready(function(){
             $('#device_series').change(function(){
+          	    allVals = [];	 
+          	    $('#cbvals').val('');
     			var deviceseries = '';
     			var nodeVersion = '';
     	  		var listname = $("#backup-restore-list-dt-filter .btn").text().trim();
@@ -133,22 +169,47 @@
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"}
 	              ],
-	    			"order": [[4, 'asc']]
+	    			"order": [[4, 'asc']],
+	    	        "createdRow": function (row, data, rowIndex) {
+	    	             $(row).addClass('device_row');
+	    				  $.each($('td', row), function (colIndex) {
+	    	            	 if(colIndex == 0){
+	    	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+	    	            		 }else{
+	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	    	            		 }
+	    	            	 }
+	    	             }); 
+	    	        }
 	          });;
             });
             })
 			$(document).on('click', '#batch-submit', function(event) {
+				var req_err = false;
+				$('#sw-delivery-devices #status').html('');
+				$('#sw-delivery-devices #status').css("opacity","");
+				
+	        	var allVals = $('#cbvals').val();
+	        	/*$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
+	        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
+	        	});*/
+	        	if(allVals.length == 0){
+	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
+	            	req_err = true;	
+	        	}
+				if(req_err){ 
+	    			$('#sw-delivery-devices #status').show();
+	    			$('#sw-delivery-devices #status').addClass('alert-danger');
+	    		    window.setTimeout(function() {
+	    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    		            $(this).hide(); 
+	    		        });
+	    		    }, 4000);
+	    			return false;
+	    		}
+	        	
 				if(confirm("Are you sure, do you want to create a batch ?")){
-		        	var allVals = [];
-		        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
-		        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
-		        	});
-		
-		        	if(allVals.length == 0){
-		            	alert('Error! Device selection is required');
-		            	return false;	
-		        	}
-		        	
 			  		  if($('#device_series').val() == 'Choose Device Series'){ 	
 						  deviceseries = '';
 					  }else{

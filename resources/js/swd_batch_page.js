@@ -1,6 +1,5 @@
   $(document).ready(function () {
-	  var allVals = [];
-	  
+	  var allVals = [];	  
 	  $(document).on('change', '.selector', function(event) {
 		  var tr = $(this).closest('tr');
 		  var id = tr.attr('id').replace('row_',''); 
@@ -11,8 +10,7 @@
 		  }else{
 			  	allVals.splice($.inArray(id, allVals), 1);
 		  }	
-		  	//console.log(allVals);
-	        $('#textbox1').val(allVals);
+	      $('#cbvals').val(allVals);
 	    });
 	  
       $('#swdelvrybatchpro').DataTable({
@@ -41,10 +39,8 @@
           ],
 			"order": [[4, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
-	        	 console.log(allVals);
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
-					  //console.log($(this).closest('tr').attr('id').replace('row_',''));
 	            	 if(colIndex == 0){
 	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
@@ -55,7 +51,9 @@
 	             }); 
 	        }
       });
-      $("#backup-restore-list-dt-filter a").click(function(){			
+      $("#backup-restore-list-dt-filter a").click(function(){
+    	  allVals = [];	 
+    	  $('#cbvals').val('');
   		$("#backup-restore-list-dt-filter .btn").html($(this).text());
   		var listname = $(this).text().trim();
 			if($(this).text() == 'My routers'){
@@ -83,23 +81,33 @@
                   {  "className":      'batch-control',
                       "orderable":      false,
                       "data":           null,
-                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
+                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
                   {"data": "deviceIpAddr"},
                   {"data": "devicename"},
                   {"data": "deviceseries"},
                   {"data": "market"},
                   {"data": "nodeVersion"}
               ],
-    			"order": [[4, 'asc']]
+  			"order": [[4, 'asc']],
+	        "createdRow": function (row, data, rowIndex) {
+	             $(row).addClass('device_row');
+				  $.each($('td', row), function (colIndex) {
+	            	 if(colIndex == 0){
+	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+	            		 }else{
+	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	            		 }
+	            	 }
+	             }); 
+	        }
           });;
     });
       
-      
-  });	
-  
-  
- $(document).ready(function(){
+
             $('#device_series').change(function(){
+          	    allVals = [];	 
+          	    $('#cbvals').val('');
     			var deviceseries = '';
     			var nodeVersion = '';
     	  		var listname = $("#backup-restore-list-dt-filter .btn").text().trim();
@@ -150,14 +158,26 @@
 	                  {  "className":      'batch-control',
 	                      "orderable":      false,
 	                      "data":           null,
-	                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary' data-toggle='modal'>"},	 
+	                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
 	                  {"data": "deviceIpAddr"},
 	                  {"data": "devicename"},
 	                  {"data": "deviceseries"},
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"}
 	              ],
-	    			"order": [[4, 'asc']]
+	    			"order": [[4, 'asc']],
+	    	        "createdRow": function (row, data, rowIndex) {
+	    	             $(row).addClass('device_row');
+	    				  $.each($('td', row), function (colIndex) {
+	    	            	 if(colIndex == 0){
+	    	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+	    	            		 }else{
+	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	    	            		 }
+	    	            	 }
+	    	             }); 
+	    	        }
 	          });;
             });
             })
@@ -166,10 +186,10 @@
 				$('#sw-delivery-devices #status').html('');
 				$('#sw-delivery-devices #status').css("opacity","");
 				
-	        	var allVals = [];
-	        	$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
+	        	var allVals = $('#cbvals').val();
+	        	/*$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
 	        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
-	        	});
+	        	});*/
 	        	if(allVals.length == 0){
 	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
 	            	req_err = true;	

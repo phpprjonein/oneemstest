@@ -95,7 +95,7 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
     foreach ($resultset as $key=>$val){
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
     }
-
+    $deviceid = explode(',',$deviceid);
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     foreach ($deviceid as $key => $val){
         if(count($deviceid) == $oc){
@@ -105,6 +105,7 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
         }
         $oc++;
     }
+    
     if($oc > 1){
         $db2->query($dsql);
         $db2->execute();

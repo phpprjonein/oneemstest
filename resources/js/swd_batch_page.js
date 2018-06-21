@@ -190,10 +190,20 @@
 	        	/*$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
 	        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
 	        	});*/
+				$('#sw-delivery-devices #status').css("opacity","");  
+				if($('#sw-delivery-devices #device_series').val() == ""){
+					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device series field is required.<br/>");
+					req_err = true;
+				};
+				if($('#sw-delivery-devices #destdrive').val() == ""){
+					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Destination path is required.<br/>");
+					req_err = true;
+				}; 
 	        	if(allVals.length == 0){
 	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
 	            	req_err = true;	
 	        	}
+				
 				if(req_err){ 
 	    			$('#sw-delivery-devices #status').show();
 	    			$('#sw-delivery-devices #status').addClass('alert-danger');

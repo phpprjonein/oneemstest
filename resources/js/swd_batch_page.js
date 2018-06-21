@@ -195,6 +195,10 @@
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device series field is required.<br/>");
 					req_err = true;
 				};
+				if($('#sw-delivery-devices #swrp_filename').val() == null || $('#sw-delivery-devices #swrp_filename').val() == ""){
+					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Filename field is required.<br/>");
+					req_err = true;
+				};
 				if($('#sw-delivery-devices #destdrive').val() == ""){
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Destination path is required.<br/>");
 					req_err = true;

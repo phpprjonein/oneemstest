@@ -228,8 +228,8 @@ select device series options -->
                                     <div class="row">
                                         <div class="col">
                                             <?php
-                                            $path  ='O:\wamp\www\oneemstest\upload';
-                                           // $path  ='/var/www/html/oneemstest/osrepository/';
+                                           // $path  ='O:\wamp\www\oneemstest\upload';
+                                            $path  ='/var/www/html/oneemstest/osrepository/';
 
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',

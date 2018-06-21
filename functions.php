@@ -2966,12 +2966,13 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
     }
     
-    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`) VALUES';
+    $deviceid = explode(',',$deviceid);
+    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {
-            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "')";
+            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "','')";
         } else {
-            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "'),";
+            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
         }
         $oc ++;
     }
@@ -2979,8 +2980,8 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->query($dsql);
         $db2->execute();
         /* insert in to batchmaster table */
-        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`)
-        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "' )";
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`)
+        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "', '', '')";
         $db2->query($dsql);
         $db2->execute();
     }

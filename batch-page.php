@@ -60,8 +60,9 @@ echo generate_site_breadcrumb($values);
             <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
-			<section class="content">
+			<section class="content" id="batch-page">
 				<div class="col-md-12">
+					<div id="status" style="display: none;" class="alert"></div>
 					<div class="panel">
 						<div class="panel-info">
 							<!-- Page title -->
@@ -113,6 +114,7 @@ echo generate_site_breadcrumb($values);
 								value="<?php echo $_SESSION['batch_vars']['refmop']; ?>"
 								name="refmop" id="refmop" />
 							<div class="panel-body">
+								<input type="hidden" value="" name="cbvals" id="cbvals"/>
 								<table id="batchpro" class="table table-striped table-sm">
 									<thead>
 										<tr>

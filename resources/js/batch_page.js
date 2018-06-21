@@ -1,4 +1,19 @@
 $(document).ready(function() {
+	  	var allVals = [];	  
+	  	$(document).on('change', '.selector', function(event) {
+		  var tr = $(this).closest('tr');
+		  var id = tr.attr('id').replace('row_',''); 
+		  if($(this).is(':checked')){
+			  if(jQuery.inArray(id, allVals ) == -1){ 
+			  		allVals.push(id);
+			  }
+		  }else{
+			  	allVals.splice($.inArray(id, allVals), 1);
+		  }	
+	      $('#cbvals').val(allVals);
+	    });
+		
+	
 		if($('#batchpro').length > 0){
 		$('#ip-mgt-utils #ajax_loader').show();
          var table =  $('#batchpro').DataTable( {
@@ -27,6 +42,18 @@ $(document).ready(function() {
             { "data": "nodeVersion" },
         ],
         "order": [[4, 'asc']],
+        "createdRow": function (row, data, rowIndex) {
+            $(row).addClass('device_row');
+			  $.each($('td', row), function (colIndex) {
+           	 if(colIndex == 0){
+           		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+           			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+           		 }else{
+           			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+           		 }
+           	 }
+            }); 
+       }
       } );
 	}
 		
@@ -39,12 +66,29 @@ $(document).ready(function() {
     	})
     	
     	$(document).on('click', '#batch-submit', function(event) {
+			var req_err = false;
+			$('#batch-page #status').html('');
+			$('#batch-page #status').css("opacity","");
+			
+        	var allVals = $('#cbvals').val();
+        	if(allVals.length == 0){
+        		$('#batch-page #status').append("<strong>Error!</strong> Device selection is required");
+            	req_err = true;	
+        	}
+			if(req_err){ 
+    			$('#batch-page #status').show();
+    			$('#batch-page #status').addClass('alert-danger');
+    		    window.setTimeout(function() {
+    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
+        	
+        	
+        	
     		if(confirm("Are you sure, do you want to create a batch ?")){
-	        	var allVals = [];
-	        	$('#batchpro').children().find('input[type=checkbox]:checked').each(function(index){
-	        		 allVals.push(($(this).closest('tr').attr('id')).replace('row_',''));
-	        	});
-	        	
 	            $.ajax({
 	                type:"post",
 	                url:"ip-mgt-process.php",
@@ -59,7 +103,9 @@ $(document).ready(function() {
     	}); 
 
 		  
-	  $("#backup-restore-list-dt-filter a").click(function(){			
+	  $("#backup-restore-list-dt-filter a").click(function(){
+    	  	allVals = [];	 
+    	  	$('#cbvals').val('');
     		$("#backup-restore-list-dt-filter .btn").html($(this).text());
     		var listname = $(this).text();
 			if($(this).text() == 'My routers'){
@@ -94,11 +140,17 @@ $(document).ready(function() {
               ],
               "order": [[4, 'asc']],
               "createdRow": function (row, data, rowIndex) {
-                   $(row).addClass('device_row');
+                  $(row).addClass('device_row');
       			  $.each($('td', row), function (colIndex) {
-      				  
-      			  }); 
-              }
+                 	 if(colIndex == 0){
+                 		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+                 			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+                 		 }else{
+                 			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+                 		 }
+                 	 }
+                  }); 
+             }
             } );
       });
 });

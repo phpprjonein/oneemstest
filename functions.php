@@ -3844,7 +3844,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     
     if ($search) {
         $sql_condition .= " AND ( ";
-        $sql_condition .= " OR n.deviceIpAddr LIKE '%" . $search . "%'";
+        $sql_condition .= " n.deviceIpAddr LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.devicename  LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.market  LIKE '%" . $search . "%'";

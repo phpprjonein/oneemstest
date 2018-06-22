@@ -2404,7 +2404,7 @@ function get_csr_site_tech_mgr_id($username)
 function batch_accordion_details($batchid)
 {
     global $db2;
-    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,n.devicename, bm.status  FROM nodes n JOIN batchmembers bm on bm.deviceid = n.id where bm.batchid = ' . $batchid;
+    $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,n.devicename, bm.status, bm.comment  FROM nodes n JOIN batchmembers bm on bm.deviceid = n.id where bm.batchid = ' . $batchid;
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -3392,12 +3392,14 @@ function delete_batchid($batchid)
  */
 function write_log($message, $logfile = '')
 {
+    
+    
     // Determine log file
     // Filename of log to use when none is given to write_log
-    $default_log = "/var/www/html/oneemstest/logs/oneemsdefault.log";
-    $upload_log = "/var/www/html/oneemstest/logs/oneems.log";	
-	$default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault.log";
-	$upload_log = "O:\wamp\www\oneemstest\logs\oneems.log";
+    $default_log = "/var/www/html/oneemstest/logs/oneemsdefault_".date(m_d_Y).".log";
+    $upload_log = "/var/www/html/oneemstest/logs/oneems_".date(m_d_Y).".log";	
+    $default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_".date(m_d_Y).".log";
+    $upload_log = "O:\wamp\www\oneemstest\logs\oneems_".date(m_d_Y).".log";
 	//echo 'reach here inside the write_log function';
 	
     if ($logfile == '') {
@@ -3901,7 +3903,7 @@ function swrepo_get_deviceseries()
 {
     global $db2;
     //$sql = "SELECT distinct(deviceseries) FROM deviceseries";
-	$sql = "SELECT distinct(deviceseries) FROM nodes";
+	$sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != ''";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
@@ -3940,7 +3942,7 @@ function os_repository_deviceseries()
 {
     global $db2;
     //$sql = "SELECT distinct(deviceseries) FROM deviceseries";
-	$sql = "SELECT distinct(deviceseries) FROM nodes";
+	$sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != ''";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

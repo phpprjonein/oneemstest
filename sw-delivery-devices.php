@@ -117,8 +117,7 @@ select device series options -->
 <!-- select OS version options -->
                   <div class="form-group f8 required" data-fid="f8">
                     <label class="control-label" for="f8">Select File Name</label>
-                    <select class="form-control custom-select chosen-select" multiple id="swrp_filename" name ="swrp_filename" data-rule-required="true">
-                    	<option value="">- SELECT Filename -</option>
+                    <select data-placeholder="Choose a File Names..." class="form-control custom-select chosen-select" multiple id="swrp_filename" name ="swrp_filename" data-rule-required="true">
                     </select>
                   </div>
 <!-- /select OS version options -->

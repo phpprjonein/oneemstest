@@ -130,7 +130,6 @@ select device series options -->
                                         <div class="form-group f2 required" data-fid="f2">
     										<label class="control-label" for="f2">Device Series</label>
     										<select data-placeholder="Choose a Device Series..." class="form-control custom-select chosen-select" id="deviceseries" multiple name="deviceseries" tabindex="4">
-    											<option value="">Choose Device Series</option>
                                                 <?php foreach ($os_repository_deviceseries as $key => $val){ ?>
                                 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
                                 				<?php }; ?>

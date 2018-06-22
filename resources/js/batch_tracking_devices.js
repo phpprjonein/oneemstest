@@ -27,7 +27,8 @@ $(document).ready(function() {
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
             { "data": "batchstatus" },
-            { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
+            { "data": "batchstatus" }
+            //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
         "order": [[4, 'asc']],
         "createdRow": function (row, data, rowIndex) {
@@ -37,6 +38,11 @@ $(document).ready(function() {
            	   $(this).html('Scheduled');
          	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
            	   $(this).html('Cancelled');
+         	 }else if(colIndex == 7){ 
+         		 if($(this).html() == 'd')
+         			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
+         		 else
+         			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
          	 }
             });
        }
@@ -156,17 +162,23 @@ $(document).ready(function() {
 		     			{ "data": "nodeVersion" },
 		                 { "data": "batchcreated" },
 		                 { "data": "batchstatus" },
-		                 { "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
+		                 { "data": "batchstatus" },
+		                 //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
 		             ],
 		             "order": [[4, 'asc']],
 		             "createdRow": function (row, data, rowIndex) {
 		                 $(row).addClass('device_row');
 		     			  $.each($('td', row), function (colIndex) {
-		                	 if(colIndex == 6 && $(this).html() == 's'){ 
+		                 if(colIndex == 6 && $(this).html() == 's'){ 
 		                	   $(this).html('Scheduled');
 		              	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
 		                	   $(this).html('Cancelled');
-		              	 }
+		              	 }else if(colIndex == 7){ 
+		             		 if($(this).html() == 'd')
+		             			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
+		             		 else
+		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
+		             	 }
 		                 });
 		            }
 		         } );

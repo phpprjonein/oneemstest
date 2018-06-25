@@ -22,7 +22,7 @@
 				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-			  url: 'bootorder-delivery-process-new.php',
+			  url: 'bootorder-delivery-process.php',
               type: 'GET'
           },
           "columns": [ 		
@@ -154,7 +154,7 @@
 	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'bootorder-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries,
+	                  url: 'bootorder-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
 	                  type: 'GET'
 	              },
 	              "columns": [ 		

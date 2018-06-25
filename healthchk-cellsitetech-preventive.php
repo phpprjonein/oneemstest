@@ -30,7 +30,6 @@ include 'functions.php';
     $devicetype = 'ios';
     $deviceid = $_GET['deviceid'];
     $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/preventive/' . $deviceid;
-    logToFile('preventive.log', $url_final);
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/preventive/4050';
     $output = sendPostData($url_final);
     /*

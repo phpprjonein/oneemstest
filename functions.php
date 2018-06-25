@@ -616,11 +616,9 @@ function getDetailViewData($userid, $deviceid)
     
     $sql = $sql_select . $sql_condition;
     
-    logToFile(my . log, $sql);
     $db2->query($sql);
     
     $resultset['result'] = $db2->resultset();
-    logToFile(my . log, $resultset);
     return $resultset;
 }
 
@@ -4052,10 +4050,8 @@ function get_os_ver_applydate($query)
 function update_schedbackup_settings($username, $backup_occur, $backup_day, $backup_hours, $backup_minutes, $schedbackup_type, $backup_timezone, $backup_market)
 {
     global $db2;
-    logToFile('schedbak.log', 'Inside the update_schedbackup function');
     $dsql = 'INSERT INTO `schedbackupsettings` (`username`,`occurence`, `day`, `hours`, `minutes`, `backuptype`,`timezone`, `market`) VALUES';
     $dsql .= "('" . $username . "','" . $backup_occur . "','" . $backup_day . "','" . $backup_hours . "','" . $backup_minutes . "','" . $schedbackup_type . "','" . $backup_timezone . "','" . $backup_market . "')";
-    logToFile('schedbak.log', $dsql);
     $db2->query($dsql);
     $db2->execute();
 }

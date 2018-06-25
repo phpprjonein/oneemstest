@@ -202,7 +202,6 @@ if(isset($_POST['act']) && $_POST['act'] == 'batch-del' && isset($_POST['batchid
 
 if ($_POST['ctype'] == 'SchedBakupSettings') {	   	
 	 //update_schedbackup_settings($_POST['username'],$_POST['backup_occur'], $_POST['backup_day'], $_POST['backup_hours'],  $_POST['backup_minutes'],  $_POST['backup_timezone'],$_POST['backup_market'] );
-	 logToFile('schedbak.log',$_POST['schedbackup_type']);		
 	 update_schedbackup_settings($_POST['username'],$_POST['backup_occur'], $_POST['backup_day'], $_POST['backup_hours'],  $_POST['backup_minutes'], $_POST['schedbackup_type'], $_POST['backup_timezone'],$_POST['backup_market'] );
 	 echo "success";
 }
@@ -241,7 +240,6 @@ $values_arr = array(
 		'model' => $_POST['modelval']
     );
 	*/ 
-	logToFile('manualdisc.log', $_POST['devnameval']);	 
 	$values_arr = array(
         'region' => "dummy",
         'market' => $_POST['mktval'],

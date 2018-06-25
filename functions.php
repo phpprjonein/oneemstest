@@ -4148,8 +4148,8 @@ function update_login_api_rules($sso_flag, $username)
         if (isset($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'])) {
             foreach ($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'] as $key => $val) {
                 $valrc = rawurlencode($val);
-                //$output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
-                $output_zones = @file_get_contents(('http://txsliopsa1v.nss.vzwnet.com:8080/site/czone/'.$valrc.'?hierarchy=0'));
+                 $output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
+                //$output_zones = @file_get_contents(('http://txsliopsa1v.nss.vzwnet.com:8080/site/czone/'.$valrc.'?hierarchy=0'));
                 $output_zones_resp_result_arr = json_decode($output_zones, 1);
                 $resp_zones_result_arr[$val] = $output_zones_resp_result_arr['site_devices'];
             }

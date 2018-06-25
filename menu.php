@@ -44,10 +44,10 @@
               <a class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>" href="cellsitetech-restorebackup.php">Backup</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php", "cellsitetech-configuration.php", "generate_script2.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuration</a>
+              <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate-pre-script.php", "cellsitetech-configuration.php", "generate-post-script.php", "batch-page.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuration</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="scripting.php">Load Template</a>
-                <a class="dropdown-item" href="generate_script1.php">Generate Script </a>
+                <a class="dropdown-item" href="generate-pre-script.php">Generate Script </a>
                 <!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
                 <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
               </div>
@@ -88,10 +88,10 @@
                   <a class="nav-link <?php print activemenu("switchtech-restorebackup.php"); ?>" href="switchtech-restorebackup.php">Backup</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate_script1.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuration</a>
+                  <a class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "generate-pre-script.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuration</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="scripting.php">Load Template</a>
-                    <a class="dropdown-item" href="generate_script1.php">Generate Script</a>
+                    <a class="dropdown-item" href="generate-pre-script.php">Generate Script</a>
                     <!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
                     <a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
                   </div>

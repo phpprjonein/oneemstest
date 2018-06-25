@@ -79,7 +79,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 					<div id="status" style="display: none;" class="alert"></div>
 
 <!-- backup management content row -->
-					<form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate_script2.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
+					<form data-licenseKey="" name="wizard-75a3c2" id="wizard-75a3c2" action='generate-post-script.php' method='POST' enctype='multipart/form-data' novalidate autocomplete="on">
                         <div class="row">
 
 <!-- router selection content row -->

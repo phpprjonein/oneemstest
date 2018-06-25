@@ -77,7 +77,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries+'&nodeVersion='+nodeVersion,
+                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries+'&nodeVersion='+nodeVersion,
                   type: 'GET'
               },
               "columns": [ 		

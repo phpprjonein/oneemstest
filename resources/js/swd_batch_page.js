@@ -23,7 +23,7 @@
 				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-              url: 'software-delivery-process-new.php',
+              url: 'software-delivery-process.php',
               type: 'GET'
           },
           "columns": [ 		
@@ -74,7 +74,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries,
+                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
                   type: 'GET'
               },
               "columns": [ 		
@@ -151,7 +151,7 @@
 	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'software-delivery-process-new.php?listname='+listname+'&deviceseries='+deviceseries,
+	                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
 	                  type: 'GET'
 	              },
 	              "columns": [ 		

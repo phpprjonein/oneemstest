@@ -94,15 +94,12 @@ switch ($command) {
 <div class="modal-body">    
 <?php
 if (isset($url)) {
-    if (! $data = @file_get_contents($url)) {
-        $error = error_get_last();
-        $data = "HTTP request failed. Error was: " . $error['message'];
-    }
+    $data = @file_get_contents($url);
 } else
     $data = "CLI command needs is in progress123." . $command . $device . $url;
 
 echo "<span style='font-family:courier;font-size:12px;font-weight:500;'> $data</span>";
-?>  
+?>
 </div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

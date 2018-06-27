@@ -8,7 +8,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
     $db2 = new db2();
-    $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) VALUES';
+    $sql = 'INSERT INTO `configtemplate` (`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`, `tabname`) VALUES';
     $oc = 0;
     foreach ($_POST['loop'] as $key => $val) {
         $oc ++;
@@ -16,9 +16,9 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         foreach ($val as $linekey => $lineval) {
             $inc ++;
             if (count($_POST['loop']) == $oc && count($val) == $inc) {
-                $sql .= "('" . $templname . "','" . str_replace('looper_', '', $key) . $linekey . "','" . $lineval . "','" . $_POST['hidden'][$key][$linekey] . "','" . $_POST['alias'] . "','" . $_SESSION['userid'] . "','" . $_POST['refmop'] . "','','','')";
+                $sql .= "('" . $templname . "','" . str_replace('looper_', '', $key) . $linekey . "','" . $lineval . "','" . $_POST['hidden'][$key][$linekey] . "','" . $_POST['alias'] . "','" . $_SESSION['userid'] . "','" . $_POST['refmop'] . "','','','','" . $_POST['looptabler'][$key][$linekey] . "')";
             } else {
-                $sql .= "('" . $templname . "','" . str_replace('looper_', '', $key) . $linekey . "','" . $lineval . "','" . $_POST['hidden'][$key][$linekey] . "','" . $_POST['alias'] . "','" . $_SESSION['userid'] . "','" . $_POST['refmop'] . "','','',''),";
+                $sql .= "('" . $templname . "','" . str_replace('looper_', '', $key) . $linekey . "','" . $lineval . "','" . $_POST['hidden'][$key][$linekey] . "','" . $_POST['alias'] . "','" . $_SESSION['userid'] . "','" . $_POST['refmop'] . "','','','','" . $_POST['looptabler'][$key][$linekey] . "'),";
             }
         }
     }
@@ -156,6 +156,24 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     } else {
         header("location:cellsitetech-configuration.php");
     }
+}  elseif ($_POST['action'] == 'LoadTableData') {
+    $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars');
+    $posttabname = $_POST['loadTab'];
+    if(isset($posttabname) && in_array($posttabname, $tablename_arr)){
+        if($posttabname == 'globalvars'){
+            $field = 'gvarname';
+        }elseif($posttabname == 'marketvars'){
+            $field = 'mvarval';
+        }elseif($posttabname == 'usrvars'){
+            $field = 'usrvarval';
+        }
+        $replace_selbox = '<option val="">--Select--</option>';
+        $vars = configtemplate_elemvalue($posttabname, $field);
+        foreach ($vars as $key=>$val){
+            $replace_selbox .= '<option value='.$val[$field].'>'.$val[$field].'</option>';
+        }
+    }
+    echo $replace_selbox;
 }
 
 ?>

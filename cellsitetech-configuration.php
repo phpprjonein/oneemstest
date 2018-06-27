@@ -138,6 +138,21 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 							<div id="file_process">
 							<?php
     if (file_exists($filename)) {
+        
+        $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars');
+        $table_selbox = "<option val=''>--Select--</option>";
+        foreach ($tablename_arr as $key=>$val){
+            $table_selbox .= "<option value='".$key."'>".$val."</option>";
+        }
+        $table_selbox .= "</select>";
+        
+        $replace_selbox = '<option val="">--Select--</option>';
+        /*$vars = configtemplate_elemvalue('globalvars', 'gvarname');
+        foreach ($vars as $key=>$val){
+            $replace_selbox .= '<option value='.$val['gvarname'].'>'.$val['gvarname'].'</option>';
+        }*/
+        $replace_selbox .= '</select>';
+
         $fd = fopen($filename, "r");
         $line = 0;
         while (! feof($fd)) {
@@ -149,10 +164,16 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             if ($splitcontcount > 1) {
                 $output .= '<div class="form-group">';
                 $output_inner = '';
+                $l = 1;
                 foreach ($splitcontents as $color) {
                     if (! empty($color)) {
                         if (substr_count(strtolower('#' . $color), "#x") > 0 || substr_count(strtolower('#' . $color), "#y") > 0 || substr_count(strtolower('#' . $color), "#x.x.x.x") > 0 || substr_count(strtolower('#' . $color), "#y.y.y.y") > 0 || substr_count(strtolower('#' . $color), "#z.z.z.z") > 0 || substr_count(strtolower('#' . $color), "#a.a.a.a") > 0 || substr_count(strtolower('#' . $color), "#b.b.b.b") > 0) {
-                            $output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+                            /*$output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'>
+                                <input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+                            */
+                            $output_inner .= "<select id='conf_selbox_".$line.$l."' class='elementvalref' name='looptabler[looper_" . $line . "][]'>".$table_selbox."
+                            <span id='wrap_conf_selbox_".$line.$l."'><select id='val_conf_selbox_".$line.$l."' name='loop[looper_" . $line . "][]'>".$replace_selbox."<input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+                            
                         } else {
                             if (strlen($color) != 0) {
                                 $orgcolor = $color;
@@ -161,6 +182,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                             }
                         }
                     }
+                    $l++;
                 }
                 ;
 

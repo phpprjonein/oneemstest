@@ -37,4 +37,14 @@ $(document).ready(function() {
         
         return true;
     });
+    
+    $(document).on('change', "#file_process .elementvalref", function(event) {
+    	var selid = $(this).attr('id');
+    	$.post( "cellsite-config-process.php", { 
+    		'action': "LoadTableData", 
+    		'loadTab' : $('#' + selid).val()
+		}).done(function( data ) {
+			$('#val_' + selid).html( data );
+		});
+    });
 });

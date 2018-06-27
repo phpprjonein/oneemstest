@@ -2521,7 +2521,7 @@ function generic_get_market_by_region($region)
 function generic_get_deviceseries()
 {
     global $db2;
-    $sql = "SELECT distinct(deviceseries) FROM nodes ORDER BY deviceseries";
+    $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != '' ORDER BY deviceseries";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -2586,7 +2586,7 @@ function generic_get_switch_name_by_market($market)
 function generic_get_nodeVersion()
 {
     global $db2;
-    $sql = "SELECT distinct(nodeVersion) FROM nodes ORDER BY nodeVersion";
+    $sql = "SELECT distinct(nodeVersion) FROM nodes where nodeVersion != 'None' and nodeVersion != '' ORDER BY nodeVersion";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
@@ -4288,3 +4288,20 @@ function get_market_list_manualdisc()
     $resultset = $db2->resultset();
     return $resultset;
 }
+
+
+/**
+ *
+ * @return unknown
+ */
+function configtemplate_elemvalue($posttabname, $field)
+{
+    global $db2;
+    $sql = "SELECT distinct(".$field.") FROM ".$posttabname." order by ".$field;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+
+

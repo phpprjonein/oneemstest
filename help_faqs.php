@@ -299,7 +299,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                   <p></p>
                   <span class="font-italic"><b>FIG. 7.1 - JIRA Ticketing Button</b></span>
                   <p></p>
-                  <p>Upon clicking this button, you will be redirected to an external JIRA ticketing system, where you can open a ticket relevant to an issue you may be having with the OneEMS application. There, you can relay all the pertinent information that applies to whatever issue you may be having within the OneEMS application.</p>
+                  <p>Upon clicking this button, you will be redirected to an external JIRA ticketing system, where you can open a ticket relevant to an issue you may be having with the OneEMS application. There, you can relay all the pertinent information that applies to your issue.</p>
                 </div>
               </div>
             </div>

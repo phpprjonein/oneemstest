@@ -38,7 +38,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
     <?php include_once ('menu.php'); ?>
     <?php
     $values = array(
-        'OS Repository' => '#'
+        'Software Upload' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>
@@ -202,7 +202,7 @@ select device series options -->
     												</tr>
     											</thead>
     											<tbody>
-                                                    <?php foreach ($records as $key=>$val): 
+                                                    <?php foreach ($records as $key=>$val):
                                                             $filesize_arr = explode('|', $val['filesize']);
                                                     ?>
                                                         <tr id="row_<?php echo $val['fileid'];?>">
@@ -227,9 +227,9 @@ select device series options -->
                                     <div class="row">
                                         <div class="col">
                                             <?php
-                                           // $path  ='O:\wamp\www\oneemstest\upload';
-                                            $path  ='/var/www/html/oneemstest/osrepository/';
-
+                                           //$path  ='O:\wamp\www\oneemstest\upload';
+                                            //$path  ='/var/www/html/oneemstest/osrepository/';
+                                             $path  ='/usr/apps/oneems/config/bkup/sd';
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
                                                 '..'

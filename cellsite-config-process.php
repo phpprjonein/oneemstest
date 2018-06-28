@@ -15,6 +15,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         $inc = 0;
         foreach ($val as $linekey => $lineval) {
             $inc ++;
+            $_POST['looptabler'][$key][$linekey] = ($_POST['looptabler'][$key][$linekey] == '--Select--') ? '' : $_POST['looptabler'][$key][$linekey];
+            $lineval = ($lineval == '--Select--') ? '' : $lineval;
             if (count($_POST['loop']) == $oc && count($val) == $inc) {
                 $sql .= "('" . $templname . "','" . str_replace('looper_', '', $key) . $linekey . "','" . $lineval . "','" . $_POST['hidden'][$key][$linekey] . "','" . $_POST['alias'] . "','" . $_SESSION['userid'] . "','" . $_POST['refmop'] . "','','','','" . $_POST['looptabler'][$key][$linekey] . "')";
             } else {

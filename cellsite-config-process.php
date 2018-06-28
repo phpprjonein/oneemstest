@@ -42,7 +42,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
-    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`, `tabname`) SELECT " . $batchid . " AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`, `tabname` FROM configtemplate where templname = '" . $templname . "'";
+    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT " . $batchid . " AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '" . $templname . "'";
     $db2->query($sql);
     $db2->execute();
     $sql = "SELECT distinct(elemid),elemvalue, templname, refmop FROM tmpbatchconfigtemplate where batchid = '" . $batchid . "' order by elemid asc";
@@ -157,7 +157,6 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         header("location:cellsitetech-configuration.php");
     }
 }  elseif ($_POST['action'] == 'LoadTableData') {
-    $replace_selbox = '<option val="">--Select--</option>';
     $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars');
     $posttabname = $_POST['loadTab'];
     if(isset($posttabname) && in_array($posttabname, $tablename_arr)){
@@ -168,6 +167,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         }elseif($posttabname == 'usrvars'){
             $field = 'usrvarval';
         }
+        $replace_selbox = '<option val="">--Select--</option>';
         $vars = configtemplate_elemvalue($posttabname, $field);
         foreach ($vars as $key=>$val){
             $replace_selbox .= '<option value='.$val[$field].'>'.$val[$field].'</option>';

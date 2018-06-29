@@ -3270,7 +3270,7 @@ function delete_templname_already_exist($templname)
 function config_get_templates_from_templname($templname)
 {
     global $db2;
-    $sql = "SELECT distinct(elemid),elemvalue, editable FROM configtemplate where templname='$templname' order by elemid asc";
+    $sql = "SELECT distinct(elemid),elemvalue, editable,tabname FROM configtemplate where templname='$templname' order by elemid asc";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

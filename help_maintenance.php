@@ -64,6 +64,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             <nav class="nav nav-pills flex-column">
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
             </nav>
             <a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">

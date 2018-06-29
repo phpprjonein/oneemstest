@@ -63,6 +63,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             <nav class="nav nav-pills flex-column">
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
             </nav>
             <a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">
@@ -107,6 +108,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
         <p><a href="#item-2-3">Click here</a> for more detailed information about device health individual Dashboard views.</p>
         <h5 id="item-2-2-1">List Management Options</h5>
         <p>Here, a user can create custom lists of devices associated with the switch they are assigned.</p>
+        <p>RouterByTech and SwitchByTech APIs are used to auto-populate the My Routers default views (for Cell Techs) and Switch default views (for Switch Techs.</p>
         <b>List Creation</b>
         <p>To create a <b>Device List</b>, enter a name in the input field under the <b>List Management</b> heading, then click the "Submit" button next to this input field.</p>
         <p class="alert alert-danger"><b class="text-danger">NOTE:</b> Your Device List title <b><i>MUST</i></b> be a combination of alphanumeric characters of no more than 20 characters.</p>
@@ -133,7 +135,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
         <p></p>
         <span class="font-italic"><b>FIG. 2.1 - Health Check Dashboard</b></span></p>
         <p></p>
-        <p>This screen gives the user a Dashboard table view of all the devices in a certain List, along with the ability to drill down and view 21 separate health checks:
+        <p>This screen gives the user a Dashboard table view of all the devices in a certain List, along with the ability to drill down and view multiple separate health checks:
           <div class="row">
             <div class="col">
               <ul>
@@ -141,12 +143,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                 <li>Environmental States</li>
                 <li>Multi Protocol Label Switching Interfaces</li>
                 <li>IPV4 and IPV6 Neighbors</li>
+                <li>IPV4 and IPV6 Routes</li>
                 <li>Memory Utilization</li>
                 <li>CPU Utilization</li>
                 <li>Platform Status</li>
                 <li>Log Entries</li>
-                <li>Ping Status/Success Rates</li>
+                <li>200 Byte Ping Status/Success Rates</li>
                 <li>Buffers</li>
+                <li>Virtual Routing and Forwarding</li>
               </ul>
             </div>
             <div class="col">
@@ -155,7 +159,8 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                 <li>Boot Statement Matching</li>
                 <li>Configuration Registration</li>
                 <li>Bidirectional Forwarding Detection Status And Routes</li>
-                <li>Interface Options</li>
+                <li>Interface State</li>
+                <li>Interface Counters</li>
                 <li>Memory Allocation</li>
                 <li>Platform Health</li>
                 <li>Log Entries</li>
@@ -166,13 +171,13 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
           </div>
         </p>
         <p>To view the health of a specific device, click on the plus icon ( <i class="fa fa-plus-circle fa-lg text-primary"></i> ) on the leftmost column of the device. This will run a script that will run a realtime health check on the device in view.</p>
-        <p class="alert alert-danger"><b class="text-danger">NOTE:</b> Upon initialization, 21 separate Health Checks will run in series on the chosen Router. This process can take up to one minute to complete.</p>
+        <p class="alert alert-danger"><b class="text-danger">NOTE:</b> Upon initialization, a single Health Check API runs on multiple *a3v and *a4v servers, performing separate Health Checks that will run in series on the chosen Router. This process, which supports concurrent usage, can take up to one minute to complete.</p>
         <img src="resources/img/screenshot-healthcheck2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck2">
         <p></p>
         <span class="font-italic"><b>FIG. 2.2 - Refreshing An Individual Health Check</b></span></p>
         <p></p>
         <p>Once this realtime health check is done, you will be able to click on the page icons ( <i class="fa fa-file-text-o text-primary"></i> ) associated with each parameter to view output directly from the console of the currently selected device.</p>
-        <p>You will then see the specific command that was run on the devices and the corresponding output.</p>
+        <p>You will then see the specific command that was run on the devices and the corresponding output response.</p>
         <img src="resources/img/screenshot-healthcheck3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck3">
         <p></p>
         <span class="font-italic"><b>FIG. 2.3 - Device Console Output View</b></span></p>

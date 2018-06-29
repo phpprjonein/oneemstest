@@ -67,9 +67,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									<a class="nav-link" href="#item-3">BACKUP</a> <a
 										class="nav-link help active" href="help_config.php">CONFIGURATION</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
-											Template</a> <a class="nav-link ml-3 my-1"
-											href="help_config.php#item-4-2">Generate Script</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -123,8 +123,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 							<p>
 								To backup a device's configuration, simply click the <b>Backup</b>
 								button in the right most column of the list table. This will run
-								a script that attempts to remotely backup the configuration of
-								the device selected in the user's List table.
+								an API that attempts to remotely backup the configuration of the device selected in the user's List table.
 							</p>
 							<img src="resources/img/screenshot-backup2.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-backup2">

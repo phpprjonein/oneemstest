@@ -69,6 +69,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="#item-4-1">Load Template</a>
 										<a class="nav-link ml-3 my-1" href="#item-4-2">Generate Script</a>
+                                        <a class="nav-link ml-3 my-1" href="#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -107,7 +108,15 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 							<p>
 								This Dashboard consists of a file upload interface that allows a
 								user to manage <b>Configuration Scripts</b> for any device
-								within the OneEMS system. On this screen, a user can:
+								within the OneEMS system.</p>
+                                <p>The application uses specific criteria for categorization of device configurations. They are:</p>
+                                <ul>
+                                    <li>Golden & Modification scripts</li>
+                                    <li>Cisco Series ASR920, ASR1000, ASR903, ASR900 (extensible to accomodate for support of additional device types in the future)</li>
+                                    <li>RAN vendors</li>
+                                    <li>Standalone, Hub, Spoke, IT-store, Pre-Maint, Post-Maint, Show-Tech, Preventive script types</li>
+                                </ul>
+                                <p>On this screen, a user can:
 							</p>
 							<ul>
 								<li>Enter values into editable fields</li>
@@ -861,8 +870,9 @@ event manager applet LOOP_GIG authorization bypass
 								Once you select a template from the list, that template will
 								appear with editable fields highlighted in <span
 									class="text-danger"><b>red</b></span>. You can then edit and
-								download this template for deployment elsewhere.
+								download this template for deployment elsewhere or execute this template as a script on one or more devices (scheduled/on-demand runs).
 							</p>
+                            <p>Once a user executes a configuration template for script execution, that template gets added to a batch process. More information about this batch process can be found <a href="help_maintenance.php#item-7-3"><b>HERE</b></a>.</p>
 							<img src="resources/img/screenshot-generate-script2.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-generate2">
@@ -870,6 +880,15 @@ event manager applet LOOP_GIG authorization bypass
 							<span class="font-italic"><b>FIG. 4.4 - Generated Template Edit
 									Screen</b></span>
 							<p></p>
+                            <h5 id="item-4-3">Batch Tracking</h5>
+                            <p>Here is where a user can manage templated script execution on a device or sets of devices.</p>
+                            <p>Scripts can be montored for execution status on a device or sets of devices (<b>Script Execution</b>), whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>
+                            <img src="resources/img/screenshot-batch-tracking1.png"
+                                class="img-fluid" alt="" data-toggle="modal"
+                                data-target="#screenshot-batch1">
+                            <p></p>
+                            <span class="font-italic"><b>FIG. 4.5 - Batch Tracking View</b></span>
+                            <p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
@@ -947,6 +966,19 @@ event manager applet LOOP_GIG authorization bypass
 				</div>
 			</div>
 		</div>
+        <div class="modal fade show" id="screenshot-batch1" tabindex="-1"
+            role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="close img-close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <img src="resources/img/screenshot-batch-tracking1.png" alt=""
+                        width="100%">
+                </div>
+            </div>
+        </div>
 	</div>
 	<!-- /image modals -->
 

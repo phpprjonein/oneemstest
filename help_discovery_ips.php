@@ -64,6 +64,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             <nav class="nav nav-pills flex-column">
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
             </nav>
             <a class="nav-link" href="#item-5">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">
@@ -103,7 +104,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               <p></p>
               <span class="font-italic"><b>FIG. 5.1 - IP Management Dashboard</b></span>
               <p></p>
-              <p>To view subnets by Region, choose a Region from the dropdown menu to the right of the <b>IP Type</b> button. When this Dashboard first loads, a user's default Region is selected.</p>
+              <p>To view subnets by Region, choose a Region from the dropdown menu to the right of the <b>IP Type</b> button. When this Dashboard first loads, agents run for each market across 6 backend servers and a user's default Region information is displayed.</p>
               <img src="resources/img/screenshot-ip_management_choose_Region-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
               <p></p>
               <span class="font-italic"><b>FIG. 5.2 - Choose Region</b></span>

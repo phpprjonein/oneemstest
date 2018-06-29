@@ -63,6 +63,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             <nav class="nav nav-pills flex-column">
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
               <a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
+              <a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
             </nav>
             <a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
             <nav class="nav nav-pills flex-column">
@@ -98,6 +99,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
           <li>have a single sign on account in <b>QTWIN</b> and <b>USWIN</b></li>
           <li>secure access to the <b>Verizon SSO</b> login screen</li>
         </ul>
+        <p>The OneEMS application also supports a number secondary functionalities:</p>
+        <ul>
+           <li>Logging of user activity</li>
+           <li>Integration with Piwik/Matomo analytics platform solutions</li>
+           <li>Active & Passive DB replication</li>
+           <li>Designed to support 200k+ separate elements/devices</li>
+           <li>Servers sized to support devices and frequency of collections</li>
+         </ul>
         <hr>
         <p></p>
         <a href="help_network_elements.php" class="border"><b>NEXT: Network Elements >></b></a>

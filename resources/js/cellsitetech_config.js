@@ -42,7 +42,8 @@ $(document).ready(function() {
     	var selid = $(this).attr('id');
     	$.post( "cellsite-config-process.php", { 
     		'action': "LoadTableData", 
-    		'loadTab' : $('#' + selid).val()
+    		'loadTab' : $('#' + selid).val(),
+    		'switch_name': $('#configt_load_switch_name').val(),
 		}).done(function( data ) {
 			$('#val_' + selid).html( data );
 		});

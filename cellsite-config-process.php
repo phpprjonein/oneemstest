@@ -5,6 +5,11 @@ include_once 'functions.php';
 $userid = $_SESSION['userid'];
 
 if ($_POST['action'] == 'SAVE CONFIGURATION') {
+    /*
+    unset($_POST['switch_name']);
+    if(isset($_POST['switch_name']) && !empty($_POST['switch_name'])){
+        $_SESSION['ct_switch_name']=$_POST['switch_name'];
+    }*/
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
     $db2 = new db2();
@@ -158,7 +163,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         header("location:cellsitetech-configuration.php");
     }
 }  elseif ($_POST['action'] == 'LoadTableData') {
-    $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars');
+    $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
     $posttabname = $_POST['loadTab'];
     if(isset($posttabname) && in_array($posttabname, $tablename_arr)){
         if($posttabname == 'globalvars'){
@@ -167,9 +172,11 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
             $field = 'mvarval';
         }elseif($posttabname == 'usrvars'){
             $field = 'usrvarval';
+        }elseif($posttabname == 'switchvars'){
+            $field = 'swvarval';
         }
         $replace_selbox = '<option val="">--Select--</option>';
-        $vars = configtemplate_elemvalue($posttabname, $field);
+        $vars = configtemplate_elemvalue($posttabname, $field, $_POST['switch_name']);
         foreach ($vars as $key=>$val){
             $replace_selbox .= '<option value='.$val[$field].'>'.$val[$field].'</option>';
         }

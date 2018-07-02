@@ -3,6 +3,8 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 
+ini_set('display_errors',1);
+
 // Static variable values set
 if (isset($_POST['clear'])) {
     if (strtolower($_POST['clear']) == 'search') {
@@ -190,7 +192,7 @@ echo generate_site_breadcrumb($values);
 
             <?php
             $output = '';
-            $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars');
+            $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
             $table_selbox = "<option val=''>--Select--</option>";
             foreach ($tablename_arr as $key=>$val){
                 $table_selbox .= "<option value='".$key."'>".$val."</option>";
@@ -200,7 +202,8 @@ echo generate_site_breadcrumb($values);
             $vars['globalvars'] = configtemplate_elemvalue('globalvars', 'gvarname');
             $vars['usrvars'] = configtemplate_elemvalue('usrvars', 'usrvarname');
             $vars['marketvars'] = configtemplate_elemvalue('marketvars', 'mvarname');
-            $select_field_arr = array('globalvars'=>'gvarname', 'usrvars'=>'usrvarname', 'marketvars'=>'mvarname');
+            $vars['switchvars'] = configtemplate_elemvalue('switchvars', 'swvarval');
+            $select_field_arr = array('globalvars'=>'gvarname', 'usrvars'=>'usrvarname', 'marketvars'=>'mvarname', 'switchvars' => 'swvarval');
             
             for ($k = 1; $k <= count($newarr); $k ++) {
                  if (count($newarr[$k]) == 1) {

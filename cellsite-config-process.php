@@ -49,7 +49,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
-    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`) SELECT " . $batchid . " AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category` FROM configtemplate where templname = '" . $templname . "'";
+    $sql = "INSERT INTO `tmpbatchconfigtemplate` (`batchid`,`templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`, `tabname`) SELECT " . $batchid . " AS batchid, `templname`, `elemid`, `elemvalue`, `editable`, `alias`, `userid`, `refmop`, `comments`, `auditable`, `category`,`tabname` FROM configtemplate where templname = '" . $templname . "'";
     $db2->query($sql);
     $db2->execute();
     $sql = "SELECT distinct(elemid),elemvalue, templname, refmop FROM tmpbatchconfigtemplate where batchid = '" . $batchid . "' order by elemid asc";
@@ -66,7 +66,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
             foreach ($_POST['loop'][$key] as $ink => $inv) :
                 $update_pos = intval($location . $ink);
                 if ($compare_arr[$batchid][$templname][$update_pos] != $inv) :
-                    $sql = "UPDATE `tmpbatchconfigtemplate` SET elemvalue = '" . $inv . "', tabname = '" . $_POST['looptabler'][$key][$ink] . "' WHERE elemid = " . $update_pos . " AND templname = '" . $_POST['templname'] . "' AND batchid = " . $batchid;
+                    $sql = "UPDATE `tmpbatchconfigtemplate` SET elemvalue = '" . $inv . "' WHERE elemid = " . $update_pos . " AND templname = '" . $_POST['templname'] . "' AND batchid = " . $batchid;
                     $db2->query($sql);
                     $db2->execute();
                 endif;

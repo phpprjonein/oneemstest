@@ -4309,6 +4309,22 @@ function configtemplate_elemvalue($posttabname, $field, $switch_name = '')
 }
 
 
+
+/**
+ *
+ * @return unknown
+ */
+function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
+{
+    global $db2;
+    
+    $sql = "SELECT distinct(".$field."),".$value."  FROM ".$posttabname.$whr." order by ".$field;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+
 /**
  *
  * @return unknown

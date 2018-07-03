@@ -3,8 +3,6 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 
-ini_set('display_errors',1);
-
 // Static variable values set
 if (isset($_POST['clear'])) {
     if (strtolower($_POST['clear']) == 'search') {
@@ -19,17 +17,17 @@ user_session_check();
 
 if ($_SESSION['userlevel'] == 1)
     include_once ('config/session_check_cellsite_tech.php');
-else if ($_SESSION['userlevel'] == 2)
-    include_once ('config/session_check_switch_tech.php');
-
-$page_title = 'OneEMS';
-
-// page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Generate script 2 page Description: Cell Site Tech has chosen their configuration and is ready to edit their script's editable fields.";
-  write_log($mesg);
-?>
+    else if ($_SESSION['userlevel'] == 2)
+        include_once ('config/session_check_switch_tech.php');
+        
+        $page_title = 'OneEMS';
+        
+        // page logging
+        $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
+        $username = $_SESSION['username'];
+        $mesg = " User name: $username User type : $usertype Page:  Generate script 2 page Description: Cell Site Tech has chosen their configuration and is ready to edit their script's editable fields.";
+        write_log($mesg);
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,6 +174,13 @@ echo generate_site_breadcrumb($values);
 			<?php $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable'], 'tabname' => $val['tabname']); ?>
 			<?php endforeach;?>
 
+			<?php
+// print '<pre>';
+// print_r($newarr);die;
+
+?>
+
+
 			<div id="file_process">
 										<form name="file_process" action="cellsite-config-process.php"
 											method="post" class="border">
@@ -192,45 +197,35 @@ echo generate_site_breadcrumb($values);
 
             <?php
             $output = '';
-            $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
-            $table_selbox = "<option val=''>--Select--</option>";
-            foreach ($tablename_arr as $key=>$val){
-                $table_selbox .= "<option value='".$key."'>".$val."</option>";
+            $vars['globalvars'] = configtemplate_elemvalue_pos_script('globalvars', 'gvarname', 'gvarval');
+            foreach ($vars['globalvars'] as $key => $val){
+                $result['globalvars'][$val['gvarname']] = $val['gvarval'];
             }
-            $table_selbox .= "</select>";
             
-            $vars['globalvars'] = configtemplate_elemvalue('globalvars', 'gvarname');
-            $vars['usrvars'] = configtemplate_elemvalue('usrvars', 'usrvarname');
-            $vars['marketvars'] = configtemplate_elemvalue('marketvars', 'mvarname');
-            $vars['switchvars'] = configtemplate_elemvalue('switchvars', 'swvarname');
-            $select_field_arr = array('globalvars'=>'gvarname', 'usrvars'=>'usrvarname', 'marketvars'=>'mvarname', 'switchvars' => 'swvarname');
+            $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+            foreach ($vars['usrvars'] as $key => $val){
+                $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
+            }
+            
+            
+            $vars['marketvars'] = configtemplate_elemvalue_pos_script('marketvars', 'mvarname', 'mvarval');
+            foreach ($vars['marketvars'] as $key => $val){
+                $result['marketvars'][$val['mvarname']] = $val['mvarval'];
+            }
+            
+            
+            $vars['switchvars'] = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
+            foreach ($vars['switchvars'] as $key => $val){
+                $result['switchvars'][$val['swvarname']] = $val['swvarval'];
+            }
             
             for ($k = 1; $k <= count($newarr); $k ++) {
-                 if (count($newarr[$k]) == 1) {
+                if (count($newarr[$k]) == 1) {
                     $output .= '<div class="form-group">';
                     if ($newarr[$k][0]["editable"] == 0) {
-                        $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span><input type='hidden' name='looptabler[looper_" . $k . "][]' value='' >";
+                        $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
-                        $output .= "<span class='form-editable-fields'>";
-                        $outputin .= "<select id='conf_selbox_".$k."0' class='elementvalref' name='looptabler[looper_" . $k . "][]'><option val=''>--Select--</option>";
-                        foreach ($tablename_arr as $key=>$val){
-                            $sel = $seltab = '';
-                            if($newarr[$k][0]["tabname"] == $key){
-                                $sel = 'selected';
-                                $seltab = $key;
-                                $field = $select_field_arr[$key];
-                            }
-                            $outputin .= "<option value='".$key."' ".$sel.">".$val."</option>";
-                        }
-                        $outputin .= "</select>";
-                        $outputin .= "<span id='wrap_conf_selbox_".$k."0'><select id='val_conf_selbox_".$k."0' name='loop[looper_" . $k . "][]'>";
-                        $replace_selbox = '<option val="">--Select--</option>';
-                        foreach ($vars[$seltab] as $key=>$val){
-                            $sel = ($val[$field] == $newarr[$k][0]["elemvalue"]) ? 'selected':'';
-                            $replace_selbox .= "<option value='".$val[$field]."' ".$sel.">".$val[$field].'</option>';
-                        }
-                        $outputin .= $replace_selbox.'</span>';
-                       $output .= "</span>";
+                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'></span>";
                     }
                     $output .= '</div>';
                 } else {
@@ -239,31 +234,10 @@ echo generate_site_breadcrumb($values);
                     $outputin = '';
                     for ($l = 0; $l < count($newarr[$k]); $l ++) {
                         if ($newarr[$k][$l]["editable"] == 0) {
-                            $outputin .= "<label class='readonly'>" . $newarr[$k][$l]["elemvalue"] . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][$l]["elemvalue"] . "'><input type='hidden' name='looptabler[looper_" . $k . "][]' value='' >";
+                            $outputin .= "<label class='readonly'>" . $newarr[$k][$l]["elemvalue"] . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][$l]["elemvalue"] . "'>";
                         } else {
                             $editable = 1;
-                            if(!empty($newarr[$k][$l]["tabname"]) && !empty($newarr[$k][$l]["elemvalue"])){
-                                $outputin .= "<select id='conf_selbox_".$k.$l."' class='elementvalref' name='looptabler[looper_" . $k . "][]'><option val=''>--Select--</option>";
-                                $seltab = '';
-                                foreach ($tablename_arr as $key=>$val){
-                                    $sel = '';
-                                    if($newarr[$k][$l]["tabname"] == $key){
-                                        $sel = 'selected';
-                                        $seltab = $key;
-                                        $field = $select_field_arr[$key];
-                                    }
-                                    $outputin .= "<option value='".$key."' ".$sel.">".$val."</option>";
-                                }
-                                $outputin .= "</select>";
-                                $outputin .= "<span id='wrap_conf_selbox_".$k.$l."'><select id='val_conf_selbox_".$k.$l."' name='loop[looper_" . $k . "][]'>";
-                                $replace_selbox = '<option val="">--Select--</option>';
-                                foreach ($vars[$seltab] as $key=>$val){
-                                    $sel = ($val[$field] == $newarr[$k][$l]["elemvalue"]) ? 'selected':'';
-                                    $replace_selbox .= "<option value='".$val[$field]."' ".$sel.">".$val[$field].'</option>';
-                                }
-                                $outputin .= $replace_selbox.'</span>';
-                                
-                            }
+                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }
                     if ($editable == 1) {

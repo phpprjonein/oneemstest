@@ -74,7 +74,7 @@
 				<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
 				<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
 				<a class="dropdown-item" href="sw-bootorder-sequence-new.php">Boot Order Sequence</a>
-				<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>
+				<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
               </div>
             </li>
             <li class="nav-item dropdown">

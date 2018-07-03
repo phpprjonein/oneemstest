@@ -202,8 +202,8 @@ echo generate_site_breadcrumb($values);
             $vars['globalvars'] = configtemplate_elemvalue('globalvars', 'gvarname');
             $vars['usrvars'] = configtemplate_elemvalue('usrvars', 'usrvarname');
             $vars['marketvars'] = configtemplate_elemvalue('marketvars', 'mvarname');
-            $vars['switchvars'] = configtemplate_elemvalue('switchvars', 'swvarval');
-            $select_field_arr = array('globalvars'=>'gvarname', 'usrvars'=>'usrvarname', 'marketvars'=>'mvarname', 'switchvars' => 'swvarval');
+            $vars['switchvars'] = configtemplate_elemvalue('switchvars', 'swvarname');
+            $select_field_arr = array('globalvars'=>'gvarname', 'usrvars'=>'usrvarname', 'marketvars'=>'mvarname', 'switchvars' => 'swvarname');
             
             for ($k = 1; $k <= count($newarr); $k ++) {
                  if (count($newarr[$k]) == 1) {

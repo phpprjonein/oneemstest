@@ -173,7 +173,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         }elseif($posttabname == 'usrvars'){
             $field = 'usrvarval';
         }elseif($posttabname == 'switchvars'){
-            $field = 'swvarval';
+            $field = 'swvarname';
         }
         $replace_selbox = '<option val="">--Select--</option>';
         $vars = configtemplate_elemvalue($posttabname, $field, $_POST['switch_name']);

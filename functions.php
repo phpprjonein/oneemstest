@@ -4338,4 +4338,17 @@ function configtemplate_switches_from_switchvars()
     return $resultset;
 }
 
-
+function insert_uservars($values)
+{
+global $db2;
+$values_arr = array(
+        'usrvarname' => $_POST['usrvarname'],
+        'usrvarval' => $_POST['usrvarval'],
+        'deviceseries' => $_POST['deviceseries'],
+        'templname' => $_POST['templname'] 
+    ); 
+    //$sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $valus['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "')";
+    $sql = "insert into usrvars(usrvarname,usrvarval,deviceseries,templname)" . "values ('" . $values['usrvarname'] . "','" . $values['usrvarval'] . "','" . $values['deviceseries']  . "','" . $values['templname']. "')";
+    $db2->query($sql);
+    $db2->execute();	
+};

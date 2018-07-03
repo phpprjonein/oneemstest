@@ -271,3 +271,12 @@ $values_arr = array(
     discovery_add_new_device($values_arr); 
 	 echo "successfrombackend";
 }
+if ($_POST['ctype'] == 'configtempluservar') {
+ $values_arr = array(
+        'usrvarname' => $_POST['usrvarname'],
+        'usrvarval' => $_POST['usrvarval'],
+        'deviceseries' => $_POST['deviceseries'],
+        'templname' => $_POST['templname'] 
+    ); 
+    insert_uservars($values_arr);	 
+}

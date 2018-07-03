@@ -225,7 +225,7 @@ echo generate_site_breadcrumb($values);
                     if ($newarr[$k][0]["editable"] == 0) {
                         $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
-                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'></span>";
+                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$newarr[$k][0]["elemvalue"]] . "'></span>";
                     }
                     $output .= '</div>';
                 } else {

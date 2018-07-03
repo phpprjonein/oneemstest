@@ -169,9 +169,9 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         if($posttabname == 'globalvars'){
             $field = 'gvarname';
         }elseif($posttabname == 'marketvars'){
-            $field = 'mvarval';
+            $field = 'mvarname';
         }elseif($posttabname == 'usrvars'){
-            $field = 'usrvarval';
+            $field = 'usrvarname';
         }elseif($posttabname == 'switchvars'){
             $field = 'swvarname';
         }

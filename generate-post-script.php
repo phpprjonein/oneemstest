@@ -2,6 +2,21 @@
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
+/*
+print '<pre>';
+print_r($_POST);
+
+
+$vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+foreach ($vars['usrvars'] as $key => $val){
+    $value = str_replace(' ', '_', $val['usrvarname']);
+    $result['usrvars'][$val['usrvarname']] = $_POST[$value];
+}
+
+print_r($result);
+
+die;
+*/
 
 // Static variable values set
 if (isset($_POST['clear'])) {
@@ -204,7 +219,8 @@ echo generate_site_breadcrumb($values);
             
             $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
             foreach ($vars['usrvars'] as $key => $val){
-                $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
+                $value = str_replace(' ', '_', $val['usrvarname']);
+                $result['usrvars'][$val['usrvarname']] = $_POST[$value];
             }
             
             
@@ -237,6 +253,13 @@ echo generate_site_breadcrumb($values);
                             $outputin .= "<label class='readonly'>" . $newarr[$k][$l]["elemvalue"] . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][$l]["elemvalue"] . "'>";
                         } else {
                             $editable = 1;
+                            /*
+                            if($newarr[$k][$l]["tabname"] == 'usrvars'){
+                                echo $newarr[$k][$l]["elemvalue"];
+                                die;
+                            }
+                            */
+                            
                             $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }

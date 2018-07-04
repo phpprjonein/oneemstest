@@ -178,7 +178,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         $replace_selbox = '<option val="">--Select--</option>';
         $vars = configtemplate_elemvalue($posttabname, $field, $_POST['switch_name']);
         foreach ($vars as $key=>$val){
-            $replace_selbox .= '<option value='.$val[$field].'>'.$val[$field].'</option>';
+            $replace_selbox .= '<option value="'.$val[$field].'">'.$val[$field].'</option>';
         }
     }
     echo $replace_selbox;

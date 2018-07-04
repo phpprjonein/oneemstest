@@ -216,24 +216,38 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 									</div>
 								</div>
-								<!-- /template name content -->
-
-								<div class="row">
-									<div class="col">
-										<button type="submit"
-											class="btn btn-lg generate-script-submit">Select</button>
-									</div>
-								</div>
+								
 								<!-- /right side -->
 								<!-- /script output -->
 							</div>
 
 							<!-- /backup management content row -->
 						</div>
+                    	<div class="row">
+                    		<?php 
+                    		$vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+                            foreach ($vars['usrvars'] as $key => $val){ 
+                            ?>    
+                            <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
+                                <label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
+                                <input type="<?php echo $val['usrvarname']; ?>" name="<?php echo $val['usrvarname']; ?>" class="form-control" id="<?php echo $val['usrvarname']; ?>" value="<?php echo $val['usrvarval']; ?>" placeholder="<?php echo $val['usrvarval']; ?>">
+                            </div>
+                            <?php 
+                                //$result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
+                                }
+                            ?>
+                        </div>
+                        <!-- /template name content -->
+								<div class="row" id="template_info_act">
+									<div class="col">
+										<button type="submit"
+											class="btn btn-lg generate-script-submit">Select</button>
+									</div>
+								</div>
 					</form>
-
 			</section>
 			<!-- /.content -->
+			
 		</div>
 	</div>
 	<!-- container-fluid -->

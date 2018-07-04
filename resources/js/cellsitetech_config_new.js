@@ -30,13 +30,16 @@ $(document).ready(function() {
 					$('#loadtemplates').html(data);
 					$('#loadtemplates').removeClass('d-none');
 					$('#template_info').removeClass('d-none');
+					$('#template_info_act').removeClass('d-none');
 				}else{
 					$('#loadtemplates').addClass('d-none');
 					$('#template_info').addClass('d-none');
+					$('#template_info_act').addClass('d-none');
 				}
 			});
 		}else{
 			$('#loadtemplates').addClass('d-none');
+			$('#template_info_act').addClass('d-none');
 			$('#template_info').addClass('d-none');
 		}
 		return false;

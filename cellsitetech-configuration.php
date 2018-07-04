@@ -149,9 +149,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
     if (file_exists($filename)) {
         
         $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
-        $table_selbox = "<option val=''>--Select--</option>";
+        $table_selbox = '<option val="">--Select--</option>';
         foreach ($tablename_arr as $key=>$val){
-            $table_selbox .= "<option value='".$key."'>".$val."</option>";
+            $table_selbox .= '<option value="'.$key.'">'.$val.'</option>';
         }
         $table_selbox .= "</select>";
         

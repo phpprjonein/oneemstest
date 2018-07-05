@@ -27,9 +27,13 @@ $output = json_decode($json_response, true);
  * echo "<br>";
  * print_r($output);
  */
-echo "<br>";
-echo "<b>Backup Status : " . $output['data'][0]['status'] . "</b>";
-echo "<br/>";
-echo "<b>Filename : " . $output['data'][0]['data'] . "</b>";
+$response = '';
+foreach ($output['data'] as $key=>$val){
+    $response .= "<br>";
+    $response .= "<b>Backup Status : " . $val['status'] . "</b>";
+    $response .= "<br/>";
+    $response .= "<b>Filename : " . $val['data'] . "</b>";
+}
+echo $response;
 ?>
  

@@ -1,4 +1,4 @@
-    <img src="http://piwik.vh.vzwnet.com/piwik.php?idsite=77amp;rec=1" style="border:0; display: none;" alt="" />
+    <img src="http://piwik.vh.vzwnet.com/piwik.php?idsite=77amp;rec=1amp;username=<?php echo $_SESSION['username']; ?>" style="border:0; display: none;" alt="" />
 <header class="main-header">
   <div class="nav top-menu">
 

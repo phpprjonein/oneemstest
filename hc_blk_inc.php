@@ -169,9 +169,18 @@ echo $display; ?>
 </td>
   </tr>
     <tr>
+    <?php 
+        $device_status = '<tr><td align="right" class="border-0"><b>Status</b></td><td align="left" class="border-0"><b>';
+        if($output['status']['error']){
+            $device_status .= 'Failed';
+        }else{
+            $device_status .= 'Reached';
+        }
+        $device_status .= '</b></td></tr>';
+    ?>
     <td colspan="3" class="run_custom_checks text-center" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run selected health Checks</button></td>
     <td colspan="3" class="run_all_checks text-center"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run All Health Checks</button></td>
-    <td colspan="3" class="text-center"><b>Last Run On - <?php echo $lastupdated;?></b></td>
+    <td colspan="3" class="text-center"><table class="border-0"><tr><td align="right" class="float-right border-0"><b>Last Run On</b></td><td align="left" class="border-0"><b><?php echo $lastupdated;?></b></td><?php echo $device_status; ?></tr></table></td>
     <!-- <td colspan="2" class="run_preventive_checks" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>" style="cursor: pointer;">&nbsp;<!--<b>Run Preventive Health Checks</b></td> -->
   </tr>
 </tbody>

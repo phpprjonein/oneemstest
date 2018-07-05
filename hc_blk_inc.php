@@ -171,7 +171,8 @@ echo $display; ?>
     <tr>
     <?php 
         $device_status = '<tr><td align="right" class="border-0"><b>Status</b></td><td align="left" class="border-0"><b>';
-        if($output['status']['error']){
+        //if($output['status']['error']){
+			if($output['error']){
             $device_status .= 'Failed';
         }else{
             $device_status .= 'Reached';

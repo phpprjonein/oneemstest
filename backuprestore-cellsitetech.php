@@ -37,7 +37,7 @@ $row_device_name = $_GET['devicename']; // 'AKROOH20T1A-P-CI-0382-01';
                                         // $path = '/usr/apps/oneems/config/bkup/greatlakes/';
                                         // $path = '/usr/apps/oneems/config/bkup/';
 $path = '/usr/apps/oneems/config/bkup/' . $row_region;
-$contents = array_values(array_diff(scandir($path), array(
+$contents = array_values(array_diff(scan_dir($path), array(
     '.',
     '..'
 )));
@@ -80,6 +80,20 @@ if (! $found) {
 </div>
 <?php
 exit();
+function scan_dir($dir) {
+    $ignored = array('.', '..');
+    
+    $files = array();
+    foreach (scandir($dir) as $file) {
+        if (in_array($file, $ignored)) continue;
+        $files[$file] = filemtime($dir . '/' . $file);
+    }
+    
+    arsort($files);
+    $files = array_keys($files);
+    
+    return ($files) ? $files : false;
+}
 ?>
 <?php
 include "classes/db2.class.php";

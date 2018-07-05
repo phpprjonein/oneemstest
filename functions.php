@@ -3285,6 +3285,7 @@ function config_get_templates_from_templname($templname)
 function update_healthchk_info($deviceid, $output, $lastupdated)
 {
     global $db2;
+    unset($output['error']); unset($output['message']);
     if (count($output) > 0 && isset($output)) :
         $cols = array();
         foreach ($output as $key => $val) {

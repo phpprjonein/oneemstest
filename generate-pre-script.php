@@ -230,7 +230,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                             ?>    
                             <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
                                 <label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
-                                <input type="<?php echo $val['usrvarname']; ?>" name="<?php echo $val['usrvarname']; ?>" class="form-control" id="<?php echo $val['usrvarname']; ?>" value="<?php echo $val['usrvarval']; ?>" placeholder="<?php echo $val['usrvarval']; ?>">
+                                <input type="<?php echo $val['usrvarname']; ?>" name="<?php echo $val['usrvarname']; ?>" class="form-control uservarsreq" id="<?php echo $val['usrvarname']; ?>" value="<?php echo $val['usrvarval']; ?>" placeholder="<?php echo $val['usrvarval']; ?>">
                             </div>
                             <?php 
                                 //$result['usrvars'][$val['usrvarname']] = $val['usrvarval'];

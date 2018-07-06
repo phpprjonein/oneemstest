@@ -25,6 +25,7 @@ include "classes/paginator.class.php";
 include 'functions.php';
 $userid = $_GET['userid'];
 $deviceid = $_GET['deviceid'];
+$lastupdated = date('Y-m-d H:i:s');
 if (count($_GET['category']) > 0) {
     $category_imp = implode(',', $_GET['category']);
     /* Custom HealthCheck API API Call */
@@ -49,7 +50,6 @@ if (count($_GET['category']) > 0) {
      * }';
      */
     // $output = json_decode($output, 1);
-    $lastupdated = date('Y-m-d H:i:s');
 }
 // $result = select_healthchk_info($deviceid);
 if (! in_array(2, $_GET['category']) || ! isset($output['iosversion'])) {

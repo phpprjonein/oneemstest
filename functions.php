@@ -4353,3 +4353,12 @@ $values_arr = array(
     $db2->query($sql);
     $db2->execute();	
 };
+
+function valid_admin_usr_by_password($password){
+    $userinfo = get_user_info($_SESSION['username'], $password);
+    if ( ! $userinfo ) {
+        return false;
+    }else{
+        return true;
+    }
+}

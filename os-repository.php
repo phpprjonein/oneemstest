@@ -10,6 +10,12 @@ if (isset($_GET['clear'])) {
     }
 }
 user_session_check();
+
+if($_SESSION['userlevel'] == 8 && $_SESSION['admin_check'] !== true){
+    header("location:admin-user-revalidate.php");
+}
+
+
 $page_title = 'OneEMS';
 // page logging
 $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";

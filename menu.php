@@ -37,6 +37,17 @@
           <?php
             if (isset($_SESSION['welcome_username'])) {
           ?>
+          <?php if (check_user_authentication(array(8))){ ?>
+            <li class="nav-item">
+              <a class="nav-link <?php print activemenu("login-impersonate.php"); ?>" href="login-impersonate.php">Impersonate User</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","admin-user-revalidate.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="os-repository.php">Software Upload</a>
+              </div>
+            </li>          
+          <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>
             <li class="nav-item">
               <a class="nav-link <?php print activemenu("cellsitetech-dashboard.php", "cellsitetech-user-devicelist.php"); ?>" href="cellsitetech-dashboard.php">Network Elements</a>

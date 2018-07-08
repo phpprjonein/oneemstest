@@ -345,6 +345,36 @@ $(document).ready(function() {
 			  });		  
 			  	 
 			  	 
+			  $(document).on('click', '.auditLog', function(event) {
+				  var myModal = $('#healthpageModel');
+				  $('#healthpage .modal-body').html('');
+				  var sel = $(this).attr('id');
+				$.post( "api-test.php", { type: "api-ajax"
+					}).done(function( data ) {
+						$('#' + sel).removeClass('btn');
+						$('#' + sel).removeClass('btn-danger');
+						$('#' + sel).removeClass('btn-success');
+						var obj = jQuery.parseJSON( data );
+						if(obj.result == true){
+							myModal.find('.modal-body').html('<h3>Successful</h3>');
+							$('#' + sel).addClass('btn-success');
+						}else{
+							myModal.find('.modal-body').html('<h3>Failed</h3>');
+							$('#' + sel).addClass('btn-danger');
+						}
+						$('#healthpage #healthpageModel').modal('show');
+				});
+				
+				return false;
+				  
+		 	    	/*$.post( "backup-api-process.php", { type: "api-ajax", deviceid: $(this).closest('tr').attr('id').replace('row_','')
+					}).done(function( data ) {
+						$('#backupModal .modal-body').html(data);
+					}); 
+				  	*/
+				  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
+			  });
+			  
 	  	  
 	  		$(document).on('click', '#backuprestoredt tbody td.details-control', function(event) {
 				//alert(' reach here');

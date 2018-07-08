@@ -51,8 +51,31 @@ modal.children[0].addEventListener('click', function(e) {
 }, false);
  </script>
  </head>
-     <body class="hold-transition skin-blue sidebar-mini ownfont">
+     <body class="hold-transition skin-blue sidebar-mini ownfont" id="healthpage">
         <!-- Modal HTML -->
+    <div class="modal fade" id="healthpageModel">
+            <div class="modal-dialog">
+                    <div class="modal-content" id="cellsitech-backup">
+                            <!-- Modal Header -->
+                            <div class="modal-header" id="backupmodalhdr">
+                                    <h5 class="modal-title">
+                                            Audit Log
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body modal-content" style="min-height: 125px;"></div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                            </div>
+                    </div>
+            </div>
+    </div>
 
         <div class="container-fluid">
             <?php include ('menu.php'); ?>

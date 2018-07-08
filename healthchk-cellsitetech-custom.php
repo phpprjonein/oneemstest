@@ -52,6 +52,7 @@ if (count($_GET['category']) > 0) {
     // $output = json_decode($output, 1);
 }
 // $result = select_healthchk_info($deviceid);
+$healthchktype = 'Custom';
 if (! in_array(2, $_GET['category']) || ! isset($output['iosversion'])) {
     $output['iosversion'] = array(
         'R' => '',

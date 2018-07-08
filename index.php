@@ -32,6 +32,7 @@ $headers = apache_request_headers();
 $_SESSION['sso_flag'] = $sso_flag;
 
 if($_POST['userimp'] == 'imp' && isset($_POST['username'])){
+    $_SESSION['impusername'] = $_POST['impusername'];
     $name_exp_1 = explode(' <',$_POST['username']);
     $name_exp = explode(' ',$name_exp_1[0]);
     $name_exp_role = str_replace('>','',$name_exp_1[1]);

@@ -3392,6 +3392,10 @@ function delete_batchid($batchid)
 function write_log($message, $logfile = '')
 {
     
+    if(isset($_SESSION['impusername']) && !empty($_SESSION['impusername'])){
+        $message = $message.', Impersonate Set, Admin User name:'.$_SESSION['impusername'];
+    }
+    
     // Determine log file
     // Filename of log to use when none is given to write_log
     $default_log = "/var/www/html/oneemstest/logs/oneemsdefault_" . date(m_d_Y) . ".log";

@@ -172,7 +172,7 @@ echo $display; ?>
     <?php 
         $device_status = '<tr><td align="right" class="border-0"><b>Status</b></td><td align="left" class="border-0"><b>';
         //if($output['status']['error']){
-			if($output['error']){
+            if(($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)){
             $device_status .= 'Failed';
         }else{
             $device_status .= 'Reached';

@@ -15,7 +15,7 @@ user_session_check();
 check_user_authentication(array(8)); //cellsite tech type user
 
     $page_title = 'OneEMS';
-
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +34,8 @@ check_user_authentication(array(8)); //cellsite tech type user
 
           <form class="login-form" action="index.php" method="post">
             <input type="hidden" value="imp" name="userimp"/>
+            <input type="hidden" value="<?php echo $_SESSION['username']; ?>" name="impusername"/>
+            
               <div class="input-group row" >
                 <div class="form-inline col-md-6 col-sm-12">
                   <input type="inputName" name="username" class="form-control" id="inputName" placeholder="User Name">

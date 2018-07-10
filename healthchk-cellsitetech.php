@@ -26,7 +26,13 @@ include 'functions.php';
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];
-    $deviceid = $_GET['deviceid'];
+    
+    if(isset($_GET['deviceid']) && !empty($_GET['deviceid'])){
+        $deviceid = $_GET['deviceid'];
+    }elseif (isset($_GET['deviceip']) && !empty($_GET['deviceip'])){
+        $deviceid = loaddeviceidfromdeviceip($_GET['deviceip']);
+    }
+    
     $devicetype = 'ios';
     $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     $deviceid = $_GET['deviceid'];

@@ -10,6 +10,7 @@ if (isset($_GET['clear'])) {
     }
 }
 user_session_check();
+check_user_authentication(array(8)); //cellsite tech type user
 
 if($_SESSION['userlevel'] == 8 && $_SESSION['admin_check'] !== true){
     header("location:admin-user-revalidate.php");

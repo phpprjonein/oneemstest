@@ -4366,3 +4366,11 @@ function valid_admin_usr_by_password($password){
         return true;
     }
 }
+
+function loaddeviceidfromdeviceip($deviceip){
+    global $db2;
+    $sql = "SELECT id FROM nodes where deviceIpAddr = '".$deviceip."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset[0]['id'];
+}

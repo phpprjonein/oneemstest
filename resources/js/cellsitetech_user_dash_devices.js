@@ -111,6 +111,12 @@ $(document).ready(function() {
             { "data": "nodeVersion" },
             { "data": "status", "className": "d-none" },
             { "data": "lastpolled" },
+            {	
+                "className":      'center',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": "<button type='button' class='btn btn-sm auditLog' data-toggle='modal'>Audit Log</button>",
+    			} 
         ],
         "order": [[1, 'asc']],
             // Per-row function to iterate cells
@@ -320,19 +326,19 @@ $(document).ready(function() {
 			  $(document).on('click', '.auditLog', function(event) {
 				  var myModal = $('#healthpageModel');
 				  $('#healthpage .modal-body').html('');
-				  var sel = $(this).attr('id');
+				  var sel = $(this).closest('tr').attr('id');
 				$.post( "api-test.php", { type: "api-ajax"
 					}).done(function( data ) {
-						$('#' + sel).removeClass('btn');
-						$('#' + sel).removeClass('btn-danger');
-						$('#' + sel).removeClass('btn-success');
+						$('#' + sel + " button").removeClass('btn');
+						$('#' + sel + " button").removeClass('btn-danger');
+						$('#' + sel + " button").removeClass('btn-success');
 						var obj = jQuery.parseJSON( data );
 						if(obj.result == true){
 							myModal.find('.modal-body').html('<h3>Successful</h3>');
-							$('#' + sel).addClass('btn-success');
+							$('#' + sel + " button").addClass('btn-success');
 						}else{
 							myModal.find('.modal-body').html('<h3>Failed</h3>');
-							$('#' + sel).addClass('btn-danger');
+							$('#' + sel + " button").addClass('btn-danger');
 						}
 						$('#healthpage #healthpageModel').modal('show');
 				});

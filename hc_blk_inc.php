@@ -170,6 +170,7 @@ echo $display; ?>
   </tr>
     <tr>
     <?php 
+    if($healthchktype != 'Load Table'){
         $device_status = '<tr><td align="right" class="border-0"><b>Status</b></td><td align="left" class="border-0"><b>';
         //if($output['status']['error']){
             if(($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)){
@@ -178,6 +179,7 @@ echo $display; ?>
             $device_status .= 'Reached';
         }
         $device_status .= '</b></td></tr>';
+    }
     ?>
     <td colspan="3" class="run_custom_checks text-center" data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run selected health Checks</button></td>
     <td colspan="3" class="run_all_checks text-center"  data-deviceid="<?php echo $deviceid ?>"  data-userid="<?php echo $_SESSION['userid'] ?>"><button class="btn btn-primary">Run All Health Checks</button></td>

@@ -23,6 +23,7 @@ include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
 $userid = $_GET['userid'];
+$healthchktype = 'Load Table';
 // $deviceid = $_GET['deviceid'];
 // $arr_res = getDetailViewData($userid, $deviceid );
 // $output = $arr_res['result'][0];

@@ -79,9 +79,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             </nav>
             <a class="nav-link" href="#item-7">MAINTENANCE</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Upload - Master</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Software Upload</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Software Delivery</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Scheduled Backup</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
             </nav>
             <a class="nav-link" href="help_faqs.php">FAQs</a>
           </nav>
@@ -94,14 +94,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
         <hr class="d-md-none" />
         <h4 id="item-7">MAINTENANCE</h4>
         <p>This view allows a user to manage existing software configurations, create new configurations, retire existing configurations and/or apply these custom configurations to devices within the OneEMS network.</p>
-        <h5 id="item-7-1">Software Upload - Master</h5>
+        <h5 id="item-7-1">Software Delivery</h5>
         <img src="resources/img/screenshot-sw-master.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-master1">
         <p></p>
         <span class="font-italic"><b>FIG. 7.1 - Software Master Dashboard</b></span>
         <p></p>
         <p>A user can define parameters for a device series type, vendor type, operating system versions (including the ability to set minimum build and/or patch versioning of a chosen OS), even set dates for software update activation.</p>
         <p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is only accesible by Cell Site Technicians.</p>
-        <h5 id="item-7-2">Software Upload</h5>
+        <h5 id="item-7-2">Schedule Backup</h5>
         <img src="resources/img/screenshot-sw-os-repo.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-os-repo">
         <p></p>
         <span class="font-italic"><b>FIG. 7.2 - Operating System Repository Dashboard</b></span>
@@ -111,7 +111,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
         <p></p>
         <span class="font-italic"><b>FIG. 7.2.1 - Operating System Retrieval</b></span>
         <p></p>
-        <h5 id="item-7-3">Software Delivery</h5>
+        <h5 id="item-7-3">Boot Order Sequence</h5>
         <p>This screen allows users to apply specific preset software configurations to devices within the OneEMS network.</p>
         <img src="resources/img/screenshot-sw-delivery.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-delivery">
         <p></p>

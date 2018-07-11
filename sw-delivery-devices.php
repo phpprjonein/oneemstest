@@ -121,7 +121,7 @@ select device series options -->
                     </select>
                   </div>
 <!-- /select OS version options -->
-				
+
 				<?php $destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/');?>
 				<!-- select device series options -->
                   <div class="form-group f7 required" data-fid="f17">
@@ -135,7 +135,7 @@ select device series options -->
                   </div>
 <!-- /select device series options -->
 
-					
+
 
 <!-- select RAN vendor options -->
                   <?php  $configtmpddwndata =getconfigtempldpdwntbl('configscriptranvendor'); ?>
@@ -212,6 +212,7 @@ select device series options -->
                   <button type="button" value="SUBMIT" class="btn btn-default text-center"  id="batch-submit" name="batch-submit">SUBMIT</button>
                 </div>
               </div>
+              <p>&nbsp;</p>
 <!-- /right side -->
 
             </div>

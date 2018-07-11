@@ -77,8 +77,8 @@ user_session_check();
 				</div>
 			</div>
 		</div>
-    
-    
+
+
         <!-- Modal HTML -->
       <div class="container-fluid instant-health-check">
         <?php include ('menu.php'); ?>
@@ -89,7 +89,7 @@ user_session_check();
                   <form class="login-form" action="#" method="post">
                       <div class="input-group row" >
                         <div class="form-inline col-md-3 col-sm-12">
-                          <input type="inputName" name="ipaddress" class="form-control" id="inputDeviceIPaddress" placeholder="Enter IP Address">
+                          <input type="inputName" name="ipaddress" class="form-control" id="inputDeviceIPaddress" placeholder="Enter IP Address" autofocus>
                           <button type="submit" class="btn" id="ip-health-check" data-toggle="modal">Submit</button>
                         </div>
                       </div>

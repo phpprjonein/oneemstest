@@ -71,7 +71,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
         <div class="col-md-6">
           <form id="usrmyfavlstfrm" name="usrmyfavlstfrm" action="cellsitetech-dashboard.php" method = "POST" class="navbar-form search">
             <div class="input-group add-on">
-              <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text">
+              <input name="addlist" id="addlist" class="form-control search-details" placeholder="Create New List"  type="text" autofocus>
               <span class="input-group-btn">
                 <button class="btn btn-default search-details"  type ="submit" name="addlistbtn" name="addlistbtn" data-toggle="tooltip" data-placement="right" title="List must be &lt;21 characters long and may contain letters, spaces, and numbers. No special characters." value="Submit">Submit</button>
               </span>

@@ -79,9 +79,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
             </nav>
             <a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Upload - Master</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Software Upload</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Software Delivery</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Scheduled Backup</a>
+              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
             </nav>
             <a class="nav-link" href="help_faqs.php">FAQs</a>
           </nav>

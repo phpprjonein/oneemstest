@@ -69,6 +69,7 @@ $(document).ready(function() {
 
           /*Droppable option enabled for My Device List box in MyList section*/
         $("#deviceslist.droppable").droppable({
+          tolerance: "pointer", //this allows the droppable functionality to work in a larger space. This fixes the spotty hit detection when dragging a device into a new, blank list
           drop: function(event, ui) {
 
            var tr_item = ui.helper.children();

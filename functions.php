@@ -3398,10 +3398,10 @@ function write_log($message, $logfile = '')
     
     // Determine log file
     // Filename of log to use when none is given to write_log
-    $default_log = "/var/www/html/oneemstest/logs/oneemsdefault_" . date(m_d_Y) . ".log";
-    $upload_log = "/var/www/html/oneemstest/logs/oneems_" . date(m_d_Y) . ".log";
-    $default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_" . date(m_d_Y) . ".log";
-    $upload_log = "O:\wamp\www\oneemstest\logs\oneems_" . date(m_d_Y) . ".log";
+    $default_log = "/usr/apps/oneems/logs/oneemsdefault_" . date(m_d_Y) . ".log";
+    $upload_log = "/usr/apps/oneems/logs/oneems_" . date(m_d_Y) . ".log";
+    //$default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_" . date(m_d_Y) . ".log";
+    //$upload_log = "O:\wamp\www\oneemstest\logs\oneems_" . date(m_d_Y) . ".log";
     // echo 'reach here inside the write_log function';
     
     if ($logfile == '') {

@@ -17,7 +17,24 @@ $(document).ready(function() {
               }
           });
       }); 
-    
+    $('body').on('click', '.instant_run_all_checks', function(){
+    	$thisdiv = $(this);
+        $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
+          $.ajax({
+              type:"get",
+              url:"instant-healthchk-cellsitetech.php",
+              data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
+              beforeSend: function(){
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+              },
+              complete: function() {
+                  $thisdiv.addClass('loaded');
+              },
+              success: function(resdata){
+            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+              }
+          });
+      }); 
     $('body').on('click', '#health-chk-div-wrap .run_custom_checks', function(){
     	var allVals = [];
     	$(this).parents('table:first').children().find('input[type=checkbox]:checked').each(function(index){

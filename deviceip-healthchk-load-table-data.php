@@ -86,12 +86,12 @@ $healthchktype = 'Load Table';
 									<td><?php echo $device_details['lastpolled'];?></td>
 									<td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>
 								</tr>
-								<tr><td colspan="11"><div id="detail_<?php echo $deviceid; ?>" class="loaded">
+								<tr><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td colspan="11"><div id="detail_<?php echo $deviceid; ?>" class="loaded">
 								
     
 <?php
 if (load_node_vendor_id_from_deviceid($deviceid) == 1) {
-    include_once 'hc_blk_inc.php';
+    include_once 'instant_hc_blk_inc.php';
 } else {
     include_once 'hc_blk_inc2.php';
 }

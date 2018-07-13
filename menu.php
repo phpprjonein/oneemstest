@@ -87,7 +87,7 @@
               </div>
             </li>
             <li class="nav-item">
-                  <a class="nav-link <?php print activemenu(array("instant-health-check.php")); ?>" href="instant-health-check.php">Instant Healthcheck</a>
+                  <a class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>" href="ip-instant-health-check.php">Instant Healthcheck</a>
             </li>
             <li class="nav-item dropdown">
               <li class="nav-item">

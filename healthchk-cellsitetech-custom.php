@@ -24,12 +24,7 @@ include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
 $userid = $_GET['userid'];
-
-if(isset($_GET['deviceid']) && !empty($_GET['deviceid'])){
-    $deviceid = $_GET['deviceid'];
-}elseif (isset($_GET['deviceip']) && !empty($_GET['deviceip'])){
-    $deviceid = loaddeviceidfromdeviceip($_GET['deviceip']);
-}
+$deviceid = $_GET['deviceid'];
 $lastupdated = date('Y-m-d H:i:s');
 if (count($_GET['category']) > 0) {
     $category_imp = implode(',', $_GET['category']);
@@ -56,8 +51,8 @@ if (count($_GET['category']) > 0) {
      */
     // $output = json_decode($output, 1);
 }
-// $result = select_healthchk_info($deviceid);
 $healthchktype = 'Custom';
+// $result = select_healthchk_info($deviceid);
 if (! in_array(2, $_GET['category']) || ! isset($output['iosversion'])) {
     $output['iosversion'] = array(
         'R' => '',

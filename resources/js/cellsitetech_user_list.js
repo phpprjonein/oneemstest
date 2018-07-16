@@ -31,7 +31,7 @@ $(document).ready(function() {
                 { "data": "csr_site_id" },
                 { "data": "csr_site_name" },
                 { "data": "devicename" },
-                { "data": "deviceIpAddr" }
+                { "data": "deviceIpAddr", "orderable": false}
         ],
 
         "order": [[2, 'asc']],
@@ -287,7 +287,7 @@ $(document).ready(function() {
                 { "data": "csr_site_id" },
                 { "data": "csr_site_name" },
                 { "data": "devicename" },
-                { "data": "deviceIpAddr" }
+                { "data": "deviceIpAddr","orderable": false}
         ],
 
         "order": [[2, 'asc']],

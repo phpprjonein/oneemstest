@@ -203,7 +203,7 @@ $(document).ready(function() {
           "ajax":"switchtech-server-backuprestoreprocess.php",      
           "pageLength": 25,
           "dom": 'Bfrtip',
-	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}}], 
             "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "No records found",
@@ -261,7 +261,7 @@ $(document).ready(function() {
 	                "pageLength": 25,
 	                "dom": 'Bfrtip',
 	                "destroy": true,
-	      	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+	      	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [2, 3, 4, 5, 6, 7, 8, 10]}}], 
 	                  "language": {
 	                  "lengthMenu": "Display _MENU_ records per page",
 	                  "zeroRecords": "No records found",

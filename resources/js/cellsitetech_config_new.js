@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
 		var filename = ''; sep = '';
-		$("#cellsitech-generate-script select").each(function()
+		$("#cellsitech-generate-script select").not('#select_switch').each(function()
 		{
 			if($(this).val() !=''){
 			filename = filename + sep + $(this).val();
@@ -140,6 +140,13 @@ $(document).ready(function() {
 		}
 		if($('.gscript1 #select_os_version').val() == ""){
 			$('.gscript1 #status').append("<strong>Error!</strong> Device Os Verion field is required.<br/>");
+			$('.gscript1 #status').addClass('alert-danger');
+			$('.gscript1 #select_os_version').addClass('required');
+			$('.gscript1 #status').show();
+			req_err = true;
+		}
+		if($('.gscript1 #select_switch').val() == ""){
+			$('.gscript1 #status').append("<strong>Error!</strong> Select switch field is required.<br/>");
 			$('.gscript1 #status').addClass('alert-danger');
 			$('.gscript1 #select_os_version').addClass('required');
 			$('.gscript1 #status').show();

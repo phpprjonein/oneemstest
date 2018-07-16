@@ -142,6 +142,26 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									</div>
 									<!-- /select RAN vendor options -->
 
+			
+												<!-- select Switch options -->
+			<?php  $gsswitchddwndata = configtemplate_switches_from_switchvars(); ?>
+			<div class="form-group f11 required" data-fid="f11">
+										<label class="control-label" for="f11">Select Switch</label>
+										<select id="select_switch" 
+											class="form-control custom-select" id="f11" name="f11"
+											data-rule-required="true">
+											<option value="">- SELECT Switch -</option>
+			   <?php foreach($gsswitchddwndata as $key => $val) {;?>
+                <option value="<?php echo $val['swvarname'];?>"><?php echo $val['switch_name']; ?></option>
+				<?php }; ?>
+              </select>
+									</div>
+									<!-- select Switch options -->
+
+
+				
+
+
 									<!-- select region options -->
 			<?php  $configtmpddwndata = generic_get_region(); ?>
 			<!--

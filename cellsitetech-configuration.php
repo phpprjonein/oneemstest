@@ -128,15 +128,16 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
          * $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
          * }
          */
+        /*											
 		$switches_conft = configtemplate_switches_from_switchvars();
 		$switches_conft_table_selbox = '<select name="switch_name" id="configt_load_switch_name"><option value="">--Select--</option>';
 		foreach ($switches_conft as $key=>$val){
 		    $switches_conft_table_selbox .= '<option value="'.$val['switch_name'].'">'.$val['switch_name'].'</option>';
 		}
-		$switches_conft_table_selbox .= '</select>';
+		$switches_conft_table_selbox .= '</select>';*/
         $output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
         $output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
-        $output .= '<div class="form-group cb-control"><label>Select Switch&nbsp;</label>'.$switches_conft_table_selbox.'</div>';
+        //$output .= '<div class="form-group cb-control"><label>Select Switch&nbsp;</label>'.$switches_conft_table_selbox.'</div>';
         $output .= '<input type="hidden" name="templname" value="' . $templname . '" />';
         $output .= '<input type="hidden" name="alias" value="' . $alias . '" />';
         $output .= '<input type="hidden" name="refmop" value="' . $refmop . '" />';

@@ -4303,9 +4303,9 @@ function configtemplate_elemvalue($posttabname, $field, $switch_name = '')
 {
     global $db2;
     //$_SESSION['ct_switch_name'] = 'switch_name5';
-    if(isset($switch_name) && $switch_name!= '' && $posttabname == 'switchvars'){
+    /*if(isset($switch_name) && $switch_name!= '' && $posttabname == 'switchvars'){
         $whr = " where switch_name like '".$switch_name."' ";
-    }
+    }*/
     
     $sql = "SELECT distinct(".$field.") FROM ".$posttabname.$whr." order by ".$field;
     $db2->query($sql);
@@ -4337,7 +4337,7 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 function configtemplate_switches_from_switchvars()
 {
     global $db2;
-    $sql = "SELECT distinct(switch_name) FROM switchvars order by switch_name";
+    $sql = "SELECT distinct(switch_name),swvarname FROM switchvars order by switch_name";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

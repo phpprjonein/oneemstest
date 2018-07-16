@@ -5,7 +5,7 @@ include_once 'functions.php';
 /*
 print '<pre>';
 print_r($_POST);
-
+die;
 
 $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
 foreach ($vars['usrvars'] as $key => $val){
@@ -232,7 +232,9 @@ echo generate_site_breadcrumb($values);
             
             $vars['switchvars'] = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
             foreach ($vars['switchvars'] as $key => $val){
-                $result['switchvars'][$val['swvarname']] = $val['swvarval'];
+                if($_POST['f11'] == $val['swvarname']){
+                    $result['switchvars'][$val['swvarname']] = $val['swvarval'];
+                }
             }
             
             for ($k = 1; $k <= count($newarr); $k ++) {

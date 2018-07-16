@@ -8,7 +8,7 @@ $(document).ready(function() {
           "pageLength": 25,
           "destroy": true,
           "dom": 'Bfrtip',
-	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}}], 
             "language": {
             "lengthMenu": "Display _MENU_ records per page",
             "zeroRecords": "No records found",
@@ -27,7 +27,7 @@ $(document).ready(function() {
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
             { "data": "batchstatus" },
-            { "data": "batchstatus" }
+            { "data": "batchstatus", "orderable": false }
             //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
         "order": [[4, 'asc']],
@@ -143,7 +143,7 @@ $(document).ready(function() {
 		             "ajax":"batch-tracking-devices-server.php?batchtype="+batchtype,     
 		             "pageLength": 25,
 		             "dom": 'Bfrtip',
-		   	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}], 
+		   	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}}], 
 		               "language": {
 		               "lengthMenu": "Display _MENU_ records per page",
 		               "zeroRecords": "No records found",
@@ -162,7 +162,7 @@ $(document).ready(function() {
 		     			{ "data": "nodeVersion" },
 		                 { "data": "batchcreated" },
 		                 { "data": "batchstatus" },
-		                 { "data": "batchstatus" },
+		                 { "data": "batchstatus", "orderable": 	false },
 		                 //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
 		             ],
 		             "order": [[4, 'asc']],

@@ -1,4 +1,10 @@
 $(document).ready(function() {
+		  $('body').keypress(function(e){
+		    if(e.which == 13 && $("#v-pills-tab .active").text() == 'Manual Discovery') {
+		    	e.preventDefault();
+		    	$("#manual-disc-utils #manual-discovery").trigger('click');
+		    }
+		  });
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'Conflicts'){
 			$('#export-v-pills-conflict').show();
@@ -417,7 +423,7 @@ $(document).ready(function() {
 		$("#manual-disc-market .btn").html($(this).text());
 	});
 	
-	$("#manual-disc-utils #manual-discovery").click(function(){
+	$("#manual-disc-utils #manual-discovery").click(function(e){
 		var req_err = false;
 		$('#v-pills-manual #status').html('');
 		$('#v-pills-manual #status').css("opacity","");
@@ -427,6 +433,7 @@ $(document).ready(function() {
 			$('#v-pills-manual #status').show();
 			req_err = true;
 		}else{
+			e.preventDefault();
 			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$('#v-pills-manual #inputDeviceIPaddress').val()})
 			  .done(function( data ) {
 				  if(data != 'success'){

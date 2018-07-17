@@ -94,7 +94,7 @@ user_session_check();
 						  <div class="dropdown-menu">
 						  <a class="dropdown-item" href="#">Script Execution</a>
 						  <a class="dropdown-item" href="#">Software Delivery</a>
-						  <a class="dropdown-item" href="#">Boot Order</a>
+						  <a class="dropdown-item" href="#">Change Boot Order</a>
 						  </div>
 						</div>
 						  <p id="cp1" style="display: none"></p>
@@ -105,7 +105,7 @@ user_session_check();
                                 <tr>
                                   <th class="noExport">Batch details</th>
                                   <th>Batch ID</th>
-                                  <th>Script Name</th>
+                                  <th>Filename</th>
                                   <th>Device Series</th>
                                   <th>Device OS</th>
                                   <th>Created Date</th>

@@ -38,7 +38,9 @@ $(document).ready(function() {
            	   $(this).html('Scheduled');
          	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
            	   $(this).html('Cancelled');
-         	 }else if(colIndex == 7){ 
+         	 }else if(colIndex == 4 && $(this).html() == ''){
+        		   $(this).html('N/A');	
+          	 }else if(colIndex == 7){ 
          		 if($(this).html() == 'd')
          			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
          		 else
@@ -133,7 +135,7 @@ $(document).ready(function() {
 					batchtype = 'se';
 				}else if($(this).text() == 'Software Delivery'){
 					batchtype = 'sd';
-				}else if($(this).text() == 'Boot Order'){					
+				}else if($(this).text() == 'Change Boot Order'){					
 					batchtype = 'bo';
 				}; 
 		         var table =  $('#devicebatchtrack').DataTable( {
@@ -173,9 +175,11 @@ $(document).ready(function() {
 		                	   $(this).html('Scheduled');
 		              	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
 		                	   $(this).html('Cancelled');
+		              	 }else if(colIndex == 4 && $(this).html() == ''){
+		              		   $(this).html('N/A');	
 		              	 }else if(colIndex == 7){ 
 		             		 if($(this).html() == 'd')
-		             			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
+		             			$(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
 		             		 else
 		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
 		             	 }

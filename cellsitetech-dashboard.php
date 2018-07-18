@@ -372,7 +372,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               <table id="cellsitetech_user_devices" class="table table-border">
                 <thead>
                   <tr>
-                    <th></th>
+                    <th><input type="checkbox" id="selectall" name="selectall" value="1"></th>
                     <th style="display: none;"><b>ID</b></th>
                     <th><b>Tech Name</th>
                     <th><b>SiteID / Switch</th>

@@ -3691,6 +3691,7 @@ function load_node_vendor_id_from_deviceid($deviceid)
     $sql = "SELECT vendorId FROM nodes where id = " . $deviceid;
     $db2->query($sql);
     $resultset = $db2->resultset();
+    $resultset[0]['vendorId'] = empty($resultset[0]['vendorId']) ? 1 : $resultset[0]['vendorId'];
     return $resultset[0]['vendorId'];
 }
 

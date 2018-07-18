@@ -9942,10 +9942,10 @@ span.export {
 }
 
 /* line 394, /Applications/MAMP/htdocs/oneemstest/scss/_extra_styles.scss */
-#cellsitetech_user_devices_wrapper .dataTables_length, #swt_user_devices_filter .dataTables_length, #example_filter .dataTables_length, #backuprestoredt_filter .dataTables_length, #devicebatchtrack_filter .dataTables_length, #batchpro_filter .dataTables_length, #ipv4subnetmask_filter .dataTables_length, #ipv6subnetmask_filter .dataTables_length, #swdelvrybatchpro_filter .dataTables_length, #osrepository_filter .dataTables_length {
+#swt_user_devices_filter .dataTables_length, #example_filter .dataTables_length, #backuprestoredt_filter .dataTables_length, #devicebatchtrack_filter .dataTables_length, #batchpro_filter .dataTables_length, #ipv4subnetmask_filter .dataTables_length, #ipv6subnetmask_filter .dataTables_length, #swdelvrybatchpro_filter .dataTables_length, #osrepository_filter .dataTables_length {
   display: none;
 }
-
+#cellsitetech_user_devices_wrapper .dataTables_length{display:block;}
 /* line 397, /Applications/MAMP/htdocs/oneemstest/scss/_extra_styles.scss */
 #cellsitetech_user_devices_wrapper .dataTables_filter, #swt_user_devices_filter .dataTables_filter, #example_filter .dataTables_filter, #backuprestoredt_filter .dataTables_filter, #devicebatchtrack_filter .dataTables_filter, #batchpro_filter .dataTables_filter, #ipv4subnetmask_filter .dataTables_filter, #ipv6subnetmask_filter .dataTables_filter, #swdelvrybatchpro_filter .dataTables_filter, #osrepository_filter .dataTables_filter {
   float: left;

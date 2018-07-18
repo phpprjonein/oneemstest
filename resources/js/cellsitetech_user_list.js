@@ -1,5 +1,36 @@
 $(document).ready(function() {
+	$('#cellsitetech_user_devices input:checkbox').removeAttr('checked');
+    $('#selectall').click(function() {
+        if ($(this).is(':checked')) {
+        	var table =  $('#cellsitetech_user_devices').DataTable();
+        	table.rows().eq(0).each( function ( index ) {
+        	var row = table.row( index ).node();
+        	$(row).addClass('drag_selected ui-draggable ui-draggable-handle');
+        	} );
+            $('#cellsitetech_user_devices tr.drag_selected').draggable({
+                cursor: "move",
+                      cursorAt: {
+                        top: -2,
+                        left: -2
+                      },
+                      helper: function(event) {
+                        var str = "<div></div>";
+                        var indderdiv ='';
+                        $('tr.drag_selected').each(function(e){
+                          indderdiv += "<div class='box' style='border:1px solid gray; background-color:lightblue;width:200px'><i data-deviceid='"+ $(this).data('deviceid')+"' data-devicename='"+ $(this).data('devicename')+"' class='fa fa-plus'></i> &nbsp; " + $(this).data('devicename')  +  "</div>";
+                        });
+                        return $(str).html(indderdiv);
 
+                      }
+                });
+        }else{
+        	var table =  $('#cellsitetech_user_devices').DataTable();
+        	table.rows().eq(0).each( function ( index ) {
+        	var row = table.row( index ).node();
+        	$(row).removeClass('drag_selected ui-draggable ui-draggable-handle');
+        	} );
+        }
+    });
   setHeight();
 
         var default_pagelen = 14;
@@ -9,7 +40,7 @@ $(document).ready(function() {
          var table =  $('#cellsitetech_user_devices').DataTable( {
           "processing": true,
           "lengthChange": true,
-          "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
+          "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100, 500, 1000 ],
           "pageLength": default_pagelen,
           "serverSide": true,
           "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
@@ -138,8 +169,14 @@ $(document).ready(function() {
   $(window).resize(function() {
     setHeight();
   });
-
-
+  $(document).on("click", "#cellsitetech_user_devices_paginate .paginate_button", function(){
+	  $('#cellsitetech_user_devices input:checkbox').removeAttr('checked');
+  });
+  
+  $('#cellsitetech_user_devices_length select').on('change', function(){
+	  $('#cellsitetech_user_devices input:checkbox').removeAttr('checked');
+  });
+  
   $('#switch_item_name').on('change', function(){
       $('#srch-term').val('');
       $('#switch_list_form').submit();

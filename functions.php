@@ -2520,10 +2520,14 @@ function generic_get_market_by_region($region)
  */
 function generic_get_deviceseries()
 {
+    // Temporary commented dynamic deviceseries populate and hard coded
+    /*
     global $db2;
     $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != '' ORDER BY deviceseries";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
+    */
+    $resultset['result'] = array(array('deviceseries' => 'ASR1000'), array('deviceseries' => 'ASR920'), array('deviceseries' => 'ASR900'));
     return $resultset;
 }
 
@@ -3903,11 +3907,15 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
  */
 function swrepo_get_deviceseries()
 {
+    // Temporary commented dynamic deviceseries populate and hard coded
+    /*
     global $db2;
     // $sql = "SELECT distinct(deviceseries) FROM deviceseries";
     $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != ''";
     $db2->query($sql);
     $resultset = $db2->resultset();
+    */
+    $resultset = array(array('deviceseries' => 'ASR1000'), array('deviceseries' => 'ASR920'), array('deviceseries' => 'ASR900'));
     return $resultset;
 }
 

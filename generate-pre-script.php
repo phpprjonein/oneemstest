@@ -2,7 +2,6 @@
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
-
 // Static variable values set
 if (isset($_GET['clear'])) {
     if (strtolower($_GET['clear']) == 'search') {
@@ -152,7 +151,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 											data-rule-required="true">
 											<option value="">- SELECT Switch -</option>
 			   <?php foreach($gsswitchddwndata as $key => $val) {;?>
-                <option value="<?php echo $val['swvarname'];?>"><?php echo $val['switch_name']; ?></option>
+                <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option>
 				<?php }; ?>
               </select>
 									</div>

@@ -4330,6 +4330,20 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
     return $resultset;
 }
 
+/**
+ *
+ * @return unknown
+ */
+function configtemplate_elemvalue_pos_script_switch_name($switch_name)
+{
+    global $db2;
+    
+    $sql = "SELECT * FROM switchvars where switch_name = '".$switch_name."' order by switch_name,swvarname";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
 
 /**
  *
@@ -4338,7 +4352,7 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 function configtemplate_switches_from_switchvars()
 {
     global $db2;
-    $sql = "SELECT distinct(switch_name),swvarname FROM switchvars order by switch_name";
+    $sql = "SELECT distinct(switch_name) FROM switchvars order by switch_name";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

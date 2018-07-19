@@ -214,27 +214,26 @@ echo generate_site_breadcrumb($values);
             $output = '';
             $vars['globalvars'] = configtemplate_elemvalue_pos_script('globalvars', 'gvarname', 'gvarval');
             foreach ($vars['globalvars'] as $key => $val){
-                $result['globalvars'][$val['gvarname']] = $val['gvarval'];
+                $result['globalvars'][$_POST['f11'].$val['gvarname']] = $val['gvarval'];
             }
             
             $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
             foreach ($vars['usrvars'] as $key => $val){
                 $value = str_replace(' ', '_', $val['usrvarname']);
-                $result['usrvars'][$val['usrvarname']] = $_POST[$value];
+                $result['usrvars'][$_POST['f11'].$val['usrvarname']] = $_POST[$value];
             }
             
             
             $vars['marketvars'] = configtemplate_elemvalue_pos_script('marketvars', 'mvarname', 'mvarval');
             foreach ($vars['marketvars'] as $key => $val){
-                $result['marketvars'][$val['mvarname']] = $val['mvarval'];
+                $result['marketvars'][$_POST['f11'].$val['mvarname']] = $val['mvarval'];
             }
             
             
-            $vars['switchvars'] = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
-            foreach ($vars['switchvars'] as $key => $val){
-                if($_POST['f11'] == $val['swvarname']){
-                    $result['switchvars'][$val['swvarname']] = $val['swvarval'];
-                }
+            $vars = configtemplate_elemvalue_pos_script_switch_name($_POST['f11']);
+            
+            foreach ($vars as $key => $val){
+                $result['switchvars'][$_POST['f11'].$val['swvarname']] = $val['swvarval'];
             }
             
             for ($k = 1; $k <= count($newarr); $k ++) {
@@ -243,7 +242,7 @@ echo generate_site_breadcrumb($values);
                     if ($newarr[$k][0]["editable"] == 0) {
                         $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
-                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$newarr[$k][0]["elemvalue"]] . "'></span>";
+                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$_POST['f11'].$newarr[$k][0]["elemvalue"]] . "'></span>";
                     }
                     $output .= '</div>';
                 } else {
@@ -262,7 +261,7 @@ echo generate_site_breadcrumb($values);
                             }
                             */
                             
-                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'>";
+                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$_POST['f11'].$newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }
                     if ($editable == 1) {

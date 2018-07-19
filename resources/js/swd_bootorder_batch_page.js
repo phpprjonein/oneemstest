@@ -224,7 +224,7 @@
 		            $.ajax({
 		                type:"post",
 		                url:"software-delivery-batch-process.php",
-		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':'deviceseries', 'priority':$('#sw_selpriority').val(), 'batchtype':'bootorder', 'batchid':$('#batchid').val()}, 
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'priority':$('#sw_selpriority').val(), 'batchtype':'bootorder', 'batchid':$('#batchid').val()}, 
 		                success: function(resdata){
 		                	var myModal = $('#batchModal');
 		            		myModal.modal('show'); 

@@ -39,7 +39,7 @@ $(document).ready(function() {
 				$('#instant-health-check #instant-health-checks-ip ').html($('#inputDeviceIPaddress').val());
                 var ajs = $.ajax({
                     type:"get",
-                    url:"deviceip-healthchk-load-table-data.php",
+                    url:"deviceip-healthchk-instant-check-data.php",
                     data: {'deviceip':$('#inputDeviceIPaddress').val(), 'userid':$('#userid').val()},
                     success: function(resdata){
                         $('#instant-health-check .panel-body-wrap').html(resdata);

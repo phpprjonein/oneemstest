@@ -38,7 +38,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 <div class="container-fluid sw-delivery-devices" id="sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
       <?php
-        $values = array('Software Delivery' => '#');
+        $values = array('Boot Order Sequence' => '#');
         echo generate_site_breadcrumb($values);
       ?>
 

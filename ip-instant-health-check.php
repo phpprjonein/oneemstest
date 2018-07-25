@@ -71,9 +71,9 @@ user_session_check();
           		  <div id="status" style="display: none;" class="alert"></div>
                   <form class="login-form" action="#" method="post">
                       <div class="input-group row" >
-                        <div class="form-inline col-md-3 col-sm-12">
+                        <div class="form-inline col-md-5 col-sm-12">
                           <input type="inputName" name="ipaddress" class="form-control" id="inputDeviceIPaddress" placeholder="Enter IP Address" autofocus>
-                          <button type="submit" class="btn" id="ip-health-check" data-toggle="modal">Submit</button>
+                          <button type="submit" class="btn" id="ip-health-check" data-toggle="modal">Run All Health Checks</button>
                         </div>
                       </div>
                       

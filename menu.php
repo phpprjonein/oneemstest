@@ -71,13 +71,14 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle  <?php print activemenu(array("software-upload-master.php", "software-master.php", "software-upload-devices.php", "sw-delivery-devices.php", "schedule-backup-new.php", "sw-bootorder-sequence.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
+              <a class="nav-link dropdown-toggle  <?php print activemenu(array("software-upload-master.php", "software-master.php", "software-upload-devices.php", "reboot.php", "sw-delivery-devices.php", "schedule-backup-new.php", "sw-bootorder-sequence.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maintenance</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <!-- <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a> -->
                 <!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
 				<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
                 <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
                 <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>
+                <a class="dropdown-item" href="reboot.php">Reboot</a>
 				<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
 				<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
 				<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->

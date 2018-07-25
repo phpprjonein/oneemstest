@@ -137,7 +137,9 @@ $(document).ready(function() {
 					batchtype = 'sd';
 				}else if($(this).text() == 'Change Boot Order'){					
 					batchtype = 'bo';
-				}; 
+				}else if($(this).text() == 'Reboot'){					
+					batchtype = 'rb';
+				} 
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,
 		             "serverSide": true,

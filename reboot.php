@@ -26,14 +26,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 </head>
 <body>
 <script>
-    $(function() {
+    <!-- $(function() {
         $(".chosen-select").chosen({
           disable_search_threshold: 10,
           inherit_select_classes: true,
           no_results_text: "No results found! Please try searching again...",
           width: "100%"
         });
-    });
+    }); -->
 </script>
 <div class="container-fluid sw-delivery-devices" id="sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
@@ -114,26 +114,26 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                   </div>
 select device series options -->
 
-<!-- select OS version options -->
+<!-- select OS version options
                   <div class="form-group f8 required" data-fid="f8">
                     <label class="control-label" for="f8">Select File Name</label>
                     <select data-placeholder="Choose a File Names..." class="form-control custom-select chosen-select" multiple id="swrp_filename" name ="swrp_filename" data-rule-required="true">
                     </select>
                   </div>
-<!-- /select OS version options -->
+select OS version options -->
 
-				<?php $destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/');?>
-				<!-- select device series options -->
+				<?php //$destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/');?>
+				<!-- select device series options
                   <div class="form-group f7 required" data-fid="f17">
                     <label class="control-label" for="f17">Destination Drive</label>
                     <select id ="destdrive" name ="destdrive" class="form-control custom-select" data-rule-required="true">
                       <option value="">- SELECT Destination Drive -</option>
-                      <?php foreach ($destdrive_arr as $key => $val){ ?>
-        			  <option value="<?php echo $key;?>"><?php echo $val;?></option>
-        			  <?php }; ?>
+                      <?php //foreach ($destdrive_arr as $key => $val){ ?>
+        			  <option value="<?php //echo $key;?>"><?php //echo $val;?></option>
+        			  <?php //}; ?>
                     </select>
                   </div>
-<!-- /select device series options -->
+select device series options -->
 
 
 

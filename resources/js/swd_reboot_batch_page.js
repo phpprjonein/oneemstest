@@ -129,7 +129,7 @@
 					success: function(data){
 					$('#node_version').html(data);	
 					}
-				});	*/
+				});	
 				
 				$.ajax({
 					type: "POST",
@@ -140,7 +140,7 @@
 					$('.chosen-select').trigger("chosen:updated");
 					}
 				});
-            	
+            	*/
 	          var table = $('#swdelvrybatchpro').DataTable({
 	              "processing": true,
 	              "serverSide": true,
@@ -190,11 +190,11 @@
 	        	/*$('#swdelvrybatchpro').children().find('input[type=checkbox]:checked').each(function(index){
 	        		allVals.push($(this).closest('tr').find("td:eq(1)").text());
 	        	});*/
-				$('#sw-delivery-devices #status').css("opacity","");  
 				if($('#sw-delivery-devices #device_series').val() == ""){
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device series field is required.<br/>");
 					req_err = true;
 				};
+				/*
 				if($('#sw-delivery-devices #swrp_filename').val() == null || $('#sw-delivery-devices #swrp_filename').val() == ""){
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Filename field is required.<br/>");
 					req_err = true;
@@ -202,7 +202,7 @@
 				if($('#sw-delivery-devices #destdrive').val() == ""){
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Destination path is required.<br/>");
 					req_err = true;
-				}; 
+				}; */
 	        	if(allVals.length == 0){
 	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
 	            	req_err = true;	
@@ -234,7 +234,7 @@
 		            $.ajax({
 		                type:"post",
 		                url:"software-delivery-batch-process.php",
-		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':$('#sw_selpriority').val(), 'batchtype':'reboot', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val()}, 
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':'', 'deviceseries':deviceseries, 'node_version':'', 'priority':$('#sw_selpriority').val(), 'batchtype':'reboot', 'destdrive':'', 'batchid':$('#batchid').val()}, 
 		                success: function(resdata){
 		                	var myModal = $('#batchModal');
 		            		myModal.modal('show'); 

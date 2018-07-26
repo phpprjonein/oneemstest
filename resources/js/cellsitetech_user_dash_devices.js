@@ -85,11 +85,13 @@ $(document).ready(function() {
           "ajax":"swt-server-process.php?listid="+$('#example').data('listid'),
 		   "columnDefs": [{
             "targets": 4,
-           // "render": function ( data, type, row, meta ) {
+            "render": function ( data, type, row, meta ) {
                 //var itemID = row[0];                   
                 //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
 			//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
-           // }
+			//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
+				return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
+           }
         }],    
           "pageLength": 25,
           //"dom": 'lBfrtip',

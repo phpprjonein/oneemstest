@@ -110,11 +110,11 @@ $(document).ready(function() {
             { "data": "nodeVersion" },
             { "data": "status", "className": "d-none" },
             { "data": "lastpolled" },
-            { "className":      'center',
+            /*{ "className":      'center',
             	"orderable":      false,
             	"data":           null,
             	"defaultContent": "<button type='button' class='btn btn-sm auditLog' data-toggle='modal'>Audit Log</button>",
-            } 
+            }*/
 
         ],
         "order": [[1, 'asc']],

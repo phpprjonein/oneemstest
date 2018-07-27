@@ -177,6 +177,8 @@ $(document).ready(function() {
 		                	   $(this).html('Scheduled');
 		              	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
 		                	   $(this).html('Cancelled');
+		              	 }else if(colIndex == 2 && $(this).html() == ''){
+		              		   $(this).html('N/A');	
 		              	 }else if(colIndex == 4 && $(this).html() == ''){
 		              		   $(this).html('N/A');	
 		              	 }else if(colIndex == 7){ 

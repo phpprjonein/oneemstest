@@ -115,7 +115,7 @@ modal.children[0].addEventListener('click', function(e) {
 										<th>Version</th>
 										<th class="d-none">Status</th>
 										<th>Last Polled</th>
-										<th>Audit Log</th>
+										<!--  <th>Audit Log</th>  -->
 									</tr>
 								</thead>
 							</table>

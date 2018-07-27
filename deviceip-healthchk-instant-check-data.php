@@ -56,7 +56,7 @@ ini_set('display_errors',1);
 										<th>Version</th>
 										<th class="d-none">Status</th>
 										<th>Last Polled</th>
-										<th>Audit Log</th>
+										<!-- <th>Audit Log</th>  -->
 									</tr>
 								</thead>
 								<tbody>
@@ -71,7 +71,7 @@ ini_set('display_errors',1);
 									<td><?php echo $device_details['nodeVersion'];?></td>
 									<td class="d-none"><?php echo $device_details['status'];?></td>
 									<td><?php echo $device_details['lastpolled'];?></td>
-									<td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>
+									<!--  <td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>  -->
 								</tr>
 								<tr><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td colspan="11"><div id="detail_<?php echo $deviceid; ?>" class="loaded">
 								

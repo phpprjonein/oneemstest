@@ -93,7 +93,9 @@ modal.children[0].addEventListener('click', function(e) {
                             <!-- Page title -->
                             <div class="panel-heading panel-heading-myswtlst" > <?php if ($title === 0) echo 'My routers'; else echo $title; ?></div>
                           </div>
-                         	<input type="hidden" id='userid' value="<?php echo $userid ?>" name="">
+                         	<input type="hidden" id='userid' value="<?php echo $userid ?>"
+							name=""> <input type="hidden" id='username'
+							value="<?php echo $username ?>" name="">
                           <div class="panel-body">
                             <table id="example" class="display" data-listid="<?php echo $listid ?>" cellspacing="0" width="100%">
                               <thead>

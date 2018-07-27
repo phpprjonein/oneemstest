@@ -40,7 +40,7 @@ $(document).ready(function() {
          var table =  $('#cellsitetech_user_devices').DataTable( {
           "processing": true,
           "lengthChange": true,
-          "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100, 500, 1000 ],
+          "lengthMenu": [ 14, 25, 50, 100, 200, 500 ],
           "pageLength": default_pagelen,
           "serverSide": true,
           "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],
@@ -302,7 +302,7 @@ $(document).ready(function() {
           "processing": true,
           "lengthChange": true,
           "destroy": true,
-          "lengthMenu": [ 5, 10, 11, 12, 14, 15, 20, 25, 30, 50, 75, 100 ],
+          "lengthMenu": [ 14, 25, 50, 100, 200, 500 ],
           "pageLength": default_pagelen,
           "serverSide": true,
           "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn'},{extend: 'print',titleAttr:'',className:'dtprintbtn'}],

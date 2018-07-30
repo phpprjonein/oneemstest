@@ -74,11 +74,7 @@ $(document).ready(function() {
             }
         });
     });
-    
-    
-    
-    
-    
+     
          var table =  $('#example').DataTable( {
           "processing": true,
           "serverSide": true, 
@@ -90,7 +86,8 @@ $(document).ready(function() {
             	exploded = row['deviceIpAddr'].split('<br/>'); 
             	//console.log(exploded[0]);
             	$('#username').val('njbbcpnebh');
-            	return '<a target="blank" href="ssh://' + $('#username').val() + '@'+exploded[0]+'">'+data +'</a>';
+            	//return '<a target="blank" href="ssh://' + $('#username').val() + '@'+exploded[0]+'">'+data +'</a>';
+				return data;
             	
             	
                 //var itemID = row[0];                   

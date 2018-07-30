@@ -69,7 +69,8 @@ $(document).ready(function() {
 	            "render": function ( data, type, row, meta ) {
 	            	exploded = row['deviceIpAddr'].split('<br/>');
 	            	$('#username').val('njbbcpnebh');
-	            	return '<a target="blank" href="ssh://' + $('#username').val() + '@'+exploded[0]+'">'+data +'</a>';
+	            	//return '<a target="blank" href="ssh://' + $('#username').val() + '@'+exploded[0]+'">'+data +'</a>';
+					return data;
 	                //var itemID = row[0];                   
 	                //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';

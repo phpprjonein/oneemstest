@@ -123,6 +123,7 @@
 				<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
                 <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
                 <a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a>
+				 <a class="dropdown-item" href="reboot.php">Reboot</a>
 				<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
 				<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
 				<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>

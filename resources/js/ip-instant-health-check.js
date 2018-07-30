@@ -10,6 +10,7 @@ $(document).ready(function() {
 			$('#instant-health-check #status').addClass('alert-danger');
 			req_err = true;
 			if(req_err){ 
+				$('#instant-health-check .panel-body-wrap').html('');
     			$('#instant-health-check #status').show();
     		    window.setTimeout(function() {
     		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
@@ -27,6 +28,7 @@ $(document).ready(function() {
 	    			$('#instant-health-check #status').addClass('alert-danger');
 	    			req_err = true;
 	        		if(req_err){ 
+	        			$('#instant-health-check .panel-body-wrap').html('');
 	        			$('#instant-health-check #status').show();
 	        		    window.setTimeout(function() {
 	        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
@@ -36,11 +38,13 @@ $(document).ready(function() {
 	        			return false;
 	        		}
 			  }else{
-				$('#instant-health-check #instant-health-checks-ip ').html($('#inputDeviceIPaddress').val());
                 var ajs = $.ajax({
                     type:"get",
                     url:"deviceip-healthchk-instant-check-data.php",
                     data: {'deviceip':$('#inputDeviceIPaddress').val(), 'userid':$('#userid').val()},
+                    beforeSend: function(){
+		            	  $('#instant-health-check .panel-body-wrap').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+		            },
                     success: function(resdata){
                         $('#instant-health-check .panel-body-wrap').html(resdata);
                         var table =  $('#example').DataTable({"paging": false, "searching": false,"ordering": false,"info": false});

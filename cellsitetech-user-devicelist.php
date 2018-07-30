@@ -18,10 +18,10 @@ $title = get_user_mylist_name_by_id($listid);
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-    $username = $_SESSION['username'];
-    $mesg = " User name: $username User type : $usertype Page:  Health Check (cell site technician) page Description: Cell Site Tech has executed Health Check.";
-    write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Health Check (cell site technician) page Description: Cell Site Tech has executed Health Check.";
+write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,16 +52,15 @@ modal.children[0].addEventListener('click', function(e) {
 }, false);
  </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini ownfont" id="healthpage">
+<body class="hold-transition skin-blue sidebar-mini ownfont"
+	id="healthpage">
 	<!-- Modal HTML -->
 	<div class="modal fade" id="healthpageModel">
 		<div class="modal-dialog">
 			<div class="modal-content" id="cellsitech-backup">
 				<!-- Modal Header -->
 				<div class="modal-header" id="backupmodalhdr">
-					<h5 class="modal-title">
-						Audit Log
-					</h5>
+					<h5 class="modal-title">Audit Log</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>

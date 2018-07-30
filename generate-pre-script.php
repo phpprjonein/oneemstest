@@ -19,10 +19,10 @@ else if ($_SESSION['userlevel'] == 2)
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Generate script page Description: Cell Site Tech has navigated to the Generate Script page.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Generate script page Description: Cell Site Tech has navigated to the Generate Script page.";
+write_log($mesg);
 
 ?>
 <!DOCTYPE html>
@@ -141,14 +141,13 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									</div>
 									<!-- /select RAN vendor options -->
 
-			
-												<!-- select Switch options -->
+
+									<!-- select Switch options -->
 			<?php  $gsswitchddwndata = configtemplate_switches_from_switchvars(); ?>
 			<div class="form-group f11 required" data-fid="f11">
-										<label class="control-label" for="f11">Select Switch</label>
-										<select id="select_switch" 
-											class="form-control custom-select" id="f11" name="f11"
-											data-rule-required="true">
+										<label class="control-label" for="f11">Select Switch</label> <select
+											id="select_switch" class="form-control custom-select"
+											id="f11" name="f11" data-rule-required="true">
 											<option value="">- SELECT Switch -</option>
 			   <?php foreach($gsswitchddwndata as $key => $val) {;?>
                 <option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option>
@@ -158,7 +157,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									<!-- select Switch options -->
 
 
-				
+
 
 
 									<!-- select region options -->
@@ -235,38 +234,44 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 
 									</div>
 								</div>
-								
+
 								<!-- /right side -->
 								<!-- /script output -->
 							</div>
 
 							<!-- /backup management content row -->
 						</div>
-                    	<div class="row">
-                    		<?php 
-                    		$vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
-                            foreach ($vars['usrvars'] as $key => $val){ 
-                            ?>    
-                            <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
-                                <label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
-                                <input type="<?php echo $val['usrvarname']; ?>" name="<?php echo $val['usrvarname']; ?>" class="form-control uservarsreq" id="<?php echo $val['usrvarname']; ?>" value="<?php echo $val['usrvarval']; ?>" placeholder="<?php echo $val['usrvarval']; ?>">
-                            </div>
-                            <?php 
-                                //$result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
-                                }
-                            ?>
+						<div class="row">
+                    		<?php
+                    $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+                    foreach ($vars['usrvars'] as $key => $val) {
+                        ?>    
+                            <div
+								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
+								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
+								<input type="<?php echo $val['usrvarname']; ?>"
+									name="<?php echo $val['usrvarname']; ?>"
+									class="form-control uservarsreq"
+									id="<?php echo $val['usrvarname']; ?>"
+									value="<?php echo $val['usrvarval']; ?>"
+									placeholder="<?php echo $val['usrvarval']; ?>">
+							</div>
+                            <?php
+                        // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
+                    }
+                    ?>
                         </div>
-                        <!-- /template name content -->
-								<div class="row" id="template_info_act">
-									<div class="col">
-										<button type="submit"
-											class="btn btn-lg generate-script-submit">Select</button>
-									</div>
-								</div>
+						<!-- /template name content -->
+						<div class="row" id="template_info_act">
+							<div class="col">
+								<button type="submit" class="btn btn-lg generate-script-submit">Select</button>
+							</div>
+						</div>
 					</form>
+			
 			</section>
 			<!-- /.content -->
-			
+
 		</div>
 	</div>
 	<!-- container-fluid -->

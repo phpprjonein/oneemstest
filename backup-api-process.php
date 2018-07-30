@@ -28,7 +28,7 @@ $output = json_decode($json_response, true);
  * print_r($output);
  */
 $response = '';
-foreach ($output['data'] as $key=>$val){
+foreach ($output['data'] as $key => $val) {
     $response .= "<br>";
     $response .= "<b>Backup Status : " . $val['status'] . "</b>";
     $response .= "<br/>";

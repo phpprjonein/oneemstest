@@ -5,7 +5,7 @@ $deviceseries = $_POST['dropdownValue'];
 // $deviceseries = $_GET['dropdownValue'];
 // echo 'hello';
 $nodeversions = swrepo_get_nodeversions($deviceseries);
-//print_r($nodeversions); die;
+// print_r($nodeversions); die;
 // echo 'hello';
 foreach ($nodeversions as $val)
     $html .= '<option>' . $val['newosversion'] . '</option>';

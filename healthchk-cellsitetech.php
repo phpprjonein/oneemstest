@@ -27,9 +27,9 @@ include 'functions.php';
     // Python API Request using curl Begins
     $userid = $_GET['userid'];
     
-    if(isset($_GET['deviceid']) && !empty($_GET['deviceid'])){
+    if (isset($_GET['deviceid']) && ! empty($_GET['deviceid'])) {
         $deviceid = $_GET['deviceid'];
-    }elseif (isset($_GET['deviceip']) && !empty($_GET['deviceip'])){
+    } elseif (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
         $deviceid = loaddeviceidfromdeviceip($_GET['deviceip']);
     }
     

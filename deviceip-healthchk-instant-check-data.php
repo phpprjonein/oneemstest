@@ -22,15 +22,15 @@ $(document).ready(function(){
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
-ini_set('display_errors',1);
+ini_set('display_errors', 1);
 ?>
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];
     
-    if(isset($_GET['deviceid']) && !empty($_GET['deviceid'])){
+    if (isset($_GET['deviceid']) && ! empty($_GET['deviceid'])) {
         $deviceid = $_GET['deviceid'];
-    }elseif (isset($_GET['deviceip']) && !empty($_GET['deviceip'])){
+    } elseif (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
         $device_details = loaddeviceidfromdeviceip($_GET['deviceip']);
         $deviceid = $device_details['id'];
     }
@@ -42,38 +42,51 @@ ini_set('display_errors',1);
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
     $_SESSION['deviceidcs'] = $deviceid;
     ?>
-    					<div class="panel-body">
-							<table id="example" class="display" cellspacing="0" width="100%">
-								<thead>
-									<tr>
-										<th class="noExport">Health Check</th>
-										<th>Site ID</th>
-										<th>Site Name</th>
-										<th>Device Name</th>
-										<th>IP Address</th>
-										<th>Market</th>
-										<th>Device Series</th>
-										<th>Version</th>
-										<th class="d-none">Status</th>
-										<th>Last Polled</th>
-										<!-- <th>Audit Log</th>  -->
-									</tr>
-								</thead>
-								<tbody>
-								<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown" role="row">
-									<td class=" details-control" title="Click here for health check"></td>
-									<td><?php echo $device_details['csr_site_id']; ?></td>
-									<td><?php echo $device_details['csr_site_name']; ?></td>
-									<td><?php echo $device_details['devicename'];?></td>
-									<td><?php echo $device_details['deviceIpAddr'].'<br/>'.$device_details['deviceIpAddrsix']; ?></td>
-									<td><?php echo $device_details['market'];?></td>
-									<td><?php echo $device_details['deviceseries'];?></td>
-									<td><?php echo $device_details['nodeVersion'];?></td>
-									<td class="d-none"><?php echo $device_details['status'];?></td>
-									<td><?php echo $device_details['lastpolled'];?></td>
-									<!--  <td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>  -->
-								</tr>
-								<tr><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td colspan="11"><div id="detail_<?php echo $deviceid; ?>" class="loaded">
+<div class="panel-body">
+	<table id="example" class="display" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th class="noExport">Health Check</th>
+				<th>Site ID</th>
+				<th>Site Name</th>
+				<th>Device Name</th>
+				<th>IP Address</th>
+				<th>Market</th>
+				<th>Device Series</th>
+				<th>Version</th>
+				<th class="d-none">Status</th>
+				<th>Last Polled</th>
+				<!-- <th>Audit Log</th>  -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown"
+				role="row">
+				<td class=" details-control" title="Click here for health check"></td>
+				<td><?php echo $device_details['csr_site_id']; ?></td>
+				<td><?php echo $device_details['csr_site_name']; ?></td>
+				<td><?php echo $device_details['devicename'];?></td>
+				<td><?php echo $device_details['deviceIpAddr'].'<br/>'.$device_details['deviceIpAddrsix']; ?></td>
+				<td><?php echo $device_details['market'];?></td>
+				<td><?php echo $device_details['deviceseries'];?></td>
+				<td><?php echo $device_details['nodeVersion'];?></td>
+				<td class="d-none"><?php echo $device_details['status'];?></td>
+				<td><?php echo $device_details['lastpolled'];?></td>
+				<!--  <td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>  -->
+			</tr>
+			<tr>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td colspan="11"><div id="detail_<?php echo $deviceid; ?>"
+						class="loaded">
 								
     
 <?php
@@ -84,8 +97,9 @@ if (load_node_vendor_id_from_deviceid($deviceid) == 1) {
 }
 
 ?>
-</div></td></tr>
-								</tbody>
-							</table>
-						</div>    
-             
+</div></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

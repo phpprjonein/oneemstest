@@ -2522,12 +2522,22 @@ function generic_get_deviceseries()
 {
     // Temporary commented dynamic deviceseries populate and hard coded
     /*
-    global $db2;
-    $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != '' ORDER BY deviceseries";
-    $db2->query($sql);
-    $resultset['result'] = $db2->resultset();
-    */
-    $resultset['result'] = array(array('deviceseries' => 'ASR1000'), array('deviceseries' => 'ASR920'), array('deviceseries' => 'ASR900'));
+     * global $db2;
+     * $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != '' ORDER BY deviceseries";
+     * $db2->query($sql);
+     * $resultset['result'] = $db2->resultset();
+     */
+    $resultset['result'] = array(
+        array(
+            'deviceseries' => 'ASR1000'
+        ),
+        array(
+            'deviceseries' => 'ASR920'
+        ),
+        array(
+            'deviceseries' => 'ASR900'
+        )
+    );
     return $resultset;
 }
 
@@ -3289,7 +3299,8 @@ function config_get_templates_from_templname($templname)
 function update_healthchk_info($deviceid, $output, $lastupdated)
 {
     global $db2;
-    unset($output['error']); unset($output['message']);
+    unset($output['error']);
+    unset($output['message']);
     if (count($output) > 0 && isset($output)) :
         $cols = array();
         foreach ($output as $key => $val) {
@@ -3395,17 +3406,16 @@ function delete_batchid($batchid)
  */
 function write_log($message, $logfile = '')
 {
-    
-    if(isset($_SESSION['impusername']) && !empty($_SESSION['impusername'])){
-        $message = $message.', Impersonate Set, Admin User name:'.$_SESSION['impusername'];
+    if (isset($_SESSION['impusername']) && ! empty($_SESSION['impusername'])) {
+        $message = $message . ', Impersonate Set, Admin User name:' . $_SESSION['impusername'];
     }
     
     // Determine log file
     // Filename of log to use when none is given to write_log
     $default_log = "/usr/apps/oneems/logs/oneemsdefault_" . date(m_d_Y) . ".log";
     $upload_log = "/usr/apps/oneems/logs/oneems_" . date(m_d_Y) . ".log";
-    //$default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_" . date(m_d_Y) . ".log";
-    //$upload_log = "O:\wamp\www\oneemstest\logs\oneems_" . date(m_d_Y) . ".log";
+    // $default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_" . date(m_d_Y) . ".log";
+    // $upload_log = "O:\wamp\www\oneemstest\logs\oneems_" . date(m_d_Y) . ".log";
     // echo 'reach here inside the write_log function';
     
     if ($logfile == '') {
@@ -3605,7 +3615,7 @@ function get_devicebatch_list_from_devicebatch_datatable()
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'sd'";
     } else if ($_GET['batchtype'] == 'bo') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'bo'";
-    }else if ($_GET['batchtype'] == 'rb') {
+    } else if ($_GET['batchtype'] == 'rb') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'rb'";
     }
     if ($search) {
@@ -3911,13 +3921,23 @@ function swrepo_get_deviceseries()
 {
     // Temporary commented dynamic deviceseries populate and hard coded
     /*
-    global $db2;
-    // $sql = "SELECT distinct(deviceseries) FROM deviceseries";
-    $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != ''";
-    $db2->query($sql);
-    $resultset = $db2->resultset();
-    */
-    $resultset = array(array('deviceseries' => 'ASR1000'), array('deviceseries' => 'ASR920'), array('deviceseries' => 'ASR900'));
+     * global $db2;
+     * // $sql = "SELECT distinct(deviceseries) FROM deviceseries";
+     * $sql = "SELECT distinct(deviceseries) FROM nodes where deviceseries != 'None' and deviceseries != ''";
+     * $db2->query($sql);
+     * $resultset = $db2->resultset();
+     */
+    $resultset = array(
+        array(
+            'deviceseries' => 'ASR1000'
+        ),
+        array(
+            'deviceseries' => 'ASR920'
+        ),
+        array(
+            'deviceseries' => 'ASR900'
+        )
+    );
     return $resultset;
 }
 
@@ -4054,6 +4074,7 @@ function get_os_ver_applydate($query)
 }
 
 /**
+ *
  * @param unknown $username
  * @param unknown $backup_occur
  * @param unknown $backup_day
@@ -4073,6 +4094,7 @@ function update_schedbackup_settings($username, $backup_occur, $backup_day, $bac
 }
 
 /**
+ *
  * @return unknown
  */
 function get_market_list_backup()
@@ -4157,15 +4179,15 @@ function update_login_api_rules($sso_flag, $username)
         
         /* Zones API calls */
         // if ($_SESSION['zones'] == 0) {
-        //$output_callout_zone_list = @file_get_contents('http://localhost/oneemstest/' . $_SESSION['username'] . '_callout_zone_list.php');
+        // $output_callout_zone_list = @file_get_contents('http://localhost/oneemstest/' . $_SESSION['username'] . '_callout_zone_list.php');
         $output_callout_zone_list = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/user/' . $_SESSION['username'] . '/prefs/czone');
         $resp_zones_result_arr_callout_zone_list = json_decode($output_callout_zone_list, 1);
         $resp_zones_result_arr = array();
         if (isset($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'])) {
             foreach ($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'] as $key => $val) {
                 $valrc = rawurlencode($val);
-                 $output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
-                //$output_zones = @file_get_contents(('http://txsliopsa1v.nss.vzwnet.com:8080/site/czone/'.$valrc.'?hierarchy=0'));
+                $output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
+                // $output_zones = @file_get_contents(('http://txsliopsa1v.nss.vzwnet.com:8080/site/czone/'.$valrc.'?hierarchy=0'));
                 $output_zones_resp_result_arr = json_decode($output_zones, 1);
                 $resp_zones_result_arr[$val] = $output_zones_resp_result_arr['site_devices'];
             }
@@ -4288,6 +4310,7 @@ function update_login_api_rules($sso_flag, $username)
 }
 
 /**
+ *
  * @return unknown
  */
 function get_market_list_manualdisc()
@@ -4305,7 +4328,6 @@ function get_market_list_manualdisc()
     return $resultset;
 }
 
-
 /**
  *
  * @return unknown
@@ -4313,18 +4335,18 @@ function get_market_list_manualdisc()
 function configtemplate_elemvalue($posttabname, $field, $switch_name = '')
 {
     global $db2;
-    //$_SESSION['ct_switch_name'] = 'switch_name5';
-    /*if(isset($switch_name) && $switch_name!= '' && $posttabname == 'switchvars'){
-        $whr = " where switch_name like '".$switch_name."' ";
-    }*/
+    // $_SESSION['ct_switch_name'] = 'switch_name5';
+    /*
+     * if(isset($switch_name) && $switch_name!= '' && $posttabname == 'switchvars'){
+     * $whr = " where switch_name like '".$switch_name."' ";
+     * }
+     */
     
-    $sql = "SELECT distinct(".$field.") FROM ".$posttabname.$whr." order by ".$field;
+    $sql = "SELECT distinct(" . $field . ") FROM " . $posttabname . $whr . " order by " . $field;
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
 }
-
-
 
 /**
  *
@@ -4334,7 +4356,7 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 {
     global $db2;
     
-    $sql = "SELECT distinct(".$field."),".$value."  FROM ".$posttabname.$whr." order by ".$field;
+    $sql = "SELECT distinct(" . $field . ")," . $value . "  FROM " . $posttabname . $whr . " order by " . $field;
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
@@ -4348,12 +4370,11 @@ function configtemplate_elemvalue_pos_script_switch_name($switch_name)
 {
     global $db2;
     
-    $sql = "SELECT * FROM switchvars where switch_name = '".$switch_name."' order by switch_name,swvarname";
+    $sql = "SELECT * FROM switchvars where switch_name = '" . $switch_name . "' order by switch_name,swvarname";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;
 }
-
 
 /**
  *
@@ -4370,31 +4391,34 @@ function configtemplate_switches_from_switchvars()
 
 function insert_uservars($values)
 {
-global $db2;
-$values_arr = array(
+    global $db2;
+    $values_arr = array(
         'usrvarname' => $_POST['usrvarname'],
         'usrvarval' => $_POST['usrvarval'],
         'deviceseries' => $_POST['deviceseries'],
-        'templname' => $_POST['templname'] 
-    ); 
-    //$sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $valus['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "')";
-    $sql = "insert into usrvars(usrvarname,usrvarval,deviceseries,templname)" . "values ('" . $values['usrvarname'] . "','" . $values['usrvarval'] . "','" . $values['deviceseries']  . "','" . $values['templname']. "')";
+        'templname' => $_POST['templname']
+    );
+    // $sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $valus['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "')";
+    $sql = "insert into usrvars(usrvarname,usrvarval,deviceseries,templname)" . "values ('" . $values['usrvarname'] . "','" . $values['usrvarval'] . "','" . $values['deviceseries'] . "','" . $values['templname'] . "')";
     $db2->query($sql);
-    $db2->execute();	
-};
+    $db2->execute();
+}
+;
 
-function valid_admin_usr_by_password($password){
+function valid_admin_usr_by_password($password)
+{
     $userinfo = get_user_info($_SESSION['username'], $password);
-    if ( ! $userinfo ) {
+    if (! $userinfo) {
         return false;
-    }else{
+    } else {
         return true;
     }
 }
 
-function loaddeviceidfromdeviceip($deviceip){
+function loaddeviceidfromdeviceip($deviceip)
+{
     global $db2;
-    $sql = "SELECT * FROM nodes where deviceIpAddr = '".$deviceip."'";
+    $sql = "SELECT * FROM nodes where deviceIpAddr = '" . $deviceip . "'";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset[0];

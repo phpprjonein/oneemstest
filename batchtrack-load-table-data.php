@@ -21,7 +21,7 @@ $deviceinfo = batch_accordion_details($batchid);
                 } elseif (strtolower($val['status']) == 'd') {
                     $val['status'] = 'Cancelled';
                 }
-            ?>
+                ?>
 			<tr>
 				<td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
 				<td><?php echo $val['devicename']; ?></td>

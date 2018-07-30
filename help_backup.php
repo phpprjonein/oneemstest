@@ -16,10 +16,10 @@ user_session_check();
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Backup Help page Description: User has navigated to the Backup help page.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Backup Help page Description: User has navigated to the Backup help page.";
+write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,9 +32,11 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
 	<?php
-        $values = array('Backup Help' => '#');
-        echo generate_site_breadcrumb($values);
-      ?>
+$values = array(
+    'Backup Help' => '#'
+);
+echo generate_site_breadcrumb($values);
+?>
 
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
@@ -67,9 +69,11 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									<a class="nav-link" href="#item-3">BACKUP</a> <a
 										class="nav-link help active" href="help_config.php">CONFIGURATION</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
+											Template</a> <a class="nav-link ml-3 my-1"
+											href="help_config.php#item-4-2">Generate Script</a> <a
+											class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch
+											Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -89,11 +93,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 											href="help_discovery_results.php#item-6-4">Manual Discovery</a>
 									</nav>
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-            <nav class="nav nav-pills flex-column">
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Scheduled Backup</a>
-              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-            </nav>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+									</nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -123,7 +130,8 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 							<p>
 								To backup a device's configuration, simply click the <b>Backup</b>
 								button in the right most column of the list table. This will run
-								an API that attempts to remotely backup the configuration of the device selected in the user's List table.
+								an API that attempts to remotely backup the configuration of the
+								device selected in the user's List table.
 							</p>
 							<img src="resources/img/screenshot-backup2.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-backup2">

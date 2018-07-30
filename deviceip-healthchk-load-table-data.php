@@ -54,39 +54,53 @@ $healthchktype = 'Load Table';
     $_SESSION['deviceidswusr'] = $deviceid;
     
     ?>
-    
-    					<div class="panel-body">
-							<table id="example" class="display" cellspacing="0" width="100%">
-								<thead>
-									<tr>
-										<th class="noExport">Health Check</th>
-										<th>Site ID</th>
-										<th>Site Name</th>
-										<th>Device Name</th>
-										<th>IP Address</th>
-										<th>Market</th>
-										<th>Device Series</th>
-										<th>Version</th>
-										<th class="d-none">Status</th>
-										<th>Last Polled</th>
-										<th>Audit Log</th>
-									</tr>
-								</thead>
-								<tbody>
-								<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown" role="row">
-									<td class=" details-control" title="Click here for health check"></td>
-									<td><?php echo $device_details['csr_site_id']; ?></td>
-									<td><?php echo $device_details['csr_site_name']; ?></td>
-									<td><?php echo $device_details['devicename'];?></td>
-									<td><?php echo $device_details['deviceIpAddr'].'<br/>'.$device_details['deviceIpAddrsix']; ?></td>
-									<td><?php echo $device_details['market'];?></td>
-									<td><?php echo $device_details['deviceseries'];?></td>
-									<td><?php echo $device_details['nodeVersion'];?></td>
-									<td class="d-none"><?php echo $device_details['status'];?></td>
-									<td><?php echo $device_details['lastpolled'];?></td>
-									<td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>
-								</tr>
-								<tr><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td colspan="11"><div id="detail_<?php echo $deviceid; ?>" class="loaded">
+
+<div class="panel-body">
+	<table id="example" class="display" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th class="noExport">Health Check</th>
+				<th>Site ID</th>
+				<th>Site Name</th>
+				<th>Device Name</th>
+				<th>IP Address</th>
+				<th>Market</th>
+				<th>Device Series</th>
+				<th>Version</th>
+				<th class="d-none">Status</th>
+				<th>Last Polled</th>
+				<th>Audit Log</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown"
+				role="row">
+				<td class=" details-control" title="Click here for health check"></td>
+				<td><?php echo $device_details['csr_site_id']; ?></td>
+				<td><?php echo $device_details['csr_site_name']; ?></td>
+				<td><?php echo $device_details['devicename'];?></td>
+				<td><?php echo $device_details['deviceIpAddr'].'<br/>'.$device_details['deviceIpAddrsix']; ?></td>
+				<td><?php echo $device_details['market'];?></td>
+				<td><?php echo $device_details['deviceseries'];?></td>
+				<td><?php echo $device_details['nodeVersion'];?></td>
+				<td class="d-none"><?php echo $device_details['status'];?></td>
+				<td><?php echo $device_details['lastpolled'];?></td>
+				<td class=" center"><button type="button"
+						class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>
+			</tr>
+			<tr>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td style="display: none;"></td>
+				<td colspan="11"><div id="detail_<?php echo $deviceid; ?>"
+						class="loaded">
 								
     
 <?php
@@ -97,7 +111,8 @@ if (load_node_vendor_id_from_deviceid($deviceid) == 1) {
 }
 
 ?>
-</div></td></tr>
-								</tbody>
-							</table>
-						</div>    
+</div></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

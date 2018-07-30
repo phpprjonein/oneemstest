@@ -136,6 +136,10 @@ $pages->paginate();
 													
 													
 													
+													
+													
+													
+													
 													</th>
 												</tr>
 											</tbody>

@@ -16,10 +16,10 @@ user_session_check();
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Discovery Results Help page Description: User has navigated to the Discovery Results help page.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Discovery Results Help page Description: User has navigated to the Discovery Results help page.";
+write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,9 +32,11 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
 	<?php
-        $values = array('Discovery Results Help' => '#');
-        echo generate_site_breadcrumb($values);
-      ?>
+$values = array(
+    'Discovery Results Help' => '#'
+);
+echo generate_site_breadcrumb($values);
+?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
@@ -67,9 +69,11 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 									<a class="nav-link" href="help_backup.php">BACKUP</a> <a
 										class="nav-link help active" href="help_config.php">CONFIGURATION</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
+											Template</a> <a class="nav-link ml-3 my-1"
+											href="help_config.php#item-4-2">Generate Script</a> <a
+											class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch
+											Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -88,11 +92,14 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 											href="help_discovery_results.php#item-6-4">Manual Discovery</a>
 									</nav>
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-						            <nav class="nav nav-pills flex-column">
-						              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-						              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Scheduled Backup</a>
-						              <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-						            </nav>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+									</nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -162,7 +169,8 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 											Discovery IPs</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_maintenance.php" class="border"><b>NEXT: Maintenance >></b></a>
+									<a href="help_maintenance.php" class="border"><b>NEXT:
+											Maintenance >></b></a>
 								</div>
 							</div>
 							<hr>

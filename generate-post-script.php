@@ -3,20 +3,20 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 /*
-print '<pre>';
-print_r($_POST);
-die;
-
-$vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
-foreach ($vars['usrvars'] as $key => $val){
-    $value = str_replace(' ', '_', $val['usrvarname']);
-    $result['usrvars'][$val['usrvarname']] = $_POST[$value];
-}
-
-print_r($result);
-
-die;
-*/
+ * print '<pre>';
+ * print_r($_POST);
+ * die;
+ *
+ * $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+ * foreach ($vars['usrvars'] as $key => $val){
+ * $value = str_replace(' ', '_', $val['usrvarname']);
+ * $result['usrvars'][$val['usrvarname']] = $_POST[$value];
+ * }
+ *
+ * print_r($result);
+ *
+ * die;
+ */
 
 // Static variable values set
 if (isset($_POST['clear'])) {
@@ -32,17 +32,17 @@ user_session_check();
 
 if ($_SESSION['userlevel'] == 1)
     include_once ('config/session_check_cellsite_tech.php');
-    else if ($_SESSION['userlevel'] == 2)
-        include_once ('config/session_check_switch_tech.php');
-        
-        $page_title = 'OneEMS';
-        
-        // page logging
-        $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-        $username = $_SESSION['username'];
-        $mesg = " User name: $username User type : $usertype Page:  Generate script 2 page Description: Cell Site Tech has chosen their configuration and is ready to edit their script's editable fields.";
-        write_log($mesg);
-        ?>
+else if ($_SESSION['userlevel'] == 2)
+    include_once ('config/session_check_switch_tech.php');
+
+$page_title = 'OneEMS';
+
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Generate script 2 page Description: Cell Site Tech has chosen their configuration and is ready to edit their script's editable fields.";
+write_log($mesg);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,27 +213,25 @@ echo generate_site_breadcrumb($values);
             <?php
             $output = '';
             $vars['globalvars'] = configtemplate_elemvalue_pos_script('globalvars', 'gvarname', 'gvarval');
-            foreach ($vars['globalvars'] as $key => $val){
-                $result['globalvars'][$_POST['f11'].$val['gvarname']] = $val['gvarval'];
+            foreach ($vars['globalvars'] as $key => $val) {
+                $result['globalvars'][$_POST['f11'] . $val['gvarname']] = $val['gvarval'];
             }
             
             $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
-            foreach ($vars['usrvars'] as $key => $val){
+            foreach ($vars['usrvars'] as $key => $val) {
                 $value = str_replace(' ', '_', $val['usrvarname']);
-                $result['usrvars'][$_POST['f11'].$val['usrvarname']] = $_POST[$value];
+                $result['usrvars'][$_POST['f11'] . $val['usrvarname']] = $_POST[$value];
             }
-            
             
             $vars['marketvars'] = configtemplate_elemvalue_pos_script('marketvars', 'mvarname', 'mvarval');
-            foreach ($vars['marketvars'] as $key => $val){
-                $result['marketvars'][$_POST['f11'].$val['mvarname']] = $val['mvarval'];
+            foreach ($vars['marketvars'] as $key => $val) {
+                $result['marketvars'][$_POST['f11'] . $val['mvarname']] = $val['mvarval'];
             }
-            
             
             $vars = configtemplate_elemvalue_pos_script_switch_name($_POST['f11']);
             
-            foreach ($vars as $key => $val){
-                $result['switchvars'][$_POST['f11'].$val['swvarname']] = $val['swvarval'];
+            foreach ($vars as $key => $val) {
+                $result['switchvars'][$_POST['f11'] . $val['swvarname']] = $val['swvarval'];
             }
             
             for ($k = 1; $k <= count($newarr); $k ++) {
@@ -242,7 +240,7 @@ echo generate_site_breadcrumb($values);
                     if ($newarr[$k][0]["editable"] == 0) {
                         $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
-                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$_POST['f11'].$newarr[$k][0]["elemvalue"]] . "'></span>";
+                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$_POST['f11'] . $newarr[$k][0]["elemvalue"]] . "'></span>";
                     }
                     $output .= '</div>';
                 } else {
@@ -255,13 +253,13 @@ echo generate_site_breadcrumb($values);
                         } else {
                             $editable = 1;
                             /*
-                            if($newarr[$k][$l]["tabname"] == 'usrvars'){
-                                echo $newarr[$k][$l]["elemvalue"];
-                                die;
-                            }
-                            */
+                             * if($newarr[$k][$l]["tabname"] == 'usrvars'){
+                             * echo $newarr[$k][$l]["elemvalue"];
+                             * die;
+                             * }
+                             */
                             
-                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$_POST['f11'].$newarr[$k][$l]["elemvalue"]] . "'>";
+                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$_POST['f11'] . $newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }
                     if ($editable == 1) {

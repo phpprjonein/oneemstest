@@ -114,7 +114,7 @@ echo generate_site_breadcrumb($values);
 								value="<?php echo $_SESSION['batch_vars']['refmop']; ?>"
 								name="refmop" id="refmop" />
 							<div class="panel-body">
-								<input type="hidden" value="" name="cbvals" id="cbvals"/>
+								<input type="hidden" value="" name="cbvals" id="cbvals" />
 								<table id="batchpro" class="table table-striped table-sm">
 									<thead>
 										<tr>

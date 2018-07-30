@@ -20,10 +20,10 @@ else if ($_SESSION['userlevel'] == 2)
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Load Template file upload page Description: Cell Site Tech has chosen their configuration and is ready to select a file to upload.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Load Template file upload page Description: Cell Site Tech has chosen their configuration and is ready to select a file to upload.";
+write_log($mesg);
 
 ?>
 <!DOCTYPE html>
@@ -128,41 +128,47 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
          * $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
          * }
          */
-        /*											
-		$switches_conft = configtemplate_switches_from_switchvars();
-		$switches_conft_table_selbox = '<select name="switch_name" id="configt_load_switch_name"><option value="">--Select--</option>';
-		foreach ($switches_conft as $key=>$val){
-		    $switches_conft_table_selbox .= '<option value="'.$val['switch_name'].'">'.$val['switch_name'].'</option>';
-		}
-		$switches_conft_table_selbox .= '</select>';*/
+        /*
+         * $switches_conft = configtemplate_switches_from_switchvars();
+         * $switches_conft_table_selbox = '<select name="switch_name" id="configt_load_switch_name"><option value="">--Select--</option>';
+         * foreach ($switches_conft as $key=>$val){
+         * $switches_conft_table_selbox .= '<option value="'.$val['switch_name'].'">'.$val['switch_name'].'</option>';
+         * }
+         * $switches_conft_table_selbox .= '</select>';
+         */
         $output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
         $output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
-        //$output .= '<div class="form-group cb-control"><label>Select Switch&nbsp;</label>'.$switches_conft_table_selbox.'</div>';
+        // $output .= '<div class="form-group cb-control"><label>Select Switch&nbsp;</label>'.$switches_conft_table_selbox.'</div>';
         $output .= '<input type="hidden" name="templname" value="' . $templname . '" />';
         $output .= '<input type="hidden" name="alias" value="' . $alias . '" />';
         $output .= '<input type="hidden" name="refmop" value="' . $refmop . '" />';
         
-        
-
         ?>
 							<div id="file_process">
 							<?php
     if (file_exists($filename)) {
         
-        $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
+        $tablename_arr = array(
+            'globalvars' => 'globalvars',
+            'marketvars' => 'marketvars',
+            'usrvars' => 'usrvars',
+            'switchvars' => 'switchvars'
+        );
         $table_selbox = '<option val="">--Select--</option>';
-        foreach ($tablename_arr as $key=>$val){
-            $table_selbox .= '<option value="'.$key.'">'.$val.'</option>';
+        foreach ($tablename_arr as $key => $val) {
+            $table_selbox .= '<option value="' . $key . '">' . $val . '</option>';
         }
         $table_selbox .= "</select>";
         
         $replace_selbox = '<option val="">--Select--</option>';
-        /*$vars = configtemplate_elemvalue('globalvars', 'gvarname');
-        foreach ($vars as $key=>$val){
-            $replace_selbox .= '<option value='.$val['gvarname'].'>'.$val['gvarname'].'</option>';
-        }*/
+        /*
+         * $vars = configtemplate_elemvalue('globalvars', 'gvarname');
+         * foreach ($vars as $key=>$val){
+         * $replace_selbox .= '<option value='.$val['gvarname'].'>'.$val['gvarname'].'</option>';
+         * }
+         */
         $replace_selbox .= '</select>';
-
+        
         $fd = fopen($filename, "r");
         $line = 0;
         while (! feof($fd)) {
@@ -178,12 +184,12 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                 foreach ($splitcontents as $color) {
                     if (! empty($color)) {
                         if (substr_count(strtolower('#' . $color), "#x") > 0 || substr_count(strtolower('#' . $color), "#y") > 0 || substr_count(strtolower('#' . $color), "#x.x.x.x") > 0 || substr_count(strtolower('#' . $color), "#y.y.y.y") > 0 || substr_count(strtolower('#' . $color), "#z.z.z.z") > 0 || substr_count(strtolower('#' . $color), "#a.a.a.a") > 0 || substr_count(strtolower('#' . $color), "#b.b.b.b") > 0) {
-                            /*$output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'>
-                                <input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
-                            */
-                            $output_inner .= "<select id='conf_selbox_".$line.$l."' class='elementvalref' name='looptabler[looper_" . $line . "][]'>".$table_selbox."
-                            <span id='wrap_conf_selbox_".$line.$l."'><select id='val_conf_selbox_".$line.$l."' name='loop[looper_" . $line . "][]'>".$replace_selbox."<input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
-                            
+                            /*
+                             * $output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'>
+                             * <input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+                             */
+                            $output_inner .= "<select id='conf_selbox_" . $line . $l . "' class='elementvalref' name='looptabler[looper_" . $line . "][]'>" . $table_selbox . "
+                            <span id='wrap_conf_selbox_" . $line . $l . "'><select id='val_conf_selbox_" . $line . $l . "' name='loop[looper_" . $line . "][]'>" . $replace_selbox . "<input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
                         } else {
                             if (strlen($color) != 0) {
                                 $orgcolor = $color;
@@ -192,12 +198,12 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
                             }
                         }
                     }
-                    $l++;
+                    $l ++;
                 }
                 ;
-
+                
                 $output .= '<span class="form-editable-fields">' . $output_inner . '</span>';
-
+                
                 $output .= '</div>';
             } elseif ($splitcontcount == 1) {
                 foreach ($splitcontents as $color) {

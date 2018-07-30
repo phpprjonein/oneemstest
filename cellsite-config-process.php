@@ -6,10 +6,11 @@ $userid = $_SESSION['userid'];
 
 if ($_POST['action'] == 'SAVE CONFIGURATION') {
     /*
-    unset($_POST['switch_name']);
-    if(isset($_POST['switch_name']) && !empty($_POST['switch_name'])){
-        $_SESSION['ct_switch_name']=$_POST['switch_name'];
-    }*/
+     * unset($_POST['switch_name']);
+     * if(isset($_POST['switch_name']) && !empty($_POST['switch_name'])){
+     * $_SESSION['ct_switch_name']=$_POST['switch_name'];
+     * }
+     */
     $templname = $_POST['templname'];
     delete_templname_already_exist($templname);
     $db2 = new db2();
@@ -40,12 +41,12 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         header("location:cellsitetech-configuration.php");
     }
 } elseif ($_POST['action'] == 'Execute Script') {
-	$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-	$username = $_SESSION['username'];
-	$mesg = " User name: $username User type : $usertype Page:  Generate Script page Description: User has executed the script.";
-	write_log($mesg);
-	
-	//exit();
+    $usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+    $username = $_SESSION['username'];
+    $mesg = " User name: $username User type : $usertype Page:  Generate Script page Description: User has executed the script.";
+    write_log($mesg);
+    
+    // exit();
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
@@ -70,6 +71,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
                     $db2->query($sql);
                     $db2->execute();
                 endif;
+                
             endforeach
             ;
         endif;
@@ -162,23 +164,28 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     } else {
         header("location:cellsitetech-configuration.php");
     }
-}  elseif ($_POST['action'] == 'LoadTableData') {
-    $tablename_arr = array('globalvars' => 'globalvars', 'marketvars' => 'marketvars', 'usrvars' => 'usrvars', 'switchvars' => 'switchvars');
+} elseif ($_POST['action'] == 'LoadTableData') {
+    $tablename_arr = array(
+        'globalvars' => 'globalvars',
+        'marketvars' => 'marketvars',
+        'usrvars' => 'usrvars',
+        'switchvars' => 'switchvars'
+    );
     $posttabname = $_POST['loadTab'];
-    if(isset($posttabname) && in_array($posttabname, $tablename_arr)){
-        if($posttabname == 'globalvars'){
+    if (isset($posttabname) && in_array($posttabname, $tablename_arr)) {
+        if ($posttabname == 'globalvars') {
             $field = 'gvarname';
-        }elseif($posttabname == 'marketvars'){
+        } elseif ($posttabname == 'marketvars') {
             $field = 'mvarname';
-        }elseif($posttabname == 'usrvars'){
+        } elseif ($posttabname == 'usrvars') {
             $field = 'usrvarname';
-        }elseif($posttabname == 'switchvars'){
+        } elseif ($posttabname == 'switchvars') {
             $field = 'swvarname';
         }
         $replace_selbox = '<option val="">--Select--</option>';
         $vars = configtemplate_elemvalue($posttabname, $field, $_POST['switch_name']);
-        foreach ($vars as $key=>$val){
-            $replace_selbox .= '<option value="'.$val[$field].'">'.$val[$field].'</option>';
+        foreach ($vars as $key => $val) {
+            $replace_selbox .= '<option value="' . $val[$field] . '">' . $val[$field] . '</option>';
         }
     }
     echo $replace_selbox;

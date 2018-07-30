@@ -80,12 +80,18 @@ if (! $found) {
 </div>
 <?php
 exit();
-function scan_dir($dir) {
-    $ignored = array('.', '..');
+
+function scan_dir($dir)
+{
+    $ignored = array(
+        '.',
+        '..'
+    );
     
     $files = array();
     foreach (scandir($dir) as $file) {
-        if (in_array($file, $ignored)) continue;
+        if (in_array($file, $ignored))
+            continue;
         $files[$file] = filemtime($dir . '/' . $file);
     }
     

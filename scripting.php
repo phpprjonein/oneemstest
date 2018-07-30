@@ -11,33 +11,36 @@ if (isset($_GET['clear'])) {
 }
 
 user_session_check();
-if ($_SESSION['userlevel'] == 1 )
-include_once ('config/session_check_cellsite_tech.php');
+if ($_SESSION['userlevel'] == 1)
+    include_once ('config/session_check_cellsite_tech.php');
 
-
-else  if ($_SESSION['userlevel'] == 2 )
-include_once ('config/session_check_switch_tech.php');
+else if ($_SESSION['userlevel'] == 2)
+    include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Load Template config page Description: Cell Site Tech has initiated the Load Template process.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Load Template config page Description: Cell Site Tech has initiated the Load Template process.";
+write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
-   <script src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
+   <script
+	src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
+<script
+	src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
 	<div class="container-fluid" id="cellsitech-config">
 	<?php include_once ('menu.php'); ?>
 	            <?php
-            $values = array('Load Template' => '#');
+            $values = array(
+                'Load Template' => '#'
+            );
             echo generate_site_breadcrumb($values);
             ?>
         <!-- Content Wrapper. Contains page content -->
@@ -46,94 +49,109 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 			<section class="content">
 				<div class="col-md-12">
 					<div class="panel panel-default">
-    					<div id="status" style="display: none;" class="alert"></div>
+						<div id="status" style="display: none;" class="alert"></div>
     					<?php if($_SESSION['msg'] == 'dbs'){ ?>
-                                  		<div id="main-status" class="alert alert-success">Configurations Saved Successfully</div>
+                                  		<div id="main-status"
+							class="alert alert-success">Configurations Saved Successfully</div>
                         <?php } unset($_SESSION['msg']); ?>
 						<!-- backup management content row -->
-	<form action="cellsitetech-configuration.php" method="post" name="config_file_uploader" id="config_file_uploader" enctype="multipart/form-data">
-    <div class="row">
+						<form action="cellsitetech-configuration.php" method="post"
+							name="config_file_uploader" id="config_file_uploader"
+							enctype="multipart/form-data">
+							<div class="row">
 
-<!-- router selection content row -->
-      <div class="col-sm-12 col-md-4">
-        <div class="jf-form">
+								<!-- router selection content row -->
+								<div class="col-sm-12 col-md-4">
+									<div class="jf-form">
 
-<!-- router scripting selection form div -->
-            <!-- <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>  -->
-            <input type="hidden" name="method" value="validateForm">
-            <input type="hidden" id="serverValidationFields" name="serverValidationFields" value= 	"">
-			<input type="hidden" id="username" value="<?php echo $_SESSION['username']; ?>" name="username">
-<!-- select purpose options -->
+										<!-- router scripting selection form div -->
+										<!-- <h5>SELECT TEMPLATE TYPE TO CREATE:</h5>  -->
+										<input type="hidden" name="method" value="validateForm"> <input
+											type="hidden" id="serverValidationFields"
+											name="serverValidationFields" value=""> <input type="hidden"
+											id="username" value="<?php echo $_SESSION['username']; ?>"
+											name="username">
+										<!-- select purpose options -->
             <?php
-                unset($_SESSION['filename']);
-                unset($_SESSION['alias']);
-                unset($_SESSION['refmop']);
-				$configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose');
-			?>
+            unset($_SESSION['filename']);
+            unset($_SESSION['alias']);
+            unset($_SESSION['refmop']);
+            $configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose');
+            ?>
             <div class="form-group f4 required" data-fid="f4">
-              <label class="control-label" for="f4">Select Purpose</label>
-              <select id="select_purpose" class="form-control custom-select" name="f4" data-rule-required="true">
-                <option value="">- SELECT Purpose -</option>
+											<label class="control-label" for="f4">Select Purpose</label>
+											<select id="select_purpose"
+												class="form-control custom-select" name="f4"
+												data-rule-required="true">
+												<option value="">- SELECT Purpose -</option>
 				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
 				 <?php }; ?>
               </select>
-            </div>
-<!-- /select purpose options -->
+										</div>
+										<!-- /select purpose options -->
 
-<!-- select device series options -->
+										<!-- select device series options -->
 			<?php $configtmpddwndata = generic_get_deviceseries(); ?>
             <div class="form-group f7 required" data-fid="f7">
-              <label class="control-label" for="f7">SELECT Device Series</label>
-              <select id="select_device_series" class="form-control custom-select form-required" name="f7" data-rule-required="true">
-              <option value="">- SELECT Device Series -</option>
+											<label class="control-label" for="f7">SELECT Device Series</label>
+											<select id="select_device_series"
+												class="form-control custom-select form-required" name="f7"
+												data-rule-required="true">
+												<option value="">- SELECT Device Series -</option>
 			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries']; ?></option>
 			 <?php }; ?>
               </select>
-            </div>
-<!-- /select device series options -->
+										</div>
+										<!-- /select device series options -->
 
-<!-- select OS version options -->
+										<!-- select OS version options -->
 			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
-              <label class="control-label" for="f8">Select OS Version</label>
-              <select id="select_os_version" class="form-control custom-select form-required" name="f8" data-rule-required="true">
-              	<option value="">- SELECT OS Version -</option>
+											<label class="control-label" for="f8">Select OS Version</label>
+											<select id="select_os_version"
+												class="form-control custom-select form-required" name="f8"
+												data-rule-required="true">
+												<option value="">- SELECT OS Version -</option>
                 <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
 				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option>
 			 <?php }; ?>
               </select>
-            </div>
-<!-- /select OS version options -->
+										</div>
+										<!-- /select OS version options -->
 
-<!-- select RAN vendor options -->
+										<!-- select RAN vendor options -->
 			<?php  $configtmpddwndata =getconfigtempldpdwntbl('configscriptranvendor'); ?>
             <div class="form-group f9 required" data-fid="f9">
-              <label class="control-label" for="f9">Select RAN vendor</label>
-              <select id="select_ran_vendor" class="form-control custom-select" name="f9" data-rule-required="true">
-              	<option value="">- SELECT RAN vendor -</option>
+											<label class="control-label" for="f9">Select RAN vendor</label>
+											<select id="select_ran_vendor"
+												class="form-control custom-select" name="f9"
+												data-rule-required="true">
+												<option value="">- SELECT RAN vendor -</option>
 			    <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
                 <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
 				<?php }; ?>
               </select>
-            </div>
-<!-- /select RAN vendor options -->
+										</div>
+										<!-- /select RAN vendor options -->
 
-<!-- select RAN vendor options -->
+										<!-- select RAN vendor options -->
 			<?php  $configtmpddwndata = getconfigtempldpdwntbl('configscripttype', 'type'); ?>
             <div class="form-group f10 required" data-fid="f10">
-              <label class="control-label" for="f10">Select Script Type</label>
-              <select id="select_script_type" class="form-control custom-select" name="f10" data-rule-required="true">
-                <option value="">- SELECT Script Type -</option>
+											<label class="control-label" for="f10">Select Script Type</label>
+											<select id="select_script_type"
+												class="form-control custom-select" name="f10"
+												data-rule-required="true">
+												<option value="">- SELECT Script Type -</option>
 			   <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
                 <option value="<?php echo $val['type'];?>"><?php echo $val['type']; ?></option>
 				<?php }; ?>
               </select>
-            </div>
-<!-- /select RAN vendor options -->
+										</div>
+										<!-- /select RAN vendor options -->
 
-<!-- select region options -->
+										<!-- select region options -->
 			<?php  $configtmpddwndata = generic_get_region(); ?>
 <!--
             <div class="form-group f11 required" data-fid="f11">
@@ -146,10 +164,10 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               </select>
             </div>
 -->
-<!-- /select region options -->
+										<!-- /select region options -->
 
-<!-- select market options -->
-<!--
+										<!-- select market options -->
+										<!--
    <div class="form-group f13 required" data-fid="f13">
               <label class="control-label" for="f13">Select Market</label>
               <select id="select_market" class="form-control custom-select" name="f13" data-rule-required="true">
@@ -157,10 +175,10 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               </select>
             </div>
 -->
-<!-- /select market options -->
+										<!-- /select market options -->
 
-<!-- select switch type options -->
-<!--
+										<!-- select switch type options -->
+										<!--
    <div class="form-group f12 required" data-fid="f12">
               <label class="control-label" for="f12">Select Switch Name</label>
               <select id="select_switch_name" class="form-control custom-select" name="f12" data-rule-required="true">
@@ -168,49 +186,54 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
               </select>
             </div>
 -->
-<!-- /select switch type options -->
+										<!-- /select switch type options -->
 
-            <div class="form-group submitf0" data-fid="f0" style="position: relative;">
-              <input type="submit" name="act" class="btn config-submit" value="NEXT">
-            </div>
+										<div class="form-group submitf0" data-fid="f0"
+											style="position: relative;">
+											<input type="submit" name="act" class="btn config-submit"
+												value="NEXT">
+										</div>
 
-            <div class="clearfix"></div>
-<!-- /router scripting selection form div -->
+										<div class="clearfix"></div>
+										<!-- /router scripting selection form div -->
 
-        </div>
-      </div>
-<!-- /router selection content row -->
+									</div>
+								</div>
+								<!-- /router selection content row -->
 
 
-<!-- right side -->
-<!-- script output -->
-      <div class="col-sm-12 col-md-8">
+								<!-- right side -->
+								<!-- script output -->
+								<div class="col-sm-12 col-md-8">
 
-<!-- template name content -->
-        <div class="row">
-          <div class="col d-none" id="template_info">
-            <label for="inputRegion">TEMPLATE:</label>
-            <small><b><span id="filename"></span></b></small>
-            <!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
-            <div class="row">
-				<div class="col-lg-4 tags p-b-2">
-                    <div class="form-group">
-                      <input type="inputAlias" name="alias" class="form-control" id="aliasName" placeholder="Alias Name">
-                    </div>
-                    <div class="form-group">
-                      <input type="inputRefMOP" name="refmop" class="form-control" id="aliasRefMOP" placeholder="Ref MOP">
-                    </div>
-                </div>
-             </div>
-          </div>
-        </div>
-<!-- /template name content -->
+									<!-- template name content -->
+									<div class="row">
+										<div class="col d-none" id="template_info">
+											<label for="inputRegion">TEMPLATE:</label> <small><b><span
+													id="filename"></span></b></small>
+											<!-- Golden_ASR920_15.6_ALL_standalone_GreatLakes_AKRON_opw_021418 -->
+											<div class="row">
+												<div class="col-lg-4 tags p-b-2">
+													<div class="form-group">
+														<input type="inputAlias" name="alias" class="form-control"
+															id="aliasName" placeholder="Alias Name">
+													</div>
+													<div class="form-group">
+														<input type="inputRefMOP" name="refmop"
+															class="form-control" id="aliasRefMOP"
+															placeholder="Ref MOP">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /template name content -->
 
-<!-- browse / upload template -->
-        <div class="row">
+									<!-- browse / upload template -->
+									<div class="row">
 
-			<input type="hidden" name="filename" id="upload_filename">
-			<!--
+										<input type="hidden" name="filename" id="upload_filename">
+										<!--
         	<div class="form-group">
 		    <label for="file">Select a file to upload</label>
 		    <input type="file"  id="file" name="file">
@@ -219,16 +242,16 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
 		  	</div>
              -->
 
-        </div>
-<!-- /browse / upload template -->
-<!-- /right side -->
-<!-- /script output -->
+									</div>
+									<!-- /browse / upload template -->
+									<!-- /right side -->
+									<!-- /script output -->
 
-    </div>
-<!-- /backup management content row -->
-				</div>
-				</form>
-				</div>
+								</div>
+								<!-- /backup management content row -->
+							</div>
+						</form>
+					</div>
 				</div>
 			</section>
 			<!-- /.content -->

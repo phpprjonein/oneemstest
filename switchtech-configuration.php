@@ -20,7 +20,8 @@ $page_title = 'OneEMS';
 <html>
 <head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/switchtech_config.js?t=<?php echo date('his'); ?>"></script>
+   <script
+	src="resources/js/switchtech_config.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
 	<div class="container-fluid" id="switchtech-config">
@@ -68,81 +69,84 @@ $page_title = 'OneEMS';
 										style="display: none;" class="alert"></div>
 									<div class="row">
 										<div class="col-lg-4 tags p-b-2">
-    										<form action="cellsite-config-process.php" method="post" id="config_file_uploader" enctype="multipart/form-data">
-        							        	<div class="form-group">
-                            				    <label for="file">Select a file to upload</label>
-                            				    <input type="file"  id="file" name="file">
-                            				    <p class="help-block">Only txt file with maximum size of 2 MB is allowed.</p>
-                            				  	</div>
-                            				  	<input type="hidden" name="usertype" value="2">
-                            				  	<input type="submit" name="action" id="config-submit" class="btn" value="Upload">
-                        					</form>
+											<form action="cellsite-config-process.php" method="post"
+												id="config_file_uploader" enctype="multipart/form-data">
+												<div class="form-group">
+													<label for="file">Select a file to upload</label> <input
+														type="file" id="file" name="file">
+													<p class="help-block">Only txt file with maximum size of 2
+														MB is allowed.</p>
+												</div>
+												<input type="hidden" name="usertype" value="2"> <input
+													type="submit" name="action" id="config-submit" class="btn"
+													value="Upload">
+											</form>
 										</div>
 										<div class="col-lg-8 tags p-b-2">
 											<?php
-							$filename = getcwd()."/upload/sampleconfigfile_".$_SESSION['userid'].".txt";
-							if(!file_exists($filename)){
-							    $filename = getcwd()."/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
-							}
-							$output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
-							$output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
-							?>
+        $filename = getcwd() . "/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
+        if (! file_exists($filename)) {
+            $filename = getcwd() . "/upload/Default_Gold_ASR920_Great-Lakes_Allnew.txt";
+        }
+        $output = '<form name="file_process" action="cellsite-config-process.php" method="post" class="border">';
+        $output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
+        ?>
 							<div id="file_process">
 							<?php
-							if(file_exists($filename)){
-									$fd = fopen ($filename, "r");
-									$line = 0;
-									while(!feof($fd))
-									{
-									    ++$line;
-    									$contents = fgets($fd,filesize ($filename));									
-    									$delimiter = "#";
-    									$splitcontents = explode($delimiter, $contents);
-    									$splitcontcount = count($splitcontents);
-    									if ($splitcontcount > 1) {
-    									    $output .= '<div class="form-group">';
-    									    $output_inner = '';
-    										foreach ( $splitcontents as $color )
-    										{
-    										    if(!empty($color)){
-    										        if (substr_count(strtolower('#'.$color),"#x") > 0 || substr_count(strtolower('#'.$color),"#y") > 0 || substr_count(strtolower('#'.$color),"#x.x.x.x") > 0 || substr_count(strtolower('#'.$color),"#y.y.y.y") > 0 || substr_count(strtolower('#'.$color), "#z.z.z.z") > 0  || substr_count(strtolower('#'.$color),"#a.a.a.a") > 0 || substr_count(strtolower('#'.$color), "#b.b.b.b") > 0 ){
-        											    $output_inner .= "<input type='text' size='".strlen($color)."' name='loop[looper_".$line."][]' value='".$color."' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_".$line."][]' value='1' >";
-        											}else{
-        											     if(strlen($color)!=0){
-        											         $orgcolor = $color;
-        											         $color = ($color == " ") ? '&nbsp;' : $color;
-        											         $output_inner .= "<label class='readonly'>".$color."</label><input type='text' style='display:none !important;' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' >";
-        											     }
-        										    }
-    										    }
-    										};
-    										
-    										
-    										$output .= '<span class="form-editable-fields">'.$output_inner.'</span>';
-    										
-    										$output .= '</div>';										
-    									} elseif($splitcontcount == 1) {
-    										foreach ( $splitcontents as $color )
-    										{   
-    										    if(!empty($color)){
-    										        $orgcolor = $color;
-    										        $color = ($color == " ") ? '&nbsp;' : $color;
-    										        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>".$color."</label><input style='display:none !important;' type='text' size='".strlen($orgcolor)."' name='loop[looper_".$line."][]' value='".$orgcolor."' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_".$line."][]' value='0' ></span></div>";
-    											}
-    										}; 
-    									};
-									};									
-									fclose($fd); 
-									echo $output;
-									?>  
+    if (file_exists($filename)) {
+        $fd = fopen($filename, "r");
+        $line = 0;
+        while (! feof($fd)) {
+            ++ $line;
+            $contents = fgets($fd, filesize($filename));
+            $delimiter = "#";
+            $splitcontents = explode($delimiter, $contents);
+            $splitcontcount = count($splitcontents);
+            if ($splitcontcount > 1) {
+                $output .= '<div class="form-group">';
+                $output_inner = '';
+                foreach ($splitcontents as $color) {
+                    if (! empty($color)) {
+                        if (substr_count(strtolower('#' . $color), "#x") > 0 || substr_count(strtolower('#' . $color), "#y") > 0 || substr_count(strtolower('#' . $color), "#x.x.x.x") > 0 || substr_count(strtolower('#' . $color), "#y.y.y.y") > 0 || substr_count(strtolower('#' . $color), "#z.z.z.z") > 0 || substr_count(strtolower('#' . $color), "#a.a.a.a") > 0 || substr_count(strtolower('#' . $color), "#b.b.b.b") > 0) {
+                            $output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'><input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+                        } else {
+                            if (strlen($color) != 0) {
+                                $orgcolor = $color;
+                                $color = ($color == " ") ? '&nbsp;' : $color;
+                                $output_inner .= "<label class='readonly'>" . $color . "</label><input type='text' style='display:none !important;' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' >";
+                            }
+                        }
+                    }
+                }
+                ;
+                
+                $output .= '<span class="form-editable-fields">' . $output_inner . '</span>';
+                
+                $output .= '</div>';
+            } elseif ($splitcontcount == 1) {
+                foreach ($splitcontents as $color) {
+                    if (! empty($color)) {
+                        $orgcolor = $color;
+                        $color = ($color == " ") ? '&nbsp;' : $color;
+                        $output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>" . $color . "</label><input style='display:none !important;' type='text' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' ></span></div>";
+                    }
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        fclose($fd);
+        echo $output;
+        ?>  
 								</div>
-								<br>
+											<br>
 								<?php
-									//$output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
-									$output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
-									$output .= '<input type="hidden" name="usertype" value="2"></form>'; 
-									echo $output;
-								?> 
+        // $output = '<div class="form-group"><input class="btn" name="action" type = "submit" value = "SaveDB">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Saveasscriptfile">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Downloadsscriptfile"></div>';
+        $output = '<div class="form-group"> <input class="btn" name="action" type = "submit" value = "Save Configuration">&nbsp;&nbsp;&nbsp;<input class="btn" name="action" type = "submit" value = "Download Script"></div>';
+        $output .= '<input type="hidden" name="usertype" value="2"></form>';
+        echo $output;
+        ?> 
 								<?php } ?>	
 								
 										</div>

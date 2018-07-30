@@ -16,10 +16,10 @@ include_once ('config/session_check_cellsite_tech.php');
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
-  $username = $_SESSION['username'];
-  $mesg = " User name: $username User type : $usertype Page:  Discovery Results page Description: Cell Site Tech has navigated to the Discovery Results page.";
-  write_log($mesg);
+$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Discovery Results page Description: Cell Site Tech has navigated to the Discovery Results page.";
+write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,8 +27,8 @@ $usertype = (isset($_SESSION['userlevel']) == 1 ) ? "Cell sitetechnician" : "";
    <?php include_once("includes.php");  ?>
    <script src="resources/js/cellsitetech_discovery.js?t="
 	<?php echo date('his'); ?>></script>
-	
-	<script type="text/javascript">	
+
+<script type="text/javascript">	
 	$(document).ready(function(){ 
 	$("#mandiscsubmit").click(function(){
    // alert('savechanges clicked');
@@ -124,8 +124,8 @@ echo generate_site_breadcrumb($values);
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id = "mandiscsubmit">Save
-              changes</button>		
+						<button type="button" class="btn btn-primary" id="mandiscsubmit">Save
+							changes</button>
 					</div>
 				</div>
 			</div>
@@ -150,7 +150,7 @@ echo generate_site_breadcrumb($values);
           <a class="dropdown-item" href="#"><?php echo $rvalue['region']; ?></a>
           <?php
           endif;
-
+            
         endforeach
         ;
         if (count($region_list['result']) > 1) :
@@ -240,7 +240,8 @@ echo generate_site_breadcrumb($values);
 					<a
 						class="nav-link btn-manual <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Manual Discovery'):?>active<?php endif;?>"
 						id="v-pills-manual-tab" data-toggle="pill" href="#v-pills-manual"
-						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual Discovery</a>
+						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual
+						Discovery</a>
 				</div>
 			</div>
 			<!-- /table pill navigation -->
@@ -522,7 +523,7 @@ conflict table content -->
           <a class="dropdown-item" href="#"><?php echo $rvalue['market']; ?></a>
           <?php
           endif;
-
+            
         endforeach
         ;
         if (count($market_list['result']) > 0) :

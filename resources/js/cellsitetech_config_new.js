@@ -145,32 +145,32 @@ $(document).ready(function() {
 			$('.gscript1 #status').show();
 			req_err = true;
 		}
-		if($('.gscript1 #select_switch').val() == ""){
-			$('.gscript1 #status').append("<strong>Error!</strong> Select switch field is required.<br/>");
-			$('.gscript1 #status').addClass('alert-danger');
-			$('.gscript1 #select_os_version').addClass('required');
-			$('.gscript1 #status').show();
-			req_err = true;
+		if($('.gscript1 #select_purpose').val() != 'Modification'){
+			if($('.gscript1 #select_switch').val() == ""){
+				$('.gscript1 #status').append("<strong>Error!</strong> Select switch field is required.<br/>");
+				$('.gscript1 #status').addClass('alert-danger');
+				$('.gscript1 #select_os_version').addClass('required');
+				$('.gscript1 #status').show();
+				req_err = true;
+			}
+			requiredFields = $('#cellsitech-generate-script').find('.uservarsreq');
+			var allFieldsComplete = true;
+			requiredFields.each(function(index) {
+			    if (this.value.length == 0) {
+			        $(this).addClass('requiredIncomplete');
+			        allFieldsComplete = false;
+			        $(this).addClass('required');
+			    } else {
+			        $(this).removeClass('requiredIncomplete');
+			    }
+			});
+			if(!allFieldsComplete){
+				$('.gscript1 #status').append("<strong>Error!</strong> All user form variable values are required.<br/>");
+				$('.gscript1 #status').addClass('alert-danger');
+				$('.gscript1 #status').show();
+				req_err = true;
+			}
 		}
-		
-		requiredFields = $('#cellsitech-generate-script').find('.uservarsreq');
-		var allFieldsComplete = true;
-		requiredFields.each(function(index) {
-		    if (this.value.length == 0) {
-		        $(this).addClass('requiredIncomplete');
-		        allFieldsComplete = false;
-		        $(this).addClass('required');
-		    } else {
-		        $(this).removeClass('requiredIncomplete');
-		    }
-		});
-		if(!allFieldsComplete){
-			$('.gscript1 #status').append("<strong>Error!</strong> All user form variable values are required.<br/>");
-			$('.gscript1 #status').addClass('alert-danger');
-			$('.gscript1 #status').show();
-			req_err = true;
-		}
-		
         if(req_err){
         	$('#status').css("opacity","");
         	$("#status").addClass('alert-danger');

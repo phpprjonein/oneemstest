@@ -253,8 +253,8 @@ write_log($mesg);
 									name="<?php echo $val['usrvarname']; ?>"
 									class="form-control uservarsreq"
 									id="<?php echo $val['usrvarname']; ?>"
-									value="<?php echo $val['usrvarval']; ?>"
-									placeholder="<?php echo $val['usrvarval']; ?>">
+									value=""
+									placeholder="">
 							</div>
                             <?php
                         // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];

@@ -166,7 +166,10 @@ $(document).ready(function() {
 		  });
 	});
 	
-
+	$('#myModal').on('hidden.bs.modal', function () {
+		 location.reload();
+	});
+	
 	ok_all_item = function() {
         var confirmation = confirm('Are you sure you want to proceed?');
         if (confirmation) {
@@ -543,5 +546,16 @@ $(document).ready(function() {
 		        });
 		    }, 4000);	
 		  });	
+	});
+	$("#mandiscsubmit").click(function(){
+		$.ajax({
+            type:"post",
+            url:"ip-mgt-process.php",					
+            data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), syslocval : $('#syslocval').text(),upsinceval : $('#upsinceval').text(), mktval : $('#mktval').val()},
+            success: function(resdata){					
+            	$('#mandiscsubmit').hide();
+            	$('#myModal .modal-body').html('Device added Successfully');
+            }
+		});
 	});
 });

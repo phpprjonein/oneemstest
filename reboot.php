@@ -41,7 +41,7 @@ write_log($mesg);
     <?php include_once ('menu.php'); ?>
       <?php
     $values = array(
-        'Software Delivery' => '#'
+        'Reboot' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>

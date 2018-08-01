@@ -34,7 +34,7 @@ write_log($mesg);
 <?php include_once ('menu.php'); ?>
 		<?php
 $values = array(
-    'Discovery Results' => '#'
+        'Discovery Results' => '#'
 );
 echo generate_site_breadcrumb($values);
 ?>
@@ -175,8 +175,7 @@ echo generate_site_breadcrumb($values);
 					<a
 						class="nav-link btn-manual <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Manual Discovery'):?>active<?php endif;?>"
 						id="v-pills-manual-tab" data-toggle="pill" href="#v-pills-manual"
-						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual
-						Discovery</a>
+						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual Discovery</a>
 				</div>
 			</div>
 			<!-- /table pill navigation -->

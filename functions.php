@@ -1214,6 +1214,16 @@ function userexist($emailid)
     return $row;
 }
 
+function checkipexist($ipaddress)
+{
+    global $db2;
+    $sql = "SELECT COUNT(*) as total FROM nodes WHERE deviceIpAddr ='" . $ipaddress . "' OR deviceIpAddrsix ='" . $ipaddress . "'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+
 /**
  *
  * @param unknown $mailbody

@@ -21,7 +21,7 @@ $(document).ready(function() {
     		}
 		}
 		
-		$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$('#instant-health-check #inputDeviceIPaddress').val()})
+		$.post( "ip-mgt-process.php", { calltype: "trigger", action: "HC-IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$('#instant-health-check #inputDeviceIPaddress').val()})
 		  .done(function( data ) {
 			  if(data != 'success'){
 	    			$('#instant-health-check #status').append("<strong>Error!</strong> Device IP Address is not valid.<br/>");

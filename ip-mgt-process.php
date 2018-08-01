@@ -34,10 +34,24 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST
     echo $output;
 }
 
-if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'IP-Validate-Disc') {
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'HC-IP-Validate-Disc') {
     $ipaddress = $_POST['ipaddress'];
     if (filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) || filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
         echo 'success';
+    }
+}
+
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'IP-Validate-Disc') {
+    $ipaddress = $_POST['ipaddress'];
+    if (filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) || filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        $ip_exist_arr = checkipexist($ipaddress);
+        if($ip_exist_arr[0]['total'] > 0){
+            echo 'ip-exist';
+        }else{
+            echo 'success';
+        }
+    }else{
+        echo 'invalid-ip';
     }
 }
 

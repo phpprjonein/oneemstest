@@ -180,6 +180,7 @@ $(document).ready(function() {
 		            $(this).hide(); 
 		        });
 		    }, 4000);
+		    window.scrollTo(0, 0);
         	return false;
         }
         return true;

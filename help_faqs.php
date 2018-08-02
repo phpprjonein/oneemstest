@@ -99,7 +99,8 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="#item-7">FAQs</a>
+									<a class="nav-link" href="help_admin.php#item-7">ADMIN</a>
+									<a class="nav-link" href="#item-8">FAQs</a>
 								</nav>
 							</nav>
 						</div>
@@ -111,7 +112,7 @@ echo generate_site_breadcrumb($values);
 							<hr class="d-md-none" />
 
 							<!-- FAQs -->
-							<h4 id="item-7">FAQs</h4>
+							<h4 id="item-8">FAQs</h4>
 							<div id="accordion">
 
 								<div class="card">
@@ -402,7 +403,7 @@ echo generate_site_breadcrumb($values);
 												I have an issue or question that isn't addressed here in
 												these FAQ<span style="text-transform: lowercase;">s
 													</style>...
-											
+
 											</button>
 										</h5>
 									</div>
@@ -435,8 +436,8 @@ echo generate_site_breadcrumb($values);
 							<hr>
 							<div class="row">
 								<div class="col-6">
-									<a href="help_maintenance.php" class="border"><b><< PREV:
-											Maintenance</b></a>
+									<a href="help_admin.php" class="border"><b><< PREV:
+											Admin</b></a>
 								</div>
 								<div class="col-6 text-right"></div>
 							</div>

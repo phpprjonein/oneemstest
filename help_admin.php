@@ -18,7 +18,7 @@ $page_title = 'OneEMS';
 // page logging
 $usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
 $username = $_SESSION['username'];
-$mesg = " User name: $username User type : $usertype Page:  Discovery Results Help page Description: User has navigated to the Discovery Results help page.";
+$mesg = " User name: $username User type : $usertype Page:  FAQs Help page Description: User has navigated to the FAQs help page.";
 write_log($mesg);
 ?>
 <!DOCTYPE html>
@@ -29,11 +29,11 @@ write_log($mesg);
 	src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body>
-	<div class="container-fluid" id="cellsitech-config">
+	<div class="container-fluid">
 	<?php include_once ('menu.php'); ?>
-	<?php
+  <?php
 $values = array(
-    'Discovery Results Help' => '#'
+    'FAQs Help' => '#'
 );
 echo generate_site_breadcrumb($values);
 ?>
@@ -71,16 +71,15 @@ echo generate_site_breadcrumb($values);
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
 											Template</a> <a class="nav-link ml-3 my-1"
-											href="help_config.php#item-4-2">Generate Script</a> <a
-											class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch
-											Tracking</a>
+											href="help_config.php#item-4-2">Generate Script</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
 											href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
 									</nav>
-									<a class="nav-link" href="#item-6">DISCOVERY RESULTS</a>
+									<a class="nav-link" href="help_discovery_results.php">DISCOVERY
+										RESULTS</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
 											href="help_discovery_results.php#item-6-1">Missed IP
@@ -99,9 +98,9 @@ echo generate_site_breadcrumb($values);
 											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
+                                    </nav>
+                                    <a class="nav-link" href="#item-7">ADMIN</a>
+									<a class="nav-link" href="help_faqs.php#item-8">FAQs</a>
 								</nav>
 							</nav>
 						</div>
@@ -111,86 +110,55 @@ echo generate_site_breadcrumb($values);
 						<div class="col-md-9 col-sm-12 scrollspy-example"
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
-							<h4 id="item-6">DISCOVERY RESULTS</h4>
-							<p>This results screen provides a view of all recently discovered
-								IP addresses. There are three distinct views:</p>
-							<ul>
-								<li>Missed View</li>
-								<li>New View</li>
-								<li>OK View</li>
-							</ul>
-							<h5 id="item-6-1">Missed IP Addresses View</h5>
-							<p>This view shows all the IP addresses that are present in the
-								current One EMS inventory but were not reachable during the last
-								discovery session..</p>
-							<img src="resources/img/screenshot-discovery-missed.png"
+
+							<!-- FAQs -->
+                            <h4 id="item-7">ADMIN</h4>
+                            <p>Admin users will be taken to this page first. They have the option of impersonating a user or maintaining software binaries available to the user community.</p>
+                            <img src="resources/img/screenshot-admin1.png"
 								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-discovery-missed">
+								data-target="#screenshot-admin1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 6.1 - Missed IP Addresses
-									Dashboard</b></span>
-							<p></p>
-							<h5 id="item-6-2">New IP Addresses View</h5>
-							<p>This view shows all the IP addresses of devices that were
-								added to the One EMS inventory during the last discovery
-								session.</p>
-							<img src="resources/img/screenshot-discovery-new.png"
+							<span class="font-italic"><b>FIG. 8.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
+                            <p></p>
+                            <p>After selecting the Maintenance -> Software Upload menu, the user will need to enter a password.</p>
+                            <img src="resources/img/screenshot-admin2.png"
 								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-discovery-new">
+								data-target="#screenshot-admin2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 6.2 - New IP Addresses
-									Dashboard</b></span>
-							<p></p>
-							<h5 id="item-6-3">OK IP Addresses View</h5>
-							<p>This view shows all the IP addresses of devices that exist in
-								the One EMS inventory with no changes found during the most
-								recent discovery session.</p>
-							<img src="resources/img/screenshot-discovery-ok.png"
+                            <span class="font-italic"><b>FIG. 8.2 - Software Binary Upload For Admin User</b></span>
+                            <p></p>
+                            <p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device.
+Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
+<img src="resources/img/screenshot-admin3.png"
 								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-discovery-ok">
+								data-target="#screenshot-admin3">
 							<p></p>
-							<span class="font-italic"><b>FIG. 6.3 - OK IP Addresses Dashboard</b></span>
-							<p></p>
-							<h5 id="item-6-4">Manual Discovery View</h5>
-							<p>This view allows for users to manually discover devices that
-								may not have been previously discovered during a polling
-								session.</p>
-							<img src="resources/img/screenshot-discovery-manual.png"
+                            <span class="font-italic"><b>FIG. 8.3 - Uploading A New Binary Into OneEMS</b></span>
+                            <p></p>
+                            <p>If you wish to view binaries already loaded to the OS repository then click on “Retrieve” button. You will get a popup with the list of existing binaries.</p>
+                            <img src="resources/img/screenshot-admin3.png"
 								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-discovery-manual">
+								data-target="#screenshot-admin3">
 							<p></p>
-							<span class="font-italic"><b>FIG. 6.4 - Manual Discovery
-									Dashboard</b></span>
-							<p></p>
-							<p><b>Inserting A Manually Discovered Device Into OneEMS</b>
-							<br>
-							After discovering a device manually, you will get a popup that show the details of the discovery. To save this to the database you will need to specify the correct Market (from dropdown). Then you can click “Save Changes”.</p>
-							<img src="resources/img/screenshot-discovery-manual3.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-discovery-manual3">
-							<p></p>
-							<span class="font-italic"><b>FIG. 6.5 - Manual Discovery Update</b></span>
-							<p></p>
-							<a href="#top" class="border"><b>Back to top</b></a>
+                            <span class="font-italic"><b>FIG. 8.4 - View Existing OS Repository</b></span>
+                            <p></p>
 							<hr>
 							<div class="row">
 								<div class="col-6">
-									<a href="help_discovery_ips.php" class="border"><b><< PREV:
-											Discovery IPs</b></a>
+									<a href="help_maintenance.php" class="border"><b><< PREV:
+											Maintenance</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_maintenance.php" class="border"><b>NEXT:
-											Maintenance >></b></a>
+									<a href="help_faqs.php" class="border"><b>NEXT: FAQs >></b></a>
 								</div>
 							</div>
-							<hr>
+							<p>&nbsp;</p>
 							<!-- /FAQs -->
 
 						</div>
 
 					</div>
 					<!-- /help guide content row -->
-
 				</div>
 			</section>
 			<!-- /.content -->
@@ -200,7 +168,7 @@ echo generate_site_breadcrumb($values);
 
 	<!-- image modals -->
 	<div class="big-modal">
-		<div class="modal fade show" id="screenshot-discovery-missed"
+		<div class="modal fade show" id="screenshot-admin1"
 			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
 			aria-hidden="true">
 			<div class="modal-dialog modal-lg">
@@ -209,12 +177,12 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-discovery-missed.png" alt=""
+					<img src="resources/img/screenshot-admin1.png" alt=""
 						width="100%">
 				</div>
 			</div>
-		</div>
-		<div class="modal fade show" id="screenshot-discovery-new"
+        </div>
+        <div class="modal fade show" id="screenshot-admin2"
 			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
 			aria-hidden="true">
 			<div class="modal-dialog modal-lg">
@@ -223,12 +191,12 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-discovery-new.png" alt=""
+					<img src="resources/img/screenshot-admin2.png" alt=""
 						width="100%">
 				</div>
 			</div>
-		</div>
-		<div class="modal fade show" id="screenshot-discovery-ok"
+        </div>
+        <div class="modal fade show" id="screenshot-admin3"
 			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
 			aria-hidden="true">
 			<div class="modal-dialog modal-lg">
@@ -237,12 +205,12 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-discovery-ok.png" alt=""
+					<img src="resources/img/screenshot-admin3.png" alt=""
 						width="100%">
 				</div>
 			</div>
-		</div>
-		<div class="modal fade show" id="screenshot-discovery-manual"
+        </div>
+        <div class="modal fade show" id="screenshot-admin4"
 			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
 			aria-hidden="true">
 			<div class="modal-dialog modal-lg">
@@ -251,21 +219,7 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-discovery-manual.png" alt=""
-						width="100%">
-				</div>
-			</div>
-		</div>
-		<div class="modal fade show" id="screenshot-discovery-manual3"
-			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-					<img src="resources/img/screenshot-discovery-manual3.png" alt=""
+					<img src="resources/img/screenshot-admin4.png" alt=""
 						width="100%">
 				</div>
 			</div>

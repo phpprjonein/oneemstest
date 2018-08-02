@@ -1,7 +1,7 @@
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -100,9 +100,9 @@
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
 					<li class="nav-item dropdown">
-					
+
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_faqs.php")); ?>"
+						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>
               <?php }elseif(check_user_authentication(array(2,5,6,7))){  ?>
                 <li class="nav-item"><a
@@ -153,7 +153,7 @@
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_faqs.php")); ?>"
+						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>
               <?php } ?>
               <?php  } ?>

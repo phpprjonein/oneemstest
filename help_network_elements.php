@@ -98,6 +98,7 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -113,8 +114,8 @@ echo generate_site_breadcrumb($values);
 							<p>
 								All user Types are presented with the <b>List Management
 									Dashboard</b>. This particular Dashboard allows for users to:
-							
-							
+
+
 							<ul>
 								<li>Create custom device lists</li>
 								<li>Edit saved device lists</li>
@@ -227,8 +228,8 @@ echo generate_site_breadcrumb($values);
 							<p>This screen gives the user a Dashboard table view of all the
 								devices in a certain List, along with the ability to drill down
 								and view multiple separate health checks:
-							
-							
+
+
 							<div class="row">
 								<div class="col">
 									<ul>

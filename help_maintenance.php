@@ -102,6 +102,7 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -113,16 +114,21 @@ echo generate_site_breadcrumb($values);
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-7">MAINTENANCE</h4>
-							<p>This view allows a user to manage existing software
-								configurations, create new configurations, retire existing
-								configurations and/or apply these custom configurations to
-								devices within the OneEMS network.</p>
+							<p>This view allows a user to manage existing software release binaries, upload new binaries to make it available to OneEMS users for subsequent deployments, retire existing binaries.</p>
+							<p>This page permits user to select software release(s) to be downloaded to device(s). A user does this by selecting the following:
+								<ul>
+									<li>Device series (on left menu)</li>
+									<li>Destination (on left menu)</li>
+									<li>Priority of batch job (on left menu)</li>
+									<li>Each device via checkbox (from list)</li>
+								</ul>
+							</p>
 							<h5 id="item-7-1">Software Delivery</h5>
 							<img src="resources/img/screenshot-sw-master.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-sw-master1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.1 - Software Master Dashboard</b></span>
+							<span class="font-italic"><b>FIG. 7.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
 							<p>A user can define parameters for a device series type, vendor
 								type, operating system versions (including the ability to set
@@ -183,7 +189,7 @@ echo generate_site_breadcrumb($values);
 											Discovery Results</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_faqs.php" class="border"><b>NEXT: FAQs >></b></a>
+									<a href="help_admin.php" class="border"><b>NEXT: Admin >></b></a>
 								</div>
 							</div>
 

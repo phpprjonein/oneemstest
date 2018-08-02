@@ -99,6 +99,7 @@ write_log($mesg);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -110,27 +111,7 @@ write_log($mesg);
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-4">CONFIGURATION</h4>
-							<p>
-								This Dashboard consists of a file upload interface that allows a
-								user to manage <b>Configuration Scripts</b> for any device
-								within the OneEMS system.
-							</p>
-							<p>The application uses specific criteria for categorization of
-								device configurations. They are:</p>
-							<ul>
-								<li>Golden & Modification scripts</li>
-								<li>Cisco Series ASR920, ASR1000, ASR903, ASR900 (extensible to
-									accomodate for support of additional device types in the
-									future)</li>
-								<li>RAN vendors</li>
-								<li>Standalone, Hub, Spoke, IT-store, Pre-Maint, Post-Maint,
-									Show-Tech, Preventive script types</li>
-							</ul>
-							<p>On this screen, a user can:</p>
-							<ul>
-								<li>Enter values into editable fields</li>
-								<li>Download edits as a script</li>
-							</ul>
+							<p>This Dashboard consists of a file upload interface that allows a user to manage <b>Configuration Scripts</b> for any device within the OneEMS system. On this screen, a user can create a template name by filing out the fields below. The name will be automatically generated based on the options you select. This template name will be unique in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new name just created.</p>
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> The ASR 920 series Routers for
 								the Great Lakes Region is provided as a default template. This
@@ -145,6 +126,13 @@ write_log($mesg);
 							<span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard
 									With Sample Values Selected</b></span>
 							<p></p>
+							<p>To create a new template, a user can either start with:
+								<br />
+								- option A) default CISCO ASR920 config files (shown in <b><i>FIG. 4.1</i></b> on right) or
+								<br />
+								- option B) upload a new file from desktop by using browse button (shown in <b><i>FIG. 4.1</i></b> on left).</p>
+<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
+
 							<p>To manage device scripts, a user can upload one from their
 								hard drive. Doing so produces a form on the right in which a
 								user can edit values.</p>
@@ -851,10 +839,52 @@ event manager applet LOOP_GIG authorization bypass
 							<span class="font-italic"><b>FIG. 4.2 - Editable Configuration
 									Template</b></span>
 							<p></p>
+							<p class="alert alert-danger">
+								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.</p>
+							<b>Auto-populating Configuration Files</b>
+							<p>There are several categories for which you can auto-populate a field in a configuration file. For example:
+								<ol>
+									<li>Global variables: A predefined set of values that are common to all devices
+										<ul>
+											<li>Enable_Secret</li>
+											<li>IOS</li>
+										</ul>
+									</li>
+									<li>Market variables: A predefined set of values that are associated to a given market
+										<ul>
+											<li>Enable_Secret</li>
+											<li>RP_Address</li>
+											<li>User name</li>
+										</ul>
+									</li>
+									<li>User variables: Values that a user enters at the time of generating a script
+										<ul>
+											<li>ASR9k-01_hostname</li>
+											<li>ASR9k-02_hostname</li>
+											<li>Bandwidth</li>
+											<li>Even_VLAN</li>
+											<li>Etc...</li>
+										</ul>
+									</li>
+									<li>Switch variables: Predefined values that are associated with a switch name
+										<ul>
+											<li>AS</li>
+											<li>Device_prefixName(aka CLLI)</li>
+										</ul>
+									</li>
+								</ol>
+							</p>
+							<p>Select the appropriate variable associated with each field in the configuration file. This is a one-time exercise that will create a template that will be available to all users. This will help standardize the process, save time and reduce chance of errors when generating scripts to run on a device.</p>
+							<img src="resources/img/screenshot-config3.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-config3">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.2.2 - Editable Configuration Template</b></span>
+							<p></p>
 							<h5 id="item-4-2">Generate Script</h5>
 							<p>In this view, a user can select an existing template with
 								which to create a script for use on a particular device.</p>
-							<img src="resources/img/screenshot-generate-script1.png"
+							<img src="resources/img/screenshot-generate-script.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-generate1">
 							<p></p>
@@ -875,13 +905,7 @@ event manager applet LOOP_GIG authorization bypass
 							</p>
 							<b>Edited Template Selection / Download</b>
 							<p>
-								Once you select a template from the list, that template will
-								appear with editable fields highlighted in <span
-									class="text-danger"><b>red</b></span>. You can then edit and
-								download this template for deployment elsewhere or execute this
-								template as a script on one or more devices (scheduled/on-demand
-								runs).
-							</p>
+							Once you select a template from the list, that template will appear with editable fields highlighted in <span class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere. OR you can schedule a batch job by clicking on the “Execute” button.</p>
 							<p>
 								Once a user executes a configuration template for script
 								execution, that template gets added to a batch process. More
@@ -894,6 +918,32 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.4 - Generated Template Edit
 									Screen</b></span>
+							<p></p>
+							<p><b>Selecting One Or More Devices To Run Scripts</b>
+							<br />
+							Once you select “Execute”, you will be taken to the Batch Page where you can select devices to run a script. The list of devices have been filtered to show devices matching the device series and version only. Select the device by clicking on checkbox on left, set the priority and click submit to create a batch. You will then be prompted to confirm the batch run.</p>
+							<img src="resources/img/screenshot-config_confirm-batch.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-confirm-batch">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5 - Running A Script On One Or More Devices</b></span>
+							<p></p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Please retain the Batch ID for your records.</p>
+							<p>Once the Batch is successfully scheduled you will get a Batch ID. Please make a note of it so you can view the status later.</p>
+							<img src="resources/img/screenshot-config_confirm-batch2.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-confirm-batch2">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.6 - Batch ID Created For Your Run</b></span>
+							<p></p>
+							<p><b>Tracking Your Batch Run</b>
+							<br>
+							After submitting your batch job you will be taken to the Batch Tracking page.  OR you can return  to this page any time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in “Scheduled” state.</p>
+							<img src="resources/img/screenshot-config_batch-status.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-batch-status">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.6 - View Status Of A Batch Job</b></span>
 							<p></p>
 							<h5 id="item-4-3">Batch Tracking</h5>
 							<p>Here is where a user can manage templated script execution on
@@ -970,12 +1020,12 @@ event manager applet LOOP_GIG authorization bypass
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-generate-script1.png" alt=""
+					<img src="resources/img/screenshot-generate-script.png" alt=""
 						width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-generate2" tabindex="-1"
+		<div class="modal fade show" id="screenshot-confirm-batch" tabindex="-1"
 			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -983,7 +1033,46 @@ event manager applet LOOP_GIG authorization bypass
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-generate-script2.png" alt=""
+					<img src="resources/img/screenshot-config_confirm-batch.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-confirm-batch2" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-config_confirm-batch2.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-batch-status" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-config_batch-status.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-config3" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-config3.png" alt=""
 						width="100%">
 				</div>
 			</div>

@@ -3849,6 +3849,7 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
     
     $columns = array(
         'distinct(n.id)',
+        'n.id',    
         'n.deviceIpAddr',
         'n.devicename',
         'n.deviceseries',

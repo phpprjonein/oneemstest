@@ -101,7 +101,7 @@ echo generate_site_breadcrumb($values);
 							<div class="btn-group" id="batchtype-dt-filter">
 								<button type="button" style="text-transform: none;"
 									class="btn dropdown-toggle" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">Script Execution</button>
+									aria-haspopup="true" aria-expanded="false"><?php echo !empty($_SESSION['batchtype-dt-filter']) ? $_SESSION['batchtype-dt-filter']:'Script Execution'; ?></button>
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="#">Script Execution</a> <a
 										class="dropdown-item" href="#">Software Delivery</a> <a

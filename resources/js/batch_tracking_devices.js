@@ -1,10 +1,22 @@
 $(document).ready(function() {
 		if($('#devicebatchtrack').length > 0){
 		$('#ip-mgt-utils #ajax_loader').show();
+		
+		var batchtype = '';
+		if($('#batchtype-dt-filter .btn').text() == 'Script Execution'){
+			batchtype = 'se';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Software Delivery'){
+			batchtype = 'sd';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Change Boot Order'){					
+			batchtype = 'bo';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Reboot'){					
+			batchtype = 'rb';
+		} 
+		
          var table =  $('#devicebatchtrack').DataTable( {
           "processing": true,
           "serverSide": true,
-          "ajax":"batch-tracking-devices-server.php?batchtype=se",      
+          "ajax":"batch-tracking-devices-server.php?batchtype="+batchtype,      
           "pageLength": 25,
           "destroy": true,
           "dom": 'Bfrtip',

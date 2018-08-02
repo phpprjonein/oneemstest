@@ -127,9 +127,9 @@ $(document).ready(function() {
              $(row).addClass('device_row');
              var status = ''; 
 			  $.each($('td', row), function (colIndex) {
-            	/* if(colIndex == 0)
+            	 if(colIndex == 0)
             	   $(this).attr('title', 'Click here for health check');
-			   */  // Temporarily not needed. Needed in future.
+			     // Temporarily not needed. Needed in future.
 				  
 				  if(colIndex == 8){
 					  status = $(this).text();
@@ -250,7 +250,7 @@ $(document).ready(function() {
              $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
             	 if(colIndex == 0)
-            	   $(this).attr('title', 'Click here for health check');
+            		 $(this).attr('title', 'Click here to display backup files');
              }); 
         }
       } );
@@ -307,7 +307,7 @@ $(document).ready(function() {
 	                   $(row).addClass('device_row');
 	      			  $.each($('td', row), function (colIndex) {
 	                  	 if(colIndex == 0)
-	                  	   $(this).attr('title', 'Click here for health check');
+	                  		$(this).attr('title', 'Click here to display backup files');
 	                   }); 
 	              }
 	            } );

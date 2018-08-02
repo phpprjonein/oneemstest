@@ -105,7 +105,7 @@ $(document).ready(function() {
              $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
             	 if(colIndex == 0)
-            	   $(this).attr('title', 'Click here for health check');
+            	   $(this).attr('title', 'Click here to display backup files');
              }); 
         }
       } );
@@ -601,8 +601,8 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
               "createdRow": function (row, data, rowIndex) {
                    $(row).addClass('device_row');
       			  $.each($('td', row), function (colIndex) {
-                  	 /* if(colIndex == 0)
-                  	   $(this).attr('title', 'Click here for health check');   Temporarily, commented  on 31 jan 2018. Needed in future. */
+                  	 if(colIndex == 0)
+                  	   $(this).attr('title', 'Click here to display backup files');
                    }); 
               }
             } );

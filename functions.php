@@ -4275,13 +4275,13 @@ function update_login_api_rules($sso_flag, $username)
             $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`, `listtype`) VALUES';
             foreach ($records_to_update_zones as $key => $val) {
                 
-                $listid = get_user_mylist_id_by_name($key);
-                if(empty($listid)){
+                //$listid = get_user_mylist_id_by_name($key);
+                //if(empty($listid)){
                     $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
                     $db2->query($sql);
                     $recordset = $db2->resultset();
                     $listid = $recordset[0]['listidmaxval'];
-                }
+                //}
                 foreach ($val as $keyd => $vald) {
                     $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];
                     if (! empty($device_info[$vald['devicename']])) {

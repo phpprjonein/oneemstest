@@ -4188,17 +4188,37 @@ function update_login_api_rules($sso_flag, $username)
             $db2->execute();
         }
         
+        if($zone_region == 'sg'){
+            $base_url = 'http://txsliopsa1v.nss.vzwnet.com:8080';
+            $calloutzone = $base_url.'/user/' . $_SESSION['username'] . '/prefs/czone';
+        }elseif($zone_region == 'pr'){
+            $base_url = 'https://iop.vh.vzwnet.com:8080';
+            $calloutzone = $base_url.'/user/' . $_SESSION['username'] . '/prefs/czone';
+        }else{
+            $base_url = 'http://localhost/oneemstest';
+            $calloutzone = $base_url.'/user/' . $_SESSION['username'] . '/prefs/czone';
+        }
         /* Zones API calls */
-        // if ($_SESSION['zones'] == 0) {
-        // $output_callout_zone_list = @file_get_contents('http://localhost/oneemstest/' . $_SESSION['username'] . '_callout_zone_list.php');
-        $output_callout_zone_list = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/user/' . $_SESSION['username'] . '/prefs/czone');
+        //ZONE flag temp comment
+        //if ($_SESSION['zones'] == 0) {
+        $output_callout_zone_list = @file_get_contents($calloutzone);
         $resp_zones_result_arr_callout_zone_list = json_decode($output_callout_zone_list, 1);
+        
+        //Deleting when API not in REACH    
+        if(count($resp_zones_result_arr_callout_zone_list) == 0){
+            $sql = "DELETE FROM userdevices WHERE userid='" . $_SESSION['userid'] . "' AND listtype = 'cz'";
+            $db2->query($sql);
+            $db2->execute();
+        }
         $resp_zones_result_arr = array();
         if (isset($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'])) {
             foreach ($resp_zones_result_arr_callout_zone_list['user']['prefs']['calloutzones'] as $key => $val) {
                 $valrc = rawurlencode($val);
-                $output_zones = @file_get_contents(('http://localhost/oneemstest/calloutzonesAPI/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php'));
-                // $output_zones = @file_get_contents(('http://txsliopsa1v.nss.vzwnet.com:8080/site/czone/'.$valrc.'?hierarchy=0'));
+                if($zone_region == 'sg' || $zone_region == 'pr'){
+                    $output_zones = @file_get_contents($base_url.'/site/devices/czone/' . $valrc . '/csrinfo');
+                }else{
+                    $output_zones = @file_get_contents($base_url.'/site/devices/czone/' . $_SESSION['username'] . '_callout_zone_' . $valrc . '_list.php');
+                }
                 $output_zones_resp_result_arr = json_decode($output_zones, 1);
                 $resp_zones_result_arr[$val] = $output_zones_resp_result_arr['site_devices'];
             }
@@ -4209,7 +4229,8 @@ function update_login_api_rules($sso_flag, $username)
                 if (count($dval['csr_hostnames']) > 0) {
                     foreach ($dval['csr_hostnames'] as $hkey => $hval) {
                         $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $dval['switch'] : $_SESSION['sel_switch_name'];
-                        if ($_SESSION['zones'] == 0) {
+                        //ZONE flag temp comment
+                        //if ($_SESSION['zones'] == 0) {
                             $records_to_update_zones[$key][] = array(
                                 'devicename' => $hval,
                                 'csr_site_tech_name' => $dval['techname'],
@@ -4222,7 +4243,7 @@ function update_login_api_rules($sso_flag, $username)
                             $db2->execute();
                             
                             $devicename_arr[] = $hval;
-                        }
+                        //}
                         if (! in_array($dval['switch'], $swt_mswitch_arr)) {
                             $swt_mswitch_arr[] = $dval['switch'];
                         }
@@ -4231,7 +4252,13 @@ function update_login_api_rules($sso_flag, $username)
             }
         }
         
-        if (isset($devicename_arr) && $_SESSION['zones'] == 0) {
+        
+        
+        
+        
+        //ZONE flag temp comment
+        //if (isset($devicename_arr) && $_SESSION['zones'] == 0) {
+        if (isset($devicename_arr)) {
             $sql = "SELECT id, devicename from nodes where devicename in ('" . implode("','", $devicename_arr) . "')";
             $db2->query($sql);
             $resultset = $db2->resultset();
@@ -4239,21 +4266,26 @@ function update_login_api_rules($sso_flag, $username)
             foreach ($resultset as $key => $val) {
                 $device_info[$val['devicename']] = $val['id'];
             }
+
+            $sql = "DELETE FROM userdevices WHERE userid='" . $_SESSION['userid'] . "' AND listtype = 'cz'";
+            $db2->query($sql);
+            $db2->execute();
             
             $oc = 1;
-            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`, `listtype`) VALUES';
             foreach ($records_to_update_zones as $key => $val) {
-                $sql = "DELETE FROM userdevices WHERE listname='" . $key . "'";
-                $db2->query($sql);
-                $db2->execute();
-                $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
-                $db2->query($sql);
-                $recordset = $db2->resultset();
-                $listid = $recordset[0]['listidmaxval'];
+                
+                $listid = get_user_mylist_id_by_name($key);
+                if(empty($listid)){
+                    $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+                    $db2->query($sql);
+                    $recordset = $db2->resultset();
+                    $listid = $recordset[0]['listidmaxval'];
+                }
                 foreach ($val as $keyd => $vald) {
                     $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];
                     if (! empty($device_info[$vald['devicename']])) {
-                        $dsql .= "('" . $device_info[$vald['devicename']] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $key . "'),";
+                        $dsql .= "('" . $device_info[$vald['devicename']] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $key . "','cz'),";
                         $oc ++;
                     }
                 }
@@ -4262,13 +4294,15 @@ function update_login_api_rules($sso_flag, $username)
                 $dsql = substr_replace($dsql, '', - 1);
                 $db2->query($dsql);
                 $db2->execute();
-                $sql = "update users set zones = 1 WHERE username = '" . $_SESSION['username'] . "'";
+                
+                //ZONE flag temp comment
+                /*$sql = "update users set zones = 1 WHERE username = '" . $_SESSION['username'] . "'";
                 $_SESSION['zones'] = 1;
                 $db2->query($sql);
-                $db2->execute();
+                $db2->execute();*/
             }
         }
-        // }
+     //}
         
         $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
     } elseif (in_array($_SESSION['userlevel'], array(
@@ -4434,3 +4468,20 @@ function loaddeviceidfromdeviceip($deviceip)
     $resultset = $db2->resultset();
     return $resultset[0];
 }
+
+
+function get_user_mylist_id_by_name($listname)
+{
+    global $db2;
+    
+    $sql = "SELECT ud.listname  FROM userdevices ud WHERE ud.listname = '". $listname."' limit 0,1 ";
+    $db2->query($sql);
+    
+    $resultset = $db2->resultset();
+    if (isset($resultset[0]['listid'])) {
+        return ($resultset[0]['listid']);
+    } else {
+        return;
+    }
+}
+

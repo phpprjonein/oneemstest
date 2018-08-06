@@ -5,7 +5,7 @@ $(document).ready(function() {
           $.ajax({
               type:"get",
               url:"healthchk-cellsitetech.php",
-              data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')},
+              data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')},
               beforeSend: function(){
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
               },
@@ -191,10 +191,14 @@ $(document).ready(function() {
                   tr.addClass('shown');
                   var id = tr.attr('id').replace('row_','');
                   
+                  var deviceseries = $(this).closest('tr').find("td:eq(6)").text();
+                  var version = $(this).closest('tr').find("td:eq(7)").text();
+                  version = version.replace('(','-').replace(')','-').replace('.','-');
+                  
                   var ajs = $.ajax({
                       type:"get",
                       url:"healthchk-load-table-data.php",
-                      data: {deviceid:id, userid:$('#userid').val()},
+                      data: {'deviceid':id, 'userid':$('#userid').val(), 'deviceseries':deviceseries, 'version':version },
                       beforeSend: function(){
                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
                       },

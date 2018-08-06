@@ -325,7 +325,10 @@
 						class="btn btn-primary">Run selected health Checks</button></td>
 				<td colspan="3" class="run_all_checks text-center"
 					data-deviceid="<?php echo $deviceid ?>"
-					data-userid="<?php echo $_SESSION['userid'] ?>"><button
+					data-userid="<?php echo $_SESSION['userid'] ?>"
+					data-version="<?php echo $_GET['version'] ?>"
+					data-deviceseries="<?php echo $_GET['deviceseries'] ?>"
+					><button
 						class="btn btn-primary">Run All Health Checks</button></td>
 				<td colspan="3" class="text-center"><table class="border-0">
 						<tr>

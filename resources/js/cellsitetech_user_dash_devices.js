@@ -44,7 +44,7 @@ $(document).ready(function() {
         $.ajax({
             type:"get",
             url:"healthchk-cellsitetech-custom.php",
-            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals}, 
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')},
             beforeSend: function(){
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
             },

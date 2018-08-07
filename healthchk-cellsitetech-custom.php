@@ -30,7 +30,8 @@ if (count($_GET['category']) > 0) {
     $category_imp = implode(',', $_GET['category']);
     /* Custom HealthCheck API API Call */
     $devicetype = 'ios';
-    $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/custom/' . $deviceid . '/' . $category_imp;
+    $url_final = 'http://10.134.179.82:8085/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
+    // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/custom/' . $deviceid . '/' . $category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/1,2,3';
     $output = json_decode(sendPostData($url_final), true);
     /*
@@ -53,25 +54,25 @@ if (count($_GET['category']) > 0) {
 }
 $healthchktype = 'Custom';
 // $result = select_healthchk_info($deviceid);
-if (! in_array(2, $_GET['category']) || ! isset($output['iosversion'])) {
+if (! in_array('extract_version_config', $_GET['category']) || ! isset($output['iosversion'])) {
     $output['iosversion'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(1, $_GET['category']) || ! isset($output['cpuutilization'])) {
+if (! in_array('extract_process_cpu', $_GET['category']) || ! isset($output['cpuutilization'])) {
     $output['cpuutilization'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(8, $_GET['category']) || ! isset($output['freememory'])) {
+if (! in_array('extract_memory_statistics', $_GET['category']) || ! isset($output['freememory'])) {
     $output['freememory'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(5, $_GET['category']) || ! isset($output['buffers'])) {
+if (! in_array('extract_buffers', $_GET['category']) || ! isset($output['buffers'])) {
     $output['buffers'] = array(
         'R' => '',
         'message' => ''
@@ -83,7 +84,7 @@ if (! in_array(16, $_GET['category']) || ! isset($output['bootstatement'])) {
         'message' => ''
     );
 }
-if (! in_array(6, $_GET['category']) || ! isset($output['platform'])) {
+if (! in_array('extract_show_platform', $_GET['category']) || ! isset($output['platform'])) {
     $output['platform'] = array(
         'R' => '',
         'message' => ''
@@ -101,7 +102,7 @@ if (! in_array(3, $_GET['category']) || ! isset($output['configregister'])) {
         'message' => ''
     );
 }
-if (! in_array(7, $_GET['category']) || ! isset($output['interfacecounters'])) {
+if (! in_array('interfacecounters', $_GET['category']) || ! isset($output['interfacecounters'])) {
     $output['interfacecounters'] = array(
         'R' => '',
         'message' => ''
@@ -113,43 +114,43 @@ if (! in_array(22, $_GET['category']) || ! isset($output['twothsndbyteping'])) {
         'message' => ''
     );
 }
-if (! in_array(10, $_GET['category']) || ! isset($output['bfdsession'])) {
+if (! in_array('extract_bfd_neighbour', $_GET['category']) || ! isset($output['bfdsession'])) {
     $output['bfdsession'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(15, $_GET['category']) || ! isset($output['logentries'])) {
+if (! in_array('extract_show_logging', $_GET['category']) || ! isset($output['logentries'])) {
     $output['logentries'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(23, $_GET['category']) || ! isset($output['vrfstates'])) {
+if (! in_array('extract_show_vrf', $_GET['category']) || ! isset($output['vrfstates'])) {
     $output['vrfstates'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(9, $_GET['category']) || ! isset($output['interfacestates'])) {
+if (! in_array('extract_count_interfaces', $_GET['category']) || ! isset($output['interfacestates'])) {
     $output['interfacestates'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(20, $_GET['category']) || ! isset($output['xconnect'])) {
+if (! in_array('extract_xconnect_all', $_GET['category']) || ! isset($output['xconnect'])) {
     $output['xconnect'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(12, $_GET['category']) || ! isset($output['mplsinterfaces'])) {
+if (! in_array('extract_mlps_interfaces', $_GET['category']) || ! isset($output['mplsinterfaces'])) {
     $output['mplsinterfaces'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(13, $_GET['category']) || ! isset($output['bgpvfourneighbors'])) {
+if (! in_array('extract_bgpv4_neighbour', $_GET['category']) || ! isset($output['bgpvfourneighbors'])) {
     $output['bgpvfourneighbors'] = array(
         'R' => '',
         'message' => ''

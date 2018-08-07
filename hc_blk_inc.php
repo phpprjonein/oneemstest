@@ -4,8 +4,8 @@
 		<tbody>
 			<tr>
 				<td style="width: 10px;"><input type="checkbox" name="iosversion"
-					id="iosversion" value="2"
-					<?php if(in_array(2, $_GET['category'])):?> checked="checked"
+					id="iosversion" value="extract_version_config"
+					<?php if(in_array('extract_version_config', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IOS Version </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -18,8 +18,8 @@
     ?>
 </td>
 				<td style="width: 10px;"><input id="cpuutilization" type="checkbox"
-					name="cpuutilization" value="1"
-					<?php if(in_array(1, $_GET['category'])):?> checked="checked"
+					name="cpuutilization" value="extract_process_cpu"
+					<?php if(in_array('extract_process_cpu', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>CPU Utilization</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -32,8 +32,8 @@
     ?>
 </td>
 				<td style="width: 10px;"><input type="checkbox" id="freememory"
-					name="freememory" value="8"
-					<?php if(in_array(8, $_GET['category'])):?> checked="checked"
+					name="freememory" value="extract_memory_statistics"
+					<?php if(in_array('extract_memory_statistics', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Free Memory</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -47,8 +47,8 @@
 </td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" id="buffers" name="buffers" value="5"
-					<?php if(in_array(5, $_GET['category'])):?> checked="checked"
+				<td><input type="checkbox" id="buffers" name="buffers" value="extract_buffers"
+					<?php if(in_array('extract_buffers', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Buffers</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -73,8 +73,8 @@
     echo $display;
     ?>
 </td>
-				<td><input type="checkbox" id="platform" name="platform" value="6"
-					<?php if(in_array(6, $_GET['category'])):?> checked="checked"
+				<td><input type="checkbox" id="platform" name="platform" value="extract_show_platform"
+					<?php if(in_array('extract_show_platform', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Platform </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -116,8 +116,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="interfacecounters"
-					name="interfacecounters" value="7"
-					<?php if(in_array(7, $_GET['category'])):?> checked="checked"
+					name="interfacecounters" value="extract_count_interfaces"
+					<?php if(in_array('extract_count_interfaces', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Interface Counters</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -146,7 +146,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bfdsession" name="bfdsession"
-					value="10" <?php if(in_array(10, $_GET['category'])):?>
+					value="extract_bfd_neighbour" <?php if(in_array('extract_bfd_neighbour', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>BFD Sessions</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -159,7 +159,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="logentries" name="logentries"
-					value="15" <?php if(in_array(15, $_GET['category'])):?>
+					value="extract_show_logging" <?php if(in_array('extract_show_logging', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>Log Entries</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -185,7 +185,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="vrfstates" name="vrfstates"
-					value="23" <?php if(in_array(23, $_GET['category'])):?>
+					value="extract_show_vrf" <?php if(in_array('extract_show_vrf', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>VRF</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -198,8 +198,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="interfacestates"
-					name="interfacestates" value="9"
-					<?php if(in_array(9, $_GET['category'])):?> checked="checked"
+					name="interfacestates" value="extract_count_interfaces"
+					<?php if(in_array('extract_count_interfaces', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Interface State</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -211,8 +211,8 @@
     echo $display;
     ?>
 </td>
-				<td><input type="checkbox" id="xconnect" name="xconnect" value="20"
-					<?php if(in_array(20, $_GET['category'])):?> checked="checked"
+				<td><input type="checkbox" id="xconnect" name="xconnect" value="extract_xconnect_all"
+					<?php if(in_array('extract_xconnect_all', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Xconnect</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -227,7 +227,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="mplsinterfaces" name="mplsinterfaces"
-					value="12" <?php if(in_array(12, $_GET['category'])):?>
+					value="extract_mlps_interfaces" <?php if(in_array('extract_mlps_interfaces', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Interfaces</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -240,8 +240,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bgpvfourneighbors"
-					name="bgpvfourneighbors" value="13"
-					<?php if(in_array(13, $_GET['category'])):?> checked="checked"
+					name="bgpvfourneighbors" value="extract_bgpv4_neighbour"
+					<?php if(in_array('extract_bgpv4_neighbour', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IPV4 BGP Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

@@ -212,6 +212,7 @@ echo generate_site_breadcrumb($values);
 
             <?php
             $output = '';
+            $pink_box_min_size = 10;
             $vars['globalvars'] = configtemplate_elemvalue_pos_script('globalvars', 'gvarname', 'gvarval');
             foreach ($vars['globalvars'] as $key => $val) {
                 $result['globalvars'][$_POST['f11'] . $val['gvarname']] = $val['gvarval'];
@@ -240,7 +241,9 @@ echo generate_site_breadcrumb($values);
                     if ($newarr[$k][0]["editable"] == 0) {
                         $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
-                        $output .= "<span class='form-editable-fields'><input type='text' size='" . strlen($newarr[$k][0]["elemvalue"]) . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$_POST['f11'] . $newarr[$k][0]["elemvalue"]] . "'></span>";
+                        $pink_box_size = strlen($result[$newarr[$k][0]["tabname"]][$_POST['f11'] . $newarr[$k][0]["elemvalue"]]);
+                        $pink_box_size = ($pink_box_size == 0 || $pink_box_size < $pink_box_min_size) ? $pink_box_min_size : $pink_box_size;
+                        $output .= "<span class='form-editable-fields'><input type='text' size='" . $pink_box_size . "'  name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][0]["tabname"]][$_POST['f11'] . $newarr[$k][0]["elemvalue"]] . "'></span>";
                     }
                     $output .= '</div>';
                 } else {
@@ -258,8 +261,10 @@ echo generate_site_breadcrumb($values);
                              * die;
                              * }
                              */
+                            $pink_box_size = strlen($result[$newarr[$k][$l]["tabname"]][$_POST['f11'] . $newarr[$k][$l]["elemvalue"]]);
+                            $pink_box_size = ($pink_box_size == 0 || $pink_box_size < $pink_box_min_size) ? $pink_box_min_size : $pink_box_size;
                             
-                            $outputin .= "<input type='text' size='" . strlen($newarr[$k][$l]["elemvalue"]) . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$_POST['f11'] . $newarr[$k][$l]["elemvalue"]] . "'>";
+                            $outputin .= "<input type='text' size='" . $pink_box_size . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$_POST['f11'] . $newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }
                     if ($editable == 1) {

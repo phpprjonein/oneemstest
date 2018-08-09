@@ -136,7 +136,7 @@ echo generate_site_breadcrumb($values);
 								<li>secure access to the <b>Verizon SSO</b> login screen
 								</li>
 							</ul>
-							<p>The OneEMS application also supports a number secondary
+							<!-- <p>The OneEMS application also supports a number secondary
 								functionalities:</p>
 							<ul>
 								<li>Logging of user activity</li>
@@ -145,7 +145,7 @@ echo generate_site_breadcrumb($values);
 								<li>Designed to support 200k+ separate elements/devices</li>
 								<li>Servers sized to support devices and frequency of
 									collections</li>
-							</ul>
+							</ul> -->
 							<hr>
 							<p></p>
 							<a href="help_network_elements.php" class="border"><b>NEXT:

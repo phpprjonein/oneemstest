@@ -172,8 +172,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<b>Adding A Device To Your Custom List</b>
 							<p>
-								In order to add devices to your list, first open a list for
-								editing. To do this, click on the <b>Edit icon</b> ( <i
+								In order to add devices to your list, first click on the <b>Edit icon</b> ( <i
 									class="fa fa-edit fa-lg text-primary"></i> ) to the immediate
 								right of the list name. The contents of the selected list will
 								appear in the center column of the page.
@@ -210,7 +209,7 @@ echo generate_site_breadcrumb($values);
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> Cell Site Technicians will be
 								provided a <b>"My Routers"</b> List. This List contains Routers
-								that are assigned to the Cell Site Technician via <b>Ops Tracker</b>.
+								that are assigned to the Cell Site Technician via <b>Ops Tracker</b>. Switch Technicians will be provided a list of Switch names that are associated with him/her.
 							</p>
 							<p>
 								Here, a user can view the health status of devices associated
@@ -234,32 +233,31 @@ echo generate_site_breadcrumb($values);
 								<div class="col">
 									<ul>
 										<li>IOS Versioning</li>
-										<li>Environmental States</li>
-										<li>Multi Protocol Label Switching Interfaces</li>
-										<li>IPV4 and IPV6 Neighbors</li>
-										<li>IPV4 and IPV6 Routes</li>
-										<li>Memory Utilization</li>
-										<li>CPU Utilization</li>
-										<li>Platform Status</li>
-										<li>Log Entries</li>
-										<li>200 Byte Ping Status/Success Rates</li>
 										<li>Buffers</li>
-										<li>Virtual Routing and Forwarding</li>
+										<li>Environmental States</li>
+										<li>2000 Byte Ping Status/Success Rates</li>
+										<li>VRF</li>
+										<li>MultiProtocol Label Switching Interfaces</li>
+										<li>MultiProtocol Label Switching Neighbors</li>
+										<li>CPU Utilization</li>
+										<li>Boot Statement</li>
+										<li>Config Registration</li>
+
 									</ul>
 								</div>
 								<div class="col">
 									<ul>
-										<li>Multiprotocol Label Switching Updates</li>
-										<li>Boot Statement Matching</li>
-										<li>Configuration Registration</li>
-										<li>Bidirectional Forwarding Detection Status And Routes</li>
+									<li>Bidirectional Forwarding Detection Sessions</li>
 										<li>Interface State</li>
+										<li>IPV4 BGP Neighbors</li>
+										<li>IPV6 BGP Neighbors</li>
+										<li>Free Memory</li>
+										<li>Platform</li>
 										<li>Interface Counters</li>
-										<li>Memory Allocation</li>
-										<li>Platform Health</li>
 										<li>Log Entries</li>
-										<li>X Connect Sanity Check Results</li>
-										<li>Neighboring Devices</li>
+										<li>X Connect</li>
+										<li>IPV4 BGP Routes</li>
+										<li>IPV6 BGP Routes</li>
 									</ul>
 								</div>
 							</div>
@@ -270,13 +268,13 @@ echo generate_site_breadcrumb($values);
 								leftmost column of the device. This will run a script that will
 								run a realtime health check on the device in view.
 							</p>
-							<p class="alert alert-danger">
+							<!-- <p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> Upon initialization, a single
 								Health Check API runs on multiple *a3v and *a4v servers,
 								performing separate Health Checks that will run in series on the
 								chosen Router. This process, which supports concurrent usage,
 								can take up to one minute to complete.
-							</p>
+							</p> -->
 							<img src="resources/img/screenshot-healthcheck2.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-healthcheck2">
@@ -285,9 +283,9 @@ echo generate_site_breadcrumb($values);
 									Health Check</b></span>
 							</p>
 							<p></p>
+							<p>You can choose to run any of the healthchecks from the list (Fig 2.2) by selecting the corresponding check boxes and then clicking on “Run Selective Health Checks” or you can “Run All Health Checks”.</p>
 							<p>
-								Once this realtime health check is done, you will be able to
-								click on the page icons ( <i
+								Once this realtime health check is done, you will be presented with a brief summary for each check. You will be able to click on the page icons ( <i
 									class="fa fa-file-text-o text-primary"></i> ) associated with
 								each parameter to view output directly from the console of the
 								currently selected device.

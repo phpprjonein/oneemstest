@@ -393,7 +393,7 @@ echo generate_site_breadcrumb($values);
 									</div>
 								</div>
 
-
+<!--
 								<div class="card">
 									<div class="card-header" id="headingSeven">
 										<h5 class="mb-0 table-responsive">
@@ -420,7 +420,7 @@ echo generate_site_breadcrumb($values);
 												class="img-fluid" alt="" data-toggle="modal"
 												data-target="#screenshot-jira-button-link">
 											<p></p>
-											<span class="font-italic"><b>FIG. 7.1 - JIRA Ticketing Button</b></span>
+											<span class="font-italic"><b>FIG. 9.1 - JIRA Ticketing Button</b></span>
 											<p></p>
 											<p>Upon clicking this button, you will be redirected to an
 												external JIRA ticketing system, where you can open a ticket
@@ -430,7 +430,7 @@ echo generate_site_breadcrumb($values);
 										</div>
 									</div>
 								</div>
-
+-->
 
 							</div>
 							<hr>

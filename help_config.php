@@ -137,7 +137,9 @@ write_log($mesg);
 								hard drive. Doing so produces a form on the right in which a
 								user can edit values.</p>
 							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> The OneEMS application cannot
+								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.
+								<br>
+								<b class="text-danger">NOTE:</b> Option B) The OneEMS application cannot
 								consume files that end in anything besides <b>.txt</b>
 								extensions. <br> <br> Additionally, editable fields <b>MUST</b>
 								be encapsulated by a hash ( <b>#</b> ) symbol. This symbol must

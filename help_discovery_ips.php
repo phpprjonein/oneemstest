@@ -136,9 +136,8 @@ echo generate_site_breadcrumb($values);
 							<p>
 								To view subnets by Region, choose a Region from the dropdown
 								menu to the right of the <b>IP Type</b> button. When this
-								Dashboard first loads, agents run for each market across 6
-								backend servers and a user's default Region information is
-								displayed.
+								Dashboard first loads, a user's default Region is
+								selected.
 							</p>
 							<img
 								src="resources/img/screenshot-ip_management_choose_Region-1.png"

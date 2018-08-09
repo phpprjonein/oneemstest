@@ -122,7 +122,7 @@ echo generate_site_breadcrumb($values);
 							<h5 id="item-6-1">Missed IP Addresses View</h5>
 							<p>This view shows all the IP addresses that are present in the
 								current One EMS inventory but were not reachable during the last
-								discovery session..</p>
+								discovery session.</p>
 							<img src="resources/img/screenshot-discovery-missed.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-discovery-missed">
@@ -152,9 +152,7 @@ echo generate_site_breadcrumb($values);
 							<span class="font-italic"><b>FIG. 6.3 - OK IP Addresses Dashboard</b></span>
 							<p></p>
 							<h5 id="item-6-4">Manual Discovery View</h5>
-							<p>This view allows for users to manually discover devices that
-								may not have been previously discovered during a polling
-								session.</p>
+							<p>TThis view allows for users to manually discover devices that are new and have not been discovered yet by the periodic backend discovery process.</p>
 							<img src="resources/img/screenshot-discovery-manual.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-discovery-manual">
@@ -164,7 +162,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<p><b>Inserting A Manually Discovered Device Into OneEMS</b>
 							<br>
-							After discovering a device manually, you will get a popup that show the details of the discovery. To save this to the database you will need to specify the correct Market (from dropdown). Then you can click “Save Changes”.</p>
+							After discovering a device manually, you will get a popup that shows the details of the discovery. To save this to the database you will need to specify the correct Market (from a dropdown). Then you can “Save Changes”.</p>
 							<img src="resources/img/screenshot-discovery-manual3.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-discovery-manual3">

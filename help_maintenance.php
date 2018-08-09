@@ -114,7 +114,7 @@ echo generate_site_breadcrumb($values);
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-7">MAINTENANCE</h4>
-							<p>This view allows a user to manage existing software release binaries, upload new binaries to make them available to OneEMS users for subsequent deployments, and retire existing binaries.</p>
+							<p>This view allows a user to manage existing software release binaries, upload new binaries to make it available to OneEMS users for subsequent deployments, retire existing binaries.</p>
 							<p>This page permits user to select software release(s) to be downloaded to device(s). A user does this by selecting the following:
 								<ul>
 									<li>Device series (on left menu)</li>
@@ -130,15 +130,15 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
-							<!-- <p>A user can define parameters for a device series type, vendor
+							<p>A user can define parameters for a device series type, vendor
 								type, operating system versions (including the ability to set
 								minimum build and/or patch versioning of a chosen OS), even set
-								dates for software update activation.</p> -->
+								dates for software update activation.</p>
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> This group of pages within the
 								OneEMS application is only accesible by Cell Site Technicians.
 							</p>
-							<!-- <h5 id="item-7-2">Schedule Backup</h5>
+							<h5 id="item-7-2">Schedule Backup</h5>
 							<img src="resources/img/screenshot-sw-os-repo.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-sw-os-repo">
@@ -181,7 +181,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<p>Here, you will be able to monitor the progress of your Batch
 								request. You can also cancel a batch request you've initiated
-								prior.</p> -->
+								prior.</p>
 							<hr>
 							<div class="row">
 								<div class="col-6">

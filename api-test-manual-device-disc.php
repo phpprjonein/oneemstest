@@ -3,7 +3,8 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 sleep(3);
-$output = json_decode('{
+$output = json_decode(
+        '{
   "data": {
   "devicename": "dummydevicename",
   "deviceos": "dummydeviceos",
@@ -32,11 +33,13 @@ $output = json_decode('{
  * print_r($output['data']['data']);
  */
 $output['data']['status'] = 1; // needs to be sorted out.
-$market_list = get_market_list_manualdisc();
+$market_list = get_market_list_manualdisc($_POST['ipaddress']);
 ?>
-<div class="container">
+<div class="container" id="manual-disc-utils-pop">
+	<div id="status" style="display: none;" class="alert"></div>
 	<p>
-		<b>Device Ip Address : <?php echo $output['deviceIpAddr']; ?></b>
+		<b>Device Ip Address : <?php echo $_POST['ipaddress']; ?></b> <input
+			type="hidden" value="<?php echo $_POST['ipaddress']; ?>" name="ipaddress" />
 	</p>
 	<table class="table table-striped">
 		<tbody>

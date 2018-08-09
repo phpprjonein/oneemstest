@@ -4358,18 +4358,30 @@ function update_login_api_rules($sso_flag, $username)
  *
  * @return unknown
  */
-function get_market_list_manualdisc()
+function get_market_list_manualdisc($ipaddress)
 {
     global $db2;
     
     $sql_select = "SELECT market as market_name ";
     $sql_condition = " FROM nodes
-                      where market != ''
+                      where market != '' and deviceIpAddr = '".$ipaddress."'
                       GROUP BY market ";
     $sql = $sql_select . $sql_condition;
     $db2->query($sql);
     // echo $sql;
     $resultset = $db2->resultset();
+    
+    if(count($resultset) == 0){
+        $sql_select = "SELECT market as market_name ";
+        $sql_condition = " FROM nodes
+                      where market != ''
+                      GROUP BY market ";
+        $sql = $sql_select . $sql_condition;
+        $db2->query($sql);
+        // echo $sql;
+        $resultset = $db2->resultset();
+    }
+    
     return $resultset;
 }
 

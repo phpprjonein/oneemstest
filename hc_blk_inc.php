@@ -61,7 +61,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bootstatement" name="bootstatement"
-					value="16" <?php if(in_array(16, $_GET['category'])):?>
+					value="extract_show_running_config" <?php if(in_array('extract_show_running_config', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>Boot Statement</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -90,7 +90,7 @@
 
 			<tr>
 				<td><input type="checkbox" id="environmental" name="environmental"
-					value="4" <?php if(in_array(4, $_GET['category'])):?>
+					value="extract_alarms" <?php if(in_array('extract_alarms', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>Environmental</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -103,7 +103,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="configregister" name="configregister"
-					value="3" <?php if(in_array(3, $_GET['category'])):?>
+					value="extract_version_config" <?php if(in_array('extract_version_config', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>Config Register</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -132,8 +132,8 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="twothsndbyteping"
-					name="twothsndbyteping" value="22"
-					<?php if(in_array(22, $_GET['category'])):?> checked="checked"
+					name="twothsndbyteping" value="twothsndbyteping"
+					<?php if(in_array('twothsndbyteping', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>2000 Byte Ping</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -253,8 +253,8 @@
     echo $display;
     ?>
 </td>
-				<td><input type="checkbox" id="ran" name="ran" value="19"
-					<?php if(in_array(19, $_GET['category'])):?> checked="checked"
+				<td><input type="checkbox" id="ran" name="ran" value="extract_show_ip_bgp_vpnv4_vrf_ran"
+					<?php if(in_array('extract_show_ip_bgp_vpnv4_vrf_ran', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IPV4 BGP Routes</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -268,7 +268,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="mplsneighbors" name="mplsneighbors"
-					value="11" <?php if(in_array(11, $_GET['category'])):?>
+					value="extract_mpls_ldp_neighbor" <?php if(in_array('extract_mpls_ldp_neighbor', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -281,8 +281,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bgpvsixneighbours"
-					name="bgpvsixneighbours" value="14"
-					<?php if(in_array(14, $_GET['category'])):?> checked="checked"
+					name="bgpvsixneighbours" value="extract_bgpv6_neighbor"
+					<?php if(in_array('extract_bgpv6_neighbor', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IPV6 BGP Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -294,7 +294,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bgpvsixroutes" name="bgpvsixroutes"
-					value="17" <?php if(in_array(17, $_GET['category'])):?>
+					value="extract_bgpv6_routes" <?php if(in_array('extract_bgpv6_routes', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>IPV6 BGP Routes</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

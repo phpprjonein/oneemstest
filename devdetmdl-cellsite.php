@@ -19,13 +19,15 @@ switch ($command) {
     // case 'showversion':
     case 'iosversion':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/2';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_buffers';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_version_config';       //CHECK
         break;
     case 'configregister':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/3';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/3';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_version_config';
         break;
     case 'environment':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/4';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/4';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_alarms';
         break;
     case 'platform':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/6';
@@ -37,7 +39,7 @@ switch ($command) {
         break;
     case 'interfacestates':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/9';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_count_interfaces';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_count_interfaces'; //CHECK
         break;
     case 'showinterfaces':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/7';
@@ -48,10 +50,12 @@ switch ($command) {
         $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mlps_interfaces';
         break;
     case 'mplsneighbors':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/11';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/11';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mpls_ldp_neighbor';
         break;
     case 'bgpvsixroutes':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/17';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/17';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bgpv6_routes';
         break;
     case 'show-running-config-|-i-boot':
         $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/16';
@@ -65,10 +69,12 @@ switch ($command) {
         $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_show_vrf';
         break;
     case 'twothsndbyteping':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/22';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/22';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/twothsndbyteping';
         break;
     case 'bgpvsixneighbors':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/14';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/14';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bgpv6_neighbor';
         break;
     case 'bgpvfourneighbors':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/13';
@@ -80,10 +86,12 @@ switch ($command) {
         break;
     // case 'bgpvfourroutes':
     case 'ran':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/19';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/19';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_show_ip_bgp_vpnv4_vrf_ran';
         break;
     case 'bootstatement':
-        $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/16';
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/16';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_show_running_config';
         break;
     case 'interfacecounters':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/7';

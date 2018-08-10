@@ -19,7 +19,7 @@ switch ($command) {
     // case 'showversion':
     case 'iosversion':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/2';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_version_config';       //CHECK
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_version_ios';
         break;
     case 'configregister':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/3';
@@ -39,7 +39,7 @@ switch ($command) {
         break;
     case 'interfacestates':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/9';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_count_interfaces'; //CHECK
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_show_brief';
         break;
     case 'showinterfaces':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/7';

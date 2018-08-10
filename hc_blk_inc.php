@@ -4,8 +4,8 @@
 		<tbody>
 			<tr>
 				<td style="width: 10px;"><input type="checkbox" name="iosversion"
-					id="iosversion" value="extract_version_config"
-					<?php if(in_array('extract_version_config', $_GET['category'])):?> checked="checked"
+					id="iosversion" value="extract_version_ios"
+					<?php if(in_array('extract_version_ios', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IOS Version </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -198,8 +198,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="interfacestates"
-					name="interfacestates" value="extract_count_interfaces"
-					<?php if(in_array('extract_count_interfaces', $_GET['category'])):?> checked="checked"
+					name="interfacestates" value="extract_show_brief"
+					<?php if(in_array('extract_show_brief', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Interface State</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

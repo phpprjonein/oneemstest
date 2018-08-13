@@ -268,7 +268,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="mplsneighbors" name="mplsneighbors"
-					value="extract_mpls_ldp_neighbor" <?php if(in_array('extract_mpls_ldp_neighbor', $_GET['category'])):?>
+					value="extract_mpls_ldp_neighbour" <?php if(in_array('extract_mpls_ldp_neighbour', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

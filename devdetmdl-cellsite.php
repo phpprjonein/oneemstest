@@ -51,7 +51,7 @@ switch ($command) {
         break;
     case 'mplsneighbors':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/11';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mpls_ldp_neighbor';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mpls_ldp_neighbour';
         break;
     case 'bgpvsixroutes':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/17';

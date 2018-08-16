@@ -115,7 +115,39 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     fclose($file);
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
-} elseif ($_POST['action'] == 'Download Script') {
+}elseif ($_POST['action'] == 'Download Script' && $_POST['tmplcategory']=='Golden') {
+    $filenames = array('1_sampleconfigfile.script','2_sampleconfigfile.script','3_sampleconfigfile.script');
+    $filenameindex = 0;
+    $resetfile = 1;
+    foreach ($_POST['loop'] as $key => $val) {
+        $line = '';
+        if(empty($line) && $resetfile == 1){
+            $file = fopen(getcwd() . "/upload/".$filenames[$filenameindex], "w");
+            $filenameindex++;
+            $resetfile = 0;
+        }
+        foreach ($val as $linekey => $lineval) {
+            $line .= $lineval;
+        }
+        fwrite($file, $line . "\n");
+        if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
+            $resetfile = 1;
+        }
+    }
+    fclose($file);
+    $zipname = 'upload/file.zip';
+    unlink($zipname);
+    $zip = new ZipArchive;
+    $zip->open($zipname, ZipArchive::CREATE);
+    foreach ($filenames as $file) {
+        $zip->addFile("upload/".$file);
+    }
+    $zip->close();
+    header('Content-Type: application/zip');
+    header('Content-disposition: attachment; filename='.$zipname);
+    header('Content-Length: ' . filesize($zipname));
+    readfile($zipname);
+}elseif ($_POST['action'] == 'Download Script') {
     $file = fopen(getcwd() . "/upload/sampleconfigfile.script", "w");
     foreach ($_POST['loop'] as $key => $val) {
         $line = '';

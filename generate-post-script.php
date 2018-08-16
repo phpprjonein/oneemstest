@@ -285,6 +285,7 @@ echo generate_site_breadcrumb($values);
 												<hr>
 											</div>
 											<div class="form-group">
+												<input type="hidden" name="tmplcategory" value="<?php echo $_POST['tmplcategory'];?>">
 												<button type="submit" value="Download Script" name="action"
 													class="btn btn-primary btn-lg">DOWNLOAD</button>
 												<button type="submit" value="Execute Script" name="action"

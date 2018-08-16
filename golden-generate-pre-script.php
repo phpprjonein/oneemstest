@@ -54,7 +54,7 @@ write_log($mesg);
 						action='generate-post-script.php' method='POST'
 						enctype='multipart/form-data' novalidate autocomplete="on">
 						<div class="row">
-
+							<input type="hidden" name="tmplcategory" value="Golden">
 							<!-- router selection content row -->
 							<div class="col-sm-12 col-md-4">
 								<div class="jf-form">

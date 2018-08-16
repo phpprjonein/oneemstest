@@ -51,7 +51,7 @@ switch ($command) {
         break;
     case 'mplsneighbors':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/11';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mpls_ldp_neighbour';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_mlps_ldp_neighbour';
         break;
     case 'bgpvsixroutes':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/17';
@@ -72,9 +72,9 @@ switch ($command) {
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/22';
         $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/twothsndbyteping';
         break;
-    case 'bgpvsixneighbors':
+    case 'bgpvsixneighbours':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/14';
-        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bgpv6_neighbor';
+        $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bgp_v6_neighbour';
         break;
     case 'bgpvfourneighbors':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/13';

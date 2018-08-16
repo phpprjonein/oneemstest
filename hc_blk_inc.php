@@ -281,8 +281,8 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bgpvsixneighbours"
-					name="bgpvsixneighbours" value="extract_bgpv6_neighbor"
-					<?php if(in_array('extract_bgpv6_neighbor', $_GET['category'])):?> checked="checked"
+					name="bgpvsixneighbours" value="extract_bgp_v6_neighbour"
+					<?php if(in_array('extract_bgp_v6_neighbour', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>IPV6 BGP Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

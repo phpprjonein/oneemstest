@@ -4224,6 +4224,7 @@ function update_login_api_rules($sso_flag, $username)
             }
         }
         
+        
         foreach ($resp_zones_result_arr as $key => $val) {
             foreach ($val as $dkey => $dval) {
                 if (count($dval['csr_hostnames']) > 0) {
@@ -4504,3 +4505,22 @@ function get_user_mylist_id_by_name($listname)
     }
 }
 
+function get_user_zone_list($username){
+    global $db2;
+    $sql = "SELECT * FROM userzones  where username = '".$username."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    
+    foreach ($resultset as $key => $val){
+        $output_callout_zone_list[] = $val['calloutzone'];
+    }
+    return $output_callout_zone_list;
+}
+
+function get_user_zone_deviceslist($calloutzones){
+    global $db2;
+    $sql = "SELECT * FROM userzones_devices  where calloutzone in ('".$calloutzones."')";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}

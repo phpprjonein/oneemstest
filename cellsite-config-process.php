@@ -121,18 +121,18 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $resetfile = 1;
     foreach ($_POST['loop'] as $key => $val) {
         $line = '';
-        if(empty($line) && $resetfile == 1){
+        foreach ($val as $linekey => $lineval) {
+            $line .= $lineval;
+        }
+        if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
+            $resetfile = 1;
+        }
+        if($filenameindex == 0 || $resetfile == 1 ){
             $file = fopen(getcwd() . "/upload/".$filenames[$filenameindex], "w");
             $filenameindex++;
             $resetfile = 0;
         }
-        foreach ($val as $linekey => $lineval) {
-            $line .= $lineval;
-        }
         fwrite($file, $line . "\n");
-        if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
-            $resetfile = 1;
-        }
     }
     fclose($file);
     $zipname = 'upload/file.zip';

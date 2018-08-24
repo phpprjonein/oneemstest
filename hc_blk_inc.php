@@ -139,7 +139,7 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="devdetmdl-cellsite.php?commandname=twothsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-    
+   // print_r($output['twothsndbyteping']);
     $color = ($output['twothsndbyteping']['twothsndbyteping']['R'] == 0) ? 'green' : 'red';
     $display = "<span style='color:" . $color . "'>" . $output['twothsndbyteping']['twothsndbyteping']['message'] . '</span>';
     echo $display;
@@ -233,7 +233,6 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="devdetmdl-cellsite.php?commandname=mplsinterfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-    
     $color = ($output['mplsinterfaces']['extract_mpls_interfaces']['mplsinterfaces']['R'] == 0) ? 'green' : 'red';
     $display = "<span style='color:" . $color . "'>" . $output['mplsinterfaces']['extract_mpls_interfaces']['mplsinterfaces']['message'] . '</span>';
     echo $display;

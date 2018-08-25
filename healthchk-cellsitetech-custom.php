@@ -31,8 +31,12 @@ if (count($_GET['category']) > 0) {
     /* Custom HealthCheck API API Call */
     $devicetype = 'ios';
     $url_final = 'http://10.134.179.82:8085/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
+    //$url_final = 'http:///njbboemsda3v.nss.vzwnet.com:8085/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/custom/' . $deviceid . '/' . $category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/1,2,3';
+   $filename = 'customhealthcheck';
+     $msg = $url_final;
+   logToFile($filename, $msg);
     $output = json_decode(sendPostData($url_final), true);
     /*
      * $output = '{
@@ -52,9 +56,10 @@ if (count($_GET['category']) > 0) {
      */
     // $output = json_decode($output, 1);
 }
+//print_r($output);
 $healthchktype = 'Custom';
 // $result = select_healthchk_info($deviceid);
-if (! in_array('extract_version_config', $_GET['category']) || ! isset($output['iosversion'])) {
+if (! in_array('extract_version_ios', $_GET['category']) || ! isset($output['iosversion'])) {
     $output['iosversion'] = array(
         'R' => '',
         'message' => ''
@@ -78,7 +83,7 @@ if (! in_array('extract_buffers', $_GET['category']) || ! isset($output['buffers
         'message' => ''
     );
 }
-if (! in_array(16, $_GET['category']) || ! isset($output['bootstatement'])) {
+if (! in_array('extract_show_running_config', $_GET['category']) || ! isset($output['bootstatement'])) {
     $output['bootstatement'] = array(
         'R' => '',
         'message' => ''
@@ -90,25 +95,25 @@ if (! in_array('extract_show_platform', $_GET['category']) || ! isset($output['p
         'message' => ''
     );
 }
-if (! in_array(4, $_GET['category']) || ! isset($output['environmental'])) {
+if (! in_array('extract_alarms', $_GET['category']) || ! isset($output['environmental'])) {
     $output['environmental'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(3, $_GET['category']) || ! isset($output['configregister'])) {
+if (! in_array('extract_version_config', $_GET['category']) || ! isset($output['configregister'])) {
     $output['configregister'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array('interfacecounters', $_GET['category']) || ! isset($output['interfacecounters'])) {
+if (! in_array('extract_count_interfaces', $_GET['category']) || ! isset($output['interfacecounters'])) {
     $output['interfacecounters'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(22, $_GET['category']) || ! isset($output['twothsndbyteping'])) {
+if (! in_array('twothsndbyteping', $_GET['category']) || ! isset($output['twothsndbyteping'])) {
     $output['twothsndbyteping'] = array(
         'R' => '',
         'message' => ''
@@ -132,7 +137,7 @@ if (! in_array('extract_show_vrf', $_GET['category']) || ! isset($output['vrfsta
         'message' => ''
     );
 }
-if (! in_array('extract_count_interfaces', $_GET['category']) || ! isset($output['interfacestates'])) {
+if (! in_array('extract_show_brief', $_GET['category']) || ! isset($output['interfacestates'])) {
     $output['interfacestates'] = array(
         'R' => '',
         'message' => ''
@@ -150,14 +155,15 @@ if (! in_array('extract_mlps_interfaces', $_GET['category']) || ! isset($output[
         'message' => ''
     );
 }
+//if (! in_array('extract_bgpv4_neighbour', $_GET['category']) || ! isset($output['bgpvfourneighbors'])) {
 if (! in_array('extract_bgpv4_neighbour', $_GET['category']) || ! isset($output['bgpvfourneighbors'])) {
     $output['bgpvfourneighbors'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(19, $_GET['category']) || ! isset($output['mplsneighbors'])) {
-    $output['ran'] = array(
+if (! in_array('extract_mlps_ldp_neighbour', $_GET['category']) || ! isset($output['mplsneighbors'])) {
+    $output['mplsneighbors'] = array(
         'R' => '',
         'message' => ''
     );
@@ -168,13 +174,20 @@ if (! in_array(11, $_GET['category']) || ! isset($output['configregister'])) {
         'message' => ''
     );
 }
-if (! in_array(14, $_GET['category']) || ! isset($output['bgpvsixneighbours'])) {
+if (! in_array('extract_bgp_v6_neighbour', $_GET['category']) || ! isset($output['bgpvsixneighbours'])) {
     $output['bgpvsixneighbours'] = array(
         'R' => '',
         'message' => ''
     );
 }
-if (! in_array(17, $_GET['category']) || ! isset($output['bgpvsixroutes'])) {
+
+if (! in_array('extract_show_ip_bgp_vpnv4_vrf_ran', $_GET['category']) || ! isset($output['ran'])) {
+    $output['ran'] = array(
+        'R' => '',
+        'message' => ''
+    );
+}
+if (! in_array('extract_bgpv6_routes', $_GET['category']) || ! isset($output['bgpvsixroutes'])) {
     $output['bgpvsixroutes'] = array(
         'R' => '',
         'message' => ''

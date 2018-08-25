@@ -57,9 +57,10 @@ switch ($command) {
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/17';
         $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bgpv6_routes';
         break;
-    case 'show-running-config-|-i-boot':
+  /*  case 'show-running-config-|-i-boot':
         $url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/16';
         break;
+  */
     case 'cpuutilization':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/1';
         $url = 'http://10.134.179.82:8085/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_process_cpu';

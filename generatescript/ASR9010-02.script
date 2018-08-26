@@ -1,0 +1,32 @@
+!!!!!! ASR9010-02 !!!!!!!
+
+ipv4 access-list LOOPBACKS
+ 10 permit ipv4   any
+!
+interface TenGigE0/X/0/Y.ZZZZ
+ description Connection to <CSR CLLI>  - <sitename>
+ bandwidth 
+ service-policy output 
+ ipv4 address /31
+ load-interval 30
+ encapsulation dot1q 
+!
+router static
+  /32 GigabitEthernet0/X/0/XX.YYY   bfd fast-detect minimum-interval 100 multiplier 3
+router bgp 
+ neighbor 
+  remote-as 
+  password encrypted 
+  description LTE V6 peering to  - <cell site name>
+  update-source Loopback0
+  address-family vpnv4 unicast
+   route-reflector-client
+   route-policy ADVERTISE_TO_CELL out
+!
+ vrf LTE
+   network ::/64
+!
+ xconnect group EBH-EOAM
+  p2p VLAN
+   interface GigabitEthernet0/X/0/XX.YYYY
+   neighbor ipv4 ^71234@34)(!@# pw-id fu

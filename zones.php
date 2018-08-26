@@ -56,7 +56,7 @@ if (isset($devicename_arr)) {
                 $current_list_id = $recordset[0]['listidmaxval'];
             }
         } else {
-            $listid[$key] = $current_list_id + 1;
+            $listid[$key] = $current_list_id = $current_list_id + 1;
         }
         foreach ($val as $keyd => $vald) {
             $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];

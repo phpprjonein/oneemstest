@@ -44,24 +44,17 @@ if (isset($devicename_arr)) {
     $oc = 1;
     $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`, `listtype`) VALUES';
     
-    $current_list_id = 0;
+    $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE userid = ".$_SESSION['userid']." and  listid <> 0 ";
+    $db2->query($sql);
+    $recordset = $db2->resultset();
+    $listid = $recordset[0]['listidmaxval'];
+    
     foreach ($records_to_update_zones as $key => $val) {
-        if ($current_list_id == 0) {
-            $listid[$key] = get_user_mylist_id_by_name($key);
-            if (empty($listid[$key])) {
-                $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
-                $db2->query($sql);
-                $recordset = $db2->resultset();
-                $listid[$key] = $recordset[0]['listidmaxval'];
-                $current_list_id = $recordset[0]['listidmaxval'];
-            }
-        } else {
-            $listid[$key] = $current_list_id = $current_list_id + 1;
-        }
+        $listid++;
         foreach ($val as $keyd => $vald) {
             $device_info[$vald['devicename']] = empty($device_info[$vald['devicename']]) ? 0 : $device_info[$vald['devicename']];
             if (! empty($device_info[$vald['devicename']])) {
-                $dsql .= "('" . $device_info[$vald['devicename']] . "'," .$_SESSION['userid'] . ",'" . $listid[$key] . "','" . $key ."','cz'),";
+                $dsql .= "('" . $device_info[$vald['devicename']] . "'," .$_SESSION['userid'] . ",'" . $listid . "','" . $key ."','cz'),";
                 $oc ++;
             }
         }

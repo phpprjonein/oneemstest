@@ -49,6 +49,15 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="os-repository.php">Software Upload</a>
 						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle  <?php print activemenu(array("generate-pre-script.php")); ?>"
+						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Configuration</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate
+								Script - Golden </a>
+						</div></li>
+							
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>
             <li class="nav-item"><a
@@ -65,8 +74,8 @@
 							<a class="dropdown-item" href="scripting.php">Load Template</a>
 							<a class="dropdown-item" href="generate-pre-script.php">Generate
 								Script </a>
-							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate
-								Script - Golden </a>
+							<!-- <a class="dropdown-item" href="golden-generate-pre-script.php">Generate
+								Script - Golden </a>-->
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
@@ -122,8 +131,8 @@
 							<a class="dropdown-item" href="scripting.php">Load Template</a> 
 							<a class="dropdown-item" href="generate-pre-script.php">Generate
 								Script </a>
-							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate
-								Script - Golden </a>
+							<!-- <a class="dropdown-item" href="golden-generate-pre-script.php">Generate
+								Script - Golden </a> -->
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->

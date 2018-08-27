@@ -241,6 +241,10 @@ echo generate_site_breadcrumb($values);
                 if (count($newarr[$k]) == 1) {
                     $output .= '<div class="form-group">';
                     if ($newarr[$k][0]["editable"] == 0) {
+                        if(strpos($newarr[$k][0]["elemvalue"], 'ASR9010-01') || strpos($newarr[$k][0]["elemvalue"], 'ASR9010-02')){
+                            $output .= '<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 alert alert-secondary panel-heading-lstmgmt"><b>'.$newarr[$k][0]["elemvalue"].'</b></div>';
+                        }
+                        
                         $output .= "<input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][0]["elemvalue"] . "'><span class='form-non-editable-fields'><label class='readonly'>" . $newarr[$k][0]["elemvalue"] . "</label></span>";
                     } else {
                         $pink_box_size = strlen($result[$newarr[$k][0]["tabname"]][$_POST['f11'] . $newarr[$k][0]["elemvalue"]]);

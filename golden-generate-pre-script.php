@@ -10,15 +10,12 @@ if (isset($_GET['clear'])) {
 }
 
 user_session_check();
-check_user_authentication(array(
-        8
-)); // cellsite tech type user
 
 if ($_SESSION['userlevel'] == 1)
     include_once ('config/session_check_cellsite_tech.php');
 else if ($_SESSION['userlevel'] == 2)
     include_once ('config/session_check_switch_tech.php');
-
+        
 $page_title = 'OneEMS';
 
 // page logging

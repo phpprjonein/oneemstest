@@ -252,9 +252,25 @@ write_log($mesg);
 						</div>
 						<div class="row">
                     		<?php
-                    $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+                    $vars['usrvars'] = golden_configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+                    
+                    
+                    $predevice_series = '';
                     foreach ($vars['usrvars'] as $key => $val) {
-                        ?>    
+                        ?>   
+                        	<?php 
+                        	       
+                        	       
+                        	       if($predevice_series != $val['deviceseries']){    
+                        	           $predevice_series = $val['deviceseries'];
+                        	           ?>
+                        	      		<div
+								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 alert alert-secondary panel-heading-lstmgmt"><b><?php echo $val['deviceseries']; ?></b></div>
+                        	      			            
+							<?php }else{
+							         $predevice_series = $val['deviceseries'];
+							      }
+                        	?> 
                             <div
 								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
 								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>

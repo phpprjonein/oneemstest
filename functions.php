@@ -4498,6 +4498,20 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
  *
  * @return unknown
  */
+function golden_configtemplate_elemvalue_pos_script($posttabname, $field, $value)
+{
+    global $db2;
+    
+    $sql = "SELECT distinct(" . $field . ")," . $value . ", deviceseries  FROM " . $posttabname . $whr . " order by deviceseries";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @return unknown
+ */
 function configtemplate_elemvalue_pos_script_switch_name($switch_name)
 {
     global $db2;

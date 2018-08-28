@@ -39,7 +39,7 @@ write_log($mesg);
 	<?php include_once ('menu.php'); ?>
 		    <?php
     $values = array(
-        'Generate Script' => '#'
+        'Generate Script - Modification' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>

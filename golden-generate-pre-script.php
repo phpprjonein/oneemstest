@@ -39,7 +39,7 @@ write_log($mesg);
 	<?php include_once ('menu.php'); ?>
 		    <?php
     $values = array(
-        'Generate Script' => '#'
+        'Generate Script - Golden' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>
@@ -80,9 +80,9 @@ write_log($mesg);
 											id="select_purpose" class="form-control custom-select"
 											id="f4" name="f4" data-rule-required="true">
 											<option value="">- SELECT Purpose -</option>
-				<?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
-				  <option value="<?php echo $val['desc'];?>"><?php echo $val['desc']; ?></option>
-				 <?php }; ?>
+				<?php //foreach($configtmpddwndata['result'] as $key => $val) {;?>
+				  <option value="<?php //echo $val['desc'];?>"><?php //echo $val['desc']; ?></option>
+				 <?php //}; ?>
               </select> -->
 									</div>
 									<!-- /select purpose options -->

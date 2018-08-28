@@ -294,8 +294,10 @@ echo generate_site_breadcrumb($values);
 												<input type="hidden" name="tmplcategory" value="<?php echo $_POST['tmplcategory'];?>">
 												<button type="submit" value="Download Script" name="action"
 													class="btn btn-primary btn-lg">DOWNLOAD</button>
+													<?php if($_POST['tmplcategory'] != 'Golden'){ ?>
 												<button type="submit" value="Execute Script" name="action"
 													class="m-2 btn btn-primary btn-lg">Execute</button>
+													<?php } ?>
 											</div>
 										</form>
 									</div>

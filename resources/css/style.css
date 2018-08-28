@@ -10591,5 +10591,5 @@ div.fixed a:hover {
     line-height: 1.25rem;
   }
 }
-#cellsitech-generate-script .form-control-plaintext{padding:6px 28px 6px 12px;}
+#cellsitech-generate-script .form-control-plaintext, #cellsitech-config  .form-control-plaintext{padding:6px 28px 6px 12px;}
 /*# sourceMappingURL=../resources/css/style.map */

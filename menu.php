@@ -43,11 +43,11 @@
 						class="nav-link <?php print activemenu("login-impersonate.php"); ?>"
 						href="login-impersonate.php">Impersonate User</a></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("scripting.php", "cellsitetech-configuration.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("golden-scripting.php", "cellsitetech-configuration.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Configuration</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="scripting.php">Load Template</a>
+						<a class="dropdown-item" href="golden-scripting.php">Load Template - Golden</a>
 						</div></li>	
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","admin-user-revalidate.php")); ?>"
@@ -65,10 +65,11 @@
 						class="nav-link <?php print activemenu("cellsitetech-restorebackup.php"); ?>"
 						href="cellsitetech-restorebackup.php">Backup</a></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("generate-pre-script.php", "generate-post-script.php", "batch-page.php", "batch-tracking-devices.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("modification-scripting.php","generate-pre-script.php", "generate-post-script.php", "batch-page.php", "batch-tracking-devices.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Configuration</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="modification-scripting.php">Load Template - Modification</a>
 							<a class="dropdown-item" href="generate-pre-script.php">Generate
 								Script </a>
 							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate
@@ -121,10 +122,11 @@
 						class="nav-link <?php print activemenu("switchtech-restorebackup.php"); ?>"
 						href="switchtech-restorebackup.php">Backup</a></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("generate-pre-script.php", "batch-tracking-devices.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("modification-scripting.php","generate-pre-script.php", "batch-tracking-devices.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Configuration</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="modification-scripting.php">Load Template - Modification</a>
 							<a class="dropdown-item" href="generate-pre-script.php">Generate
 								Script </a>
 							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate

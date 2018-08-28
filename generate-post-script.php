@@ -226,7 +226,7 @@ echo generate_site_breadcrumb($values);
                 $result['usrvars'][$_POST['f11'] . $val['usrvarname']] = $_POST[$value];
             }
             
-            $vars['marketvars'] = configtemplate_elemvalue_pos_script('marketvars', 'mvarname', 'mvarval');
+            $vars['marketvars'] = configtemplate_elemvalue_pos_script_market('marketvars', 'mvarname', 'mvarval', $_POST['f11']);
             foreach ($vars['marketvars'] as $key => $val) {
                 $result['marketvars'][$_POST['f11'] . $val['mvarname']] = $val['mvarval'];
             }

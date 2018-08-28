@@ -4498,6 +4498,27 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
  *
  * @return unknown
  */
+function configtemplate_elemvalue_pos_script_market($posttabname, $field, $value, $switch_name)
+{
+    global $db2;
+    $sql = "SELECT GROUP_CONCAT(DISTINCT(CONCAT('''', (region), '''' ))) as region FROM `nodes` WHERE switch_name like '".$switch_name."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    if(isset($resultset[0]['region']) && !empty($resultset[0]['region'])){
+        $whr = " where region in (".$resultset[0]['region'].")";
+        $sql = "SELECT distinct(" . $field . ")," . $value . "  FROM " . $posttabname . $whr . " order by " . $field;
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        return $resultset;
+    }
+}
+
+
+
+/**
+ *
+ * @return unknown
+ */
 function golden_configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 {
     global $db2;

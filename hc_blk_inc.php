@@ -132,16 +132,16 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="twothsndbyteping"
-					name="twothsndbyteping" value="twothsndbyteping"
-					<?php if(in_array('twothsndbyteping', $_GET['category'])):?> checked="checked"
+					name="twothsndbyteping" value="extract_ping"
+					<?php if(in_array('extract_ping', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>2000 Byte Ping</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="devdetmdl-cellsite.php?commandname=twothsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
    // print_r($output['twothsndbyteping']);
-    $color = ($output['twothsndbyteping']['twothsndbyteping']['R'] == 0) ? 'green' : 'red';
-    $display = "<span style='color:" . $color . "'>" . $output['twothsndbyteping']['twothsndbyteping']['message'] . '</span>';
+    $color = ($output['twothsndbyteping']['R'] == 0) ? 'green' : 'red';
+    $display = "<span style='color:" . $color . "'>" . $output['twothsndbyteping']['message'] . '</span>';
     echo $display;
     ?>
 </td>
@@ -233,8 +233,9 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="devdetmdl-cellsite.php?commandname=mplsinterfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-    $color = ($output['mplsinterfaces']['extract_mpls_interfaces']['mplsinterfaces']['R'] == 0) ? 'green' : 'red';
-    $display = "<span style='color:" . $color . "'>" . $output['mplsinterfaces']['extract_mpls_interfaces']['mplsinterfaces']['message'] . '</span>';
+    //$color = ($output['mplsinterfaces']['extract_mpls_interfaces']['mplsinterfaces']['R'] == 0) ? 'green' : 'red';
+	$color = ($output['mplsinterfaces']['R'] == 0) ? 'green' : 'red';
+    $display = "<span style='color:" . $color . "'>" . $output['mplsinterfaces']['message'] . '</span>';
     echo $display;
     ?>
 </td>
@@ -267,7 +268,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="mplsneighbors" name="mplsneighbors"
-					value="extract_mpls_ldp_neighbour" <?php if(in_array('extract_mpls_ldp_neighbour', $_GET['category'])):?>
+					value="extract_mlps_ldp_neighbour" <?php if(in_array('extract_mlps_ldp_neighbour', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

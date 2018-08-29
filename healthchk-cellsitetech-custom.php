@@ -149,7 +149,7 @@ if (! in_array('extract_xconnect_all', $_GET['category']) || ! isset($output['xc
         'message' => ''
     );
 }
-if (! in_array('extract_mlps_interfaces', $_GET['category']) || ! isset($output['mplsinterfaces'])) {
+if (! in_array('extract_mpls_interfaces', $_GET['category']) || ! isset($output['mplsinterfaces'])) {
     $output['mplsinterfaces'] = array(
         'R' => '',
         'message' => ''
@@ -168,12 +168,14 @@ if (! in_array('extract_mlps_ldp_neighbour', $_GET['category']) || ! isset($outp
         'message' => ''
     );
 }
+/*
 if (! in_array(11, $_GET['category']) || ! isset($output['configregister'])) {
     $output['mplsneighbors'] = array(
         'R' => '',
         'message' => ''
     );
 }
+*/
 if (! in_array('extract_bgp_v6_neighbour', $_GET['category']) || ! isset($output['bgpvsixneighbours'])) {
     $output['bgpvsixneighbours'] = array(
         'R' => '',

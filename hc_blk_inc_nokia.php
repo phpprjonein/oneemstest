@@ -9,7 +9,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Software Version </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=iosversion&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=iosversion&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['iosversion']['R'] == 0) ? 'green' : 'red';
@@ -24,7 +24,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>CPU Utilization</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=cpuutilization&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=cpuutilization&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['cpuutilization']['R'] == 0) ? 'green' : 'red';
@@ -39,7 +39,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Free Memory</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=freememory&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=freememory&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['freememory']['R'] == 0) ? 'green' : 'red';
@@ -58,7 +58,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Boot Statement</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=bootstatement&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=bootstatement&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['bootstatement']['R'] == 0) ? 'green' : 'red';
@@ -73,7 +73,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Platform </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['platform']['R'] == 0) ? 'green' : 'red';
@@ -88,7 +88,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Environmental</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=environment&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=environment&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['environmental']['R'] == 0) ? 'green' : 'red';
@@ -108,7 +108,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Interface Counters</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=interfacecounters&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=interfacecounters&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['interfacecounters']['R'] == 0) ? 'green' : 'red';
@@ -123,7 +123,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>BFD Sessions</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=bfdsession&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=bfdsession&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['bfdsession']['R'] == 0) ? 'green' : 'red';
@@ -138,7 +138,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Log Entries</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=logentries&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=logentries&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     if (isset($output['logentries']['buffer_logging']['R'])) {
@@ -169,7 +169,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Interface State</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=interfacestates&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=interfacestates&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['interfacestates']['R'] == 0) ? 'green' : 'red';
@@ -184,7 +184,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Xconnect</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=xconnect&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=xconnect&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['xconnect']['R'] == 0) ? 'green' : 'red';
@@ -199,7 +199,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Interfaces</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsinterfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsinterfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsinterfaces']['R'] == 0) ? 'green' : 'red';
@@ -216,7 +216,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsneighbors']['R'] == 0) ? 'green' : 'red';
@@ -231,7 +231,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Routes Status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsneighbors']['R'] == 0) ? 'green' : 'red';
@@ -246,7 +246,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Static Routes</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsneighbors']['R'] == 0) ? 'green' : 'red';
@@ -263,7 +263,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>Service Service Using</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsneighbors']['R'] == 0) ? 'green' : 'red';
@@ -278,7 +278,7 @@
 					checked="checked" <?php endif;?>></td>
 				<td><b>ARP</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>"><i
+					href="devdetmdl-cellsite.php?commandname=mplsneighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
     
     $color = ($output['mplsneighbors']['R'] == 0) ? 'green' : 'red';

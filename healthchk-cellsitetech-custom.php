@@ -149,7 +149,7 @@ if (! in_array('extract_xconnect_all', $_GET['category']) || ! isset($output['xc
         'message' => ''
     );
 }
-if (! in_array('extract_mlps_interfaces', $_GET['category']) || ! isset($output['mplsinterfaces'])) {
+if (! in_array('extract_mpls_interfaces', $_GET['category']) || ! isset($output['mplsinterfaces'])) {
     $output['mplsinterfaces'] = array(
         'R' => '',
         'message' => ''

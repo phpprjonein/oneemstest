@@ -132,8 +132,8 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="twothsndbyteping"
-					name="twothsndbyteping" value="twothsndbyteping"
-					<?php if(in_array('twothsndbyteping', $_GET['category'])):?> checked="checked"
+					name="twothsndbyteping" value="extract_ping"
+					<?php if(in_array('extract_ping', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>2000 Byte Ping</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -268,7 +268,7 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="mplsneighbors" name="mplsneighbors"
-					value="extract_mpls_ldp_neighbour" <?php if(in_array('extract_mpls_ldp_neighbour', $_GET['category'])):?>
+					value="extract_mlps_ldp_neighbour" <?php if(in_array('extract_mlps_ldp_neighbour', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>MPLS Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"

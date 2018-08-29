@@ -70,8 +70,9 @@
 						aria-haspopup="true" aria-expanded="false">Configuration</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="modification-scripting.php">Load Template - Modification</a>
-							<a class="dropdown-item" href="generate-pre-script.php">Generate
-								Script </a>
+							<!--
+						      <a class="dropdown-item" href="generate-pre-script.php">Generate Script </a>
+						    -->
 							<a class="dropdown-item" href="golden-generate-pre-script.php">Generate
 								Script - Golden </a>
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate

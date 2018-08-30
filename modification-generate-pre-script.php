@@ -70,11 +70,11 @@ write_log($mesg);
             $configtmpddwndata = getconfigtempldpdwntbl('configscriptpurpose');
             ?>
             <div class="form-group f4 required" data-fid="f4">
-										<label class="control-label" for="f4">Select Purpose</label>										
-										<input
-											type="deviceOS" class="form-control-plaintext form-control"
-											id="select_purpose" name="f4" value="Modification" placeholder="Modification"
-											readonly>
+										<label class="control-label" for="f4">Select Purpose</label>
+										              <select class="form-control custom-select" id="select_purpose" name="f4"
+											data-rule-required="true" disabled>
+											<option value="Modification">Modification</option>
+										</select>
 									</div>
 									<!-- /select purpose options -->
 

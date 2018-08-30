@@ -113,7 +113,7 @@ if (! in_array('extract_count_interfaces', $_GET['category']) || ! isset($output
         'message' => ''
     );
 }
-if (! in_array('twothsndbyteping', $_GET['category']) || ! isset($output['twothsndbyteping'])) {
+if (! in_array('extract_ping', $_GET['category']) || ! isset($output['twothsndbyteping'])) {
     $output['twothsndbyteping'] = array(
         'R' => '',
         'message' => ''

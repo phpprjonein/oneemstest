@@ -4136,9 +4136,9 @@ function update_login_api_rules($sso_flag, $username)
         3,
         4
     ))) {
-        //$output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
      	//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
-		$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+		//$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
         $swt_mswitch_arr = array();
@@ -4389,9 +4389,9 @@ function update_login_api_rules($sso_flag, $username)
         6,
         7
     ))) {
-        //$output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username=' . $username);
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username=' . $username);
 		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
-		 $output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
+		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
         for ($i = 0; $i < count($resp_result_arr['switches']); $i ++) {

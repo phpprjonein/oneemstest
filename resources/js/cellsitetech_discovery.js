@@ -467,7 +467,7 @@ $(document).ready(function() {
 	        			myModal.find('.modal-body').css('min-height','150px');
 	        			myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
 	        			myModal.modal('show'); 
-	        			$.post( "api-test-manual-device-disc.php", { type: "api-ajax",'ipaddress':$('#v-pills-manual #inputDeviceIPaddress').val(),  
+	        			$.post( "api-test-manual-device-disc.php", { type: "api-ajax",'ip-address':$('#v-pills-manual #inputDeviceIPaddress').val(),  
 	        			}).done(function( data ) {
 	        				$('#myModal .modal-body').html(data);	
 	        			}); 

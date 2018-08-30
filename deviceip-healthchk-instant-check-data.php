@@ -34,6 +34,7 @@ ini_set('display_errors', 1);
         $device_details = loaddeviceidfromdeviceip($_GET['deviceip']);
         $deviceid = $device_details['id'];
     }
+    if(isset($deviceid) && is_numeric($deviceid)) {
     $device_details['nodeVersion'] = str_replace('.','-',str_replace(')','-',str_replace('(','-',$device_details['nodeVersion'])));
     $devicetype = 'ios';
     $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
@@ -43,6 +44,7 @@ ini_set('display_errors', 1);
     $lastupdated = date('Y-m-d H:i:s');
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
     $_SESSION['deviceidcs'] = $deviceid;
+    }
     ?>
 <div class="panel-body">
 	<table id="example" class="display" cellspacing="0" width="100%">
@@ -62,6 +64,7 @@ ini_set('display_errors', 1);
 			</tr>
 		</thead>
 		<tbody>
+			<?php if(isset($deviceid) && is_numeric($deviceid)) { ?>
 			<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown"
 				role="row">
 				<td class=" details-control" title="Click here for health check"></td>
@@ -101,6 +104,7 @@ if (load_node_vendor_id_from_deviceid($deviceid) == 1) {
 ?>
 </div></td>
 			</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 </div>

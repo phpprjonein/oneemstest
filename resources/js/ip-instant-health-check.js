@@ -47,7 +47,9 @@ $(document).ready(function() {
 		            },
                     success: function(resdata){
                         $('#instant-health-check .panel-body-wrap').html(resdata);
-                        var table =  $('#example').DataTable({"paging": false, "searching": false,"ordering": false,"info": false});
+                        var table =  $('#example').DataTable({"paging": false, "searching": false,"ordering": false,"info": false, "oLanguage": {
+                            "sEmptyTable":     "Device does not exist"
+                        }});
                     }
                 });
       		}

@@ -167,15 +167,15 @@ write_log($mesg);
 
 
 									<!-- select region options -->
-			<?php  $configtmpddwndata = generic_get_region(); ?>
+			<?php  //$configtmpddwndata = generic_get_region(); ?>
 			<!--
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
               <select id="select_region" class="form-control custom-select" name="f11" data-rule-required="true">
               	<option value="">- SELECT Region -</option>
-			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
-                 <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option>
-			   <?php }; ?>
+			  <?php //foreach($configtmpddwndata['result'] as $key => $val) {;?>
+                 <option value="<?php //echo $val['region'];?>"><?php //echo $val['region']; ?></option>
+			   <?php //}; ?>
               </select>
             </div>
 			-->

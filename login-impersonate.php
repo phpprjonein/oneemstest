@@ -27,7 +27,7 @@ $page_title = 'OneEMS';
 </head>
 <body class="hold-transition skin-blue sidebar-mini ownfont">
 	<!-- Modal HTML -->
-	<div class="container-fluid admin-only-login">
+	<div class="container-fluid">
         <?php include ('menu.php'); ?>
         <div class="content container-fluid" id="login-impersonate">
 

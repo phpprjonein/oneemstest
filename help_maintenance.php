@@ -68,13 +68,11 @@ echo generate_site_breadcrumb($values);
 											Details View</a>
 									</nav>
 									<a class="nav-link" href="help_backup.php">BACKUP</a> <a
-										class="nav-link help active" href="help_config.php">CONFIGURATION</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
-											Template</a> <a class="nav-link ml-3 my-1"
-											href="help_config.php#item-4-2">Generate Script</a> <a
-											class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch
-											Tracking</a>
+										class="nav-link" href="help_config.php">CONFIGURATION</a>
+										<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -103,6 +101,12 @@ echo generate_site_breadcrumb($values);
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-2">Software Upload</a>
+                                    </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
@@ -130,10 +134,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
-							<p>A user can define parameters for a device series type, vendor
-								type, operating system versions (including the ability to set
-								minimum build and/or patch versioning of a chosen OS), even set
-								dates for software update activation.</p>
+							<p>A user can define parameters for a device series type, file name, the destination for update file application and the ability to set minimum build and/or patch versioning of a chosen OS.</p>
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> This group of pages within the
 								OneEMS application is only accesible by Cell Site Technicians.

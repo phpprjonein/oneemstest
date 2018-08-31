@@ -372,7 +372,7 @@ write_log($mesg);
 							<area name="Michigan/Indiana/KY" shape="poly"
 								coords="402,142,421,143,426,144,433,140,438,136,437,137,436,131,441,125,441,119,438,113,437,109,432,109,430,114,427,115,426,115,424,112,428,109,429,103,430,97,428,97,428,93,425,91,421,91,420,89,416,88,412,89,411,91,412,93,410,94,410,100,407,101,407,98,404,97,404,101,403,106,401,108,400,114,401,122,405,127,405,132,402,141,404,137,402,142,410,143,417,145,417,140"
 								href="#" class="map_region" data-market="MichiganIndianaKY"
-								alt="Michigan/Indiana/KY" title="Michigan/Indiana/KY"
+								alt="MichiganIndianaKY" title="Michigan/Indiana/KY"
 								OnMouseOver="window.status='Michigan/Indiana/KY'; return true"
 								OnMouseOut="window.status=''; return true">
 
@@ -386,7 +386,7 @@ write_log($mesg);
 							<!-- Michigan/Indiana/KY  -->
 							<area name="Michigan/Indiana/KY" shape="poly"
 								coords="392,153,396,152,399,155,404,151,403,159,407,156,411,155,411,152,416,152,416,148,420,147,422,175,420,176,423,181,425,184,431,184,437,185,440,184,444,188,447,193,451,195,453,196,446,209,398,216,398,210,393,209,393,216,381,218,385,211,391,205,396,191,391,189,391,186,397,187,395,180,395,167,393,154,393,154"
-								href="#" class="map_region" data-market="Michigan/IndianaKY"
+								href="#" class="map_region" data-market="Michigan/Indiana/KY"
 								alt="Michigan/Indiana/KY" title="Michigan/Indiana/KY"
 								OnMouseOver="window.status='Michigan/Indiana/KY'; return true"
 								OnMouseOut="window.status=''; return true">
@@ -433,7 +433,7 @@ write_log($mesg);
           <?php
         $str_marketname = $marketname;
         $switch_device_name = $_SESSION['sel_switch_name'];
-        
+
         // Function call to get Switch name assigned for the user
         /*
          * $switch_list = get_switchlist_all_market($_SESSION['userid']);
@@ -441,7 +441,7 @@ write_log($mesg);
          * $switch_device_name = $switch_list['result'][0]['switch_name'];
          * }
          */
-        
+
         if (! isset($str_marketname)) {
             ?>
               <!-- Displays user assigned switch name -->
@@ -465,7 +465,7 @@ write_log($mesg);
           <a class="dropdown-item" href="#"><?php echo $rvalue; ?></a>
           <?php
           endif;
-                    
+
                 endforeach
                 ;
                 ?>
@@ -497,7 +497,7 @@ write_log($mesg);
           <a class="dropdown-item" href="#"><?php echo $srvalue['switch_name']; ?></a>
           <?php
           endif;
-                    
+
                 endforeach
                 ;
                 ?>
@@ -518,7 +518,7 @@ write_log($mesg);
 							<div id="sw_result_without_map" class="" style='<?php echo ($show_map_flag) ? "display: block" : "display: block" ?>; '>
           <?php
         // if(isset($switch_device_name) && $switch_device_name != '' ) {
-        
+
         if (! isset($str_marketname)) { // IF No Market is selected
             $list_type = 'user';
             // Get Routersfor users assigned switch

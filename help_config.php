@@ -24,7 +24,7 @@ write_log($mesg);
 <!DOCTYPE html>
 <html>
 <head>
-   <?php include_once("includes.php");  ?>
+    <?php include_once("includes.php");  ?>
    <script
 	src="resources/js/cellsitetech_config.js?t=<?php echo date('his'); ?>"></script>
 </head>
@@ -38,40 +38,36 @@ write_log($mesg);
     echo generate_site_breadcrumb($values);
     ?>
 
-        <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 		<div class="content">
-			<!-- Main content -->
+<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-					<!-- table manipulation row -->
+<!-- table manipulation row -->
 					<div
 						class="form-row align-items-center justify-content-between border"></div>
-					<!-- /table maniupulation row -->
-
-					<!-- help guide content row -->
+<!-- /table maniupulation row -->
+<!-- help guide content row -->
 					<div class="row">
-
-						<!-- help guide navigation -->
+<!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
+							<!-- <?php include_once ('menu_help.php'); ?> -->
 							<nav id="navbar-help" class="navbar navbar-light bg-light">
 								<nav class="nav nav-pills flex-column">
 									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a> <a
-										class="nav-link" href="help_network_elements.php">NETWORK
-										ELEMENTS</a>
+                                    <a class="nav-link" href="help.php">GETTING STARTED</a>
+                                    <a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_network_elements.php#item-2-2-1">List Management
-											Options</a> <a class="nav-link ml-3 my-1"
-											href="help_network_elements.php#item-2-3">Health Check
+										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
+                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check
 											Details View</a>
 									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a> <a
-										class="nav-link help active" href="#item-4">CONFIGURATION</a>
+                                    <a class="nav-link" href="help_backup.php">BACKUP</a>
+                                    <a class="nav-link" href="#item-4">CONFIGURATION</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="#item-4-1">Load Template</a>
-										<a class="nav-link ml-3 my-1" href="#item-4-2">Generate Script</a>
-										<a class="nav-link ml-3 my-1" href="#item-4-3">Batch Tracking</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -83,76 +79,76 @@ write_log($mesg);
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
 											href="help_discovery_results.php#item-6-1">Missed IP
-											Addresses</a> <a class="nav-link ml-3 my-1"
-											href="help_discovery_results.php#item-6-2">New IP Addresses</a>
+                                            Addresses</a>
+                                        <a class="nav-link ml-3 my-1"	href="help_discovery_results.php#item-6-2">New IP Addresses</a>
 										<a class="nav-link ml-3 my-1"
-											href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
+										href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
 										<a class="nav-link ml-3 my-1"
-											href="help_discovery_results.php#item-6-4">Manual Discovery</a>
+										href="help_discovery_results.php#item-6-4">Manual Discovery</a>
 									</nav>
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
-											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
-											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+                                        <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-1">Software Delivery</a>
+                                        <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-2">Scheduled Backup</a>
+                                        <a class="nav-link ml-3 my-1"
+										href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-2">Software Upload</a>
+                                    </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
 						</div>
-						<!-- /help guide navigation -->
-
-						<!-- help guide -->
-						<div class="col-md-9 col-sm-12 scrollspy-example"
-							data-spy="scroll" data-target="#navbar-help" data-offset="0">
+<!-- /help guide navigation -->
+<!-- help guide -->
+						<div class="col-md-9 col-sm-12 scrollspy-example" data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-4">CONFIGURATION</h4>
-							<p>This Dashboard consists of a file upload interface that allows a user to manage <b>Configuration Scripts</b> for any device within the OneEMS system. On this screen, a user can create a template name by filing out the fields below. The name will be automatically generated based on the options you select. This template name will be unique in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new name just created.</p>
+							<p>This Dashboard consists of an interface that allows a user to manage <b>Configuration Scripts</b> for any device within the OneEMS system.</p>
+							<p>On these screens, users can create templates and generate scripts by using a robust interface that allows a user to:
+                                <ul>
+                                    <li>Select the device series, version and other attributes associated with one  or more templates</li>
+                                    <li>Upload a .txt file containing static and variable details found in a  template</li>
+                                    <li>Associate autopopulation criteria for each variable in a template</li>
+                                    <li>Save templates to OneEMS for release deployment</li>
+                                    <li>Generate scripts based on previously saved templates</li>
+                                    <li>Download modification scripts to a local drive or USB or execute a script on one or more live CSR devices remotely</li>
+                                    <li>View the status of execution for multiple devices</li>
+                                </ul>
+							</p>
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> The ASR 920 series Routers for
 								the Great Lakes Region is provided as a default template. This
 								is the first Region available in the OneEMS system. Future
 								enhancements will permit users to select templates for other
 								Vendors, Markets and other filtering criteria.
+								<br>
+								<br>
+								Additionally, this Load Template process is slightly different for general users than it is for administrative users. Click <a href="#item-4-1-2"><b><i>here</i></b></a> for more information on how to load a template as an admin.
 							</p>
-							<h5 id="item-4-1">Load Template</h5>
-							<img src="resources/img/screenshot-config1.png" class="img-fluid"
+							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
+							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard
-									With Sample Values Selected</b></span>
+							<span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard	With Sample Values Selected</b></span>
+                            <p></p>
+                            <p>The name will be automatically generated based on the options you select. This template name will be unique in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new name just created.</p>
+							<p>To create a new template, a user starts with selecting categorization options for the template (shown in <b><i>FIG. 4.1</i></b>), then by uploading a new file from their computer by using the browse button (shown in <b><i>FIG. 4.1.2</i></b>).</p>
+							<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
+                            <p>To manage device scripts, a user can upload one from their hard drive.</p>
+                            <img src="resources/img/screenshot-load_template_mod3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1-1-1">
 							<p></p>
-							<p>To create a new template, a user can either start with:
-								<br />
-								- option A) default CISCO ASR920 config files (shown in <b><i>FIG. 4.1</i></b> on right) or
-								<br />
-								- option B) upload a new file from desktop by using browse button (shown in <b><i>FIG. 4.1</i></b> on left).</p>
-<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
-
-							<p>To manage device scripts, a user can upload one from their
-								hard drive. Doing so produces a form on the right in which a
-								user can edit values.</p>
+							<span class="font-italic"><b>FIG. 4.1.2 - File Upload</b></span>
+							<p></p>
 							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.
-								<br>
-								<b class="text-danger">NOTE:</b> Option B) The OneEMS application cannot
-								consume files that end in anything besides <b>.txt</b>
-								extensions. <br> <br> Additionally, editable fields <b>MUST</b>
-								be encapsulated by a hash ( <b>#</b> ) symbol. This symbol must
-								appear on both the left and right sides of an editable field.
-								Acceptable values within the encapsulated area are the letters
-								"X", "Y", "A", "B" or "C". These characters must be capitalized.
-								The OneEMS application recognizes strings configured in this way
-								as editable.
+								<b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that end in anything besides <b>.txt</b> extensions. <br> <br> Additionally, editable fields <b>MUST</b> be encapsulated by a hash ( <b>#</b> ) symbol. This symbol must appear on both the left and right sides of an editable field. Acceptable values within the encapsulated area are the letters "X", "Y", "A", "B" or "C". These characters must be capitalized. The OneEMS application recognizes strings configured in this way as editable.
 							</p>
-							<p>Once a user has either manipulated the default values in the
-								form on the right or changed the values of the script they have
-								uploaded, they can then download this edited script for
-								application on devices of their choosing.</p>
+							<p>Once a user has either manipulated the default values in the form on the right or changed the values of the script they have uploaded, they can then download this edited script for application on devices of their choosing.</p>
 							<p>Here is an example of a properly formatted script file:</p>
 							<div class="scroller border">
 								<samp>
@@ -835,17 +831,15 @@ event manager applet LOOP_GIG authorization bypass
 								</samp>
 							</div>
 							<p>&nbsp;</p>
-							<img src="resources/img/screenshot-config2.png" class="img-fluid"
-								alt="" data-toggle="modal" data-target="#screenshot-config2">
+							<img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.2 - Editable Configuration
-									Template</b></span>
+							<span class="font-italic"><b>FIG. 4.2 - Editable Configuration Template</b></span>
 							<p></p>
-							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.</p>
+							<!-- <p class="alert alert-danger">
+								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.</p> -->
 							<b>Auto-populating Configuration Files</b>
 							<p>There are several categories for which you can auto-populate a field in a configuration file. For example:
-								<ol>
+								<ul>
 									<li>Global variables: A predefined set of values that are common to all devices
 										<ul>
 											<li>Enable_Secret</li>
@@ -874,7 +868,7 @@ event manager applet LOOP_GIG authorization bypass
 											<li>Device_prefixName(aka CLLI)</li>
 										</ul>
 									</li>
-								</ol>
+								</ul>
 							</p>
 							<p>Select the appropriate variable associated with each field in the configuration file. This is a one-time exercise that will create a template that will be available to all users. This will help standardize the process, save time and reduce chance of errors when generating scripts to run on a device.</p>
 							<img src="resources/img/screenshot-config3.png"
@@ -883,7 +877,15 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.2.2 - Editable Configuration Template</b></span>
 							<p></p>
-							<h5 id="item-4-2">Generate Script</h5>
+							<!-- <h5 id="item-4-1-2">Load Template (Admin Users)</h5>
+							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-config1-1">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.2.3 - Configuration Dashboard
+									With Sample Values Selected (Adminstrative Users)</b></span>
+							<p></p>
+							<p>Admin users are presented with a similar page as all other users, with the key exception being that admin users are restricted to being able to configure Golden templates.</p> -->
+							<h5 id="item-4-2">Generate Script - Modification</h5>
 							<p>In this view, a user can select an existing template with
 								which to create a script for use on a particular device.</p>
 							<img src="resources/img/screenshot-generate-script.png"
@@ -947,9 +949,29 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.6 - View Status Of A Batch Job</b></span>
 							<p></p>
+							<h5 id="item-4-2-1">Generate Script (Golden)</h5>
+							<p>Generate Script (Golden) has same flow as Generate Script (Modification) with the following exceptions:
+								<ul>
+									<li>All fields must be filled out before you can proceed to download a script</li>
+									<li>Three scripts are generated (to support site integration; ie., CSR, 9K01 and 9K-02 devices</li>
+								</ul>
+							</p>
+							<img src="resources/img/screenshot-generate-script_gold.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-generate1-2">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.7 - Script Template Selection (Golden)</b></span>
+							<p></p>
+							<p>This flow generates <b>three</b> different scripts, one for original CSR routers, one for associated 9k-01 devices and one for 9k-02 devices. Each CSR is associated with a pair of 9ks.</p>
+							<p>Click on the links below to view sample scripts for each aformentioned type:
+								<ul>
+									<li><a href="resources/scripts/golden_script_originalCSR.txt" target="_blank"><b>Original CSR Script</b></a></li>
+									<li><a href="resources/scripts/golden_script_CSR9k-01.txt"  target="_blank"><b>9k-01 Script</b></a></li>
+									<li><a href="resources/scripts/golden_script_CSR9k-02.txt"  target="_blank"><b>9k-02 Script</b></a></li>
+								</ul>
+							</p>
 							<h5 id="item-4-3">Batch Tracking</h5>
-							<p>Here is where a user can manage templated script execution on
-								a device or sets of devices.</p>
+							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, and <b>Boot Order</b>.</p>
 							<p>
 								Scripts can be montored for execution status on a device or sets
 								of devices (<b>Script Execution</b>), whether or not a template
@@ -961,7 +983,7 @@ event manager applet LOOP_GIG authorization bypass
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-batch1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5 - Batch Tracking View</b></span>
+							<span class="font-italic"><b>FIG. 4.6 - Batch Tracking View</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -998,7 +1020,31 @@ event manager applet LOOP_GIG authorization bypass
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-config1-1" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-load_template_mod2.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-config1-1-1" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-load_template_mod3.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1023,6 +1069,19 @@ event manager applet LOOP_GIG authorization bypass
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-generate-script.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-generate1-2" tabindex="-1"
+			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-generate-script_gold.png" alt=""
 						width="100%">
 				</div>
 			</div>

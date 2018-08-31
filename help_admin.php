@@ -67,11 +67,11 @@ echo generate_site_breadcrumb($values);
 											Details View</a>
 									</nav>
 									<a class="nav-link" href="help_backup.php">BACKUP</a> <a
-										class="nav-link help active" href="help_config.php">CONFIGURATION</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load
-											Template</a> <a class="nav-link ml-3 my-1"
-											href="help_config.php#item-4-2">Generate Script</a>
+										class="nav-link" href="help_config.php">CONFIGURATION</a>
+										<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
@@ -99,7 +99,13 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
                                     </nav>
-                                    <a class="nav-link" href="#item-7">ADMIN</a>
+									<a class="nav-link" href="#item-8">ADMIN</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											class="nav-link ml-3 my-1"
+											href="help_admin.php#item-8-2">Software Upload</a>
+                                    </nav>
 									<a class="nav-link" href="help_faqs.php#item-8">FAQs</a>
 								</nav>
 							</nav>
@@ -112,36 +118,42 @@ echo generate_site_breadcrumb($values);
 							<hr class="d-md-none" />
 
 							<!-- FAQs -->
-                            <h4 id="item-7">ADMIN</h4>
+                            <h4 id="item-8">ADMIN</h4>
                             <p>Admin users will be taken to this page first. They have the option of impersonating a user or maintaining software binaries available to the user community.</p>
                             <img src="resources/img/screenshot-admin1.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-admin1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 8.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
-                            <p></p>
-                            <p>After selecting the Maintenance -> Software Upload menu, the user will need to enter a password.</p>
-                            <img src="resources/img/screenshot-admin2.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-admin2">
 							<p></p>
-                            <span class="font-italic"><b>FIG. 8.2 - Software Binary Upload For Admin User</b></span>
-                            <p></p>
-                            <p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device.
-Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
-<img src="resources/img/screenshot-admin3.png"
+							<h5 id="item-8-1">Load Template - Golden</h5>
+							<p>Admin users are presented with a similar page and flow as all other users when configuring templates, with the key exception being that admin users are allowed to configure Golden templates.</p>
+							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
+							<p></p>
+							<span class="font-italic"><b>FIG. 8.1.1 - Configuration Dashboard
+									With Sample Values Selected (Adminstrative Users)</b></span>
+							<p></p>
+							<!-- <p>After selecting the Maintenance -> Software Upload menu, the user will need to enter a password.</p> -->
+							<img src="resources/img/screenshot-load_template_mod2-1.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-admin1-2">
+							<p></p>
+							<span class="font-italic"><b>FIG. 8.1.2 - File Upload</b></span>
+							<p></p>
+							<img src="resources/img/screenshot-load_template_mod2-2.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-admin1-3">
+							<p></p>
+							<span class="font-italic"><b>FIG. 8.1.3 - Configurable Template</b></span>
+							<p></p>
+							<h5 id="item-8-2">Software Upload</h5>
+							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
+							<img src="resources/img/screenshot-admin3.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-admin3">
 							<p></p>
-                            <span class="font-italic"><b>FIG. 8.3 - Uploading A New Binary Into OneEMS</b></span>
+                            <span class="font-italic"><b>FIG. 8.2 - Uploading A New Binary Into OneEMS</b></span>
                             <p></p>
                             <p>If you wish to view binaries already loaded to the OS repository then click on “Retrieve” button. You will get a popup with the list of existing binaries.</p>
-                            <img src="resources/img/screenshot-admin3.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-admin3">
-							<p></p>
-                            <span class="font-italic"><b>FIG. 8.4 - View Existing OS Repository</b></span>
-                            <p></p>
 							<hr>
 							<div class="row">
 								<div class="col-6">
@@ -178,6 +190,48 @@ Select Vendor and device series on left. Then, select binary file on right and c
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-admin1.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin1-1"
+			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-load_template_mod2.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin1-2"
+			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-load_template_mod2-1.png" alt=""
+						width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin1-3"
+			tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-load_template_mod2-2.png" alt=""
 						width="100%">
 				</div>
 			</div>

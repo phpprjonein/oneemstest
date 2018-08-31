@@ -261,7 +261,7 @@ if ($_POST['ctype'] == 'manualdisc') {
         'region' => "dummy",
         'market' => $_POST['mktval'],
         'devicename' => $_POST['devnameval'],
-        'deviceIpAddr' => 'dummy',
+         'deviceIpAddr' => $_POST['ip-address'],
         'nodeAddedBy' => $_SESSION['username'],
         'nodeCatId' => '',
         'vendorId' => '',

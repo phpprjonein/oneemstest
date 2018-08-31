@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	  $('body').keypress(function(e){
+		  $('body').keypress(function(e){
 		    if(e.which == 13 && $("#v-pills-tab .active").text() == 'Manual Discovery') {
 		    	e.preventDefault();
 		    	$("#manual-disc-utils #manual-discovery").trigger('click');
@@ -418,9 +418,12 @@ $(document).ready(function() {
 			$('#inputCSRSiteName').html(data);	
 		});
     });
-
     
-	$("#manual-disc-utils #manual-discovery").click(function(){
+	$(document).on('click', '#manual-disc-utils #manual-disc-market a', function(event) {
+		$("#manual-disc-market .btn").html($(this).text());
+	});
+	
+	$("#manual-disc-utils #manual-discovery").click(function(e){
 		var req_err = false;
 		$('#v-pills-manual #status').html('');
 		$('#v-pills-manual #status').css("opacity","");
@@ -430,6 +433,7 @@ $(document).ready(function() {
 			$('#v-pills-manual #status').show();
 			req_err = true;
 		}else{
+			e.preventDefault();
 			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$('#v-pills-manual #inputDeviceIPaddress').val()})
 			  .done(function( data ) {
 				  if(data == 'invalid-ip'){
@@ -445,7 +449,7 @@ $(document).ready(function() {
 		        		    }, 4000);
 		        			return false;
 		        		}
-				  }else if(data == 'ip-exist'){
+				  }/*else if(data == 'ip-exist'){
 		    			$('#v-pills-manual #status').append("<strong>Error!</strong> Device IP Address already exist.<br/>");
 		    			$('#v-pills-manual #status').addClass('alert-danger');
 		    			req_err = true;
@@ -458,7 +462,7 @@ $(document).ready(function() {
 		        		    }, 4000);
 		        			return false;
 		        		}
-			  	  }else{
+			  	  }*/else{
 	        			var myModal = $('#myModal');
 	        			myModal.find('.modal-body').css('min-height','150px');
 	        			myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
@@ -487,8 +491,7 @@ $(document).ready(function() {
 		}
 		
 
-	});    
-    
+	});
     
 	$("#discovery-new-ip #add-new-ip").click(function(){
 		var req_err = false;
@@ -559,15 +562,65 @@ $(document).ready(function() {
 		    }, 4000);	
 		  });	
 	});
-	$("#mandiscsubmit").click(function(){
-		$.ajax({
-            type:"post",
-            url:"ip-mgt-process.php",					
-            data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), syslocval : $('#syslocval').text(),upsinceval : $('#upsinceval').text(), mktval : $('#mktval').val()},
-            success: function(resdata){					
-            	$('#mandiscsubmit').hide();
-            	$('#myModal .modal-body').html('Device added Successfully');
-            }
-		});
+	$("#mandiscsubmit").click(function(e){
+		var req_err = false;
+		$('#manual-disc-utils-pop #status').html('');
+		$('#manual-disc-utils-pop #status').css("opacity","");
+		if($('#manual-disc-utils-pop #inputDeviceIPaddress').val() == ""){
+			$('#manual-disc-utils-pop #status').html("<strong>Error!</strong> Device IP Address field is required.<br/>");
+			$('#manual-disc-utils-pop #status').addClass('alert-danger');
+			$('#manual-disc-utils-pop #status').show();
+			req_err = true;
+		}else{
+			e.preventDefault();
+			$.post( "ip-mgt-process.php", { calltype: "trigger", action: "IP-Validate-Disc", type: 'IPv4ORIPv6', 'ipaddress':$(' #inputDeviceIPaddress').val()})
+			  .done(function( data ) {
+				  if(data == 'invalid-ip'){
+		    			$('#manual-disc-utils-pop #status').append("<strong>Error!</strong> Device IP Address is not valid.<br/>");
+		    			$('#manual-disc-utils-pop #status').addClass('alert-danger');
+		    			req_err = true;
+		        		if(req_err){ 
+		        			$('#manual-disc-utils-pop #status').show();
+		        		    window.setTimeout(function() {
+		        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		        		            $(this).hide(); 
+		        		        });
+		        		    }, 4000);
+		        			return false;
+		        		}
+				  }else if(data == 'ip-exist'){
+		    			$('#manual-disc-utils-pop #status').append("<strong>Error!</strong> Device IP Address already exist.<br/>");
+		    			$('#manual-disc-utils-pop #status').addClass('alert-danger');
+		    			req_err = true;
+		        		if(req_err){ 
+		        			$('#manual-disc-utils-pop #status').show();
+		        		    window.setTimeout(function() {
+		        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		        		            $(this).hide(); 
+		        		        });
+		        		    }, 4000);
+		        			return false;
+		        		}
+			  	  }else{
+						$.ajax({
+			                type:"post",
+			                url:"ip-mgt-process.php",					
+			                data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), syslocval : $('#syslocval').text(),upsinceval : $('#upsinceval').text(), mktval : $('#mktval').val(), 'ip-address' : $('#ip-address').val()},
+			                success: function(resdata){					
+			                	$('#mandiscsubmit').hide();
+			                	$('#myModal .modal-body').html('Device added Successfully');
+			                }
+			            });
+			  	  }
+			 });
+		}
+		if(req_err){ 
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
 	});
 });

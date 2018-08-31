@@ -33,13 +33,13 @@ $output = json_decode(
  * print_r($output['data']['data']);
  */
 $output['data']['status'] = 1; // needs to be sorted out.
-$market_list = get_market_list_manualdisc($_POST['ipaddress']);
+$market_list = get_market_list_manualdisc($_POST['ip-address']);
 ?>
 <div class="container" id="manual-disc-utils-pop">
 	<div id="status" style="display: none;" class="alert"></div>
 	<p>
-		<b>Device Ip Address : <?php echo $_POST['ipaddress']; ?></b> <input
-			type="hidden" value="<?php echo $_POST['ipaddress']; ?>" name="ipaddress" />
+		<b>Device Ip Address : <?php echo $_POST['ip-address']; ?></b> <input
+			type="hidden" id="ip-address" value="<?php echo $_POST['ip-address']; ?>" name="ip-address" />
 	</p>
 	<table class="table table-striped">
 		<tbody>

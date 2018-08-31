@@ -13,7 +13,7 @@ if ($_SESSION['userid'] && isset($_POST['search_term']) && trim($_POST['search_t
 $userid = $_SESSION['userid'];
 $listid = $_GET['listid'];
 // $device_list = get_device_list_from_nodes($_SESSION['userid']);
-$title = get_user_mylist_name_by_id($listid);
+$title = get_user_mylist_name_by_id($listid,$userid);
 $page_title = 'OneEMS';
 
 // page logging

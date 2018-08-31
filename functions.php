@@ -1027,12 +1027,12 @@ function get_user_mylist_name($userid, $listid)
  * @param unknown $listid
  * @return void|unknown
  */
-function get_user_mylist_name_by_id($listid)
+function get_user_mylist_name_by_id($listid,$userid)
 {
     global $db2;
     
     $sql = "SELECT ud.listname  FROM userdevices ud
-          WHERE ud.listid = " . $listid . "
+          WHERE ud.listid = " . $listid . " and ud.userid = ".$userid."
          limit 0,1 ";
     $db2->query($sql);
     

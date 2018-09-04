@@ -2676,6 +2676,11 @@ function generic_get_usernames_ac_fn_ln_ro($query)
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     foreach ($resultset['result'] as $key => $val) {
+        if($val["userlevel"] == 'CellTech User')
+        $val["userlevel"] = str_replace('CellTech User','NA_Field_Assurance',$val["userlevel"]);
+        if($val["userlevel"] == 'SwitchTech User')
+        $val["userlevel"] = str_replace('SwitchTech User','NA_Systems_Assurance',$val["userlevel"]);
+        
         $Result[] = $val["fname"] . ' ' . $val["lname"] . ' <' . $val["userlevel"] . '>';
     }
     return json_encode($Result);
@@ -4153,7 +4158,7 @@ function update_login_api_rules($sso_flag, $username)
                         'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']
                     );
                     // Node table status 3 added for live API active
-                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $resp_result_arr['site_devices'][$i]['techname'] . "', switch_name ='" . $resp_result_arr['site_devices'][$i]['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
+                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $resp_result_arr['site_devices'][$i]['techname'] . "', csr_site_name = '" . $resp_result_arr['site_devices'][$i]['name'] . "',switch_name ='" . $resp_result_arr['site_devices'][$i]['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
                     $db2->query($sql);
                     $db2->execute();
                     $devicename_arr[] = $val;

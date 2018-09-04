@@ -809,12 +809,12 @@ function usrfavritelist_display($userid)
 function usrcellsitefavritelist_display($userid)
 {
     $db2 = new db2();
-    $sql_select = " SELECT listname, listid ";
+    $sql_select = " SELECT listname, listid, listtype ";
     $sql_condition = "
   FROM
   userdevices
   WHERE userid = $userid
-  group by listname, listid
+  group by listname, listid, listtype
   order by listid desc ";
     
     $sql = $sql_select . $sql_condition;

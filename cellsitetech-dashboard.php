@@ -143,9 +143,12 @@ write_log($mesg);
 												<a
 												href="cellsitetech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo ($value['listname'] == '0' ? 'My Routers' : $value['listname']); ?></a>
 											</td>
-											<td>&nbsp;<a
+											<td>&nbsp;
+												<?php if($value['listtype'] != 'cz'){ ?>
+												<a
 												href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i
 													class="fa fa-edit"></i></a>
+												<?php } ?>	
 											</td>
 											<!-- <td>&nbsp;<a href="cellsitetech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><i class="fa fa-eye" width="20" height="22"></i></a>
                       </td>  -->

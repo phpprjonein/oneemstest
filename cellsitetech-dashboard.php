@@ -144,7 +144,7 @@ write_log($mesg);
 												href="cellsitetech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo ($value['listname'] == '0' ? 'My Routers' : $value['listname']); ?></a>
 											</td>
 											<td>&nbsp;
-												<?php if($value['listtype'] != 'cz'){ ?>
+												<?php if($value['listtype'] != 'cz' && $value['listid'] != 0){ ?>
 												<a
 												href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i
 													class="fa fa-edit"></i></a>

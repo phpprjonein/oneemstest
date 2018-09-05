@@ -72,6 +72,7 @@ echo generate_site_breadcrumb($values);
 										<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="#item-5">DISCOVERY IPs</a>
@@ -94,9 +95,12 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											href="help_maintenance.php#item-7-1">Software Delivery</a>
+											<!-- <a
 											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a>  -->
+											<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
+											<a
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>

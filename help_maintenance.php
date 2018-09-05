@@ -72,6 +72,7 @@ echo generate_site_breadcrumb($values);
 										<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -93,12 +94,10 @@ echo generate_site_breadcrumb($values);
 									</nav>
 									<a class="nav-link" href="#item-7">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
-											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
-											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
+										<!-- <a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Scheduled Backup</a>  -->
+										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
+										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
@@ -139,24 +138,28 @@ echo generate_site_breadcrumb($values);
 								<b class="text-danger">NOTE:</b> This group of pages within the
 								OneEMS application is only accesible by Cell Site Technicians.
 							</p>
-							<h5 id="item-7-2">Schedule Backup</h5>
+							<!-- <h5 id="item-7-2">Schedule Backup</h5>
 							<img src="resources/img/screenshot-sw-os-repo.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-sw-os-repo">
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.2 - Operating System
 									Repository Dashboard</b></span>
+							<p></p> -->
+							<h5 id="item-7-2">Reboot</h5>
+							<img src="resources/img/screenshot-reboot.png"
+								class="img-fluid" alt="" data-toggle="modal"
+								data-target="#screenshot-sw-os-repo">
 							<p></p>
-							<p>Here is where a user manages the existing list of software in
-								the OneEMS repository. Operating Systems can be filtered by
-								Vendor type and device series. Users can delete versions as
-								needed also.</p>
-							<img src="resources/img/screenshot-sw-os-repo2.png"
+							<span class="font-italic"><b>FIG. 7.2 - Device Reboot Dashboard</b></span>
+							<p></p>
+							<p>Here is where a user can initiate a physical reboot of devices within the OneEMS repository. This reboot functionality can be filtered and applied by device series, IP address, market or even OS versions.</p>
+							<p>Once a user has set a device or devices up for rebooting, they will be taken to the <a href="help_config.php#item-4-3">Batch Tracking</a> page. Here, users can track the progress of the reboot in real time.</p>
+							<img src="resources/img/screenshot-reboot2.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-sw-os-repo2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.2.1 - Operating System
-									Retrieval</b></span>
+							<span class="font-italic"><b>FIG. 7.2.1 - Reboot Batch Messaging</b></span>
 							<p></p>
 							<h5 id="item-7-3">Boot Order Sequence</h5>
 							<p>This screen allows users to apply specific preset software
@@ -231,7 +234,7 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-sw-os-repo.png" alt=""
+					<img src="resources/img/screenshot-reboot.png" alt=""
 						width="100%">
 				</div>
 			</div>
@@ -244,7 +247,7 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-sw-os-repo2.png" alt=""
+					<img src="resources/img/screenshot-reboot2.png" alt=""
 						width="100%">
 				</div>
 			</div>

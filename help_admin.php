@@ -71,6 +71,7 @@ echo generate_site_breadcrumb($values);
 										<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -93,9 +94,12 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											href="help_maintenance.php#item-7-1">Software Delivery</a>
+											 <!-- <a
 											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a> -->
+											<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
+											<a
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
                                     </nav>
@@ -132,7 +136,7 @@ echo generate_site_breadcrumb($values);
 								alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 8.1.1 - Configuration Dashboard
-									With Sample Values Selected (Adminstrative Users)</b></span>
+									With Sample Values Selected (Administrative Users)</b></span>
 							<p></p>
 							<!-- <p>After selecting the Maintenance -> Software Upload menu, the user will need to enter a password.</p> -->
 							<img src="resources/img/screenshot-load_template_mod2-1.png" class="img-fluid"

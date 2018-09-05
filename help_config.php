@@ -67,6 +67,7 @@ write_log($mesg);
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -89,7 +90,8 @@ write_log($mesg);
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-1">Software Delivery</a>
-                                        <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-2">Scheduled Backup</a>
+                                        <!-- <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-2">Scheduled Backup</a> -->
+										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
                                         <a class="nav-link ml-3 my-1"
 										href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
@@ -114,7 +116,7 @@ write_log($mesg);
                                 <ul>
                                     <li>Select the device series, version and other attributes associated with one  or more templates</li>
                                     <li>Upload a .txt file containing static and variable details found in a  template</li>
-                                    <li>Associate autopopulation criteria for each variable in a template</li>
+                                    <li>Associate auto population criteria for each variable in a template</li>
                                     <li>Save templates to OneEMS for release deployment</li>
                                     <li>Generate scripts based on previously saved templates</li>
                                     <li>Download modification scripts to a local drive or USB or execute a script on one or more live CSR devices remotely</li>
@@ -909,7 +911,7 @@ event manager applet LOOP_GIG authorization bypass
 							</p>
 							<b>Edited Template Selection / Download</b>
 							<p>
-							Once you select a template from the list, that template will appear with editable fields highlighted in <span class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere. OR you can schedule a batch job by clicking on the “Execute” button.</p>
+							Once you select a template from the list, that template will appear with editable fields highlighted in <span class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere or you can schedule a batch job by clicking on the “Execute” button.</p>
 							<p>
 								Once a user executes a configuration template for script
 								execution, that template gets added to a batch process. More
@@ -942,7 +944,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<p><b>Tracking Your Batch Run</b>
 							<br>
-							After submitting your batch job you will be taken to the Batch Tracking page.  OR you can return  to this page any time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in “Scheduled” state.</p>
+							After submitting your batch job you will be taken to the Batch Tracking page or you can return  to this page any time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in “Scheduled” state.</p>
 							<img src="resources/img/screenshot-config_batch-status.png"
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-batch-status">
@@ -963,7 +965,7 @@ event manager applet LOOP_GIG authorization bypass
 							<span class="font-italic"><b>FIG. 4.5.7 - Script Template Selection (Golden)</b></span>
 							<p></p>
 							<p>This flow generates <b>three</b> different scripts, one for original CSR routers, one for associated 9k-01 devices and one for 9k-02 devices. Each CSR is associated with a pair of 9ks.</p>
-							<p>Click on the links below to view sample scripts for each aformentioned type:
+							<p>Click on the links below to view sample scripts for each aforementioned type:
 								<ul>
 									<li><a href="resources/scripts/golden_script_originalCSR.txt" target="_blank"><b>Original CSR Script</b></a></li>
 									<li><a href="resources/scripts/golden_script_CSR9k-01.txt"  target="_blank"><b>9k-01 Script</b></a></li>
@@ -973,7 +975,7 @@ event manager applet LOOP_GIG authorization bypass
 							<h5 id="item-4-3">Batch Tracking</h5>
 							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, and <b>Boot Order</b>.</p>
 							<p>
-								Scripts can be montored for execution status on a device or sets
+								Scripts can be monitored for execution status on a device or sets
 								of devices (<b>Script Execution</b>), whether or not a template
 								has been applied to a device (<b>Software Delivery</b>) as well
 								as overall job priority application of templated scripts to

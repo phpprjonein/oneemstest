@@ -71,6 +71,7 @@ echo generate_site_breadcrumb($values);
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -93,9 +94,12 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											href="help_maintenance.php#item-7-1">Software Delivery</a>
+											<!-- <a
 											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a>  -->
+											<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
+											<a
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
@@ -123,7 +127,7 @@ echo generate_site_breadcrumb($values);
 								to <b>Region</b> and further subdivided by <b>Markets</b>. Users
 								are initially provided a default list of <b>Routers</b>
 								(assigned in <b>Ops Tracker</b>). A user can also create
-								customized lists of Routers. users can perform actions on each
+								customized lists of Routers. Users can perform actions on each
 								Router including; device health checks, manual discovery,
 								on-demand backup / restore and generation of task specific
 								scripts.

@@ -69,6 +69,7 @@ echo generate_site_breadcrumb($values);
 										<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -91,9 +92,12 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-1">Software Delivery</a> <a
+											href="help_maintenance.php#item-7-1">Software Delivery</a>
+											 <!-- <a
 											class="nav-link ml-3 my-1"
-											href="help_maintenance.php#item-7-2">Scheduled Backup</a> <a
+											href="help_maintenance.php#item-7-2">Scheduled Backup</a> -->
+											<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
+											 <a
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
@@ -140,7 +144,7 @@ echo generate_site_breadcrumb($values);
 							</p>
 							<h5 id="item-2-2-1">List Management Options</h5>
 							<p>Here, a user can create custom lists of devices associated
-								with the switch they are assigned.</p>
+								with the device(s) they are assigned.</p>
 							<p>RouterByTech and SwitchByTech APIs are used to auto-populate
 								the My Routers default views (for Cell Techs) and Switch default
 								views (for Switch Techs.</p>
@@ -162,7 +166,7 @@ echo generate_site_breadcrumb($values);
 							<p>From here, you may open your lists for editing, view their
 								contents, delete them altogether or add devices to them.</p>
 							<b>Selecting Devices</b>
-							<p>The right side list is for listing Routers by Region and
+							<p>The right side list (Fig. 1.1) is for listing Routers by Region and
 								Market. The map above this list is sectioned off into different
 								areas. Each similarly colored set of states represents a Region,
 								and within each Region are individual Markets. Once you've
@@ -175,12 +179,12 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<b>Adding A Device To Your Custom List</b>
 							<p>
-								In order to add devices to your list, first click on the <b>Edit icon</b> ( <i
+								In order to add devices to your list, first open a list for editing. To do this, click on the <b>Edit icon</b> ( <i
 									class="fa fa-edit fa-lg text-primary"></i> ) to the immediate
 								right of the list name. The contents of the selected list will
 								appear in the center column of the page.
 							</p>
-							<p>Next, select a Region and subsequent Market from the map. this
+							<p>Next, select a Region and subsequent Market from the map. This
 								will display the devices associated with these areas.</p>
 							<p>
 								You can then drag and drop using the <b>Drag icon</b> ( <i
@@ -203,9 +207,7 @@ echo generate_site_breadcrumb($values);
 							<b>Viewing The Health Of Devices In A Custom List</b>
 							<p>
 								To view the health of the devices within your selected <b>Device
-									List</b>, click on the eye icon ( <i
-									class="fa fa-eye fa-lg text-primary"></i> ) next to the list
-								name. You will then be presented with the Health Check Dashboard
+									List</b>, click on the list name. You will then be presented with the Health Check Dashboard
 								view of all the devices in your selected list.
 							</p>
 							<h5 id="item-2-3">Health Check Details View</h5>
@@ -265,8 +267,7 @@ echo generate_site_breadcrumb($values);
 							<p>
 								To view the health of a specific device, click on the plus icon
 								( <i class="fa fa-plus-circle fa-lg text-primary"></i> ) on the
-								leftmost column of the device. This will run a script that will
-								run a realtime health check on the device in view.
+								leftmost column of the device. This will present the results of the last run of health checks on the device in view.
 							</p>
 							<!-- <p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> Upon initialization, a single
@@ -283,9 +284,9 @@ echo generate_site_breadcrumb($values);
 									Health Check</b></span>
 							</p>
 							<p></p>
-							<p>You can choose to run any of the healthchecks from the list (Fig 2.2) by selecting the corresponding check boxes and then clicking on “Run Selective Health Checks” or you can “Run All Health Checks”.</p>
+							<p>You can choose to run any of the health checks from the list (Fig 2.2) by selecting the corresponding check boxes and then clicking on “Run Selective Health Checks” or you can “Run All Health Checks”.</p>
 							<p>
-								Once this realtime health check is done, you will be presented with a brief summary for each check. You will be able to click on the page icons ( <i
+								Once this real-time health check is done, you will be presented with a brief summary for each check. You will be able to click on the page icons ( <i
 									class="fa fa-file-text-o text-primary"></i> ) associated with
 								each parameter to view output directly from the console of the
 								currently selected device.

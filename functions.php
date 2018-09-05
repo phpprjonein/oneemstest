@@ -4163,7 +4163,7 @@ function update_login_api_rules($sso_flag, $username)
                         'csr_site_id' => $resp_result_arr['site_devices'][$i]['siteid']
                     );
                     // Node table status 3 added for live API active
-                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . $resp_result_arr['site_devices'][$i]['techname'] . "', csr_site_name = '" . $resp_result_arr['site_devices'][$i]['name'] . "',switch_name ='" . $resp_result_arr['site_devices'][$i]['switch'] . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
+                    $sql = "UPDATE `nodes` SET csr_site_tech_name = '" . addslashes($resp_result_arr['site_devices'][$i]['techname']) . "', csr_site_name = '" . addslashes($resp_result_arr['site_devices'][$i]['name']) . "',switch_name ='" . addslashes($resp_result_arr['site_devices'][$i]['switch']) . "', csr_site_tech_id = '" . $_SESSION['username'] . "',csr_site_id ='" . $resp_result_arr['site_devices'][$i]['siteid'] . "', status=3 WHERE devicename = '" . $val . "'";
                     $db2->query($sql);
                     $db2->execute();
                     $devicename_arr[] = $val;

@@ -69,6 +69,11 @@ function get_user_info_sso_imp($fname, $lname, $userlevel)
 {
     global $db2;
     
+    if($userlevel == 'NA_Field_Assurance')
+        $userlevel = str_replace('NA_Field_Assurance', 'CellTech User',$userlevel);
+        if($userlevel == 'NA_Systems_Assurance')
+        $userlevel = str_replace('NA_Systems_Assurance', 'SwitchTech User',$userlevel);
+    
     if (trim($fname) != '' && trim($lname) != '' && trim($userlevel)) {
         $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.fname='" . trim($fname) . "' AND  u.lname='" . trim($lname) . "' AND  ul.userlevel='" . trim($userlevel) . "' AND ul.id = u.userlevel";
         $db2->query($sql);

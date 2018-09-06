@@ -46,6 +46,7 @@ if ($_POST['userimp'] == 'imp' && isset($_POST['username'])) {
     $userinfo = get_user_info_sso_imp($name_exp[0], $name_exp[1], trim($name_exp_role));
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
+    $_SESSION['email'] = $userinfo['email'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];
     $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
     $_SESSION['zones'] = $userinfo['zones'];
@@ -64,6 +65,7 @@ if ($sso_flag == 1) {
     $userinfo = get_user_info_sso($username);
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
+    $_SESSION['email'] = $userinfo['email'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];
     $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
     $_SESSION['zones'] = $userinfo['zones'];
@@ -90,6 +92,7 @@ if ($sso_flag == 1) {
         } else {
             $_SESSION['userid'] = $userinfo['id'];
             $_SESSION['username'] = $userinfo['username'];
+            $_SESSION['email'] = $userinfo['email'];
             $_SESSION['userlevel'] = $userinfo['userlevel'];
             $_SESSION['role'] = $userinfo['role'];
             $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];

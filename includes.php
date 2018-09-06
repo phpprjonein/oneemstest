@@ -92,6 +92,8 @@
     _paq.push(['setMarket', 'marketval']);
     _paq.push(['setManager name', '<?php echo $_SESSION['welcome_username'];?>']);
     _paq.push(['setRole', '<?php echo $_SESSION['role'];?>']);
+    _paq.push(['setFullname', '<?php echo $_SESSION['welcome_username'];?>']);
+    _paq.push(['setEmail', '<?php echo $_SESSION['email'];?>']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();

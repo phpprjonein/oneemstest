@@ -39,7 +39,7 @@ ini_set('display_errors', 1);
     $devicetype = 'ios';
     $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
-    $url_final = 'http://10.134.179.82:8085/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
+    $url_final = 'http://10.134.179.82:8080/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
     $output = json_decode(sendPostData($url_final), true);
     $lastupdated = date('Y-m-d H:i:s');
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);

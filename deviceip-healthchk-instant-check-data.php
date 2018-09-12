@@ -97,7 +97,7 @@ ini_set('display_errors', 1);
 <?php
 $vendorId = load_node_vendor_id_from_deviceid($deviceid);
 if ($vendorId == 1) {
-    include_once 'hc_blk_inc.php';
+    include_once 'instant_hc_blk_inc.php';
 } elseif ($vendorId == 2) {
     include_once 'hc_blk_inc_nokia.php';
 } elseif ($vendorId == 3) {

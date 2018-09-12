@@ -75,6 +75,7 @@ write_log($mesg);
 											data-rule-required="true" disabled>
 											<option value="Golden">Golden</option>
 										</select>
+										<input name="f4" value="Golden" type="hidden">
 										<!-- 
 										<select
 											id="select_purpose" class="form-control custom-select"
@@ -249,7 +250,7 @@ write_log($mesg);
 						</div>
 						<div class="row">
                     		<?php
-                    $vars['usrvars'] = golden_configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
+                    $vars['usrvars'] = golden_modification_configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
                     
                     
                     $predevice_series = '';

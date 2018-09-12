@@ -93,6 +93,7 @@ echo generate_site_breadcrumb($values);
 											<option value="<?php echo $_POST['f4'];?>"><?php echo $_POST['f4']; ?></option>
 											<!-- <option value="asr920">XXXX</option> -->
 										</select>
+										<input name="f4" value="<?php echo $_POST['f4'];?>" type="hidden">
 									</div>
 									<!-- /select purpose options -->
 

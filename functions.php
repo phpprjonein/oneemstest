@@ -4534,7 +4534,7 @@ function configtemplate_elemvalue_pos_script_market($posttabname, $field, $value
  *
  * @return unknown
  */
-function golden_configtemplate_elemvalue_pos_script($posttabname, $field, $value)
+function golden_modification_configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 {
     global $db2;
     

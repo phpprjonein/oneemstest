@@ -307,6 +307,21 @@
 </td>
 			</tr>
 			<tr>
+				<td style="width: 10px;"><input type="checkbox" name="bandwidth"
+					id="bandwidth" value="extract_bandwidth"
+					<?php if(in_array('extract_bandwidth', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>Bandwidth</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="devdetmdl-cellsite.php?commandname=bandwidth&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+    $color = ($output['bandwidth']['R'] == 0) ? 'green' : 'red';
+    $display = "<span style='color:" . $color . "'>" . $output['bandwidth']['message'] . '</span>';
+    echo $display;
+    ?>
+</td>
+</tr>
+			<tr>
     <?php
     if ($healthchktype != 'Load Table') {
         $device_status = '<tr><td align="right" class="border-0"><b>Status: </b></td><td align="left" class="border-0"><b>';

@@ -102,7 +102,10 @@ switch ($command) {
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/15';
         $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_show_logging';
         break;
-    
+    case 'bandwidth':
+        //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/15';
+        $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_bandwidth';
+        break;
     default:
         break;
 }

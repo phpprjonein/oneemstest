@@ -3,6 +3,7 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 sleep(3);
+/*
 $output = json_decode(
         '{
   "data": {
@@ -21,17 +22,17 @@ $output = json_decode(
   },
   "deviceIpAddr": "10.198.238.19"
   }', 1);
-/*
- * $url = 'http://10.134.179.82:8089/snmp/' . $_POST['ip-address'];
- * $ch = curl_init();
- * curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
- * curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
- * curl_setopt($ch, CURLOPT_URL, $url);
- * $result = curl_exec($ch);
- * curl_close($ch);
- * $output = json_decode($result, true);
- * print_r($output['data']['data']);
- */
+*/
+  $url = 'http://10.134.179.82:8089/snmp/' . $_POST['ip-address'];
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_URL, $url);
+  $result = curl_exec($ch);
+  curl_close($ch);
+  $output = json_decode($result, true);
+  //print_r($output['data']['data']);
+ 
 $output['data']['status'] = 1; // needs to be sorted out.
 $market_list = get_market_list_manualdisc($_POST['ip-address']);
 ?>

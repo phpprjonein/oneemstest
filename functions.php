@@ -3354,6 +3354,20 @@ function update_healthchk_info($deviceid, $output, $lastupdated)
  * @param unknown $output
  * @param unknown $lastupdated
  */
+function ems_update_healthchk_info($deviceid, $output, $lastupdated)
+{
+    global $db2;
+    $sql = "UPDATE  `emshealthcheck` SET  content='" . $output . "',lastupdated='" . $lastupdated . "' WHERE deviceid = '" . $deviceid . "'";
+    $db2->query($sql);
+    $db2->execute();
+}
+
+/**
+ *
+ * @param unknown $deviceid
+ * @param unknown $output
+ * @param unknown $lastupdated
+ */
 function insertorupdate_healthchk_info($deviceid, $output, $lastupdated)
 {
     global $db2;

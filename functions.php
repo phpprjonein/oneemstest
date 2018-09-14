@@ -611,7 +611,7 @@ function sendPostData($url)
 function getDetailViewData($userid, $deviceid)
 {
     $db2 = new db2();
-    $sql_select = "SELECT hk.deviceid, hk.cpuutilization, hk.freememory, hk.buffers, hk.iosversion, hk.bootstatement, hk.configregister, hk.environmental, hk.platform, hk.bfdsession, hk.interfacestates, hk.interfacecounters, hk.mplsinterfaces, hk.mplsneighbors, hk.bgpvfourneighbors, hk.bgpvsixneighbors, hk.bgpvfourroutes, hk.bgpvsixroutes, hk.twothsndbyteping, hk.vrfstates, hk.logentries, hk.xconnect, hk.lightlevel, hk.userid ";
+    $sql_select = "SELECT hk.deviceid, hk.cpuutilization, hk.freememory, hk.buffers, hk.iosversion, hk.bootstatement, hk.configregister, hk.environmental, hk.platform, hk.bfdsession, hk.interfacestates, hk.interfacecounters, hk.mplsinterfaces, hk.mplsneighbors, hk.bgpvfourneighbors, hk.bgpvsixneighbors, hk.bgpvfourroutes, hk.bgpvsixroutes, hk.twothsndbyteping, hk.vrfstates, hk.logentries, hk.xconnect, hk.lightlevel, hk.bandwidth, hk.userid ";
     $sql_condition = "
 	FROM
 	healthcheck hk
@@ -3245,6 +3245,20 @@ function select_healthchk_info($deviceid)
 
 /**
  *
+ * @param unknown $deviceid
+ * @return unknown
+ */
+function select_emshealthchk_info($deviceid)
+{
+    global $db2;
+    $sql = "SELECT * FROM emshealthcheck where deviceid = $deviceid";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset[0];
+}
+
+/**
+ *
  * @return unknown
  */
 function config_get_templates()
@@ -3369,20 +3383,21 @@ function insertorupdate_healthchk_info($deviceid, $output, $lastupdated)
         $logentries = json_encode($output['logentries']);
         $xconnect = json_encode($output['xconnect']);
         $lightlevel = json_encode($output['lightlevel']);
+        $bandwidth = json_encode($output['bandwidth']);
         $userid = 1;
         if ($recordset[0]['id'] == "") {
-            $sql = "INSERT INTO `healthcheck` (`deviceid`, `cpuutilization`, `freememory`, `buffers`, `iosversion`, `bootstatement`, `configregister`, `environmental`, `platform`, `bfdsession`, `interfacestates`, `interfacecounters`, `mplsinterfaces`, `mplsneighbors`, `bgpvfourneighbors`, `bgpvsixneighbours`, `ran`, `bgpvsixroutes`, `twothsndbyteping`, `vrfstates`, `logentries`, `xconnect`, `lightlevel`, `userid`, `lastupdated` )
+            $sql = "INSERT INTO `healthcheck` (`deviceid`, `cpuutilization`, `freememory`, `buffers`, `iosversion`, `bootstatement`, `configregister`, `environmental`, `platform`, `bfdsession`, `interfacestates`, `interfacecounters`, `mplsinterfaces`, `mplsneighbors`, `bgpvfourneighbors`, `bgpvsixneighbours`, `ran`, `bgpvsixroutes`, `twothsndbyteping`, `vrfstates`, `logentries`, `xconnect`, `lightlevel`, `bandwidth`, `userid`, `lastupdated` )
             VALUES($deviceid, '" . $cpuutilization . "','" . $freememory . "','" . $buffers . "','" . $iosversion . "','" . $bootstatement . "','" . $configregister . "',
             '" . $environmental . "','" . $platform . "','" . $bfdsession . "','" . $interfacestates . "','" . $interfacecounters . "','" . $mplsinterfaces . "',
             '" . $mplsneighbors . "','" . $bgpvfourneighbors . "','" . $bgpvsixneighbours . "','" . $ran . "','" . $bgpvsixroutes . "','" . $twothsndbyteping . "',
-            '" . $vrfstates . "','" . $logentries . "','" . $xconnect . "','" . $lightlevel . "',$userid,'" . $lastupdated . "')";
+            '" . $vrfstates . "','" . $logentries . "','" . $xconnect . "','" . $lightlevel . "','" . $bandwidth . "',$userid,'" . $lastupdated . "')";
             $db2->query($sql);
             $db2->execute();
         } else {
             $sql = "UPDATE `healthcheck` SET cpuutilization='" . $cpuutilization . "', freememory='" . $freememory . "', buffers='" . $buffers . "', iosversion='" . $iosversion . "', bootstatement='" . $bootstatement . "', configregister='" . $configregister . "', environmental='" . $environmental . "',
             platform='" . $platform . "', bfdsession='" . $bfdsession . "', interfacestates='" . $interfacestates . "', interfacecounters='" . $interfacecounters . "', mplsinterfaces='" . $mplsinterfaces . "', mplsneighbors='" . $mplsneighbors . "', bgpvfourneighbors='" . $bgpvfourneighbors . "',
             bgpvsixneighbours='" . $bgpvsixneighbours . "', ran='" . $ran . "', bgpvsixroutes='" . $bgpvsixroutes . "', twothsndbyteping='" . $twothsndbyteping . "', vrfstates='" . $vrfstates . "', logentries='" . $logentries . "', xconnect='" . $xconnect . "',
-            lightlevel='" . $lightlevel . "', lastupdated='" . $lastupdated . "' WHERE deviceid = '" . $deviceid . "'";
+            lightlevel='" . $lightlevel . "', bandwidth='" . $bandwidth . "', lastupdated='" . $lastupdated . "' WHERE deviceid = '" . $deviceid . "'";
             $db2->query($sql);
             $db2->execute();
         }

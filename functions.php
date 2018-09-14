@@ -3245,6 +3245,20 @@ function select_healthchk_info($deviceid)
 
 /**
  *
+ * @param unknown $deviceid
+ * @return unknown
+ */
+function select_emshealthchk_info($deviceid)
+{
+    global $db2;
+    $sql = "SELECT * FROM emshealthcheck where deviceid = $deviceid";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset[0];
+}
+
+/**
+ *
  * @return unknown
  */
 function config_get_templates()

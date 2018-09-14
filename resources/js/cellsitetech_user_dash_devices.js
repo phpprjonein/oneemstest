@@ -194,10 +194,18 @@ $(document).ready(function() {
                   var deviceseries = $(this).closest('tr').find("td:eq(6)").text();
                   var version = $(this).closest('tr').find("td:eq(7)").text();
                   version = version.replace('(','-').replace(')','-').replace('.','-');
+                  var actionurl = '';
+                  
+                  if(deviceseries == 'ASR9000'){
+                	  actionurl = "ems-healthchk-load-table-data.php";
+                  }else{
+                	  actionurl = "healthchk-load-table-data.php";
+                  }
+                  
                   
                   var ajs = $.ajax({
                       type:"get",
-                      url:"healthchk-load-table-data.php",
+                      url: actionurl,
                       data: {'deviceid':id, 'userid':$('#userid').val(), 'deviceseries':deviceseries, 'version':version },
                       beforeSend: function(){
                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');

@@ -4433,8 +4433,12 @@ function update_login_api_rules($sso_flag, $username)
 		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
+        $_SESSION['sel_region'] = array();
         for ($i = 0; $i < count($resp_result_arr['switches']); $i ++) {
             $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $resp_result_arr['switches'][$i]['switch_name'] : $_SESSION['sel_switch_name'];
+            if(!in_array($resp_result_arr['switches'][$i]['region'], $_SESSION['sel_region'])){
+                $_SESSION['sel_region'][] = $resp_result_arr['switches'][$i]['region'];
+            }
             // Node table status 3 added for live API active
             $sql = "UPDATE `nodes` SET status=3, swt_tech_id = '" . $_SESSION['username'] . "' WHERE switch_name = '" . $resp_result_arr['switches'][$i]['switch_name'] . "'";
             $db2->query($sql);

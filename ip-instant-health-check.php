@@ -73,17 +73,27 @@ $page_title = 'OneEMS';
 								<div id="status" style="display: none;" class="alert"></div>
 								<form class="login-form" action="#" method="post">
 									<div class="input-group row">
-										<div class="form-inline col-md-5 col-sm-12">
+									<div id="slectchktype" class="form-inline col-md-5 pb-2 col-sm-12">
+										<label class="radio-inline">
+                                          <input type="radio" class="radiocat" value="ipaddress" name="optradio" checked><b>IP V4/IP V6 Address</b>
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="radiocat" value="devicename" name="optradio"><b>Device Name</b>
+                                        </label> 
+									</div>
+									</div>
+									<div class="input-group row">
+									<div class="form-inline col-md-5 col-sm-12">
 											<input type="inputName" name="ipaddress" class="form-control"
 												id="inputDeviceIPaddress" placeholder="Enter IP Address"
 												autofocus>
+											<input type="inputName" name="devicename" style="display: none;" class="form-control"
+												id="inputDeviceName" placeholder="Enter Device Name"
+												autofocus>	
 											<button type="submit" class="btn" id="ip-health-check"
 												data-toggle="modal">Run All Health Checks</button>
-										</div>
 									</div>
-
-
-
+									</div>
 								</form>
 							</div>
 						</div>

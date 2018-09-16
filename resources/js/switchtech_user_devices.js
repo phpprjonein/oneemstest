@@ -2,9 +2,15 @@ $(document).ready(function() {
     $('body').on('click', '.run_all_checks', function(){
     	$thisdiv = $(this);
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
+        var deviceseries = $(this).data('deviceseries');
+        if(deviceseries == 'ASR9000'){
+      	  actionurl = "ems-healthchk-cellsitetech.php";
+        }else{
+      	  actionurl = "healthchk-switchtech.php";
+        }
           $.ajax({
               type:"get",
-              url:"healthchk-switchtech.php",
+              url:actionurl,
               data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')},
               beforeSend: function(){
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
@@ -24,9 +30,15 @@ $(document).ready(function() {
     		 allVals.push($(this).val());
     	});		
     	$thisdiv = $(this);
+    	var deviceseries = $(this).data('deviceseries');
+        if(deviceseries == 'ASR9000'){
+      	  actionurl = "ems-healthchk-cellsitetech-custom.php";
+        }else{
+      	  actionurl = "healthchk-cellsitetech-custom.php";
+        }
         $.ajax({
             type:"get",
-            url:"healthchk-cellsitetech-custom.php",
+            url:actionurl,
             data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')}, 
             beforeSend: function(){
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
@@ -180,10 +192,17 @@ $(document).ready(function() {
                   var deviceseries = $(this).closest('tr').find("td:eq(6)").text();
                   var version = $(this).closest('tr').find("td:eq(7)").text();
                   version = version.replace('(','-').replace(')','-').replace('.','-');
+                  var actionurl = '';
+                  
+                  if(deviceseries == 'ASR9000'){
+                	  actionurl = "ems-healthchk-load-table-data.php";
+                  }else{
+                	  actionurl = "healthchk-load-table-data.php";
+                  }
                   
                   var ajs = $.ajax({
                       type:"get",
-                      url:"healthchk-load-table-data.php",
+                      url: actionurl,
                       data: {'deviceid':id, 'userid':$('#userid').val(), 'deviceseries':deviceseries, 'version':version },
                       beforeSend: function(){
                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');

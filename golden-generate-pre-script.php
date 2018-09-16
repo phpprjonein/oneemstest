@@ -263,7 +263,7 @@ write_log($mesg);
                         	           $predevice_series = $val['deviceseries'];
                         	           ?>
                         	      		<div
-								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 alert alert-secondary panel-heading-lstmgmt"><b><?php echo $val['deviceseries']; ?></b></div>
+								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 gsalert alert-secondary panel-heading-lstmgmt"><b><?php echo $val['deviceseries']; ?></b></div>
                         	      			            
 							<?php }else{
 							         $predevice_series = $val['deviceseries'];

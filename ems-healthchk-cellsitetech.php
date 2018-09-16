@@ -22,34 +22,25 @@ $(document).ready(function(){
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
-ini_set('display_errors', 1);
 ?>
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];
     
-    if (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
-        $device_details = loaddeviceidfromdeviceip($_GET['deviceip'], '');
-        
-    }elseif (isset($_GET['devicename']) && ! empty($_GET['devicename'])) {
-        $device_details = loaddeviceidfromdevicename($_GET['devicename'], '');
+    if (isset($_GET['deviceid']) && ! empty($_GET['deviceid'])) {
+        $deviceid = $_GET['deviceid'];
+    } elseif (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
+        $deviceid = loaddeviceidfromdeviceip($_GET['deviceip']);
     }
     
-    $deviceid = $device_details['id'];
-    if(isset($deviceid) && is_numeric($deviceid)) {
-    $device_details['nodeVersion'] = str_replace('.','-',str_replace(')','-',str_replace('(','-',$device_details['nodeVersion'])));
     $devicetype = 'ios';
-    //$url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+    $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+    $deviceid = $_GET['deviceid'];
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
-    $url_final = 'http://10.134.179.82:8080/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
-    
-    
-    
-    
-    $lastupdated = date('Y-m-d H:i:s');
-    if($device_details['deviceseries'] == 'ASR9000'){
-        $output = sendPostData($url_final);
-        /*$output = '{
+    $url_final = 'http://10.134.179.82:8080/healthcheck/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid;
+    $output = sendPostData($url_final);
+    /*
+    $output = '{
      "extract_redundancy": {
      "R": 0,
      "message": "extract_redundancy new"
@@ -114,9 +105,9 @@ ini_set('display_errors', 1);
      "R": 0,
      "message": "extract_bfd_session new"
      },
-     "extract_vrrp": {
+     "Extract_vrrp": {
      "R": 0,
-     "message": "extract_vrrp new"
+     "message": "Extract_vrrp new"
      },
      "extract_ntp": {
      "R": 0,
@@ -162,86 +153,16 @@ ini_set('display_errors', 1);
      "R": 0,
      "message": "extract_bgp_nsr_graceful_restart new"
      },
-     "extract_air_filter_check": {
+     "extract_air_filter_check ": {
      "R": 0,
      "message": "extract_air_filter_check new"
      }
-     }';*/
-        ems_update_healthchk_info($deviceid, $output, $lastupdated);
-    }else{
-        $output = json_decode(sendPostData($url_final), true);
-        insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
-    }
-    $_SESSION['deviceidcs'] = $deviceid;
-    }
-    ?>
-<div class="panel-body">
-	<table id="example" class="display" cellspacing="0" width="100%">
-		<thead>
-			<tr>
-				<th class="noExport">Health Check</th>
-				<th>Site ID</th>
-				<th>Site Name</th>
-				<th>Device Name</th>
-				<th>IP Address</th>
-				<th>Market</th>
-				<th>Device Series</th>
-				<th>Version</th>
-				<th class="d-none">Status</th>
-				<th>Last Polled</th>
-				<!-- <th>Audit Log</th>  -->
-			</tr>
-		</thead>
-		<tbody>
-			<?php if(isset($deviceid) && is_numeric($deviceid)) { ?>
-			<tr id="row_<?php echo $deviceid; ?>" class="device_row odd shown"
-				role="row">
-				<td class=" details-control" title="Click here for health check"></td>
-				<td><?php echo $device_details['csr_site_id']; ?></td>
-				<td><?php echo $device_details['csr_site_name']; ?></td>
-				<td><?php echo $device_details['devicename'];?></td>
-				<td><?php echo $device_details['deviceIpAddr'].'<br/>'.$device_details['deviceIpAddrsix']; ?></td>
-				<td><?php echo $device_details['market'];?></td>
-				<td><?php echo $device_details['deviceseries'];?></td>
-				<td><?php echo $device_details['nodeVersion'];?></td>
-				<td class="d-none"><?php echo $device_details['status'];?></td>
-				<td><?php echo $device_details['lastpolled'];?></td>
-				<!--  <td class=" center"><button type="button" class="btn btn-sm auditLog" data-toggle="modal">Audit Log</button></td>  -->
-			</tr>
-			<tr>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td style="display: none;"></td>
-				<td colspan="11"><div id="detail_<?php echo $deviceid; ?>"
-						class="loaded">
-								
+     }';
+     */ 
     
-<?php
-$vendorId = load_node_vendor_id_from_deviceid($deviceid);
-if ($vendorId == 1) {
-    if($device_details['deviceseries'] == 'ASR9000'){
-        $output = json_decode($output, true);
-        include_once 'ems_instant_hc_blk_inc.php';
-    }else{
-        include_once 'instant_hc_blk_inc.php';
-    }
-} elseif ($vendorId == 2) {
-    include_once 'hc_blk_inc_nokia.php';
-} elseif ($vendorId == 3) {
-    include_once 'hc_blk_inc_juniper.php';
-}
-?>
-</div></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</div>
-
+    $lastupdated = date('Y-m-d H:i:s');
+    ems_update_healthchk_info($deviceid, $output, $lastupdated);
+    $output = json_decode($output, true);
+    $_SESSION['deviceidcs'] = $deviceid;
+    ?>
+<?php include_once 'ems_hc_blk_inc.php';?>                

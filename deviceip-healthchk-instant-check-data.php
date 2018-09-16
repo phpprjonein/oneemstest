@@ -28,18 +28,20 @@ ini_set('display_errors', 1);
     // Python API Request using curl Begins
     $userid = $_GET['userid'];
     
-    if (isset($_GET['deviceid']) && ! empty($_GET['deviceid'])) {
-        $deviceid = $_GET['deviceid'];
-    } elseif (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
-        $device_details = loaddeviceidfromdeviceip($_GET['deviceip']);
-        $deviceid = $device_details['id'];
+    if (isset($_GET['deviceip']) && ! empty($_GET['deviceip'])) {
+        $device_details = loaddeviceidfromdeviceip($_GET['deviceip'], '');
+        
+    }elseif (isset($_GET['devicename']) && ! empty($_GET['devicename'])) {
+        $device_details = loaddeviceidfromdevicename($_GET['devicename'], '');
     }
+    
+    $deviceid = $device_details['id'];
     if(isset($deviceid) && is_numeric($deviceid)) {
     $device_details['nodeVersion'] = str_replace('.','-',str_replace(')','-',str_replace('(','-',$device_details['nodeVersion'])));
     $devicetype = 'ios';
-    $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+    //$url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
-    //$url_final = 'http://10.134.179.82:8080/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
+    $url_final = 'http://10.134.179.82:8080/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
     
     
     

@@ -4633,7 +4633,16 @@ function valid_admin_usr_by_password($password)
 function loaddeviceidfromdeviceip($deviceip)
 {
     global $db2;
-    $sql = "SELECT * FROM nodes where deviceIpAddr = '" . $deviceip . "'";
+    $sql = "SELECT * FROM nodes where deviceIpAddr = '" . $deviceip . "' OR deviceIpAddrsix  = '" . $deviceip . "'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset[0];
+}
+
+function loaddeviceidfromdevicename($devicename)
+{
+    global $db2;
+    $sql = "SELECT * FROM nodes where devicename = '" . $devicename . "'";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset[0];

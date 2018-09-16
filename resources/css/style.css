@@ -9993,7 +9993,9 @@ header hr {
 .sec_without_map, .sec_with_map {
   cursor: pointer;
 }
-
+#cell-user-db .sec_without_map, #cell-user-db .sec_with_map {
+  cursor: default;
+}
 /* line 441, /Applications/MAMP/htdocs/oneemstest/scss/_extra_styles.scss */
 .myswlist tr, .myswlist td {
   max-height: 1.25rem !important;

@@ -322,7 +322,7 @@ write_log($mesg);
 						</div>
 						<div id="container_mymarketswitches" class="panel-body">
 							<!-- $show_map_flag is used to set default value invisiblie -->
-							<div id="sw_result_without_map" class="" style='<?php echo ($show_map_flag) ? "display: block" : "display: block" ?>; '>
+							<div id="sw_result_without_map">
           <?php
         // if(isset($switch_device_name) && $switch_device_name != '' ) {
         

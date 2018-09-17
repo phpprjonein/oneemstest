@@ -115,7 +115,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     fclose($file);
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
-}elseif ($_POST['action'] == 'Download Script' && $_POST['tmplcategory']=='Golden') {
+}elseif ($_POST['action'] == 'Download Script') {
     $filenames = array($_POST['templname'].'.script','ASR9010-01.script','ASR9010-02.script');
     $filenameindex = 0;
     $resetfile = 1;
@@ -147,7 +147,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     header('Content-disposition: attachment; filename='.$zipname);
     header('Content-Length: ' . filesize($zipname));
     readfile($zipname);
-}elseif ($_POST['action'] == 'Download Script') {
+}/*elseif ($_POST['action'] == 'Download Script') {
     $file = fopen(getcwd() . "/upload/sampleconfigfile.script", "w");
     foreach ($_POST['loop'] as $key => $val) {
         $line = '';
@@ -162,7 +162,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     header("Content-Transfer-Encoding: Binary");
     header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
     readfile($file_url); // do the double-download-dance (dirty but worky)
-} elseif ($_POST['action'] == 'UPLOAD') {
+}*/elseif ($_POST['action'] == 'UPLOAD') {
     if ($_FILES["file"]["type"] == "text/plain") {
         // Remove if config file exist
         if (file_exists(getcwd() . "/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt")) {

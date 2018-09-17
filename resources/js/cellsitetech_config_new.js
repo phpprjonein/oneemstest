@@ -6,6 +6,15 @@ $(document).ready(function() {
 		document.forms['wizard-75a3c2'].reset();
 	}
 	
+	$(document).on('change', "#cellsitech-generate-script select#select_script_type", function(event) {
+		if(this.value == 'BW-Upgrade'){
+			$('.bandwidth').show();
+			$('.non-bandwidth').hide();
+		}else{
+			$('.non-bandwidth').show();
+			$('.bandwidth').hide();
+		}
+	});
 	
 	$(document).on('change', "#cellsitech-generate-script select", function(event) {
 		var filename = ''; sep = '';

@@ -4683,3 +4683,33 @@ function get_user_zone_deviceslist($calloutzones){
     $resultset = $db2->resultset();
     return $resultset;
 }
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+function get_switchvars_ips($switch_name)
+{
+    global $db2;
+    $sql = "SELECT swvarname, swvarval,switch_name FROM switchvars where (swvarname = 'Asr9k-1 Loopback0 IP' OR swvarname = 'Asr9k-2 Loopback0 IP') AND switch_name = '".$switch_name."' order by swvarname";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+function get_device_ids_from_ip_address($ipaddress = array())
+{
+    $ipaddress = implode("','",$ipaddress);
+    global $db2;
+    $sql = "SELECT id, deviceIpAddr FROM nodes where deviceIpAddr in ('".$ipaddress."')";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+

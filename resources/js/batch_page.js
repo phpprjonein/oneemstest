@@ -75,6 +75,13 @@ $(document).ready(function() {
         		$('#batch-page #status').append("<strong>Error!</strong> Device selection is required");
             	req_err = true;	
         	}
+        	if($('#scriptname').val().indexOf('BW-Upgrade') != -1){
+            	if(allVals.split(',').length > 1){
+            		$('#batch-page #status').append("<strong>Error!</strong> BW-Upgrade only one Device selection is allowed");
+                	req_err = true;	
+            	}
+        	}
+        	
 			if(req_err){ 
     			$('#batch-page #status').show();
     			$('#batch-page #status').addClass('alert-danger');
@@ -86,23 +93,62 @@ $(document).ready(function() {
     			return false;
     		}
         	
-        	
-        	
-    		if(confirm("Are you sure, do you want to create a batch ?")){
+			if($('#scriptname').val().indexOf('BW-Upgrade') != -1){
+				$('#bwcategory').val(allVals);
+				$('#bwbatchid').val($('#batchid').val());
+				$('#bwdeviceseries').val($('#deviceseries').val());
+				$('#bwdeviceos').val($('#deviceos').val());
+				$('#bwsel-priority').val($('#sel-priority').val());
+				$('#bwrefmop').val($('#refmop').val());
+				$('#bwswitch_type').val($('#switch_type').val());
+				
+				var bwfilenames = $('#bwfilenames').val();
+				var bwfilenames_arr = bwfilenames.split(',');
+
 	            $.ajax({
 	                type:"post",
 	                url:"ip-mgt-process.php",
-	                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
+	                data: {'ctype':'BWBatchTabShow','bwswitch_type':$('#bwswitch_type').val(),'ip-address':$('#row_'+allVals).find('td:eq(1)').html(), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#bwfilenames').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
+	                success: function(resdata){
+	                	$('#batchpreModal .modal-body').html(resdata);
+	                	var myModal = $('#batchpreModal');
+	            		myModal.modal('show'); 
+	                }
+	            });
+				
+				return false;
+			}else{	
+	    		if(confirm("Are you sure, do you want to create a batch ?")){
+		            $.ajax({
+		                type:"post",
+		                url:"ip-mgt-process.php",
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
+		                success: function(resdata){
+		                	var myModal = $('#batchModal');
+		            		myModal.modal('show'); 
+		                }
+		            });
+	    		}
+	            return false;
+			}
+    	}); 
+
+      
+      $(document).on('click', '#bwcreatebatch', function(event) {	
+	  		if(confirm("Are you sure, do you want to create a batch ?")){
+	            $.ajax({
+	                type:"post",
+	                url:"ip-mgt-process.php",
+	                data: {'ctype':'BWBatchTabUPdate','bwswitch_type':$('#bwswitch_type').val(),'ip-address':$('#row_'+allVals).find('td:eq(1)').html(), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#bwfilenames').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()},
 	                success: function(resdata){
 	                	var myModal = $('#batchModal');
 	            		myModal.modal('show'); 
 	                }
 	            });
-    		}
-            return false;
-    	}); 
-
-		  
+			}
+	        return false;
+      });
+      
 	  $("#backup-restore-list-dt-filter a").click(function(){
     	  	allVals = [];	 
     	  	$('#cbvals').val('');

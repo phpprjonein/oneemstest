@@ -22,10 +22,44 @@ $page_title = 'OneEMS';
 </head>
 <body>
 	<!-- The Modal -->
+	<input type="hidden" value="<?php echo implode(',', $_SESSION['filenames'])?>" name="bwfilenames" id="bwfilenames">
+	<input type="hidden" value="" name="bwcategory" id="bwcategory">
+	<input type="hidden" value="" name="bwbatchid" id="bwbatchid">
+	<input type="hidden" value="" name="bwdeviceseries" id="bwdeviceseries">
+	<input type="hidden" value="" name="bwdeviceos" id="bwdeviceos">
+	<input type="hidden" value="" name="bwsel-priority" id="bwsel-priority">
+	<input type="hidden" value="" name="bwrefmop" id="bwrefmop">
+	<input type="hidden" value="" name="bwswitch_type" id="bwswitch_type">
+	
+	<div class="modal fade" id="batchpreModal">
+		<div class="modal-dialog">
+			<div class="modal-content" id="batchModalContent">
+				<!-- Modal Header -->
+				<div class="modal-header" id="backupmodalhdr">
+					<h5 class="modal-title">BW Upgrade Device Selected</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+				
+			  	</div>
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" id="bwcreatebatch" class="btn btn-secondary">Create Batch</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
 	<div class="modal fade" id="batchModal">
 		<div class="modal-dialog">
 			<div class="modal-content" id="batchModalContent">
-
 				<!-- Modal Header -->
 				<div class="modal-header" id="backupmodalhdr">
 					<h5 class="modal-title">Batch Success</h5>
@@ -38,7 +72,9 @@ $page_title = 'OneEMS';
 				<div class="modal-body">
 			  Please do keep track the status on Batch Page
 			  <?php if(isset($_SESSION['batch_vars']['batchid'])):?>
-			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?></b>
+			  <br>Batch ID : <?php echo $_SESSION['batch_vars']['batchid']; ?>,<?php if(strpos($_SESSION['batch_vars']['templname'], 'BW-Upgrade')) { ?><?php echo ($_SESSION['batch_vars']['batchid']+1).','.($_SESSION['batch_vars']['batchid']+2); ?>
+			  <?php } ?>
+			  </b>
 			  <?php endif;?>
 			  </div>
 				<!-- Modal footer -->
@@ -113,6 +149,9 @@ echo generate_site_breadcrumb($values);
 								name="deviceos" id="deviceos" /> <input type="hidden"
 								value="<?php echo $_SESSION['batch_vars']['refmop']; ?>"
 								name="refmop" id="refmop" />
+								<input type="hidden"
+								value="<?php echo $_SESSION['batch_vars']['switch_type']; ?>"
+								name="switch_type" id="switch_type" />
 							<div class="panel-body">
 								<input type="hidden" value="" name="cbvals" id="cbvals" />
 								<table id="batchpro" class="table table-striped table-sm">

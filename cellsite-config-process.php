@@ -45,8 +45,13 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $username = $_SESSION['username'];
     $mesg = " User name: $username User type : $usertype Page:  Generate Script page Description: User has executed the script.";
     write_log($mesg);
-    
+    unset($_SESSION['filenames']);
     // exit();
+    $_SESSION['filenames'] = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script');
+    
+    
+    
+    
     $templname = $_POST['templname'];
     $db2 = new db2();
     $batchid = time();
@@ -96,7 +101,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         'refmop' => $val['refmop'],
         'templname' => $templname,
         'deviceseries' => $_POST['deviceseries'],
-        'deviceos' => $_POST['deviceos']
+        'deviceos' => $_POST['deviceos'],
+        'switch_type' => $_POST['switch_type']
     );
     if (isset($_POST['usertype']) && $_POST['usertype'] == 2) {
         header("location:batch-page.php");
@@ -116,7 +122,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $_SESSION['msg'] = 'ss';
     header("location:cellsitetech-configuration.php");
 }elseif ($_POST['action'] == 'Download Script') {
-    $filenames = array($_POST['templname'].'.script','ASR9010-01.script','ASR9010-02.script');
+    $timestamp = date("Y-m-d_h-i-sa_");
+    $filenames = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script');
     $filenameindex = 0;
     $resetfile = 1;
     foreach ($_POST['loop'] as $key => $val) {
@@ -135,7 +142,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         fwrite($file, $line . "\n");
     }
     fclose($file);
-    $zipname = 'generatescript/'.$_POST['templname'].'.zip';
+    $zipname = 'generatescript/'.$timestamp.$_POST['templname'].'.zip';
     unlink($zipname);
     $zip = new ZipArchive;
     $zip->open($zipname, ZipArchive::CREATE);

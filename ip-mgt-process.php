@@ -8,6 +8,24 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
     update_dev_batch($_POST['batchid'], $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
 }
 
+if (isset($_POST['category']) && $_POST['ctype'] == 'BWBatchTabUPdate') {
+    $switchvarsips = get_switchvars_ips($_POST['bwswitch_type']);
+    $ipaddress = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
+    $scriptname_arr = explode(',',$_POST['scriptname']);
+    $ipaddress_details = get_device_ids_from_ip_address($ipaddress);
+    foreach ($ipaddress_details as $key => $val){
+        $devices_selected[$val['deviceIpAddr']] = $val['id'];
+    }
+    $i = 0;
+    foreach ($devices_selected as $key1 => $val1){
+        if(isset($key1[$ipaddress[$i]]) && !empty($key1[$ipaddress[$i]]) && isset($scriptname_arr[$i]) && !empty($scriptname_arr[$i])){
+            update_dev_batch($_POST['batchid'], $key1[$ipaddress[$i]], $scriptname_arr[$i] , $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
+            $i++;
+        }
+    }
+}
+
+
 if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['case']) && $_POST['case'] == 'refresh-switch') {
     $region = $_POST['region'];
     $market = $_POST['market'];
@@ -296,4 +314,21 @@ if ($_POST['ctype'] == 'configtempluservar') {
         'templname' => $_POST['templname']
     );
     insert_uservars($values_arr);
+}
+if($_POST['ctype'] == 'BWBatchTabShow'){
+    $scriptname = explode(',',$_POST['scriptname']);
+    $output = '<div class="table-responsive"><table class="table"><thead><tr><th>Template</th><th>BatchID</th><th>IP Address</th></tr><tbody>';
+    
+    $switchvarsips = get_switchvars_ips($_POST['bwswitch_type']);
+    $ipaddress = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
+    
+    $i = 0;
+    foreach ($scriptname as $key => $val){
+        $output .= '<tr>';
+        $output .= '<td>'.$val.'</td><td>'.($_POST['batchid'] + $i).'</td><td>'.$ipaddress[$i].'</td>';
+        $output .= '</tr>';
+        $i++;
+    }
+    $output .= '</tbody></table></div>';
+    echo $output;
 }

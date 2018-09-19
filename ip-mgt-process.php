@@ -10,19 +10,38 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BWBatchTabUPdate') {
     $switchvarsips = get_switchvars_ips($_POST['bwswitch_type']);
-    $ipaddress = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
+    $ipaddress_arr = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
     $scriptname_arr = explode(',',$_POST['scriptname']);
+    $batchid_arr = array($_POST['batchid'], $_POST['batchid'] + 1, $_POST['batchid'] + 2);
+    
+    update_dev_batch_bw($batchid_arr, $ipaddress_arr, $scriptname_arr , $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
+    
+    
+    /*
+    print '<pre>';
+    print_r($ipaddress);
+    print_r($scriptname_arr);
+    print_r($batchid_arr);
+    die;
+    
     $ipaddress_details = get_device_ids_from_ip_address($ipaddress);
     foreach ($ipaddress_details as $key => $val){
         $devices_selected[$val['deviceIpAddr']] = $val['id'];
     }
+    
+    print '<pre>';
+    print_r($devices_selected);
+    die;
+    
     $i = 0;
     foreach ($devices_selected as $key1 => $val1){
         if(isset($key1[$ipaddress[$i]]) && !empty($key1[$ipaddress[$i]]) && isset($scriptname_arr[$i]) && !empty($scriptname_arr[$i])){
-            update_dev_batch($_POST['batchid'], $key1[$ipaddress[$i]], $scriptname_arr[$i] , $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
+            update_dev_batch($_POST['batchid'], $key1, $scriptname_arr[$i] , $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
             $i++;
         }
-    }
+    }*/
+    
+    
 }
 
 

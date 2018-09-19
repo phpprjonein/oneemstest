@@ -136,6 +136,9 @@ $(document).ready(function() {
       
       $(document).on('click', '#bwcreatebatch', function(event) {	
 	  		if(confirm("Are you sure, do you want to create a batch ?")){
+	  			var myModal = $('#batchpreModal');
+    			myModal.modal('hide');
+    			
 	            $.ajax({
 	                type:"post",
 	                url:"ip-mgt-process.php",

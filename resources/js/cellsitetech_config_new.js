@@ -154,7 +154,7 @@ $(document).ready(function() {
 			$('.gscript1 #status').show();
 			req_err = true;
 		}
-		if($('.gscript1 #select_purpose').val() == 'Modification' && $('.gscript1 #select_script_type').val() == "BW-Upgrade"){
+		if($('.gscript1 #select_purpose').val() == 'Modification' && $('.gscript1 #select_script_type').val() == "BW-Upgrade" && $('.gscript1 #select_switch').val() == ""){
 			$('.gscript1 #status').append("<strong>Error!</strong> Select switch field is required.<br/>");
 			$('.gscript1 #status').addClass('alert-danger');
 			$('.gscript1 #select_os_version').addClass('required');

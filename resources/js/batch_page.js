@@ -110,7 +110,13 @@ $(document).ready(function() {
 	                url:"ip-mgt-process.php",
 	                data: {'ctype':'BWBatchTabShow','bwswitch_type':$('#bwswitch_type').val(),'ip-address':$('#row_'+allVals).find('td:eq(1)').html(), 'category':allVals, 'batchid':$('#batchid').val(), 'scriptname':$('#bwfilenames').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
 	                success: function(resdata){
-	                	$('#batchpreModal .modal-body').html(resdata);
+	                	var obj = jQuery.parseJSON( resdata );
+	                	if(obj.status == 0){
+	                		$('#bwcreatebatch').hide();
+	                	}else{
+	                		$('#bwcreatebatch').show();
+	                	}
+	                	$('#batchpreModal .modal-body').html(obj.result);
 	                	var myModal = $('#batchpreModal');
 	            		myModal.modal('show'); 
 	                }

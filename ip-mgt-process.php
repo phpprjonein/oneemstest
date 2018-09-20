@@ -339,15 +339,24 @@ if($_POST['ctype'] == 'BWBatchTabShow'){
     $output = '<div class="table-responsive"><table class="table"><thead><tr><th>Template</th><th>BatchID</th><th>IP Address</th></tr><tbody>';
     
     $switchvarsips = get_switchvars_ips($_POST['bwswitch_type']);
-    $ipaddress = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
-    
-    $i = 0;
-    foreach ($scriptname as $key => $val){
+    if(count($switchvarsips) == 2){
+        $status = 1;
+        $ipaddress = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
+        $i = 0;
+        foreach ($scriptname as $key => $val){
+            $output .= '<tr>';
+            $output .= '<td>'.$val.'</td><td>'.($_POST['batchid'] + $i).'</td><td>'.$ipaddress[$i].'</td>';
+            $output .= '</tr>';
+            $i++;
+        }
+    }else{
+        $status = 0;
         $output .= '<tr>';
-        $output .= '<td>'.$val.'</td><td>'.($_POST['batchid'] + $i).'</td><td>'.$ipaddress[$i].'</td>';
+        $output .= '<td colspan="3">Batch Creation Failed, IP address for selected switch not found.</td>';
         $output .= '</tr>';
-        $i++;
+        
     }
     $output .= '</tbody></table></div>';
+    $output = json_encode(array('result' => $output, 'status' => $status));
     echo $output;
 }

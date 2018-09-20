@@ -14,21 +14,31 @@ $deviceinfo = batch_accordion_details($batchid);
 				<td><b>Comment</b></td>
 				<td><b>Execution Status</b></td>
 			</tr>
-            <?php foreach ($deviceinfo['result'] as $key => $val): ?>
-            <?php
-                if (strtolower($val['status']) == 's') {
-                    $val['status'] = 'Scheduled';
-                } elseif (strtolower($val['status']) == 'd') {
-                    $val['status'] = 'Cancelled';
-                }
-                ?>
-			<tr>
-				<td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
-				<td><?php echo $val['devicename']; ?></td>
-				<td><?php echo $val['comment']; ?></td>
-				<td><?php echo $val['status']; ?></td>
-			</tr>
-            <?php endforeach;?>
+            <?php 
+            if(count($deviceinfo['result']) == 0):  ?>
+            	<tr>
+    				<td></td>
+    				<td></td>
+    				<td>Device details not available for bandwidth upgrade</td>
+    				<td></td>
+    			</tr>
+            <?php else: 
+                foreach ($deviceinfo['result'] as $key => $val): ?>
+                <?php
+                    if (strtolower($val['status']) == 's') {
+                        $val['status'] = 'Scheduled';
+                    } elseif (strtolower($val['status']) == 'd') {
+                        $val['status'] = 'Cancelled';
+                    }
+                    ?>
+    			<tr>
+    				<td><?php echo $val['deviceIpAddr'].$val['deviceIpAddrsix'];?></td>
+    				<td><?php echo $val['devicename']; ?></td>
+    				<td><?php echo $val['comment']; ?></td>
+    				<td><?php echo $val['status']; ?></td>
+    			</tr>
+                <?php endforeach;?>
+            <?php endif; ?>
 		</tbody>
 	</table>
 </div>

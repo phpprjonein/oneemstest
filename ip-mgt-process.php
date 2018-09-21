@@ -227,6 +227,11 @@ if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST
     $results = load_available_templates($_POST['filename'], $_POST['alias']);
     $output = '';
     foreach ($results as $key => $val) {
+        if($_POST['scripttype'] != 'BW-Upgrade'){
+            if(strpos($val['templname'], 'BW-Upgrade') !== false){
+                continue;
+            }
+        }
         $checked = (empty($output)) ? 'checked' : '';
         $output .= '<tr><td class="templname">' . $val['templname'] . '</td><td><input type="radio" value="' . $val['templname'] . '" ' . $checked . ' name="radioGroup"></td><td><button type="submit" class="btn btn-primary btn-sm generate-script-delete">Delete</button></td></tr>';
     }

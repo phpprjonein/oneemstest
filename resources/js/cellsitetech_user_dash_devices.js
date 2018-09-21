@@ -2,6 +2,9 @@ $(document).ready(function() {
     $('body').on('click', '.run_all_checks', function(){
     	$thisdiv = $(this);
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid'));
+
+        var version = $(this).data('version');
+        version = version.replace('(','-').replace(')','-').replace('.','-');
         
         var deviceseries = $(this).data('deviceseries');
         if(deviceseries == 'ASR9000'){
@@ -13,7 +16,7 @@ $(document).ready(function() {
           $.ajax({
               type:"get",
               url:actionurl,
-              data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')},
+              data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':version},
               beforeSend: function(){
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
               },
@@ -49,6 +52,11 @@ $(document).ready(function() {
     		 allVals.push($(this).val());
     	});		
     	$thisdiv = $(this);
+    	
+        var version = $(this).data('version');
+        version = version.replace('(','-').replace(')','-').replace('.','-');
+
+    	
     	var deviceseries = $(this).data('deviceseries');
         if(deviceseries == 'ASR9000'){
       	  actionurl = "ems-healthchk-cellsitetech-custom.php";
@@ -60,7 +68,7 @@ $(document).ready(function() {
         $.ajax({
             type:"get",
             url:actionurl,
-            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':$(this).data('version')},
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':version},
             beforeSend: function(){
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
             },

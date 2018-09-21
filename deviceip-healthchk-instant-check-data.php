@@ -47,7 +47,7 @@ ini_set('display_errors', 1);
     
     
     $lastupdated = date('Y-m-d H:i:s');
-    if($device_details['deviceseries'] == 'ASR9000'){
+    if($device_details['deviceseries'] == 'ASR9K'){
         $output = sendPostData($url_final);
         /*$output = '{
      "extract_redundancy": {
@@ -226,7 +226,7 @@ ini_set('display_errors', 1);
 <?php
 $vendorId = load_node_vendor_id_from_deviceid($deviceid);
 if ($vendorId == 1) {
-    if($device_details['deviceseries'] == 'ASR9000'){
+    if($device_details['deviceseries'] == 'ASR9K'){
         $output = json_decode($output, true);
         include_once 'ems_instant_hc_blk_inc.php';
     }else{

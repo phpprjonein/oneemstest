@@ -33,6 +33,7 @@ $(document).ready(function() {
 			//$("#cellsitech-generate-script #upload_filename').val(filename);
 			$.post( "ip-mgt-process.php", { calltype: "trigger", 
 				'filename':filename,
+				'scripttype':$('.gscript1 #select_script_type').val(),
 				'action':'GenerateScript'
 			}).done(function( data ) {
 				if(data != ""){

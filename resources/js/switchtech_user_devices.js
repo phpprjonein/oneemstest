@@ -3,7 +3,7 @@ $(document).ready(function() {
     	$thisdiv = $(this);
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
         var deviceseries = $(this).data('deviceseries');
-        if(deviceseries == 'ASR9000'){
+        if(deviceseries == 'ASR9K'){
       	  actionurl = "ems-healthchk-cellsitetech.php";
         }else{
       	  actionurl = "healthchk-switchtech.php";
@@ -31,7 +31,7 @@ $(document).ready(function() {
     	});		
     	$thisdiv = $(this);
     	var deviceseries = $(this).data('deviceseries');
-        if(deviceseries == 'ASR9000'){
+        if(deviceseries == 'ASR9K'){
       	  actionurl = "ems-healthchk-cellsitetech-custom.php";
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
@@ -194,7 +194,7 @@ $(document).ready(function() {
                   version = version.replace('(','-').replace(')','-').replace('.','-');
                   var actionurl = '';
                   
-                  if(deviceseries == 'ASR9000'){
+                  if(deviceseries == 'ASR9K'){
                 	  actionurl = "ems-healthchk-load-table-data.php";
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";

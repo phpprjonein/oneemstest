@@ -3,7 +3,7 @@ $(document).ready(function() {
     	$thisdiv = $(this);
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid'));
         var version = $(this).data('version');
-        version = version.replace('(','-').replace(')','-').replace('.','-');
+        version = version.replace(/\(/g, '-').replace(/\)/g, '-').replace(/\./g, '-');
         var deviceseries = $(this).data('deviceseries');
         if(deviceseries == 'ASR9K'){
       	  actionurl = "ems-healthchk-cellsitetech.php";
@@ -34,7 +34,7 @@ $(document).ready(function() {
     	$thisdiv = $(this);
         
     	var version = $(this).data('version');
-        version = version.replace('(','-').replace(')','-').replace('.','-');
+        version = version.replace(/\(/g, '-').replace(/\)/g, '-').replace(/\./g, '-');
         
         
     	var deviceseries = $(this).data('deviceseries');
@@ -198,7 +198,7 @@ $(document).ready(function() {
                   
                   var deviceseries = $(this).closest('tr').find("td:eq(6)").text();
                   var version = $(this).closest('tr').find("td:eq(7)").text();
-                  version = version.replace('(','-').replace(')','-').replace('.','-');
+                  version = version.replace(/\(/g, '-').replace(/\)/g, '-').replace(/\./g, '-');
                   var actionurl = '';
                   
                   if(deviceseries == 'ASR9K'){

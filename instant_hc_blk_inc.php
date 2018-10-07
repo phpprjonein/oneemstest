@@ -226,6 +226,16 @@ echo $display;
 ?>
 </td>
 			</tr>
+ <tr>
+                                <td><b>Bandwidth</b></td>
+                                <td>
+<?php
+$color = ($output['bandwidth']['R'] == 0) ? 'green' : 'red';
+$display = "<span style='color:" . $color . "'>" . $output['bandwidth']['message'] . '</span>';
+echo $display;
+?>
+</td>
+</tr>
 			<tr>
     <?php
     if ($healthchktype != 'Load Table') {

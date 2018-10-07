@@ -15,7 +15,7 @@ if ($_SESSION['userlevel'] == 1)
     include_once ('config/session_check_cellsite_tech.php');
 else if ($_SESSION['userlevel'] == 2)
     include_once ('config/session_check_switch_tech.php');
-        
+
 $page_title = 'OneEMS';
 
 // page logging
@@ -76,7 +76,7 @@ write_log($mesg);
 											<option value="Golden">Golden</option>
 										</select>
 										<input name="f4" value="Golden" type="hidden">
-										<!-- 
+										<!--
 										<select
 											id="select_purpose" class="form-control custom-select"
 											id="f4" name="f4" data-rule-required="true">
@@ -111,9 +111,8 @@ write_log($mesg);
 											class="form-control custom-select" id="f8" name="f8"
 											data-rule-required="true">
 											<option value="">- Select OS Version -</option>
-                <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
-				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option>
-			 <?php }; ?>
+
+<option value="15.6(1)S1">15.6(1)S1</option>
               </select>
 									</div>
 									<!-- /select OS version options -->
@@ -249,26 +248,28 @@ write_log($mesg);
 							<!-- /backup management content row -->
 						</div>
 						<div class="row">
+						<p>usvars</p>
                     		<?php
                     $vars['usrvars'] = golden_modification_configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
-                    
-                    
+
+
                     $predevice_series = '';
                     foreach ($vars['usrvars'] as $key => $val) {
-                        ?>   
-                        	<?php 
-                        	       
-                        	       
-                        	       if($predevice_series != $val['deviceseries']){    
+                        ?>
+                        	<?php
+
+
+                        	       if($predevice_series != $val['deviceseries']){
                         	           $predevice_series = $val['deviceseries'];
                         	           ?>
                         	      		<div
 								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 gsalert alert-secondary panel-heading-lstmgmt <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?>"  <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>><b><?php echo $val['deviceseries']; ?></b></div>
-                        	      			            
+
 							<?php }else{
 							         $predevice_series = $val['deviceseries'];
 							      }
-                        	?> 
+                        	?>
+							<!-- <p>if device series = bandwidth</p> -->
                             <div
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
 								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
@@ -291,7 +292,7 @@ write_log($mesg);
 							</div>
 						</div>
 					</form>
-			
+
 			</section>
 			<!-- /.content -->
 

@@ -95,12 +95,13 @@ write_log($mesg);
                                         <a class="nav-link ml-3 my-1"
 										href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											href="help_admin.php#item-9-1">Load Template - Golden</a> <a
 											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-2">Software Upload</a>
+											href="help_admin.php#item-9-2">Software Upload</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -949,7 +950,7 @@ event manager applet LOOP_GIG authorization bypass
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-batch-status">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.6 - View Status Of A Batch Job</b></span>
+							<span class="font-italic"><b>FIG. 4.5.7 - View Status Of A Batch Job</b></span>
 							<p></p>
 							<h5 id="item-4-2-1">Generate Script (Golden)</h5>
 							<p>Generate Script (Golden) has same flow as Generate Script (Modification) with the following exceptions:
@@ -962,7 +963,7 @@ event manager applet LOOP_GIG authorization bypass
 								class="img-fluid" alt="" data-toggle="modal"
 								data-target="#screenshot-generate1-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.7 - Script Template Selection (Golden)</b></span>
+							<span class="font-italic"><b>FIG. 4.5.8 - Script Template Selection (Golden)</b></span>
 							<p></p>
 							<p>This flow generates <b>three</b> different scripts, one for original CSR routers, one for associated 9k-01 devices and one for 9k-02 devices. Each CSR is associated with a pair of 9ks.</p>
 							<p>Click on the links below to view sample scripts for each aforementioned type:

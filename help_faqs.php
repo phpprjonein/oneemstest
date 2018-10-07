@@ -103,14 +103,15 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_admin.php#item-7">ADMIN</a>
+									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											href="help_admin.php#item-9-1">Load Template - Golden</a> <a
 											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-2">Software Upload</a>
+											href="help_admin.php#item-9-2">Software Upload</a>
                                     </nav>
-									<a class="nav-link" href="#item-8">FAQs</a>
+									<a class="nav-link" href="#item-10">FAQs</a>
 								</nav>
 							</nav>
 						</div>
@@ -122,7 +123,7 @@ echo generate_site_breadcrumb($values);
 							<hr class="d-md-none" />
 
 							<!-- FAQs -->
-							<h4 id="item-8">FAQs</h4>
+							<h4 id="item-10">FAQs</h4>
 							<div id="accordion">
 
 								<div class="card">
@@ -197,7 +198,7 @@ echo generate_site_breadcrumb($values);
 												specific user as per the <b>OpsTracks</b> database.
 											</p>
 											<p class="alert alert-danger">
-												<b class="text-danger">NOTE:</b> For Cell Site Technicians,
+												<b class="text-danger">NOTE:</b> For NA Field Assurance Users,
 												the <b>My Routers</b> list on the <b>Network Elements
 													Dashboard</b> contains routers assigned to a specific user
 												by <b>Ops Tracker</b>.

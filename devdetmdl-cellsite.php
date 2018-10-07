@@ -71,7 +71,7 @@ switch ($command) {
         break;
     case 'twothsndbyteping':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/22';
-        $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/twothsndbyteping';
+        $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_ping';
         break;
     case 'bgpvsixneighbours':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/14';

@@ -61,7 +61,7 @@
     ?>
 </td>
 				<td><input type="checkbox" id="bootstatement" name="bootstatement"
-					value="extract_show_running_config" <?php if(in_array('extract_show_running_config', $_GET['category'])):?>
+					value="extract_show_version_config" <?php if(in_array('extract_show_version_config', $_GET['category'])):?>
 					checked="checked" <?php endif;?>></td>
 				<td><b>Boot Statement</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
@@ -139,7 +139,7 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="devdetmdl-cellsite.php?commandname=twothsndbyteping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-   // print_r($output['twothsndbyteping']);
+
     $color = ($output['twothsndbyteping']['R'] == 0) ? 'green' : 'red';
     $display = "<span style='color:" . $color . "'>" . $output['twothsndbyteping']['message'] . '</span>';
     echo $display;

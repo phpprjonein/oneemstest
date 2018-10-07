@@ -3529,8 +3529,8 @@ function write_log($message, $logfile = '')
     // Filename of log to use when none is given to write_log
     $default_log = "/usr/apps/oneems/logs/oneemsdefault_" . date(m_d_Y) . ".log";
     $upload_log = "/usr/apps/oneems/logs/oneems_" . date(m_d_Y) . ".log";
-    // $default_log = "O:\wamp\www\oneemstest\logs\oneemsdefault_" . date(m_d_Y) . ".log";
-    // $upload_log = "O:\wamp\www\oneemstest\logs\oneems_" . date(m_d_Y) . ".log";
+    // $default_log = "O:\wamp\www\oneems\logs\oneemsdefault_" . date(m_d_Y) . ".log";
+    // $upload_log = "O:\wamp\www\oneems\logs\oneems_" . date(m_d_Y) . ".log";
     // echo 'reach here inside the write_log function';
     
     if ($logfile == '') {
@@ -4241,8 +4241,8 @@ function update_login_api_rules($sso_flag, $username)
         3,
         4
     ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
-     	//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+        //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_celltech_user.php');
+     	$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
 		//$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
@@ -4304,7 +4304,7 @@ function update_login_api_rules($sso_flag, $username)
             $base_url = 'https://iop.vh.vzwnet.com:8080';
             $calloutzone = $base_url.'/user/' . $_SESSION['username'] . '/prefs/czone';
         }else{
-            $base_url = 'http://localhost/oneemstest';
+            $base_url = 'http://njbboemsda1v/oneems';
             $calloutzone = $base_url.'/user/' . $_SESSION['username'] . '/prefs/czone';
         }
         // Zones API calls
@@ -4494,8 +4494,8 @@ function update_login_api_rules($sso_flag, $username)
         6,
         7
     ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php?username=' . $username);
-		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
+        //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_switchtech_user.php?username=' . $username);
+		$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
 		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
@@ -4759,7 +4759,7 @@ function get_switchvars_ips($switch_name)
 {
     global $db2;
     //$sql = "SELECT swvarname, swvarval,switch_name FROM switchvars where (swvarname = 'Asr9k-1 Loopback0 IP' OR swvarname = 'Asr9k-2 Loopback10 IP') AND switch_name = '".$switch_name."' order by swvarname";
-	$sql = "SELECT swvarname, swvarval,switch_name FROM switchvars where (swvarname = 'Asr9k-1 Loopback0 IP' OR swvarname = 'Asr9k-2 Loopback0 IP') AND switch_name = '".$switch_name."' order by swvarname";
+	$sql = "SELECT swvarname, swvarval,switch_name FROM switchvars where (swvarname = 'Asr9k-1 Loopback10 IP' OR swvarname = 'Asr9k-2 Loopback10 IP') AND switch_name = '".$switch_name."' order by swvarname";
     $db2->query($sql);
     $resultset = $db2->resultset();
     return $resultset;

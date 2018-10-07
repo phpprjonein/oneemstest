@@ -45,9 +45,9 @@ switch ($command) {
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/7';
         $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_platform';
         break;
-    case 'extract_fbric_status':
+    case 'extract_fabric_status':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/12';
-        $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_fbric_status';
+        $url = 'http://10.134.179.82:8080/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_fabric_status';
         break;
     case 'extract_fabric_inter_asic_drops':
         //$url = 'http://10.134.179.82:8080/healthcheck/ios/' . $deviceid . '/11';

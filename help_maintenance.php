@@ -99,12 +99,13 @@ echo generate_site_breadcrumb($values);
 										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
 										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											href="help_admin.php#item-9-1">Load Template - Golden</a> <a
 											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-2">Software Upload</a>
+											href="help_admin.php#item-9-2">Software Upload</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -136,8 +137,7 @@ echo generate_site_breadcrumb($values);
 							<p>A user can define parameters for a device series type, file name, the destination for update file application and the ability to set minimum build and/or patch versioning of a chosen OS.</p>
 							<p class="alert alert-danger">
 								<b class="text-danger">NOTE:</b> This group of pages within the
-								OneEMS application is only accesible by Cell Site Technicians.
-							</p>
+								OneEMS application is only accesible by NA Field Assurance Users.</p>
 							<!-- <h5 id="item-7-2">Schedule Backup</h5>
 							<img src="resources/img/screenshot-sw-os-repo.png"
 								class="img-fluid" alt="" data-toggle="modal"
@@ -193,7 +193,7 @@ echo generate_site_breadcrumb($values);
 											Discovery Results</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_admin.php" class="border"><b>NEXT: Admin >></b></a>
+									<a href="help_instant_hc.php" class="border"><b>NEXT: Instant Health Check >></b></a>
 								</div>
 							</div>
 

@@ -4,8 +4,8 @@
 			<tr>
 				<td><b>Redundancy state</b></td>
 				<td><?php
-                    $color = ($output['extract_redundancy']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_redundancy']['message'] . '</span>';
+                    $color = ($output['redundancy']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['redundancy']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -13,16 +13,16 @@
 				
 				<td><b>CPU Utilization</b></td>
 				<td><?php
-                    $color = ($output['extract_process_cpu']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_process_cpu']['message'] . '</span>';
+                    $color = ($output['cpuutilization']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['cpuutilization']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				
 				<td><b>Memory utilization</b></td>
 				<td><?php
-                    $color = ($output['extract_memory_statistics']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_memory_statistics']['message'] . '</span>';
+                    $color = ($output['freememory']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['freememory']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -31,22 +31,22 @@
 
 				<td><b>Software running on the RSP</b></td>
 				<td><?php
-                    $color = ($output['extract_version_rsp']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_version_rsp']['message'] . '</span>';
+                    $color = ($output['show_version']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['show_version']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Software installed and active</b></td>
 				<td><?php
-                    $color = ($output['extract_version_installed_active']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_version_installed_active']['message'] . '</span>';
+                    $color = ($output['show_version_installed_active']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_active']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Software installed and committed</b></td>
 				<td><?php
-                    $color = ($output['extract_version_installed_committed']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_version_installed_committed']['message'] . '</span>';
+                    $color = ($output['show_version_installed_committed']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_committed']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -54,22 +54,22 @@
 				<tr>
 				<td><b>Alarms</b></td>
 				<td><?php
-                    $color = ($output['extract_alarms']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_alarms']['message'] . '</span>';
+                    $color = ($output['environmental']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['environmental']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Power supply</b></td>
 				<td><?php
-                    $color = ($output['extract_power_supply']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_power_supply']['message'] . '</span>';
+                    $color = ($output['power_supply']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['power_supply']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Line card status</b></td>
 				<td><?php
-                    $color = ($output['extract_platform']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_platform']['message'] . '</span>';
+                    $color = ($output['platform']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['platform']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -77,22 +77,22 @@
 				<tr>
 				<td><b>Fabric Status</b></td>
 				<td><?php
-                    $color = ($output['extract_fbric_status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_fbric_status']['message'] . '</span>';
+                    $color = ($output['fabric status']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['fabric status']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Fabric interface ASIC drops</b></td>
 				<td><?php
-                    $color = ($output['extract_fabric_inter_asic_drops']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_fabric_inter_asic_drops']['message'] . '</span>';
+                    $color = ($output['fabric interface asic drops']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic drops']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>Fabric interface ASIC errors</b></td>
 				<td><?php
-                    $color = ($output['extract_fabric_inter_asic_errors']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_fabric_inter_asic_errors']['message'] . '</span>';
+                    $color = ($output['fabric interface asic errors']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic errors']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -100,22 +100,25 @@
 				<tr>
 				<td><b>Fabric Interface ASIC link-status</b></td>
 				<td><?php
-                    $color = ($output['extract_fabric_inter_asic_link_status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_fabric_inter_asic_link_status']['message'] . '</span>';
+                    $color = ($output['fabric interface asic link-status']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic link-status']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
-				<td><b>Up/down status</b></td>
+				<td><b>Up/Down Status</b></td>
 				<td><?php
-                    $color = ($output['extract_up_down_status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_up_down_status']['message'] . '</span>';
-                    echo $display;
+                    $color1 = ($output['UP/DOWN Status']['ipv6_interface_brief']['R'] == 0) ? 'green' : 'red';
+                    $display1 = "<span style='color:" . $color1 . "'>" . $output['UP/DOWN Status']['ipv6_interface_brief']['message'] . '</span>';
+$color2 = ($output['UP/DOWN Status']['ipv4_interface_brief']['R'] == 0) ? 'green' : 'red';
+                    $display2 = "<span style='color:" . $color2 . "'>" . $output['UP/DOWN Status']['ipv4_interface_brief']['message'] . '</span>';
+                   $display = $display1.$display2; 
+echo $display;
                     ?>
 				</td>
 				<td><b>Interface counters</b></td>
 				<td><?php
-                    $color = ($output['extract_count_interfaces']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_count_interfaces']['count'] . '</span>';
+                    $color = ($output['interfacecounters']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['interfacecounters']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -123,22 +126,22 @@
 				<tr>
 				<td><b>BFD session</b></td>
 				<td><?php
-                    $color = ($output['extract_bfd_session']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_bfd_session']['message'] . '</span>';
+                    $color = ($output['bfdsession']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['bfdsession']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>VRRP</b></td>
 				<td><?php
-                    $color = ($output['extract_vrrp']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_vrrp']['message'] . '</span>';
+                    $color = ($output['VRRP']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['VRRP']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>NTP</b></td>
 				<td><?php
-                    $color = ($output['extract_ntp']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_ntp']['message'] . '</span>';
+                    $color = ($output['NTP']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['NTP']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -146,22 +149,22 @@
 				<tr>
 				<td><b>Global OSPF neighbors</b></td>
 				<td><?php
-                    $color = ($output['extract_global_ospf_neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_global_ospf_neighbor']['message'] . '</span>';
+                    $color = ($output['global ospf neighbor']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['global ospf neighbor']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>1XRTT OSPF Neighbor</b></td>
 				<td><?php
-                    $color = ($output['extract_1xrtt_ospf_neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_1xrtt_ospf_neighbor']['message'] . '</span>';
+                    $color = ($output['1XRTT ospf']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['1XRTT ospf']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>CELL_MGMT OSPF Neighbor</b></td>
 				<td><?php
-                    $color = ($output['extract_cell_mgmt_ospf_neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_cell_mgmt_ospf_neighbor']['message'] . '</span>';
+                    $color = ($output['CELL_MGMT OSPF neighbor']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['CELL_MGMT OSPF neighbor']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -169,22 +172,22 @@
 				<tr>
 				<td><b>OSPF NSR and GR</b></td>
 				<td><?php
-                    $color = ($output['extract_ospf_nsr_gr']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_ospf_nsr_gr']['message'] . '</span>';
+                    $color = ($output['ospf nsr and gr']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['ospf nsr and gr']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>LDP neighbors</b></td>
 				<td><?php
-                    $color = ($output['extract_ldp_neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_ldp_neighbor']['message'] . '</span>';
+                    $color = ($output['ldp neighbors']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['ldp neighbors']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>WDN peering</b></td>
 				<td><?php
-                    $color = ($output['extract_wdn_peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_wdn_peering']['message'] . '</span>';
+                    $color = ($output['WDN peering']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['WDN peering']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -192,22 +195,28 @@
 				<tr>
 				<td><b>CSR peering</b></td>
 				<td><?php
-                    $color = ($output['extract_csr_peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_csr_peering']['message'] . '</span>';
+                    $color1 = ($output['CSR peering']['vpnv6_csr_peering']['R'] == 0) ? 'green' : 'red';
+                    $display1 = "<span style='color:" . $color1 . "'>" . $output['CSR peering']['vpnv6_csr_peering']['message'] . '</span>';
+		    $color2 = ($output['csr peering']['vpnv4_csr_peering']['R'] == 0) ? 'green' : 'red';
+                    $display2 = "<span style='color:" . $color2 . "'>" . $output['csr peering']['vpnv4_csr_peering']['message'] . '</span>';
+$diplay = $display1.$display2;
                     echo $display;
                     ?>
 				</td>
 				<td><b>CRS WDN peering</b></td>
 				<td><?php
-                    $color = ($output['extract_crs_wdn_peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_crs_wdn_peering']['message'] . '</span>';
+                    $color = ($output['CRS WDN peering']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['CRS WDN peering']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				<td><b>CRS LTE peering</b></td>
 				<td><?php
-                    $color = ($output['extract_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_crs_lte_peering']['message'] . '</span>';
+                    $color1 = ($output['CRS LTE peering']['ipv6_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
+                    $display1 = "<span style='color:" . $color1 . "'>" . $output['CRS LTE peering']['ipv6_crs_lte_peering']['message'] . '</span>';
+		    $color2 = ($output['CRS LTE peering']['ipv4_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
+                    $display2 = "<span style='color:" . $color2 . "'>" . $output['CRS LTE peering']['ipv4_crs_lte_peering']['message'] . '</span>';
+$display = $display1.$display2;
                     echo $display;
                     ?>
 				</td>
@@ -215,15 +224,8 @@
 				<tr>
 				<td><b>BGP NSR and Graceful Restart</b></td>
 				<td><?php
-                    $color = ($output['extract_bgp_nsr_graceful_restart']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_bgp_nsr_graceful_restart']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Air Filter Check</b></td>
-				<td><?php
-                    $color = ($output['extract_air_filter_check']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_air_filter_check']['message'] . '</span>';
+                    $color = ($output['BGP NSR and Graceful Restart']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BGP NSR and Graceful Restart']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>

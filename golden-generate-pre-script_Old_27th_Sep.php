@@ -15,7 +15,7 @@ if ($_SESSION['userlevel'] == 1)
     include_once ('config/session_check_cellsite_tech.php');
 else if ($_SESSION['userlevel'] == 2)
     include_once ('config/session_check_switch_tech.php');
-
+        
 $page_title = 'OneEMS';
 
 // page logging
@@ -39,7 +39,7 @@ write_log($mesg);
 	<?php include_once ('menu.php'); ?>
 		    <?php
     $values = array(
-        'Generate Script - Modification' => '#'
+        'Generate Script - Golden' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>
@@ -54,7 +54,7 @@ write_log($mesg);
 						action='generate-post-script.php' method='POST'
 						enctype='multipart/form-data' novalidate autocomplete="on">
 						<div class="row">
-
+							<input type="hidden" name="tmplcategory" value="Golden">
 							<!-- router selection content row -->
 							<div class="col-sm-12 col-md-4">
 								<div class="jf-form">
@@ -71,11 +71,20 @@ write_log($mesg);
             ?>
             <div class="form-group f4 required" data-fid="f4">
 										<label class="control-label" for="f4">Select Purpose</label>
-										              <select class="form-control custom-select" id="select_purpose"
+										<select class="form-control custom-select" id="select_purpose" name="f4"
 											data-rule-required="true" disabled>
-											<option value="Modification">Modification</option>
+											<option value="Golden">Golden</option>
 										</select>
-										<input name="f4" value="Modification" type="hidden">
+										<input name="f4" value="Golden" type="hidden">
+										<!-- 
+										<select
+											id="select_purpose" class="form-control custom-select"
+											id="f4" name="f4" data-rule-required="true">
+											<option value="">- SELECT Purpose -</option>
+				<?php //foreach($configtmpddwndata['result'] as $key => $val) {;?>
+				  <option value="<?php //echo $val['desc'];?>"><?php //echo $val['desc']; ?></option>
+				 <?php //}; ?>
+              </select> -->
 									</div>
 									<!-- /select purpose options -->
 
@@ -101,7 +110,9 @@ write_log($mesg);
 											class="form-control custom-select" id="f8" name="f8"
 											data-rule-required="true">
 											<option value="">- Select OS Version -</option>
+<option value="5.3.4">5.3.4</option>
 <option value="15.6(1)S1">15.6(1)S1</option>
+
               </select>
 									</div>
 									<!-- /select OS version options -->
@@ -156,15 +167,15 @@ write_log($mesg);
 
 
 									<!-- select region options -->
-			<?php  $configtmpddwndata = generic_get_region(); ?>
+			<?php  //$configtmpddwndata = generic_get_region(); ?>
 			<!--
             <div class="form-group f11 required" data-fid="f11">
               <label class="control-label" for="f11">Select Region</label>
               <select id="select_region" class="form-control custom-select" name="f11" data-rule-required="true">
               	<option value="">- SELECT Region -</option>
-			  <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
-                 <option value="<?php echo $val['region'];?>"><?php echo $val['region']; ?></option>
-			   <?php }; ?>
+			  <?php //foreach($configtmpddwndata['result'] as $key => $val) {;?>
+                 <option value="<?php //echo $val['region'];?>"><?php //echo $val['region']; ?></option>
+			   <?php //}; ?>
               </select>
             </div>
 			-->
@@ -251,14 +262,14 @@ write_log($mesg);
                         	           $predevice_series = $val['deviceseries'];
                         	           ?>
                         	      		<div
-								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 gsalert alert-secondary panel-heading-lstmgmt <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?>"><b><?php echo $val['deviceseries']; ?></b></div>
+								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-12 gsalert alert-secondary panel-heading-lstmgmt"><b><?php echo $val['deviceseries']; ?></b></div>
                         	      			            
 							<?php }else{
 							         $predevice_series = $val['deviceseries'];
 							      }
                         	?> 
                             <div
-								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
+								class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-3">
 								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
 								<input type="<?php echo $val['usrvarname']; ?>"
 									name="<?php echo $val['usrvarname']; ?>"

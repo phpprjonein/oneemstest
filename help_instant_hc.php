@@ -18,7 +18,7 @@ $page_title = 'OneEMS';
 // page logging
 $usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
 $username = $_SESSION['username'];
-$mesg = " User name: $username User type : $usertype Page:  Backup Help page Description: User has navigated to the Backup help page.";
+$mesg = " User name: $username User type : $usertype Page:  Instant Health Check Help page Description: User has navigated to the Instant Health Check help page.";
 write_log($mesg);
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ write_log($mesg);
 	<?php include_once ('menu.php'); ?>
 	<?php
 $values = array(
-    'Backup Help' => '#'
+    'Instant Health Check Help' => '#'
 );
 echo generate_site_breadcrumb($values);
 ?>
@@ -66,7 +66,7 @@ echo generate_site_breadcrumb($values);
 											href="help_network_elements.php#item-2-3">Health Check
 											Details View</a>
 									</nav>
-									<a class="nav-link" href="#item-3">BACKUP</a> <a
+									<a class="nav-link" href="help_backup.php">BACKUP</a> <a
 										class="nav-link" href="help_config.php">CONFIGURATION</a>
 										<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
@@ -103,7 +103,7 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+                                    <a class="nav-link" href="#item-8">INSTANT HEALTH CHECK</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
@@ -121,43 +121,36 @@ echo generate_site_breadcrumb($values);
 						<div class="col-md-9 col-sm-12 scrollspy-example"
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
-							<h4 id="item-3">BACKUP</h4>
-							<p>This view allows a user to manage existing configurations for
-								devices on their network.</p>
-							<p>A user can:</p>
-							<ul>
-								<li>Remotely backup the configuration of any device within the One EMS network configuration</li>
-								<li>View configurations previously backed up for a specific	device and download to your local desktop</li>
-								<li>Restore a previous configuration to a device. Note: This only copies the configuration file to the remote device</li>
-								<li>Filter custom lists of devices via the "My List" dropdown</li>
-							</ul>
-							<img src="resources/img/screenshot-backup1.png" class="img-fluid"
-								alt="" data-toggle="modal" data-target="#screenshot-backup1">
+							<h4 id="item-8">INSTANT HEALTH CHECK</h4>
+							<p>This view allows a user to initiate a full health check on a specific device in the OneEMS network.</p>
+							<p>A user can perform this search based on IPV4/IPV6 addresses OR device name.</p>
+							<img src="resources/img/screenshot-insta-hc1.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-insta_hc1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 3.1 - Backup Dashboard</b></span>
+							<span class="font-italic"><b>FIG. 8.1 - Instant Health Check  Dashboard Results</b></span>
 							<p></p>
-							<p>
-								To backup a device's configuration, simply click the <b>Backup</b>
-								button in the right most column of the list table. This will run
-								an API that attempts to remotely backup the configuration of the
-								device selected in the user's List table.
-							</p>
-							<img src="resources/img/screenshot-backup2.png" class="img-fluid"
+							<p>This dashboard page returns the same results as a Health Check initiated for a device on the <a href="help_network_elements.php#item-2-3">main Health Check page</a>, but for a single device.</p>
+                            <p>This dashboard returns Health Check results based on the device type of the IP address or device name. ASR9K devices return results for parameters such as redundancy state, CPU utilization, memory utilization, software running on the RSP and others.</p>
+                            <img src="resources/img/screenshot-insta-hc2.png" class="img-fluid"
+								alt="" data-toggle="modal" data-target="#screenshot-insta_hc2">
+							<p></p>
+							<span class="font-italic"><b>FIG. 8.2 - Instant Health Check Dashboard Results for an ASR9K device</b></span>
+							<p></p>
+							<!-- <img src="resources/img/screenshot-backup2.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-backup2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 3.2 - Backup Device Results</b></span>
 							<p></p>
 
-							<a href="#top" class="border"><b>Back to top</b></a>
+							<a href="#top" class="border"><b>Back to top</b></a> -->
 							<hr>
 							<div class="row">
 								<div class="col-6">
-									<a href="help_network_elements.php" class="border"><b><< PREV:
-											Network Elements</b></a>
+									<a href="help_maintenance.php" class="border"><b><< PREV:
+											Maintenance</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_config.php" class="border"><b>NEXT: Configuration
-											>></b></a>
+									<a href="help_admin.php" class="border"><b>NEXT: Admin											>></b></a>
 								</div>
 							</div>
 							<hr>
@@ -175,7 +168,7 @@ echo generate_site_breadcrumb($values);
 
 	<!-- image modals -->
 	<div class="big-modal">
-		<div class="modal fade show" id="screenshot-backup1" tabindex="-1"
+		<div class="modal fade show" id="screenshot-insta_hc1" tabindex="-1"
 			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -183,11 +176,11 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-backup1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-insta-hc1.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-backup2" tabindex="-1"
+		<div class="modal fade show" id="screenshot-insta_hc2" tabindex="-1"
 			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -195,7 +188,7 @@ echo generate_site_breadcrumb($values);
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-backup2_LARGE.png" alt=""
+					<img src="resources/img/screenshot-insta-hc2.png" alt=""
 						width="100%">
 				</div>
 			</div>

@@ -114,16 +114,14 @@ write_log($mesg);
 										<!-- /select device series options -->
 
 										<!-- select OS version options -->
-			<?php $configtmpddwndata = generic_get_nodeVersion(); ?>
             <div class="form-group f8 required" data-fid="f8">
 											<label class="control-label" for="f8">Select OS Version</label>
 											<select id="select_os_version"
 												class="form-control custom-select form-required" name="f8"
 												data-rule-required="true">
 												<option value="">- SELECT OS Version -</option>
-                <?php foreach($configtmpddwndata['result'] as $key => $val) {;?>
-				<option value="<?php echo $val['nodeVersion'];?>"><?php echo $val['nodeVersion']; ?></option>
-			 <?php }; ?>
+                <option value="5.3.4">5.3.4</option>
+<option value="15.6(1)S1">15.6(1)S1</option>
               </select>
 										</div>
 										<!-- /select OS version options -->

@@ -101,12 +101,13 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
+									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											href="help_admin.php#item-9-1">Load Template - Golden</a> <a
 											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-2">Software Upload</a>
+											href="help_admin.php#item-9-2">Software Upload</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -146,8 +147,8 @@ echo generate_site_breadcrumb($values);
 							<p>Here, a user can create custom lists of devices associated
 								with the device(s) they are assigned.</p>
 							<p>RouterByTech and SwitchByTech APIs are used to auto-populate
-								the My Routers default views (for Cell Techs) and Switch default
-								views (for Switch Techs.</p>
+								the My Routers default views (for NA Field Assurance Users) and Switch default
+								views (for NA System Assurance Users).</p>
 							<b>List Creation</b>
 							<p>
 								To create a <b>Device List</b>, enter a name in the input field
@@ -172,6 +173,11 @@ echo generate_site_breadcrumb($values);
 								and within each Region are individual Markets. Once you've
 								chosen a Market, you will then be presented with a list of
 								devices that are associated with a switch in that market.</p>
+								<p class="alert alert-danger">
+								<b class="text-danger">NOTE:</b> <b>NA Field Assurance Users</b> will only be permitted to view devices assigned to them, devices assigned to their callout zones and devices associated with their switch(es).  The map has been disabled.
+								<br>
+								<br>
+								<b>NA Systems Assurance Users</b> will only be permitted to view the switches and associated devices assigned to them. The map will be enabled for only those markets that contain an assigned switch.</p>
 							<img src="resources/img/screenshot-map1.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-map1">
 							<p></p>
@@ -212,9 +218,9 @@ echo generate_site_breadcrumb($values);
 							</p>
 							<h5 id="item-2-3">Health Check Details View</h5>
 							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> Cell Site Technicians will be
+								<b class="text-danger">NOTE:</b> NA Field Assurance Users will be
 								provided a <b>"My Routers"</b> List. This List contains Routers
-								that are assigned to the Cell Site Technician via <b>Ops Tracker</b>. Switch Technicians will be provided a list of Switch names that are associated with him/her.
+								that are assigned to the NA Field Assurance Users via <b>Ops Tracker</b>. NA Systems Assurance Users will be provided a list of Switch names that are associated with him/her.
 							</p>
 							<p>
 								Here, a user can view the health status of devices associated
@@ -232,36 +238,118 @@ echo generate_site_breadcrumb($values);
 							<p>This screen gives the user a Dashboard table view of all the
 								devices in a certain List, along with the ability to drill down
 								and view multiple separate health checks:
-							<div class="row">
+
+								<div class="row">
 								<div class="col">
-									<ul>
-										<li>IOS Versioning</li>
-										<li>Buffers</li>
-										<li>Environmental States</li>
-										<li>2000 Byte Ping Status/Success Rates</li>
-										<li>VRF</li>
-										<li>MultiProtocol Label Switching Interfaces</li>
-										<li>MultiProtocol Label Switching Neighbors</li>
-										<li>CPU Utilization</li>
-										<li>Boot Statement</li>
-										<li>Config Registration</li>
-									</ul>
+
+
+								<div id="accordion">
+
+<!-- asr9k specific checklist -->
+									<div class="card">
+										<div class="card-header" id="headingOne">
+											<h5 class="mb-0 table-responsive">
+												<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">ASR9000 specific health checks</button>
+											</h5>
+										</div>
+										<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+											<div class="card-body">
+											<div class="container">
+												<div class="row">
+												<div class="col">
+													<ul>
+														<li>Redundancy state</li>
+														<li>CPU utilization</li>
+														<li>Memory utilization</li>
+														<li>Software running on the RSP</li>
+														<li>Software installed and active</li>
+														<li>Software installed and committed</li>
+														<li>Alarms</li>
+														<li>Power supply</li>
+														<li>Line card status</li>
+														<li>Fabric Status</li>
+														<li>Fabric interface ASIC drops</li>
+														<li>Fabric interface ASIC errors</li>
+														<li>Fabric Interface ASIC link-status</li>
+														<li>Up/down status</li>
+													</ul>
+												</div>
+												<div class="col">
+													<ul>
+														<li>Interface counters</li>
+														<li>BFD session</li>
+														<li>VRRP</li>
+														<li>NTP</li>
+														<li>Global OSPF neighbors</li>
+														<li>1XRTT OSPF Neighbor</li>
+														<li>CELL_MGMT OSPF Neighbor</li>
+														<li>OSPF NSR and GR</li>
+														<li>LDP neighbors</li>
+														<li>WDN peering</li>
+														<li>CSR peering</li>
+														<li>CRS WDN peering</li>
+														<li>CRS LTE peering</li>
+														<li>BGP NSR and Graceful Restart</li>
+														<li>Air Filter Check</li>
+													</ul>
+												</div>
+												</div>
+											</div>
+											</div>
+										</div>
+									</div>
+<!-- asr9k specific checklist -->
+
+<!-- other cheklists -->
+									<div class="card">
+										<div class="card-header" id="headingTwo">
+											<h5 class="mb-0 table-responsive">
+												<button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Other health checks</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+											<div class="card-body">
+											<div class="container">
+												<div class="row">
+												<div class="col">
+													<ul>
+														<li>IOS Versioning</li>
+														<li>Buffers</li>
+														<li>Environmental States</li>
+														<li>2000 Byte Ping Status/Success Rates</li>
+														<li>VRF</li>
+														<li>MultiProtocol Label Switching Interfaces</li>
+														<li>MultiProtocol Label Switching Neighbors</li>
+														<li>CPU Utilization</li>
+														<li>Boot Statement</li>
+														<li>Config Registration</li>
+													</ul>
+												</div>
+												<div class="col">
+													<ul>
+													<li>Bidirectional Forwarding Detection Sessions</li>
+														<li>Interface State</li>
+														<li>IPV4 BGP Neighbors</li>
+														<li>IPV6 BGP Neighbors</li>
+														<li>Free Memory</li>
+														<li>Platform</li>
+														<li>Interface Counters</li>
+														<li>Log Entries</li>
+														<li>X Connect</li>
+														<li>IPV4 BGP Routes</li>
+														<li>IPV6 BGP Routes</li>
+													</ul>
+												</div>
+												</div>
+											</div>
+											</div>
+										</div>
+									</div>
+<!-- other cheklists -->
+
 								</div>
-								<div class="col">
-									<ul>
-									<li>Bidirectional Forwarding Detection Sessions</li>
-										<li>Interface State</li>
-										<li>IPV4 BGP Neighbors</li>
-										<li>IPV6 BGP Neighbors</li>
-										<li>Free Memory</li>
-										<li>Platform</li>
-										<li>Interface Counters</li>
-										<li>Log Entries</li>
-										<li>X Connect</li>
-										<li>IPV4 BGP Routes</li>
-										<li>IPV6 BGP Routes</li>
-									</ul>
-								</div>
+								<hr>
+							</div>
 							</div>
 							</p>
 							<p>

@@ -103,12 +103,13 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
                                     </nav>
-									<a class="nav-link" href="#item-8">ADMIN</a>
+									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="#item-9">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-1">Load Template - Golden</a> <a
+											href="#item-9-1">Load Template - Golden</a> <a
 											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-8-2">Software Upload</a>
+											href="#item-9-2">Software Upload</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php#item-8">FAQs</a>
 								</nav>
@@ -122,7 +123,7 @@ echo generate_site_breadcrumb($values);
 							<hr class="d-md-none" />
 
 							<!-- FAQs -->
-                            <h4 id="item-8">ADMIN</h4>
+                            <h4 id="item-9">ADMIN</h4>
                             <p>Admin users will be taken to this page first. They have the option of impersonating a user or maintaining software binaries available to the user community.</p>
                             <img src="resources/img/screenshot-admin1.png"
 								class="img-fluid" alt="" data-toggle="modal"
@@ -130,7 +131,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 8.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
-							<h5 id="item-8-1">Load Template - Golden</h5>
+							<h5 id="item-9-1">Load Template - Golden</h5>
 							<p>Admin users are presented with a similar page and flow as all other users when configuring templates, with the key exception being that admin users are allowed to configure Golden templates.</p>
 							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid"
 								alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
@@ -149,7 +150,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 8.1.3 - Configurable Template</b></span>
 							<p></p>
-							<h5 id="item-8-2">Software Upload</h5>
+							<h5 id="item-9-2">Software Upload</h5>
 							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
 							<img src="resources/img/screenshot-admin3.png"
 								class="img-fluid" alt="" data-toggle="modal"
@@ -161,8 +162,8 @@ echo generate_site_breadcrumb($values);
 							<hr>
 							<div class="row">
 								<div class="col-6">
-									<a href="help_maintenance.php" class="border"><b><< PREV:
-											Maintenance</b></a>
+									<a href="help_instant_hc.php" class="border"><b><< PREV:
+											Instant Health Check</b></a>
 								</div>
 								<div class="col-6 text-right">
 									<a href="help_faqs.php" class="border"><b>NEXT: FAQs >></b></a>

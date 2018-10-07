@@ -191,8 +191,13 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="ems-devdetmdl-cellsite.php?commandname=extract_up_down_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['extract_up_down_status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['extract_up_down_status']['message'] . '</span>';
+                    //$color = ($output['extract_up_down_status']['R'] == 0) ? 'green' : 'red';
+                    //$display = "<span style='color:" . $color . "'>" . $output['extract_up_down_status']['message'] . '</span>';
+					$color1 = ($output['UP/DOWN Status']['ipv6_interface_brief']['R'] == 0) ? 'green' : 'red';
+                    $display1 = "<span style='color:" . $color1 . "'>" . $output$output['UP/DOWN Status']['ipv6_interface_brief']['message'] . '</span>';
+					$color2 = ($output['UP/DOWN Status']['ipv4_interface_brief']['R'] == 0) ? 'green' : 'red';
+                    $display2 = "<span style='color:" . $color2 . "'>" . $output$output['UP/DOWN Status']['ipv4_interface_brief']['message'] . '</span>';
+					$display = $display1.$display2;
                     echo $display;
                     ?>
 				</td>

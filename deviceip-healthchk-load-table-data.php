@@ -2,21 +2,21 @@
 $(document).ready(function(){
 			$(document).on('click', '.anchorcmd', function(event) {
             		var myModal = $('#mycmdModal');
-            		myModal.find('.modal-content').css('border', 'none'); 
+            		myModal.find('.modal-content').css('border', 'none');
                     //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
                     myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
-                    myModal.modal('show'); 
+                    myModal.modal('show');
                 	$.ajax({url: $(this).attr('href'), success: function(result){
                 		var myModal = $('#mycmdModal');
                 		myModal.find('.modal-content').css('border', '1px solid rgba(0, 0, 0, 0.2)');
                         myModal.find('.modal-content').html(result);
                         myModal.modal('show');
-                        
+
                     }});
-                     $('#mycmdModal').removeData()   
-                     return false;                  
+                     $('#mycmdModal').removeData()
+                     return false;
               });
-            });        
+            });
 </script>
 <?php
 include "classes/db2.class.php";
@@ -36,13 +36,13 @@ $healthchktype = 'Load Table';
     <?php
     $result = select_healthchk_info($deviceid);
     $lastupdated = $result['lastupdated'];
-    $output = '{"bfdsession":' . $result['bfdsession'] . ',"bgpvfourneighbors":' . $result['bgpvfourneighbors'] . ',"bgpvsixneighbours":' . $result['bgpvsixneighbours'] . ',"bgpvsixroutes":' . $result['bgpvsixroutes'] . ',"bootstatement":' . $result['bootstatement'] . ',"buffers":' . $result['buffers'] . ',"configregister":' . $result['configregister'] . ',"cpuutilization":' . $result['cpuutilization'] . ',"environmental":' . $result['environmental'] . ',"vrfstates":' . $result['vrfstates'] . ',"freememory":' . $result['freememory'] . ',"interfacecounters":' . $result['interfacecounters'] . ',"interfacestates":' . $result['interfacestates'] . ',"iosversion":' . $result['iosversion'] . ',"logentries":' . $result['logentries'] . ',"mplsinterfaces":' . $result['mplsinterfaces'] . ',"mplsneighbors":' . $result['mplsneighbors'] . ',"platform":' . $result['platform'] . ',"ran":' . $result['ran'] . ',"twothsndbyteping":' . $result['twothsndbyteping'] . ',"xconnect":' . $result['xconnect'] . '}';
+    $output = '{"bfdsession":' . $result['bfdsession'] . ',"bgpvfourneighbors":' . $result['bgpvfourneighbors'] . ',"bgpvsixneighbours":' . $result['bgpvsixneighbours'] . ',"bgpvsixroutes":' . $result['bgpvsixroutes'] . ',"bootstatement":' . $result['bootstatement'] . ',"buffers":' . $result['buffers'] . ',"configregister":' . $result['configregister'] . ',"cpuutilization":' . $result['cpuutilization'] . ',"environmental":' . $result['environmental'] . ',"vrfstates":' . $result['vrfstates'] . ',"freememory":' . $result['freememory'] . ',"interfacecounters":' . $result['interfacecounters'] . ',"interfacestates":' . $result['interfacestates'] . ',"iosversion":' . $result['iosversion'] . ',"logentries":' . $result['logentries'] . ',"mplsinterfaces":' . $result['mplsinterfaces'] . ',"mplsneighbors":' . $result['mplsneighbors'] . ',"platform":' . $result['platform'] . ',"ran":' . $result['ran'] . ',"twothsndbyteping":' . $result['twothsndbyteping'] . ',"xconnect":' . $result['xconnect'] . ',"bandwidth":' . $result['bandwidth'] . '}';
     $output = json_decode($output, true);
     // print_r($output);
     // die;
-    
+
     // Python API Request using curl Begins
-    
+
     /*
      * $userid = $_GET['userid'];
      * $deviceid = $_GET['deviceid'];
@@ -52,7 +52,7 @@ $healthchktype = 'Load Table';
      * $output = json_decode(sendPostData($url_final),true);
      */
     $_SESSION['deviceidswusr'] = $deviceid;
-    
+
     ?>
 
 <div class="panel-body">
@@ -101,8 +101,8 @@ $healthchktype = 'Load Table';
 				<td style="display: none;"></td>
 				<td colspan="11"><div id="detail_<?php echo $deviceid; ?>"
 						class="loaded">
-								
-    
+
+
 <?php
 $vendorId = load_node_vendor_id_from_deviceid($deviceid);
 if ($vendorId == 1) {

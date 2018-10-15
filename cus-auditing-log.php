@@ -127,7 +127,12 @@ write_log($mesg);
 								
 							</div>
 							<!-- /region selection -->
-
+							<div class="col">
+							<div class="input-group" id="filterby">
+								<input type="text" class="form-control"
+										placeholder="Filter By" aria-label="Search Table">
+								</div>
+							</div>	
 							<!-- search table form field -->
 							<div class="col">
 								<div class="input-group" id="search-v-pills-home">

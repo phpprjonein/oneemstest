@@ -13,7 +13,7 @@
 	      $('#cbvals').val(allVals);
 	    });
 	  
-      $('#auditinglog').DataTable({
+	  var table1 = $('#auditinglog').DataTable({
           "processing": true,
           "serverSide": true,
 			 "dom": 'Bfrltip',
@@ -53,6 +53,14 @@
 	             }); 
 	        }
       });
+	  table1.buttons().container().appendTo('#export-v-pills-home');
+      $('.pagelength').html('');
+      $('#auditinglog_length').appendTo('.pagelength');
+	  $('#search-v-pills-home input').keyup(function(){
+      	table1.search($(this).val()).draw() ;
+	  });
+	  
+	  
       $("#backup-restore-list-dt-filter a").click(function(){
     	  allVals = [];	 
     	  $('#cbvals').val('');
@@ -66,7 +74,7 @@
 		  if($('#device_series').val() != 'Choose Device Series'){ 	
 			  deviceseries = $('#device_series').val();
 		  }	  
-          var table = $('#auditinglog').DataTable({
+          var table1 = $('#auditinglog').DataTable({
               "processing": true,
               "serverSide": true,
     			 "dom": 'Bfrltip',
@@ -105,7 +113,10 @@
 	            	 }
 	             }); 
 	        }
-          });;
+          });
+          $('.pagelength').html('');
+          $('#auditinglog_length').appendTo('.pagelength');
+          table1.buttons().container().appendTo('#export-v-pills-home');
     });
       
 

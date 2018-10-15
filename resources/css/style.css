@@ -10625,3 +10625,4 @@ div.fixed a:hover {
         border-left-color: transparent;
     border-radius: 0.25rem;
 }
+#cus-audit-log .dataTables_filter{visibility: hidden;}

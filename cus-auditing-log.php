@@ -25,7 +25,7 @@ write_log($mesg);
 <script
 	src="resources/js/cus_auditing_log.js?t=<?php echo date('his'); ?>"></script>
 </head>
-<body>
+<body id="cus-audit-log">
 	<script>
     $(function() {
         $(".chosen-select").chosen({
@@ -41,7 +41,7 @@ write_log($mesg);
     <?php include_once ('menu.php'); ?>
       <?php
     $values = array(
-        'Auding Log' => '#'
+        'Customize Auditing Log' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>
@@ -94,15 +94,18 @@ write_log($mesg);
 						action='generate-post-script.php' method='POST'
 						enctype='multipart/form-data' novalidate autocomplete="on">
 
+						
+						
+												<hr />
+						<!-- IP management table row -->
 						<div class="row">
+							<!-- region selection -->
+														<div class="col-sm-12 col-md-2">
+								<div class="pagelength"></div>
+							</div>
+							<div class="col-sm-12 col-md-3 text-center">
 
-							<!-- right side -->
-							<!-- script output -->
-							<div class="col-sm-12 col-md-12" id="listname-dd">
-
-								<!-- template output content -->
-								<div class="form-group col-md-8">
-									<div class="btn-group" id="backup-restore-list-dt-filter">
+																	<div class="btn-group" id="backup-restore-list-dt-filter">
 										<button type="button" class="btn dropdown-toggle"
 											data-toggle="dropdown" aria-haspopup="true"
 											aria-expanded="false">My routers</button>
@@ -121,7 +124,40 @@ write_log($mesg);
             ?>
     						  </div>
 									</div>
+								
+							</div>
+							<!-- /region selection -->
+
+							<!-- search table form field -->
+							<div class="col">
+								<div class="input-group" id="search-v-pills-home">
+									<input type="text" class="form-control"
+										placeholder="Search Table" aria-label="Search Table"> <span
+										class="input-group-btn">
+										<button class="btn btn-light" type="button">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
 								</div>
+							</div>
+							<!-- /search table form field -->
+							<!-- Export table -->
+							<div class="col-md-2 col-xs-6">
+								<p class="export" id="export-v-pills-home"></p>
+							</div>
+							<!-- /Export table -->
+						</div>	
+
+
+						<hr />
+
+						<div class="row">
+
+							<!-- right side -->
+							<!-- script output -->
+							<div class="col-sm-12 col-md-12" id="listname-dd">
+
+
 								<div class="row">
 									<div class="col">
 										<input type="hidden" value="" name="cbvals" id="cbvals" />

@@ -11,6 +11,8 @@ $(document).ready(function() {
 			batchtype = 'bo';
 		}else if($('#batchtype-dt-filter .btn').text() == 'Reboot'){					
 			batchtype = 'rb';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
+			batchtype = 'al';
 		} 
 		
          var table =  $('#devicebatchtrack').DataTable( {
@@ -151,7 +153,9 @@ $(document).ready(function() {
 					batchtype = 'bo';
 				}else if($(this).text() == 'Reboot'){					
 					batchtype = 'rb';
-				} 
+				}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
+					batchtype = 'al';
+				}  
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,
 		             "serverSide": true,

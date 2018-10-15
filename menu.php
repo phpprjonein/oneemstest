@@ -110,8 +110,15 @@
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
-					<li class="nav-item dropdown">
-
+                    <li class="nav-item dropdown"><a
+                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php")); ?>"
+                    	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    	aria-haspopup="true" aria-expanded="false">Auditing</a>
+                    	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    		<a class="dropdown-item" href="auditing-log.php">Auditing Log</a> 
+                    		<a class="dropdown-item" href="cus-auditing-log.php">Customize Auditing Log</a>
+                    	</div>
+                    </li>
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>
@@ -168,6 +175,15 @@
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
+					<li class="nav-item dropdown"><a
+                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php")); ?>"
+                    	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    	aria-haspopup="true" aria-expanded="false">Auditing</a>
+                    	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    		<a class="dropdown-item" href="auditing-log.php">Auditing Log</a> 
+                    		<a class="dropdown-item" href="cus-auditing-log.php">Customize Auditing Log</a>
+                    	</div>
+                    </li>	
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>

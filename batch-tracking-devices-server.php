@@ -10,6 +10,8 @@ if($_GET['batchtype'] == 'se'){
     $_SESSION['batchtype-dt-filter'] = 'Change Boot Order';
 }elseif($_GET['batchtype'] == 'rb'){
     $_SESSION['batchtype-dt-filter'] = 'Reboot';
+}elseif($_GET['batchtype'] == 'al'){
+    $_SESSION['batchtype-dt-filter'] = 'Auditing Log';
 }
 
 

@@ -13,6 +13,8 @@ $(document).ready(function() {
 			batchtype = 'rb';
 		}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
 			batchtype = 'al';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Customize Auditing Log'){					
+			batchtype = 'cusal';
 		} 
 		
          var table =  $('#devicebatchtrack').DataTable( {
@@ -155,6 +157,8 @@ $(document).ready(function() {
 					batchtype = 'rb';
 				}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
 					batchtype = 'al';
+				}else if($('#batchtype-dt-filter .btn').text() == 'Customize Auditing Log'){					
+					batchtype = 'cusal';
 				}  
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,

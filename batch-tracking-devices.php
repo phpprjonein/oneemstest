@@ -107,7 +107,8 @@ echo generate_site_breadcrumb($values);
 										class="dropdown-item" href="#">Software Delivery</a> <a
 										class="dropdown-item" href="#">Change Boot Order</a> <a
 										class="dropdown-item" href="#">Reboot</a> <a
-										class="dropdown-item" href="#">Auditing Log</a>
+										class="dropdown-item" href="#">Auditing Log</a> <a
+										class="dropdown-item" href="#">Customize Auditing Log</a>
 								</div>
 							</div>
 							<p id="cp1" style="display: none"></p>

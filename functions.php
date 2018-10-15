@@ -3734,6 +3734,8 @@ function get_devicebatch_list_from_devicebatch_datatable()
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'rb'";
     } else if ($_GET['batchtype'] == 'al') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'al'";
+    }else if ($_GET['batchtype'] == 'cusal') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'cusal'";
     }
     if ($search) {
         $sql_condition .= " AND ( ";

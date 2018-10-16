@@ -129,7 +129,7 @@ write_log($mesg);
 							<!-- /region selection -->
 							<div class="col">
 							<div class="input-group">
-								<input type="text" id="filterby" class="form-control"
+								<input type="text" id="filtercriteria" class="form-control"
 										placeholder="Filter By" aria-label="Filter By">
 								</div>
 							</div>	

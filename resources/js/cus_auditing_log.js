@@ -249,7 +249,7 @@
 		            $.ajax({
 		                type:"post",
 		                url:"software-delivery-batch-process.php",
-		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val(), 'filterby':$('#filterby').val()}, 
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val(), 'filtercriteria':$('#filtercriteria').val()}, 
 		                success: function(resdata){
 		                	var myModal = $('#batchModal');
 		            		myModal.modal('show'); 

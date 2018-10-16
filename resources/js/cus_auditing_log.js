@@ -36,10 +36,10 @@
                   {"data": "deviceIpAddr"},
                   {"data": "devicename"},
                   {"data": "deviceseries"},
-                  {"data": "audit_rundate"},
+                  {"data": "aurundate"},
                   {"data": "market"},
                   {"data": "nodeVersion"},
-                  {"data": "audit_status"}
+                  {"data": "austatus"}
           ],
 			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -99,10 +99,10 @@
                       {"data": "deviceIpAddr"},
                       {"data": "devicename"},
                       {"data": "deviceseries"},
-                      {"data": "audit_rundate"},
+                      {"data": "aurundate"},
                       {"data": "market"},
                       {"data": "nodeVersion"},
-                      {"data": "audit_status"}
+                      {"data": "austatus"}
               ],
   			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -183,10 +183,10 @@
 	                      {"data": "deviceIpAddr"},
 	                      {"data": "devicename"},
 	                      {"data": "deviceseries"},
-	                      {"data": "audit_rundate"},
+	                      {"data": "aurundate"},
 	                      {"data": "market"},
 	                      {"data": "nodeVersion"},
-	                      {"data": "audit_status"}
+	                      {"data": "austatus"}
 	              ],
 	    			"order": [[5, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {

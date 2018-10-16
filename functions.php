@@ -3968,8 +3968,8 @@ function swt_get_auditlog_batch_process_datatable($userid, $listname = '', $devi
             'n.deviceseries',
             'n.market',
             'n.nodeVersion',
-            'n.audit_rundate',
-            'n.audit_status',
+            'n.aurundate',
+            'n.austatus',
     );
     $sql_count = "SELECT COUNT(distinct(n.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
@@ -3995,8 +3995,8 @@ function swt_get_auditlog_batch_process_datatable($userid, $listname = '', $devi
         $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.market  LIKE '%" . $search . "%'";
         $sql_condition .= " OR n.nodeVersion  LIKE '%" . $search . "%'";
-        $sql_condition .= " OR n.audit_rundate  LIKE '%" . $search . "%'";
-        $sql_condition .= " OR n.audit_status  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.aurundate  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.austatus  LIKE '%" . $search . "%'";
         $sql_condition .= " ) ";
     }
     $count_sql = $sql_count . $sql_condition;

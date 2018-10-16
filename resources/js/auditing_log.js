@@ -36,12 +36,12 @@
               {"data": "deviceIpAddr"},
               {"data": "devicename"},
               {"data": "deviceseries"},
-              {"data": "audit_rundate"},
+              {"data": "aurundate"},
               {"data": "market"},
               {"data": "nodeVersion"},
-              {"data": "audit_status"}
+              {"data": "austatus"}
           ],
-			"order": [[4, 'asc']],
+			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -91,12 +91,12 @@
                   {"data": "deviceIpAddr"},
                   {"data": "devicename"},
                   {"data": "deviceseries"},
-                  {"data": "audit_rundate"},
+                  {"data": "aurundate"},
                   {"data": "market"},
                   {"data": "nodeVersion"},
-                  {"data": "audit_status"}
+                  {"data": "austatus"}
               ],
-  			"order": [[4, 'asc']],
+  			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -172,12 +172,12 @@
 	                  {"data": "deviceIpAddr"},
 	                  {"data": "devicename"},
 	                  {"data": "deviceseries"},
-	                  {"data": "audit_rundate"},
+	                  {"data": "aurundate"},
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"},
-	                  {"data": "audit_status"}
+	                  {"data": "austatus"}
 	              ],
-	    			"order": [[4, 'asc']],
+	    			"order": [[5, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {
 	    	             $(row).addClass('device_row');
 	    				  $.each($('td', row), function (colIndex) {

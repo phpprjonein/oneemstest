@@ -122,7 +122,8 @@ function get_landing_page()
             2,
             5,
             6,
-            7
+            7,
+            9    
         ))) {
             $location_href = "switchtech-dashboard.php";
         }
@@ -907,7 +908,8 @@ function insert_usrfavritedev($data)
         2,
         5,
         6,
-        7
+        7,
+        9    
     ))) {
         header("Location: switchtech-dashboard.php");
     } elseif (in_array($_SESSION['userlevel'], array(
@@ -3144,7 +3146,8 @@ function get_landing_page_sso($username, $eid, $email, $fname, $lname, $vzid)
             2,
             5,
             6,
-            7
+            7,
+            9    
         ))) {
             $location_href = "switchtech-dashboard.php";
         }
@@ -3803,7 +3806,8 @@ function generate_site_breadcrumb($values = array())
         2,
         5,
         6,
-        7
+        7,
+        9    
     ))) {
         $output .= '<a class="breadcrumb-item" href="switchtech-dashboard.php">Home</a>';
     }
@@ -4496,7 +4500,8 @@ function update_login_api_rules($sso_flag, $username)
         2,
         5,
         6,
-        7
+        7,
+        9    
     ))) {
         //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_switchtech_user.php?username=' . $username);
 		$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);

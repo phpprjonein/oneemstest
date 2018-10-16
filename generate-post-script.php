@@ -36,7 +36,9 @@ else if ($_SESSION['userlevel'] == 2)
     include_once ('config/session_check_switch_tech.php');
 else if ($_SESSION['userlevel'] == 8)
     include_once ('config/session_check_admin.php');
-        
+else if ($_SESSION['userlevel'] == 9)
+    include_once ('config/session_check_limited_admin.php');
+
 $page_title = 'OneEMS';
 
 // page logging

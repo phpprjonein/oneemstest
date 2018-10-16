@@ -133,8 +133,10 @@ write_log($mesg);
 													<th>IP Address</th>
 													<th>Device Name</th>
 													<th>Device Series</th>
+													<th>Audit Run</th>
 													<th>Market</th>
 													<th>Current Version</th>
+													<th>Audit Status</th>
 												</tr>
 											</thead>
 										</table>

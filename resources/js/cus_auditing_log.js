@@ -25,7 +25,7 @@
 				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-              url: 'software-delivery-process.php',
+              url: 'software-delivery-audit-log-process.php',
               type: 'GET'
           },
           "columns": [ 		
@@ -33,13 +33,15 @@
                   "orderable":      false,
                   "data":           null,
                   "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-              {"data": "deviceIpAddr"},
-              {"data": "devicename"},
-              {"data": "deviceseries"},
-              {"data": "market"},
-              {"data": "nodeVersion"}
+                  {"data": "deviceIpAddr"},
+                  {"data": "devicename"},
+                  {"data": "deviceseries"},
+                  {"data": "audit_rundate"},
+                  {"data": "market"},
+                  {"data": "nodeVersion"},
+                  {"data": "audit_status"}
           ],
-			"order": [[4, 'asc']],
+			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -86,7 +88,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-process.php?listname='+listname,
+                  url: 'software-delivery-audit-log-process.php?listname='+listname,
                   type: 'GET'
               },
               "columns": [ 		
@@ -94,13 +96,15 @@
                       "orderable":      false,
                       "data":           null,
                       "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-                  {"data": "deviceIpAddr"},
-                  {"data": "devicename"},
-                  {"data": "deviceseries"},
-                  {"data": "market"},
-                  {"data": "nodeVersion"}
+                      {"data": "deviceIpAddr"},
+                      {"data": "devicename"},
+                      {"data": "deviceseries"},
+                      {"data": "audit_rundate"},
+                      {"data": "market"},
+                      {"data": "nodeVersion"},
+                      {"data": "audit_status"}
               ],
-  			"order": [[4, 'asc']],
+  			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -168,7 +172,7 @@
 	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
+	                  url: 'software-delivery-audit-log-process.php?listname='+listname+'&deviceseries='+deviceseries,
 	                  type: 'GET'
 	              },
 	              "columns": [ 		
@@ -176,13 +180,15 @@
 	                      "orderable":      false,
 	                      "data":           null,
 	                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-	                  {"data": "deviceIpAddr"},
-	                  {"data": "devicename"},
-	                  {"data": "deviceseries"},
-	                  {"data": "market"},
-	                  {"data": "nodeVersion"}
+	                      {"data": "deviceIpAddr"},
+	                      {"data": "devicename"},
+	                      {"data": "deviceseries"},
+	                      {"data": "audit_rundate"},
+	                      {"data": "market"},
+	                      {"data": "nodeVersion"},
+	                      {"data": "audit_status"}
 	              ],
-	    			"order": [[4, 'asc']],
+	    			"order": [[5, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {
 	    	             $(row).addClass('device_row');
 	    				  $.each($('td', row), function (colIndex) {
@@ -243,7 +249,7 @@
 		            $.ajax({
 		                type:"post",
 		                url:"software-delivery-batch-process.php",
-		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val()}, 
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val(), 'filterby':$('#filterby').val()}, 
 		                success: function(resdata){
 		                	var myModal = $('#batchModal');
 		            		myModal.modal('show'); 

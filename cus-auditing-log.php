@@ -128,9 +128,9 @@ write_log($mesg);
 							</div>
 							<!-- /region selection -->
 							<div class="col">
-							<div class="input-group" id="filterby">
-								<input type="text" class="form-control"
-										placeholder="Filter By" aria-label="Search Table">
+							<div class="input-group">
+								<input type="text" id="filterby" class="form-control"
+										placeholder="Filter By" aria-label="Filter By">
 								</div>
 							</div>	
 							<!-- search table form field -->
@@ -174,8 +174,10 @@ write_log($mesg);
 													<th>IP Address</th>
 													<th>Device Name</th>
 													<th>Device Series</th>
+													<th>Audit Run</th>
 													<th>Market</th>
 													<th>Current Version</th>
+													<th>Audit Status</th>
 												</tr>
 											</thead>
 										</table>

@@ -25,7 +25,7 @@
 				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-              url: 'software-delivery-process.php',
+              url: 'software-delivery-audit-log-process.php',
               type: 'GET'
           },
           "columns": [ 		
@@ -36,8 +36,10 @@
               {"data": "deviceIpAddr"},
               {"data": "devicename"},
               {"data": "deviceseries"},
+              {"data": "audit_rundate"},
               {"data": "market"},
-              {"data": "nodeVersion"}
+              {"data": "nodeVersion"},
+              {"data": "audit_status"}
           ],
 			"order": [[4, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -78,7 +80,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-process.php?listname='+listname,
+                  url: 'software-delivery-audit-log-process.php?listname='+listname,
                   type: 'GET'
               },
               "columns": [ 		
@@ -89,8 +91,10 @@
                   {"data": "deviceIpAddr"},
                   {"data": "devicename"},
                   {"data": "deviceseries"},
+                  {"data": "audit_rundate"},
                   {"data": "market"},
-                  {"data": "nodeVersion"}
+                  {"data": "nodeVersion"},
+                  {"data": "audit_status"}
               ],
   			"order": [[4, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -157,7 +161,7 @@
 	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
+	                  url: 'software-delivery-audit-log-process.php?listname='+listname+'&deviceseries='+deviceseries,
 	                  type: 'GET'
 	              },
 	              "columns": [ 		
@@ -168,8 +172,10 @@
 	                  {"data": "deviceIpAddr"},
 	                  {"data": "devicename"},
 	                  {"data": "deviceseries"},
+	                  {"data": "audit_rundate"},
 	                  {"data": "market"},
-	                  {"data": "nodeVersion"}
+	                  {"data": "nodeVersion"},
+	                  {"data": "audit_status"}
 	              ],
 	    			"order": [[4, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {

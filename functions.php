@@ -4893,3 +4893,23 @@ function get_device_ids_from_ip_address($ipaddress = array())
     return $resultset;
 }
 
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+
+function generate_option_button_for_configs($tablename, $column, $varname){
+    global $db2;
+    $sql = "SELECT distinct(".$column.") FROM ".$tablename." where ".$column." != '' order by ".$column;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varname.'" class="form-control custom-select" name="'.$varname.'" data-rule-required="true">';
+    foreach ($resultset as $key => $val){
+        $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+    }
+    $output .= '</select>';
+    return $output;
+}

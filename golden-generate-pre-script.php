@@ -272,6 +272,28 @@ write_log($mesg);
 							<!-- <p>if device series = bandwidth</p> -->
                             <div
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
+								<?php   if (($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')){ ?>
+										<label class="control-label" for="<?php echo $val['usrvarname']; ?>"><?php echo $val['usrvarname']; ?></label> 
+										<select id="<?php echo $val['usrvarname']; ?>" class="form-control custom-select" name="<?php echo $val['usrvarname']; ?>" data-rule-required="true">
+                                            <option value="6">BW Type - 6</option>
+                                            <option value="8">BW Type - 8</option>
+                                          </select>
+								<?php    }elseif ((('Telco Interface-ASR9010-Even' == $val['usrvarname'])) || (('Telco Interface-ASR9010-Odd' == $val['usrvarname']))){   
+								    echo generate_option_button_for_configs('software_inventory', 'interface', $val['usrvarname']);
+								    ?>
+								<?php }elseif ((('ASR9000 Vlan(Even)' == $val['usrvarname'])) || (('ASR9000 Vlan(Odd)' == $val['usrvarname']))){   
+								    echo generate_option_button_for_configs('software_inventory', 'vlan', $val['usrvarname']);
+								    ?>
+								<?php }elseif ((('ASR9000-Even__Shape Average(Kbps)' == $val['usrvarname'])) || (('ASR9000-Even__Shape Average(Mbps)' == $val['usrvarname'])) || (('ASR9000-Odd__Shape Average(Kbps)' == $val['usrvarname'])) || (('ASR9000-Odd__Shape Average(Mbps)' == $val['usrvarname'])) || (('CSR -- Queue Limit' == $val['usrvarname'])) || (('CSR -- Shape Average (Kbps)' == $val['usrvarname'])) || (('CSR -- Shape Average(bps)' == $val['usrvarname']))){   
+								    echo generate_option_button_for_configs('usrvars', 'usrvarval', $val['usrvarname']);
+								    ?>
+								<?php }elseif (('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
+								    echo generate_option_button_for_configs('switchvars', 'swvarval', $val['usrvarname']);
+								    ?>
+								<?php }elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
+								    echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
+								    ?>
+								<?php }else{   ?>
 								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
 								<input type="<?php echo $val['usrvarname']; ?>"
 									name="<?php echo $val['usrvarname']; ?>"
@@ -279,6 +301,8 @@ write_log($mesg);
 									id="<?php echo $val['usrvarname']; ?>"
 									value=""
 									placeholder="">
+									<?php } ?>		
+									
 							</div>
                             <?php
                         // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];

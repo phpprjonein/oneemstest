@@ -9,7 +9,7 @@ $(document).ready(function() {
   // show bandwidth form fields class (.bandwidth) when dropdown changes to BW-Upgrade, else hide (.non-bandwidth)
   $(document).on(
     "change",
-    "#cellsitech-generate-script leftselector select#select_script_type",
+    "#cellsitech-generate-script .leftselector select#select_script_type",
     function(event) {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();

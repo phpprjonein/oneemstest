@@ -39,7 +39,8 @@
               {"data": "aurundate"},
               {"data": "market"},
               {"data": "nodeVersion"},
-              {"data": "austatus"}
+              {"data": "austatus"},
+              {"data": "austatus"},
           ],
 			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -50,6 +51,13 @@
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
 	            		 }else{
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	            		 }
+	            	 }
+	            	 if(colIndex == 8){
+	            		 if($(this).text().toLowerCase() == 'fail'){
+	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+	            		 }else{
+	            			 $(this).text('');
 	            		 }
 	            	 }
 	             }); 
@@ -94,7 +102,8 @@
                   {"data": "aurundate"},
                   {"data": "market"},
                   {"data": "nodeVersion"},
-                  {"data": "austatus"}
+                  {"data": "austatus"},
+                  {"data": "log"},
               ],
   			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -105,6 +114,13 @@
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
 	            		 }else{
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	            		 }
+	            	 }
+	            	 if(colIndex == 8){
+	            		 if($(this).text().toLowerCase() == 'fail'){
+	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+	            		 }else{
+	            			 $(this).text('');
 	            		 }
 	            	 }
 	             }); 
@@ -175,7 +191,8 @@
 	                  {"data": "aurundate"},
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"},
-	                  {"data": "austatus"}
+	                  {"data": "austatus"},
+	                  {"data": "log"},
 	              ],
 	    			"order": [[5, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {
@@ -186,6 +203,13 @@
 	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
 	    	            		 }else{
 	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+	    	            		 }
+	    	            	 }
+	    	            	 if(colIndex == 8){
+	    	            		 if($(this).text().toLowerCase() == 'fail'){
+	    	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+	    	            		 }else{
+	    	            			 $(this).text('');
 	    	            		 }
 	    	            	 }
 	    	             }); 

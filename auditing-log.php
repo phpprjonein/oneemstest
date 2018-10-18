@@ -137,6 +137,7 @@ write_log($mesg);
 													<th>Market</th>
 													<th>Current Version</th>
 													<th>Audit Status</th>
+													<th>Log</th>
 												</tr>
 											</thead>
 										</table>

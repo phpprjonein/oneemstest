@@ -3970,6 +3970,7 @@ function swt_get_auditlog_batch_process_datatable($userid, $listname = '', $devi
             'n.nodeVersion',
             'n.aurundate',
             'n.austatus',
+            'n.austatus'
     );
     $sql_count = "SELECT COUNT(distinct(n.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);

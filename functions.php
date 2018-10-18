@@ -4906,7 +4906,7 @@ function generate_option_button_for_configs($tablename, $column, $varname){
     $resultset = $db2->resultset();
     
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
-    $output .= '<select id="'.$varname.'" class="form-control custom-select" name="'.$varname.'" data-rule-required="true">';
+    $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
     foreach ($resultset as $key => $val){
         $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
     }

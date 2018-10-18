@@ -56,7 +56,7 @@ write_log($mesg);
 						<div class="row">
 							<input type="hidden" name="tmplcategory" value="Golden">
 							<!-- router selection content row -->
-							<div class="col-sm-12 col-md-4">
+							<div class="col-sm-12 col-md-4 leftselector">
 								<div class="jf-form">
 
 									<!-- router scripting selection form div -->
@@ -274,7 +274,7 @@ write_log($mesg);
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
 								<?php   if (($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')){ ?>
 										<label class="control-label" for="<?php echo $val['usrvarname']; ?>"><?php echo $val['usrvarname']; ?></label> 
-										<select id="<?php echo $val['usrvarname']; ?>" class="form-control custom-select" name="<?php echo $val['usrvarname']; ?>" data-rule-required="true">
+										<select id="<?php echo $val['usrvarname']; ?>" class="form-control" name="<?php echo $val['usrvarname']; ?>" data-rule-required="true">
                                             <option value="6">BW Type - 6</option>
                                             <option value="8">BW Type - 8</option>
                                           </select>

@@ -9,7 +9,7 @@ $(document).ready(function() {
   // show bandwidth form fields class (.bandwidth) when dropdown changes to BW-Upgrade, else hide (.non-bandwidth)
   $(document).on(
     "change",
-    "#cellsitech-generate-script select#select_script_type",
+    "#cellsitech-generate-script leftselector select#select_script_type",
     function(event) {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();
@@ -21,12 +21,12 @@ $(document).ready(function() {
     }
   );
 
-  $(document).on("change", "#cellsitech-generate-script select", function(
+  $(document).on("change", "#cellsitech-generate-script .leftselector select", function(
     event
   ) {
     var filename = "";
     sep = "";
-    $("#cellsitech-generate-script select")
+    $("#cellsitech-generate-script .leftselector select")
       .not("#select_switch")
       .each(function() {
         if ($(this).val() != "") {
@@ -68,7 +68,7 @@ $(document).ready(function() {
   jQuery("#cellsitech-generate-script #aliasName").on("input", function() {
     var filename = "";
     sep = "";
-    $("#cellsitech-generate-script select").each(function() {
+    $("#cellsitech-generate-script .leftselector select").each(function() {
       if ($(this).val() != "") {
         filename = filename + sep + $(this).val();
         sep = "_";
@@ -103,7 +103,7 @@ $(document).ready(function() {
   $("body").on("click", ".generate-script-delete", function() {
     var filename = "";
     sep = "";
-    $("#cellsitech-generate-script select").each(function() {
+    $("#cellsitech-generate-script .leftselector select").each(function() {
       if ($(this).val() != "") {
         filename = filename + sep + $(this).val();
         sep = "_";

@@ -111,12 +111,13 @@
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
                     <li class="nav-item dropdown"><a
-                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php")); ?>"
+                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     	aria-haspopup="true" aria-expanded="false">Auditing</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     		<a class="dropdown-item" href="auditing-log.php">Audit Log</a> 
                     		<a class="dropdown-item" href="cus-auditing-log.php">Customize Audit Log</a>
+                    		<a class="dropdown-item" href="audit-history.php">Audit History</a>
                     	</div>
                     </li>
 					<li class="nav-item"><a
@@ -189,12 +190,13 @@
 						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
 						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
 					<li class="nav-item dropdown"><a
-                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php")); ?>"
+                    	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     	aria-haspopup="true" aria-expanded="false">Auditing</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     		<a class="dropdown-item" href="auditing-log.php">Auditing Log</a> 
                     		<a class="dropdown-item" href="cus-auditing-log.php">Customize Auditing Log</a>
+                    		<a class="dropdown-item" href="audit-history.php">Audit History</a>
                     	</div>
                     </li>	
 					<li class="nav-item"><a

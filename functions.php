@@ -17,6 +17,13 @@ function logToFile($filename, $msg)
 }
 
 /**
+ * debug usage
+ */
+function onerr(){
+    ini_set('display_errors',1);
+}
+
+/**
  *
  * @param unknown $username
  * @param unknown $password
@@ -4021,6 +4028,98 @@ function swt_get_auditlog_batch_process_datatable($userid, $listname = '', $devi
     $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
     // echo '<br>';
     // echo $sql;
+    
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+
+
+/**
+ *
+ * @param unknown $userid
+ * @param string $listname
+ * @param string $deviceseries
+ * @param string $nodeVersion
+ * @return number|unknown
+ */
+function get_audithistory_datatable()
+{
+    global $db2, $pages;
+    
+    // print_r($_GET);
+    $draw = $_GET['draw'];
+    $start = isset($_GET['start']) ? $_GET['start'] : 0;
+    $length = isset($_GET['length']) ? $_GET['length'] : 10;
+    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
+    $order_col = $_GET['order'][0]['column'];
+    $order_dir = $_GET['order'][0]['dir'];
+    
+    $columns = array(
+            'distinct(ah.auhisid)',
+            'ah.batchid',
+            'ah.username',
+            'ah.market',
+            'ah.devicename',
+            'ah.deviceIpAddr',
+            'ah.deviceseries',
+            'ah.filtercriteria',
+            'ah.austatus',
+            'ah.filename',
+            'ah.createddate'
+    );
+    $sql_count = "SELECT COUNT(distinct(ah.auhisid)) ";
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM audithistory ah";
+    
+    if ($search) {
+        $sql_condition .= " where ( ";
+        $sql_condition .= " ah.batchid LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.username  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.deviceIpAddr  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.filtercriteria  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.austatus  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.filename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.createddate  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    $count_sql = $sql_count . $sql_condition;
+    $db2->query($count_sql);
+    $row = $db2->resultsetCols();
+    
+    $total_rec = $row[0];
+    
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    $sql_limit = " LIMIT $start, $length ";
+    
+    $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
     
     $db2->query($sql);
     

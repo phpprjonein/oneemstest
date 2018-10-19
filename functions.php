@@ -4902,14 +4902,36 @@ function get_device_ids_from_ip_address($ipaddress = array())
 
 function generate_option_button_for_configs($tablename, $column, $varname){
     global $db2;
-    $sql = "SELECT distinct(".$column.") FROM ".$tablename." where ".$column." != '' order by ".$column;
+    if($tablename == 'software_inventory'){
+        $addcolumn = ', devicename';
+    }
+    $options_arr = array();
+    $sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
     $db2->query($sql);
     $resultset = $db2->resultset();
-    
+    $varname_lower = strtolower($varname);
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
     $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
     foreach ($resultset as $key => $val){
-        $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+        $devicename_lower = strtolower($val['devicename']);
+        if(strpos($varname_lower, 'asr') !== false && ((strpos($varname_lower, 'even') !== false) || (strpos($varname_lower, 'odd') !== false))){
+            if(strpos($varname_lower, 'asr') !== false && strpos($varname_lower, 'even') !== false && strpos($devicename_lower, 'asr') !== false &&  strpos($devicename_lower, '-02') !== false){
+                if(!in_array($val[$column], $options_arr)){
+                    $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                    $options_arr[] = $val[$column];
+                }
+            }elseif(strpos($varname_lower, 'asr') !== false && strpos($varname_lower, 'odd') !== false  && strpos($devicename_lower, 'asr') !== false &&  strpos($devicename_lower, '-01')  !== false ){
+                if(!in_array($val[$column], $options_arr)){
+                    $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                    $options_arr[] = $val[$column];
+                }
+            }
+        }else{
+            if(!in_array($val[$column], $options_arr)){
+                $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                $options_arr[] = $val[$column];
+            }
+        }
     }
     $output .= '</select>';
     return $output;

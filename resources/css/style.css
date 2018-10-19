@@ -9868,7 +9868,7 @@ span.export {
 }
 
 /* line 332, /Applications/MAMP/htdocs/oneems/scss/_extra_styles.scss */
-#backupbtn, #deletebatch {
+#backupbtn, #deletebatch, .downloadbatch {
   font-size: smaller;
   font-weight: 600;
 }

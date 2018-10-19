@@ -96,14 +96,44 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     $db2->query($sql);
     $db2->execute();
     empty($_SESSION['batch_vars']);
+    $timestamp = date("Y-m-d_h-i-sa_");
+    $filenames = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script');
+    $filenameindex = 0;
+    $resetfile = 1;
+    foreach ($_POST['loop'] as $key => $val) {
+        $line = '';
+        foreach ($val as $linekey => $lineval) {
+            $line .= $lineval;
+        }
+        if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
+            $resetfile = 1;
+        }
+        if($filenameindex == 0 || $resetfile == 1 ){
+            $file = fopen(getcwd() . "/generatescript/".$filenames[$filenameindex], "w");
+            $filenameindex++;
+            $resetfile = 0;
+        }
+        fwrite($file, $line . "\n");
+    }
+    fclose($file);
+    $zipname = 'generatescript/'.$timestamp.$_POST['templname'].'.zip';
+    unlink($zipname);
+    $zip = new ZipArchive;
+    $zip->open($zipname, ZipArchive::CREATE);
+    foreach ($filenames as $file) {
+        $zip->addFile("generatescript/".$file);
+    }
+    $zip->close();
     $_SESSION['batch_vars'] = array(
         'batchid' => $batchid,
         'refmop' => $val['refmop'],
         'templname' => $templname,
         'deviceseries' => $_POST['deviceseries'],
         'deviceos' => $_POST['deviceos'],
-        'switch_type' => $_POST['switch_type']
+        'switch_type' => $_POST['switch_type'],
+        'zipname' => $zipname
     );
+    
     if (isset($_POST['usertype']) && $_POST['usertype'] == 2) {
         header("location:batch-page.php");
     } else {

@@ -127,6 +127,7 @@ echo generate_site_breadcrumb($values);
 											<th>Created Date</th>
 											<th>Status</th>
 											<th>Cancel</th>
+											<th>Download</th>
 										</tr>
 									</thead>
 								</table>

@@ -43,10 +43,11 @@ $(document).ready(function() {
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
             { "data": "batchstatus" },
-            { "data": "batchstatus", "orderable": false }
+            { "data": "batchstatus", "orderable": false },
+            { "data": "zipname" },
             //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
-        "order": [[4, 'asc']],
+        "order": [[5, 'desc']],
         "createdRow": function (row, data, rowIndex) {
             $(row).addClass('device_row');
 			  $.each($('td', row), function (colIndex) {
@@ -61,6 +62,8 @@ $(document).ready(function() {
          			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
          		 else
          			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
+         	 }else if(colIndex == 8 && batchtype == 'se' && $(this).text() != ''){
+         		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
          	 }
             });
        }
@@ -187,9 +190,10 @@ $(document).ready(function() {
 		                 { "data": "batchcreated" },
 		                 { "data": "batchstatus" },
 		                 { "data": "batchstatus", "orderable": 	false },
+		                 { "data": "zipname" },
 		                 //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
 		             ],
-		             "order": [[4, 'asc']],
+		             "order": [[5, 'desc']],
 		             "createdRow": function (row, data, rowIndex) {
 		                 $(row).addClass('device_row');
 		     			  $.each($('td', row), function (colIndex) {
@@ -206,7 +210,9 @@ $(document).ready(function() {
 		             			$(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
 		             		 else
 		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-		             	 }
+		             	 }else if(colIndex == 8 && batchtype == 'se' && $(this).text() != ''){
+		             		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch btn"> Download </a>');
+		                 }
 		                 });
 		            }
 		         } );

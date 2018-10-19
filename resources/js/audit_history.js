@@ -22,10 +22,22 @@ $(document).ready(function () {
               {"data": "deviceseries"},
               {"data": "filtercriteria"},
               {"data": "austatus"},
-              {"data": "filename"},
+              {"data": "austatus"},
               {"data": "createddate"},
           ],
 			"order": [[2, 'asc']],
+			 "createdRow": function (row, data, rowIndex) {
+	             $(row).addClass('device_row');
+				  $.each($('td', row), function (colIndex) {
+	            	 if(colIndex == 8){
+	            		 if($(this).text().toLowerCase() == 'fail'){
+	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(3)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(3)").text() +'.txt</a>');
+	            		 }else{
+	            			 $(this).text('');
+	            		 }
+	            	 }
+	             }); 
+	        }
       });
 });		
 			

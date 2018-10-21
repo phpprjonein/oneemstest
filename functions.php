@@ -3019,12 +3019,12 @@ function update_dev_batch_bw($batchid_arr, $ipaddress_arr, $scriptname_arr, $dev
             $deviceid_arr[$i] = 0;
         }
         $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
-        echo $dsql .= "('" . $val . "','" . $deviceid_arr[$i] . "','s','" . $ipaddress_arr[$i] . "','')";
+        $dsql .= "('" . $val . "','" . $deviceid_arr[$i] . "','s','" . $ipaddress_arr[$i] . "','')";
         $db2->query($dsql);
         $db2->execute();
         
-        echo $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`, `zipname`)
-        VALUES('" . $val . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname_arr[$i] . "','" . $refmop . "', '', '','" . $_SESSION['batch_vars']['zipname'] . "')";
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`, `scriptfilemame`)
+        VALUES('" . $val . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname_arr[$i] . "','" . $refmop . "', '', '','" . $_SESSION['batch_vars']['scriptfilemame'] . "')";
         $db2->query($dsql);
         $db2->execute();
         $i++;
@@ -3089,8 +3089,8 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->query($dsql);
         $db2->execute();
         /* insert in to batchmaster table */
-        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`,`zipname`)
-        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "', '', '', ,'" . $_SESSION['batch_vars']['zipname'] . "')";
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`,`scriptfilemame`)
+        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "', '', '', ,'" . $_SESSION['batch_vars']['scriptfilemame'] . "')";
         $db2->query($dsql);
         $db2->execute();
     }
@@ -3723,7 +3723,7 @@ function get_devicebatch_list_from_devicebatch_datatable()
         'bm.nodeVersion',
         'bm.batchcreated',
         'bm.batchstatus',
-        'bm.zipname',
+        'bm.scriptfilemame',
             
     );
     $sql_count = "SELECT COUNT(distinct(bm.batchid)) ";
@@ -3757,7 +3757,7 @@ function get_devicebatch_list_from_devicebatch_datatable()
         $sql_condition .= " OR bm.nodeVersion  LIKE '%" . $search . "%'";
         $sql_condition .= " OR bm.batchcreated  LIKE '%" . $search . "%'";
         $sql_condition .= " OR bm.batchstatus  LIKE '%" . $search . "%'";
-        $sql_condition .= " OR bm.zipname  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.scriptfilemame  LIKE '%" . $search . "%'";
         $sql_condition .= " ) ";
     }
     $count_sql = $sql_count . $sql_condition;

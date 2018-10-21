@@ -131,7 +131,7 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         'deviceseries' => $_POST['deviceseries'],
         'deviceos' => $_POST['deviceos'],
         'switch_type' => $_POST['switch_type'],
-        'zipname' => $zipname
+        'scriptfilemame' => $zipname
     );
     
     if (isset($_POST['usertype']) && $_POST['usertype'] == 2) {

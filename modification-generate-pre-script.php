@@ -150,7 +150,11 @@ write_log($mesg);
               </select>
 									</div>
 									<!-- select Switch options -->
-
+			  <div class="form-group f14 required" data-fid="f14">						
+			<label class="control-label" for="exampleInputEmail1">Device Name</label>
+				<input type="Device Name" name="f14" class="form-control" id="f14" value="" placeholder="">						
+			</div>						
+			<!-- select Switch options -->
 
 
 
@@ -261,37 +265,29 @@ write_log($mesg);
 							<!-- <p>if device series = bandwidth</p> -->
                             <div
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
-								<?php   if (($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')){ ?>
-										<label class="control-label" for="<?php echo $val['usrvarname']; ?>"><?php echo $val['usrvarname']; ?></label> 
-										<select id="<?php echo $val['usrvarname']; ?>" class="form-control" name="<?php echo $val['usrvarname']; ?>" data-rule-required="true">
-                                            <option value="6">BW Type - 6</option>
-                                            <option value="8">BW Type - 8</option>
-                                          </select>
+								
+								
+								<?php   if ((($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')) || ($val['usrvarname'] == 'Bandwidth Type')  || ($val['usrvarname'] == 'MTU') ){ 
+								    echo generate_option_button_for_configs_static_type($val['usrvarname']);
+								?>
+								<?php   }elseif ($val['usrvarname'] == 'MTU'){ 
+                                    echo generate_option_button_for_configs_bandwidth_type($val['usrvarname']);
+								?>
 								<?php    }elseif ((('Telco Interface-ASR9010-Even' == $val['usrvarname'])) || (('Telco Interface-ASR9010-Odd' == $val['usrvarname']))){   
-								    echo generate_option_button_for_configs('software_inventory', 'interface', $val['usrvarname']);
-								    ?>
-								<?php }elseif ((('ASR9000 Vlan(Even)' == $val['usrvarname'])) || (('ASR9000 Vlan(Odd)' == $val['usrvarname']))){   
-								    echo generate_option_button_for_configs('software_inventory', 'vlan', $val['usrvarname']);
-								    ?>
-								<?php }elseif ((('ASR9000-Even__Shape Average(Kbps)' == $val['usrvarname'])) || (('ASR9000-Even__Shape Average(Mbps)' == $val['usrvarname'])) || (('ASR9000-Odd__Shape Average(Kbps)' == $val['usrvarname'])) || (('ASR9000-Odd__Shape Average(Mbps)' == $val['usrvarname'])) || (('CSR -- Queue Limit' == $val['usrvarname'])) || (('CSR -- Shape Average (Kbps)' == $val['usrvarname'])) || (('CSR -- Shape Average(bps)' == $val['usrvarname']))){   
-								    echo generate_option_button_for_configs('usrvars', 'usrvarval', $val['usrvarname']);
-								    ?>
-								<?php }elseif (('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
-								    echo generate_option_button_for_configs('switchvars', 'swvarval', $val['usrvarname']);
-								    ?>
+								    echo generate_option_button_for_configs_sw_inventory('software_inventory', 'interface', $val['usrvarname']);
+								?>
+								<?php }elseif (('Time Zone' == $val['usrvarname']) || ('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
+								    echo generate_option_button_for_configs_marketvars('marketvars', 'mvarval', $val['usrvarname']);
+								?>
 								<?php }elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
 								    echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
-								    ?>
-								<?php }else{   ?>
-								<label class="control-label" for="exampleInputEmail1"><?php echo $val['usrvarname']; ?></label>
-								<input type="<?php echo $val['usrvarname']; ?>"
-									name="<?php echo $val['usrvarname']; ?>"
-									class="form-control <?php if($val['deviceseries'] != 'Bandwidth'): ?>uservarsreq<?php endif;?>"
-									id="<?php echo $val['usrvarname']; ?>"
-									value=""
-									placeholder="">
-									<?php } ?>		
+								?>
+								<?php }else{   
+								    echo generate_option_button_for_configs_defaultbox_type($val['usrvarname'], $val['deviceseries']);
+								?>
+								<?php } ?>
 									
+											
 							</div>
                             <?php
                         // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];

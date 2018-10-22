@@ -5002,11 +5002,63 @@ function get_device_ids_from_ip_address($ipaddress = array())
  * @return unknown
  */
 
+function generate_option_button_for_configs_sw_inventory($tablename, $column, $varname){
+    global $db2;
+    $options_arr = array();
+    $varname_lower = strtolower($varname);
+    if(strpos($varname_lower, 'odd') !== false){
+        $type = 'D%-01';
+    }else{
+        $type = 'D%-02';
+    }
+    $sql = "SELECT distinct(".$column."), devicename FROM ".$tablename." where ".$column." like 'TenGigabitEthernet0/0/%' and devicename like '".$type."' and  NOT interface LIKE '%.%' and ".$column." != '' and ".$column." != 'None'  order by ".$column;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
+    foreach ($resultset as $key => $val){
+        if(!in_array($val[$column], $options_arr)){
+            $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+            $options_arr[] = $val[$column];
+        }
+    }
+    $output .= '</select>';
+    return $output;
+}
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+function generate_option_button_for_configs_marketvars($tablename, $column, $varname){
+    global $db2;
+    $options_arr = array();
+    $sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $varname_lower = strtolower($varname);
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
+    foreach ($resultset as $key => $val){
+        if(!in_array($val[$column], $options_arr)){
+            $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+            $options_arr[] = $val[$column];
+        }
+    }
+    $output .= '</select>';
+    return $output;
+}
+
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+
 function generate_option_button_for_configs($tablename, $column, $varname){
     global $db2;
-    if($tablename == 'software_inventory'){
-        $addcolumn = ', devicename';
-    }
     $options_arr = array();
     $sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
     $db2->query($sql);
@@ -5034,6 +5086,31 @@ function generate_option_button_for_configs($tablename, $column, $varname){
                 $options_arr[] = $val[$column];
             }
         }
+    }
+    $output .= '</select>';
+    return $output;
+}
+function generate_option_button_for_configs_defaultbox_type($usrvarname, $deviceseries){
+    $uservarsreq = ($deviceseries != 'Bandwidth') ? 'uservarsreq' : '';
+    $output = '<label class="control-label" for="exampleInputEmail1">'.$usrvarname.'</label>
+									<input type="'.$usrvarname.'"
+									name="'.$usrvarname.'"
+									class="form-control '.$uservarsreq.'"
+									id="'.$usrvarname.'"
+									value=""
+									placeholder="">';
+    return $output;
+}
+function generate_option_button_for_configs_static_type($usrvarname){
+    if($usrvarname == 'MTU'){
+        $option_arr = array(1 => 'MTU - 1', 2 => 'MTU - 2' );
+    }else{
+        $option_arr = array(6 => 'BW Type - 6', 8 => 'BW Type - 8' );
+    }
+    $output = '<label class="control-label" for="'.$usrvarname.'">'.$usrvarname.'</label>
+										<select id="'.$usrvarname.'" class="form-control" name="'.$usrvarname.'" data-rule-required="true">';
+    foreach ($option_arr as $key => $val){
+        $output .= '<option value="'.$key.'">'.$val.'</option>';
     }
     $output .= '</select>';
     return $output;

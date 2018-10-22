@@ -277,29 +277,23 @@ write_log($mesg);
 							<!-- <p>if device series = bandwidth</p> -->
                             <div
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
-								
-								
-								<?php   if ((($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')) || ($val['usrvarname'] == 'Bandwidth Type')  || ($val['usrvarname'] == 'MTU') ){ 
-								    echo generate_option_button_for_configs_static_type($val['usrvarname']);
-								?>
-								<?php   }elseif ($val['usrvarname'] == 'MTU'){ 
-                                    echo generate_option_button_for_configs_bandwidth_type($val['usrvarname']);
-								?>
-								<?php    }elseif ((('Telco Interface-ASR9010-Even' == $val['usrvarname'])) || (('Telco Interface-ASR9010-Odd' == $val['usrvarname']))){   
-								    echo generate_option_button_for_configs_sw_inventory('software_inventory', 'interface', $val['usrvarname']);
-								?>
-								<?php }elseif (('Time Zone' == $val['usrvarname']) || ('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
-								    echo generate_option_button_for_configs_marketvars('marketvars', 'mvarval', $val['usrvarname']);
-								?>
-								<?php }elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
-								    echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
-								?>
-								<?php }else{   
-								    echo generate_option_button_for_configs_defaultbox_type($val['usrvarname'], $val['deviceseries']);
-								?>
-								<?php } ?>
-									
-											
+								<?php   
+								    if ((($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')) || ($val['usrvarname'] == 'Bandwidth Type')  || ($val['usrvarname'] == 'MTU') ){ 
+								        echo generate_option_button_for_configs_static_type($val['usrvarname']);
+								    }elseif ($val['usrvarname'] == 'MTU'){ 
+                                        echo generate_option_button_for_configs_bandwidth_type($val['usrvarname']);
+								    }elseif ((('Telco Interface-ASR9010-Even' == $val['usrvarname'])) || (('Telco Interface-ASR9010-Odd' == $val['usrvarname']))){   
+								        echo generate_option_button_for_configs_sw_inventory('software_inventory', 'interface', $val['usrvarname']);
+								    }elseif (('Time Zone' == $val['usrvarname']) || ('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
+								        echo generate_option_button_for_configs_marketvars('marketvars', 'mvarval', $val['usrvarname']);
+								    }elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
+								        echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
+								    }elseif (('Vlan(Even)' == $val['usrvarname']) || ('Vlan(Odd)' == $val['usrvarname'])){   
+								        echo generate_option_button_for_configs_sw_inventory_vlan('software_inventory', 'vlan', $val['usrvarname']);
+								    }else{   
+								        echo generate_option_button_for_configs_defaultbox_type($val['usrvarname'], $val['deviceseries']);
+								    } 
+                                ?>	
 							</div>
                             <?php
                         // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];

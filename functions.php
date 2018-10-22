@@ -5031,6 +5031,36 @@ function generate_option_button_for_configs_sw_inventory($tablename, $column, $v
  * @param unknown $ipaddress
  * @return unknown
  */
+
+function generate_option_button_for_configs_sw_inventory_vlan($tablename, $column, $varname){
+    global $db2;
+    $varname_lower = strtolower($varname);
+    if(strpos($varname_lower, 'odd') !== false){
+        $type = 'D%-01';
+    }else{
+        $type = 'D%-02';
+    }
+    $sql = "SELECT max(".$column.") as maximum FROM ".$tablename." where devicename like '".$type."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    
+    $maximum = $resultset[0]['maximum'] + 2;
+    
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>
+									<input type="'.$varname.'"
+									name="'.$varname.'"
+									class="form-control"
+									id="'.$varname.'"
+									value="'.$maximum.'"
+									placeholder="">';
+    return $output;
+}
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
 function generate_option_button_for_configs_marketvars($tablename, $column, $varname){
     global $db2;
     $options_arr = array();
@@ -5092,7 +5122,7 @@ function generate_option_button_for_configs($tablename, $column, $varname){
 }
 function generate_option_button_for_configs_defaultbox_type($usrvarname, $deviceseries){
     $uservarsreq = ($deviceseries != 'Bandwidth') ? 'uservarsreq' : '';
-    $output = '<label class="control-label" for="exampleInputEmail1">'.$usrvarname.'</label>
+    $output = '<label class="control-label" for="'.$usrvarname.'">'.$usrvarname.'</label>
 									<input type="'.$usrvarname.'"
 									name="'.$usrvarname.'"
 									class="form-control '.$uservarsreq.'"

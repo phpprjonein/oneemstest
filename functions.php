@@ -5040,7 +5040,7 @@ function generate_option_button_for_configs_sw_inventory_vlan($tablename, $colum
     }else{
         $type = 'D%-02';
     }
-    echo $sql = "SELECT max(".$column.") as maximum FROM ".$tablename." where devicename like '".$type."'"; die;
+    $sql = "SELECT max(".$column.") as maximum FROM ".$tablename." where devicename like '".$type."'";
     $db2->query($sql);
     $resultset = $db2->resultset();
     

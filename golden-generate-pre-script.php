@@ -161,9 +161,9 @@ write_log($mesg);
 				<?php }; ?>
               </select>
 									</div>
-			<div class="form-group f14 required" data-fid="f14">						
+			<div class="form-group f14 required bandwidth" style="display: none;" data-fid="f14">						
 			<label class="control-label" for="exampleInputEmail1">Device Name</label>
-				<input type="Device Name" name="f14" class="form-control" id="f14" value="" placeholder="">						
+				<input type="Device Name" name="f14" class="form-control" id="select_device_name" value="" placeholder="">						
 			</div>						
 			<!-- select Switch options -->
 

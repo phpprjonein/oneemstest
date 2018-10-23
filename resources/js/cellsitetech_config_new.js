@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var readOnlyLength = 0;
   if ($("#config_file_uploader").length > 0) {
     document.forms["config_file_uploader"].reset();
   }
@@ -14,12 +15,35 @@ $(document).ready(function() {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();
         $(".non-bandwidth").hide();
+        if ($('#cellsitech-generate-script #select_switch').val() != ""){
+        	readOnlyLength = $('#cellsitech-generate-script #select_switch').val().length;
+        	$('#cellsitech-generate-script #select_device_name').val($('#cellsitech-generate-script #select_switch').val());
+        }
       } else {
         $(".non-bandwidth").show();
         $(".bandwidth").hide();
+        
       }
     }
   );
+  
+  $(document).on('keypress, keydown', '#cellsitech-generate-script #select_device_name', function(event) {
+	readOnlyLength = $('#cellsitech-generate-script #select_switch').val().length;
+    var $field = $(this);
+    if ((event.which != 37 && (event.which != 39)) &&
+      ((this.selectionStart < readOnlyLength) ||
+        ((this.selectionStart == readOnlyLength) && (event.which == 8)))) {
+      return false;
+    }
+  });
+  
+  $(document).on("change", "#cellsitech-generate-script #select_switch", function(event) {
+	  if ($(this).val() != "" && $('#cellsitech-generate-script #select_script_type').val() == 'BW-Upgrade') {
+		  $('#cellsitech-generate-script #select_device_name').val($(this).val());
+	  }else{
+		  $('#cellsitech-generate-script #select_device_name').val('');
+	  }
+  });
 
   $(document).on("change", "#cellsitech-generate-script .leftselector select", function(
     event

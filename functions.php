@@ -3090,7 +3090,7 @@ function update_dev_batch($batchid, $deviceid, $scriptname, $deviceseries, $devi
         $db2->execute();
         /* insert in to batchmaster table */
         $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`,`scriptfilemame`)
-        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "', '', '', ,'" . $_SESSION['batch_vars']['scriptfilemame'] . "')";
+        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'se', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $_SESSION['batch_vars']['deviceseries'] . "','" . $_SESSION['batch_vars']['deviceos'] . "','" . $scriptname . "','" . $refmop . "', '', '','" . $_SESSION['batch_vars']['scriptfilemame'] . "')";
         $db2->query($dsql);
         $db2->execute();
     }

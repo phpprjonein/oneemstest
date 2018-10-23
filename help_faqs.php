@@ -104,6 +104,7 @@ echo generate_site_breadcrumb($values);
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
 									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"

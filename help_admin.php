@@ -104,6 +104,7 @@ echo generate_site_breadcrumb($values);
 											href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
                                     </nav>
 									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
 									<a class="nav-link" href="#item-9">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1"
@@ -111,7 +112,7 @@ echo generate_site_breadcrumb($values);
 											class="nav-link ml-3 my-1"
 											href="#item-9-2">Software Upload</a>
                                     </nav>
-									<a class="nav-link" href="help_faqs.php#item-8">FAQs</a>
+									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
 						</div>
@@ -162,11 +163,11 @@ echo generate_site_breadcrumb($values);
 							<hr>
 							<div class="row">
 								<div class="col-6">
-									<a href="help_instant_hc.php" class="border"><b><< PREV:
-											Instant Health Check</b></a>
+									<a href="help_inventory.php" class="border"><b><< PREV:
+											Inventory</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_faqs.php" class="border"><b>NEXT: FAQs >></b></a>
+									<a href="help_faqs.php" class="border"><b>NEXT:  FAQs >></b></a>
 								</div>
 							</div>
 							<p>&nbsp;</p>

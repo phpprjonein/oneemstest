@@ -4801,3 +4801,38 @@ function get_device_ids_from_ip_address($ipaddress = array())
     return $resultset;
 }
 
+// Inventory db queries
+
+function get_inventory_region_list()
+
+{
+
+global $db2;
+
+$sql = "select distinct(region) from switch_map order by region";
+
+$db2->query($sql);
+
+$resultset['result'] = $db2->resultset();
+
+return $resultset;
+
+}​
+
+function get_inventory_market_list()
+
+{
+
+global $db2;
+
+$sql = "select distinct(market) from switch_map order by region";
+
+$db2->query($sql);
+
+$resultset['result'] = $db2->resultset();
+
+return $resultset;
+
+}
+
+// Inventory db queries

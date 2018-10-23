@@ -290,6 +290,8 @@ write_log($mesg);
 								        echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
 								    }elseif (('Vlan(Even)' == $val['usrvarname']) || ('Vlan(Odd)' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_sw_inventory_vlan('software_inventory', 'vlan', $val['usrvarname']);
+								    }elseif ('Bandwidth (Mbps)' == $val['usrvarname']){
+								        echo generate_option_button_for_configs('bandwidth', 'bwid', $val['usrvarname']);
 								    }else{   
 								        echo generate_option_button_for_configs_defaultbox_type($val['usrvarname'], $val['deviceseries']);
 								    } 

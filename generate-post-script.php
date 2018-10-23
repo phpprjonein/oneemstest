@@ -3,10 +3,14 @@ include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
 /*
- * print '<pre>';
- * print_r($_POST);
- * die;
- *
+  print '<pre>';
+  echo "Device Name";
+  echo "<br>";
+  print_r($_POST['f14']);
+  die;
+*/  
+  
+ /*
  * $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
  * foreach ($vars['usrvars'] as $key => $val){
  * $value = str_replace(' ', '_', $val['usrvarname']);
@@ -172,6 +176,11 @@ echo generate_site_breadcrumb($values);
 										</select>
             </div>
 									<!-- /select switch type options -->
+			<div class="form-group f14 required bandwidth" data-fid="f14">						
+				<label class="control-label" for="exampleInputEmail1">Device Name</label>
+				<input type="Device Name" name="f14" class="form-control" disabled id="select_device_name" value="<?php echo $_POST['f14'];?>" placeholder="">						
+			</div>								
+									
 
 									<div class="clearfix"></div>
 								</form>
@@ -243,6 +252,11 @@ echo generate_site_breadcrumb($values);
             foreach ($vars as $key => $val) {
                 $result['switchvars'][$_POST['f11'] . $val['swvarname']] = $val['swvarval'];
             }
+            
+            //Pre populate device name
+            $result['globalvars'][$_POST['f11'] . 'device name'] = $result['usrvars'][$_POST['f11'] . 'device name'] = $result['marketvars'][$_POST['f11'] . 'device name'] = $result['switchvars'][$_POST['f11'] . 'device name'] = $_POST['f14'];
+            
+            
             
             for ($k = 1; $k <= count($newarr); $k ++) {
                 if (count($newarr[$k]) == 1) {

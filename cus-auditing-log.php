@@ -41,7 +41,7 @@ write_log($mesg);
     <?php include_once ('menu.php'); ?>
       <?php
     $values = array(
-        'Customize Auditing Log' => '#'
+        'Customize Audit' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>

@@ -5065,7 +5065,42 @@ function generate_option_button_for_configs_sw_inventory_vlan($tablename, $colum
 function generate_option_button_for_configs_marketvars($tablename, $column, $varname){
     global $db2;
     $options_arr = array();
-    $sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+    //$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+//	if ($varname == )
+		$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'BGP Password'"."  order by ".$column;
+ //   else if ($varname == )
+	//	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+	//echo $sql;	
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $varname_lower = strtolower($varname);
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
+    foreach ($resultset as $key => $val){
+        if(!in_array($val[$column], $options_arr)){
+            $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+            $options_arr[] = $val[$column];
+        }
+    }
+    $output .= '</select>';
+    return $output;
+}
+
+
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+function generate_option_button_for_configs_marketvars_timezone($tablename, $column, $varname){
+    global $db2;
+    $options_arr = array();
+    //$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+//	if ($varname == )
+		$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'Time Zone'"."  order by ".$column;
+ //   else if ($varname == )
+	//	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+	//echo $sql;	
     $db2->query($sql);
     $resultset = $db2->resultset();
     $varname_lower = strtolower($varname);
@@ -5092,7 +5127,7 @@ function generate_option_button_for_configs($tablename, $column, $varname){
     global $db2;
     $options_arr = array();
     $sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
-    $db2->query($sql);
+    $db2->query($sql);	
     $resultset = $db2->resultset();
     $varname_lower = strtolower($varname);
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
@@ -5134,7 +5169,7 @@ function generate_option_button_for_configs_defaultbox_type($usrvarname, $device
 }
 function generate_option_button_for_configs_static_type($usrvarname){
     if($usrvarname == 'MTU'){
-        $option_arr = array(1 => 'MTU - 1', 2 => 'MTU - 2' );
+        $option_arr = array(1970 => '1970', 4350 => '4350' );
     }else{
         $option_arr = array(6 => 'BW Type - 6', 8 => 'BW Type - 8' );
     }

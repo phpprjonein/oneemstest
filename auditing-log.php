@@ -41,7 +41,7 @@ write_log($mesg);
     <?php include_once ('menu.php'); ?>
       <?php
     $values = array(
-        'Auditing Log' => '#'
+        'Compliance' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>

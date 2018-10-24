@@ -113,11 +113,11 @@
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    	aria-haspopup="true" aria-expanded="false">Auditing</a>
+                    	aria-haspopup="true" aria-expanded="false">Audit</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    		<a class="dropdown-item" href="auditing-log.php">Audit Log</a> 
+                    		<a class="dropdown-item" href="auditing-log.php">Compliance</a> 
                     		<a class="dropdown-item" href="cus-auditing-log.php">Customize Audit Log</a>
-                    		<a class="dropdown-item" href="audit-history.php">Audit History</a>
+                    		<a class="dropdown-item" href="audit-history.php">Customize Audit History</a>
                     	</div>
                     </li>
 					<li class="nav-item"><a
@@ -195,11 +195,11 @@
 					<li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    	aria-haspopup="true" aria-expanded="false">Auditing</a>
+                    	aria-haspopup="true" aria-expanded="false">Audit</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     		<a class="dropdown-item" href="auditing-log.php">Audit Log</a> 
                     		<a class="dropdown-item" href="cus-auditing-log.php">Customize Audit Log</a>
-                    		<a class="dropdown-item" href="audit-history.php">Audit History</a>
+                    		<a class="dropdown-item" href="audit-history.php">Customize Audit History</a>
                     	</div>
                     </li>	
 					<li class="nav-item"><a

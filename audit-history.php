@@ -40,7 +40,7 @@ write_log($mesg);
     <?php include_once ('menu.php'); ?>
       <?php
     $values = array(
-        'Audit History' => '#'
+        'Customize Audit History' => '#'
     );
     echo generate_site_breadcrumb($values);
     ?>

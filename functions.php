@@ -5156,6 +5156,42 @@ function generate_option_button_for_configs($tablename, $column, $varname){
     $output .= '</select>';
     return $output;
 }
+
+function generate_option_button_for_configs_enable($tablename, $column, $varname){
+    global $db2;
+    $options_arr = array();
+    //$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'Enable Secret'"."  order by ".$column;
+    $db2->query($sql);	
+    $resultset = $db2->resultset();
+    $varname_lower = strtolower($varname);
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
+    foreach ($resultset as $key => $val){
+        $devicename_lower = strtolower($val['devicename']);
+        if(strpos($varname_lower, 'asr') !== false && ((strpos($varname_lower, 'even') !== false) || (strpos($varname_lower, 'odd') !== false))){
+            if(strpos($varname_lower, 'asr') !== false && strpos($varname_lower, 'even') !== false && strpos($devicename_lower, 'asr') !== false &&  strpos($devicename_lower, '-02') !== false){
+                if(!in_array($val[$column], $options_arr)){
+                    $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                    $options_arr[] = $val[$column];
+                }
+            }elseif(strpos($varname_lower, 'asr') !== false && strpos($varname_lower, 'odd') !== false  && strpos($devicename_lower, 'asr') !== false &&  strpos($devicename_lower, '-01')  !== false ){
+                if(!in_array($val[$column], $options_arr)){
+                    $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                    $options_arr[] = $val[$column];
+                }
+            }
+        }else{
+            if(!in_array($val[$column], $options_arr)){
+                $output .= '<option value="'.$val[$column].'">'.$val[$column].'</option>';
+                $options_arr[] = $val[$column];
+            }
+        }
+    }
+    $output .= '</select>';
+    return $output;
+}
+
 function generate_option_button_for_configs_defaultbox_type($usrvarname, $deviceseries){
     $uservarsreq = ($deviceseries != 'Bandwidth') ? 'uservarsreq' : '';
     $output = '<label class="control-label" for="'.$usrvarname.'">'.$usrvarname.'</label>
@@ -5181,3 +5217,26 @@ function generate_option_button_for_configs_static_type($usrvarname){
     $output .= '</select>';
     return $output;
 }
+
+// Inventory db queries
+// function get_inventory_region_list($regionResults)
+function get_inventory_region_list()
+{
+    global $db2;
+    $sql = "select distinct(region) from switch_map order by region";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+// function get_inventory_market_list($marketList)
+function get_inventory_market_list()
+{
+    global $db2;
+    $sql = "select distinct(market) from switch_map";
+    // $sql = "select distinct(market) from switch_map where region = '" . $regionResults . "' order by market";
+    // $sql = "SELECT distinct(market) FROM switch_map where region = '" . $marketList . "' ORDER BY market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+// Inventory db queries

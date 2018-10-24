@@ -12,13 +12,17 @@ if (isset($_GET['clear'])) {
 
 user_session_check();
 // check_user_authentication('1'); // cellsite tech type user
+if ($_SESSION['userlevel'] == 1)
+    include_once ('config/session_check_cellsite_tech.php');
+else if ($_SESSION['userlevel'] == 2)
+    include_once ('config/session_check_switch_tech.php');
 
 $page_title = 'OneEMS';
 
 // page logging
 $usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
 $username = $_SESSION['username'];
-$mesg = " User name: $username User type : $usertype Page:  Main help page Description: User has navigated the first Help page.";
+$mesg = " User name: $username User type : $usertype Page:  Inventory page Description: User has navigated to the Inventory page.";
 write_log($mesg);
 
 $userid = $_SESSION['userid'];
@@ -57,7 +61,7 @@ $succss_msg = '';
 <!-- inventory form div -->
 						<div class="col-md-4 col-sm-12">
 							<hr class="d-md-none" />
-							<h4 id="item-1">Inventory</h4>
+							<!-- <h4 id="item-1">Inventory</h4> -->
 							<p>
 
 <!-- inventory form -->
@@ -131,6 +135,8 @@ $succss_msg = '';
 									<input type="submit" name="Submit" value="Show Files" class="btn config-submit">
 <!-- /initiate stream_resolve_include_path -->
 
+									<p>&nbsp;</p>
+
 								</form>
 <!-- /inventory form -->
 
@@ -140,47 +146,45 @@ $succss_msg = '';
 
 <!-- right side -->
 							<div class="col-md-8 col-sm-12">
-								<?php
+							<?php
 									@$folderOne = $_POST['select_inventory_type'];
 									if( is_array($folderOne)){
 									while (list ($key, $val) = each ($folderOne))
 										{
 
 // set the Region and Market values from respective dropdowns
+											$selectFolder = ($_POST['select_inventory_type']);
 											$selectRegion = ($_POST['select_region']);
 											$selectMarket = ($_POST['select_market']);
-
-											// if(isset($_REQUEST['select_region']) && $_REQUEST['select_region'] == '0') {
-											// 	echo 'no result.';
-											//   }
 
 // concatenate Region and Market names into $filenameString
 											$filenameString = ("$selectRegion-$selectMarket");
 											$folderLocation = glob('sd/{'.$val.'}/{'.$filenameString.'}*', GLOB_BRACE);
 
-												foreach ($files as $file)
-													print " <div class='fileicon'>
-																<audio controls='controls'>
-																	<source src='".$dir.$file."' />
-																</audio>
-																<button class='button' disabled>Reply</button>
-																</a>
-															</div>";
-													echo '<table class="table table-striped">
-													<tbody id="loadtemplates">';
-													foreach ($folderLocation as $key=>$val)
-														{
-															echo
-																'<tr>';
-																$path_parts = pathinfo($val);
-															echo
-																	'<td class="templname">' . $path_parts['basename'], "\n" .'</td>
-																	<td><a href="' . $val . '" class="btn btn-primary float-right" role="button" target="_blank">download</a></td>
-																</tr>';
-														}
+// check to see if dropdown values are null or empty
+// show results if values are valid
+											if (!empty($folderLocation)){
+												echo '<table class="table table-striped">
+												<tbody id="loadtemplates">';
+												foreach ($folderLocation as $key=>$val)
+													{
 														echo
-														'</tbody>
-														</table>';
+															'<tr>';
+															$path_parts = pathinfo($val);
+														echo
+																'<td class="templname">' . $path_parts ['basename'], "\n" .'</td>
+																<td><a href="' . $val . '" class="btn btn-primary float-right" role="button" target="_blank">download</a></td>
+															</tr>';
+													}
+												echo
+												'</tbody>
+												</table>';
+											}
+
+// show error messaging if values are invalid
+											else {
+												echo '<p class="alert alert-danger"><b class="text-danger">Your search for </b> ' . $folderLocation . ' <b class="text-danger">and</b> ' . $selectRegion . ' <b class="text-danger">and</b> ' . $selectMarket . ' <b class="text-danger">returned no results.</b><br>Please select different criteria from the dropdown menus on the left.</p>';
+											}
 										}
 									}
 								?>

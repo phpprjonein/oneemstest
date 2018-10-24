@@ -60,7 +60,7 @@
 	            		 var market = $(this).closest('tr').find('td:eq(5)').html();
 	            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
 	            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
-	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.pdf">' + devicename +'.pdf</a>');
+	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
 	            		 //}else{
 	            		 //      $(this).text('');
 	            		 //}
@@ -136,7 +136,7 @@
     	            		 var market = $(this).closest('tr').find('td:eq(5)').html();
     	            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
     	            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
-    	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.pdf">' + devicename +'.pdf</a>');
+    	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
     	            		 //}else{
     	            		 //      $(this).text('');
     	            		 //}
@@ -233,7 +233,7 @@
 	    	            		 var market = $(this).closest('tr').find('td:eq(5)').html();
 	    	            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
 	    	            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
-	    	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.pdf">' + devicename +'.pdf</a>');
+	    	            		 	$(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
 	    	            		 //}else{
 	    	            		 //      $(this).text('');
 	    	            		 //}

@@ -39,6 +39,7 @@
               {"data": "aurundate"},
               {"data": "market"},
               {"data": "nodeVersion"},
+              {"data": "region"},
               {"data": "austatus"},
               {"data": "austatus"},
           ],
@@ -53,12 +54,16 @@
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
 	            		 }
 	            	 }
-	            	 if(colIndex == 8){
-	            		 if($(this).text().toLowerCase() == 'fail'){
-	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
-	            		 }else{
-	            			 $(this).text('');
-	            		 }
+	            	 if(colIndex == 9){
+	            		 //if($(this).text().toLowerCase() == 'fail'){
+	            			 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
+	            			 var market = $(this).closest('tr').find('td:eq(5)').html();
+	            			 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+	            			 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+	            			 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
+	            		 //}else{
+	            		 //	 $(this).text('');
+	            		 //}
 	            	 }
 	             }); 
 	        }
@@ -102,6 +107,7 @@
                   {"data": "aurundate"},
                   {"data": "market"},
                   {"data": "nodeVersion"},
+                  {"data": "region"},
                   {"data": "austatus"},
                   {"data": "austatus"},
               ],
@@ -116,13 +122,17 @@
 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
 	            		 }
 	            	 }
-	            	 if(colIndex == 8){
-	            		 if($(this).text().toLowerCase() == 'fail'){
-	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
-	            		 }else{
-	            			 $(this).text('');
-	            		 }
-	            	 }
+	            	 if(colIndex == 9){
+	            		 //if($(this).text().toLowerCase() == 'fail'){
+	            		 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
+	            		 var market = $(this).closest('tr').find('td:eq(5)').html();
+	            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+	            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
+	            		 //}else{
+	            		 //      $(this).text('');
+	            		 //}
+	            	 }		 
 	             }); 
 	        }
           });;
@@ -177,7 +187,7 @@
 	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'software-delivery-audit-log-process.php?listname='+listname+'&deviceseries='+deviceseries,
+	                  url: 'software-delivery-audit-log-process.php?listname='+listname,
 	                  type: 'GET'
 	              },
 	              "columns": [ 		
@@ -191,29 +201,34 @@
 	                  {"data": "aurundate"},
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"},
+	                  {"data": "region"},
 	                  {"data": "austatus"},
 	                  {"data": "austatus"},
 	              ],
-	    			"order": [[5, 'asc']],
-	    	        "createdRow": function (row, data, rowIndex) {
-	    	             $(row).addClass('device_row');
-	    				  $.each($('td', row), function (colIndex) {
-	    	            	 if(colIndex == 0){
-	    	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
-	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
-	    	            		 }else{
-	    	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
-	    	            		 }
-	    	            	 }
-	    	            	 if(colIndex == 8){
-	    	            		 if($(this).text().toLowerCase() == 'fail'){
-	    	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
-	    	            		 }else{
-	    	            			 $(this).text('');
-	    	            		 }
-	    	            	 }
-	    	             }); 
-	    	        }
+	  			"order": [[5, 'asc']],
+		        "createdRow": function (row, data, rowIndex) {
+		             $(row).addClass('device_row');
+					  $.each($('td', row), function (colIndex) {
+		            	 if(colIndex == 0){
+		            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+		            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+		            		 }else{
+		            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+		            		 }
+		            	 }
+		            	 if(colIndex == 9){
+		            		 //if($(this).text().toLowerCase() == 'fail'){
+		            		 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
+		            		 var market = $(this).closest('tr').find('td:eq(5)').html();
+		            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+		            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(2)").text() +'.txt</a>');
+		            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
+		            		 //}else{
+		            		 //      $(this).text('');
+		            		 //}
+		            	 }		 
+		             }); 
+		        }
 	          });;
             });
             })

@@ -103,7 +103,7 @@
                   {"data": "market"},
                   {"data": "nodeVersion"},
                   {"data": "austatus"},
-                  {"data": "log"},
+                  {"data": "austatus"},
               ],
   			"order": [[5, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
@@ -192,7 +192,7 @@
 	                  {"data": "market"},
 	                  {"data": "nodeVersion"},
 	                  {"data": "austatus"},
-	                  {"data": "log"},
+	                  {"data": "austatus"},
 	              ],
 	    			"order": [[5, 'asc']],
 	    	        "createdRow": function (row, data, rowIndex) {

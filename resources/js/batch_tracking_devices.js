@@ -11,9 +11,9 @@ $(document).ready(function() {
 			batchtype = 'bo';
 		}else if($('#batchtype-dt-filter .btn').text() == 'Reboot'){					
 			batchtype = 'rb';
-		}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
+		}else if($('#batchtype-dt-filter .btn').text() == 'Audit Log'){					
 			batchtype = 'al';
-		}else if($('#batchtype-dt-filter .btn').text() == 'Customize Auditing Log'){					
+		}else if($('#batchtype-dt-filter .btn').text() == 'Customize Audit Log'){					
 			batchtype = 'cusal';
 		} 
 		
@@ -158,9 +158,9 @@ $(document).ready(function() {
 					batchtype = 'bo';
 				}else if($(this).text() == 'Reboot'){					
 					batchtype = 'rb';
-				}else if($('#batchtype-dt-filter .btn').text() == 'Auditing Log'){					
+				}else if($('#batchtype-dt-filter .btn').text() == 'Audit Log'){					
 					batchtype = 'al';
-				}else if($('#batchtype-dt-filter .btn').text() == 'Customize Auditing Log'){					
+				}else if($('#batchtype-dt-filter .btn').text() == 'Customize Audit Log'){					
 					batchtype = 'cusal';
 				}  
 		         var table =  $('#devicebatchtrack').DataTable( {

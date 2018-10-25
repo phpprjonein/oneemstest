@@ -70,7 +70,7 @@
       });
 	  table1.buttons().container().appendTo('#export-v-pills-home');
       $('.pagelength').html('');
-      $('#auditinglog_length').appendTo('.pagelength');
+      // $('#auditinglog_length').appendTo('.pagelength');
 	  $('#search-v-pills-home input').keyup(function(){
       	table1.search($(this).val()).draw() ;
 	  });
@@ -145,7 +145,7 @@
     	        }
           });
           $('.pagelength').html('');
-          $('#auditinglog_length').appendTo('.pagelength');
+          // $('#auditinglog_length').appendTo('.pagelength');
           table1.buttons().container().appendTo('#export-v-pills-home');
     });
       

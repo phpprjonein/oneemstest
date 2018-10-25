@@ -369,7 +369,9 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset(
     echo configtemplate_devicename_prefix_by_switch_name($_POST['select_switch']);    
 }
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && isset($_POST['select_region']) && isset($_POST['action']) && $_POST['action'] == 'LoadMarketBoxValues') {
-    $results = get_inventory_market_list($_POST['select_region']);
+    if($_POST['select_region'] != ''){
+        $results = get_inventory_market_list($_POST['select_region']);
+    }
     $output = '<option value="">- SELECT Market -</option>';
     foreach ($results['result'] as $key => $val){
         $output .= '<option value="'.$val['market'].'">'.$val['market'].'</option>';

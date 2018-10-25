@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	  $(document).on("change", ".ems-inventory #select_region_list", function(event) {
-	      if ($('.ems-inventory #select_region_list').val() != ""){
 	          	$.post("ip-mgt-process.php", {
 	              'calltype': "inventorytrigger",
 	              'select_region' : $('.ems-inventory #select_region_list').val(),
@@ -10,7 +9,6 @@ $(document).ready(function() {
 	              		$('.ems-inventory #select_market_list').html(data);
 	              }
 	            });
-	      }
 	  });
 	  
 	  $(document).on("click","#show_files_act button",function(event) {

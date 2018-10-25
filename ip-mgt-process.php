@@ -365,3 +365,6 @@ if($_POST['ctype'] == 'BWBatchTabShow'){
     $output = json_encode(array('result' => $output, 'status' => $status));
     echo $output;
 }
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptDeviceLoad') {
+    echo configtemplate_devicename_prefix_by_switch_name($_POST['select_switch']);    
+}

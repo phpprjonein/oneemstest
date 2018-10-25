@@ -4875,6 +4875,19 @@ function configtemplate_elemvalue_pos_script_switch_name($switch_name)
     $resultset = $db2->resultset();
     return $resultset;
 }
+/**
+ *
+ * @return unknown
+ */
+function configtemplate_devicename_prefix_by_switch_name($switch_name)
+{
+    global $db2;
+    
+    $sql = "SELECT * FROM switchvars where switch_name = '" . $switch_name . "' and swvarname = 'devicename_prefix'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset[0]['swvarval'];
+}
 
 /**
  *

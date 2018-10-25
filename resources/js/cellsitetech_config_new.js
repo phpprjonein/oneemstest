@@ -15,10 +15,6 @@ $(document).ready(function() {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();
         $(".non-bandwidth").hide();
-        if ($('#cellsitech-generate-script #select_switch').val() != ""){
-        	readOnlyLength = $('#cellsitech-generate-script #select_switch').val().length;
-        	$('#cellsitech-generate-script #select_device_name').val($('#cellsitech-generate-script #select_switch').val());
-        }
       } else {
         $(".non-bandwidth").show();
         $(".bandwidth").hide();
@@ -28,7 +24,6 @@ $(document).ready(function() {
   );
   
   $(document).on('keypress, keydown', '#cellsitech-generate-script #select_device_name', function(event) {
-	readOnlyLength = $('#cellsitech-generate-script #select_switch').val().length;
     var $field = $(this);
     if ((event.which != 37 && (event.which != 39)) &&
       ((this.selectionStart < readOnlyLength) ||
@@ -43,6 +38,18 @@ $(document).ready(function() {
 	  }else{
 		  $('#cellsitech-generate-script #select_device_name').val('');
 	  }
+      if ($('#cellsitech-generate-script #select_switch').val() != ""){
+          	$.post("ip-mgt-process.php", {
+              'calltype': "configtrigger",
+              'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+              'action': "GenerateScriptDeviceLoad"
+            }).done(function(data) {
+              if (data != "") {
+              		readOnlyLength = data.length;
+              		$('#cellsitech-generate-script #select_device_name').val(data);
+              }
+            });
+      }
   });
 
   $(document).on("change", "#cellsitech-generate-script .leftselector select", function(

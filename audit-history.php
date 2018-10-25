@@ -110,7 +110,7 @@ write_log($mesg);
 													<th>Region</th>
 													<th>Market</th>
 													<th>Device Name</th>
-													<th>Ip Address</th>
+													<th>IP Address</th>
 													<th>Device Series</th>
 													<th>Filter Criteria</th>
 													<th>Audit Status</th>

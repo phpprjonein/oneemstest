@@ -11,9 +11,9 @@ if($_GET['batchtype'] == 'se'){
 }elseif($_GET['batchtype'] == 'rb'){
     $_SESSION['batchtype-dt-filter'] = 'Reboot';
 }elseif($_GET['batchtype'] == 'al'){
-    $_SESSION['batchtype-dt-filter'] = 'Audit Log';
+    $_SESSION['batchtype-dt-filter'] = 'Audit';
 }elseif($_GET['batchtype'] == 'cusal'){
-    $_SESSION['batchtype-dt-filter'] = 'Customize Audit Log';
+    $_SESSION['batchtype-dt-filter'] = 'Customize Audit';
 }
 
 $backup_list = get_devicebatch_list_from_devicebatch_datatable();

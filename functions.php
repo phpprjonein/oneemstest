@@ -4078,6 +4078,7 @@ function get_audithistory_datatable()
             'distinct(ah.auhisid)',
             'ah.batchid',
             'ah.username',
+            'ah.region',
             'ah.market',
             'ah.devicename',
             'ah.deviceIpAddr',
@@ -4096,6 +4097,7 @@ function get_audithistory_datatable()
         $sql_condition .= " where ( ";
         $sql_condition .= " ah.batchid LIKE '%" . $search . "%'";
         $sql_condition .= " OR ah.username  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.region  LIKE '%" . $search . "%'";
         $sql_condition .= " OR ah.market  LIKE '%" . $search . "%'";
         $sql_condition .= " OR ah.devicename  LIKE '%" . $search . "%'";
         $sql_condition .= " OR ah.deviceIpAddr  LIKE '%" . $search . "%'";

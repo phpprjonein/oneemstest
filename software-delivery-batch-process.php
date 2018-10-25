@@ -143,26 +143,27 @@ function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries,
     global $db2;
     $oc = 1;
     $date_op = date('Y-m-d H:i:s');
-    $sql = "SELECT id, deviceIpAddr, market, devicename, deviceseries  FROM nodes order by id";
+    $sql = "SELECT id, deviceIpAddr, region, market, devicename, deviceseries  FROM nodes order by id";
     $db2->query($sql);
     $resultset = $db2->resultset();
     foreach ($resultset as $key => $val) {
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
         $nodes[$val['id']]['market'] = $val['market'];
+        $nodes[$val['id']]['region'] = $val['region'];
         $nodes[$val['id']]['devicename'] = $val['devicename'];
         $nodes[$val['id']]['deviceseries'] = $val['deviceseries'];
     }
     $deviceid = explode(',', $deviceid);
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
-    $cusalsql = 'INSERT INTO `audithistory` (`batchid`, `username`, `market`, `devicename`, `deviceIpAddr`, `deviceseries`, `filtercriteria`, `austatus`, `filename`) VALUES';
+    $cusalsql = 'INSERT INTO `audithistory` (`batchid`, `username`, `region`, `market`, `devicename`, `deviceIpAddr`, `deviceseries`, `filtercriteria`, `austatus`, `filename`) VALUES';
     
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "','')";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', '')";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', '')";
         } else {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', ''),";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', ''),";
         }
         $oc ++;
     }

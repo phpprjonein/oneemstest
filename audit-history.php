@@ -107,13 +107,14 @@ write_log($mesg);
 												<tr>
 													<th>Batch ID</th>
 													<th>User Name</th>
+													<th>Region</th>
 													<th>Market</th>
 													<th>Device Name</th>
 													<th>Ip Address</th>
 													<th>Device Series</th>
 													<th>Filter Criteria</th>
 													<th>Audit Status</th>
-													<th>Filename</th>
+													<th>Log</th>
 													<th>Created date</th>
 												</tr>
 											</thead>

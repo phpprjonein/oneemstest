@@ -16,6 +16,7 @@ $(document).ready(function () {
           "columns": [ 		
               {"data": "batchid"},
               {"data": "username"},
+              {"data": "region"},
               {"data": "market"},
               {"data": "devicename"},
               {"data": "deviceIpAddr"},
@@ -29,12 +30,12 @@ $(document).ready(function () {
 			 "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
-	            	 if(colIndex == 8){
-	            		 if($(this).text().toLowerCase() == 'fail'){
-	            			 $(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(3)").text() + '.txt">'+ $(this).closest('tr').find("td:eq(3)").text() +'.txt</a>');
-	            		 }else{
-	            			 $(this).text('');
-	            		 }
+					 var region = $(this).closest('tr').find('td:eq(2)').html().toLowerCase();
+         			 var market = $(this).closest('tr').find('td:eq(3)').html();
+         			 var devicename = $(this).closest('tr').find("td:eq(4)").text();
+         			 
+	            	 if(colIndex == 9){
+	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.pdf">' + devicename +'.pdf</a>');
 	            	 }
 	             }); 
 	        }

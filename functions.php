@@ -5234,7 +5234,6 @@ function generate_option_button_for_configs_static_type($usrvarname){
 }
 
 // Inventory db queries
-// function get_inventory_region_list($regionResults)
 function get_inventory_region_list()
 {
     global $db2;
@@ -5243,15 +5242,11 @@ function get_inventory_region_list()
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-// function get_inventory_market_list($marketList)
-function get_inventory_market_list()
+function get_inventory_market_list($region)
 {
     global $db2;
-    $sql = "select distinct(market) from switch_map";
-    // $sql = "select distinct(market) from switch_map where region = '" . $regionResults . "' order by market";
-    // $sql = "SELECT distinct(market) FROM switch_map where region = '" . $marketList . "' ORDER BY market";
+    $sql = "select distinct(market) from switch_map where region = '".$region."' order by market";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-// Inventory db queries

@@ -368,3 +368,32 @@ if($_POST['ctype'] == 'BWBatchTabShow'){
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptDeviceLoad') {
     echo configtemplate_devicename_prefix_by_switch_name($_POST['select_switch']);    
 }
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && isset($_POST['select_region']) && isset($_POST['action']) && $_POST['action'] == 'LoadMarketBoxValues') {
+    $results = get_inventory_market_list($_POST['select_region']);
+    $output = '<option value="">- SELECT Market -</option>';
+    foreach ($results['result'] as $key => $val){
+        $output .= '<option value="'.$val['market'].'">'.$val['market'].'</option>';
+    }
+    echo $output;
+    exit;
+}
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && isset($_POST['select_region']) && isset($_POST['action']) && $_POST['action'] == 'LoadRegionMarketFiles') {
+    $path = '/usr/apps/oneems/config/bkup/sd';
+    $contents = array_values(array_diff(scandir($path), array(
+            '.',
+            '..'
+    )));
+    $output = '';
+    $i=1;
+    foreach ($contents as $key => $val) :
+        if(strpos($val, $_POST['select_region'].'-'.$_POST['select_market']) !== false){
+            $output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file=/usr/apps/oneems/config/bkup/sd/'.$val.'" class="btn" role="button">download</a></td></td></tr>';
+            $i++;
+        }
+	endforeach;
+	if($i == 1){
+	    $output .= '<tr id="row_'.$i.'"><td colspan="2">Files not found</td></tr>';
+	}
+    echo $output;
+    exit;
+}

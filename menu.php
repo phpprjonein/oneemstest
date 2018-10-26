@@ -1,7 +1,7 @@
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -121,8 +121,8 @@
                     	</div>
                     </li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("inventory.php")); ?>"
-						href="inventory.php">Inventory</a></li>
+						class="nav-link <?php print activemenu(array("ems-inventory.php")); ?>"
+						href="ems-inventory.php">Inventory</a></li>
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>

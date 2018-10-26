@@ -380,7 +380,8 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && iss
     exit;
 }
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && isset($_POST['select_region']) && isset($_POST['action']) && $_POST['action'] == 'LoadRegionMarketFiles') {
-    $path = '/usr/apps/oneems/config/bkup/sd';
+    //$path = '/usr/apps/oneems/config/bkup/sd';
+    $path = '/var/www/html/oneems/sw_inventory';
     $contents = array_values(array_diff(scandir($path), array(
             '.',
             '..'
@@ -389,7 +390,8 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && iss
     $i=1;
     foreach ($contents as $key => $val) :
         if(strpos($val, $_POST['select_region'].'-'.$_POST['select_market']) !== false){
-            $output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file=/usr/apps/oneems/config/bkup/sd/'.$val.'" class="btn" role="button">download</a></td></td></tr>';
+            //$output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file=/usr/apps/oneems/config/bkup/sd/'.$val.'" class="btn" role="button">download</a></td></td></tr>';
+            $output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file=/var/www/html/oneems/sw_inventory/'.$val.'" class="btn" role="button">download</a></td></td></tr>';
             $i++;
         }
 	endforeach;

@@ -82,7 +82,7 @@ write_log($mesg);
              							</select>
 									</div>
 									<!-- select SELECT Market options -->
-                        			<?php $market_list = get_inventory_market_list(); ?>
+                        			<?php //$market_list = get_inventory_market_list(); ?>
                                     <div class="form-group market_list required" data-fid="market_list">
 										<label class="control-label" for="market_list">Market</label>
 										<select class="form-control custom-select" id="select_market_list" name="select_market_list" data-rule-required="true">
@@ -115,7 +115,9 @@ write_log($mesg);
 								<div class="row">
 									<div class="col">
                                             <?php
-                                            $path = '/usr/apps/oneems/config/bkup/sd';
+                                            //$path = '/usr/apps/oneems/config/bkup/sd';
+                                            //$path = '/usr/apps/oneems/sd/sw_inventory';
+                                            $path = '/var/www/html/oneems/sw_inventory';
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
                                                 '..'

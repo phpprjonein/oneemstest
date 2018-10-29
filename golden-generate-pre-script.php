@@ -287,9 +287,9 @@ write_log($mesg);
 								    //}elseif (('Time Zone' == $val['usrvarname']) || ('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
 									}elseif (('BGP Password-ASR9010-Even' == $val['usrvarname']) || ('BGP Password-ASR9010-Odd' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_marketvars('marketvars', 'mvarval', $val['usrvarname']);
-								    }elseif (('Time Zone' == $val['usrvarname'])){   
+								    }/*elseif (('Time Zone' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_marketvars_timezone('marketvars', 'mvarval', $val['usrvarname']);
-								    }elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
+								    }*/elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
 								        echo generate_option_button_for_configs('bandwidth', 'bwmbps', $val['usrvarname']);
 								    }elseif (('Vlan(Even)' == $val['usrvarname']) || ('Vlan(Odd)' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_sw_inventory_vlan('software_inventory', 'vlan', $val['usrvarname']);

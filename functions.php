@@ -397,6 +397,22 @@ function get_device_list_from_nodes_datatable($userid)
     return $resultset;
 }
 
+function get_device_list_for_user($userid, $listid){
+    global $db2;
+    $sql = "select ud.nodeid, ud.listname FROM userdevices ud JOIN nodes n on ud.nodeid = n.id WHERE ud.userid = " . $userid . " and ud.listid = " . $listid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function get_device_list_for_user_by_switch($switchname){
+    global $db2;
+    $sql = "select n.id FROM nodes n WHERE n.switch_name = '" . $switchname . "' and status != 0";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+
 /*
  * get device details for the current users
  */
@@ -4075,7 +4091,6 @@ function get_audithistory_datatable()
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-            'distinct(ah.auhisid)',
             'ah.batchid',
             'ah.username',
             'ah.region',
@@ -4088,7 +4103,7 @@ function get_audithistory_datatable()
             'ah.filename',
             'ah.createddate'
     );
-    $sql_count = "SELECT COUNT(distinct(ah.auhisid)) ";
+    $sql_count = "SELECT COUNT(ah.batchid) ";
     $sql_select = "SELECT " . implode(", ", $columns);
     
     $sql_condition = " FROM audithistory ah";
@@ -4459,8 +4474,8 @@ function update_login_api_rules($sso_flag, $username)
         3,
         4
     ))) {
-        //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_celltech_user.php');
-     	$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
+     	//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
 		//$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
@@ -4713,8 +4728,9 @@ function update_login_api_rules($sso_flag, $username)
         7,
         9    
     ))) {
+        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php');
         //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_switchtech_user.php?username=' . $username);
-		$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
+		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
 		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
@@ -5080,15 +5096,11 @@ function generate_option_button_for_configs_sw_inventory_vlan($tablename, $colum
 function generate_option_button_for_configs_marketvars($tablename, $column, $varname){
     global $db2;
     $options_arr = array();
-    //$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
-//	if ($varname == )
-		$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'BGP Password'"."  order by ".$column;
- //   else if ($varname == )
-	//	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
-	//echo $sql;	
+	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'BGP Password'"."  order by ".$column;
     $db2->query($sql);
     $resultset = $db2->resultset();
-    $varname_lower = strtolower($varname);
+
+    /*
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
     $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
     foreach ($resultset as $key => $val){
@@ -5098,6 +5110,14 @@ function generate_option_button_for_configs_marketvars($tablename, $column, $var
         }
     }
     $output .= '</select>';
+    */
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>
+									<input type="'.$varname.'"
+									name="'.$varname.'"
+									class="form-control"
+									id="'.str_replace(' ','-',$varname).'"
+									value="'.$resultset[0][$column].'"
+									placeholder="">';
     return $output;
 }
 
@@ -5179,6 +5199,17 @@ function generate_option_button_for_configs_enable($tablename, $column, $varname
 	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and mvarname = 'Enable Secret'"."  order by ".$column;
     $db2->query($sql);	
     $resultset = $db2->resultset();
+    
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>
+									<input type="'.$varname.'"
+									name="'.$varname.'"
+									class="form-control"
+									id="'.str_replace(' ','-',$varname).'"
+									value="'.$resultset[0][$column].'"
+									placeholder="">';
+    
+    
+    /*
     $varname_lower = strtolower($varname);
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
     $output .= '<select id="'.$varname.'" class="form-control" name="'.$varname.'" data-rule-required="true">';
@@ -5204,6 +5235,7 @@ function generate_option_button_for_configs_enable($tablename, $column, $varname
         }
     }
     $output .= '</select>';
+    */
     return $output;
 }
 
@@ -5213,7 +5245,7 @@ function generate_option_button_for_configs_defaultbox_type($usrvarname, $device
 									<input type="'.$usrvarname.'"
 									name="'.$usrvarname.'"
 									class="form-control '.$uservarsreq.'"
-									id="'.$usrvarname.'"
+									id="'.str_replace(' ','-',$usrvarname).'"
 									value=""
 									placeholder="">';
     return $output;
@@ -5246,6 +5278,20 @@ function get_inventory_market_list($region)
 {
     global $db2;
     $sql = "select distinct(market) from switch_map where region = '".$region."' order by market";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function get_region_from_node_by_switch_name($switch){
+    global $db2;
+    $sql = "select region from nodes where switch_name like '".$switch."' limit 0,1";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+function get_region_timezone_from_marketvars($region){
+    global $db2;
+    $sql = "SELECT distinct(mvarval) FROM marketvars where region != '' and region != 'None' and region='".$region."' and mvarname = 'Time Zone' limit 0,1";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

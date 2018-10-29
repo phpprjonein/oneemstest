@@ -252,7 +252,7 @@ $(document).ready(function() {
 
 
 	$("#dash-switches a").click(function(){
-		$("#dash-switches .btn").html($(this).text());
+		$("#dash-switches .dropdown-toggle").html($(this).text());
 		if($('#hidd_list_type').val() != 'market'){
 			$('#hidd_list_for').val($(this).text());
 		}
@@ -303,7 +303,9 @@ $(document).ready(function() {
 	});
 
 
-
+  	$(document).on("click", "#addalldevices", function(){
+  		$('#hidd_switch_selected').val($.trim($('#switch_selected').html()));
+  	});
 
 
 

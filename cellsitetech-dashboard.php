@@ -64,7 +64,40 @@ write_log($mesg);
     ?>
 
 	<?php echo generate_site_breadcrumb(); ?>
-
+			<?php 
+          if($_POST['addalldevices'] == 'Add All Devices'){
+              $listid = $_POST['hidd_mylistid'];
+              $switchname = $_POST['hidd_switch_selected'];
+              $userid = $_SESSION['userid'];
+              
+              $list_existing_devices = $list_add_new_devices = array();
+              $results = get_device_list_for_user($userid, $_POST['hidd_mylistid']);
+              foreach ($results['result'] as $key => $val){
+                  $list_existing_devices[] = $val['nodeid'];
+                  $listname = ($listname == "") ? $val['listname'] : $listname;
+              }
+              
+              $results_switch_nodes = get_device_list_for_user_by_switch($switchname);
+              foreach ($results_switch_nodes['result'] as $key => $val){
+                  $list_add_new_devices[] = $val['id'];
+              }
+              $new_devices_to_add = array_diff($list_add_new_devices, $list_existing_devices);
+              $oc = 1;
+              $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+              foreach ($new_devices_to_add as $key => $val) {
+                  if (count($new_devices_to_add) == $oc) {
+                      $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."')";
+                  } else {
+                      $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."'),";
+                  }
+                  $oc ++;
+              }
+              if ($oc > 1) {
+                  $db2->query($dsql);
+                  $db2->execute();
+              }
+          }
+          ?>
   <div class="row">
 			<div id="lhspanel" class="col-sm-6 col-md-6">
 				<div id="mylist" class="alert alert-secondary panel-heading-lstmgmt">
@@ -267,10 +300,9 @@ write_log($mesg);
               <!-- Displays user assigned switch name -->
 							<b>Switch Name : &nbsp; </b>
               <?php if(count($_SESSION['swt_mswitch_arr']) > 0):?>
-
-
+		<form action="" method="post" name="cellsitetech-dashboard-deviceadd-form"> 
           <div class="btn-group" id="dash-switches">
-								<button type="button" class="btn dropdown-toggle"
+								<button type="button" id="switch_selected" name="switch_selected" class="btn dropdown-toggle"
 									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
           <?php echo $switch_device_name;?>
@@ -290,7 +322,16 @@ write_log($mesg);
                 ;
                 ?>
           </div>
+          
+           <?php if(isset($_GET['switchlistid']) && $_GET['switchlistid'] > 0 && $_SESSION['userlevel'] == 5){?>
+          	&nbsp;<button type="submit" value="Add All Devices" id="addalldevices" name="addalldevices" class="btn">Add All Devices</button>
+          	<input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
+          	<input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">
+          <?php }?>
+          
+          
 							</div>
+							</form>
 
 
               <?php endif;?>

@@ -49,6 +49,17 @@ $(document).ready(function() {
               		$('#cellsitech-generate-script #select_device_name').val(data);
               }
             });
+          	$.post("ip-mgt-process.php", {
+                'calltype': "configtrigger",
+                'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+                'action': "GenerateScriptTimezoneLoad"
+              }).done(function(data) {
+                if (data != "") {
+                		$('#cellsitech-generate-script #Time-Zone').val(data);
+                }
+            });
+          	
+          	
       }
   });
 

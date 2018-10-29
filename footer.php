@@ -2,7 +2,7 @@
 <div class="fixed">
 <!--
 	<a id="feedback-button"
-		href="https://onejira.verizon.com/secure/Dashboard.jspa" class="btn"
+		href="https://onejira.NCM.com/secure/Dashboard.jspa" class="btn"
 		target="_blank">open ticket</a>
 -->
 </div>

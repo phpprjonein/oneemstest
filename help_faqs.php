@@ -146,7 +146,7 @@ echo generate_site_breadcrumb($values);
 													when available)
 												</li>
 												<li>a single sign on account in <b>QTWIN</b> and <b>USWIN</b></li>
-												<li>access to the <b>Verizon SSO</b> login screen
+												<li>access to the <b>NCM SSO</b> login screen
 												</li>
 											</ul>
 											<p>Please see your supervisor or administrative body to

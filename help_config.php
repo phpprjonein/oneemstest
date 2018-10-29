@@ -245,7 +245,7 @@ ip vrf RAN
  route-target import #XXXXX#:1000
 !
 no ip domain lookup
-ip domain name verizonwireless.com
+ip domain name NCMwireless.com
 !
 ip multicast-routing distributed
 ip dhcp excluded-address #X.X.X.X# #X.X.X.X#

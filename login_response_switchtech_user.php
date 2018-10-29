@@ -3,8 +3,8 @@ echo '{"switches":[{"switch_unid":"B0D9F5C742C431667013FA906E6EFFE1","switch_nam
 die();
 ?>
 <?php
-// curl -k -d "grant_type=password&username=kesavsr&password=Verizon4" -H "Authorization: Basic ZkFqd1lDSnpvdDRpRdjhh" https://nssapigateway.vh.vzwnet.com/token
-$token_url = 'https://nssapigateway.vh.vzwnet.com/token?grant_type=password&username=kesavsr&password=Verizon4';
+// curl -k -d "grant_type=password&username=kesavsr&password=NCM4" -H "Authorization: Basic ZkFqd1lDSnpvdDRpRdjhh" https://nssapigateway.vh.vzwnet.com/token
+$token_url = 'https://nssapigateway.vh.vzwnet.com/token?grant_type=password&username=kesavsr&password=NCM4';
 $ch = curl_init($token_url);
 $header = array(
     'Accept: application/json',
@@ -15,11 +15,11 @@ $header = array(
 // pass header variable in curl method
 curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($ch, CURLOPT_USERPWD, "kesavsr:Verizon4");
+// curl_setopt($ch, CURLOPT_USERPWD, "kesavsr:NCM4");
 $data = array(
     "grant_type" => 'password',
     'username' => 'kesavsr',
-    'password' => 'Verizon4'
+    'password' => 'NCM4'
 );
 $data_string = urlencode(json_encode($data));
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

@@ -8901,7 +8901,7 @@ Extra Styles
 PLEASE NOTE:
 This is where all the magic happens.
 
-These following lines are the compiled result of changes made in the "/resources/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default Verizon attributes and all bespoke variables are created.
+These following lines are the compiled result of changes made in the "/resources/scss/_extra_styles.scss" file in the Bootstrap 4 project folder. This .SCSS file is where all the special styling, mixins, default NCM attributes and all bespoke variables are created.
 
 Making changes in the .SCSS file instead of the compiled .CSS file helps keep the code as clean as possible. Also, it's pretty much standard, accepted best practice!
 

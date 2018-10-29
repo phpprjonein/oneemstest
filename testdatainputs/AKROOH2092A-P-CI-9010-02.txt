@@ -59,7 +59,7 @@ ipv4 netmask-format bit-count
 event manager directory user policy harddisk:
 event manager policy snapshot.tcl username EBHNCMBB persist-time 3600
 telnet vrf default ipv4 server max-servers 100
-domain name verizonwireless.com
+domain name NCMwireless.com
 domain lookup disable
 taskgroup READ-ONLY-TGRP
  task read fr

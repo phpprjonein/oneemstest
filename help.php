@@ -140,7 +140,7 @@ echo generate_site_breadcrumb($values);
 									when available)
 								</li>
 								<li>have a single sign on account in <b>QTWIN</b> and <b>USWIN</b></li>
-								<li>secure access to the <b>Verizon SSO</b> login screen
+								<li>secure access to the <b>NCM SSO</b> login screen
 								</li>
 							</ul>
 							<!-- <p>The OneEMS application also supports a number secondary

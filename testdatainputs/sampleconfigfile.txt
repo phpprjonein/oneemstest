@@ -71,7 +71,7 @@ no ip source-route
 ip routing
 !
 no ip domain-lookup
-ip domain-name verizonwireless.com
+ip domain-name NCMwireless.com
 !
 vtp domain NCM
 vtp mode transparent

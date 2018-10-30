@@ -224,7 +224,7 @@ write_log($mesg);
 
 
 							</div>
-							<div class="panel-body border">
+							<div class="panel-body border" style="max-height: 900px; overflow: auto;">
 								<!-- Start : View devices list table -->
 								<table id="deviceslist"
 									class="droppable myswlist table table-border"
@@ -542,6 +542,7 @@ write_log($mesg);
             <?php
         } elseif (isset($str_marketname)) {
             ?>
+            <form action="" method="post" name="switchtech-dashboard-deviceadd-form">
               <!-- Displays user selected market name -->
 							<label>Market Name :&nbsp;</label><?php echo $str_marketname; ?>
 
@@ -566,8 +567,14 @@ write_log($mesg);
                 ;
                 ?>
           </div>
+           <?php if(isset($_GET['switchlistid']) && $_GET['switchlistid'] > 0 && $_SESSION['userlevel'] == 5){?>
+               &nbsp;<button type="submit" value="Add All Devices" id="addalldevices" name="addalldevices" class="btn">Add All Devices</button>
+               <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
+               <input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">
+          <?php }?>
 							</div>
           <?php endif;?>
+          </form>
             <?php
         }
         ?>

@@ -114,15 +114,6 @@ write_log($mesg);
 							<div class="col-sm-12 col-md-8" id="inventory_template_info">
 								<div class="row">
 									<div class="col">
-                                            <?php
-                                            //$path = '/usr/apps/oneems/config/bkup/sd';
-                                            //$path = '/usr/apps/oneems/sd/sw_inventory';
-                                            $path = '/var/www/html/oneems/sw_inventory';
-                                            $contents = array_values(array_diff(scandir($path), array(
-                                                '.',
-                                                '..'
-                                            )));
-                                            ?>
                                             <table id="inventory-files" class="display table" style="display:none;">
 											<thead>
 												<tr>
@@ -131,15 +122,6 @@ write_log($mesg);
 												</tr>
 											</thead>
 											<tbody>
-                                                    <?php $i=1;?>
-                                                    <?php
-                                                    foreach ($contents as $key => $val) :
-                                                    ?>
-                                                        <tr id="row_<?php echo $i;?>">
-															<td><?php echo $val; ?></td>
-															<td><a href="#" class="btn" role="button">download</a></td></td>
-														</tr>
-                                                    <?php $i++; endforeach; ?>
                                             </tbody>
 											</table>
 											

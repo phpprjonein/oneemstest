@@ -53,6 +53,7 @@ $(document).ready(function() {
 	        }else{
 	          	$.post("ip-mgt-process.php", {
 		              'calltype': "inventorytrigger",
+		              'select_inventory_type' : $('.ems-inventory #select_inventory_type').val(),
 		              'select_region' : $('.ems-inventory #select_region_list').val(),
 		              'select_market' : $('.ems-inventory #select_market_list').val(),
 		              'action': "LoadRegionMarketFiles"

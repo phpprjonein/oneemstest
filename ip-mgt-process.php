@@ -407,8 +407,8 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && iss
     exit;
 }
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptTimezoneLoad') {
-    $results = get_region_from_node_by_switch_name($_POST['select_switch']);
-    $region = ($results['result'][0]['region']);
-    $results = get_region_timezone_from_marketvars($region);
+    $results = get_market_from_node_by_switch_name($_POST['select_switch']);
+    $market = ($results['result'][0]['market']);
+    $results = get_market_timezone_from_marketvars($market);
     echo $results['result'][0]['mvarval']; exit;
 }

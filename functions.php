@@ -5282,16 +5282,16 @@ function get_inventory_market_list($region)
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-function get_region_from_node_by_switch_name($switch){
+function get_market_from_node_by_switch_name($switch){
     global $db2;
-    $sql = "select region from nodes where switch_name like '".$switch."' limit 0,1";
+    $sql = "select market from nodes where switch_name like '".$switch."' limit 0,1";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-function get_region_timezone_from_marketvars($region){
+function get_market_timezone_from_marketvars($market){
     global $db2;
-    $sql = "SELECT distinct(mvarval) FROM marketvars where region != '' and region != 'None' and region='".$region."' and mvarname = 'Time Zone' limit 0,1";
+    $sql = "SELECT distinct(mvarval) FROM marketvars where market != '' and market != 'None' and market='".$market."' and mvarname = 'Time Zone' limit 0,1";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

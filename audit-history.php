@@ -113,8 +113,8 @@ write_log($mesg);
 													<th>IP Address</th>
 													<th>Device Series</th>
 													<th>Filter Criteria</th>
-													<th>Audit Status</th>
-													<th>Log</th>
+													<th>Customized Audit Status</th>
+													<th>Customized Audit Log</th>
 													<th>Created date</th>
 												</tr>
 											</thead>

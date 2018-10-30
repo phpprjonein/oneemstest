@@ -178,8 +178,8 @@ write_log($mesg);
 													<th>Market</th>
 													<th>Current Version</th>
 													<th>Region</th>
-													<th>Audit Status</th>
-													<th>Log</th>
+													<th>Customized Audit Status</th>
+													<th>Customized Audit Log</th>
 												</tr>
 											</thead>
 										</table>

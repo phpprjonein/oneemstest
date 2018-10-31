@@ -9,7 +9,7 @@ include_once 'functions.php';
   print_r($_POST['f14']);
   die;
 */  
-  
+$bmbps = get_bandwidth_mbpsvalues($_POST['Bandwidth_(Mbps)']);
  /*
  * $vars['usrvars'] = configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
  * foreach ($vars['usrvars'] as $key => $val){
@@ -279,7 +279,8 @@ echo generate_site_breadcrumb($values);
                     $outputin = '';
                     for ($l = 0; $l < count($newarr[$k]); $l ++) {
                         if ($newarr[$k][$l]["editable"] == 0) {
-                            $outputin .= "<label class='readonly'>" . $newarr[$k][$l]["elemvalue"] . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $newarr[$k][$l]["elemvalue"] . "'>";
+                            $rowval = generatescript_str_preprocess($newarr[$k][$l]["elemvalue"], $bmbps);
+                            $outputin .= "<label class='readonly'>" . $rowval . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $rowval . "'>";
                         } else {
                             $editable = 1;
                             /*

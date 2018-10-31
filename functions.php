@@ -5296,3 +5296,21 @@ function get_market_timezone_from_marketvars($market){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+function get_bandwidth_mbpsvalues($bwid){
+    global $db2;
+    $sql = "SELECT bwid, bwmbps, bwkbps, bwshpavg, bwbps FROM bandwidth where bwid = ".$bwid;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    if(!empty($resultset)){
+        $resultset = array_shift($resultset);
+    }    
+    return $resultset;
+}
+function generatescript_str_preprocess($str, $bmbps){
+    foreach ($bmbps as $key => $val){
+        if(strpos($str, $key)!== false ){
+            $str = str_replace($key, '<span title="'.$key.'" class="bwbits">'.$val.'</span>', $str);
+        }
+    }
+    return $str;
+}

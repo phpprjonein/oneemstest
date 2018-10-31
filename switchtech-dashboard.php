@@ -551,7 +551,7 @@ write_log($mesg);
             if (count($switchlistbymarket['result']) > 0) :
                 ?>
           <div class="btn-group" id="dash-switches">
-								<button type="button" class="btn dropdown-toggle"
+								<button type="button" id="switch_selected" name="switch_selected" class="btn dropdown-toggle"
 									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">Select Switch</button>
 								<div class="dropdown-menu">

@@ -256,7 +256,7 @@ $(document).ready(function() {
 		if($('#hidd_list_type').val() != 'market'){
 			$('#hidd_list_for').val($(this).text());
 		}
-		var selswitch = $('#dash-switches button').text();
+		var selswitch = $('#dash-switches button.dropdown-toggle').text();
 
         var default_pagelen = 14;
         if( $('#hidd_list_type').val() == 'market') {

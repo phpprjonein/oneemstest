@@ -4850,11 +4850,11 @@ function configtemplate_elemvalue_pos_script($posttabname, $field, $value)
 function configtemplate_elemvalue_pos_script_market($posttabname, $field, $value, $switch_name)
 {
     global $db2;
-    $sql = "SELECT GROUP_CONCAT(DISTINCT(CONCAT('''', (region), '''' ))) as region FROM `nodes` WHERE switch_name like '".$switch_name."'";
+    $sql = "SELECT GROUP_CONCAT(DISTINCT(CONCAT('''', (market), '''' ))) as market FROM `nodes` WHERE switch_name like '".$switch_name."'";
     $db2->query($sql);
     $resultset = $db2->resultset();
-    if(isset($resultset[0]['region']) && !empty($resultset[0]['region'])){
-        $whr = " where region in (".$resultset[0]['region'].")";
+    if(isset($resultset[0]['market']) && !empty($resultset[0]['market'])){
+        $whr = " where market in (".$resultset[0]['market'].")";
         $sql = "SELECT distinct(" . $field . ")," . $value . "  FROM " . $posttabname . $whr . " order by " . $field;
         $db2->query($sql);
         $resultset = $db2->resultset();

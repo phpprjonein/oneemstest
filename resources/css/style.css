@@ -8824,3 +8824,23 @@ div.fixed a:hover {
     line-height: 1.25rem;
   }
 }
+#cellsitech-generate-script .form-control-plaintext, #cellsitech-config  .form-control-plaintext{padding:6px 28px 6px 12px;}
+/*# sourceMappingURL=../resources/css/style.map */
+.gsalert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    border-radius: 0.25rem;
+}
+#cus-audit-log .dataTables_filter{visibility: hidden;}
+span.bwbits{
+	background-color: #ffc0cb;
+	display: inline;
+	margin: 0.25rem 0.25rem;
+	width: auto;
+}

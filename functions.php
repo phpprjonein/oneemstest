@@ -5309,7 +5309,7 @@ function get_bandwidth_mbpsvalues($bwid){
 function generatescript_str_preprocess($str, $bmbps){
     foreach ($bmbps as $key => $val){
         if(strpos($str, $key)!== false ){
-            $str = str_replace($key, '<span title="'.$key.'" class="bwbits">'.$val.'</span>', $str);
+            $str = str_replace($key, '<span title="'.$key.'" class="bwbits">'.$val.'</span>', $str) .'||'. str_replace($key, $val, $str);
         }
     }
     return $str;

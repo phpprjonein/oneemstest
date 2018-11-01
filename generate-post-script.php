@@ -280,7 +280,16 @@ echo generate_site_breadcrumb($values);
                     for ($l = 0; $l < count($newarr[$k]); $l ++) {
                         if ($newarr[$k][$l]["editable"] == 0) {
                             $rowval = generatescript_str_preprocess($newarr[$k][$l]["elemvalue"], $bmbps);
-                            $outputin .= "<label class='readonly'>" . $rowval . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $rowval . "'>";
+                            $rowval_arr = explode('||', $rowval);
+                            if(count($rowval_arr) > 1){
+                                $outputin .= "<label class='readonly'>" . $rowval_arr[0] . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $rowval_arr[1] . "'>";
+                            }else{
+                                $outputin .= "<label class='readonly'>" . $rowval . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $rowval . "'>";
+                            }
+                            
+                            
+                            
+                            //$outputin .= "<label class='readonly'>" . $rowval . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $k . "][]' value='" . $rowval . "'>";
                         } else {
                             $editable = 1;
                             /*

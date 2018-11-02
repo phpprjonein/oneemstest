@@ -438,7 +438,7 @@ write_log($mesg);
 							<?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9))) ||(in_array('Michigan/Indiana/KY', $_SESSION['sel_region']))){ ?>
 							<area name="Michigan/Indiana/KY" shape="poly"
 								coords="392,153,396,152,399,155,404,151,403,159,407,156,411,155,411,152,416,152,416,148,420,147,422,175,420,176,423,181,425,184,431,184,437,185,440,184,444,188,447,193,451,195,453,196,446,209,398,216,398,210,393,209,393,216,381,218,385,211,391,205,396,191,391,189,391,186,397,187,395,180,395,167,393,154,393,154"
-								href="#" class="map_region" data-market="Michigan/Indiana/KY"
+								href="#" class="map_region" data-market="MichiganIndianaKY"
 								alt="Michigan/Indiana/KY" title="Michigan/Indiana/KY"
 								OnMouseOver="window.status='Michigan/Indiana/KY'; return true"
 								OnMouseOut="window.status=''; return true">

@@ -123,7 +123,6 @@ write_log($mesg);
 												class="form-control custom-select form-required" name="f8"
 												data-rule-required="true">
 												<option value="">- SELECT OS Version -</option>
-                <option value="5.3.4">5.3.4</option>
 <option value="15.6(1)S1">15.6(1)S1</option>
               </select>
 										</div>

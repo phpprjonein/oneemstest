@@ -94,16 +94,16 @@ write_log($mesg);
 						action='generate-post-script.php' method='POST'
 						enctype='multipart/form-data' novalidate autocomplete="on">
 
-
-
+						
+						
 												<hr />
 						<!-- IP management table row -->
 						<div class="row">
 							<!-- region selection -->
-														<!-- <div class="col-sm-12 col-md-2">
+														<div class="col-sm-12 col-md-2">
 								<div class="pagelength"></div>
-							</div> -->
-							<div class="col-sm-12 col-md-3 text-left">
+							</div>
+							<div class="col-sm-12 col-md-3 text-center">
 
 																	<div class="btn-group" id="backup-restore-list-dt-filter">
 										<button type="button" class="btn dropdown-toggle"
@@ -118,23 +118,23 @@ write_log($mesg);
       						  <a class="dropdown-item" href="#"><?php echo ($value['listname'] == "0") ? 'My routers' : $value['listname'] ; ?></a>
       						  <?php
       						  endif;
-
+                
             endforeach
             ;
             ?>
     						  </div>
 									</div>
-
+								
 							</div>
 							<!-- /region selection -->
 							<div class="col">
 							<div class="input-group">
 								<input type="text" id="filtercriteria" class="form-control"
-										placeholder="Filter Criteria" aria-label="Filter By">
+										placeholder="Filter Criteria" aria-label="Filter ">
 								</div>
-							</div>
+							</div>	
 							<!-- search table form field -->
-							<!-- <div class="col">
+							<div class="col">
 								<div class="input-group" id="search-v-pills-home">
 									<input type="text" class="form-control"
 										placeholder="Search Table" aria-label="Search Table"> <span
@@ -144,16 +144,24 @@ write_log($mesg);
 										</button>
 									</span>
 								</div>
-							</div> -->
+							</div>
 							<!-- /search table form field -->
+							<!-- Export table -->
+							<div class="col-md-2 col-xs-6">
+								<p class="export" id="export-v-pills-home"></p>
+							</div>
+							<!-- /Export table -->
+						</div>	
 
-						</div>
+
 						<hr />
+
 						<div class="row">
 
 							<!-- right side -->
 							<!-- script output -->
 							<div class="col-sm-12 col-md-12" id="listname-dd">
+
 
 								<div class="row">
 									<div class="col">
@@ -195,7 +203,7 @@ write_log($mesg);
 							<!-- /backup management content row -->
 						</div>
 					</form>
-
+			
 			</section>
 		</div>
 		<!-- /.content -->

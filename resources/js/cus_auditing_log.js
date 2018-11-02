@@ -101,7 +101,7 @@
     				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
-                  url: 'software-delivery-audit-log-process.php',
+                  url: 'software-delivery-audit-log-process.php?listname='+listname,
                   type: 'GET'
               },
               "columns": [ 		

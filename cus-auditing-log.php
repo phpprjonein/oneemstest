@@ -130,7 +130,7 @@ write_log($mesg);
 							<div class="col">
 							<div class="input-group">
 								<input type="text" id="filtercriteria" class="form-control"
-										placeholder="Filter By" aria-label="Filter By">
+										placeholder="Filter Criteria" aria-label="Filter By">
 								</div>
 							</div>	
 							<!-- search table form field -->

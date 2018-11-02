@@ -197,7 +197,7 @@
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     	aria-haspopup="true" aria-expanded="false">Audit</a>
                     	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    		<a class="dropdown-item" href="auditing-log.php">Audit</a> 
+                    		<a class="dropdown-item" href="auditing-log.php">Compliance</a> 
                     		<a class="dropdown-item" href="cus-auditing-log.php">Customize Audit</a>
                     		<a class="dropdown-item" href="audit-history.php">Customize Audit History</a>
                     	</div>

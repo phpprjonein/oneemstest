@@ -47,11 +47,12 @@ write_log($mesg);
 					<div
 						class="form-row align-items-center justify-content-between border"></div>
 <!-- /table maniupulation row -->
+
 <!-- help guide content row -->
 					<div class="row">
+
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<!-- <?php include_once ('menu_help.php'); ?> -->
 							<nav id="navbar-help" class="navbar navbar-light bg-light">
 								<nav class="nav nav-pills flex-column">
 									<h6 class="text-center">CONTENTS</h6>
@@ -59,8 +60,7 @@ write_log($mesg);
                                     <a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check
-											Details View</a>
+                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
 									</nav>
                                     <a class="nav-link" href="help_backup.php">BACKUP</a>
                                     <a class="nav-link" href="#item-4">CONFIGURATION</a>
@@ -72,49 +72,45 @@ write_log($mesg);
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
+										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
 									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY
-										RESULTS</a>
+									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_discovery_results.php#item-6-1">Missed IP
-                                            Addresses</a>
-                                        <a class="nav-link ml-3 my-1"	href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1"
-										href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1"
-										href="help_discovery_results.php#item-6-4">Manual Discovery</a>
+										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
+                                        <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
+										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
+										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
 									</nav>
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-1">Software Delivery</a>
-                                        <!-- <a class="nav-link ml-3 my-1"  href="help_maintenance.php#item-7-2">Scheduled Backup</a> -->
-										<a	class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
-                                        <a class="nav-link ml-3 my-1"
-										href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+                                        <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
+										<a	class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
+                                        <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
 									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_audit.php">AUDIT</a>
+									<nav class="nav nav-pills flex-column">
+                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
+                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
+									</nav>
 									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1"
-											href="help_admin.php#item-9-1">Load Template - Golden</a> <a
-											class="nav-link ml-3 my-1"
-											href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
 							</nav>
 						</div>
 <!-- /help guide navigation -->
-<!-- help guide -->
+
+<!-- config -->
 						<div class="col-md-9 col-sm-12 scrollspy-example" data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-4">CONFIGURATION</h4>
-							<p>This Dashboard consists of an interface that allows a user to manage <b>Configuration Scripts</b> for any device within the OneEMS system.</p>
-							<p>On these screens, users can create templates and generate scripts by using a robust interface that allows a user to:
+							<p>This Dashboard consists of an interface that allows a user to manage <b>Configuration Scripts</b> for any  device within the OneEMS system.</p>
+							<p>On these screens, users can create templates and generate scripts by using a robust interface that allows a  user to:
                                 <ul>
                                     <li>Select the device series, version and other attributes associated with one  or more templates</li>
                                     <li>Upload a .txt file containing static and variable details found in a  template</li>
@@ -125,23 +121,16 @@ write_log($mesg);
                                     <li>View the status of execution for multiple devices</li>
                                 </ul>
 							</p>
-							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> The ASR 920 series Routers for
-								the Great Lakes Region is provided as a default template. This
-								is the first Region available in the OneEMS system. Future
-								enhancements will permit users to select templates for other
-								Vendors, Markets and other filtering criteria.
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> The ASR 920 series Routers for the Great Lakes Region is provided as a  default template. This is the first Region available in the OneEMS system. Future enhancements will permit  users to select templates for other Vendors, Markets and other filtering criteria.
 								<br>
 								<br>
-								Additionally, this Load Template process is slightly different for general users than it is for administrative users. Click <a href="#item-4-1-2"><b><i>here</i></b></a> for more information on how to load a template as an admin.
-							</p>
+								Additionally, this Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2"><b><i>here</i></b></a> for more information on how to load a template as an admin.</p>
 							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
-							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid"
-								alt="" data-toggle="modal" data-target="#screenshot-config1">
+							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard	With Sample Values Selected</b></span>
                             <p></p>
-                            <p>The name will be automatically generated based on the options you select. This template name will be unique in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new name just created.</p>
+                            <p>The name will be automatically generated based on the options you select. This template name will be unique  in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new  name just created.</p>
 							<p>To create a new template, a user starts with selecting categorization options for the template (shown in <b><i>FIG. 4.1</i></b>), then by uploading a new file from their computer by using the browse button (shown in <b><i>FIG. 4.1.2</i></b>).</p>
 							<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
                             <p>To manage device scripts, a user can upload one from their hard drive.</p>
@@ -149,10 +138,8 @@ write_log($mesg);
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.1.2 - File Upload</b></span>
 							<p></p>
-							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that end in anything besides <b>.txt</b> extensions. <br> <br> Additionally, editable fields <b>MUST</b> be encapsulated by a hash ( <b>#</b> ) symbol. This symbol must appear on both the left and right sides of an editable field. Acceptable values within the encapsulated area are the letters "X", "Y", "A", "B" or "C". These characters must be capitalized. The OneEMS application recognizes strings configured in this way as editable.
-							</p>
-							<p>Once a user has either manipulated the default values in the form on the right or changed the values of the script they have uploaded, they can then download this edited script for application on devices of their choosing.</p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that  end in anything besides <b>.txt</b> extensions. <br> <br> Additionally, editable fields <b>MUST</b> be  encapsulated by a hash ( <b>#</b> )  symbol. This symbol must appear on both the left and right sides of an  editable field. Acceptable values within the encapsulated area are the letters "X", "Y", "A", "B" or "C". These  characters must be capitalized. The OneEMS application recognizes strings configured in this way as editable.</p>
+							<p>Once a user has either manipulated the default values in the form on the right or changed the values of the script they have  uploaded, they can then download this edited script for application on devices of their  choosing.</p>
 							<p>Here is an example of a properly formatted script file:</p>
 							<div class="scroller border">
 								<samp>
@@ -835,12 +822,10 @@ event manager applet LOOP_GIG authorization bypass
 								</samp>
 							</div>
 							<p>&nbsp;</p>
-							<img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config2">
+							<img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-config2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.2 - Editable Configuration Template</b></span>
 							<p></p>
-							<!-- <p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> Option A) The default ASR920 configuration template is displayed. To change this to a different template proceed to Option B.</p> -->
 							<b>Auto-populating Configuration Files</b>
 							<p>There are several categories for which you can auto-populate a field in a configuration file. For example:
 								<ul>
@@ -875,81 +860,43 @@ event manager applet LOOP_GIG authorization bypass
 								</ul>
 							</p>
 							<p>Select the appropriate variable associated with each field in the configuration file. This is a one-time exercise that will create a template that will be available to all users. This will help standardize the process, save time and reduce chance of errors when generating scripts to run on a device.</p>
-							<img src="resources/img/screenshot-config3.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-config3">
+							<img src="resources/img/screenshot-config3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config3">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.2.2 - Editable Configuration Template</b></span>
 							<p></p>
-							<!-- <h5 id="item-4-1-2">Load Template (Admin Users)</h5>
-							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid"
-								alt="" data-toggle="modal" data-target="#screenshot-config1-1">
-							<p></p>
-							<span class="font-italic"><b>FIG. 4.2.3 - Configuration Dashboard
-									With Sample Values Selected (Adminstrative Users)</b></span>
-							<p></p>
-							<p>Admin users are presented with a similar page as all other users, with the key exception being that admin users are restricted to being able to configure Golden templates.</p> -->
 							<h5 id="item-4-2">Generate Script - Modification</h5>
-							<p>In this view, a user can select an existing template with
-								which to create a script for use on a particular device.</p>
-							<img src="resources/img/screenshot-generate-script.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-generate1">
+							<p>In this view, a user can select an existing template with which to create a script for use on a particular  device.</p>
+							<img src="resources/img/screenshot-generate-script.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.3 - Script Template Selection</b></span>
 							<p></p>
-							<p>
-								You can select parameters from the dropdown menu on the right
-								side of the screen, which will reveal associated templates to
-								choose from. You can further drill down into the results by
-								typing in the <b>Alias Name</b> input field above the table. You
-								can also choose to delete a specific template by clicking on the
-								<b>Delete</b> button next to the template you wish to remove.
-							</p>
-							<p class="alert alert-danger">
-								<b class="text-danger">NOTE:</b> Deleting a template is <b>permanent</b>
-								and cannot be undone. Please be sure you wish to actually remove
-								the selected template from the table.
-							</p>
+							<p>You can select parameters from the dropdown menu on the right side of the screen, which will reveal  associated templates to choose from. You can further drill down into the results by typing in the <b>Alias Name</b> input field above the table. You can also choose to delete a specific template by clicking on the <b>Delete</b> button next to the template you wish to remove.</p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Deleting a template is <b>permanent</b> and cannot be undone. Please be sure you wish to actually remove the selected template from the table.</p>
 							<b>Edited Template Selection / Download</b>
-							<p>
-							Once you select a template from the list, that template will appear with editable fields highlighted in <span class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere or you can schedule a batch job by clicking on the “Execute” button.</p>
-							<p>
-								Once a user executes a configuration template for script
-								execution, that template gets added to a batch process. More
-								information about this batch process can be found <a
-									href="help_maintenance.php#item-7-3"><b>HERE</b></a>.
+							<p>Once you select a template from the list, that template will appear with editable fields highlighted in <span  class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere or  you can schedule a batch job by clicking on the “Execute” button.</p>
+							<p>Once a user executes a configuration template for script execution, that template gets added to a batch  process. More information about this batch process can be found <a  href="help_maintenance.php#item-7-3"><b>HERE</b></a>.
 							</p>
-							<img src="resources/img/screenshot-generate-script2.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-generate2">
+							<img src="resources/img/screenshot-generate-script2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.4 - Generated Template Edit
-									Screen</b></span>
+							<span class="font-italic"><b>FIG. 4.4 - Generated Template Edit Screen</b></span>
 							<p></p>
 							<p><b>Selecting One Or More Devices To Run Scripts</b>
 							<br />
 							Once you select “Execute”, you will be taken to the Batch Page where you can select devices to run a script. The list of devices have been filtered to show devices matching the device series and version only. Select the device by clicking on checkbox on left, set the priority and click submit to create a batch. You will then be prompted to confirm the batch run.</p>
-							<img src="resources/img/screenshot-config_confirm-batch.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-confirm-batch">
+							<img src="resources/img/screenshot-config_confirm-batch.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-confirm-batch">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5 - Running A Script On One Or More Devices</b></span>
 							<p></p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Please retain the Batch ID for your records.</p>
-							<p>Once the Batch is successfully scheduled you will get a Batch ID. Please make a note of it so you can view the status later.</p>
-							<img src="resources/img/screenshot-config_confirm-batch2.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-confirm-batch2">
+							<p>Once the Batch is successfully scheduled you will get a Batch ID. Please make a note of it so you can view  the status later.</p>
+							<img src="resources/img/screenshot-config_confirm-batch2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-confirm-batch2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.6 - Batch ID Created For Your Run</b></span>
 							<p></p>
 							<p><b>Tracking Your Batch Run</b>
 							<br>
-							After submitting your batch job you will be taken to the Batch Tracking page or you can return  to this page any time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in “Scheduled” state.</p>
-							<img src="resources/img/screenshot-config_batch-status.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-batch-status">
+							After submitting your batch job you will be taken to the Batch Tracking page or you can return  to this page any  time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state  your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in  “Scheduled” state.</p>
+							<img src="resources/img/screenshot-config_batch-status.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch-status">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.7 - View Status Of A Batch Job</b></span>
 							<p></p>
@@ -960,9 +907,7 @@ event manager applet LOOP_GIG authorization bypass
 									<li>Three scripts are generated (to support site integration; ie., CSR, 9K01 and 9K-02 devices</li>
 								</ul>
 							</p>
-							<img src="resources/img/screenshot-generate-script_gold.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-generate1-2">
+							<img src="resources/img/screenshot-generate-script_gold.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1-2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.8 - Script Template Selection (Golden)</b></span>
 							<p></p>
@@ -975,17 +920,9 @@ event manager applet LOOP_GIG authorization bypass
 								</ul>
 							</p>
 							<h5 id="item-4-3">Batch Tracking</h5>
-							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, and <b>Boot Order</b>.</p>
-							<p>
-								Scripts can be monitored for execution status on a device or sets
-								of devices (<b>Script Execution</b>), whether or not a template
-								has been applied to a device (<b>Software Delivery</b>) as well
-								as overall job priority application of templated scripts to
-								devices (<b>Boot Order</b>).
-							</p>
-							<img src="resources/img/screenshot-batch-tracking1.png"
-								class="img-fluid" alt="" data-toggle="modal"
-								data-target="#screenshot-batch1">
+							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, <b>Boot Order</b>, <b>Reboot Status</b>, <b>Audit</b>, and <b>Customized Audit</b>.</p>
+							<p>Scripts can be monitored for execution status on a device or sets of devices (<b>Script Execution</b>),  whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>
+							<img src="resources/img/screenshot-batch-tracking1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.6 - Batch Tracking View</b></span>
 							<p></p>
@@ -997,114 +934,95 @@ event manager applet LOOP_GIG authorization bypass
 									<a href="help_backup.php" class="border"><b><< PREV: Backup</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_discovery_ips.php" class="border"><b>NEXT:
-											Discovery IPs >></b></a>
+									<a href="help_discovery_ips.php" class="border"><b>NEXT: Discovery IPs >></b></a>
 								</div>
 							</div>
 							<hr>
-
 						</div>
-
 					</div>
-					<!-- /help guide content row -->
+<!-- /help guide content row -->
+
 				</div>
 			</section>
-			<!-- /.content -->
+<!-- /.content -->
+
 		</div>
 	</div>
-	<!-- container-fluid -->
+<!-- container-fluid -->
 
-	<!-- image modals -->
+<!-- image modals -->
 	<div class="big-modal">
-		<div class="modal fade show" id="screenshot-config1" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-config1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-load_template_mod.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-config1-1" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-config1-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-load_template_mod2.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-config1-1-1" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-config1-1-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-load_template_mod3.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-config2" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-config2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-config2.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-generate1" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-generate1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-generate-script.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-generate-script.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-generate1-2" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-generate1-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-generate-script_gold.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-generate-script_gold.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-confirm-batch" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-confirm-batch" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config_confirm-batch.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-config_confirm-batch.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-confirm-batch2" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-confirm-batch2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<button type="button" class="close img-close" data-dismiss="modal"
@@ -1116,49 +1034,40 @@ event manager applet LOOP_GIG authorization bypass
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-batch-status" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-batch-status" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config_batch-status.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-config_batch-status.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-config3" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-config3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config3.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-config3.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
-		<div class="modal fade show" id="screenshot-batch1" tabindex="-1"
-			role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal fade show" id="screenshot-batch1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<button type="button" class="close img-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-batch-tracking1.png" alt=""
-						width="100%">
+					<img src="resources/img/screenshot-batch-tracking1.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- /image modals -->
+<!-- /image modals -->
 
-	<!-- footer div -->
+<!-- footer div -->
       <?php include_once ('footer.php'); ?>
 <!-- /footer div -->
 

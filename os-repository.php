@@ -276,7 +276,9 @@ select device series options -->
                                                     <?php
                                                     
                                                     foreach ($contents as $key => $val) :
-                                                        if (! in_array($val, $existing_filenames)) :
+                                                    $ext = pathinfo($path.$val, PATHINFO_EXTENSION);
+                                                    
+                                                        if (! in_array($val, $existing_filenames) && strtolower($ext) == 'bin') :
                                                             ?>
                                                         <tr
 													id="row_<?php echo $i;?>">

@@ -149,10 +149,12 @@ select device series options -->
 											data-placeholder="Choose a Device Series..."
 											class="form-control custom-select chosen-select"
 											id="deviceseries" multiple name="deviceseries" tabindex="4">
-                                                <?php foreach ($os_repository_deviceseries as $key => $val){ ?>
+                                                <?php foreach ($os_repository_deviceseries as $key => $val){
+                                                    if(strtolower($val['deviceseries']) != 'asr9k' && strtolower($val['deviceseries']) != '2900'){
+                                                    ?>
                                 				<option
 												value="<?php echo $val['deviceseries'];?>"><?php echo $val['deviceseries'];?></option>
-                                				<?php }; ?>
+                                				<?php }} ?>
                                             </select>
 									</div>
 									<!-- /select device series options -->

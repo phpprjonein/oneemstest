@@ -18,8 +18,8 @@ $(document).ready(function() {
       } else {
         $(".non-bandwidth").show();
         $(".bandwidth").hide();
-        
       }
+      refresh_telco_interface();
     }
   );
   
@@ -30,6 +30,10 @@ $(document).ready(function() {
         ((this.selectionStart == readOnlyLength) && (event.which == 8)))) {
       return false;
     }
+  });
+  
+  $(document).on("input", "#cellsitech-generate-script #select_device_name", function(event) {
+	  refresh_telco_interface();
   });
   
   $(document).on("change", "#cellsitech-generate-script #select_switch", function(event) {
@@ -47,6 +51,7 @@ $(document).ready(function() {
               if (data != "") {
               		readOnlyLength = data.length;
               		$('#cellsitech-generate-script #select_device_name').val(data);
+              		refresh_telco_interface();	
               }
             });
           	$.post("ip-mgt-process.php", {
@@ -58,8 +63,6 @@ $(document).ready(function() {
                 		$('#cellsitech-generate-script #Time-Zone').val(data);
                 }
             });
-          	
-          	
       }
   });
 
@@ -475,3 +478,28 @@ $(document).ready(function() {
     });
 	*/
 });
+
+function refresh_telco_interface(){
+	$.post("ip-mgt-process.php", {
+		'calltype': "configtrigger",
+		'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+		'action': "GenerateScriptTelcoInterfaceLoadEven",
+		'select_script_type' : $(".gscript1 #select_script_type").val(),
+		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
+	  }).done(function(data) {
+		if (data != "") {
+			$('.Telco-Interface-ASR9010-Even').html(data);
+		}
+	});
+	$.post("ip-mgt-process.php", {
+		'calltype': "configtrigger",
+		'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+		'action': "GenerateScriptTelcoInterfaceLoadOdd",
+		'select_script_type' : $(".gscript1 #select_script_type").val(),
+		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
+	  }).done(function(data) {
+		if (data != "") {
+			$('.Telco-Interface-ASR9010-Odd').html(data);
+		}
+	});	
+}

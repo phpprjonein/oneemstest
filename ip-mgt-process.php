@@ -412,3 +412,15 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset(
     $results = get_market_timezone_from_marketvars($market);
     echo $results['result'][0]['mvarval']; exit;
 }
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptTelcoInterfaceLoadEven') {
+    $select_switch = $_POST['select_switch'];
+    $select_script_type = $_POST['select_script_type'];
+    $select_device_name = $_POST['select_device_name'];
+    echo generate_option_button_for_configs_telco_interface($select_switch, 'even', $select_script_type, $select_device_name);
+}
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptTelcoInterfaceLoadOdd') {
+    $select_switch = $_POST['select_switch'];
+    $select_script_type = $_POST['select_script_type'];
+    $select_device_name = $_POST['select_device_name'];
+    echo generate_option_button_for_configs_telco_interface($select_switch, 'odd', $select_script_type, $select_device_name);
+}

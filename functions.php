@@ -5035,6 +5035,13 @@ function get_device_ids_from_ip_address($ipaddress = array())
  */
 
 function generate_option_button_for_configs_sw_inventory($tablename, $column, $varname){
+    $varnameid = str_replace(' ', '-', $varname);
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varnameid.'" class="form-control '.$varnameid.'" name="'.$varname.'" data-rule-required="true">';
+    $output .= '<option value="">-- Select -- </option>';
+    $output .= '</select>';
+    return $output;
+    /*
     global $db2;
     $options_arr = array();
     $varname_lower = strtolower($varname);
@@ -5056,7 +5063,36 @@ function generate_option_button_for_configs_sw_inventory($tablename, $column, $v
     }
     $output .= '</select>';
     return $output;
+    */
 }
+function generate_option_button_for_configs_telco_interface($switchname, $type, $script_type, $device_name){
+    global $db2;
+    $options_arr = array();
+    $swvarname = ($type == 'even') ? 'Asr9k-2  Hostname':'Asr9k-1 Hostname';
+    $sql = "select switch_name,swvarname,swvarval from switchvars where switch_name = '".$switchname."' and swvarname = '".$swvarname."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $output = '<option value="">-- Select -- </option>';
+    if(isset($resultset[0]['swvarval'])){
+        $devicename = $resultset[0]['swvarval'];
+        if($script_type != 'BW-Upgrade'){
+            $sql = "SELECT distinct(interface), devicename FROM software_inventory where interface like 'TenGigE%' and devicename like '".$devicename."' and NOT interface LIKE '%.%' and interface != '' and interface != 'None' order by interface";
+        }else{
+            $sql = "select interface,description from software_inventory where devicename = '".$devicename."' and description like '".$device_name."%'";
+        }
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        foreach ($resultset as $key => $val){
+            if(!in_array($val[$column], $options_arr)){
+                $output .= '<option value="'.$val['interface'].'">'.$val['interface'].'</option>';
+            }
+        }
+    }
+    return $output;
+}
+    
+
+
 
 /**
  *

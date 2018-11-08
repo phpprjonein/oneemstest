@@ -5146,8 +5146,8 @@ function generate_option_button_for_configs_vlan($switchname, $type){
         $db2->query($sql);
         $resultset = $db2->resultset();
         $start = $resultset[0]['maximum'];
-        $end = $resultset[0]['maximum'] + 10;
-        for($i=$start; $i<$end;$i++){
+        $end = $resultset[0]['maximum'] + 20;
+        for($i=$start; $i<$end;$i=$i+2){
             $output .= '<option value="'.$i.'">'.$i.'</option>';
         }
     }

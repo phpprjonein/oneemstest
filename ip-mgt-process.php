@@ -256,6 +256,8 @@ if (isset($_POST['region']) && isset($_POST['category']) && ($_POST['category'] 
 }
 
 if (isset($_POST['act']) && $_POST['act'] == 'batch-del' && isset($_POST['batchid'])) {
+    $myfile = fopen('cancelledbatch/'.$_POST['batchid']."_cancelled.txt", "w") or die("Unable to open file!");
+    fclose($myfile);
     echo delete_batchid($_POST['batchid']);
 }
 

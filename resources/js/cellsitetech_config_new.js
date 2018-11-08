@@ -63,6 +63,27 @@ $(document).ready(function() {
                 		$('#cellsitech-generate-script #Time-Zone').val(data);
                 }
             });
+          	
+        	$.post("ip-mgt-process.php", {
+        		'calltype': "configtrigger",
+        		'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+        		'action': "GenerateScriptLoadVlanEven",
+        	  }).done(function(data) {
+        		if (data != "") {
+        			$('.VlanEven').html(data);
+        		}
+        	});
+        	$.post("ip-mgt-process.php", {
+        		'calltype': "configtrigger",
+        		'select_switch' : $('#cellsitech-generate-script #select_switch').val(),
+        		'action': "GenerateScriptLoadVlanOdd",
+        	  }).done(function(data) {
+        		if (data != "") {
+        			$('.VlanOdd').html(data);
+        		}
+        	});
+          	
+          	
       }
   });
 

@@ -5101,6 +5101,13 @@ function generate_option_button_for_configs_telco_interface($switchname, $type, 
  */
 
 function generate_option_button_for_configs_sw_inventory_vlan($tablename, $column, $varname){
+    $varnameid = str_replace('(', '', str_replace(')', '', str_replace(' ', '-', $varname)));
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
+    $output .= '<select id="'.$varnameid.'" class="form-control '.$varnameid.'" name="'.$varname.'" data-rule-required="true">';
+    $output .= '<option value="">-- Select -- </option>';
+    $output .= '</select>';
+    return $output;
+    /*
     global $db2;
     $varname_lower = strtolower($varname);
     if(strpos($varname_lower, 'odd') !== false){
@@ -5121,6 +5128,29 @@ function generate_option_button_for_configs_sw_inventory_vlan($tablename, $colum
 									id="'.$varname.'"
 									value="'.$maximum.'"
 									placeholder="">';
+    return $output;
+    */
+}
+
+function generate_option_button_for_configs_vlan($switchname, $type){
+    global $db2;
+    $options_arr = array();
+    $swvarname = ($type == 'even') ? 'Asr9k-2  Hostname':'Asr9k-1 Hostname';
+    $sql = "select switch_name,swvarname,swvarval from switchvars where switch_name = '".$switchname."' and swvarname = '".$swvarname."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $output = '<option value="">-- Select -- </option>';
+    if(isset($resultset[0]['swvarval'])){
+        $devicename = $resultset[0]['swvarval'];
+        $sql = "SELECT max(vlan) + 2 as maximum FROM software_inventory where devicename like '".$devicename."' and vlan < 4000";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        $start = $resultset[0]['maximum'];
+        $end = $resultset[0]['maximum'] + 10;
+        for($i=$start; $i<$end;$i++){
+            $output .= '<option value="'.$i.'">'.$i.'</option>';
+        }
+    }
     return $output;
 }
 

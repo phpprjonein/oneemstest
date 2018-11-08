@@ -424,3 +424,11 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset(
     $select_device_name = $_POST['select_device_name'];
     echo generate_option_button_for_configs_telco_interface($select_switch, 'odd', $select_script_type, $select_device_name);
 }
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptLoadVlanEven') {
+    $select_switch = $_POST['select_switch'];
+    echo generate_option_button_for_configs_vlan($select_switch, 'even');
+}
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptLoadVlanOdd') {
+    $select_switch = $_POST['select_switch'];
+    echo generate_option_button_for_configs_vlan($select_switch, 'odd');
+}

@@ -195,6 +195,12 @@ if (! in_array('extract_bgpv6_routes', $_GET['category']) || ! isset($output['bg
         'message' => ''
     );
 }
+if (! in_array('extract_bandwidth', $_GET['category']) || ! isset($output['bandwidth'])) {
+    $output['bandwidth'] = array(
+            'R' => '',
+            'message' => ''
+    );
+}
 // $output = '{"bfdsession":'.$result['bfdsession'].',"bgpvfourneighbors":'.$result['bgpvfourneighbors'].',"bgpvsixneighbours":'.$result['bgpvsixneighbours'].',"bgpvsixroutes":'.$result['bgpvsixroutes'].',"bootstatement":'.$result['bootstatement'].',"buffers":'.$result['buffers'].',"configregister":'.$result['configregister'].',"cpuutilization":'.$result['cpuutilization'].',"environmental":'.$result['environmental'].',"vrfstates":'.$result['vrfstates'].',"freememory":'.$result['freememory'].',"interfacecounters":'.$result['interfacecounters'].',"interfacestates":'.$result['interfacestates'].',"iosversion":'.$result['iosversion'].',"logentries":'.$result['logentries'].',"mplsinterfaces":'.$result['mplsinterfaces'].',"mplsneighbors":'.$result['mplsneighbors'].',"platform":'.$result['platform'].',"ran":'.$result['ran'].',"twothsndbyteping":'.$result['twothsndbyteping'].',"xconnect":'.$result['xconnect'].'}';
 // $output = json_decode($output,true);
 // print '<pre>';

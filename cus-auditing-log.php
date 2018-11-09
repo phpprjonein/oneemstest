@@ -171,15 +171,15 @@ write_log($mesg);
 											<thead>
 												<tr>
 													<th></th>
-													<th>IP Address</th>
 													<th>Device Name</th>
+													<th>IP Address</th>
 													<th>Device Series</th>
-													<th>Audit Run</th>
-													<th>Market</th>
-													<th>Current Version</th>
+													<th>Version</th>
 													<th>Region</th>
-													<th>Customized Audit Status</th>
-													<th>Customized Audit Log</th>
+													<th>Market</th>
+													<th>Audit Run</th>
+													<th>Audit Status</th>
+													<th>Audit Log</th>
 												</tr>
 											</thead>
 										</table>

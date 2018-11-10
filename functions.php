@@ -4722,6 +4722,34 @@ function update_login_api_rules($sso_flag, $username)
         
         $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
     } elseif (in_array($_SESSION['userlevel'], array(
+            5,
+    ))) {
+        $_SESSION['sel_switch_name'] = '';
+        $_SESSION['sel_region'] = array();
+        
+        
+        global $db2;
+        $sql = "SELECT market FROM regengnrmarket where id > 0 and username = '".$username."'";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        foreach ($resultset as $key => $val){
+            $_SESSION['sel_region'] = $val['market'];
+            $sel_region_arr[] = $val['market'];
+        }
+        
+        if(count($sel_region_arr) > 0){
+            $sel_region_imp = implode(',', $sel_region_arr);
+            $sql = "SELECT distinct(switch_name) FROM nodes where market in ('".$sel_region_imp."')";
+            $db2->query($sql);
+            $resultset = $db2->resultset();
+            foreach ($resultset as $key => $val){
+                $_SESSION['sel_switch_name'] = ($_SESSION['sel_switch_name'] == '') ? $val['switch_name'] : $_SESSION['sel_switch_name'];
+                $swt_mswitch_arr[] = $val['switch_name'];
+            }
+            $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
+        }
+    }elseif (in_array($_SESSION['userlevel'], array(
         2,
         5,
         6,

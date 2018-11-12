@@ -165,4 +165,4 @@ include 'functions.php';
     $output = json_decode($output, true);
     $_SESSION['deviceidcs'] = $deviceid;
     ?>
-<?php include_once 'ems_hc_blk_inc.php';?>                
+<?php include_once 'healthchk-asrninethousand-blk-inc.php';?>                

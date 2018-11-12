@@ -9,7 +9,7 @@
 					<?php endif;?>></td>
 				<td><b>Redundancy state</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_redundancy&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_redundancy&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['redundancy']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['redundancy']['message'] . '</span>';
@@ -24,7 +24,7 @@
 					<?php endif;?>></td>
 				<td><b>CPU Utilization</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_process_cpu&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_process_cpu&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['cpuutilization']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['cpuutilization']['message'] . '</span>';
@@ -38,7 +38,7 @@
 					<?php endif;?>></td>
 				<td><b>Memory utilization</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_memory_statistics&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_memory_statistics&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['freememory']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['freememory']['message'] . '</span>';
@@ -53,7 +53,7 @@
 					<?php endif;?>></td>
 				<td><b>Software running on the RSP</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_version_rsp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_version_rsp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['show_version']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['show_version']['message'] . '</span>';
@@ -66,7 +66,7 @@
 					<?php endif;?>></td>
 				<td><b>Software installed and active</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_version_installed_active&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_version_installed_active&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['show_version_installed_active']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_active']['message'] . '</span>';
@@ -79,7 +79,7 @@
 					<?php endif;?>></td>
 				<td><b>Software installed and committed</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_version_installed_committed&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_version_installed_committed&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['show_version_installed_committed']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_committed']['message'] . '</span>';
@@ -94,7 +94,7 @@
 					<?php endif;?>></td>
 				<td><b>Alarms</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_alarms&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_alarms&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['environmental']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['environmental']['message'] . '</span>';
@@ -107,7 +107,7 @@
 					<?php endif;?>></td>
 				<td><b>Power supply</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_power_supply&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_power_supply&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['power_supply']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['power_supply']['message'] . '</span>';
@@ -120,7 +120,7 @@
 					<?php endif;?>></td>
 				<td><b>Line card status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['platform']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['platform']['message'] . '</span>';
@@ -135,7 +135,7 @@
 					<?php endif;?>></td>
 				<td><b>Fabric Status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_fabric_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_fabric_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['fabric status']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['fabric status']['message'] . '</span>';
@@ -148,7 +148,7 @@
 					<?php endif;?>></td>
 				<td><b>Fabric interface ASIC drops</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_drops&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_drops&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['fabric interface asic drops']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic drops']['message'] . '</span>';
@@ -161,7 +161,7 @@
 					<?php endif;?>></td>
 				<td><b>Fabric interface ASIC errors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_errors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_errors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['fabric interface asic errors']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic errors']['message'] . '</span>';
@@ -176,7 +176,7 @@
 					<?php endif;?>></td>
 				<td><b>Fabric Interface ASIC link-status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_link_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_fabric_inter_asic_link_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['fabric interface asic link-status']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic link-status']['message'] . '</span>';
@@ -189,7 +189,7 @@
 					<?php endif;?>></td>
 				<td><b>Up/down status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_up_down_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_up_down_status&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color1 = ($output['UP/DOWN Status']['ipv6_interface_brief']['R'] == 0) ? 'green' : 'red';
                     $display1 = "<span style='color:" . $color1 . "'>" . $output['UP/DOWN Status']['ipv6_interface_brief']['message'] . '</span>';
@@ -205,7 +205,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>Interface counters</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_count_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_count_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['interfacecounters']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['interfacecounters']['message'] . '</span>';
@@ -220,7 +220,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>BFD session</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['bfdsession']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['bfdsession']['message'] . '</span>';
@@ -233,7 +233,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>VRRP</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_vrrp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_vrrp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['VRRP']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['VRRP']['message'] . '</span>';
@@ -246,7 +246,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>NTP</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_ntp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_ntp&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['NTP']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['NTP']['message'] . '</span>';
@@ -261,7 +261,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>Global OSPF neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_global_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_global_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['global ospf neighbor']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['global ospf neighbor']['message'] . '</span>';
@@ -274,7 +274,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>1XRTT OSPF Neighbor</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_1xrtt_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_1xrtt_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['1XRTT ospf']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['1XRTT ospf']['message'] . '</span>';
@@ -287,7 +287,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>CELL_MGMT OSPF Neighbor</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_cell_mgmt_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_cell_mgmt_ospf_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['CELL_MGMT OSPF neighbor']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['CELL_MGMT OSPF neighbor']['message'] . '</span>';
@@ -302,7 +302,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>OSPF NSR and GR</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_ospf_nsr_gr&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_ospf_nsr_gr&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['ospf nsr and gr']['R'] == 0) ? 'green' : 'red';
                       $display = "<span style='color:" . $color . "'>" . $output['ospf nsr and gr']['message'] . '</span>';
@@ -315,7 +315,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>LDP neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_ldp_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_ldp_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['ldp neighbors']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['ldp neighbors']['message'] . '</span>';
@@ -328,7 +328,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>WDN peering</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_wdn_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_wdn_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['WDN peering']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['WDN peering']['message'] . '</span>';
@@ -343,7 +343,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>CSR peering</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_csr_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_csr_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a>
 					<?php 
 						$color1 = ($output['CSR peering']['vpnv6_csr_peering']['R'] == 0) ? 'green' : 'red';                    
@@ -360,7 +360,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>CRS WDN peering</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_crs_wdn_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_crs_wdn_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['CRS WDN peering']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['CRS WDN peering']['message'] . '</span>';
@@ -373,7 +373,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>CRS LTE peering</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_crs_lte_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_crs_lte_peering&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['CRS LTE peering']['ipv6_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color1 . "'>" . $output['CRS LTE peering']['ipv6_crs_lte_peering']['message'] . '</span>';
@@ -391,7 +391,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>BGP NSR and Graceful Restart</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_bgp_nsr_graceful_restart&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_bgp_nsr_graceful_restart&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['BGP NSR and Graceful Restart']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['BGP NSR and Graceful Restart']['message'] . '</span>';
@@ -404,7 +404,7 @@ $display = $display1.$display2;
 					<?php endif;?>></td>
 				<td><b>Air Filter Check</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="ems-devdetmdl-cellsite.php?commandname=extract_air_filter_check&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-asrninethousand-devdetmdl-cellsite.php?commandname=extract_air_filter_check&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['extract_air_filter_check']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['extract_air_filter_check']['message'] . '</span>';

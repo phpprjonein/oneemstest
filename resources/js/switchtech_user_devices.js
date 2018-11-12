@@ -6,7 +6,7 @@ $(document).ready(function() {
         version = version.replace(/\(/g, '-').replace(/\)/g, '-').replace(/\./g, '-');
         var deviceseries = $(this).data('deviceseries');
         if(deviceseries == 'ASR9K'){
-      	  actionurl = "ems-healthchk-cellsitetech.php";
+      	  actionurl = "healthchk-asrninethousand-cellsitetech.php";
         }else{
       	  actionurl = "healthchk-switchtech.php";
         }
@@ -39,7 +39,7 @@ $(document).ready(function() {
         
     	var deviceseries = $(this).data('deviceseries');
         if(deviceseries == 'ASR9K'){
-      	  actionurl = "ems-healthchk-cellsitetech-custom.php";
+      	  actionurl = "healthchk-asrninethousand-cellsitetech-custom.php";
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
         }
@@ -202,7 +202,7 @@ $(document).ready(function() {
                   var actionurl = '';
                   
                   if(deviceseries == 'ASR9K'){
-                	  actionurl = "ems-healthchk-load-table-data.php";
+                	  actionurl = "healthchk-asrninethousand-load-table-data.php";
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";
                   }

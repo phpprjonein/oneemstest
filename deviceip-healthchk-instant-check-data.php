@@ -228,7 +228,7 @@ $vendorId = load_node_vendor_id_from_deviceid($deviceid);
 if ($vendorId == 1) {
     if($device_details['deviceseries'] == 'ASR9K'){
         $output = json_decode($output, true);
-        include_once 'ems_instant_hc_blk_inc.php';
+        include_once 'healthchk-asrninethousand-instant-hc-blk-inc.php';
     }else{
         include_once 'instant_hc_blk_inc.php';
     }

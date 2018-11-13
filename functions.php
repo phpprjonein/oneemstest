@@ -1,4 +1,15 @@
 <?php
+/*
+ * Application dynamic configuration loads
+ */
+global $APPCONFIG;
+$APPCONFIG = parse_ini_file("config/appconfig.ini",true);
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    $APPCONFIG = $APPCONFIG['localhost'];
+}else{
+    $APPCONFIG = $APPCONFIG['live'];
+}
+
 
 /**
  * @param unknown $filename
@@ -4474,7 +4485,7 @@ function update_login_api_rules($sso_flag, $username)
         3,
         4
     ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_celltech_user.php');
+        $output = @file_get_contents($APPCONFIG['login']['cellsitetechloginapi']);
      	//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
 		//$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
         $resp_result_arr = json_decode($output, 1);
@@ -4756,7 +4767,7 @@ function update_login_api_rules($sso_flag, $username)
         7,
         9    
     ))) {
-        $output = @file_get_contents('http://localhost/oneemstest/login_response_switchtech_user.php');
+        $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
         //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_switchtech_user.php?username=' . $username);
 		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
 		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);

@@ -6,7 +6,7 @@ include 'functions.php';
 <?php
 $deviceid = $_POST['deviceid'];
 // $deviceid = 5;
-$url_send = 'http://10.134.179.82:8084/configbackup/' . $deviceid;
+$url_send = $APPCONFIG['backup']['endpoint'].'/configbackup/' . $deviceid;
 $json_response = sendPostData($url_send);
 
 /*

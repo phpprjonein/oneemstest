@@ -37,7 +37,7 @@ include 'functions.php';
     $url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     $deviceid = $_GET['deviceid'];
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
-    $url_final = 'http://10.134.179.82:8080' . $devicetype . '/' . $deviceid;
+    $url_final = $APPCONFIG['healthcheck']['endpoint'].'' . $devicetype . '/' . $deviceid;
     $output = json_decode(sendPostData($url_final), true);
     $lastupdated = date('Y-m-d H:i:s');
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);

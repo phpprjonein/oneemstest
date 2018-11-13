@@ -30,7 +30,7 @@ if (count($_GET['category']) > 0) {
     $category_imp = implode(',', $_GET['category']);
     /* Custom HealthCheck API API Call */
     $devicetype = 'ios';
-    $url_final = 'http://10.134.179.82:8080/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
+    $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
     //$url_final = 'http:///njbboemsda3v.nss.vzwnet.com:8085/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/custom/' . $deviceid . '/' . $category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/1,2,3';

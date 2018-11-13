@@ -23,7 +23,7 @@ $output = json_decode(
   "deviceIpAddr": "10.198.238.19"
   }', 1);
 */
-  $url = 'http://10.134.179.82:8089/snmp/' . $_POST['ip-address'];
+  $url = $APPCONFIG['discovery']['endpoint'].'/snmp/' . $_POST['ip-address'];
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

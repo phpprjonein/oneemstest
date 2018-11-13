@@ -302,7 +302,7 @@ if ($_POST['ctype'] == 'manualdisc') {
      * );
      */
     $values_arr = array(
-        'region' => "dummy",
+        'region' => $_POST['rgnval'],
         'market' => $_POST['mktval'],
         'devicename' => $_POST['devnameval'],
          'deviceIpAddr' => $_POST['ip-address'],
@@ -324,7 +324,7 @@ if ($_POST['ctype'] == 'manualdisc') {
         'deviceDateAdded' => $_POST['deviceDateAdded'],
         'deviceLastUpdated' => date('Y-m-d H:i:s', strtotime($_POST['deviceLastUpdated'])),
         'upsince' => $_POST['upsinceval'],
-        'switch_name' => "",
+        'switch_name' => $_POST['switchnameval'],
         'syslocation' => $_POST['syslocval'],
         'syscontact' => $_POST['sysconval'],
         'model' => $_POST['modelval']

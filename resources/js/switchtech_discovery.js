@@ -605,7 +605,7 @@ $(document).ready(function() {
 						$.ajax({
 			                type:"post",
 			                url:"ip-mgt-process.php",					
-			                data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), syslocval : $('#syslocval').text(),upsinceval : $('#upsinceval').text(), mktval : $('#mktval').val(), 'ip-address' : $('#ip-address').val()},
+			                data: {'ctype':'manualdisc', 'devnameval':$('#devnameval').text(), 'devosval':$('#devosval').text(), 'devseriesval':$('#devseriesval').text(),'devstatusval':$('#devstatusval').text(), 'lastpollval':$('#lastpollval').text(), 'modelval':$('#modelval').text(), 'nodeverval': $('#nodeverval').text(),'statval':$('#statval').text(), 'sysconval':$('#sysconval').text(), 'syslocval' : $('#syslocval').text(), 'upsinceval' : $('#upsinceval').text(), 'switchnameval' : $('#switchnameval').text(), 'mktval' : $('#mktval').text(), 'rgnval' : $('#rgnval').text(), 'ip-address' : $('#ip-address').val()},
 			                success: function(resdata){					
 			                	$('#mandiscsubmit').hide();
 			                	$('#myModal .modal-body').html('Device added Successfully');

@@ -7,20 +7,22 @@ sleep(3);
 $output = json_decode(
         '{
   "data": {
-  "devicename": "dummydevicename",
-  "deviceos": "dummydeviceos",
-  "deviceseries": "dummydeviceseries",
-  "discoverystatus": "Failed",
-  "lastpolled": "2018-02-21 21:56",
-  "model": "dummymodel",
-  "nodeVersion": "dummynodeversion",
-  "nodestatus": "C",
-  "status": false,
-  "sys_contact": "dummysyscontact",
-  "sys_location": "dummysyslocation",
-  "upsince": "dummyupsince"
+    "devicename": "LWCTOH02T1A-P-CI-9999-01",
+    "deviceos": "IOS-XE",
+    "deviceseries": "ASR920",
+    "discoverystatus": "success",
+    "lastpolled": "2018-11-09 22:01",
+    "market": "OPW",
+    "model": "Cisco",
+    "nodeVersion": "15.6(1)S1",
+    "nodestatus": "K",
+    "region": "GreatLakes",
+    "switch_name": "LEWIS CENTER 1",
+    "sys_contact": "",
+    "sys_location": "Verizon Lab South Plainfield 1st floor room 208",
+    "upsince": "102 days 7:39"
   },
-  "deviceIpAddr": "10.198.238.19"
+  "deviceIpAddr": "10.202.96.191"
   }', 1);
 */
   $url = $APPCONFIG['discovery']['endpoint'].'/snmp/' . $_POST['ip-address'];
@@ -34,7 +36,7 @@ $output = json_decode(
   //print_r($output['data']['data']);
  
 $output['data']['status'] = 1; // needs to be sorted out.
-$market_list = get_market_list_manualdisc($_POST['ip-address']);
+//$market_list = get_market_list_manualdisc($_POST['ip-address']);
 ?>
 <div class="container" id="manual-disc-utils-pop">
 	<div id="status" style="display: none;" class="alert"></div>
@@ -93,16 +95,16 @@ $market_list = get_market_list_manualdisc($_POST['ip-address']);
 				<td id="upsinceval"><?php echo $output['data']['upsince']; ?></td>
 			</tr>
 			<tr>
+				<td>Switch Name</td>
+				<td id="switchnameval"><?php echo $output['data']['switch_name']; ?></td>
+			</tr>
+			<tr>
 				<td>Market</td>
-				<td><select id="mktval"> 				 
-	     	     <?php foreach ($market_list as $key=>$value) { ?>
-						<option value="<?php echo $value['market_name'];?>"><?php echo $value['market_name']; ?></option>
-				 <?php }; ?>
-                     <!--<option value = "">Select Market </option>     
-					 <option value = "1"> OPW </option>     
-					 <option value = "2"> Great Lakes </option>     					 
-					 </select>					 
-					 --></td>
+				<td id="mktval"><?php echo $output['data']['market']; ?></td>
+			</tr>
+			<tr>
+				<td>Region</td>
+				<td id="rgnval"><?php echo $output['data']['region']; ?></td>
 			</tr>
 		</tbody>
 	</table>

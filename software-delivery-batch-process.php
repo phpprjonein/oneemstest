@@ -156,6 +156,9 @@ function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries,
     $deviceid = explode(',', $deviceid);
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     $cusalsql = 'INSERT INTO `audithistory` (`batchid`, `username`, `region`, `market`, `devicename`, `deviceIpAddr`, `deviceseries`, `filtercriteria`, `austatus`, `filename`) VALUES';
+    if(!empty($filtercriteria)){
+        $filtercriteria = nl2br($filtercriteria).'<br />';
+    }
     
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {

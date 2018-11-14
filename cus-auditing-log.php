@@ -129,8 +129,7 @@ write_log($mesg);
 							<!-- /region selection -->
 							<div class="col">
 							<div class="input-group">
-								<input type="text" id="filtercriteria" class="form-control"
-										placeholder="Filter Criteria" aria-label="Filter ">
+								<textarea rows="3" cols="35" id="filtercriteria" placeholder="Filter Criteria"></textarea>
 								</div>
 							</div>	
 							<!-- search table form field -->

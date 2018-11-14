@@ -21,7 +21,7 @@ $(document).ready(function () {
               {"data": "devicename"},
               {"data": "deviceIpAddr"},
               {"data": "deviceseries"},
-              {"data": "filtercriteria"},
+              {"data": "filtercriteria", "className": "nowrap"},
               {"data": "austatus"},
               {"data": "austatus"},
               {"data": "createddate"},

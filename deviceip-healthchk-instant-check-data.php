@@ -22,7 +22,7 @@ $(document).ready(function(){
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
-ini_set('display_errors', 1);
+global $APPCONFIG;
 ?>
     <?php
     // Python API Request using curl Begins

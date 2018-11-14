@@ -1,16 +1,5 @@
 <?php
-/*
- * Application dynamic configuration loads
- */
-global $APPCONFIG;
-$APPCONFIG = parse_ini_file("config/appconfig.ini",true);
-if($_SERVER['SERVER_NAME'] == 'localhost'){
-    $APPCONFIG = $APPCONFIG['localhost'];
-}else{
-    $APPCONFIG = $APPCONFIG['live'];
-}
-
-
+include_once 'config/global.php';
 /**
  * @param unknown $filename
  * @param unknown $msg
@@ -4479,7 +4468,7 @@ function get_market_list_backup()
  */
 function update_login_api_rules($sso_flag, $username)
 {
-    global $db2;
+    global $db2, $APPCONFIG;
     if (in_array($_SESSION['userlevel'], array(
         1,
         3,

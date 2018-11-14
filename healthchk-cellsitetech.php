@@ -22,6 +22,7 @@ $(document).ready(function(){
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
+global $APPCONFIG;
 ?>
     <?php
     // Python API Request using curl Begins

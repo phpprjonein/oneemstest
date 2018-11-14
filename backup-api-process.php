@@ -2,6 +2,7 @@
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
+global $APPCONFIG;
 ?>
 <?php
 $deviceid = $_POST['deviceid'];

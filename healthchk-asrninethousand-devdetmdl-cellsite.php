@@ -1,4 +1,6 @@
 <?php
+include_once 'config/global.php';
+global $APPCONFIG;
 $command = $_GET['commandname'];
 $deviceid = $_GET['deviceid'];
 $deviceseries = $_GET['deviceseries'];

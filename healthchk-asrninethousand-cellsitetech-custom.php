@@ -19,10 +19,10 @@ $(document).ready(function(){
             });        
 </script>
 <?php
-ini_set('display_errors', 1);
 include "classes/db2.class.php";
 include "classes/paginator.class.php";
 include 'functions.php';
+global $APPCONFIG;
 $userid = $_GET['userid'];
 $deviceid = $_GET['deviceid'];
 $lastupdated = date('Y-m-d H:i:s');

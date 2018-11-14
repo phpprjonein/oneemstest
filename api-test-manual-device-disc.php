@@ -2,7 +2,7 @@
 include_once "classes/db2.class.php";
 include_once "classes/paginator.class.php";
 include_once 'functions.php';
-sleep(3);
+global $APPCONFIG;
 /*
 $output = json_decode(
         '{

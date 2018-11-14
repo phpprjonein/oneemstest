@@ -1,4 +1,6 @@
- <?php
+<?php
+include_once 'config/global.php';
+global $APPCONFIG;
 if ($_GET['act'] == 'restore') {
     // print '<pre>';print_r($_POST);
     // Get the curl response from the file and display it from modal restore-api-response.php. Either include that

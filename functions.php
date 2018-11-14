@@ -4461,6 +4461,7 @@ function get_market_list_backup()
     return $resultset;
 }
 
+
 /**
  *
  * @param unknown $sso_flag
@@ -4474,9 +4475,12 @@ function update_login_api_rules($sso_flag, $username)
         3,
         4
     ))) {
-        $output = @file_get_contents($APPCONFIG['login']['cellsitetechloginapi']);
+       // $output = @file_get_contents($APPCONFIG['login']['cellsitetechloginapi']);
+         $celltechapi = $APPCONFIG['login']['cellsitetechloginapi'].$username.'/csrinfo';
+         //echo $celltechapi; exit();
      	//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
-		//$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
+     	$output = @file_get_contents($celltechapi);
+        //$output = @file_get_contents('http:/iop.vh.vzwnet.com:8080/site/devices/user/'.$username.'/csrinfo');
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';
         $swt_mswitch_arr = array();
@@ -4756,9 +4760,11 @@ function update_login_api_rules($sso_flag, $username)
         7,
         9    
     ))) {
-        $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
+       // $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
+         $switchtechapi = $APPCONFIG['login']['switchtechloginapi'].$username;
         //$output = @file_get_contents('http://njbboemsda1v/oneems/login_response_switchtech_user.php?username=' . $username);
 		//$output = @file_get_contents('http://txsliopsa1v.nss.vzwnet.com:8080/switch/tech/'.$username);
+        $output = @file_get_contents($switchtechapi);
 		 //$output = @file_get_contents('https://iop.vh.vzwnet.com:8080/switch/tech/'.$username);
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';

@@ -21,7 +21,7 @@ $(document).ready(function () {
               {"data": "devicename"},
               {"data": "deviceIpAddr"},
               {"data": "deviceseries"},
-              {"data": "filtercriteria", "className": "nowrap"},
+              {"data": "filtercriteria", "sorting": false},
               {"data": "austatus"},
               {"data": "austatus"},
               {"data": "createddate"},
@@ -33,12 +33,19 @@ $(document).ready(function () {
 					 var region = $(this).closest('tr').find('td:eq(2)').html().toLowerCase();
          			 var market = $(this).closest('tr').find('td:eq(3)').html();
          			 var devicename = $(this).closest('tr').find("td:eq(4)").text();
-         			 
+         			 var batchid = $(this).closest('tr').find("td:eq(0)").text();
+         			if(colIndex == 7){
+         				$(this).html('<span style="display:none;" class="viewfiltercriteria_'+ batchid +'">' + $(this).html() + '</span><a href="#"  data-toggle="modal" data-batchid="' + batchid + '" data-target="#myModal" data-toggle="modal" class="viewfiltercriteria btn"> View </a>');
+         			}
 	            	 if(colIndex == 9){
 	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.pdf">' + devicename +'.pdf</a>');
 	            	 }
 	             }); 
 	        }
+      });
+      $(document).on("click", ".audit-history .viewfiltercriteria", function(event){
+    	  $('#myModal .modal-title').html('Filter Criteria for BatchId - ' + $(this).data('batchid'));
+    	  $('#myModal .modal-body').html($('.viewfiltercriteria_' + $(this).data('batchid')).html());
       });
 });		
 			

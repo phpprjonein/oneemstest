@@ -25,17 +25,30 @@ write_log($mesg);
 <script
 	src="resources/js/audit_history.js?t=<?php echo date('his'); ?>"></script>
 </head>
-<body>
-	<script>
-    $(function() {
-        $(".chosen-select").chosen({
-          disable_search_threshold: 10,
-          inherit_select_classes: true,
-          no_results_text: "No results found! Please try searching again...",
-          width: "100%"
-        });
-    });
-</script>
+<body class="audit-history">
+        <!-- The Modal -->
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content" id="manual-device-discovery">
+
+					<!-- Modal Header -->
+					<div class="modal-header" id="restoremodalhdr">
+						<h5 class="modal-title text-center" id="modalLabelLarge"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<!-- Modal body -->
+					<div class="modal-body"></div>
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="container-fluid sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
       <?php

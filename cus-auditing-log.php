@@ -172,10 +172,10 @@ write_log($mesg);
 													<th></th>
 													<th>Device Name</th>
 													<th>IP Address</th>
+													<th>Market</th>
 													<th>Device Series</th>
 													<th>Version</th>
 													<th>Region</th>
-													<th>Market</th>
 													<th>Audit Run</th>
 													<th>Audit Status</th>
 													<th>Audit Log</th>

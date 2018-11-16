@@ -130,13 +130,13 @@ write_log($mesg);
 											<thead>
 												<tr>
 													<th></th>
-													<th>IP Address</th>
 													<th>Device Name</th>
-													<th>Device Series</th>
-													<th>Audit Run</th>
+													<th>IP Address</th>
 													<th>Market</th>
-													<th>Current Version</th>
+													<th>Device Series</th>
+													<th>Version</th>
 													<th>Region</th>
+													<th>Audit Run</th>
 													<th>Audit Status</th>
 													<th>Compliance log</th>
 												</tr>

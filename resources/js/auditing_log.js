@@ -33,17 +33,17 @@
                   "orderable":      false,
                   "data":           null,
                   "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-              {"data": "deviceIpAddr"},
-              {"data": "devicename"},
-              {"data": "deviceseries"},
-              {"data": "aurundate"},
-              {"data": "market"},
-              {"data": "nodeVersion"},
-              {"data": "region"},
-              {"data": "austatus"},
-              {"data": "austatus"},
+                  {"data": "devicename"},
+                  {"data": "deviceIpAddr"},
+                  {"data": "market"},
+                  {"data": "deviceseries"},
+                  {"data": "nodeVersion"},
+                  {"data": "region", "className": "d-none"},
+                  {"data": "aurundate"},
+                  {"data": "austatus"},
+                  {"data": "austatus"},
           ],
-			"order": [[5, 'asc']],
+			"order": [[3, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -56,9 +56,9 @@
 	            	 }
 	            	 if(colIndex == 9){
 	            		 //if($(this).text().toLowerCase() == 'fail'){
-	            			 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
-	            			 var market = $(this).closest('tr').find('td:eq(5)').html();
-	            			 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+	            			 var region = $(this).closest('tr').find('td:eq(6)').html().toLowerCase();
+	            			 var market = $(this).closest('tr').find('td:eq(3)').html();
+	            			 var devicename = $(this).closest('tr').find("td:eq(1)").text();
 	            			 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
 	            			 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
 	            		 //}else{
@@ -101,17 +101,17 @@
                       "orderable":      false,
                       "data":           null,
                       "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-                  {"data": "deviceIpAddr"},
-                  {"data": "devicename"},
-                  {"data": "deviceseries"},
-                  {"data": "aurundate"},
-                  {"data": "market"},
-                  {"data": "nodeVersion"},
-                  {"data": "region"},
-                  {"data": "austatus"},
-                  {"data": "austatus"},
+                      {"data": "devicename"},
+                      {"data": "deviceIpAddr"},
+                      {"data": "market"},
+                      {"data": "deviceseries"},
+                      {"data": "nodeVersion"},
+                      {"data": "region", "className": "d-none"},
+                      {"data": "aurundate"},
+                      {"data": "austatus"},
+                      {"data": "austatus"},
               ],
-  			"order": [[5, 'asc']],
+  			"order": [[3, 'asc']],
 	        "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
@@ -124,9 +124,9 @@
 	            	 }
 	            	 if(colIndex == 9){
 	            		 //if($(this).text().toLowerCase() == 'fail'){
-	            		 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
-	            		 var market = $(this).closest('tr').find('td:eq(5)').html();
-	            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+	            		 var region = $(this).closest('tr').find('td:eq(6)').html().toLowerCase();
+	            		 var market = $(this).closest('tr').find('td:eq(3)').html();
+	            		 var devicename = $(this).closest('tr').find("td:eq(1)").text();
 	            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
 	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
 	            		 //}else{
@@ -195,17 +195,17 @@
 	                      "orderable":      false,
 	                      "data":           null,
 	                      "defaultContent": "<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>"},	 
-	                  {"data": "deviceIpAddr"},
-	                  {"data": "devicename"},
-	                  {"data": "deviceseries"},
-	                  {"data": "aurundate"},
-	                  {"data": "market"},
-	                  {"data": "nodeVersion"},
-	                  {"data": "region"},
-	                  {"data": "austatus"},
-	                  {"data": "austatus"},
+	                      {"data": "devicename"},
+	                      {"data": "deviceIpAddr"},
+	                      {"data": "market"},
+	                      {"data": "deviceseries"},
+	                      {"data": "nodeVersion"},
+	                      {"data": "region", "className": "d-none"},
+	                      {"data": "aurundate"},
+	                      {"data": "austatus"},
+	                      {"data": "austatus"},
 	              ],
-	  			"order": [[5, 'asc']],
+	  			"order": [[3, 'asc']],
 		        "createdRow": function (row, data, rowIndex) {
 		             $(row).addClass('device_row');
 					  $.each($('td', row), function (colIndex) {
@@ -218,9 +218,9 @@
 		            	 }
 		            	 if(colIndex == 9){
 		            		 //if($(this).text().toLowerCase() == 'fail'){
-		            		 var region = $(this).closest('tr').find('td:eq(7)').html().toLowerCase();
-		            		 var market = $(this).closest('tr').find('td:eq(5)').html();
-		            		 var devicename = $(this).closest('tr').find("td:eq(2)").text();
+		            		 var region = $(this).closest('tr').find('td:eq(6)').html().toLowerCase();
+		            		 var market = $(this).closest('tr').find('td:eq(3)').html();
+		            		 var devicename = $(this).closest('tr').find("td:eq(1)").text();
 		            		 //$(this).html('<a href="download.php?file=upload/audit/' + $(this).closest('tr').find("td:eq(2)").text() + '.pdf">'+ $(this).closest('tr').find("td:eq(2)").text() +'.pdf</a>');
 		            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/audit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
 		            		 //}else{

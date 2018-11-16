@@ -120,11 +120,11 @@ write_log($mesg);
 												<tr>
 													<th>Batch ID</th>
 													<th>User Name</th>
-													<th>Region</th>
-													<th>Market</th>
 													<th>Device Name</th>
 													<th>IP Address</th>
+													<th>Market</th>
 													<th>Device Series</th>
+													<th>Region</th>
 													<th>Filter Criteria</th>
 													<th>Customized Audit Status</th>
 													<th>Customized Audit Log</th>

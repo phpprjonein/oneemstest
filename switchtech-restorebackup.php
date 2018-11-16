@@ -31,6 +31,7 @@ write_log($mesg);
 </head>
 <body>
 	<!-- The Modal -->
+	<input type="hidden" id="currentrow" value="" /> 
 	<div class="modal fade" id="restoreModal">
 		<div class="modal-dialog">
 			<div class="modal-content" id="cellsitech-backup">

@@ -526,7 +526,7 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 		  	//$('#backupModal #bkup-deviceid').html('Device Id:'); 
 	    	var myModal = $('#backupModal');
             myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 40%; top: 10%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
-            
+            $('#currentrow').val($(this).closest('tr').attr('id'));
  	    	$.post( "backup-api-process.php", { type: "api-ajax", deviceid: $(this).closest('tr').attr('id').replace('row_','')
 			}).done(function( data ) {
 				$('#backupModal .modal-body').html(data);
@@ -534,7 +534,12 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 		  	
 		  	//alert("as" + $(this).closest('tr').find("td:eq(1)").text() +  $(this).closest('tr').find("td:eq(0)").text());
 	  });	  
-	 
+	  $('body').on('click', '#cellsitech-backup button', function(){
+		  if($('.shown').attr('id') != $('#currentrow').val()){ 
+			  $( "#" + $('#currentrow').val() + " td.details-control").click();
+		  }
+	  });
+
 	  $(document).on('click', '#restorebtn', function(event) {
 		    $('#restoreModal .modal-body').html('');
 		    //$('#restoreModal #bkup-deviceid').html('Restoring the below file : <br>' + $(this).closest('tr').find("td:eq(0)").text() + '<br/><h6><b><span id ="restoremoddet"> Taken at: ' + $(this).closest('tr').find("td:eq(1)").text() + ', Type: ' + $(this).closest('tr').find("td:eq(2)").text() + '</span><b></h6>');

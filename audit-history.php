@@ -118,17 +118,17 @@ write_log($mesg);
 											style="width: 100%">
 											<thead>
 												<tr>
-													<th>Batch ID</th>
-													<th>User Name</th>
-													<th>Device Name</th>
-													<th>IP Address</th>
+													<th>Batch&nbsp;ID</th>
+													<th>User&nbsp;Name</th>
+													<th>Device&nbsp;Name</th>
+													<th>IP&nbsp;Address</th>
 													<th>Market</th>
-													<th>Device Series</th>
+													<th>Device&nbsp;Series</th>
 													<th>Region</th>
-													<th>Filter Criteria</th>
-													<th>Customized Audit Status</th>
-													<th>Customized Audit Log</th>
-													<th>Created date</th>
+													<th>Filter&nbsp;Criteria</th>
+													<th>Customized&nbsp;Audit&nbsp;Status</th>
+													<th>Customized&nbsp;Audit&nbsp;Log</th>
+													<th>Created&nbsp;date</th>
 												</tr>
 											</thead>
 										</table>

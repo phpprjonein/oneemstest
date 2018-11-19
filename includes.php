@@ -79,6 +79,7 @@
 <!-- datepicker styling -->
 <link rel="stylesheet" href="resources/css/jquery-ui.css" class="ref">
 <!-- datepicker styling -->
+<?php global $APPCONFIG;?>
 <script type="text/javascript">
   var _paq = _paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -87,7 +88,7 @@
   (function() {
     var u="//piwik.vh.vzwnet.com/";
     _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '77']);
+    _paq.push(['setSiteId', '<?php echo $APPCONFIG['piwik']['siteid'];?>']);
     _paq.push(['setUserId', '<?php echo $_SESSION['username'];?>']);
     _paq.push(['setMarket', 'marketval']);
     _paq.push(['setManager name', '<?php echo $_SESSION['welcome_username'];?>']);

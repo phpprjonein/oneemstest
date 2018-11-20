@@ -126,7 +126,7 @@ write_log($mesg);
 													<th>Device&nbsp;Series</th>
 													<th>Region</th>
 													<th>Filter&nbsp;Criteria</th>
-													<th>Customized&nbsp;Audit&nbsp;Status</th>
+													<th>Status</th>
 													<th>Customized&nbsp;Audit&nbsp;Log</th>
 													<th>Created&nbsp;date</th>
 												</tr>

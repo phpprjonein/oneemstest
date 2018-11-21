@@ -288,7 +288,7 @@
 		            $.ajax({
 		                type:"post",
 		                url:"software-delivery-batch-process.php",
-		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val(), 'filtercriteria':$('#filtercriteria').val()}, 
+		                data: {'ctype':'BatchTabUPdate', 'userid':$(this).data('userid'), 'category':allVals, 'scriptname':$('#swrp_filename').val(), 'deviceseries':deviceseries, 'node_version':'', 'priority':1, 'batchtype':'cusauditinglog', 'destdrive':$('#destdrive').val(), 'batchid':$('#batchid').val(), 'filtercriteria':$('#filtercriteria').val(), 'sectionheader':$('#sectionheader').val(), 'skpaddcfgln': $("input[name='skpaddcfgln']:checked").val()}, 
 		                success: function(resdata){
 		                	var myModal = $('#batchModal');
 		            		myModal.modal('show'); 

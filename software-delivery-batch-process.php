@@ -90,7 +90,7 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'cusauditinglog') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
-    update_dev_batch_cusal($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive'], $_POST['filtercriteria']);
+    update_dev_batch_cusal($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive'], $_POST['filtercriteria'], $_POST['sectionheader'], $_POST['skpaddcfgln']);
 }
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'bootorder') {
@@ -138,7 +138,7 @@ function update_dev_batch_al($batchid, $deviceid, $scriptname, $deviceseries, $n
     }
 }
 
-function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop, $destdrive, $filtercriteria)
+function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop, $destdrive, $filtercriteria, $sectionheader, $skpaddcfgln)
 {
     global $db2;
     $oc = 1;
@@ -155,7 +155,7 @@ function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries,
     }
     $deviceid = explode(',', $deviceid);
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
-    $cusalsql = 'INSERT INTO `audithistory` (`batchid`, `username`, `region`, `market`, `devicename`, `deviceIpAddr`, `deviceseries`, `filtercriteria`, `austatus`, `filename`) VALUES';
+    $cusalsql = 'INSERT INTO `audithistory` (`batchid`, `username`, `region`, `market`, `devicename`, `deviceIpAddr`, `deviceseries`, `filtercriteria`, `sectionheader`, `skpaddcfgln`, `austatus`, `filename`) VALUES';
     if(!empty($filtercriteria)){
         $filtercriteria = nl2br($filtercriteria).'<br />';
     }
@@ -163,10 +163,10 @@ function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries,
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "','')";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', '')";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','Pass', '')";
         } else {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','Pass', ''),";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','Pass', ''),";
         }
         $oc ++;
     }

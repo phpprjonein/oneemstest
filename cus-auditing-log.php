@@ -26,16 +26,6 @@ write_log($mesg);
 	src="resources/js/cus_auditing_log.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body id="cus-audit-log">
-	<script>
-    $(function() {
-        $(".chosen-select").chosen({
-          disable_search_threshold: 10,
-          inherit_select_classes: true,
-          no_results_text: "No results found! Please try searching again...",
-          width: "100%"
-        });
-    });
-</script>
 	<div class="container-fluid sw-delivery-devices"
 		id="sw-delivery-devices">
     <?php include_once ('menu.php'); ?>
@@ -94,9 +84,36 @@ write_log($mesg);
 						action='generate-post-script.php' method='POST'
 						enctype='multipart/form-data' novalidate autocomplete="on">
 
+						<hr />
+						<!-- IP management table row -->
+						<div class="row">
+							<div class="col-sm-12 col-md-4 text-center">
+								<input type="text" class="form-control" id="sectionheader" placeholder="Enter Section Header">
+							</div>
+							<!-- /region selection -->
+							<div class="col-sm-12 col-md-4 text-center">
+							<div class="input-group">
+								<textarea rows="3" cols="35" id="filtercriteria" placeholder="Paste Configuration Section"></textarea>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-4">
+							<label>Ignore Additional Configuration</label>
+							<div>
+                              <label class="radio-inline"><input type="radio" value="yes" class="skpaddcfgln" name="skpaddcfgln" checked>Yes</label>
+                              <label class="radio-inline"><input type="radio" value="no" class="skpaddcfgln" name="skpaddcfgln">No</label>
+                            </div>	
+							</div>	
+						</div>	
+
+
+						<hr />
 						
 						
-												<hr />
+						
+						
+						
+						
+						
 						<!-- IP management table row -->
 						<div class="row">
 							<!-- region selection -->
@@ -128,9 +145,6 @@ write_log($mesg);
 							</div>
 							<!-- /region selection -->
 							<div class="col">
-							<div class="input-group">
-								<textarea rows="3" cols="35" id="filtercriteria" placeholder="Filter Criteria"></textarea>
-								</div>
 							</div>	
 							<!-- search table form field -->
 							<div class="col">
@@ -153,7 +167,6 @@ write_log($mesg);
 						</div>	
 
 
-						<hr />
 
 						<div class="row">
 

@@ -206,8 +206,13 @@ if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['q
     echo generic_get_csr_site_tech_name($query);
 }
 
-if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'name') {
-    echo generic_get_usernames_ac_fn_ln_ro($query);
+if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'site-tech-name') {
+    echo generic_get_csr_site_tech_name($query);
+}
+
+if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'sectionheader') {
+    $sectionheader = array('Interface - 1', 'Interface - 2', 'Interface - 3');
+    echo json_encode($sectionheader);
 }
 
 if (isset($_POST['type']) && $_POST['type'] == 'templduplicateschk' && isset($_POST['templname']) && $_POST['templname'] != '') {

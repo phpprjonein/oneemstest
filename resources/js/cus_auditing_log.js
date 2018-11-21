@@ -242,6 +242,24 @@
 	    	        }
 	          });
             });
+            $('#sectionheader').typeahead({
+                source: function (query, result) {
+                    $.ajax({
+                        url: "ip-mgt-process.php",
+                        data: 'type=autocomplete&category=sectionheader&query=' + query,            
+                        dataType: "json",
+                        type: "POST",
+                        success: function (data) {
+        					result($.map(data, function (index, value) {
+        						return index;
+                            }));
+                        }
+                    });
+                }
+            });
+            
+            
+            
             })
 			$(document).on('click', '#batch-submit', function(event) {
 				var req_err = false;

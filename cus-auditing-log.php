@@ -88,16 +88,16 @@ write_log($mesg);
 						<!-- IP management table row -->
 						<div class="row">
 							<div class="col-sm-12 col-md-4 text-center">
-								<input type="text" class="form-control" id="sectionheader" placeholder="Enter Section Header">
+								<input type="text" class="form-control" id="sectionheader" placeholder="Enter Section Header Or Search String">
 							</div>
 							<!-- /region selection -->
 							<div class="col-sm-12 col-md-4 text-center">
 							<div class="input-group">
-								<textarea rows="3" cols="35" id="filtercriteria" placeholder="Paste Configuration Section"></textarea>
+								<textarea rows="20" cols="35" id="filtercriteria" placeholder="Paste Configuration Section"></textarea>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-4">
-							<label>Ignore Additional Configuration</label>
+							<label>Ignore additional configuration lines</label>
 							<div>
                               <label class="radio-inline"><input type="radio" value="yes" class="skpaddcfgln" name="skpaddcfgln" checked>Yes</label>
                               <label class="radio-inline"><input type="radio" value="no" class="skpaddcfgln" name="skpaddcfgln">No</label>

@@ -117,10 +117,7 @@ write_log($mesg);
 						<!-- IP management table row -->
 						<div class="row">
 							<!-- region selection -->
-														<div class="col-sm-12 col-md-2">
-								<div class="pagelength"></div>
-							</div>
-							<div class="col-sm-12 col-md-3 text-center">
+							<div class="col-sm-12 col-md-3">
 
 																	<div class="btn-group" id="backup-restore-list-dt-filter">
 										<button type="button" class="btn dropdown-toggle"
@@ -143,9 +140,7 @@ write_log($mesg);
 									</div>
 								
 							</div>
-							<!-- /region selection -->
-							<div class="col">
-							</div>	
+							<!-- /region selection -->	
 							<!-- search table form field -->
 							<div class="col">
 								<div class="input-group" id="search-v-pills-home">

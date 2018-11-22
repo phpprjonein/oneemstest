@@ -283,6 +283,15 @@
 					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Destination path is required.<br/>");
 					req_err = true;
 				};*/ 
+				
+				if($('#sw-delivery-devices #sectionheader').val() == ""){
+					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Section Header Or Search String field is required.<br/>");
+					req_err = true;
+				}
+				if($('#sw-delivery-devices #filtercriteria').val() == ""){
+					$('#sw-delivery-devices #status').append("<strong>Error!</strong> Paste Configuration Section field is required.<br/>");
+					req_err = true;
+				}
 	        	if(allVals.length == 0){
 	        		$('#sw-delivery-devices #status').append("<strong>Error!</strong> Device selection is required");
 	            	req_err = true;	

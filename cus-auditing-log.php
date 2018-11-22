@@ -93,7 +93,7 @@ write_log($mesg);
 							<!-- /region selection -->
 							<div class="col-sm-12 col-md-4 text-center">
 							<div class="input-group">
-								<textarea rows="20" cols="35" id="filtercriteria" placeholder="Paste Configuration Section"></textarea>
+								<textarea rows="10" cols="35" id="filtercriteria" placeholder="Paste Configuration Section"></textarea>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-4">
@@ -115,7 +115,7 @@ write_log($mesg);
 						
 						
 						<!-- IP management table row -->
-						<div class="row">
+						<div class="row mb-3">
 							<!-- region selection -->
 							<div class="col-sm-12 col-md-3">
 

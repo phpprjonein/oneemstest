@@ -15,9 +15,11 @@ $(document).ready(function() {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();
         $(".non-bandwidth").hide();
+        $(".bandwidth .Telco-Interface-ASR9010-Even, .bandwidth .Telco-Interface-ASR9010-Odd").prop( "disabled", false );
       } else {
         $(".non-bandwidth").show();
         $(".bandwidth").hide();
+        $(".bandwidth .Telco-Interface-ASR9010-Even, .bandwidth .Telco-Interface-ASR9010-Odd").prop( "disabled", true );
       }
       refresh_telco_interface();
     }

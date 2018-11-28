@@ -215,6 +215,11 @@ if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['q
     echo json_encode($sectionheader);
 }
 
+if (isset($_POST['type']) && $_POST['type'] == 'autocomplete' && isset($_POST['query']) && isset($_POST['category']) && $_POST['category'] == 'name') {
+    echo generic_get_usernames_ac_fn_ln_ro($query);
+}
+
+
 if (isset($_POST['type']) && $_POST['type'] == 'templduplicateschk' && isset($_POST['templname']) && $_POST['templname'] != '') {
     $resultset = check_templname_already_exist($_POST['templname']);
     if ($resultset[0]['cnt'] > 0) {

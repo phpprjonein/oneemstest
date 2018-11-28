@@ -54,7 +54,7 @@
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Maintenance</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="os-repository.php">Software Upload</a>
+							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>
@@ -172,7 +172,7 @@
 							
 							
 					<?php if(check_user_authentication(array(9))){ ?>
-						<a class="dropdown-item" href="os-repository.php">Software Upload</a>
+						<a class="dropdown-item" href="os-repository.php">Device Binary</a>
 					<?php } ?>	
 						
                     

@@ -50,11 +50,12 @@
 						<a class="dropdown-item" href="golden-scripting.php">Load Template - Golden</a>
 						</div></li>	
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","admin-user-revalidate.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","device-upload.php","admin-user-revalidate.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Maintenance</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
+							<a class="dropdown-item" href="device-upload.php">Device Upload</a>
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>

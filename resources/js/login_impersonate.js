@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).hide(); 
+        });
+    }, 4000);
 	$('#inputName').typeahead({
         source: function (query, result) {
             $.ajax({
@@ -14,4 +19,25 @@ $(document).ready(function() {
             });
         }
     });
+	
+	$(document).on('click', '#device-upload-act', function(event) {
+		var req_err = false;
+		$('#device-upload #status').html('');
+		$('#device-upload #status').css("opacity","");
+		
+		if($('#device-upload #inputName').val() == ""){
+			$('#device-upload #status').append("<strong>Error!</strong> URL field is required.<br/>");
+			req_err = true;
+		}
+		if(req_err){ 
+			$('#device-upload #status').show();
+			$('#device-upload #status').addClass('alert-danger');
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+	});
 });    

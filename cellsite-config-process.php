@@ -265,14 +265,21 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     }
     echo $replace_selbox;
 }elseif ($_POST['action-http-upload'] == 'UPLOAD') {
-    if (move_uploaded_file($_FILES['file']['tmp_name'], getcwd()."upload/deviceuploads/".$_FILES['file']['name'])) {
-        print "Received {$_FILES['file']['name']} - its size is {$_FILES['file']['size']}";
+     $file_ext=strtolower(pathinfo ( $_FILES['file']['name'], PATHINFO_EXTENSION));
+     $expensions= array("avi","bin","mp4","mkv","bin");
+     if(in_array($file_ext,$expensions)=== false){
+        $_SESSION['msg'] = 'fuee';
+        header("location:device-file-upload.php");
+        exit;
+     }
+    if (move_uploaded_file($_FILES['file']['tmp_name'], "upload/deviceuploads/".$_FILES['file']['name'])) {
+        $_SESSION['msg'] = 'fus';
+        header("location:device-file-upload.php");
+        exit;
     } else {
-        print "Upload failed!".$_FILES["file"]["error"];
-        print '<pre>';
-        print_r($_FILES);
-        
+        $_SESSION['msg'] = 'fue';
+        header("location:device-file-upload.php");
+        exit;
     }
-    exit;
 }
 ?>

@@ -281,9 +281,14 @@ write_log($mesg);
 					</div>
 					<!-- END : Map section -->
 					<div class="panel-info panel-default">
-						<div
-							class="alert alert-secondary panel-heading-swtname router_search_box">
+					
 
+					
+					
+					
+						<div
+							class="alert row alert-secondary panel-heading-swtname router_search_box">
+    <div class="col-sm">
           <?php
         $str_marketname = $marketname;
         $switch_device_name = $_SESSION['sel_switch_name'];
@@ -335,7 +340,8 @@ write_log($mesg);
 
 
               <?php endif;?>
-
+			</div>
+    <div class="col-sm">
             <?php
         } elseif (isset($str_marketname)) {
             ?>
@@ -367,12 +373,22 @@ write_log($mesg);
             <?php
         }
         ?>
+        </div>
+    <div class="col-sm">
           <span id="map_show_link" class="pull-right sec_without_map" style='<?php echo ($show_map_flag) ? "display: none" : "display: block" ?>' onclick="showMap()"><b>Show
 									Map</b>&nbsp; <img width="25px"
 								src="resources/img/usmap-icon.png">&nbsp;</span> <span id="map_hide_link" class="pull-right sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>' onclick="hideMap()"><b>Hide
 									Map</b>&nbsp; <img width="25px"
 								src="resources/img/usmap-icon.png">&nbsp;</span>
 						</div>
+						
+  </div>
+						
+						
+						
+						
+						
+						
 						<div id="container_mymarketswitches" class="panel-body">
 							<!-- $show_map_flag is used to set default value invisiblie -->
 							<div id="sw_result_without_map" class="" style='<?php echo ($show_map_flag) ? "display: block" : "display: block" ?>; '>

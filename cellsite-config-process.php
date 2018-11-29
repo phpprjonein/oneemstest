@@ -4,6 +4,12 @@ include_once 'classes/db2.class.php';
 include_once 'functions.php';
 $userid = $_SESSION['userid'];
 
+
+// print '<pre>';
+// print_r($_POST);
+// print_r($_FILES);
+// die;
+
 if ($_POST['action'] == 'SAVE CONFIGURATION') {
     /*
      * unset($_POST['switch_name']);
@@ -258,6 +264,15 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         }
     }
     echo $replace_selbox;
+}elseif ($_POST['action-http-upload'] == 'UPLOAD') {
+    if (move_uploaded_file($_FILES['file']['tmp_name'], getcwd()."upload/deviceuploads/".$_FILES['file']['name'])) {
+        print "Received {$_FILES['file']['name']} - its size is {$_FILES['file']['size']}";
+    } else {
+        print "Upload failed!".$_FILES["file"]["error"];
+        print '<pre>';
+        print_r($_FILES);
+        
+    }
+    exit;
 }
-
 ?>

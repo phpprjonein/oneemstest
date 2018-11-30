@@ -272,7 +272,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         header("location:device-file-upload.php");
         exit;
      }
-    if (move_uploaded_file($_FILES['file']['tmp_name'], "upload/deviceuploads/".$_FILES['file']['name'])) {
+    //if (move_uploaded_file($_FILES['file']['tmp_name'], "upload/deviceuploads/".$_FILES['file']['name'])) {
+		if (move_uploaded_file($_FILES['file']['tmp_name'], "/usr/apps/oneems/binaries/".$_FILES['file']['name'])) {
         $_SESSION['msg'] = 'fus';
         header("location:device-file-upload.php");
         exit;

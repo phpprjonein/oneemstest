@@ -30,6 +30,7 @@ $(document).ready(function () {
 			 "createdRow": function (row, data, rowIndex) {
 	             $(row).addClass('device_row');
 				  $.each($('td', row), function (colIndex) {
+					 var batchid = $(this).closest('tr').find("td:eq(1)").text();
 					 var region = $(this).closest('tr').find('td:eq(6)').html().toLowerCase();
          			 var market = $(this).closest('tr').find('td:eq(4)').html();
          			 var devicename = $(this).closest('tr').find("td:eq(2)").text();
@@ -38,7 +39,7 @@ $(document).ready(function () {
          				$(this).html('<span style="display:none;" class="viewfiltercriteria_'+ batchid +'">' + $(this).html() + '</span><a href="#"  data-toggle="modal" data-batchid="' + batchid + '" data-target="#myModal" data-toggle="modal" class="viewfiltercriteria btn"> View </a>');
          			}
 	            	 if(colIndex == 9){
-	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/custaudit/' + market + '/' + devicename + '.txt">' + devicename +'.txt</a>');
+	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/custaudit/' + market + '/' + batchid + '_'+ devicename + '.txt">' + devicename +'.txt</a>');
 	            	 }
 	             }); 
 	        }

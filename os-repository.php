@@ -14,9 +14,9 @@ check_user_authentication(array(
     8, 9
 )); // cellsite tech type user
 
-if ($_SESSION['userlevel'] == 8 && $_SESSION['admin_check'] !== true) {
-    header("location:admin-user-revalidate.php");
-}
+// if ($_SESSION['userlevel'] == 8 && $_SESSION['admin_check'] !== true) {
+//     header("location:admin-user-revalidate.php");
+// }
 
 $page_title = 'OneEMS';
 // page logging

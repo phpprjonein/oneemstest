@@ -39,7 +39,7 @@ $(document).ready(function () {
          				$(this).html('<span style="display:none;" class="viewfiltercriteria_'+ batchid +'">' + $(this).html() + '</span><a href="#"  data-toggle="modal" data-batchid="' + batchid + '" data-target="#myModal" data-toggle="modal" class="viewfiltercriteria btn"> View </a>');
          			}
 	            	 if(colIndex == 9){
-	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/custaudit/' + market + '/' + batchid + '_'+ devicename + '.txt">' + devicename +'.txt</a>');
+	            		 $(this).html('<a href="download.php?file=/usr/apps/oneems/config/bkup/' + region + '/custaudit/' + market + '/' + batchid + '_'+ devicename + '.txt">' + batchid + '_' + devicename +'.txt</a>');
 	            	 }
 	             }); 
 	        }

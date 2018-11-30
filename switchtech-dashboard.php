@@ -486,7 +486,6 @@ write_log($mesg);
 					<div class="panel-info panel-default">
 						<div
 							class="alert row alert-secondary panel-heading-swtname router_search_box">
-							<div class="col-sm">
 							
 
           <?php
@@ -503,6 +502,7 @@ write_log($mesg);
 
         if (! isset($str_marketname)) {
             ?>
+            <div class="col-sm">
             <form action="" method="post" name="switchtech-dashboard-deviceadd-form">
               <!-- Displays user assigned switch name -->
 							<b>Switch Name : &nbsp; </b>
@@ -549,7 +549,6 @@ write_log($mesg);
             <form action="" method="post" name="switchtech-dashboard-deviceadd-form">
               <!-- Displays user selected market name -->
 							<label>Market Name :&nbsp;</label><?php echo $str_marketname; ?>
-
 		  <?php
             $switchlistbymarket = generic_get_switch_name_by_market($str_marketname);
             if (count($switchlistbymarket['result']) > 0) :
@@ -583,7 +582,7 @@ write_log($mesg);
             <?php
         }
         ?>
-        <div class="col-sm">
+        <div class="col-sm-3">
           <span id="map_show_link" class="pull-right sec_without_map" style='<?php echo ($show_map_flag) ? "display: none" : "display: block" ?>' onclick="showMap()"><b>Show
 									Map</b>&nbsp; <img width="25px"
 								src="resources/img/usmap-icon.png">&nbsp;</span> <span id="map_hide_link" class="pull-right sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>' onclick="hideMap()"><b>Hide
@@ -621,7 +620,7 @@ write_log($mesg);
         }
         ?>
 
-              <table id="swt_user_devices" class="table  table-border">
+              <table id="swt_user_devices" class="table table-responsive table-border">
 									<thead>
 										<tr>
 											<th></th>

@@ -288,7 +288,6 @@ write_log($mesg);
 					
 						<div
 							class="alert row alert-secondary panel-heading-swtname router_search_box">
-    <div class="col-sm">
           <?php
         $str_marketname = $marketname;
         $switch_device_name = $_SESSION['sel_switch_name'];
@@ -302,10 +301,11 @@ write_log($mesg);
          */
         if (! isset($str_marketname)) {
             ?>
+            <div class="col-sm">
+            <form action="" method="post" name="cellsitetech-dashboard-deviceadd-form">
               <!-- Displays user assigned switch name -->
 							<b>Switch Name : &nbsp; </b>
               <?php if(count($_SESSION['swt_mswitch_arr']) > 0):?>
-		<form action="" method="post" name="cellsitetech-dashboard-deviceadd-form"> 
           <div class="btn-group" id="dash-switches">
 								<button type="button" id="switch_selected" name="switch_selected" class="btn dropdown-toggle"
 									data-toggle="dropdown" aria-haspopup="true"
@@ -336,15 +336,13 @@ write_log($mesg);
           
           
 							</div>
-							</form>
-
-
               <?php endif;?>
+              </form>
 			</div>
-    <div class="col-sm">
             <?php
         } elseif (isset($str_marketname)) {
             ?>
+            <div class="col-sm">
               <!-- Displays user selected market name -->
 							<label>Market Name :&nbsp;</label><?php echo $str_marketname; ?>
               		  <?php
@@ -370,11 +368,11 @@ write_log($mesg);
           </div>
 							</div>
           <?php endif;?>
+          </div>
             <?php
         }
         ?>
-        </div>
-    <div class="col-sm">
+    <div class="col-sm-3">
           <span id="map_show_link" class="pull-right sec_without_map" style='<?php echo ($show_map_flag) ? "display: none" : "display: block" ?>' onclick="showMap()"><b>Show
 									Map</b>&nbsp; <img width="25px"
 								src="resources/img/usmap-icon.png">&nbsp;</span> <span id="map_hide_link" class="pull-right sec_with_map" style='<?php echo ($show_map_flag) ? "display: block" : "display: none" ?>' onclick="hideMap()"><b>Hide
@@ -419,7 +417,7 @@ write_log($mesg);
         }
         ?>
           <!-- <div class="table-responsive"> -->
-								<table id="cellsitetech_user_devices" class="table table-border">
+								<table id="cellsitetech_user_devices" class="table  table-responsive table-border">
 									<thead>
 										<tr>
 											<th><input type="checkbox" id="selectall" name="selectall"

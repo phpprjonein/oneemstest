@@ -4149,6 +4149,12 @@ function get_audithistory_datatable()
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
             $value['DT_RowId'] = "row_" . $value['id'];
+            $source_file = '/usr/apps/oneems/config/bkup/'. strtolower($value['region']) . '/custaudit/'. $value['market'] . '/' . $value['batchid'] . '_' . $value['devicename'] . '.txt';
+            if(file_exists($source_file)){
+                $value['austatus_exist'] = $source_file;
+            }else{
+                $value['austatus_exist'] = 0;
+            }
             $records[$key] = $value;
         }
         $resultset['data'] = $records;

@@ -163,10 +163,10 @@ function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries,
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "','')";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','Pass', '')";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','NULL', '')";
         } else {
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
-            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','Pass', ''),";
+            $cusalsql .= "('" . $batchid . "','" . $_SESSION['username'] . "','" . $nodes[$val]['region'] . "','" . $nodes[$val]['market'] . "','" . $nodes[$val]['devicename'] . "','" . $nodes[$val]['deviceIpAddr'] . "','" . $nodes[$val]['deviceseries'] . "','" . $filtercriteria . "','" . $sectionheader . "','" . $skpaddcfgln . "','NULL', ''),";
         }
         $oc ++;
     }

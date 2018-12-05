@@ -404,9 +404,15 @@ function get_device_list_for_user($userid, $listid){
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-function get_device_list_for_user_by_switch($switchname){
+function get_device_list_for_user_by_switch($switchname, $market = ''){
     global $db2;
-    $sql = "select n.id FROM nodes n WHERE n.switch_name = '" . $switchname . "' and status != 0";
+    
+    $sql = "select n.id FROM nodes n WHERE n.switch_name = '" . $switchname . "'";
+    
+    if($market != ''){
+        $sql .= " AND trim(lower(REPLACE(n.market,' ',''))) ='$market'";
+    }
+        
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

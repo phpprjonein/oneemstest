@@ -69,6 +69,7 @@ write_log($mesg);
           if($_POST['addalldevices'] == 'Add All Devices'){
               $listid = $_POST['hidd_mylistid'];
               $switchname = $_POST['hidd_switch_selected'];
+              $market = $_POST['hidd_market_selected'];
               $userid = $_SESSION['userid'];
               
               $list_existing_devices = $list_add_new_devices = array();
@@ -78,7 +79,7 @@ write_log($mesg);
                   $listname = ($listname == "") ? $val['listname'] : $listname;
               }
               
-              $results_switch_nodes = get_device_list_for_user_by_switch($switchname);
+              $results_switch_nodes = get_device_list_for_user_by_switch($switchname, $market);
               foreach ($results_switch_nodes['result'] as $key => $val){
                   $list_add_new_devices[] = $val['id'];
               }
@@ -574,6 +575,7 @@ write_log($mesg);
                &nbsp;<button type="submit" value="Add All Devices" id="addalldevices" name="addalldevices" class="btn">Add All Devices</button>
                <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
                <input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">
+               <input type="hidden" name="hidd_market_selected" id="hidd_market_selected" value="<?php echo strtolower($str_marketname) ?>">
           <?php }?>
 							</div>
           <?php endif;?>

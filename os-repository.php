@@ -256,7 +256,7 @@ select device series options -->
                                             <?php
                                             // $path ='O:\wamp\www\oneemstest\upload';
                                             // $path ='/var/www/html/oneemstest/osrepository/';
-                                            $path = '/usr/apps/oneems/config/bkup/sd';
+                                            $path = '/usr/apps/oneems/binaries/';
                                             $contents = array_values(array_diff(scandir($path), array(
                                                 '.',
                                                 '..'

@@ -55,7 +55,7 @@
 						aria-haspopup="true" aria-expanded="false">Maintenance</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
-							<a class="dropdown-item" href="device-upload.php">Device Upload</a>
+							<!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
 							<a class="dropdown-item" href="device-file-upload.php">Device File Upload</a>
 						</div></li>
           <?php } ?>
@@ -175,6 +175,7 @@
 							
 					<?php if(check_user_authentication(array(9))){ ?>
 						<a class="dropdown-item" href="os-repository.php">Device Binary</a>
+						<a class="dropdown-item" href="device-file-upload.php">Device File Upload</a>
 					<?php } ?>	
 						
                     

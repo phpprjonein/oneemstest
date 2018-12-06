@@ -12,7 +12,7 @@ if (isset($_GET['clear'])) {
 
 user_session_check();
 check_user_authentication(array(
-        8
+        8,9
 )); // cellsite tech type user
 
 $page_title = 'OneEMS';
@@ -60,7 +60,8 @@ $page_title = 'OneEMS';
 												  <div class="form-group">
                                                     <label for="exampleInputFile">Select a file to upload</label>
                                                     <input type="file" id="file" name="file" class="form-control-file" aria-describedby="fileHelp">
-                                                    <small id="fileHelp" class="form-text text-muted">Upload "avi","mp4","mkv","bin" type file.</small>
+                                                    <!-- <small id="fileHelp" class="form-text text-muted">Upload "avi","mp4","mkv","bin" type file.</small> -->
+													<small id="fileHelp" class="form-text text-muted">Upload "bin" type file.</small>
                                                   </div>
 												<input type="submit" name="action-http-upload" id="action-http-upload" class="btn btn-sm" value="UPLOAD">
 											</form>

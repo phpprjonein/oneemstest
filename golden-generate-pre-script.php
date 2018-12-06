@@ -253,7 +253,7 @@ write_log($mesg);
 							<!-- /backup management content row -->
 						</div>
 						<div class="row">
-						<p>usvars</p>
+						
                     		<?php
                     $vars['usrvars'] = golden_modification_configtemplate_elemvalue_pos_script('usrvars', 'usrvarname', 'usrvarval');
 

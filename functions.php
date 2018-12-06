@@ -5119,11 +5119,20 @@ function generate_option_button_for_configs_telco_interface($switchname, $type, 
     $output = '<option value="">-- Select -- </option>';
     if(isset($resultset[0]['swvarval'])){
         $devicename = $resultset[0]['swvarval'];
+        /*
         if($script_type != 'BW-Upgrade'){
             $sql = "SELECT distinct(interface), devicename FROM software_inventory where interface like 'TenGigE%' and devicename like '".$devicename."' and NOT interface LIKE '%.%' and interface != '' and interface != 'None' order by interface";
         }else{
             $sql = "select interface,description from software_inventory where devicename = '".$devicename."' and description like '".$device_name."%'";
-        }
+        }*/
+        
+        $tabcolname = ($type == 'even') ? 'telcointerfaceeven':'telcointerfaceodd';
+        //if($script_type != 'BW-Upgrade'){
+            $sql = "SELECT distinct(".$tabcolname.") as interface, devicename FROM swinventoryinterface where ".$tabcolname." like 'TenGigE%' and devicename like '".$devicename."' and NOT ".$tabcolname." LIKE '%.%' and ".$tabcolname." != '' and ".$tabcolname." != 'None' order by ".$tabcolname;
+        //}else{
+        //    $sql = "select interface,description from software_inventory where devicename = '".$devicename."' and description like '".$device_name."%'";
+        //}
+        
         $db2->query($sql);
         $resultset = $db2->resultset();
         foreach ($resultset as $key => $val){

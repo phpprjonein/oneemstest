@@ -831,30 +831,67 @@ event manager applet LOOP_GIG authorization bypass
 								<ul>
 									<li>Global variables: A predefined set of values that are common to all devices
 										<ul>
+											<li>Device name</li>
 											<li>Enable_Secret</li>
 											<li>IOS</li>
 										</ul>
 									</li>
 									<li>Market variables: A predefined set of values that are associated to a given market
 										<ul>
+											<li>BGP Password</li>
 											<li>Enable_Secret</li>
+											<li>Logging Server</li>
+											<li>Password</li>
 											<li>RP_Address</li>
+											<li>Snmp server1</li>
+											<li>Snmp server2</li>
+											<li>Time zone</li>
 											<li>User name</li>
 										</ul>
 									</li>
 									<li>User variables: Values that a user enters at the time of generating a script
 										<ul>
-											<li>ASR9k-01_hostname</li>
-											<li>ASR9k-02_hostname</li>
-											<li>Bandwidth</li>
-											<li>Even_VLAN</li>
-											<li>Etc...</li>
+											<li>Bandwidth (Mbps)</li>
+											<li>Bandwidth Type</li>
+											<li>BDI 300 IPv6 Address</li>
+											<li>BDI 400 LTE IPv6 Address</li>
+											<li>Bearer Vlan IPv6</li>
+											<li>BGP Password-ASR9010-Even</li>
+											<li>BGP Password-ASR9010-Odd</li>
+											<li>BV3000 Interface-ASR9010-Even</li>
+											<li>BV3000 Interface-ASR9010-Odd</li>
+											<li>CSR – Bandwidth Type(6/8)</li>
+											<li>CSR – Bandwidth(Mbps)</li>
+											<li>Enable Secret</li>
+											<li>eNodeB_ID</li>
+											<li>Even Vlan IP</li>
+											<li>Loopback0 IPv4 Address</li>
+											<li>Loopback300 IPv4 Address</li>
+											<li>Loopback300 IPv6 Address</li>
+											<li>Loopback400 IPv6 Address</li>
+											<li>MTU</li>
+											<li>Odd Vlan IP</li>
+											<li>P2P (IPv4)-ASR9010-Even</li>
+											<li>P2P (IPv4)-ASR9010-Odd</li>
+											<li>Telco Interface-ASR9010-Even</li>
+											<li>Telco Interface-ASR9010-Odd</li>
+											<li>Time Zone</li>
+											<li>Vlan(Even)</li>
+											<li>Vlan(Odd)</li>
 										</ul>
 									</li>
 									<li>Switch variables: Predefined values that are associated with a switch name
 										<ul>
 											<li>AS</li>
-											<li>Device_prefixName(aka CLLI)</li>
+											<li>Asr9k-1 Hostname</li>
+											<li>Asr9k-1 Loopback0 IP</li>
+											<li>Asr9k-1 Loopback10 IP</li>
+											<li>Asr9k-2 Hostname</li>
+											<li>Asr9k-2 Loopback0 IP</li>
+											<li>Asr9k-2 Loopback10 IP</li>
+											<li>devicename_prefix</li>
+											<li>Loopback10 (EDN11E IPv6)</li>
+											<li>Loopback10 (EDN11E IPv4)</li>
 										</ul>
 									</li>
 								</ul>

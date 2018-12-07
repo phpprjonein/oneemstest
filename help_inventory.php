@@ -111,16 +111,12 @@ echo generate_site_breadcrumb($values);
 <!-- Inventory -->
 							<h4 id="item-10">INVENTORY</h4>
                             <p>This dashboard allows users to search through existing Software and Hardware inventory files based on either a device's name or  its IP address.</p>
-                            <img src="resources/img/screenshot-inventory.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
+                            <p>Once a user has chosen their Inventory search parameters, they are then presented with a list of files that match for  download.</p>
+							<img src="resources/img/screenshot-inventory1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-inventory1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 10 - Inventory Dashboard With Sample Values Selected</b></span>
 							<p></p>
-                            <p>Once a user has chosen their Inventory search parameters, they are then presented with a list of files that match for  download.</p>
-                            <img src="resources/img/screenshot-inventory2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
-							<p></p>
-							<span class="font-italic"><b>FIG. 10.1 - Inventory Files For Download</b></span>
-							<p></p>
-							<hr>
+                            <hr>
 							<div class="row">
 								<div class="col-6">
 									<a href="help_audit.php" class="border"><b><< PREV: Audit</b></a>
@@ -145,14 +141,14 @@ echo generate_site_breadcrumb($values);
 <!-- container-fluid -->
 
 <!-- image modals -->
-	<div class="big-modal">
-		<div class="modal fade show" id="screenshot-jira-button-link" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="big-modal">
+		<div class="modal fade show" id="screenshot-inventory1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-jira-button-link.png" alt="" width="100%">
+					<img src="resources/img/screenshot-inventory1.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

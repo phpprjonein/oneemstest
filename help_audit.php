@@ -111,7 +111,14 @@ echo generate_site_breadcrumb($values);
 							data-spy="scroll" data-target="#navbar-help" data-offset="0">
 							<hr class="d-md-none" />
 							<h4 id="item-audit">AUDIT</h4>
-							<p>This dashboard allows <b>users</b> to audit network device management tasks. Devices accessible in this  dashboard are ones assigned to them, and include devices added to any custom lists created in the <a  href="help_network_elements.php#item-2-2-1">List Management Dashboard</a>. Users can perform audit actions on  each device including basic audits, batch proccess audits and compliance tracking.</p>
+							<p>This dashboard allows <b>users</b> to audit network device management tasks. Devices accessible in this  dashboard are ones assigned to them, and include devices added to any custom lists created in the <a  href="help_network_elements.php#item-2-2-1">List Management Dashboard</a>.</p>
+							<p>Users can:</p>
+							<ul>
+								<li>View the results of previous scheduled full audits</li>
+								<li>Manually run a full audit on one or more devices</li>
+								<li>Run a partial audit</li>
+								<li>View the history of previously run partial audits.</li>
+							</ul>
 							<p>Users can sort basic audit log results by:</p>
 							<ul>
 								<li>IP Address</li>
@@ -129,7 +136,7 @@ echo generate_site_breadcrumb($values);
                             <p></p>
                             <span class="font-italic"><b>FIG. 9.1 - Audit Dashboard</b></span>
                             <p></p>
-							<p>Once a user has chosen a device or devices for audit, a batch is created for processing. You can see the status of the batch at the end of the selection proccess after you click on the <b>Submit</b> button:</p>
+							<p>Once a user has chosen a device or devices for audit, a batch is created for processing. You can see the status of the batch at the end of the selection process after you click on the <b>Submit</b> button:</p>
 							<p></p>
                             <img src="resources/img/screenshot-audit2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit2">
 							<p></p>
@@ -140,13 +147,45 @@ echo generate_site_breadcrumb($values);
                             <p></p>
 							<span class="font-italic"><b>FIG. 9.1.2 - Audit Batch Status</b></span>
                             <p></p>
-							<h5 id="item-audit-1">Customized Audit</h5>
-							<p>Here, a user can view create customized audits for devices s/he is associated with.</p>
-							<p>This screen allows a user to search for a specific string within customization audit reports on devices they have access to.</p>
+							<h5 id="item-audit-1">Customize Audit</h5>
+							<p>Here, a user can run a partial audit.  The inputs are:
+								<ul>
+									<li>A string identifying  the top of the section to be audited</li>
+									<li>The contents of the section to be audited</li>
+									<li>Ignore additional configuration lines (Yes/No)</li>
+								</ul>
+							</p>
+							<p>For example, suppose a user wants to validate the correct usernames included a configuration file for a device. S/he would do the following:
+								<ol>
+									<li>Enter “username” in the field that says &lt;Enter Section Header Or Search String&gt;</li>
+									<li>Paste text of all the correct usernames, for example:
+										<pre>username solkcpnebh privilege 15 secret 5 {{anystring}}
+username njbbcpnebh privilege 15 secret 5 {{anystring}}
+username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
+									</li>
+									<li>Select whether to ignore additional lines found in the configuration file (Yes/No)</li>
+									<li>Select the devices you want to run this partial audit on</li>
+									<li>Click “Submit” button to run the batch job</li>
+								</ol>
+							</p>
                             <p></p>
-                            <img src="resources/img/screenshot-audit4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4">
+                            <img src="resources/img/screenshot-audit4-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.2 - Audit Dashboard</b></span>
+                            <span class="font-italic"><b>FIG. 9.2 - Customized Audit Dashboard</b></span>
+                            <p></p>
+							<p>A user can filter the table results using the form fields for <b>Section Header</b> or a search string, a specific <b>Configuration Section</b> of a particular log file, and can also choose to ignore certain configuration lines in the results.</p>
+							<p>All of these filtering options can be performed on just one log file or multiple sets of log files.</p>
+							<p>Once a user sets the criteria for which they want to filter their audits to run on, they then choose specific audit logs to perform run filters on then click the <b>Submit</b> button. They are presented with a popup window that shows the Batch ID which they can then use to track the log request on the <a href="help_config.php#item-4-3">Batch Tracking page</a>.</p>
+							<p></p>
+                            <img src="resources/img/screenshot-audit4-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
+                            <p></p>
+                            <span class="font-italic"><b>FIG. 9.2.1 - Customized Audit Dashboard</b></span>
+                            <p></p>
+							<p>To track the audit log customization, a user navigates to the Batch Tracking page and does a search within the table for the Batch ID created in the step earlier. Success/failure execution status will be shown here.</p>
+							<p></p>
+                            <img src="resources/img/screenshot-audit4-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
+                            <p></p>
+                            <span class="font-italic"><b>FIG. 9.2.2 - Custom Audit Batch Tracking Dashboard</b></span>
                             <p></p>
 							<h5 id="item-audit-2">Customized Audit History</h5>
 							<p>Here, a user can view the results of past customized audits on devices in their inventory. This dashboard does not present any real time information, but the <b>logs of customized audits previously performed</b>.</p>
@@ -231,6 +270,26 @@ echo generate_site_breadcrumb($values);
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-audit4.png" alt="" width="100%">
+				</div>
+			</div>
+        </div>
+		<div class="modal fade show" id="screenshot-audit4-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-audit4-1.png" alt="" width="100%">
+				</div>
+			</div>
+        </div>
+		<div class="modal fade show" id="screenshot-audit4-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-audit4-2.png" alt="" width="100%">
 				</div>
 			</div>
         </div>

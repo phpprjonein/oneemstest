@@ -116,7 +116,7 @@ echo generate_site_breadcrumb($values);
 							<p>To get started, a user <b><i>MUST</i></b> first complete the following prerequisites:</p>
 							<ul>
 								<li>obtain permission / access from supervisor (or from <b>CARMS</b> when available)</li>
-								<li>have a single sign on account in <b>QTWIN</b> and <b>USWIN</b></li>
+								<li>have a single sign on account in <b>USWIN</b></li>
 								<li>secure access to the <b>Verizon SSO</b> login screen
 								</li>
 							</ul>

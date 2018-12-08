@@ -510,9 +510,11 @@ function refresh_telco_interface(){
 		'select_script_type' : $(".gscript1 #select_script_type").val(),
 		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
 	  }).done(function(data) {
-		if (data != "") {
-			$('.Telco-Interface-ASR9010-Even').html(data);
-		}
+			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
+				$('.Telco-Interface-ASR9010-Even').val(data);
+			}else{
+				$('.Telco-Interface-ASR9010-Even').html(data);
+			}
 	});
 	$.post("ip-mgt-process.php", {
 		'calltype': "configtrigger",
@@ -521,8 +523,10 @@ function refresh_telco_interface(){
 		'select_script_type' : $(".gscript1 #select_script_type").val(),
 		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
 	  }).done(function(data) {
-		if (data != "") {
-			$('.Telco-Interface-ASR9010-Odd').html(data);
-		}
+			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
+				$('.Telco-Interface-ASR9010-Odd').val(data);
+			}else{
+				$('.Telco-Interface-ASR9010-Odd').html(data);
+			}
 	});	
 }

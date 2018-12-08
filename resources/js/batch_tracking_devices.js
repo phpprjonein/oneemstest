@@ -58,7 +58,7 @@ $(document).ready(function() {
          	 }else if(colIndex == 4 && $(this).html() == ''){
         		   $(this).html('N/A');	
           	 }else if(colIndex == 7){ 
-         		 if($(this).html() == 'd')
+         		 if($(this).html() == 'd' || $(this).html() == 'Completed')
          			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
          		 else
          			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
@@ -206,7 +206,7 @@ $(document).ready(function() {
 		              	 }else if(colIndex == 4 && $(this).html() == ''){
 		              		   $(this).html('N/A');	
 		              	 }else if(colIndex == 7){ 
-		             		 if($(this).html() == 'd')
+		             		 if($(this).html() == 'd' || $(this).html() == 'Completed')
 		             			$(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
 		             		 else
 		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');

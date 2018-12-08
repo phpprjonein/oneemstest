@@ -219,6 +219,7 @@ select device series options -->
 														<thead>
 															<tr>
 																<th>Filename</th>
+																<th>Upload Data</th>
 																<th>Filesize</th>
 																<th>Deviceseries</th>
 																<th>Delete</th>
@@ -233,6 +234,7 @@ select device series options -->
                                                         <tr
 																id="row_<?php echo $val['fileid'];?>">
 																<td><?php echo $val['filename']; ?></td>
+																<td><?php echo $val['uploadeddate']; ?></td>
 																<td><?php echo array_sum($filesize_arr); ?></td>
 																<td><?php echo $val['deviceseries']; ?></td>
 																<td><button type="button" class="btn retModaldelete">Delete</button></td>

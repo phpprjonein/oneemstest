@@ -137,6 +137,7 @@ echo generate_site_breadcrumb($values);
 							<br>
 							<br>
 							<b>NA Systems Assurance Users</b> will only be permitted to view the switches and associated devices assigned to  them. The map will be enabled for only those markets that contain an assigned switch.</p>
+							<p>&nbsp;</p>
 							<img src="resources/img/screenshot-map1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-map1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
@@ -285,6 +286,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 2.3 - Device Console Output View</b></span>
 							<p></p>
+							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
 							<div class="row">

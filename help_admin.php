@@ -115,30 +115,40 @@ echo generate_site_breadcrumb($values);
                             <p>Admin users will be taken to this page first. They have the option of impersonating a user or   maintaining software binaries available to the user community.</p>
                             <img src="resources/img/screenshot-admin1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 8.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
+							<span class="font-italic"><b>FIG. 11.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
 							<h5 id="item-9-1">Load Template - Golden</h5>
 							<p>Admin users are presented with a similar page and flow as all other users when configuring templates, with the key exception being that admin users are allowed to configure Golden templates.</p>
 							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 8.1.1 - Configuration Dashboard
+							<span class="font-italic"><b>FIG. 11.1.1 - Configuration Dashboard
 									With Sample Values Selected (Administrative Users)</b></span>
 							<p></p>
 							<img src="resources/img/screenshot-load_template_mod2-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 8.1.2 - File Upload</b></span>
+							<span class="font-italic"><b>FIG. 11.1.2 - File Upload</b></span>
 							<p></p>
 							<img src="resources/img/screenshot-load_template_mod2-2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1-3">
 							<p></p>
-							<span class="font-italic"><b>FIG. 8.1.3 - Configurable Template</b></span>
+							<span class="font-italic"><b>FIG. 11.1.3 - Configurable Template</b></span>
 							<p></p>
 							<h5 id="item-9-2">Software Upload</h5>
 							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
 							<img src="resources/img/screenshot-admin3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin3">
 							<p></p>
-                            <span class="font-italic"><b>FIG. 8.2 - Uploading A New Binary Into OneEMS</b></span>
+                            <span class="font-italic"><b>FIG. 11.2 - Uploading A New Binary Into OneEMS</b></span>
                             <p></p>
-                            <p>If you wish to view binaries already loaded to the OS repository then click on “Retrieve” button. You will get a popup with the list of existing binaries.</p>
+							<img src="resources/img/screenshot-admin4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin4">
+							<p></p>
+                            <span class="font-italic"><b>FIG. 11.2.1 - Existing Binary Listing</b></span>
+                            <p></p>
+							<p>If you wish to view binaries already loaded to the OS repository, select file name from the list then click the “Retrieve” button. You will get a popup with the list of existing binaries.</p>
+							<img src="resources/img/screenshot-admin5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin5">
+							<p></p>
+                            <span class="font-italic"><b>FIG. 11.2.2 - Binary Retrieval Results</b></span>
+                            <p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
 							<div class="row">
 								<div class="col-6">
@@ -232,6 +242,16 @@ echo generate_site_breadcrumb($values);
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-admin4.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-admin5.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

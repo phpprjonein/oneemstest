@@ -117,6 +117,8 @@ echo generate_site_breadcrumb($values);
 							<span class="font-italic"><b>FIG. 10 - Inventory Dashboard With Sample Values Selected</b></span>
 							<p></p>
                             <hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<div class="row">
 								<div class="col-6">
 									<a href="help_audit.php" class="border"><b><< PREV: Audit</b></a>

@@ -127,6 +127,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 3.2 - Backup Device Results</b></span>
 							<p></p>
+							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
 							<div class="row">

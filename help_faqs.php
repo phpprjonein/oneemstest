@@ -325,6 +325,8 @@ echo generate_site_breadcrumb($values);
 								</div>
 							</div>
 							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<div class="row">
 								<div class="col-6">
 									<a href="help_admin.php" class="border"><b><< PREV: Admin</b></a>

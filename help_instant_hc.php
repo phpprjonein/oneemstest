@@ -123,6 +123,8 @@ echo generate_site_breadcrumb($values);
 							<span class="font-italic"><b>FIG. 8.2 - Instant Health Check Dashboard Results for an ASR9K device</b></span>
 							<p></p>
 							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<div class="row">
 								<div class="col-6">
 									<a href="help_maintenance.php" class="border"><b><< PREV: Maintenance</b></a>

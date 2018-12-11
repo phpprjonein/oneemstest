@@ -177,10 +177,6 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 							<p>All of these filtering options can be performed on just one log file or multiple sets of log files.</p>
 							<p>Once a user sets the criteria for which they want to filter their audits to run on, they then choose specific audit logs to perform run filters on then click the <b>Submit</b> button. They are presented with a popup window that shows the Batch ID which they can then use to track the log request on the <a href="help_config.php#item-4-3">Batch Tracking page</a>.</p>
 							<p></p>
-                            <img src="resources/img/screenshot-audit4-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
-                            <p></p>
-                            <span class="font-italic"><b>FIG. 9.2.1 - Customized Audit Dashboard</b></span>
-                            <p></p>
 							<p>To track the audit log customization, a user navigates to the Batch Tracking page and does a search within the table for the Batch ID created in the step earlier. Success/failure execution status will be shown here.</p>
 							<p></p>
                             <img src="resources/img/screenshot-audit4-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
@@ -208,6 +204,8 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
                             <p></p>
                             <span class="font-italic"><b>FIG. 9.3 - Customized Audit History Dashboard</b></span>
                             <hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
                             <div class="row">
 								<div class="col-6">
 									<a href="help_instant_hc.php" class="border"><b>&lt;&lt; PREV: Instant Health Check</b></a>

@@ -142,14 +142,16 @@ echo generate_site_breadcrumb($values);
 							<p>This screen allows users to apply specific preset software configurations to devices within the OneEMS network.</p>
 							<img src="resources/img/screenshot-sw-delivery.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-delivery">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.3 - Software Delivery Dashboard</b></span>
+							<span class="font-italic"><b>FIG. 7.3 - Software Delivery - Boot Order Sequence</b></span>
 							<p></p>
-							<p>Once you have selected a device or set of devices to apply a software configuration to, you will be presented with the <b>Batch Tracking</b> page:</p>
+							<p>Once you have selected a device or set of devices to apply a software configuration to, you will be presented with the <b>Batch Tracking</b> page. This page represents batch runs and is organized by type. Click the plus icon next to the appropriate drop down item in the results table to see the status of your batch job.</p>
 							<img src="resources/img/screenshot-sw-batch1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-batch1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.4 - Batch Tracking A Script Execution Request</b></span>
 							<p></p>
 							<p>Here, you will be able to monitor the progress of your Batch request. You can also cancel a batch request you've initiated prior.</p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
 							<div class="row">
 								<div class="col-6">

@@ -33,7 +33,7 @@ $page_title = 'OneEMS';
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-					<h5>Device File Upload</h5>
+					<h5>Binary File Upload</h5>
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<div class="row">

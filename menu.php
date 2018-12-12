@@ -1,4 +1,4 @@
-<header class="main-header">
+ <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
 			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
@@ -56,7 +56,7 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
 							<!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
-							<a class="dropdown-item" href="device-file-upload.php">Device File Upload</a>
+							<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>
@@ -175,7 +175,7 @@
 							
 					<?php if(check_user_authentication(array(9))){ ?>
 						<a class="dropdown-item" href="os-repository.php">Device Binary</a>
-						<a class="dropdown-item" href="device-file-upload.php">Device File Upload</a>
+						<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
 					<?php } ?>	
 						
                     

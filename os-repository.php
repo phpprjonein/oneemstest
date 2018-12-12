@@ -219,7 +219,7 @@ select device series options -->
 														<thead>
 															<tr>
 																<th>Filename</th>
-																<th>Upload Data</th>
+																<th>Uploaded Date</th>
 																<th>Filesize</th>
 																<th>Deviceseries</th>
 																<th>Delete</th>

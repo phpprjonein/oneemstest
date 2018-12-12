@@ -117,7 +117,7 @@ write_log($mesg);
 						  <?php
         $switchtech_list = get_switchtechusers_list($_SESSION['userid']);
         foreach ($switchtech_list as $key => $value) :
-            if (isset($value['listname'])) :
+            if (isset($value['listname']) && $value['listname'] != "0") :
                 ?>
 						  <a class="dropdown-item" href="#"><?php echo $value['listname']; ?></a>
 						  <?php

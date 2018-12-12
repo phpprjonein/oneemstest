@@ -399,7 +399,7 @@ function get_device_list_from_nodes_datatable($userid)
 
 function get_device_list_for_user($userid, $listid){
     global $db2;
-    $sql = "select ud.nodeid, ud.listname FROM userdevices ud JOIN nodes n on ud.nodeid = n.id WHERE ud.userid = " . $userid . " and ud.listid = " . $listid;
+    $sql = "select ud.nodeid, ud.listname FROM userdevices ud WHERE ud.userid = " . $userid . " and ud.listid = " . $listid ." and nodeid = 0";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

@@ -98,7 +98,7 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>

@@ -98,7 +98,7 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="#item-10">FAQs</a>
 								</nav>
@@ -126,7 +126,7 @@ echo generate_site_breadcrumb($values);
 											<p>In order to access the OneEMS application, a user must have:</p>
 											<ul>
 												<li>obtained permission / access from supervisor (or from <b>CARMS</b> when available)</li>
-												<li>a single sign on account in <b>QTWIN</b> and <b>USWIN</b></li>
+												<li>a single sign on account in <b>USWIN</b></li>
 												<li>access to the <b>Verizon SSO</b> login screen </li>
 											</ul>
 											<p>Please see your supervisor or administrative body to obtain this access.</p>
@@ -156,7 +156,7 @@ echo generate_site_breadcrumb($values);
 									</div>
 									<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
 										<div class="card-body">
-											<p>The <b><a href="help_network_elements.php">Network Elements Dashboard</a></b> exposes all the devices assigned to a specific user as per the <b>OpsTracks</b> database.</p>
+											<p>The <a href="help_network_elements.php">Network Elements Dashboard</a> exposes all the devices assigned to a specific user as per the <b>OpsTracks</b> database.</p>
 											<p class="alert alert-danger"><b class="text-danger">NOTE:</b> For NA Field Assurance Users, the <b>My Routers</b> list on the <b>Network  Elements Dashboard</b> contains routers assigned to a specific user by <b>Ops Tracker</b>.</p>
 										</div>
 									</div>
@@ -170,8 +170,8 @@ echo generate_site_breadcrumb($values);
 									</div>
 									<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
 										<div class="card-body">
-											<p>The OneEMS application does not allow for addition of devices to the network from any of the Dashboards contained within it. Devices are added during a discovery session. The list of devices to be discovered are governed by the <b>< href="help_discovery_ips.php">Discovery IPs list</a></b>.</p>
-											<p>A user can run scripts from the <b><a href="help_discovery_results.php">Discovery Results Dashboard</a></b> in  order to rediscover devices that may have been newly added to the IOP database, but this action in and of itself  does <b>NOT</b> actually add a device to the network. It only <i>rediscovers</i> a device that may have been missed during the last polling session carried out by the OneEMS application.</p>
+											<p>The OneEMS application allows for addition of devices to the network from the <a href="help_discovery_results.php#manualDiscovery">Discovery Results Dashboard</a> in order to rediscover devices that may have been newly added to the IOP database.</p>
+											<p>Once a user has found a device s/he would like to add, they would click on the <b>SAVE</b> button on the <b>Manual Discovery</b> results screen. This adds to the device to any future results sets that a user may perform OneEMS-supported queries on within the application.</p>
 										</div>
 									</div>
 								</div>
@@ -184,7 +184,7 @@ echo generate_site_breadcrumb($values);
 									</div>
 									<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
 										<div class="card-body">
-											<p>The <b><a href="#browserOSMatrix">Browser / OS Support Matrix</a></b> below shows the currently supported configurations that the OneEMS Application works in. You must have <b>BOTH</b> a supported operating system  <b>AND</b> a supported browser to view this application. Using browsers and operating systems besides the ones  listed as supported below will produce unintended results in terms of layout and/or functionality.</p>
+											<p>The <a href="#browserOSMatrix">Browser / OS Support Matrix</a> below shows the currently supported configurations that the OneEMS Application works in. You must have <b>BOTH</b> a supported operating system  <b>AND</b> a supported browser to view this application. Using browsers and operating systems besides the ones  listed as supported below will produce unintended results in terms of layout and/or functionality.</p>
 											<p>Currently, no version of Internet Explorer earlier than V.11 is supported by this application.</p>
 											<p>Please see your system administrator or other supervisory body to ensure compliance with this Browser / OS Support Matrix.</p>
 											<p>You may be zoomed in to a higher percentage than usual in your browser. To rectify this, press <kbd>Ctrl +  0</kbd> ( <kbd>Command + 0</kbd> in iOS) to reset the zoom percentage in your browser to 100%.</p>

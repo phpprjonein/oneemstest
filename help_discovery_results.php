@@ -97,7 +97,7 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -132,7 +132,7 @@ echo generate_site_breadcrumb($values);
 							<img src="resources/img/screenshot-discovery-ok.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-discovery-ok">
 							<p></p>
 							<span class="font-italic"><b>FIG. 6.3 - OK IP Addresses Dashboard</b></span>
-							<p></p>
+							<p><a name="manualDiscovery"></a></p>
 							<h5 id="item-6-4">Manual Discovery View</h5>
 							<p>This view allows for users to manually discover devices that are new and have not been discovered yet by the periodic backend  discovery process.</p>
 							<img src="resources/img/screenshot-discovery-manual.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-discovery-manual">
@@ -146,6 +146,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 6.5 - Manual Discovery Update</b></span>
 							<p></p>
+							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
 							<div class="row">

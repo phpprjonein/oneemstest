@@ -97,7 +97,7 @@ write_log($mesg);
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -124,7 +124,7 @@ write_log($mesg);
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> The ASR 920 series Routers for the Great Lakes Region is provided as a  default template. This is the first Region available in the OneEMS system. Future enhancements will permit  users to select templates for other Vendors, Markets and other filtering criteria.
 								<br>
 								<br>
-								Additionally, this Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2"><b><i>here</i></b></a> for more information on how to load a template as an admin.</p>
+								Additionally, this Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2">here</a> for more information on how to load a template as an admin.</p>
 							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
 							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>
@@ -911,7 +911,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Deleting a template is <b>permanent</b> and cannot be undone. Please be sure you wish to actually remove the selected template from the table.</p>
 							<b>Edited Template Selection / Download</b>
 							<p>Once you select a template from the list, that template will appear with editable fields highlighted in <span  class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere or  you can schedule a batch job by clicking on the “Execute” button.</p>
-							<p>Once a user executes a configuration template for script execution, that template gets added to a batch  process. More information about this batch process can be found <a  href="help_maintenance.php#item-7-3"><b>HERE</b></a>.
+							<p>Once a user executes a configuration template for script execution, that template gets added to a batch  process. More information about this batch process can be found <a  href="help_maintenance.php#item-7-3">HERE</a>.
 							</p>
 							<img src="resources/img/screenshot-generate-script2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
 							<p></p>

@@ -99,7 +99,7 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -121,6 +121,7 @@ echo generate_site_breadcrumb($values);
 								</ul>
 							</p>
 							<h5 id="item-7-1">Software Delivery</h5>
+							<a name="selectBinary"></a>
 							<img src="resources/img/screenshot-sw-master.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-master1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>

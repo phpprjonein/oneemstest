@@ -98,7 +98,7 @@ echo generate_site_breadcrumb($values);
 									<a class="nav-link" href="#item-9">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="#item-9-2">Software Upload</a>
+										<a class="nav-link ml-3 my-1" href="#item-9-2">Maintenance</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -121,9 +121,8 @@ echo generate_site_breadcrumb($values);
 							<p>Admin users are presented with a similar page and flow as all other users when configuring templates, with the key exception being that admin users are allowed to configure Golden templates.</p>
 							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 11.1.1 - Configuration Dashboard
-									With Sample Values Selected (Administrative Users)</b></span>
-							<p></p>
+							<span class="font-italic"><b>FIG. 11.1.1 - Configuration Dashboard With Sample Values Selected (Administrative Users)</b></span>
+							<p><a name="loadGolden"></a></p>
 							<img src="resources/img/screenshot-load_template_mod2-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 11.1.2 - File Upload</b></span>
@@ -132,8 +131,18 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 11.1.3 - Configurable Template</b></span>
 							<p></p>
-							<h5 id="item-9-2">Software Upload</h5>
-							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
+							<h5 id="item-9-2">Maintenance</h5>
+							<p>Software Upload is a four step process.</p>
+							<ol>
+								<li>A OneEMS administrator or superuser pulls an official binary from the vendor site and loads it on to his/her laptop. This step is beyond the scope of OneEMS.</li>
+								<li>An administrator or superuser uploads an official binary from their laptop to the OneEMS repository using the <b>Maintenance->Device Binary</b> page (<a href="#loadGolden">Fig 11.2</a>).</li>
+								<li>An administrator or superuser associates a binary in the OneEMS repository with a vendor and deviceseries (<a href="#binaryListing">Fig 11.2.1</a>).
+								<p></p>
+								<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This metadata gets stored in the OneEMS database. Once this step is completed, then <b>all users</b> will be able to see this binary and complete a software delivery to a specified device.</p>
+								</li>
+								<li>Any user can delivery a binary to a device via the <b>Maintenance->Software Delivery</b> tab (<a href="help_maintenance.php#selectBinary">Fig 7.1</a>).</li>
+							</ol>
+							</p>
 							<img src="resources/img/screenshot-admin3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin3">
 							<p></p>
                             <span class="font-italic"><b>FIG. 11.2 - Uploading A New Binary Into OneEMS</b></span>
@@ -142,9 +151,10 @@ echo generate_site_breadcrumb($values);
 							<p></p>
                             <span class="font-italic"><b>FIG. 11.2.1 - Existing Binary Listing</b></span>
                             <p></p>
+							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
 							<p>If you wish to view binaries already loaded to the OS repository, select file name from the list then click the “Retrieve” button. You will get a popup with the list of existing binaries.</p>
 							<img src="resources/img/screenshot-admin5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin5">
-							<p></p>
+							<p><a name="binaryListing"></a></p>
                             <span class="font-italic"><b>FIG. 11.2.2 - Binary Retrieval Results</b></span>
                             <p></p>
 							<hr>

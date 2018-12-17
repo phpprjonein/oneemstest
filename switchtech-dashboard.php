@@ -100,13 +100,14 @@ write_log($mesg);
               }
           }
           ?>
-  <div class="row">
+  <div class="row listmgt">
 			<div id="lhspanel" class="col-sm-6 col-md-6">
 				<div id="mylist"
 					class="alert alert-secondary  panel-heading-lstmgmt">
 					<b>List Management</b>
 				</div>
 				<div class="panel-body">
+					<div id="status" style="display: none;" class="alert alertlist"></div>
 					<div class="col-md-6">
 						<form id="usrmyfavlstfrm" name="usrmyfavlstfrm"
 							action="switchtech-dashboard.php" method="POST"
@@ -117,7 +118,7 @@ write_log($mesg);
 									placeholder="Create New List" type="text" autofocus> <span
 									class="input-group-btn">
 									<button class="btn btn-default search-details" type="submit"
-										name="addlistbtn" name="addlistbtn" data-toggle="tooltip"
+										name="addlistbtn" id="addlistbtn" data-toggle="tooltip"
 										data-placement="right"
 										title="List must be &lt;21 characters long and may contain letters, spaces, and numbers. No special characters."
 										value="Submit">Submit</button>

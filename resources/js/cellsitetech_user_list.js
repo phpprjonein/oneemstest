@@ -343,7 +343,27 @@ $(document).ready(function() {
   		$('#hidd_switch_selected').val($.trim($('#switch_selected').html()));
   	});
 
-
+  	$(document).on("click", "#addlistbtn", function(){
+  		var req_err = false;
+		$('.listmgt #status').html('');
+		$('.listmgt #status').css("opacity","");
+		if($('.listmgt #addlist').val() == ""){
+			$('.listmgt #status').html("<strong>Error!</strong> List name field is required.<br/>");
+			$('.listmgt #status').addClass('alert-danger');
+			$('.listmgt #addlist').focus();
+			$('.listmgt #status').show();
+			req_err = true;
+		}
+		if(req_err){ 
+		    window.setTimeout(function() {
+		        $(".alertlist").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+		
+  	});
 
 });
 

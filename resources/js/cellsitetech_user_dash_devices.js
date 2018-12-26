@@ -50,7 +50,28 @@ $(document).ready(function() {
     	var allVals = [];
     	$(this).parents('table:first').children().find('input[type=checkbox]:checked').each(function(index){
     		 allVals.push($(this).val());
-    	});		
+    	});	
+    	
+        if(allVals.length == 0){
+        	var req_err = true;
+    		$('#health-chk-div-wrap #status').html('');
+    		$('#health-chk-div-wrap #status').css("opacity","");
+    		$('#health-chk-div-wrap #status').html("<strong>Error!</strong> Invalid selection and API should not be called.<br/>");
+    		$('#health-chk-div-wrap #status').addClass('alert-danger');
+    		$([document.documentElement, document.body]).animate({
+    	        scrollTop: $("#health-chk-div-wrap").offset().top-100
+    	    }, 500); 
+    		$('#health-chk-div-wrap #status').show();
+        	if(req_err){ 
+    		    window.setTimeout(function() {
+    		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    		            $(this).hide(); 
+    		        });
+    		    }, 4000);
+    			return false;
+    		}
+        }
+    	
     	$thisdiv = $(this);
     	
         var version = $(this).data('version');

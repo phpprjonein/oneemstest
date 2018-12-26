@@ -1,5 +1,6 @@
 
 <div class="ownfont box-body launch-modal" id="health-chk-div-wrap">
+	<div id="status" style="display: none;" class="alert"></div>
 	<table class="table table-bordered" cellspacing="0" cellpadding="0">
 		<tbody>
 			<tr>

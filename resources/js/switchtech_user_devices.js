@@ -36,7 +36,7 @@ $(document).ready(function() {
         	var req_err = true;
     		$('#health-chk-div-wrap #status').html('');
     		$('#health-chk-div-wrap #status').css("opacity","");
-    		$('#health-chk-div-wrap #status').html("<strong>Error!</strong> Invalid selection and API should not be called.<br/>");
+    		$('#health-chk-div-wrap #status').html("<strong>Error!</strong> Atleast one healthcheck should be selected.");
     		$('#health-chk-div-wrap #status').addClass('alert-danger');
     		$([document.documentElement, document.body]).animate({
     	        scrollTop: $("#health-chk-div-wrap").offset().top-100

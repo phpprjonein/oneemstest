@@ -311,7 +311,7 @@ $(document).ready(function() {
   		var req_err = false;
 		$('.listmgt #status').html('');
 		$('.listmgt #status').css("opacity","");
-		if($('.listmgt #addlist').val() == ""){
+		if($('.listmgt #addlist').val().trim() == ""){
 			$('.listmgt #status').html("<strong>Error!</strong> List name field is required.<br/>");
 			$('.listmgt #status').addClass('alert-danger');
 			$('.listmgt #addlist').focus();

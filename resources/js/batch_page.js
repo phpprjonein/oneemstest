@@ -65,6 +65,25 @@ $(document).ready(function() {
     		 //location.reload();
     	})
     	
+    	$(document).on('click', '#batch-submit-add-all-devices', function(event) {
+			var req_err = false;
+			$('#batch-page #status').html('');
+			$('#batch-page #status').css("opacity","");
+    		if(confirm("Are you sure, do you want to create a batch ?")){
+	            $.ajax({
+	                type:"post",
+	                url:"ip-mgt-process.php",
+	                data: {'ctype':'BatchTabUPdateAddAddAllDevices', 'userid':$(this).data('userid'), 'categorylist':$("#backup-restore-list-dt-filter .btn").text(), 'batchid':$('#batchid').val(), 'scriptname':$('#scriptname').val(), 'deviceseries':$('#deviceseries').val(), 'deviceos':$('#deviceos').val(), 'priority':$('#sel-priority').val(), 'refmop':$('#refmop').val()}, 
+	                success: function(resdata){
+	                	var myModal = $('#batchModal');
+	            		myModal.modal('show'); 
+	                }
+	            });
+    		}
+            return false;
+    	})
+    	
+    	
     	$(document).on('click', '#batch-submit', function(event) {
 			var req_err = false;
 			$('#batch-page #status').html('');

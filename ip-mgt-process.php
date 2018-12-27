@@ -4,6 +4,22 @@ include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors', 1);
 
+if (isset($_POST['categorylist']) && $_POST['ctype'] == 'BatchTabUPdateAddAddAllDevices') {
+    global $db2;
+    echo $sql = "SELECT distinct(n.id), n.deviceIpAddr, n.devicename, n.deviceseries, n.market, n.nodeVersion FROM userdevices ud JOIN nodes n on ud.nodeid = n.id WHERE ud.userid = ".$_SESSION['userid']." AND(ud.listname = '".$_POST['categorylist']."') AND(n.deviceseries = '".$_SESSION['batch_vars']['deviceseries']."') AND(n.nodeVersion = '".$_SESSION['batch_vars']['deviceos']."') ORDER BY n.market asc";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    foreach ($resultset as $key => $val) {
+        $category[] = $val['id'];
+    }
+    if(isset($category) && count($category) > 0){
+        $category = implode(',',$category);
+        update_dev_batch($_POST['batchid'], $category, $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
+    }
+}
+
+
+
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
     update_dev_batch($_POST['batchid'], $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
 }

@@ -186,9 +186,17 @@ echo generate_site_breadcrumb($values);
 											</select>
 										</div>
 									</div>
-									<div class="col-md-2 pb-5 col-sm-12">
+									<div class="row">
+										<div class="col-auto">
 										<button type="submit" value="SUBMIT" class="btn btn-default"
 											id="batch-submit">SUBMIT</button>
+										</div>
+										<?php if((strpos($_SESSION['batch_vars']['templname'], 'BW-Upgrade') === false) && in_array($_SESSION['userlevel'], array(9))):?>
+										<div class="col-auto">	
+										<button type="submit" value="Add All Devices" class="btn btn-default"
+											id="batch-submit-add-all-devices">Add All Devices</button>
+										</div>	
+										<?php endif;?>
 									</div>
 								</form>
 

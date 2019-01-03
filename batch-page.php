@@ -189,12 +189,12 @@ echo generate_site_breadcrumb($values);
 									<div class="row">
 										<div class="col-auto">
 										<button type="submit" value="SUBMIT" class="btn btn-default"
-											id="batch-submit">SUBMIT SELECTED DEVICES</button>
+											id="batch-submit">ADD DEVICES</button>
 										</div>
 										<?php if((strpos($_SESSION['batch_vars']['templname'], 'BW-Upgrade') === false) && in_array($_SESSION['userlevel'], array(9))):?>
 										<div class="col-auto">	
 										<button type="submit" value="Add All Devices" class="btn btn-default"
-											id="batch-submit-add-all-devices">SUBMIT All PAGES</button>
+											id="batch-submit-add-all-devices">ADD All DEVICES</button>
 										</div>	
 										<?php endif;?>
 									</div>

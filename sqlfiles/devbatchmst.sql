@@ -1,1 +1,0 @@
-CREATE TABLE IF NOT EXISTS `devbatchmst` ( `id` int(11) NOT NULL AUTO_INCREMENT, `batchid` varchar(100) NOT NULL, `batchstatus` varchar(1) NOT NULL DEFAULT 'f', `batchscheddate` datetime NOT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;

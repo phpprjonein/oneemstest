@@ -1,4 +1,11 @@
 $(document).ready(function() {
+       
+	$(document).on('click', '#sshcmdoutputcpy', function(event) {
+       var copyText = document.getElementById("sshcmdoutput");
+       copyText.select();
+       document.execCommand("copy");
+       // alert("Copied the text: " + copyText.value); 
+        });
 	$('#slectchktype input[type=radio][name=optradio]').change(function() {
 		if(this.value == 'ipaddress'){
 			$('#inputDeviceName').hide();

@@ -108,14 +108,15 @@ $(document).ready(function() {
 	            "targets": 4,
 	            "render": function ( data, type, row, meta ) {
 	            	exploded = row['deviceIpAddr'].split('<br/>');
-	            	$('#username').val('njbbcpnebh');
+	            //	$('#username').val('njbbcpnebh'); old working
 	            	//return '<a target="blank" href="ssh://' + $('#username').val() + '@'+exploded[0]+'">'+data +'</a>';
-					return data;
+		//			return data; old working
 	                //var itemID = row[0];                   
 	                //return '<a target="blank" href="/cfcs/blah.cfc?item_id=' + itemID + '">' + data + '</a>';
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 				//	return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
+			return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh-stage.nsiam.vzwnet.com">' + data +'</a>';
 	           }
 	        }],   
           "pageLength": 25,

@@ -1,5 +1,63 @@
 $(document).ready(function() {
-       
+	$(document).on('click', ".instant-health-check #sync-password-ip-health-check", function(event) {
+		var req_err = false;
+		$('.instant-health-check #status').html('');
+		$('.instant-health-check #status').css("opacity","");
+		if($('.instant-health-check #syncPassInputDeviceIPaddress').val() == ""){
+			$('.instant-health-check #status').html("<strong>Error!</strong> Sync Password field is required.<br/>");
+			$('.instant-health-check #status').addClass('alert-danger');
+			$('.instant-health-check #status').show();
+			req_err = true;
+		}
+		if(req_err){
+			window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+		$.ajax({
+            type:"post",
+            url:"ip-mgt-process.php",					
+            data: {'ctype':'Sync Password','syncpass_ipaddress':$('#syncPassInputDeviceIPaddress').val()},
+            success: function(resdata){	
+            	var myModal = $('#Modal_Health_Checks');
+            	$('#Modal_Health_Checks .modal-title').html('Sync Password');
+            	$('#Modal_Health_Checks .modal-body').html(resdata);
+            	myModal.modal('show');
+            	return false;
+            }
+        });
+		return false;
+	});
+    $(document).on('click', ".instant-health-check #ssh-PuTTY-ip-health-check", function(event) {
+    	var req_err = false;
+		$('.instant-health-check #status').html('');
+		$('.instant-health-check #status').css("opacity","");
+		if($('.instant-health-check #sshPuTTYInputIPv6').val() == ""){
+			$('.instant-health-check #status').html("<strong>Error!</strong> Show PuTTY CmdLine field is required.<br/>");
+			$('.instant-health-check #status').addClass('alert-danger');
+			$('.instant-health-check #status').show();
+			req_err = true;
+		}
+		if(req_err){ 
+		    window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+    	var myModal = $('#Modal_Health_Checks');
+    	$('#Modal_Health_Checks .modal-title').html('Show Putty Command Line');
+    	var sshPuTTYInputIPv6 = $('.instant-health-check #sshPuTTYInputIPv6').val().replace(/\:/g, '-');
+    	var command = 'putty.exe -load &quot;PAMsession&quot; -ssh -l ' + $('#username').val() + '@PAMadmin@' + sshPuTTYInputIPv6 + ' -loghost PAMadmin@' + sshPuTTYInputIPv6;
+    	$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+    	myModal.modal('show');
+    	return false;
+    });	
+    
 	$(document).on('click', '#sshcmdoutputcpy', function(event) {
        var copyText = document.getElementById("sshcmdoutput");
        copyText.select();
@@ -95,5 +153,15 @@ $(document).ready(function() {
 	return false;
 	});
 });
-			
+function copyToClipboard() {
+ 	  /* Get the text field */
+	  var copyText = document.getElementById("textboxp1");
+	  /* Select the text field */
+	  copyText.select();
+	  /* Copy the text inside the text field */
+	  document.execCommand("copy");
+
+	  /* Alert the copied text */
+	  alert("Copied the text: " + copyText.value);
+}
 	

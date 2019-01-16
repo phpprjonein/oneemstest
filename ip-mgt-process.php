@@ -4,6 +4,16 @@ include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors', 1);
 
+if ($_POST['ctype'] == 'Sync Password') {
+    $ip_address = $_POST['syncpass_ipaddress'];
+    $cyberarc_command = "cd /var/www/html/oneemstest/cyberark_test ; ./update_account.ksh " . $ip_address;
+    
+    $cyberarc_output = shell_exec($cyberarc_command);
+    echo $cyberarc_output = "Sync Password Status : " . $cyberarc_output;
+    
+}
+
+
 if (isset($_POST['categorylist']) && $_POST['ctype'] == 'BatchTabUPdateAddAddAllDevices') {
     global $db2;
     echo $sql = "SELECT distinct(n.id), n.deviceIpAddr, n.devicename, n.deviceseries, n.market, n.nodeVersion FROM userdevices ud JOIN nodes n on ud.nodeid = n.id WHERE ud.userid = ".$_SESSION['userid']." AND(ud.listname = '".$_POST['categorylist']."') AND(n.deviceseries = '".$_SESSION['batch_vars']['deviceseries']."') AND(n.nodeVersion = '".$_SESSION['batch_vars']['deviceos']."') ORDER BY n.market asc";

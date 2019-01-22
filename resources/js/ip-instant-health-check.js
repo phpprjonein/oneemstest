@@ -53,7 +53,7 @@ $(document).ready(function() {
     	$('#Modal_Health_Checks .modal-title').html('Show Putty Command Line');
     	var sshPuTTYInputIPv6 = $('.instant-health-check #sshPuTTYInputIPv6').val().replace(/\:/g, '-');
     	var command = 'putty.exe -load &quot;PAMsession&quot; -ssh -l ' + $('#username').val() + '@PAMadmin@' + sshPuTTYInputIPv6 + ' -loghost PAMadmin@' + sshPuTTYInputIPv6;
-    	$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+    	$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
     	myModal.modal('show');
     	return false;
     });	

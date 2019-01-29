@@ -54,6 +54,27 @@ modal.children[0].addEventListener('click', function(e) {
 <body class="hold-transition skin-blue sidebar-mini ownfont"
 	id="healthpage">
 	<!-- Modal HTML -->
+	<div id="Modal_Device_Name" tabindex="-1" class="modal fade"
+    		role="dialog" aria-hidden="true">
+    		<div class="modal-dialog modal-lg" role="document">
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    				<div class="modal-header">
+    					<h5 class="modal-title"></h5>
+    					<button type="button" class="close" data-dismiss="modal"
+    						aria-label="Close">
+    						<span aria-hidden="true">&times;</span>
+    					</button>
+    				</div>
+    				<div class="modal-body">
+    				</div>
+    				<div class="modal-footer">
+    					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    				</div>
+    			</div>
+    
+    		</div>
+    	</div>
 	<div class="modal fade" id="healthpageModel">
 		<div class="modal-dialog">
 			<div class="modal-content" id="cellsitech-backup">

@@ -121,7 +121,7 @@ $(document).ready(function() {
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 				//	return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh-stage.nsiam.vzwnet.com">' + data +'</a>';
-	            	return '<a data-ssh="ssh://' + $('#username').val() + '@'+exploded[1]+'" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+	            	return '<a data-ssh="'+$('#username').val() + '@PAMronlygrp@' + exploded[1]+'@pamssh-stage.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 	           }
 	        }],   
           "pageLength": 25,

@@ -31,6 +31,39 @@ $(document).ready(function() {
         });
 		return false;
 	});
+	$(document).on('click', ".instant-health-check #sync-cyberark-sync-password-ip-health-check", function(event) {
+		var req_err = false;
+		$('.instant-health-check #status').html('');
+		$('.instant-health-check #status').css("opacity","");
+		if($('.instant-health-check #synccyberarkpass_ipaddress').val() == ""){
+			$('.instant-health-check #status').html("<strong>Error!</strong> Check CyberArk Synchronization field is required.<br/>");
+			$('.instant-health-check #status').addClass('alert-danger');
+			$('.instant-health-check #status').show();
+			req_err = true;
+		}
+		if(req_err){
+			window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+		$.ajax({
+            type:"post",
+            url:"ip-mgt-process.php",					
+            data: {'ctype':'SyncCyberArk','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
+            success: function(resdata){	
+            	var myModal = $('#Modal_Health_Checks');
+            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
+            	$('#Modal_Health_Checks .modal-body').html(resdata);
+            	myModal.modal('show');
+            	return false;
+            }
+        });
+		return false;
+	});
+	
     $(document).on('click', ".instant-health-check #ssh-PuTTY-ip-health-check", function(event) {
     	var req_err = false;
 		$('.instant-health-check #status').html('');

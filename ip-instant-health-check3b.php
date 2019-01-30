@@ -107,6 +107,18 @@ $page_title = 'OneEMS';
                                                 data-toggle="modal">Sync Password</button>
                                     </div>
                                     </div>
+                                    </form>
+                                    <hr width="50%" align="left" style="border: 1px solid blue;" />
+                                    <form class="cyberark-sync-pass-form" action="" method="post">
+                                    <div class="input-group row">
+                                    <div class="form-inline col-md-6 col-sm-12">
+                                            <input type="inputName" name="synccyberarkpass_ipaddress" class="form-control"
+                                                id="synccyberarkpass_ipaddress" placeholder="Enter IPv6 Address"
+                                                autofocus>
+                                            <button type="submit" class="btn" id="sync-cyberark-sync-password-ip-health-check"
+                                                data-toggle="modal">Check CyberArk Synchronization</button>
+                                    </div>
+                                    </div>
                                 </form>
 <?php
     echo $cyberarc_output;

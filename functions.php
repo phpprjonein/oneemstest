@@ -5071,7 +5071,19 @@ function get_device_ids_from_ip_address($ipaddress = array())
     $resultset = $db2->resultset();
     return $resultset;
 }
-
+/**
+ *
+ * @param unknown $ipaddress
+ * @return unknown
+ */
+function get_device_name_from_ip_address($ipaddress)
+{
+    global $db2;
+    $sql = "SELECT devicename FROM nodes where deviceIpAddrsix = '".$ipaddress."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
 /**
  *
  * @param unknown $ipaddress

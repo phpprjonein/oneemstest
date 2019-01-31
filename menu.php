@@ -110,8 +110,8 @@
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
-						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
+						class="nav-link <?php print activemenu(array("ip-instant-health-check3b.php")); ?>"
+						href="ip-instant-health-check3b.php">Tools</a></li>
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -193,8 +193,8 @@
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
-						href="ip-instant-health-check.php">Instant Healthcheck</a></li>
+						class="nav-link <?php print activemenu(array("ip-instant-health-check3b.php")); ?>"
+						href="ip-instant-health-check3b.php">Tools</a></li>
 					<li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

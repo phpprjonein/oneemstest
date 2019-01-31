@@ -70,7 +70,7 @@ $page_title = 'OneEMS';
 								<div id="status" style="display: none;" class="alert"></div>
 								<form class="login-form" action="#" method="post">
 									<div class="input-group row">
-									<div id="slectchktype" class="form-inline col-md-5 pb-2 col-sm-12">
+									<div id="slectchktype" class="form-inline col-md-6 pb-2 col-sm-12">
 										<label class="radio-inline">
                                           <input type="radio" class="radiocat" value="ipaddress" name="optradio" checked><b>IP V4/IP V6 Address</b>
                                         </label>
@@ -80,7 +80,7 @@ $page_title = 'OneEMS';
 									</div>
 									</div>
 									<div class="input-group row">
-									<div class="form-inline col-md-5 col-sm-12">
+									<div class="form-inline col-md-6 col-sm-12">
 											<input type="inputName" name="ipaddress" class="form-control"
 												id="inputDeviceIPaddress" placeholder="Enter IP Address"
 												autofocus>
@@ -99,7 +99,7 @@ $page_title = 'OneEMS';
 <hr width="50%" align="left" style="border: 1px solid blue;" />
                                                                 <form class="sync-pass-form" action="" method="post">
                                     <div class="input-group row">
-                                    <div class="form-inline col-md-5 col-sm-12">
+                                    <div class="form-inline col-md-6 col-sm-12">
                                             <input type="inputName" name="syncpass_ipaddress" class="form-control"
                                                 id="syncPassInputDeviceIPaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
@@ -116,7 +116,7 @@ $page_title = 'OneEMS';
                                                 id="synccyberarkpass_ipaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="sync-cyberark-sync-password-ip-health-check"
-                                                data-toggle="modal">Check CyberArk Synchronization</button>
+                                                data-toggle="modal">Check CyberArk Sync</button>
                                     </div>
                                     </div>
                                 </form>
@@ -124,21 +124,33 @@ $page_title = 'OneEMS';
     echo $cyberarc_output;
 ?>
                                                                 <!--  Sync Password Form End -->
-                                                                <!--  Sync Password Form Start -->
+                                                                <!--  Show CyberArk CmdLine Form Start -->
 <hr width="50%" align="left" style="border: 1px solid blue;" />
                                                                 <form class="ssh-putty-form" action="" method="post">
                                     <div class="input-group row">
-                                    <div class="form-inline col-md-5 col-sm-12">
+                                    <div class="form-inline col-md-6 col-sm-12">
                                             <input type="inputName" name="sshPuTTY_IPv6_addr" class="form-control"
                                                 id="sshPuTTYInputIPv6" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="ssh-PuTTY-ip-health-check"
-                                                data-toggle="modal">Show PuTTY CmdLine</button>
+                                                data-toggle="modal">Show CyberArk CmdLine</button>
                                     </div>
+                                                                <!--  Show CyberArk CmdLine Form End -->
+                                                                <!--  Show Add CyberArk Account Form Start -->
+                                    </div>
+<hr width="50%" align="left" style="border: 1px solid blue;" />
+                                    <div class="input-group row">
+                                    <div class="form-inline col-md-6 col-sm-12">
+                                            <input type="inputName" name="cyberarkaddacct_ipaddress" class="form-control"
+                                                id="addcybacctInputIPv6" placeholder="Enter IPv6 Address"
+                                                autofocus>
+                                            <button type="submit" class="btn" id="cyberark-add-acct"
+                                                data-toggle="modal">Add CyberArk Account </button>
+                                    </div>
+                                                                <!--  Show Add CyberArk Account Form End -->
                                     </div>
                                 </form>
 <br>
-                                                                <!--  Sync Password Form End -->
 
 					</div>
 				</div>

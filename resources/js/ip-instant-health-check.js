@@ -53,22 +53,43 @@ $(document).ready(function() {
             type:"post",
             url:"ip-mgt-process.php",					
             data: {'ctype':'SyncCyberArk','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
-            success: function(resdata){
-            	if(resdata != 'NA'){
-	            	var myModal = $('#Modal_Health_Checks');
-	            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
-	            	$('#Modal_Health_Checks .modal-body').html(resdata);
-	            	myModal.modal('show');
-            	}else{
-            		$('.instant-health-check #status').html("<strong>Error!</strong> Device name does not exist.<br/>");
-        			$('.instant-health-check #status').addClass('alert-danger');
-        			$('.instant-health-check #status').show();
-        			window.setTimeout(function() {
-        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        		            $(this).hide(); 
-        		        });
-        		    }, 4000);
-            	}
+            success: function(resdata){	
+            	var myModal = $('#Modal_Health_Checks');
+            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
+            	$('#Modal_Health_Checks .modal-body').html(resdata);
+            	myModal.modal('show');
+            	return false;
+            }
+        });
+		return false;
+	});
+	$(document).on('click', ".instant-health-check #cyberark-add-acct", function(event) {
+		var req_err = false;
+		$('.instant-health-check #status').html('');
+		$('.instant-health-check #status').css("opacity","");
+		if($('.instant-health-check #addcybacctInputIPv6').val() == ""){
+			$('.instant-health-check #status').html("<strong>Error!</strong> IPV6 address for adding Cyber Ark account is required.<br/>");
+			$('.instant-health-check #status').addClass('alert-danger');
+			$('.instant-health-check #status').show();
+			req_err = true;
+		}
+		if(req_err){
+			window.setTimeout(function() {
+		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+		            $(this).hide(); 
+		        });
+		    }, 4000);
+			return false;
+		}
+		$.ajax({
+            type:"post",
+            url:"ip-mgt-process.php",					
+            data: {'ctype':'CyberArkadd','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
+            success: function(resdata){	
+            	var myModal = $('#Modal_Health_Checks');
+            	$('#Modal_Health_Checks .modal-title').html('Adding CyberArk Account');
+            	$('#Modal_Health_Checks .modal-body').html(resdata);
+            	myModal.modal('show');
             	return false;
             }
         });
@@ -96,9 +117,8 @@ $(document).ready(function() {
     	var myModal = $('#Modal_Health_Checks');
     	$('#Modal_Health_Checks .modal-title').html('Show Putty Command Line');
     	var sshPuTTYInputIPv6 = $('.instant-health-check #sshPuTTYInputIPv6').val().replace(/\:/g, '-');
-    	//var command = 'putty.exe -load &quot;PAMsession&quot; -ssh -l ' + $('#username').val() + '@PAMadmin@' + sshPuTTYInputIPv6 + ' -loghost PAMadmin@' + sshPuTTYInputIPv6;
-    	var command = 'putty.exe -load "PAMsession" -ssh -l ' + $('#username').val() + '@PAMadmin@' + sshPuTTYInputIPv6 + ' -loghost PAMadmin@' + sshPuTTYInputIPv6;
-		$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+    	var command = $('#username').val() + '@PAMronlygrp@' + sshPuTTYInputIPv6 + '@pamssh-stage.nsiam.vzwnet.com';
+    	$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
     	myModal.modal('show');
     	return false;
     });	

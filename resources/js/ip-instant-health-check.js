@@ -53,11 +53,22 @@ $(document).ready(function() {
             type:"post",
             url:"ip-mgt-process.php",					
             data: {'ctype':'SyncCyberArk','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
-            success: function(resdata){	
-            	var myModal = $('#Modal_Health_Checks');
-            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
-            	$('#Modal_Health_Checks .modal-body').html(resdata);
-            	myModal.modal('show');
+            success: function(resdata){
+            	if(resdata != 'NA'){
+	            	var myModal = $('#Modal_Health_Checks');
+	            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
+	            	$('#Modal_Health_Checks .modal-body').html(resdata);
+	            	myModal.modal('show');
+            	}else{
+            		$('.instant-health-check #status').html("<strong>Error!</strong> Device name does not exist.<br/>");
+        			$('.instant-health-check #status').addClass('alert-danger');
+        			$('.instant-health-check #status').show();
+        			window.setTimeout(function() {
+        		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        		            $(this).hide(); 
+        		        });
+        		    }, 4000);
+            	}
             	return false;
             }
         });

@@ -15,18 +15,17 @@ if ($_POST['ctype'] == 'Sync Password') {
 if ($_POST['ctype'] == 'SyncCyberArk') {
     $ip_address = $_POST['syncpass_ipaddress'];
     $devicename = get_device_name_from_ip_address($ip_address);
-    //echo $cyberarc_output = "<br> <b>Devicename - </b>" . $devicename[0]['devicename'];
-    $cyberarc_command = "cd /var/www/html/oneemstest/cyber_check ; ./check_cyberark.ksh " .$ip_address;
-    $cyberarc_output = shell_exec($cyberarc_command);
-    echo $cyberarc_output = "Device Name: ".$devicename[0]['devicename']. "Sync Cyberark Status : " . $cyberarc_output;
+    echo $cyberarc_output = "<br> <b>Devicename - </b>" . $devicename[0]['devicename'];
 }
 
-if ($_POST['ctype'] == 'CyberArkadd') {
-    $ip_address = $_POST['syncpass_ipaddress'];
-    $cyberarc_command = "cd /var/www/html/oneemstest/cyber_check ; ./check_cyberark.ksh " .$ip_address;
-    $cyberarc_output = shell_exec($cyberarc_command);
-    //echo $cyberarc_output = "Device Name: ".$devicename[0]['devicename']. "Sync Cyberark Status : " . $cyberarc_output;
-    echo "";
+if ($_POST['ctype'] ==  'CyberArkadd') {
+     $ip_address = $_POST['syncpass_ipaddress'];
+     $devicename = get_device_name_from_ip_address($ip_address);
+     $cyberarc_command = "cd /var/www/html/oneemstest/cyber_add ; ./add_accts.ksh " .$ip_address ." " . $devicename[0]['devicename'];
+     $cyberarc_output = shell_exec($cyberarc_command);
+    //echo $cyberarc_output = "<br> <b>Devicename - </b>" . $devicename[0]['devicename'];
+     // $cyberarc_output  =  'DUMMY';
+      echo $cyberarc_output =  "Device Name: ".$devicename[0]['devicename']."  Add Cyberark Status: " . $cyberarc_output;
 }
 
 if (isset($_POST['categorylist']) && $_POST['ctype'] == 'BatchTabUPdateAddAddAllDevices') {

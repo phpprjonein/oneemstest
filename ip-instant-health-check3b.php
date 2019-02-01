@@ -142,7 +142,7 @@ $page_title = 'OneEMS';
                                     <div class="input-group row">
                                     <div class="form-inline col-md-6 col-sm-12">
                                             <input type="inputName" name="cyberarkaddacct_ipaddress" class="form-control"
-                                                id="addcybacctInputIPv6" placeholder="Enter IPv6 Address"
+                                                id="cyberarkaddacct_ipaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="cyberark-add-acct"
                                                 data-toggle="modal">Add CyberArk Account </button>

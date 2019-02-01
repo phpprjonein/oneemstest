@@ -84,7 +84,7 @@ $(document).ready(function() {
 		$.ajax({
             type:"post",
             url:"ip-mgt-process.php",					
-            data: {'ctype':'CyberArkadd','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
+            data: {'ctype':'CyberArkadd','syncpass_ipaddress':$('#cyberarkaddacct_ipaddress').val()},
             success: function(resdata){	
             	var myModal = $('#Modal_Health_Checks');
             	$('#Modal_Health_Checks .modal-title').html('Adding CyberArk Account');

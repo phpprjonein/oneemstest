@@ -17,15 +17,16 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
+		var myModal = $('#Modal_Health_Checks');
+		$('#Modal_Health_Checks .modal-title').html('Sync Password');
+		$('#Modal_Health_Checks .modal-body').html('<div class="text-center overlay box-body">Please wait... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+		myModal.modal('show');
 		$.ajax({
             type:"post",
             url:"ip-mgt-process.php",					
             data: {'ctype':'Sync Password','syncpass_ipaddress':$('#syncPassInputDeviceIPaddress').val()},
             success: function(resdata){	
-            	var myModal = $('#Modal_Health_Checks');
-            	$('#Modal_Health_Checks .modal-title').html('Sync Password');
             	$('#Modal_Health_Checks .modal-body').html(resdata);
-            	myModal.modal('show');
             	return false;
             }
         });
@@ -49,15 +50,16 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
+    	var myModal = $('#Modal_Health_Checks');
+    	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
+    	$('#Modal_Health_Checks .modal-body').html('<div class="text-center overlay box-body">Please wait... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+    	myModal.modal('show');
 		$.ajax({
             type:"post",
             url:"ip-mgt-process.php",					
             data: {'ctype':'SyncCyberArk','syncpass_ipaddress':$('#synccyberarkpass_ipaddress').val()},
             success: function(resdata){	
-            	var myModal = $('#Modal_Health_Checks');
-            	$('#Modal_Health_Checks .modal-title').html('Check CyberArk Synchronization Status');
             	$('#Modal_Health_Checks .modal-body').html(resdata);
-            	myModal.modal('show');
             	return false;
             }
         });
@@ -67,7 +69,7 @@ $(document).ready(function() {
 		var req_err = false;
 		$('.instant-health-check #status').html('');
 		$('.instant-health-check #status').css("opacity","");
-		if($('.instant-health-check #addcybacctInputIPv6').val() == ""){
+		if($('.instant-health-check #cyberarkaddacct_ipaddress').val() == ""){
 			$('.instant-health-check #status').html("<strong>Error!</strong> IPV6 address for adding Cyber Ark account is required.<br/>");
 			$('.instant-health-check #status').addClass('alert-danger');
 			$('.instant-health-check #status').show();
@@ -81,18 +83,21 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
-		$.ajax({
-            type:"post",
-            url:"ip-mgt-process.php",					
-            data: {'ctype':'CyberArkadd','syncpass_ipaddress':$('#cyberarkaddacct_ipaddress').val()},
-            success: function(resdata){	
-            	var myModal = $('#Modal_Health_Checks');
-            	$('#Modal_Health_Checks .modal-title').html('Adding CyberArk Account');
-            	$('#Modal_Health_Checks .modal-body').html(resdata);
-            	myModal.modal('show');
-            	return false;
-            }
-        });
+		var myModal = $('#Modal_Health_Checks');
+		$('#Modal_Health_Checks .modal-title').html('Adding CyberArk Account');
+		$('#Modal_Health_Checks .modal-body').html('<div class="text-center overlay box-body">Please wait... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
+		myModal.modal('show');
+		//setTimeout(function(){
+			$.ajax({
+	            type:"post",
+	            url:"ip-mgt-process.php",					
+	            data: {'ctype':'CyberArkadd','syncpass_ipaddress':$('#cyberarkaddacct_ipaddress').val()},
+	            success: function(resdata){	
+	            	$('#Modal_Health_Checks .modal-body').html(resdata);
+	            	return false;
+	            }
+	        });
+		//}, 5000);
 		return false;
 	});
 	

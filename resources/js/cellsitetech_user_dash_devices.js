@@ -420,7 +420,7 @@ $(document).ready(function() {
 	          	var myModal = $('#Modal_Device_Name');
 	        	$('#Modal_Device_Name .modal-title').html('SSH Command');
 	        	//$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
-	        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh') + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+	        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
 	        	myModal.modal('show');
 	        	return false;
 			});
@@ -523,11 +523,11 @@ function format ( d ) {
 function copyToClipboard() {
 	  /* Get the text field */
 	  var copyText = document.getElementById("textboxp1");
-	  /* Select the text field */
+          //res = copyText.replace(":", "#");
+          //document.getElementById("textboxp1").innerHTML = res; 
 	  copyText.select();
 	  /* Copy the text inside the text field */
 	  document.execCommand("copy");
-
 	  /* Alert the copied text */
 	  alert("Copied the text: " + copyText.value);
 }

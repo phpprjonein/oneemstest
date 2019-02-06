@@ -436,7 +436,7 @@ $(document).ready(function() {
 		          	var myModal = $('#Modal_Device_Name');
 		        	$('#Modal_Device_Name .modal-title').html('SSH Command');
 		        	//$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
-		        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh') + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+		        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
 		        	myModal.modal('show');
 		        	return false;
 				});	 

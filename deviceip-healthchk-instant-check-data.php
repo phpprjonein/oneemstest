@@ -168,6 +168,127 @@ global $APPCONFIG;
      }
      }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
+    }if($device_details['deviceseries'] == 'ASR3K'){
+        $output = sendPostData($url_final);
+        /*$output = '{
+         "extract_redundancy": {
+         "R": 0,
+         "message": "extract_redundancy new"
+         },
+         "extract_process_cpu": {
+         "R": 0,
+         "message": "extract_process_cpu new"
+         },
+         "extract_memory_statistics": {
+         "R": 0,
+         "message": "extract_memory_statistics new"
+         },
+         "extract_version_rsp": {
+         "R": 0,
+         "message": "extract_version_rsp new"
+         },
+         "extract_version_installed_active": {
+         "R": 0,
+         "message": "extract_version_installed_active new"
+         },
+         "extract_version_installed_committed": {
+         "R": 0,
+         "message": "extract_version_installed_committed new"
+         },
+         "extract_alarms": {
+         "R": 0,
+         "message": "extract_alarms new"
+         },
+         "extract_power_supply": {
+         "R": 0,
+         "message": "extract_power_supply new"
+         },
+         "extract_platform": {
+         "R": 0,
+         "message": "extract_platform new"
+         },
+         "extract_fbric_status": {
+         "R": 0,
+         "message": "extract_fbric_status new"
+         },
+         "extract_fabric_inter_asic_drops": {
+         "R": 0,
+         "message": "extract_fabric_inter_asic_drops new"
+         },
+         "extract_fabric_inter_asic_errors": {
+         "R": 0,
+         "message": "extract_fabric_inter_asic_errors new"
+         },
+         "extract_fabric_inter_asic_link_status": {
+         "R": 0,
+         "message": "extract_fabric_inter_asic_link_status new"
+         },
+         "extract_up_down_status": {
+         "R": 0,
+         "message": "extract_up_down_status new"
+         },
+         "extract_count_interfaces": {
+         "R": 0,
+         "count": 5
+         },
+         "extract_bfd_session": {
+         "R": 0,
+         "message": "extract_bfd_session new"
+         },
+         "extract_vrrp": {
+         "R": 0,
+         "message": "extract_vrrp new"
+         },
+         "extract_ntp": {
+         "R": 0,
+         "message": "extract_ntp new"
+         },
+         "extract_global_ospf_neighbor": {
+         "R": 0,
+         "message": "extract_global_ospf_neighbor new"
+         },
+         "extract_1xrtt_ospf_neighbor": {
+         "R": 0,
+         "message": "extract_1xrtt_ospf_neighbor new"
+         },
+         "extract_cell_mgmt_ospf_neighbor": {
+         "R": 0,
+         "message": "extract_cell_mgmt_ospf_neighbor new"
+         },
+         "extract_ospf_nsr_gr": {
+         "R": 0,
+         "message": "extract_ospf_nsr_gr new"
+         },
+         "extract_ldp_neighbor": {
+         "R": 0,
+         "message": "extract_ldp_neighbor new"
+         },
+         "extract_wdn_peering": {
+         "R": 0,
+         "message": "extract_wdn_peering new"
+         },
+         "extract_csr_peering": {
+         "R": 0,
+         "message": "extract_csr_peering new"
+         },
+         "extract_crs_wdn_peering": {
+         "R": 0,
+         "message": "extract_crs_wdn_peering new"
+         },
+         "extract_crs_lte_peering": {
+         "R": 0,
+         "message": "extract_crs_lte_peering new"
+         },
+         "extract_bgp_nsr_graceful_restart": {
+         "R": 0,
+         "message": "extract_bgp_nsr_graceful_restart new"
+         },
+         "extract_air_filter_check": {
+         "R": 0,
+         "message": "extract_air_filter_check new"
+         }
+         }';*/
+        ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'ASR5501'){
         $output = sendPostData($url_final);
         /*$output = '{
@@ -350,6 +471,9 @@ if ($vendorId == 1) {
     if($device_details['deviceseries'] == 'ASR9K'){
         $output = json_decode($output, true);
         include_once 'healthchk-asrninethousand-instant-hc-blk-inc.php';
+    }else if($device_details['deviceseries'] == 'ASR3K'){
+        $output = json_decode($output, true);
+        include_once 'healthchk-asrthreethousand-instant-hc-blk-inc.php';
     }else if($device_details['deviceseries'] == 'ASR5501'){
         $output = json_decode($output, true);
         include_once 'healthchk-asrfivefivezeroone-instant-hc-blk-inc.php';

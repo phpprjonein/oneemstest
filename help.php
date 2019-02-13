@@ -90,7 +90,7 @@ echo generate_site_breadcrumb($values);
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_instant_hc.php">TOOLS</a>
 									<a class="nav-link" href="help_audit.php">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
@@ -101,6 +101,12 @@ echo generate_site_breadcrumb($values);
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
+                                    </nav>
+									<a class="nav-link" href="help_ssh.php">PAM SSH USER GUIDE</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh2">Command Line Usage - SSH</a>
+										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh3">SSH Application Usage: PuTTY</a>
+										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh4">SSH Application Usage: SecureCRT</a>
                                     </nav>
 									<a class="nav-link" href="help_faqs.php">FAQs</a>
 								</nav>
@@ -120,6 +126,34 @@ echo generate_site_breadcrumb($values);
 								<li>secure access to the <b>Verizon SSO</b> login screen
 								</li>
 							</ul>
+							<a name="SoftwareRequirements">&nbsp;</a>
+							<p><b>OneEMS Software Requirements</b></p>
+							<ol>
+								<li>Install PuTTY 7.0 or higher
+								<br>
+								<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a></li>
+								<li>Install WinSCP version 5.13.7 or higher
+								<br>
+								<a href="https://winscp.net/eng/download.php" target="blank">https://winscp.net/eng/download.php</a></li>
+								<li><b>For Windows IE associate WinSCP with SSH:</b>
+									<ul>
+										<li>Click on <b>Tools->Internet Options->Programs->Set Programs</b></li>
+										<li>Select <b>"Associate a file type or protocol with a specific program"</b> and scroll down to SSH</li>
+										<li>Select SSH and click on <b>"Change program"</b>, then select WinSCP* and click "OK"</li>
+										<li>Close all windows</li>
+									</ul>
+								</li>
+								<li><b>For Firefox, associate WinSCP with SSH:</b>
+								<br>
+									<ul>
+										<li>Click on <b>Open Menu->Options</b>, then scroll down to "Applications"</li>
+										<li>Select SSH and select the “WinSCP*” option from the dropdown menu</li>
+										<li>Close all windows</li>
+									</ul>
+							</ol>
+							<p>To test with any browser, use the following string in your URL section:</p>
+							<p><b>ssh://<win-vzwnet_userid>@PAMadmingrp@<IPv6 address>@pamssh.nsiam.vzwnet.com</b></p>
+							<p>When prompted, enter your win-vzwnet password.</p>
 							<hr>
 							<p></p>
 							<a href="help_network_elements.php" class="border"><b>NEXT: Network Elements >></b></a>

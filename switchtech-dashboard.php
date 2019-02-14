@@ -67,36 +67,115 @@ write_log($mesg);
         ?>
         <?php 
           if($_POST['addalldevices'] == 'Add All Devices'){
-              $listid = $_POST['hidd_mylistid'];
-              $switchname = $_POST['hidd_switch_selected'];
-              $market = $_POST['hidd_market_selected'];
-              $userid = $_SESSION['userid'];
-              
-              $list_existing_devices = $list_add_new_devices = array();
-              $results = get_device_list_for_user($userid, $_POST['hidd_mylistid']);
-              foreach ($results['result'] as $key => $val){
-                  $list_existing_devices[] = $val['nodeid'];
-                  $listname = ($listname == "") ? $val['listname'] : $listname;
-              }
-              
-              $results_switch_nodes = get_device_list_for_user_by_switch($switchname, $market);
-              foreach ($results_switch_nodes['result'] as $key => $val){
-                  $list_add_new_devices[] = $val['id'];
-              }
-              $new_devices_to_add = array_diff($list_add_new_devices, $list_existing_devices);
-              $oc = 1;
-              $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
-              foreach ($new_devices_to_add as $key => $val) {
-                  if (count($new_devices_to_add) == $oc) {
-                      $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."')";
-                  } else {
-                      $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."'),";
+              if($_POST['hidd_search_selected'] == ''){
+                  $listid = $_POST['hidd_mylistid'];
+                  $switchname = $_POST['hidd_switch_selected'];
+                  $market = $_POST['hidd_market_selected'];
+                  $userid = $_SESSION['userid'];
+                  
+                  $list_existing_devices = $list_add_new_devices = array();
+                  $results = get_device_list_for_user($userid, $_POST['hidd_mylistid']);
+                  foreach ($results['result'] as $key => $val){
+                      $list_existing_devices[] = $val['nodeid'];
+                      $listname = ($listname == "") ? $val['listname'] : $listname;
                   }
-                  $oc ++;
-              }
-              if ($oc > 1) {
-                  $db2->query($dsql);
-                  $db2->execute();
+                  
+                  $results_switch_nodes = get_device_list_for_user_by_switch($switchname, $market);
+                  foreach ($results_switch_nodes['result'] as $key => $val){
+                      $list_add_new_devices[] = $val['id'];
+                  }
+                  $new_devices_to_add = array_diff($list_add_new_devices, $list_existing_devices);
+                  $oc = 1;
+                  $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+                  foreach ($new_devices_to_add as $key => $val) {
+                      if (count($new_devices_to_add) == $oc) {
+                          $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."')";
+                      } else {
+                          $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."'),";
+                      }
+                      $oc ++;
+                  }
+                  if ($oc > 1) {
+                      $db2->query($dsql);
+                      $db2->execute();
+                  }
+              }else{
+                  global $db2;
+                  $list_existing_devices = $list_add_new_devices = array();
+                  $columns = array(
+                          'DISTINCT(n.id)',
+                          'n.id',
+                          'n.csr_site_tech_name',
+                          'CONCAT(n.csr_site_id,"/",n.switch_name) as csr_site_id',
+                          'n.csr_site_name',
+                          'n.devicename',
+                          'CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr'
+                  );
+                  
+                  $list_for = $_POST['aad_hidd_list_for'];
+                  $list_type = $_POST['aad_hidd_list_type'];
+                  $switchname = $selswitch = $_POST['hidd_switch_selected'];
+                  $search_term = $_POST['hidd_search_selected'];
+                  $listid = $_POST['hidd_mylistid'];
+                  $market = $_POST['hidd_market_selected'];
+                  $userid = $_SESSION['userid'];
+                  
+                  
+                  $sql_select = " SELECT distinct " . implode(", ", $columns);
+                  if ($list_type == 'user') {
+                      $userid = $_SESSION['userid'];
+                      $switch_device_name = addslashes($list_for);
+                      $sql_condition = " FROM nodes n
+                      join userdevices ud on ud.nodeid = n.id
+                      join users u on u.id = ud.userid
+                      WHERE n.switch_name ='$switch_device_name' AND u.id = $userid"; // AND csr_site_name != 'None' ";
+                  } else {
+                      $market = addslashes($list_for);
+                      $sql_condition = " FROM nodes n
+                        WHERE trim(lower(REPLACE(n.market,' ',''))) ='$market'"; // AND csr_site_name != 'None' ";
+                      
+                      if ($selswitch != '') {
+                          $sql_condition .= " AND switch_name ='$selswitch'";
+                      }
+                  }
+                  
+                  if ($search_term != '') {
+                      $sql_condition .= " AND ( ";
+                      $sql_condition .= "  n.csr_site_tech_name LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR csr_site_id LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR n.csr_site_name LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR n.devicename LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR n.deviceIpAddr LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR n.deviceIpAddrsix LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= "  OR n.market LIKE '%" . addslashes($search_term) . "%' ";
+                      $sql_condition .= " ) ";
+                  }
+                  
+                  $sql = $sql_select . $sql_condition;
+                  $db2->query($sql);
+                  foreach ($db2->resultset() as $key => $value) {
+                      $list_add_new_devices[] = $value['id'];
+                  }
+                  $results = get_device_list_for_user($userid, $_POST['hidd_mylistid']);
+                  foreach ($results['result'] as $key => $val){
+                      $list_existing_devices[] = $val['nodeid'];
+                      $listname = ($listname == "") ? $val['listname'] : $listname;
+                  }
+                  $new_devices_to_add = array_diff($list_add_new_devices, $list_existing_devices);
+                  $oc = 1;
+                  $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+                  foreach ($new_devices_to_add as $key => $val) {
+                      if (count($new_devices_to_add) == $oc) {
+                          $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."')";
+                      } else {
+                          $dsql .= "('" . $val . "'," . $_SESSION['userid'] . ",$listid,'".$listname."'),";
+                      }
+                      $oc ++;
+                  }
+                  if ($oc > 1) {
+                      $db2->query($dsql);
+                      $db2->execute();
+                  }
               }
           }
           ?>
@@ -536,6 +615,9 @@ write_log($mesg);
                &nbsp;<button type="submit" value="Add All Devices" id="addalldevices" name="addalldevices" class="btn">Add All Devices</button>
                <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
                <input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">
+               <input type="hidden" name="hidd_search_selected" id="hidd_search_selected" value="">
+               <input type="hidden" name="aad_hidd_list_for" id="aad_hidd_list_for" value="">
+               <input type="hidden" name="aad_hidd_list_type" id="aad_hidd_list_type" value="">
           <?php }?>
           
 							</div>
@@ -577,6 +659,9 @@ write_log($mesg);
                <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
                <input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">
                <input type="hidden" name="hidd_market_selected" id="hidd_market_selected" value="<?php echo strtolower($str_marketname) ?>">
+               <input type="hidden" name="hidd_search_selected" id="hidd_search_selected" value="">
+               <input type="hidden" name="aad_hidd_list_for" id="aad_hidd_list_for" value="">
+               <input type="hidden" name="aad_hidd_list_type" id="aad_hidd_list_type" value="">
           <?php }?>
 							</div>
           <?php endif;?>

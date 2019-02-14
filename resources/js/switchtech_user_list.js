@@ -305,6 +305,9 @@ $(document).ready(function() {
 
   	$(document).on("click", "#addalldevices", function(){
   		$('#hidd_switch_selected').val($.trim($('#switch_selected').html()));
+  		$('#hidd_search_selected').val($.trim($('#swt_user_devices_filter input').val()));
+  		$('#aad_hidd_list_for').val($.trim($('#hidd_list_for').val()));
+  		$('#aad_hidd_list_type').val($.trim($('#hidd_list_type').val()));
   	});
 
   	$(document).on("click", "#addlistbtn", function(){

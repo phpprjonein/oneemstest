@@ -8,7 +8,7 @@
 					id="extract_version" value="extract_version"
 					<?php if(in_array('extract_version', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show version</b></td>
+				<td><b>IOS version</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_version&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -23,7 +23,7 @@
 					name="extract_processes_cpu" value="extract_processes_cpu"
 					<?php if(in_array('extract_processes_cpu', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show processes cpu</b></td>
+				<td><b>CPU Utilization </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_processes_cpu&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -37,7 +37,7 @@
 					name="extract_memory_summary" value="extract_memory_summary"
 					<?php if(in_array('extract_memory_summary', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show memory summary</b></td>
+				<td><b>Free Memory</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_memory_summary&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -53,7 +53,7 @@
 					name="extract_platform" value="extract_platform"
 					<?php if(in_array('extract_platform', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>show platform</b></td>
+				<td><b>Platform</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -66,7 +66,7 @@
 					name="extract_ping_brief" value="extract_ping_brief"
 					<?php if(in_array('extract_ping_brief', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show alarms brief</b></td>
+				<td><b>Environmental</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_ping_brief&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -80,7 +80,7 @@
 					name="extract_interfaces" value="extract_interfaces"
 					<?php if(in_array('extract_interfaces', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show interfaces</b></td>
+				<td><b>Interface Counters</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -95,7 +95,7 @@
 					name="extract_ping" value="extract_ping"
 					<?php if(in_array('extract_ping', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Ping 10.114.88.0 size 2000</b></td>
+				<td><b>2000 Byte Ping</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_ping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -108,7 +108,7 @@
 					name="extract_bfd_session" value="extract_bfd_session"
 					<?php if(in_array('extract_bfd_session', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show bfd session</b></td>
+				<td><b>BFD Sessions</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -121,7 +121,7 @@
 					name="extract_logging" value="extract_logging"
 					<?php if(in_array('extract_logging', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>show logging</b></td>
+				<td><b>Log Entries</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_logging&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -136,7 +136,7 @@
 					name="extract_vrf_all" value="extract_vrf_all"
 					<?php if(in_array('extract_vrf_all', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show vrf all</b></td>
+				<td><b>VRF</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_vrf_all&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -165,7 +165,7 @@
 					name="extract_mpls_interfaces" value="extract_mpls_interfaces"
 					<?php if(in_array('extract_mpls_interfaces', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show mpls interfaces</b></td>
+				<td><b>MPLS Interfaces</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_mpls_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
@@ -180,7 +180,7 @@
 					name="extract_bgp_vpnv4_unicast_summary" value="extract_bgp_vpnv4_unicast_summary"
 					<?php if(in_array('extract_bgp_vpnv4_unicast_summary', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show bgp vpnv4 unicast summary</b></td>
+				<td><b>IPV4 BGP Neighbors</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_bgp_vpnv4_unicast_summary&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php

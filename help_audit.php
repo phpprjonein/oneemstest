@@ -88,7 +88,10 @@ echo generate_site_breadcrumb($values);
                                         <a class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
                                         <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-                                    <a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+                                    <a class="nav-link" href="help_tools.php">TOOLS</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
+									</nav>
                                     <a class="nav-link" href="#item-audit">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
@@ -134,7 +137,7 @@ echo generate_site_breadcrumb($values);
                             <p></p>
                             <img src="resources/img/screenshot-audit1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit1">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.1 - Audit Dashboard</b></span>
+                            <span class="font-italic"><b>FIG. 9.1 - Compliance Audit Dashboard</b></span>
                             <p></p>
 							<p>Once a user has chosen a device or devices for audit, a batch is created for processing. You can see the status of the batch at the end of the selection process after you click on the <b>Submit</b> button:</p>
 							<p></p>
@@ -146,7 +149,10 @@ echo generate_site_breadcrumb($values);
                             <img src="resources/img/screenshot-audit3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit3">
                             <p></p>
 							<span class="font-italic"><b>FIG. 9.1.2 - Audit Batch Status</b></span>
-                            <p></p>
+							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-audit-1">Customize Audit</h5>
 							<p>Here, a user can run a partial audit.  The inputs are:
 								<ul>
@@ -182,7 +188,10 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
                             <img src="resources/img/screenshot-audit4-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
                             <p></p>
                             <span class="font-italic"><b>FIG. 9.2.2 - Custom Audit Batch Tracking Dashboard</b></span>
-                            <p></p>
+							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-audit-2">Customized Audit History</h5>
 							<p>Here, a user can view the results of past customized audits on devices in their inventory. This dashboard does not present any real time information, but the <b>logs of customized audits previously performed</b>.</p>
 							<p>Results can be sorted by:</p>
@@ -208,7 +217,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 							<hr>
                             <div class="row">
 								<div class="col-6">
-									<a href="help_instant_hc.php" class="border"><b>&lt;&lt; PREV: Instant Health Check</b></a>
+									<a href="help_tools.php" class="border"><b>&lt;&lt; PREV: Tools</b></a>
 								</div>
 								<div class="col-6 text-right">
 									<a href="help_inventory.php" class="border"><b>NEXT: Inventory &gt;&gt;</b></a>

@@ -126,6 +126,9 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 5.2 - Choose Region</b></span>
 							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-5-1">Subnet Addition</h5>
 							<p></p>
 							<p>To add a Subnet, choose a Region from the <b>Select Region</b> dropdown at the top of the page.</p>

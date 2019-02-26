@@ -139,6 +139,9 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>FIG. 7.2.1 - Reboot Batch Messaging</b></span>
 							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-7-3">Boot Order Sequence</h5>
 							<p>This screen allows users to apply specific preset software configurations to devices within the OneEMS network.</p>
 							<img src="resources/img/screenshot-sw-delivery.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-delivery">
@@ -159,7 +162,7 @@ echo generate_site_breadcrumb($values);
 									<a href="help_discovery_results.php" class="border"><b><< PREV: Discovery Results</b></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="help_instant_hc.php" class="border"><b>NEXT: Instant Health Check >></b></a>
+									<a href="help_tools.php" class="border"><b>NEXT: Tools >></b></a>
 								</div>
 							</div>
 							<hr>

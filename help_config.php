@@ -87,7 +87,10 @@ write_log($mesg);
 										<a	class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
                                         <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_tools.php">TOOLS</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
+									</nav>
 									<a class="nav-link" href="help_audit.php">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
@@ -121,10 +124,7 @@ write_log($mesg);
                                     <li>View the status of execution for multiple devices</li>
                                 </ul>
 							</p>
-							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> The ASR 920 series Routers for the Great Lakes Region is provided as a  default template. This is the first Region available in the OneEMS system. Future enhancements will permit  users to select templates for other Vendors, Markets and other filtering criteria.
-								<br>
-								<br>
-								Additionally, this Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2">here</a> for more information on how to load a template as an admin.</p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2">here</a> for more information on how to load a template as an admin.</p>
 							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
 							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>
@@ -901,6 +901,9 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.2.2 - Editable Configuration Template</b></span>
 							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-4-2">Generate Script - Modification</h5>
 							<p>In this view, a user can select an existing template with which to create a script for use on a particular  device.</p>
 							<img src="resources/img/screenshot-generate-script.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1">
@@ -937,7 +940,10 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.7 - View Status Of A Batch Job</b></span>
 							<p></p>
-							<h5 id="item-4-2-1">Generate Script (Golden)</h5>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
+							<h5 id="item-4-2-1">Generate Script - Golden</h5>
 							<p>Generate Script (Golden) has same flow as Generate Script (Modification) with the following exceptions:
 								<ul>
 									<li>All fields must be filled out before you can proceed to download a script</li>
@@ -956,6 +962,9 @@ event manager applet LOOP_GIG authorization bypass
 									<li><a href="resources/scripts/golden_script_CSR9k-02.txt"  target="_blank"><b>9k-02 Script</b></a></li>
 								</ul>
 							</p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-4-3">Batch Tracking</h5>
 							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, <b>Boot Order</b>, <b>Reboot Status</b>, <b>Audit</b>, and <b>Customized Audit</b>.</p>
 							<p>Scripts can be monitored for execution status on a device or sets of devices (<b>Script Execution</b>),  whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>

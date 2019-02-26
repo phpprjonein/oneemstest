@@ -88,7 +88,10 @@ echo generate_site_breadcrumb($values);
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_tools.php">TOOLS</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
+									</nav>
 									<a class="nav-link" href="help_audit.php">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>

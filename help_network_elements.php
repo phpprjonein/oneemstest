@@ -88,7 +88,10 @@ echo generate_site_breadcrumb($values);
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
 									 	<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
 									</nav>
-									<a class="nav-link" href="help_instant_hc.php">INSTANT HEALTH CHECK</a>
+									<a class="nav-link" href="help_tools.php">TOOLS</a>
+									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
+									</nav>
 									<a class="nav-link" href="help_audit.php">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
@@ -117,15 +120,17 @@ echo generate_site_breadcrumb($values);
 								<li>View devices associated with a specific switch</li>
 							</ul>
 							</p>
+							<p>This List Management screen (Fig 1.1) allows for the user to create lists of devices that s/he can use in other screens  within the OneEMS application.</p>
+							<p><a href="#item-2-3">Click here</a> for more detailed information about device health individual Dashboard  views.</p>
+							<h5 id="item-2-2-1">List Management Options</h5>
 							<img src="resources/img/screenshot-dashboard1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-dashboard1">
 							<p></p>
 							<span class="font-italic"><b>FIG. 1.1 - One EMS Dashboard</b></span>
 							<p></p>
-							<p>This List Management screen allows for the user to create lists of devices that s/he can use in other screens  within the OneEMS application.</p>
-							<p><a href="#item-2-3">Click here</a> for more detailed information about device health individual Dashboard  views.</p>
-							<h5 id="item-2-2-1">List Management Options</h5>
 							<p>Here, a user can create custom lists of devices associated with the device(s) they are assigned.</p>
-							<p>RouterByTech and SwitchByTech APIs are used to auto-populate the My Routers default views (for NA Field  Assurance Users) and Switch default views (for NA System Assurance Users).</p>
+							<p>In addition, a <b>“NA Field Assurance”</b> user will be provided a default <b>“My Routers”</b> option on the left.  Clicking on <b>“My Routers”</b> will take the user to the health page (see <a href="item-2-3"">Health Check Details View section</a> for more info) containing a list of routers assigned to the user (source is IOP).</p>
+							<p>For a <b>“NA System Assurance”</b> user a list of Switch names will be provided on left side that are associated with the user (source is IOP).</p>
+							<p>All users will also be provided a list of associated callout zones on left also.</p>
 							<b>List Creation</b>
 							<p>To create a <b>Device List</b>, enter a name in the input field under the <b>List Management</b> heading, then  click the "Submit" button next to this input field.</p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Your Device List title <b><i>MUST</i></b> be a combination of alphanumeric  characters of no more than 20 characters.</p>
@@ -150,6 +155,9 @@ echo generate_site_breadcrumb($values);
 							<p>To remove a device from your created list, simply use the drag icon to drag and drop it over the trash icon (  <i class="fa fa-trash fa-lg text"></i> ) inside the <b>Delete</b> button. Once you confirm this action, this will  remove this device from the list. You may add it again by repeating the process of dragging it into the <b>Edit  List</b> area from the list of devices under the map.</p>
 							<b>Viewing The Health Of Devices In A Custom List</b>
 							<p>To view the health of the devices within your selected <b>Device List</b>, click on the list name. You will  then be presented with the Health Check Dashboard view of all the devices in your selected list.</p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-2-3">Health Check Details View</h5>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> NA Field Assurance Users will be provided a <b>"My Routers"</b> List. This List contains Routers that are assigned to the NA Field Assurance Users via <b>Ops  Tracker</b>. NA Systems Assurance Users will be provided a list of Switch names that are associated with him/her.</p>
 							<p>Here, a user can view the health status of devices associated with a List created on the <b>Network Elements</b> page. Various device health parameters are exposed in this view. This affords the user the ability to monitor multiple devices at a glance.</p>

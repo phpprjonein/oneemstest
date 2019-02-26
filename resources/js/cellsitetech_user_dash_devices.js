@@ -11,7 +11,7 @@ $(document).ready(function() {
       	  actionurl = "healthchk-asrninethousand-cellsitetech.php";
         }else if(deviceseries == 'ASR3K'){
       	  actionurl = "healthchk-asrthreethousand-cellsitetech.php";
-        }else if(deviceseries == 'ASR5501'){
+        }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-asrfivefivezeroone-cellsitetech.php";	
         }else{
       	  actionurl = "healthchk-cellsitetech.php";
@@ -87,7 +87,7 @@ $(document).ready(function() {
       	  actionurl = "healthchk-asrninethousand-cellsitetech-custom.php";
         }else if(deviceseries == 'ASR3K'){
       	  actionurl = "healthchk-asrthreethousand-cellsitetech-custom.php";
-        }else if(deviceseries == 'ASR5501'){
+        }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-asrfivefivezeroone-cellsitetech-custom.php";	
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
@@ -151,7 +151,7 @@ $(document).ready(function() {
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 	 //return '<a target="blank" class="link_device_name" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh-stage.nsiam.vzwnet.com">' + data +'</a>'; //Correct -New format
                 //return '<a data-ssh="ssh://' + $('#username').val() + '@'+exploded[1]+'" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
-                return '<a data-ssh="'+$('#username').val() + '@PAMronlygrp@' + exploded[1]+'@pamssh-stage.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+                return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh-stage.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 		 // return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmin-AKROOH20T1A-C-PI-9999-01-pamssh-stage.nsiam.vzwnet.com:22">' + data +'</a>';
 		 //return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmin#AKROOH20T1A-C-PI-9999-01#pamssh-stage.nsiam.vzwnet.com">' + data +'</a>';
 				//return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
@@ -260,7 +260,7 @@ $(document).ready(function() {
                 	  actionurl = "healthchk-asrninethousand-load-table-data.php";
                   }else if(deviceseries == 'ASR3K'){
                 	  actionurl = "healthchk-asrthreethousand-load-table-data.php";
-                  }else if(deviceseries == 'ASR5501'){
+                  }else if(deviceseries == 'NCS5500'){
                       actionurl = "healthchk-asrfivefivezeroone-load-table-data.php";	
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";

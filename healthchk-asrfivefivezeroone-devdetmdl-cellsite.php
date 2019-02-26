@@ -14,13 +14,13 @@ switch ($command) {
         //$url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/ios/' . $deviceid . '/8';
         $url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_version';
         break;
-    case 'extract_processes_cpu':
+    case 'extract_cpu_utilization':
         //$url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/ios/' . $deviceid . '/5';
-        $url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_processes_cpu';
+        $url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_cpu_utilization';
         break;
-    case 'extract_memory_summary':
+    case 'extract_memory_statistics':
         //$url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/ios/' . $deviceid . '/5';
-        $url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_memory_summary';
+        $url = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/raw/Cisco/'.$deviceseries.'/ios/'.$version.'/'.$deviceid.'/extract_memory_statistics';
         break;
     // case 'showversion':
     case 'extract_platform':

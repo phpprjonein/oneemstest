@@ -1,7 +1,7 @@
- <header class="main-header">
+<header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -55,8 +55,9 @@
 						aria-haspopup="true" aria-expanded="false">Maintenance</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
-							<!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
+							 <!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
 							<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
+                                                      
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>
@@ -110,8 +111,8 @@
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check3b.php")); ?>"
-						href="ip-instant-health-check3b.php">Tools</a></li>
+						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
+						href="ip-instant-health-check.php">Tools</a></li>
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -175,7 +176,7 @@
 							
 					<?php if(check_user_authentication(array(9))){ ?>
 						<a class="dropdown-item" href="os-repository.php">Device Binary</a>
-						<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
+ 						<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
 					<?php } ?>	
 						
                     
@@ -193,8 +194,8 @@
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check3b.php")); ?>"
-						href="ip-instant-health-check3b.php">Tools</a></li>
+						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
+						href="ip-instant-health-check.php">Tools</a></li>
 					<li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

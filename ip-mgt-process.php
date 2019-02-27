@@ -355,7 +355,6 @@ if ($_POST['ctype'] == 'manualdisc') {
         'region' => $_POST['rgnval'],
         'market' => $_POST['mktval'],
         'devicename' => $_POST['devnameval'],
-         'deviceIpAddr' => $_POST['ip-address'],
         'nodeAddedBy' => $_SESSION['username'],
         'nodeCatId' => '',
         'vendorId' => '',
@@ -379,6 +378,11 @@ if ($_POST['ctype'] == 'manualdisc') {
         'syscontact' => $_POST['sysconval'],
         'model' => $_POST['modelval']
     );
+    if(filter_var($_POST['ip-address'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)){
+        $values_arr['deviceIpAddrsix'] = $_POST['ip-address'];
+    }else{
+        $values_arr['deviceIpAddr'] = $_POST['ip-address'];
+    }    
     discovery_add_new_device($values_arr);
     echo "successfrombackend";
 }

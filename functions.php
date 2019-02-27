@@ -2396,7 +2396,7 @@ function discovery_add_new_device($values)
      * '" . $values['nodeVersion'] . "', '" . $values['lastpolled'] . "', '" . $values['deviceDateAdded'] . "', '" . $values['deviceLastUpdated'] . "',
      * '" . $values['upsince'] . "','" . $values['switch_name'] . "','')";
      */
-    $sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market,switch_name,region,deviceIpAddr)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $values['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "','" . $values['switch_name'] . "','" . $values['region'] . "','" . $values['deviceIpAddr'] . "')";
+    $sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market,switch_name,region,deviceIpAddr,deviceIpAddrsix)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $values['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "','" . $values['switch_name'] . "','" . $values['region'] . "','" . $values['deviceIpAddr'] . "','" . $values['deviceIpAddrsix'] . "')";
     $db2->query($sql);
     $db2->execute();
 }

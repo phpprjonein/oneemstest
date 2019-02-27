@@ -2396,9 +2396,20 @@ function discovery_add_new_device($values)
      * '" . $values['nodeVersion'] . "', '" . $values['lastpolled'] . "', '" . $values['deviceDateAdded'] . "', '" . $values['deviceLastUpdated'] . "',
      * '" . $values['upsince'] . "','" . $values['switch_name'] . "','')";
      */
-    $sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market,switch_name,region,deviceIpAddr,deviceIpAddrsix)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $values['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "','" . $values['switch_name'] . "','" . $values['region'] . "','" . $values['deviceIpAddr'] . "','" . $values['deviceIpAddrsix'] . "')";
-    $db2->query($sql);
-    $db2->execute();
+    
+    if(loaddeviceidfromdevicename($values['devicename'])){
+        if(test_ipv6_address($values['deviceIpAddrsix'])){
+            $sql = "UPDATE `nodes` SET deviceIpAddrsix = '" . $values['deviceIpAddrsix'] . "' WHERE devicename = '" . $values['devicename'] . "'";
+        }else{
+            $sql = "UPDATE `nodes` SET deviceIpAddr = '" . $values['deviceIpAddr'] . "' WHERE devicename = '" . $values['devicename'] . "'";
+        }
+        $db2->query($sql);
+        $db2->execute();
+    }else{
+        $sql = "insert into nodes(devicename,deviceos,deviceseries,status,lastpolled,model,nodeVersion,sys_contact,sys_location,market,switch_name,region,deviceIpAddr,deviceIpAddrsix)" . "values ('" . $values['devicename'] . "','" . $values['deviceos'] . "','" . $values['deviceseries'] . "',1,'" . $values['lastpolled'] . "','" . $values['model'] . "','" . $values['nodeVersion'] . "','" . $values['sys_contact'] . "','" . $values['sys_location'] . "','" . $values['market'] . "','" . $values['switch_name'] . "','" . $values['region'] . "','" . $values['deviceIpAddr'] . "','" . $values['deviceIpAddrsix'] . "')";
+        $db2->query($sql);
+        $db2->execute();
+    }
 }
 
 /**

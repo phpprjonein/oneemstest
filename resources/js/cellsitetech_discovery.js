@@ -449,7 +449,7 @@ $(document).ready(function() {
 		        		    }, 4000);
 		        			return false;
 		        		}
-				  }else if(data == 'ip-exist'){
+				  }/*else if(data == 'ip-exist'){
 		    			$('#v-pills-manual #status').append("<strong>Error!</strong> Device IP Address already exist.<br/>");
 		    			$('#v-pills-manual #status').addClass('alert-danger');
 		    			req_err = true;
@@ -462,7 +462,7 @@ $(document).ready(function() {
 		        		    }, 4000);
 		        			return false;
 		        		}
-			  	  }else{
+			  	  }*/else{
 	        			var myModal = $('#myModal');
 	        			myModal.find('.modal-body').css('min-height','150px');
 	        			myModal.find('.modal-body').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;">Loading... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');

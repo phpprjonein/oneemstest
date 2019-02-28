@@ -289,7 +289,7 @@ global $APPCONFIG;
          }
          }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
-    }elseif($device_details['deviceseries'] == 'ASR5501'){
+    }elseif($device_details['deviceseries'] == 'NCS5500'){
         $output = sendPostData($url_final);
         /*$output = '{
          "extract_redundancy": {
@@ -474,7 +474,7 @@ if ($vendorId == 1) {
     }else if($device_details['deviceseries'] == 'ASR3K'){
         $output = json_decode($output, true);
         include_once 'healthchk-asrthreethousand-instant-hc-blk-inc.php';
-    }else if($device_details['deviceseries'] == 'ASR5501'){
+    }else if($device_details['deviceseries'] == 'NCS5500'){
         $output = json_decode($output, true);
         include_once 'healthchk-asrfivefivezeroone-instant-hc-blk-inc.php';
     }else{

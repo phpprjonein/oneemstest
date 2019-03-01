@@ -1,237 +1,142 @@
+
 <div class="ownfont box-body launch-modal" id="health-chk-div-wrap">
+	<div id="status" style="display: none;" class="alert"></div>
 	<table class="table table-bordered" cellspacing="0" cellpadding="0">
 		<tbody>
 			<tr>
-				<td><b>Redundancy state</b></td>
-				<td><?php
-                    $color = ($output['redundancy']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['redundancy']['message'] . '</span>';
+				<td><b>IOS Version</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_version&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['IOS Version']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['IOS Version']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>CPU Utilization </b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_cpu_utilization&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['CPU Utilization']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['CPU Utilization']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>Free Memory</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_memory_statistics&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Free Memory']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Free Memory']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				</tr>
+				
+				<tr>
+				<td><b>Platform</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_platform&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Platform']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Platform']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>Environmental</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_alarms_brief&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Environmental']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Environmental']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>`
+				
+				<td><b>Interface Counters</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Interface Counters']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Interface Counters']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				</tr>
+				<tr>
+				<td><b>2000 Byte Ping</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_ping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Ping']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Ping']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>BFD Session</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['BFD Session']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BFD Session']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>Log Entries</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_logging&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['Log Entries']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Log Entries']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				</tr>
+				<tr>
+				<td><b>VRF</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_vrf_all&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['VRF']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['VRF']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+				<td><b>Show ip interface brief</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_ip_interface_brief&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['IP Interface brief']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['IP Interface brief']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				
 				
-				<td><b>CPU Utilization</b></td>
-				<td><?php
-                    $color = ($output['cpuutilization']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['cpuutilization']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
 				
-				<td><b>Memory utilization</b></td>
-				<td><?php
-                    $color = ($output['freememory']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['freememory']['message'] . '</span>';
+				<td><b>MPLS Interfaces</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_mpls_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['MPLS Interfaces']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['MPLS Interfaces']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				</tr>
 				<tr>
-
-				<td><b>Software running on the RSP</b></td>
-				<td><?php
-                    $color = ($output['show_version']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['show_version']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Software installed and active</b></td>
-				<td><?php
-                    $color = ($output['show_version_installed_active']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_active']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Software installed and committed</b></td>
-				<td><?php
-                    $color = ($output['show_version_installed_committed']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['show_version_installed_committed']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>Alarms</b></td>
-				<td><?php
-                    $color = ($output['environmental']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['environmental']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Power supply</b></td>
-				<td><?php
-                    $color = ($output['power_supply']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['power_supply']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Line card status</b></td>
-				<td><?php
-                    $color = ($output['platform']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['platform']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>Fabric Status</b></td>
-				<td><?php
-                    $color = ($output['fabric status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['fabric status']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Fabric interface ASIC drops</b></td>
-				<td><?php
-                    $color = ($output['fabric interface asic drops']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic drops']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Fabric interface ASIC errors</b></td>
-				<td><?php
-                    $color = ($output['fabric interface asic errors']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic errors']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>Fabric Interface ASIC link-status</b></td>
-				<td><?php
-                    $color = ($output['fabric interface asic link-status']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['fabric interface asic link-status']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>Up/Down Status</b></td>
-				<td><?php
-                    $color1 = ($output['UP/DOWN Status']['ipv6_interface_brief']['R'] == 0) ? 'green' : 'red';
-                    $display1 = "<span style='color:" . $color1 . "'>" . $output['UP/DOWN Status']['ipv6_interface_brief']['message'] . '</span>';
-$color2 = ($output['UP/DOWN Status']['ipv4_interface_brief']['R'] == 0) ? 'green' : 'red';
-                    $display2 = "<span style='color:" . $color2 . "'>" . $output['UP/DOWN Status']['ipv4_interface_brief']['message'] . '</span>';
-                   $display = $display1.$display2; 
-echo $display;
-                    ?>
-				</td>
-				<td><b>Interface counters</b></td>
-				<td><?php
-                    $color = ($output['interfacecounters']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['interfacecounters']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>BFD session</b></td>
-				<td><?php
-                    $color = ($output['bfdsession']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['bfdsession']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>VRRP</b></td>
-				<td><?php
-                    $color = ($output['VRRP']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['VRRP']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>NTP</b></td>
-				<td><?php
-                    $color = ($output['NTP']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['NTP']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>Global OSPF neighbors</b></td>
-				<td><?php
-                    $color = ($output['global ospf neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['global ospf neighbor']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>1XRTT OSPF Neighbor</b></td>
-				<td><?php
-                    $color = ($output['1XRTT ospf']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['1XRTT ospf']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>CELL_MGMT OSPF Neighbor</b></td>
-				<td><?php
-                    $color = ($output['CELL_MGMT OSPF neighbor']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['CELL_MGMT OSPF neighbor']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>OSPF NSR and GR</b></td>
-				<td><?php
-                    $color = ($output['ospf nsr and gr']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['ospf nsr and gr']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>LDP neighbors</b></td>
-				<td><?php
-                    $color = ($output['ldp neighbors']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['ldp neighbors']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>WDN peering</b></td>
-				<td><?php
-                    $color = ($output['WDN peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['WDN peering']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>CSR peering</b></td>
-				<td><?php
-                    $color1 = ($output['CSR peering']['vpnv6_csr_peering']['R'] == 0) ? 'green' : 'red';
-                    $display1 = "<span style='color:" . $color1 . "'>" . $output['CSR peering']['vpnv6_csr_peering']['message'] . '</span>';
-		    $color2 = ($output['csr peering']['vpnv4_csr_peering']['R'] == 0) ? 'green' : 'red';
-                    $display2 = "<span style='color:" . $color2 . "'>" . $output['csr peering']['vpnv4_csr_peering']['message'] . '</span>';
-$diplay = $display1.$display2;
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>CRS WDN peering</b></td>
-				<td><?php
-                    $color = ($output['CRS WDN peering']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['CRS WDN peering']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td><b>CRS LTE peering</b></td>
-				<td><?php
-                    $color1 = ($output['CRS LTE peering']['ipv6_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
-                    $display1 = "<span style='color:" . $color1 . "'>" . $output['CRS LTE peering']['ipv6_crs_lte_peering']['message'] . '</span>';
-		    $color2 = ($output['CRS LTE peering']['ipv4_crs_lte_peering']['R'] == 0) ? 'green' : 'red';
-                    $display2 = "<span style='color:" . $color2 . "'>" . $output['CRS LTE peering']['ipv4_crs_lte_peering']['message'] . '</span>';
-$display = $display1.$display2;
-                    echo $display;
-                    ?>
-				</td>
-				</tr>
-				<tr>
-				<td><b>BGP NSR and Graceful Restart</b></td>
-				<td><?php
-                    $color = ($output['BGP NSR and Graceful Restart']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['BGP NSR and Graceful Restart']['message'] . '</span>';
+				<td><b>IPV4 BGP Neighbors</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-asrfivefivezeroone-devdetmdl-cellsite.php?commandname=extract_bgp_vpnv4_unicast_summary&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['IPV4 BGP Neighbors']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['IPV4 BGP Neighbors']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
 				</tr>
 			<tr>
-    <?php
+<?php
     if ($healthchktype != 'Load Table') {
         $device_status = '<tr><td align="right" class="border-0"><b>Status: </b></td><td align="left" class="border-0"><b>';
         // if($output['status']['error']){

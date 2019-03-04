@@ -10,7 +10,7 @@ $(document).ready(function() {
         }else if(deviceseries == 'ASR3K'){
           actionurl = "healthchk-asrthreethousand-cellsitetech.php";	
         }else if(deviceseries == 'NCS5500'){
-          actionurl = "healthchk-asrfivefivezeroone-cellsitetech.php";	
+          actionurl = "healthchk-ncsfivefivezerozero-cellsitetech.php";	
         }else{
       	  actionurl = "healthchk-switchtech.php";
         }
@@ -68,7 +68,7 @@ $(document).ready(function() {
         }else if(deviceseries == 'ASR3K'){
           actionurl = "healthchk-asrthreethousand-cellsitetech-custom.php";	
         }else if(deviceseries == 'NCS5500'){
-          actionurl = "healthchk-asrfivefivezeroone-cellsitetech-custom.php";	
+          actionurl = "healthchk-ncsfivefivezerozero-cellsitetech-custom.php";	
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
         }
@@ -237,7 +237,7 @@ $(document).ready(function() {
                   }else if(deviceseries == 'ASR3K'){
                       actionurl = "healthchk-asrthreethousand-load-table-data.php";	
                   }else if(deviceseries == 'NCS5500'){
-                      actionurl = "healthchk-asrfivefivezeroone-load-table-data.php";	
+                      actionurl = "healthchk-ncsfivefivezerozero-load-table-data.php";	
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";
                   }

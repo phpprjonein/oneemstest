@@ -476,7 +476,7 @@ if ($vendorId == 1) {
         include_once 'healthchk-asrthreethousand-instant-hc-blk-inc.php';
     }else if($device_details['deviceseries'] == 'NCS5500'){
         $output = json_decode($output, true);
-        include_once 'healthchk-asrfivefivezeroone-instant-hc-blk-inc.php';
+        include_once 'healthchk-ncsfivefivezerozero-instant-hc-blk-inc.php';
     }else{
         include_once 'instant_hc_blk_inc.php';
     }

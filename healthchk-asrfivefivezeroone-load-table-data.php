@@ -59,7 +59,7 @@ $healthchktype = 'Load Table';
 <?php
 $vendorId = load_node_vendor_id_from_deviceid($deviceid);
 if ($vendorId == 1) {
-    include_once 'healthchk-asrfivefivezeroone-blk-inc.php';
+    include_once 'healthchk-ncsfivefivezerozero-blk-inc.php';
 } elseif ($vendorId == 2) {
     include_once 'hc_blk_inc_nokia.php';
 } elseif ($vendorId == 3) {

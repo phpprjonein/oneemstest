@@ -122,7 +122,7 @@ $(document).ready(function() {
     	var myModal = $('#Modal_Health_Checks');
     	$('#Modal_Health_Checks .modal-title').html('Show Putty Command Line');
     	var sshPuTTYInputIPv6 = $('.instant-health-check #sshPuTTYInputIPv6').val().replace(/\:/g, '-');
-    	var command = $('#username').val() + '@PAMronlygrp@' + sshPuTTYInputIPv6 + '@pamssh-stage.nsiam.vzwnet.com';
+    	var command = $('#username').val() + '@PAMadmingrp@' + sshPuTTYInputIPv6 + '@pamssh.nsiam.vzwnet.com';
     	$('#Modal_Health_Checks .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + command + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
     	myModal.modal('show');
     	return false;

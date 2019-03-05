@@ -104,7 +104,7 @@ $page_title = 'OneEMS';
                                                 id="syncPassInputDeviceIPaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="sync-password-ip-health-check"
-                                                data-toggle="modal">Sync Password</button>
+                                                data-toggle="modal">Reset CyberArk Password</button>
                                     </div>
                                     </div>
                                     </form>
@@ -112,7 +112,7 @@ $page_title = 'OneEMS';
                                     <form class="cyberark-sync-pass-form" action="" method="post">
                                     <div class="input-group row">
                                     <div class="form-inline col-md-6 col-sm-12">
-                                            <input type="inputName" name="synccyberarkpass_ipaddress" class="form-control"
+                                            <input type="inputName" name="syncpass_ipaddress" class="form-control"
                                                 id="synccyberarkpass_ipaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="sync-cyberark-sync-password-ip-health-check"

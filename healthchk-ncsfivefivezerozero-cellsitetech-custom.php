@@ -57,4 +57,4 @@ ems_update_healthchk_info($deviceid, $output, $lastupdated);
 $output = json_decode($output, 1);
 $_SESSION['deviceidswusr'] = $deviceid;
 ?>
-<?php include_once 'healthchk-asrfivefivezeroone-blk-inc.php';?>
+<?php include_once 'healthchk-ncsfivefivezerozero-blk-inc.php';?>

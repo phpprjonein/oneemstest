@@ -116,6 +116,7 @@ echo generate_site_breadcrumb($values);
 							<div class="panel-heading panel-heading-myswtlst"> <?php if ($title === 0) echo 'My routers'; else echo $title; ?></div>
 						</div>
 						<input type="hidden" id='userid' value="<?php echo $userid ?>"
+							name=""><input type="hidden" id='listid' value="<?php echo $_GET['listid'] ?>"
 							name=""> <input type="hidden" id='username'
 							value="<?php echo $username ?>" name="">
 						<div class="panel-body">

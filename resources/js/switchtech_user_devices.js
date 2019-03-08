@@ -192,9 +192,9 @@ $(document).ready(function() {
 				  
              });
         }
-
+            
       } );
-
+         $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
       $('#example tbody').on('click', 'td.details-control', function () {
 
          var tr = $(this).closest('tr');
@@ -273,6 +273,13 @@ $(document).ready(function() {
             }
           } 
       });
+      
+
+	  $(document).on('click', '.dtexcelbtn-cs', function(event) {
+		  location.href = "xls-export-process.php?userid=" + $('#userid').val() + "&listid=" + $('#listid').val();
+		  return false;
+	  });
+      
 	  
 	  		if($('#backuprestoredt').length > 0){
 		//$('#ip-mgt-utils div').hide(); 

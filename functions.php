@@ -1205,13 +1205,10 @@ function user_mylist_devieslist_export($userid, $listid)
     if (! $userid) {
         return false;
     }
-    // print_r($_GET);
-    $draw = $_GET['draw'];
-    $start = isset($_GET['start']) ? $_GET['start'] : 0;
-    $length = isset($_GET['length']) ? $_GET['length'] : 10;
-    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
-    $order_col = $_GET['order'][0]['column'];
-    $order_dir = $_GET['order'][0]['dir'];
+    //print '<pre>'; print_r($_GET);die;
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
     
     $columns = array(
             'CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr',
@@ -1227,24 +1224,10 @@ function user_mylist_devieslist_export($userid, $listid)
             'n.lastpolled',
             'n.status'
     );
-    
-    
     $sql_select = "SELECT " . implode(", ", $columns);
-    
     $sql_condition = " FROM userdevices ud
        JOIN nodes n on ud.nodeid = n.id
        WHERE ud.userid = " . $userid . " and ud.listid = " . $listid;
-    
-    /*
-     * if (in_array($_SESSION['userlevel'], array(1,2))){
-     * $sql_condition = " FROM nodes n where n.csr_site_tech_id = '".$_SESSION['username']."' OR n.swt_tech_id = '".$_SESSION['username']."'";
-     * }else{
-     * $sql_condition = " FROM userdevices ud
-     * JOIN nodes n on ud.nodeid = n.id
-     * WHERE ud.userid = " . $userid ." and ud.listid = " . $listid;
-     * }
-     */
-    
     if ($search) {
         $sql_condition .= " AND ( ";
         $sql_condition .= " n.devicename LIKE '%" . $search . "%'";
@@ -1258,22 +1241,16 @@ function user_mylist_devieslist_export($userid, $listid)
         $sql_condition .= "  OR n.deviceIpAddrsix LIKE '%" . addslashes($search) . "%' ";
         $sql_condition .= " ) ";
     }
-    
     $sql_order = "";
     if ($order_col != '') {
         $sql_order = " ORDER BY " . $columns[$order_col];
     }
-    
     if ($order_dir != '') {
         $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
     }
-    
-    
     $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
-    
     $db2->query($sql);
     
-    $resultset['draw'] = $draw;
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
             $value['DT_RowId'] = "row_" . $value['id'];

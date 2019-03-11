@@ -276,7 +276,11 @@ $(document).ready(function() {
       
 
 	  $(document).on('click', '.dtexcelbtn-cs', function(event) {
-		  location.href = "xls-export-process.php?userid=" + $('#userid').val() + "&listid=" + $('#listid').val();
+		  var sortInfo = $("#example").dataTable().fnSettings().aaSorting;
+		  //console.log(sortInfo[0][0] + '         ' + sortInfo[0][1]);
+		  //console.log("xls-export-process.php?userid=" + $('#userid').val() + "&listid=" + $('#listid').val() + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1]);
+		  //return false;
+		  location.href = "xls-export-process.php?case=healthcheck&userid=" + $('#userid').val() + "&listid=" + $('#listid').val() + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
 		  return false;
 	  });
       

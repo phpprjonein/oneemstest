@@ -169,6 +169,7 @@ $lists_all = get_list_by_count($userid);
                 $userid = $_SESSION['userid'];
                 $myswitchlist = usrcellsitefavritelist_display($userid);
                 foreach ($myswitchlist['result'] as $key => $value) {
+                    $lists_all[$value['listname']] = ($lists_all[$value['listname']] == "") ? 0 : $lists_all[$value['listname']];
                     ?>
                     <tr style='cursor: pointer'
 											class="del_<?php echo $value['listid'];?>">

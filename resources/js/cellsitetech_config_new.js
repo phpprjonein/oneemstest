@@ -104,7 +104,7 @@ $(document).ready(function() {
         }
       });
     filename = filename.replace(/[^a-z0-9_-]/gi, "");
-    if (filename != "") {
+    if (filename != "" && $(".gscript1 #select_os_version").val() != '' && $(".gscript1 #select_device_series").val() != '') {
       //$('#template_info').removeClass('d-none');
       //$("#cellsitech-generate-script #template_info #filename').html(filename);
       //$("#cellsitech-generate-script #upload_filename').val(filename);

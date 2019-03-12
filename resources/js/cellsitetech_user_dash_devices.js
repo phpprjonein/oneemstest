@@ -220,6 +220,8 @@ $(document).ready(function() {
 
       } );
 
+      $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');   
+         
       $('#example tbody').on('click', 'td.details-control', function () {
 
          var tr = $(this).closest('tr');
@@ -298,6 +300,15 @@ $(document).ready(function() {
             }
           } 
       });
+      
+      $(document).on('click', '.dtexcelbtn-cs', function(event) {
+		  var sortInfo = $("#example").dataTable().fnSettings().aaSorting;
+		  //console.log(sortInfo[0][0] + '         ' + sortInfo[0][1]);
+		  //console.log("xls-export-process.php?userid=" + $('#userid').val() + "&listid=" + $('#listid').val() + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1]);
+		  //return false;
+		  location.href = "xls-export-process.php?case=healthcheck&userid=" + $('#userid').val() + "&listid=" + $('#listid').val() + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+		  return false;
+	  });
 	  
 	  		if($('#backuprestore').length > 0){
 		//$('#ip-mgt-utils div').hide(); 

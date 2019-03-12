@@ -1071,14 +1071,35 @@ function get_user_mylist_name_by_id($listid,$userid)
           WHERE ud.listid = " . $listid . " and ud.userid = ".$userid."
          limit 0,1 ";
     $db2->query($sql);
-    
     $resultset = $db2->resultset();
+    
+    $sql1 = "SELECT count(*) as count  FROM userdevices ud
+          WHERE ud.listid = " . $listid . " and ud.userid = ".$userid.' and ud.nodeid != 0';
+    $db2->query($sql1);
+    $resultset1 = $db2->resultset();
+    
+    $resultset[0]['count'] = $resultset1[0]['count'];
+
     if (isset($resultset[0]['listname'])) {
-        return ($resultset[0]['listname']);
+        return ($resultset[0]);
     } else {
         return;
     }
 }
+
+function get_list_by_count($userid){
+    global $db2;
+    $sql = "SELECT DISTINCT ud.listname, count(*) AS count
+    FROM userdevices ud where ud.userid = ".$userid."  and ud.nodeid != 0 GROUP BY listname";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $result = array();
+    foreach ($resultset as $key => $val){
+        $result[$val['listname']] = $val['count'];
+    }
+    return $result;
+}
+
 
 /**
  *

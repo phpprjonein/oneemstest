@@ -47,6 +47,9 @@ $usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
 $username = $_SESSION['username'];
 $mesg = " User name: $username User type : $usertype Page:  Network Elements page Description: Cell Site Tech has logged into the application.";
 write_log($mesg);
+
+
+$lists_all = get_list_by_count($userid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,7 +178,7 @@ write_log($mesg);
 												data-deviceid="<?php echo $value['nodeid'] ?>"
 												class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
 												<a
-												href="cellsitetech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo ($value['listname'] == '0' ? 'My Routers' : $value['listname']); ?></a>
+												href="cellsitetech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo ($value['listname'] == '0' ? 'My Routers ('.$lists_all[0].')' : $value['listname'].' ('.$lists_all[$value['listname']].')'); ?></a>
 											</td>
 											<td>&nbsp;
 												<?php if($value['listtype'] != 'cz' && $value['listid'] != 0){ ?>

@@ -47,6 +47,7 @@ $usertype = (isset($_SESSION['userlevel']) == 1) ? "Switch Technician" : "";
 $username = $_SESSION['username'];
 $mesg = " User name: $username User type : $usertype Page:  Network Elements page Description: Switch Tech has logged in to the OneEMS application.";
 write_log($mesg);
+$lists_all = get_list_by_count($userid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -259,7 +260,7 @@ write_log($mesg);
 												class="<?php echo (strtolower($value['listname']) != 'default') ? 'draggable' : '' ?> fa fa-arrows-alt"></i>&nbsp;
                       <?php endif; ?>
                       <a
-												href="switchtech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo $value['listname']; ?></a>
+												href="switchtech-user-devicelist.php?userid=<?php echo $userid;?>&listid=<?php echo $value['listid'];?>"><?php echo $value['listname'].' ('.$lists_all[$value['listname']].')'; ?></a>
 											</td>
 											<td>&nbsp;<?php if(!in_array($value['listname'], $_SESSION['swt_mswitch_arr'])): ?><a
 												href="?action=editmylist&switchlistid=<?php echo $value['listid'];?>"><i

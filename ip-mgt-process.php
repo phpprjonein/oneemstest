@@ -282,12 +282,19 @@ if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST
                 continue;
             }
         }
-        $checked = (empty($output)) ? 'checked' : '';
-        $output .= '<tr><td class="templname">' . $val['templname'] . '</td><td><input type="radio" value="' . $val['templname'] . '" ' . $checked . ' name="radioGroup"></td><td><button type="submit" class="btn btn-primary btn-sm generate-script-delete">Delete</button></td></tr>';
+        //$checked = (empty($output)) ? 'checked' : '';
+        $output .= '<tr><td class="templname">' . $val['templname'] . '</td><td><input type="radio" class="rgrp" value="' . $val['templname'] . '" ' . $checked . ' name="radioGroup"></td><td><button type="submit" class="btn btn-primary btn-sm generate-script-delete">Delete</button></td></tr>';
     }
     echo $output;
     
     // echo '<tr><td>Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1</td><td><input type="radio" value="Golden_purpose1_xe_1561_ranvendor1_scripttype1_region1_switch1_market1" name="radioGroup"></td></tr>';
+}
+
+if (isset($_POST['tempname']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GetUserVars') {
+    
+    echo get_tempate_uservars($_POST['tempname']);
+    
+    //echo 'BDI 400 LTE IPv6 Address,Telco Interface-ASR9010-Even';
 }
 
 if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'DelGenerateScript') {
@@ -296,7 +303,7 @@ if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST
     $output = '';
     foreach ($results as $key => $val) {
         $checked = (empty($output)) ? 'checked' : '';
-        $output .= '<tr><td class="templname">' . $val['templname'] . '</td><td><input type="radio" value="' . $val['templname'] . '" ' . $checked . ' name="radioGroup"></td><td><button type="submit" class="btn btn-primary btn-sm generate-script-delete">Delete</button></td></tr>';
+        $output .= '<tr><td class="templname">' . $val['templname'] . '</td><td><input type="radio" class="rgrp" value="' . $val['templname'] . '" ' . $checked . ' name="radioGroup"></td><td><button type="submit" class="btn btn-primary btn-sm generate-script-delete">Delete</button></td></tr>';
     }
     echo $output;
 }

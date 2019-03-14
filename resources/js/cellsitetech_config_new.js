@@ -167,6 +167,28 @@ $(document).ready(function() {
     return false;
   });
 
+  $("body").on("click", ".rgrp", function() {
+	  alert($(this).closest("tr").find("td:eq(0)").text());
+	  $('.non-bandwidth').not('.panel-heading-lstmgmt').hide();
+      $.post("ip-mgt-process.php", {
+          'calltype': "trigger",
+          'tempname': $(this).closest("tr").find("td:eq(0)").text(),
+          'action': "GetUserVars"
+        }).done(function(data) {
+        	dataarr = data.split(',');
+      	  $(".non-bandwidth input").each(function() {
+    		  if($.inArray($(this).attr('name'),dataarr) == 0){
+    			  $(this).parent("div").show();
+    		  }
+    	  });
+    	  $(".non-bandwidth select").each(function() {
+    		  if($.inArray($(this).attr('name'),dataarr) == 0){
+    			  $(this).parent("div").show();
+    		  }
+    	  });
+	
+        });
+  });
   //generate-script-delete
   $("body").on("click", ".generate-script-delete", function() {
     var filename = "";

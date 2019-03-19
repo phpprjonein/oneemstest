@@ -168,7 +168,6 @@ $(document).ready(function() {
   });
 
   $("body").on("click", ".rgrp", function() {
-	  alert($(this).closest("tr").find("td:eq(0)").text());
 	  $('.non-bandwidth').not('.panel-heading-lstmgmt').hide();
       $.post("ip-mgt-process.php", {
           'calltype': "trigger",

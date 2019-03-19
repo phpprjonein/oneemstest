@@ -3556,6 +3556,19 @@ function config_get_templates_from_templname($templname)
  * @param unknown $templname
  * @return unknown
  */
+function config_get_templates_templname()
+{
+    global $db2;
+    $sql = "SELECT distinct(templname) FROM configtemplate order by templname asc";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+/**
+ *
+ * @param unknown $templname
+ * @return unknown
+ */
 function get_tempate_uservars($tempname){
     global $db2;
     $sql = "SELECT elemvalue FROM configtemplate where templname = '".$tempname."' and tabname='usrvars'";

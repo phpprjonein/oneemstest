@@ -19,7 +19,7 @@
 			 "destroy": true,
 			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
 				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
 			  url: 'bootorder-delivery-process.php',
@@ -74,7 +74,7 @@
     			 "destroy": true,
     			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
     				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
                   url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries+'&nodeVersion='+nodeVersion,
@@ -151,7 +151,7 @@
 	    			 "destroy": true,
 	    			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
 	    				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+	    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
 	                  url: 'bootorder-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,

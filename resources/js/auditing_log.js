@@ -22,7 +22,7 @@
 	          "lengthMenu": [ 14, 25, 50, 100, 200, 500 ],
 			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
 				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
               url: 'software-delivery-audit-log-process.php',
@@ -90,7 +90,7 @@
     	          "lengthMenu": [ 14, 25, 50, 100, 200, 500 ],
     			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
     				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
     				 ],
               "ajax": {
                   url: 'software-delivery-audit-log-process.php?listname='+listname,
@@ -184,7 +184,7 @@
 	    	          "lengthMenu": [ 14, 25, 50, 100, 200, 500 ],
 	    			 "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn'},
 	    				 {extend: 'pdfHtml5',text: '',titleAttr:'PDF',className:'dtpdfbtn'},
-	    				 {extend: 'copyHtml5',text: '',titleAttr:'Copy',className:'dtprintbtn'}
+	    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
 	                  url: 'software-delivery-audit-log-process.php?listname='+listname,

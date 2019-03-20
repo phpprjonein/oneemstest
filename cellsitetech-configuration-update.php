@@ -61,6 +61,10 @@ write_log($mesg);
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
+									<?php if($_SESSION['msg'] == 'us'){ ?>
+                                  		<div id="main-status"
+										class="alert alert-success">Configuration Template Updated Successfully</div>
+                                  	<?php } unset($_SESSION['msg']); ?>
 									<div class="row">
 										<div class="col-lg-4 tags p-b-2">
 											<form action="cellsitetech-configuration-update.php" method="post"
@@ -91,6 +95,7 @@ write_log($mesg);
 							<div class="row">
 								<div class="col">
 			<?php 
+			     //$_POST['templname'] = 'Modification_ASR1000_1561S1_ALL_Hub_hubre_debarle';
 			     $results = config_get_templates_from_templname($_POST['templname']);
 			     //'Modification_ASR1000_1561S1_ALL_Hub_hubre_debarle'
 			?>
@@ -167,9 +172,32 @@ write_log($mesg);
                                 }
                                 $replace_selbox .= '</select>';
                             }
-                            
-                            $outputin .= "<select id='conf_selbox_" . $k . $l . "' class='elementvalref' name='looptabler[looper_" . $k . "][]'>" . $table_selbox . "
-                            <span id='wrap_conf_selbox_" . $k . $l . "'><select id='val_conf_selbox_" . $k . $l . "' name='loop[looper_" . $k . "][]'>" . $replace_selbox . "<input type='hidden' name='hidden[looper_" . $k . "][]' value='1' >";
+                            if($newarr[$k][$l]["tabname"] == 'switchvars'){
+                                $vars_switchvars = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
+                                foreach ($vars_switchvars as $key11=>$val11){
+                                    $selected = $newarr[$k][$l]["elemvalue"] == $val11['swvarname'] ? 'selected':'';
+                                    $replace_selbox .= '<option val="'.$val11['swvarname'].'" '.$selected.'>'.$val11['swvarname'].'</option>';
+                                }
+                                $replace_selbox .= '</select>';
+                            }
+                            if($newarr[$k][$l]["tabname"] == 'marketvars'){
+                                $vars_marketvars = configtemplate_elemvalue_pos_script('marketvars', 'mvarname', 'mvarval');
+                                foreach ($vars_marketvars as $key11=>$val11){
+                                    $selected = $newarr[$k][$l]["elemvalue"] == $val11['mvarname'] ? 'selected':'';
+                                    $replace_selbox .= '<option val="'.$val11['mvarname'].'" '.$selected.'>'.$val11['mvarname'].'</option>';
+                                }
+                                $replace_selbox .= '</select>';
+                            }
+                            if($newarr[$k][$l]["tabname"] == 'globalvars'){
+                                $vars_globalvars = configtemplate_elemvalue_pos_script('globalvars', 'gvarname', 'gvarval');
+                                foreach ($vars_globalvars as $key11=>$val11){
+                                    $selected = $newarr[$k][$l]["elemvalue"] == $val11['gvarname'] ? 'selected':'';
+                                    $replace_selbox .= '<option val="'.$val11['gvarname'].'" '.$selected.'>'.$val11['gvarname'].'</option>';
+                                }
+                                $replace_selbox .= '</select>';
+                            }
+                            $outputin .= "<select id='conf_selbox_" . $k . $l . "' class='elementvalref' name='looptabler[looper_" . $newarr[$k][$l]['elemid'] . "]'>" . $table_selbox . "
+                            <span id='wrap_conf_selbox_" . $k . $l . "'><select id='val_conf_selbox_" . $k . $l . "' name='looptablerval[looper_" . $newarr[$k][$l]['elemid'] . "]'>" . $replace_selbox . "<input type='hidden' name='hidden[looper_" . $k . "][]' value='1' >";
                             //$pink_box_size = strlen($result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]]);
                             //$pink_box_size = ($pink_box_size == 0 || $pink_box_size < $pink_box_min_size) ? $pink_box_min_size : $pink_box_size;
                             
@@ -189,11 +217,13 @@ write_log($mesg);
 			</div>
 											<div>
 											</div>
+											<?php if(isset($_POST['templname']) && !empty($_POST['templname'])):?>
 											<div class="form-group">
-												<input type="hidden" name="tmplcategory" value="<?php echo $_POST['tmplcategory'];?>">
-												<button type="submit" value="Update Script" name="action"
+												<input type="hidden" name="templname" value="<?php echo $_POST['templname'];?>">
+												<button type="submit" value="Update Config Script" name="action"
 													class="btn btn-primary btn-lg">Update</button>
 											</div>
+											<?php endif;?>
 										</form>
 									</div>
 									<p></p>

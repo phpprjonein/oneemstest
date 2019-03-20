@@ -5,10 +5,28 @@ include_once 'functions.php';
 $userid = $_SESSION['userid'];
 
 
-// print '<pre>';
-// print_r($_POST);
-// print_r($_FILES);
-// die;
+//echo $_POST['action']; die;
+
+if ($_POST['action'] == 'Update Config Script') {
+    foreach ($_POST['looptabler'] as $keytab => $valtab){
+        $elemid = str_replace('looper_', '', $keytab);
+        //echo '<br/>';
+        $elemvalue = $_POST['looptablerval'][$keytab];
+        //echo '<br/>';
+        //echo $valtab;
+        $templname = $_POST['templname'];
+        $sql = "UPDATE `configtemplate` SET tabname = '" . $valtab . "',elemvalue = '" . $elemvalue . "' WHERE templname = '" . $templname . "' AND elemid = ".$elemid;
+        $db2->query($sql);
+        $db2->execute();
+        
+    }
+    $_SESSION['msg'] = 'us';
+    header("location:cellsitetech-configuration-update.php");
+//     print '<pre>';
+//     print_r($_POST);
+//     print_r($_FILES);
+//     die;
+}
 
 if ($_POST['action'] == 'SAVE CONFIGURATION') {
     /*

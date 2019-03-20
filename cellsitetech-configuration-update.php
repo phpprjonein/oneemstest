@@ -200,7 +200,7 @@ write_log($mesg);
                             <span id='wrap_conf_selbox_" . $k . $l . "'><select id='val_conf_selbox_" . $k . $l . "' name='looptablerval[looper_" . $newarr[$k][$l]['elemid'] . "]'>" . $replace_selbox . "<input type='hidden' name='hidden[looper_" . $k . "][]' value='1' >";
                             //$pink_box_size = strlen($result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]]);
                             //$pink_box_size = ($pink_box_size == 0 || $pink_box_size < $pink_box_min_size) ? $pink_box_min_size : $pink_box_size;
-                            
+                            $replace_selbox = '';
                             //$outputin .= "<input type='text' size='" . $pink_box_size . "' name='loop[looper_" . $k . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='" . $result[$newarr[$k][$l]["tabname"]][$newarr[$k][$l]["elemvalue"]] . "'>";
                         }
                     }

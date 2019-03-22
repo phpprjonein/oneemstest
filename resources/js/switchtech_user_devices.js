@@ -11,6 +11,12 @@ $(document).ready(function() {
           actionurl = "healthchk-asrthreethousand-cellsitetech.php";	
         }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-ncsfivefivezerozero-cellsitetech.php";	
+        }else if(deviceseries == 'Nexus3K'){
+          actionurl = "healthchk-nexus3k-cellsitetech.php";	
+        }else if(deviceseries == 'NexusETRAN3K'){
+          actionurl = "healthchk-nexusetran3k-cellsitetech.php";	
+        }else if(deviceseries == 'StarOS'){
+          actionurl = "healthchk-staros-cellsitetech.php";	
         }else{
       	  actionurl = "healthchk-switchtech.php";
         }
@@ -69,6 +75,12 @@ $(document).ready(function() {
           actionurl = "healthchk-asrthreethousand-cellsitetech-custom.php";	
         }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-ncsfivefivezerozero-cellsitetech-custom.php";	
+        }else if(deviceseries == 'Nexus3K'){
+          actionurl = "healthchk-nexus3k-cellsitetech-custom.php";	
+        }else if(deviceseries == 'NexusETRAN3K'){
+          actionurl = "healthchk-nexusetran3k-cellsitetech-custom.php";	
+        }else if(deviceseries == 'StarOS'){
+          actionurl = "healthchk-staros-cellsitetech-custom.php";	
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
         }
@@ -238,6 +250,12 @@ $(document).ready(function() {
                       actionurl = "healthchk-asrthreethousand-load-table-data.php";	
                   }else if(deviceseries == 'NCS5500'){
                       actionurl = "healthchk-ncsfivefivezerozero-load-table-data.php";	
+                  }else if(deviceseries == 'Nexus3K'){
+                      actionurl = "healthchk-nexus3k-load-table-data.php";	
+                  }else if(deviceseries == 'NexusETRAN3K'){
+                    actionurl = "healthchk-nexusetran3k-load-table-data.php";	
+                  }else if(deviceseries == 'StarOS'){
+                    actionurl = "healthchk-staros-load-table-data.php";	
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";
                   }

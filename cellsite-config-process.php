@@ -8,17 +8,29 @@ $userid = $_SESSION['userid'];
 //echo $_POST['action']; die;
 
 if ($_POST['action'] == 'Update Config Script') {
+    $templname = $_POST['templname'];
+    $sql = "SELECT distinct(elemid),elemvalue, tabname, templname, refmop FROM configtemplate where editable = 1 and templname = '" . $templname . "' order by elemid asc";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    $compare_arr = array();
+    foreach ($resultset['result'] as $key => $val) :
+    $compare_arr[$val['elemid']] = array('elemvalue' => $val['elemvalue'], 'tabname' => $val['tabname']);
+    endforeach;
+//     print '<pre>';
+//     print_r($compare_arr);
+//     die;
     foreach ($_POST['looptabler'] as $keytab => $valtab){
         $elemid = str_replace('looper_', '', $keytab);
         //echo '<br/>';
         $elemvalue = $_POST['looptablerval'][$keytab];
         //echo '<br/>';
         //echo $valtab;
-        $templname = $_POST['templname'];
-        $sql = "UPDATE `configtemplate` SET tabname = '" . $valtab . "',elemvalue = '" . $elemvalue . "' WHERE templname = '" . $templname . "' AND elemid = ".$elemid;
-        $db2->query($sql);
-        $db2->execute();
         
+        if($compare_arr[$elemid]['tabname'] != $valtab || $compare_arr[$elemid]['elemvalue'] != $elemvalue){
+            $sql = "UPDATE `configtemplate` SET tabname = '" . $valtab . "',elemvalue = '" . $elemvalue . "' WHERE templname = '" . $templname . "' AND elemid = ".$elemid;
+            $db2->query($sql);
+            $db2->execute();
+        }
     }
     $_SESSION['msg'] = 'us';
     header("location:cellsitetech-configuration-update.php");

@@ -23,7 +23,7 @@ $(document).ready(function() {
           $.ajax({
               type:"get",
               url:actionurl,
-              data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':version},
+              data: {'deviceid':$(this).data('deviceid'), 'userid':$(this).data('userid'), 'deviceseries':$(this).data('deviceseries'), 'version':version, 'ajax-val-session':1},
               beforeSend: function(){
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes...<div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
               },
@@ -31,6 +31,9 @@ $(document).ready(function() {
                   $thisdiv.addClass('loaded');
               },
               success: function(resdata){
+            	  if(resdata == 'redirectUser')
+            		  parent.location.reload();
+            	  
             	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
               }
           });

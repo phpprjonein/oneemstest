@@ -114,3 +114,10 @@ define("EMAIL_WELCOME", true);
 define("ALL_LOWERCASE", true);
 
 session_start();
+
+if($_GET['ajax-val-session'] == 1 || $_POST['ajax-val-session'] == 1){
+    if(!isset($_SESSION['userid']) || (isset($_SESSION['userid']) && empty($_SESSION['userid']))){
+        echo 'redirectUser';
+        exit;
+    }
+}

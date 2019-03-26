@@ -1,3 +1,9 @@
+<?php 
+include "classes/db2.class.php";
+include "classes/paginator.class.php";
+include 'functions.php';
+global $APPCONFIG;
+?>
 <script type="text/javascript">
 $(document).ready(function(){
 			$(document).on('click', '.anchorcmd', function(event) {
@@ -19,10 +25,6 @@ $(document).ready(function(){
             });        
 </script>
 <?php
-include "classes/db2.class.php";
-include "classes/paginator.class.php";
-include 'functions.php';
-global $APPCONFIG;
 $userid = $_GET['userid'];
 $deviceid = $_GET['deviceid'];
 $lastupdated = date('Y-m-d H:i:s');

@@ -1,3 +1,9 @@
+<?php
+include "classes/db2.class.php";
+include "classes/paginator.class.php";
+include 'functions.php';
+global $APPCONFIG;
+?>
 <script type="text/javascript">
 $(document).ready(function(){
 				$(document).on('click', '.anchorcmd', function(event) {
@@ -18,12 +24,6 @@ $(document).ready(function(){
               });
             });        
 </script>
-<?php
-include "classes/db2.class.php";
-include "classes/paginator.class.php";
-include 'functions.php';
-global $APPCONFIG;
-?>
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];

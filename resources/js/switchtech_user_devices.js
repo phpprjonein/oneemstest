@@ -31,10 +31,11 @@ $(document).ready(function() {
                   $thisdiv.addClass('loaded');
               },
               success: function(resdata){
-            	  if(resdata == 'redirectUser')
+            	  if(resdata == 'redirectUser'){
             		  parent.location.reload();
-            	  
-            	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+            	  }else{
+            		  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
+            	  }
               }
           });
       }); 
@@ -90,7 +91,7 @@ $(document).ready(function() {
         $.ajax({
             type:"get",
             url:actionurl,
-            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':version}, 
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'category':allVals, 'deviceseries':$(this).data('deviceseries'), 'version':version, 'ajax-val-session':1}, 
             beforeSend: function(){
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
             },
@@ -98,7 +99,11 @@ $(document).ready(function() {
                 $thisdiv.addClass('loaded');
             },
             success: function(resdata){
-          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+            	if(resdata == 'redirectUser'){
+            		parent.location.reload();
+          	  	}else{
+          	  		$('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
+          	  	}	
             }
         });
     });
@@ -108,7 +113,7 @@ $(document).ready(function() {
         $.ajax({
             type:"get",
             url:"healthchk-cellsitetech-preventive.php",
-            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid')}, 
+            data: {deviceid:$(this).data('deviceid'), userid:$(this).data('userid'), 'ajax-val-session':1}, 
             beforeSend: function(){
           	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
             },
@@ -116,7 +121,11 @@ $(document).ready(function() {
                 $thisdiv.addClass('loaded');
             },
             success: function(resdata){
-          	  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);     
+            	if(resdata == 'redirectUser'){
+            		parent.location.reload();
+          	  	}else{
+          	  		$('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
+          	  	}
             }
         });
     });
@@ -266,7 +275,7 @@ $(document).ready(function() {
                   var ajs = $.ajax({
                       type:"get",
                       url: actionurl,
-                      data: {'deviceid':id, 'userid':$('#userid').val(), 'deviceseries':deviceseries, 'version':version },
+                      data: {'deviceid':id, 'userid':$('#userid').val(), 'deviceseries':deviceseries, 'version':version, 'ajax-val-session':1},
                       beforeSend: function(){
                           $('#detail_'+id).html('<div class="text-center overlay box-body">Running Health Checks. Takes several minutes... <div class="fa fa-refresh fa-spin" style="font-size:24px; text-align:center;"></div></div>');
                       },
@@ -274,7 +283,11 @@ $(document).ready(function() {
                           $('#detail_'+id).addClass('loaded');
                       },
                       success: function(resdata){
-                          $('#detail_'+id).html(resdata);
+                    	  if(resdata == 'redirectUser'){
+                    		  parent.location.reload();
+                    	  }else{
+                    		  $('#detail_'+id).html(resdata);
+                    	  }
                       }
                   });
                   /*ajs = $.ajax({

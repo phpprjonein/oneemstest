@@ -133,7 +133,7 @@ $page_title = 'OneEMS';
                                                 id="sshPuTTYInputIPv6" placeholder="Enter IPv6 Address"
                                                 autofocus>
                                             <button type="submit" class="btn" id="ssh-PuTTY-ip-health-check"
-                                                data-toggle="modal">Show CyberArk CmdLine</button>
+                                                data-toggle="modal">CyberArk SSH Syntax</button>
                                     </div>
                                                                 <!--  Show CyberArk CmdLine Form End -->
                                                                 <!--  Show Add CyberArk Account Form Start -->

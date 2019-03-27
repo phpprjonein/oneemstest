@@ -132,7 +132,7 @@ write_log($mesg);
 						  </div>
 							</div>
 							<p id="cp1" style="display: none"></p>
-							<input type="hidden" id='userid' value="<?php echo $userid ?>"
+							<input type="hidden" id='userid' value="<?php echo $_SESSION['userid'] ?>"
 								name="">
 							<div class="panel-body">
 								<table id="backuprestoredt" class="table table-striped table-sm">

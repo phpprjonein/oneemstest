@@ -109,6 +109,7 @@ $(document).ready(function() {
              }); 
         }
       } );
+         $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	}
 	
 	if($('#ipmgt-ipv4').length > 0){
@@ -211,7 +212,17 @@ $(document).ready(function() {
 			
 		}
 	}); 
-
+		
+    $(document).on('click', '.dtexcelbtn-cs', function(event) {
+		  var sortInfo = $("#backuprestoredt").dataTable().fnSettings().aaSorting;
+		  var listname = $("#backup-restore-list-dt-filter .btn").html();
+			if(listname == 'My routers'){
+				listname = 0;
+			}
+		  location.href = "xls-export-process.php?case=backup&userid=" + $('#userid').val() + "&listname=" + listname + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+		  return false;
+	  });
+    
     	
     	$("#ip-allocation-region a").click(function(){
     		$("#ip-allocation-region .btn").html($(this).text());
@@ -611,6 +622,7 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
                    }); 
               }
             } );
+            $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
       });
 });
 

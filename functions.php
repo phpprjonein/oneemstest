@@ -3024,6 +3024,83 @@ function generateRandomString($length = 10)
  * @param string $listname
  * @return number|unknown
  */
+function get_device_list_from_backuprestore_datatable_export($userid, $listname = '')
+{
+    global $db2, $pages;
+
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
+    
+    $columns = array(
+        'distinct(n.id)',
+        'n.devicename',
+        'n.csr_site_id',
+        'n.csr_site_name',
+        'n.region',
+        'n.market',
+        'n.deviceseries',
+        'n.nodeVersion'
+    );
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM userdevices ud
+       JOIN nodes n on ud.nodeid = n.id
+       WHERE ud.userid = " . $userid;
+    
+    if ($listname != '') {
+        $sql_condition .= " AND(ud.listname = '" . $listname . "')";
+    }
+    // die;
+    
+    if ($search) {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= " n.devicename LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.csr_site_id  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.csr_site_name  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.nodeVersion  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.lastpolled  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
+    // echo '<br>';
+    // echo $sql;
+    
+    $db2->query($sql);
+    
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+/**
+ *
+ * @param unknown $userid
+ * @param string $listname
+ * @return number|unknown
+ */
 function get_device_list_from_backuprestore_datatable($userid, $listname = '')
 {
     global $db2, $pages;
@@ -3037,14 +3114,14 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '')
     $order_dir = $_GET['order'][0]['dir'];
     
     $columns = array(
-        'distinct(n.id)',
-        'n.devicename',
-        'n.csr_site_id',
-        'n.csr_site_name',
-        'n.region',
-        'n.market',
-        'n.deviceseries',
-        'n.nodeVersion'
+            'distinct(n.id)',
+            'n.devicename',
+            'n.csr_site_id',
+            'n.csr_site_name',
+            'n.region',
+            'n.market',
+            'n.deviceseries',
+            'n.nodeVersion'
     );
     $sql_count = "SELECT COUNT(distinct(n.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
@@ -3110,6 +3187,7 @@ function get_device_list_from_backuprestore_datatable($userid, $listname = '')
     }
     return $resultset;
 }
+
 
 /**
  *

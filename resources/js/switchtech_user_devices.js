@@ -309,7 +309,7 @@ $(document).ready(function() {
       });
       
 
-	  $(document).on('click', '.dtexcelbtn-cs', function(event) {
+	  $(document).on('click', '#healthpage .dtexcelbtn-cs', function(event) {
 		  var sortInfo = $("#example").dataTable().fnSettings().aaSorting;
 		  //console.log(sortInfo[0][0] + '         ' + sortInfo[0][1]);
 		  //console.log("xls-export-process.php?userid=" + $('#userid').val() + "&listid=" + $('#listid').val() + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1]);
@@ -318,7 +318,16 @@ $(document).ready(function() {
 		  return false;
 	  });
       
-	  
+	    $(document).on('click', '.dtexcelbtn-cs', function(event) {
+			  var sortInfo = $("#backuprestoredt").dataTable().fnSettings().aaSorting;
+			  var listname = $("#backup-restore-list-dt-filter .btn").html();
+				if(listname == 'My routers'){
+					listname = 0;
+				}
+			  location.href = "xls-export-process.php?case=backup&userid=" + $('#userid').val() + "&listname=" + listname + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+			  return false;
+		  });
+	    
 	  		if($('#backuprestoredt').length > 0){
 		//$('#ip-mgt-utils div').hide(); 
 		$('#ip-mgt-utils #ajax_loader').show();
@@ -366,6 +375,7 @@ $(document).ready(function() {
              }); 
         }
       } );
+         $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	}
 	  		
 	    	$('#myModal').on('hidden.bs.modal', function () {
@@ -423,6 +433,7 @@ $(document).ready(function() {
 	                   }); 
 	              }
 	            } );
+	            $(".dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	      });  		
 	  		
 			  $(document).on('click', '#back_res #viewbtn', function(event) {

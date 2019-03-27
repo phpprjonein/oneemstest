@@ -31,6 +31,34 @@ if ($_GET['case'] == 'healthcheck') {
         );
     }
 }
+
+if ($_GET['case'] == 'backup') {
+    $resultset = get_device_list_from_backuprestore_datatable_export($_GET['userid'], $_GET['listname']);
+    $data[] = array(
+            'Device Name',
+            'Site ID',
+            'Site Name',
+            'Region',
+            'Market',
+            'Device Series',
+            'Version',
+    );
+    foreach ($resultset['data'] as $key => $value) {
+        $data[] = array(
+                $value['devicename'],
+                $value['csr_site_id'],
+                $value['csr_site_name'],
+                $value['region'],
+                $value['market'],
+                $value['deviceseries'],
+                $value['nodeVersion']
+        );
+    }
+}
+
+
+
+
 // print '<pre>';
 // print_r($data);
 // die();

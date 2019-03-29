@@ -21,7 +21,7 @@ $page_title = 'OneEMS';
    <script
 	src="resources/js/batch_tracking_devices.js?t=<?php echo date('his'); ?>"></script>
 </head>
-<body>
+<body id="batch_track_devices">
 	<!-- The Modal -->
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
@@ -112,7 +112,7 @@ echo generate_site_breadcrumb($values);
 								</div>
 							</div>
 							<p id="cp1" style="display: none"></p>
-							<input type="hidden" id='userid' value="<?php echo $userid ?>"
+							<input type="hidden" id='userid' value="<?php echo $_SESSION['userid']; ?>"
 								name="">
 							<div class="panel-body">
 								<table id="devicebatchtrack"

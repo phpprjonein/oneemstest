@@ -68,6 +68,7 @@ $(document).ready(function() {
             });
        }
       } );
+         $("#batch_track_devices .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	}
 		
 		$('#devicebatchtrack tbody').on('click', '#deletebatch', function () {
@@ -137,7 +138,27 @@ $(document).ready(function() {
 	            
 
 	      });
-	      
+	      		
+	          $(document).on('click', '.dtexcelbtn-cs', function(event) {
+	      		  var sortInfo = $("#devicebatchtrack").dataTable().fnSettings().aaSorting;
+	      		  var batchtype = $("#batchtype-dt-filter .btn").html();
+					if(batchtype == 'Script Execution'){
+						batchtype = 'se';
+					}else if(batchtype == 'Software Delivery'){
+						batchtype = 'sd';
+					}else if(batchtype == 'Change Boot Order'){					
+						batchtype = 'bo';
+					}else if(batchtype == 'Reboot'){					
+						batchtype = 'rb';
+					}else if(batchtype == 'Audit'){					
+						batchtype = 'al';
+					}else if(batchtype == 'Customize Audit'){					
+						batchtype = 'cusal';
+					} 
+	      		  location.href = "xls-export-process.php?case=batch-tracking" + "&batchtype=" + batchtype + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+	      		  return false;
+	      	  });
+	        
 	      
 	      $("#batchtype-dt-filter a").click(function(){			
 	    		/*$("#batchtype-dt-filter .btn").html($(this).text());
@@ -216,7 +237,7 @@ $(document).ready(function() {
 		                 });
 		            }
 		         } );
-				
+		         $("#batch_track_devices .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	      });		
 	      
 	      

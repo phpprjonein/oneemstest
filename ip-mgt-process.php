@@ -15,7 +15,8 @@ if ($_POST['ctype'] == 'Sync Password') {
 if ($_POST['ctype'] == 'SyncCyberArk') {
     $ip_address = $_POST['syncpass_ipaddress'];
     $devicename = get_device_name_from_ip_address($ip_address);
-    $cyberarc_command = "cd /usr/apps/oneems/python/cyber_check;"." ". "./check_cyberark.ksh " .  $ip_address; 
+    //$cyberarc_command = "cd /usr/apps/oneems/python/cyber_check;"." ". "./check_cyberark.ksh " .  $ip_address; 
+	$cyberarc_command = "cd /usr/apps/oneems/python/cyber_check; ./check_cyberark.ksh " .  $ip_address ." " . $devicename[0]['devicename'];
     $cyberarc_output = shell_exec($cyberarc_command);
     echo $cyberarc_output = "Sync Cyberark Status : " . $cyberarc_output;
 }

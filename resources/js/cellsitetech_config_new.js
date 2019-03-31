@@ -176,12 +176,12 @@ $(document).ready(function() {
         }).done(function(data) {
         	dataarr = data.split(',');
       	  $(".non-bandwidth input").each(function() {
-    		  if($.inArray($(this).attr('name'),dataarr) == 0){
+    		  if($.inArray($(this).attr('name'),dataarr) != -1){
     			  $(this).parent("div").show();
     		  }
     	  });
     	  $(".non-bandwidth select").each(function() {
-    		  if($.inArray($(this).attr('name'),dataarr) == 0){
+    		  if($.inArray($(this).attr('name'),dataarr) != -1){
     			  $(this).parent("div").show();
     		  }
     	  });

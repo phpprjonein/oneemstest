@@ -4600,6 +4600,94 @@ function swt_get_batch_process_datatable($userid, $listname = '', $deviceseries 
 
 /**
  *
+ * @param unknown $userid
+ * @param string $listname
+ * @param string $deviceseries
+ * @param string $nodeVersion
+ * @return number|unknown
+ */
+function swt_get_batch_process_datatable_export($userid, $listname = '', $deviceseries = '')
+{
+    global $db2, $pages;
+    
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
+    
+    $columns = array(
+            'distinct(n.id)',
+            'n.id',
+            'n.deviceIpAddr',
+            'n.devicename',
+            'n.deviceseries',
+            'n.market',
+            'n.nodeVersion'
+    );
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM userdevices ud
+       JOIN nodes n on ud.nodeid = n.id
+       WHERE ud.userid = " . $userid;
+    
+    if ($listname != '') {
+        $sql_condition .= " AND(ud.listname = '" . $listname . "')";
+    }
+    
+    if ($deviceseries != '') {
+        $sql_condition .= " AND(n.deviceseries = '" . $deviceseries . "')";
+    }
+    
+    // die;
+    
+    if ($search) {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= " n.deviceIpAddr LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.nodeVersion  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    
+    $sql = $sql_select . $sql_condition . $sql_order;
+    // echo '<br>';
+    // echo $sql;
+    
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+
+
+
+
+/**
+ *
  * @return unknown
  */
 function swrepo_get_deviceseries()

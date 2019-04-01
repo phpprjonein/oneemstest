@@ -25,7 +25,7 @@ write_log($mesg);
 <script
 	src="resources/js/swd_reboot_batch_page.js?t=<?php echo date('his'); ?>"></script>
 </head>
-<body>
+<body id="reboot">
 	<script>
     <!-- $(function() {
         $(".chosen-select").chosen({
@@ -205,6 +205,7 @@ select device series options -->
 								<div class="row">
 									<div class="col">
 										<input type="hidden" value="" name="cbvals" id="cbvals" />
+										<input type="hidden" value="<?php echo $_SESSION['userid'];?>" name="userid" id="userid" />
 										<table id="swdelvrybatchpro" class="display"
 											style="width: 100%">
 											<thead>

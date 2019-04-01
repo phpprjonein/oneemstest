@@ -51,6 +51,7 @@
 	             }); 
 	        }
       });
+      $("#sw-bo-seq .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
       $("#backup-restore-list-dt-filter a").click(function(){
     	  allVals = [];	 
     	  $('#cbvals').val('');
@@ -105,7 +106,8 @@
     	            	 }
     	             }); 
     	        }
-          });;
+          });
+          $("#sw-bo-seq .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
     });
       
             $('#device_series').change(function(){
@@ -182,9 +184,23 @@
 	    	            	 }
 	    	             }); 
 	    	        }
-	          });;
+	          });
+	          $("#sw-bo-seq .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
             });
             })
+     $(document).on('click', '.dtexcelbtn-cs', function(event) {
+		  var sortInfo = $("#swdelvrybatchpro").dataTable().fnSettings().aaSorting;
+		  var listname = $("#backup-restore-list-dt-filter .btn").text().trim();
+			if(listname == 'My routers'){
+				listname = 0;
+			}
+		  if($('#device_series').val() != 'Choose Device Series'){ 	
+			  deviceseries = $('#device_series').val();
+		  }
+		  location.href = "xls-export-process.php?case=sw-bootorder-seq&userid=" + $('#userid').val() + "&deviceseries=" + deviceseries +"&listname=" + listname + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+		  return false;
+	  });
+            
 			$(document).on('click', '#batch-submit', function(event) {
 				var req_err = false;
 				$('#sw-delivery-devices #status').html('');

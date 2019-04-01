@@ -77,7 +77,7 @@ if ($_GET['case'] == 'batch-tracking') {
         );
     }
 }
-if ($_GET['case'] == 'sw-delivery-devices') {
+if ($_GET['case'] == 'sw-delivery-devices' || $_GET['case'] == 'reboot' ) {
     $resultset = swt_get_batch_process_datatable_export($_GET['userid'], $_GET['listname'], $_GET['deviceseries']);
     $data[] = array(
             'IP Address',
@@ -88,6 +88,27 @@ if ($_GET['case'] == 'sw-delivery-devices') {
     );
     foreach ($resultset['data'] as $key => $value) {
         $data[] = array(
+                $value['deviceIpAddr'],
+                $value['devicename'],
+                $value['deviceseries'],
+                $value['market'],
+                $value['nodeVersion']
+        );
+    }
+}
+if ($_GET['case'] == 'sw-bootorder-seq' ) {
+    $resultset = swt_get_batch_process_datatable_export($_GET['userid'], $_GET['listname'], $_GET['deviceseries']);
+    $data[] = array(
+            'ID',
+            'IP Address',
+            'Device Name',
+            'Device Series',
+            'Market',
+            'Current Version'
+    );
+    foreach ($resultset['data'] as $key => $value) {
+        $data[] = array(
+                $value['id'],
                 $value['deviceIpAddr'],
                 $value['devicename'],
                 $value['deviceseries'],

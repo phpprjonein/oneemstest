@@ -54,6 +54,15 @@ $(document).ready(function () {
 	             }); 
 	        }
       });
+      $(".audit-history .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
+      
+      $(document).on('click', '.dtexcelbtn-cs', function(event) {
+		  var sortInfo = $("#auditinglog").dataTable().fnSettings().aaSorting;
+		  location.href = "xls-export-process.php?type=audithistory&case=audithistory" + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+		  return false;
+	  });
+
+      
       $(document).on("click", ".audit-history .viewfiltercriteria", function(event){
     	  $('#myModal .modal-title').html('Filter Criteria for BatchId - ' + $(this).data('batchid'));
     	  $('#myModal .modal-body').html($('.viewfiltercriteria_' + $(this).data('batchid')).html());

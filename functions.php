@@ -4408,6 +4408,102 @@ function swt_get_auditlog_batch_process_datatable($userid, $listname = '', $devi
  * @param string $nodeVersion
  * @return number|unknown
  */
+function swt_get_auditlog_batch_process_datatable_export($userid, $listname = '', $deviceseries = '')
+{
+    global $db2, $pages;
+    
+    // print_r($_GET);
+    
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
+    
+    $columns = array(
+            'distinct(n.id)',
+            'n.id',
+            'n.deviceIpAddr',
+            'n.devicename',
+            'n.deviceseries',
+            'n.market',
+            'n.nodeVersion',
+            'n.aurundate',
+            'n.austatus',
+            'n.austatus',
+            'n.region',
+    );
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM userdevices ud
+       JOIN nodes n on ud.nodeid = n.id
+       WHERE ud.userid = " . $userid;
+    
+    if ($listname != '') {
+        $sql_condition .= " AND(ud.listname = '" . $listname . "')";
+    }
+    
+    if ($deviceseries != '') {
+        $sql_condition .= " AND(n.deviceseries = '" . $deviceseries . "')";
+    }
+    
+    // die;
+    
+    if ($search) {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= " n.deviceIpAddr LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.nodeVersion  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.aurundate  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.austatus  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    
+    
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    
+    $sql = $sql_select . $sql_condition . $sql_order;
+    // echo '<br>';
+    // echo $sql;
+    
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+
+
+
+/**
+ *
+ * @param unknown $userid
+ * @param string $listname
+ * @param string $deviceseries
+ * @param string $nodeVersion
+ * @return number|unknown
+ */
 function get_audithistory_datatable()
 {
     global $db2, $pages;
@@ -4471,6 +4567,97 @@ function get_audithistory_datatable()
     $sql_limit = " LIMIT $start, $length ";
     
     $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
+    
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $source_file = '/usr/apps/oneems/config/bkup/'. strtolower($value['region']) . '/custaudit/'. $value['market'] . '/' . $value['batchid'] . '_' . $value['devicename'] . '.txt';
+            if(file_exists($source_file)){
+                $value['austatus_exist'] = $source_file;
+            }else{
+                $value['austatus_exist'] = 0;
+            }
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+
+
+
+
+/**
+ *
+ * @param unknown $userid
+ * @param string $listname
+ * @param string $deviceseries
+ * @param string $nodeVersion
+ * @return number|unknown
+ */
+function get_audithistory_datatable_export()
+{
+    global $db2, $pages;
+    
+    
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
+    
+    $columns = array(
+            'ah.batchid',
+            'ah.username',
+            'ah.region',
+            'ah.market',
+            'ah.devicename',
+            'ah.deviceIpAddr',
+            'ah.deviceseries',
+            'ah.filtercriteria',
+            'ah.austatus',
+            'ah.filename',
+            'ah.createddate'
+    );
+    $sql_count = "SELECT COUNT(ah.batchid) ";
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM audithistory ah";
+    
+    if ($search) {
+        $sql_condition .= " where ( ";
+        $sql_condition .= " ah.batchid LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.username  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.region  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.deviceIpAddr  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.filtercriteria  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.austatus  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.filename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ah.createddate  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    $sql = $sql_select . $sql_condition . $sql_order;
     
     $db2->query($sql);
     

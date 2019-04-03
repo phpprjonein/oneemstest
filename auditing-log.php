@@ -25,7 +25,7 @@ write_log($mesg);
 <script
 	src="resources/js/auditing_log.js?t=<?php echo date('his'); ?>"></script>
 </head>
-<body>
+<body id="auditing-log">
 	<script>
     $(function() {
         $(".chosen-select").chosen({

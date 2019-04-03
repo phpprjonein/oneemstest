@@ -155,7 +155,7 @@ write_log($mesg);
 							</div>
 							<!-- /search table form field -->
 							<!-- Export table -->
-							<div class="col-md-2 col-xs-6">
+							<div class="col-md-3 col-xs-6">
 								<p class="export" id="export-v-pills-home"></p>
 							</div>
 							<!-- /Export table -->

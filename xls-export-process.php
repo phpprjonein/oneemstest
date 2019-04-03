@@ -117,7 +117,63 @@ if ($_GET['case'] == 'sw-bootorder-seq' ) {
         );
     }
 }
+if ($_GET['case'] == 'auditing-log' || $_GET['case'] == 'cus-auditing-log' ) {
+    $userid = $_SESSION['userid'];
+    $swdelvry_dev_list = swt_get_auditlog_batch_process_datatable_export($userid, $_GET['listname'], $_GET['deviceseries']);
+    $data[] = array(
+            'Device Name',
+            'IP Address',
+            'Market',
+            'Device Series',
+            'Version',
+            'Audit Run',
+            'Audit Status',
+            'Compliance log',
+    );
+    foreach ($swdelvry_dev_list['data'] as $key => $value) {
+        $data[] = array(
+                $value['devicename'],
+                $value['deviceIpAddr'],
+                $value['market'],
+                $value['deviceseries'],
+                $value['nodeVersion'],
+                $value['aurundate'],
+                $value['austatus'],
+                $value['devicename'].'.txt'
+        );
+    }
+}
 
+if ($_GET['case'] == 'audithistory' ) {
+    $userid = $_SESSION['userid'];
+    $swdelvry_dev_list = get_audithistory_datatable_export();
+    $data[] = array(
+            'Batch ID',
+            'User Name',
+            'Device Name',
+            'IP Address',
+            'Market',
+            'Device Series',
+            'Region',
+            'Status',
+            'Customized Audit Log',
+            'Created date',
+    );
+    foreach ($swdelvry_dev_list['data'] as $key => $value) {
+        $data[] = array(
+                $value['batchid'],
+                $value['username'],
+                $value['devicename'],
+                $value['deviceIpAddr'],
+                $value['market'],
+                $value['deviceseries'],
+                $value['region'],
+                $value['austatus'],
+                $value['filename'],
+                $value['createddate'],
+        );
+    }
+}
 
 
 // print '<pre>';

@@ -287,7 +287,7 @@ $(document).ready(function() {
           $(".gscript1 #status").show();
           req_err = true;
         }
-        if ($(".gscript1 #select_script_type").val() != "BW-Upgrade") {
+        /*if ($(".gscript1 #select_script_type").val() != "BW-Upgrade") {
           requiredFields = $("#cellsitech-generate-script").find(
             ".uservarsreq"
           );
@@ -309,7 +309,7 @@ $(document).ready(function() {
             $(".gscript1 #status").show();
             req_err = true;
           }
-        }
+        }*/
       }
       if (req_err) {
         $("#status").css("opacity", "");

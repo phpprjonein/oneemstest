@@ -180,7 +180,7 @@ $(document).ready(function() {
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 	 //return '<a target="blank" class="link_device_name" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh-stage.nsiam.vzwnet.com">' + data +'</a>'; //Correct -New format
                 //return '<a data-ssh="ssh://' + $('#username').val() + '@'+exploded[1]+'" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
-                return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh-stage.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+                return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMonlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 		 // return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmin-AKROOH20T1A-C-PI-9999-01-pamssh-stage.nsiam.vzwnet.com:22">' + data +'</a>';
 		 //return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmin#AKROOH20T1A-C-PI-9999-01#pamssh-stage.nsiam.vzwnet.com">' + data +'</a>';
 				//return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
@@ -476,7 +476,8 @@ $(document).ready(function() {
 	          	var myModal = $('#Modal_Device_Name');
 	        	$('#Modal_Device_Name .modal-title').html('SSH Command');
 	        	//$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
-	        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+	        	$('#Modal_Device_Name .modal-body').html('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp1\')\">Copy</button></div>');
+	        	$('#Modal_Device_Name .modal-body').append('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' + $(this).data('sshna').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp2\')\">Copy</button></div>');
 	        	myModal.modal('show');
 	        	return false;
 			});

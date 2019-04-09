@@ -149,7 +149,7 @@ $(document).ready(function() {
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 				//	return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">' + data +'</a>';
-	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMonlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 	           }
 	        }],   
           "pageLength": 25,
@@ -499,7 +499,8 @@ $(document).ready(function() {
 		          	var myModal = $('#Modal_Device_Name');
 		        	$('#Modal_Device_Name .modal-title').html('SSH Command');
 		        	//$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
-		        	$('#Modal_Device_Name .modal-body').html('<input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" ><button class="btn btn-default" onclick=\"copyToClipboard()\">Copy</button>');
+		        	$('#Modal_Device_Name .modal-body').html('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp1\')\">Copy</button></div>');
+		        	$('#Modal_Device_Name .modal-body').append('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' + $(this).data('sshna').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp2\')\">Copy</button></div>');
 		        	myModal.modal('show');
 		        	return false;
 				});	 
@@ -592,13 +593,7 @@ $(document).ready(function() {
 
 	       });	
 });
-function copyToClipboard(element) {
-	  var $temp = $("<input>");
-	  $("body").append($temp);
-	  $temp.val($(element).text()).select();
-	  document.execCommand("copy");
-	  $temp.remove();
-}
+
 
 $(document).keydown(function(event) { 
     if (event.keyCode == 27) {  
@@ -611,9 +606,9 @@ function format ( d ) {
      var id = d.replace('row_','');
      return "<div id='detail_"+id+"'></div>";
 } 
-function copyToClipboard() {
+function copyToClipboard(id) {
 	  /* Get the text field */
-	  var copyText = document.getElementById("textboxp1");
+	  var copyText = document.getElementById(id);
 	  /* Select the text field */
 	  copyText.select();
 	  /* Copy the text inside the text field */

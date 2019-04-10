@@ -119,8 +119,12 @@ if($_GET['ajax-val-session'] == 1 || $_POST['ajax-val-session'] == 1){
         echo 'redirectUser';
         exit;
     }*/
-    $headers = apache_request_headers();
+    /*$headers = apache_request_headers();
     if($headers['SM_TIMETOEXPIRE'] <= 0){
+        echo 'redirectUser';
+        exit;
+    }*/
+    if(isset($_SESSION['sso_session_life']) && ($_SESSION['sso_session_life'] <= $_SERVER['REQUEST_TIME'])){
         echo 'redirectUser';
         exit;
     }

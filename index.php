@@ -62,6 +62,11 @@ if ($_POST['userimp'] == 'imp' && isset($_POST['username'])) {
     }
 }
 if ($sso_flag == 1) {
+    //$headers['SM_TIMETOEXPIRE'] = 33000;
+    $_SESSION['sso_flag'] = $sso_flag;
+    if(isset($headers['SM_TIMETOEXPIRE']) && $headers['SM_TIMETOEXPIRE'] > 0){
+        $_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
+    }
     $userinfo = get_user_info_sso($username);
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];

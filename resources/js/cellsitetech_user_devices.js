@@ -548,6 +548,9 @@ $(document).on('click', '#back_res #backupbtn', function(event) {
 	  $('body').on('click', '#cellsitech-backup button', function(){
 		  if($('.shown').attr('id') != $('#currentrow').val()){ 
 			  $( "#" + $('#currentrow').val() + " td.details-control").click();
+		  }else{
+		    	$( "#" + $('#currentrow').val() + " td.details-control").click();
+		    	$( "#" + $('#currentrow').val() + " td.details-control").click();
 		  }
 	  });
 

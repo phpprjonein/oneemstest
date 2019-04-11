@@ -32,7 +32,7 @@ $(document).ready(function() {
               },
               success: function(resdata){
             	  if(resdata == 'redirectUser'){
-            		  parent.location.reload();
+            		  window.location.href = 'index.php';
             	  }else{
             		  $('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
             	  }
@@ -100,7 +100,7 @@ $(document).ready(function() {
             },
             success: function(resdata){
             	if(resdata == 'redirectUser'){
-            		parent.location.reload();
+            		window.location.href = 'index.php';
           	  	}else{
           	  		$('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
           	  	}	
@@ -122,7 +122,7 @@ $(document).ready(function() {
             },
             success: function(resdata){
             	if(resdata == 'redirectUser'){
-            		parent.location.reload();
+            		window.location.href = 'index.php';
           	  	}else{
           	  		$('#detail_' + $thisdiv.data('deviceid') + ' div').html(resdata);
           	  	}
@@ -284,7 +284,7 @@ $(document).ready(function() {
                       },
                       success: function(resdata){
                     	  if(resdata == 'redirectUser'){
-                    		  parent.location.reload();
+                    		  window.location.href = 'index.php';
                     	  }else{
                     		  $('#detail_'+id).html(resdata);
                     	  }

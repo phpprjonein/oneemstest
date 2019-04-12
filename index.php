@@ -61,6 +61,11 @@ if ($_POST['userimp'] == 'imp' && isset($_POST['username'])) {
         exit();
     }
 }
+/*Added for local testing sso session expire testing*/
+/*
+$headers['SM_TIMETOEXPIRE'] = 60;
+$_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
+*/
 if ($sso_flag == 1) {
     //$headers['SM_TIMETOEXPIRE'] = 33000;
     $_SESSION['sso_flag'] = $sso_flag;

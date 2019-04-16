@@ -121,6 +121,7 @@ modal.children[0].addEventListener('click', function(e) {
 							name=""><input type="hidden" id='listid' value="<?php echo $_GET['listid'] ?>"
 							name="">  <input type="hidden" id='username'
 							value="<?php echo $username ?>" name="">
+							<input type="hidden" id='sso_session_life' value="<?php echo $_SESSION['sso_session_life'] ?>" name="sso_session_life">
 						<div class="panel-body">
 							<table id="example" class="display"
 								data-listid="<?php echo $listid ?>" cellspacing="0" width="100%">

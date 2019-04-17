@@ -23,7 +23,8 @@
     }
     ?>
   </div>
-
+  	<h4>SSO LOGIN TIME - [<?php echo date('d-M-Y h:i:s', $_SESSION['sso_session_started']); ?>]</h4>
+	<h4>INFO SESSION EXPIRY(sso_session_life) SET AS - [<?php echo date('d-M-Y h:i:s',$_SESSION['sso_session_life']); ?>]</h4>
 	<hr class="border border-danger">
 
 	<nav class="navbar navbar-expand-lg navbar-light d-print-none">

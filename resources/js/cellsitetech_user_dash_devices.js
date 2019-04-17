@@ -22,6 +22,7 @@ $(document).ready(function() {
         }else{
       	  actionurl = "healthchk-cellsitetech.php";
         }
+        alert('ONE ' + $('#sso_session_life').val());
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
@@ -48,6 +49,7 @@ $(document).ready(function() {
     $('body').on('click', '.instant_run_all_checks', function(){
     	$thisdiv = $(this);
         $thidiv = $('.mydevicebox_' + $(this).data('deviceid')); 
+        alert('TWO ' + $('#sso_session_life').val());
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
@@ -118,6 +120,7 @@ $(document).ready(function() {
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
         }
+        alert('THREE ' + $('#sso_session_life').val());
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
@@ -143,6 +146,7 @@ $(document).ready(function() {
     
     $('body').on('click', '#health-chk-div-wrap .run_preventive_checks', function(){
     	$thisdiv = $(this);
+    	alert('FOUR ' + $('#sso_session_life').val());
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
@@ -311,6 +315,7 @@ $(document).ready(function() {
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";
                   }
+                  alert('FIVE ' + $('#sso_session_life').val());
                   if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
                   	window.location.href = 'index.php';
                   }

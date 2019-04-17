@@ -587,14 +587,14 @@ function format ( d ) {
      var id = d.replace('row_','');
      return "<div id='detail_"+id+"'></div>";
 } 
-function copyToClipboard() {
+function copyToClipboard(id) {
 	  /* Get the text field */
-	  var copyText = document.getElementById("textboxp1");
-          //res = copyText.replace(":", "#");
-          //document.getElementById("textboxp1").innerHTML = res; 
+	  var copyText = document.getElementById(id);
+	  /* Select the text field */
 	  copyText.select();
 	  /* Copy the text inside the text field */
 	  document.execCommand("copy");
+
 	  /* Alert the copied text */
 	  alert("Copied the text: " + copyText.value);
 }

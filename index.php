@@ -39,7 +39,7 @@ foreach ($headers as $header => $value) {
 $_SESSION['sso_flag'] = $sso_flag;
 if($sso_flag == 0){
     /*Added for local testing sso session expire testing*/
-    $headers['SM_TIMETOEXPIRE'] = 50;
+    $headers['SM_TIMETOEXPIRE'] = 60;
     $_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
     $_SESSION['sso_session_started'] = $_SERVER['REQUEST_TIME'];
 }

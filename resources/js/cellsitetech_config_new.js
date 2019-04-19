@@ -429,11 +429,12 @@ $(document).ready(function() {
           "<strong>Error!</strong> Device series field is required.<br/>"
         );
       }
+      /*
       if ($("#select_os_version").val() == "") {
         $("#status").append(
           "<strong>Error!</strong> OS Version field is required.<br/>"
         );
-      }
+      }*/
     }
     /*if($("#file").val() == ""){
         	$("#status").append("<strong>Error!</strong> File input field is required.<br/>");

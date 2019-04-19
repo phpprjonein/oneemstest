@@ -11,7 +11,7 @@ $headers = apache_request_headers();
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php

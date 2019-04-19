@@ -1,17 +1,7 @@
-<?php
-$headers = apache_request_headers();
-//print_r($headers);
-//echo '<br>'.'Time to Expire'.$headers['SM_TIMETOEXPIRE'].'<br>';
-//echo '<br>'.'Request Time'.$_SERVER['REQUEST_TIME'].'<br>';
- //$_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
- $_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
-//echo '<br>'.'Session Life'.$_SESSION['sso_session_life'].'<br>';
-
-?>
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
+			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -33,10 +23,8 @@ $headers = apache_request_headers();
     }
     ?>
   </div>
-  	<!--
-        <h4>SSO LOGIN TIME - [<?php //echo date('d-M-Y h:i:s', $_SESSION['sso_session_started']); ?>]</h4>
-	<h4>INFO SESSION EXPIRY(sso_session_life) SET AS - [<?php //echo date('d-M-Y h:i:s',$_SESSION['sso_session_life']); ?>]</h4>
-        -->
+  	<h4>SSO LOGIN TIME - [<?php echo date('d-M-Y h:i:s', $_SESSION['sso_session_started']); ?>]</h4>
+	<h4>INFO SESSION EXPIRY(sso_session_life) SET AS - [<?php echo date('d-M-Y h:i:s',$_SESSION['sso_session_life']); ?>]</h4>
 	<hr class="border border-danger">
 
 	<nav class="navbar navbar-expand-lg navbar-light d-print-none">

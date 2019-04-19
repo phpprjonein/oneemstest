@@ -37,13 +37,14 @@ foreach ($headers as $header => $value) {
 ;
 
 $_SESSION['sso_flag'] = $sso_flag;
+/*Added for local testing sso session expire testing
 if($sso_flag == 0){
-    /*Added for local testing sso session expire testing*/
+    
     $headers['SM_TIMETOEXPIRE'] = 60;
     $_SESSION['sso_session_life'] = $_SERVER['REQUEST_TIME'] + $headers['SM_TIMETOEXPIRE'];
     $_SESSION['sso_session_started'] = $_SERVER['REQUEST_TIME'];
 }
-
+*/
 if ($_POST['userimp'] == 'imp' && isset($_POST['username'])) {
     $_SESSION['impusername'] = $_POST['impusername'];
     $name_exp_1 = explode(' <', $_POST['username']);

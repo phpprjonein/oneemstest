@@ -98,7 +98,7 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
-  var IDLE_TIMEOUT = 60; //seconds
+  var IDLE_TIMEOUT = 180; //seconds
 var _idleSecondsCounter = 0;
 
 document.onclick = function () {

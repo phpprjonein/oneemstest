@@ -20,10 +20,11 @@ $(document).ready(function() {
         }else{
       	  actionurl = "healthchk-switchtech.php";
         }
-        alert('ONE ' + $('#sso_session_life').val());
+        //alert('ONE ' + $('#sso_session_life').val());
+		/*  Only when SSO is active or for SSO idle time out testing needs to be uncommented
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
-        }
+        }*/
           $.ajax({
               type:"get",
               url:actionurl,
@@ -92,10 +93,12 @@ $(document).ready(function() {
         }else{
       	  actionurl = "healthchk-cellsitetech-custom.php";
         }
-        alert('TWO ' + $('#sso_session_life').val());
+        //alert('TWO ' + $('#sso_session_life').val());
+		/*  Only when SSO is active or for SSO idle time out testing needs to be uncommented
         if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
+		*/
         $.ajax({
             type:"get",
             url:actionurl,
@@ -118,10 +121,12 @@ $(document).ready(function() {
     
     $('body').on('click', '#health-chk-div-wrap .run_preventive_checks', function(){
     	$thisdiv = $(this);
-    	alert('THREE ' + $('#sso_session_life').val());
-        if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
+    	//alert('THREE ' + $('#sso_session_life').val());
+        /*  Only when SSO is active or for SSO idle time out testing needs to be uncommented
+		if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
         	window.location.href = 'index.php';
         }
+		*/
         $.ajax({
             type:"get",
             url:"healthchk-cellsitetech-preventive.php",
@@ -283,10 +288,12 @@ $(document).ready(function() {
                   }else{
                 	  actionurl = "healthchk-load-table-data.php";
                   }
-                  alert('FOUR ' + $('#sso_session_life').val());
+                  //alert('FOUR ' + $('#sso_session_life').val());
+				  /*  Only when SSO is active or for SSO idle time out testing needs to be uncommented
                   if($('#sso_session_life').val() <= Math.trunc($.now()/1000)){
                   	window.location.href = 'index.php';
                   }
+				  */
                   var ajs = $.ajax({
                       type:"get",
                       url: actionurl,

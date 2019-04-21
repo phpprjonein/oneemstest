@@ -255,6 +255,7 @@ $(document).ready(function() {
         $(".gscript1 #select_device_series").addClass("required");
         req_err = true;
       }
+      /*
       if ($(".gscript1 #select_os_version").val() == "") {
         $(".gscript1 #status").append(
           "<strong>Error!</strong> Device Os Verion field is required.<br/>"
@@ -263,7 +264,7 @@ $(document).ready(function() {
         $(".gscript1 #select_os_version").addClass("required");
         $(".gscript1 #status").show();
         req_err = true;
-      }
+      }*/
       if (
         $(".gscript1 #select_purpose").val() == "Modification" &&
         $(".gscript1 #select_script_type").val() == "BW-Upgrade" &&

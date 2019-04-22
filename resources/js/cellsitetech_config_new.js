@@ -312,6 +312,15 @@ $(document).ready(function() {
           }
         }*/
       }
+      if ($("#template_info input[name=radioGroup]").is(":checked") == false) {
+          $(".gscript1 #status").append(
+            "<strong>Error!</strong> Template select is required.<br/>"
+          );
+          $(".gscript1 #status").addClass("alert-danger");
+          $(".gscript1 #select_os_version").addClass("required");
+          $(".gscript1 #status").show();
+          req_err = true;
+        }
       if (req_err) {
         $("#status").css("opacity", "");
         $("#status").addClass("alert-danger");

@@ -6063,3 +6063,136 @@ function generatescript_str_preprocess($str, $bmbps){
     }
     return $str;
 }
+function load_tab_content($type){
+    global $db2;
+    if($type == 'ipcase1' || $type == 'ipcase2'){
+        $sql = "SELECT CONCAT(deviceIpAddr, ', ', deviceIpAddrsix) AS ipaddress, count(*) as cnt FROM nodes GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        $ipv4 = $ipv6 = array();
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress'])){
+                $ipaddress_arr = explode(',',$val['ipaddress']);
+                $ipv4[] = $ipaddress_arr[0];
+                $ipv6[] = $ipaddress_arr[1];
+            }
+        }
+        
+        if(count($ipv4) > 0){
+            $ipv4inquery = implode("','", $ipv4);
+            $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where deviceIpAddr in ('".$ipv4inquery."')  order by deviceIpAddr asc";
+            $db2->query($sql);
+            $resultset = $db2->resultset();
+            
+            for($i=0; $i<count($resultset); $i = $i+2){
+                $dn_first = explode('-',$resultset[$i]['devicename']);
+                $dn_second = explode('-',$resultset[$i+1]['devicename']);
+                if(count($dn_first) > 3 && count($dn_second) > 3){
+                    if(($dn_first[0] == $dn_second[0]) && ($dn_first[1] == $dn_second[1]) && ($dn_first[2] == $dn_second[2]) && ($dn_first[3] == $dn_second[3])){
+                        $case1_arr[] = $resultset[$i];
+                        $case1_arr[] = $resultset[$i+1];
+                    }else{
+                        $case2_arr[] = $resultset[$i];
+                        $case2_arr[] = $resultset[$i+1];
+                    }
+                }else{
+                    $case2_arr[] = $resultset[$i];
+                    $case2_arr[] = $resultset[$i+1];
+                }
+            }
+            
+            if($type == 'ipcase1'){
+                return $case1_arr;
+            }
+            if($type == 'ipcase2'){
+                return $case2_arr;
+            }
+        }
+    }
+    if($type == 'ipcase3' || $type == 'ipcase4'){
+        $ipv4 = $ipv6 = array();
+        $sql = "SELECT deviceIpAddr AS ipaddress, count(*) as cnt FROM nodes GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress']) && !empty($val['ipaddress']) && $val['ipaddress'] != 'None'){
+                $ipv4[] = $val['ipaddress'];
+            }
+        }
+        
+        $sql = "SELECT deviceIpAddrsix AS ipaddress, count(*) as cnt FROM nodes GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress']) && !empty($val['ipaddress']) && $val['ipaddress'] != 'None'){
+                $ipv6[] = $val['ipaddress'];
+            }
+        }
+        
+        if(count($ipv4) > 0 || count($ipv6) > 0 ){
+            $where = '';
+            $case3_arr = $case4_arr = array();
+            if(count($ipv4) > 0){
+                $ipv4inquery = implode("','", $ipv4);
+                $where = " deviceIpAddr in ('".$ipv4inquery."') ";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where ".$where."  order by deviceIpAddr asc";
+                $db2->query($sql);
+                $resultset = $db2->resultset();
+                
+                for($i=0; $i<count($resultset); $i = $i+2){
+                    if($resultset[$i]['deviceIpAddr'] != $resultset[$i+1]['deviceIpAddr'] || $resultset[$i]['deviceIpAddrsix'] != $resultset[$i+1]['deviceIpAddrsix']){
+                        $dn_first = explode('-',$resultset[$i]['devicename']);
+                        $dn_second = explode('-',$resultset[$i+1]['devicename']);
+                        if(count($dn_first) > 3 && count($dn_second) > 3){
+                            if(($dn_first[0] == $dn_second[0]) && ($dn_first[1] == $dn_second[1]) && ($dn_first[2] == $dn_second[2]) && ($dn_first[3] == $dn_second[3])){
+                                $case3_arr[] = $resultset[$i];
+                                $case3_arr[] = $resultset[$i+1];
+                            }else{
+                                $case4_arr[] = $resultset[$i];
+                                $case4_arr[] = $resultset[$i+1];
+                            }
+                        }else{
+                            $case4_arr[] = $resultset[$i];
+                            $case4_arr[] = $resultset[$i+1];
+                        }
+                    }
+                }
+            }
+            
+            if(count($ipv6) > 0){
+                $ipv6inquery = implode("','", $ipv6);
+                $where = " deviceIpAddrsix in ('".$ipv6inquery."') ";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where ".$where."  order by deviceIpAddr asc";
+                $db2->query($sql);
+                $resultset = $db2->resultset();
+                for($i=0; $i<count($resultset); $i = $i+2){
+                    if($resultset[$i]['deviceIpAddr'] != $resultset[$i+1]['deviceIpAddr'] || $resultset[$i]['deviceIpAddrsix'] != $resultset[$i+1]['deviceIpAddrsix']){
+                        $dn_first = explode('-',$resultset[$i]['devicename']);
+                        $dn_second = explode('-',$resultset[$i+1]['devicename']);
+                        if(count($dn_first) > 3 && count($dn_second) > 3){
+                            if(($dn_first[0] == $dn_second[0]) && ($dn_first[1] == $dn_second[1]) && ($dn_first[2] == $dn_second[2]) && ($dn_first[3] == $dn_second[3])){
+                                $case3_arr[] = $resultset[$i];
+                                $case3_arr[] = $resultset[$i+1];
+                            }else{
+                                $case4_arr[] = $resultset[$i];
+                                $case4_arr[] = $resultset[$i+1];
+                            }
+                        }else{
+                            $case4_arr[] = $resultset[$i];
+                            $case4_arr[] = $resultset[$i+1];
+                        }
+                    }
+                }
+            }
+        }
+        if($type == 'ipcase3'){
+            return $case3_arr;
+        }
+        if($type == 'ipcase4'){
+            return $case4_arr;
+        }
+    }
+}

@@ -5373,7 +5373,9 @@ function update_login_api_rules($sso_flag, $username)
         if($_SERVER['SERVER_NAME'] == 'localhost'){
             $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
         }else{
-            $token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=NCM4';
+          
+         /*	 Usin old API 
+    		$token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=NCM4';
             $ch = curl_init($token_url);
             $header = array(
                     'Accept: application/json',
@@ -5408,6 +5410,8 @@ function update_login_api_rules($sso_flag, $username)
             );
             $context = stream_context_create($opts);
             $output = file_get_contents($APPCONFIG['login']['switchtechloginapi'].'/iop/switchbytech/v1.0.0/switch/tech/' . $username, false, $context);
+		*/
+		$output = @file_get_contents($APPCONFIG['login']['switchtechloginapi'].'/switch/tech/'.$username);   // New API;
         }
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';

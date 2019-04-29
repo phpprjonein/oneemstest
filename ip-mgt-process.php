@@ -496,3 +496,28 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset(
     $select_switch = $_POST['select_switch'];
     echo generate_option_button_for_configs_vlan($select_switch, 'odd');
 }
+if(isset($_GET['act']) && $_GET['act'] == 'delete' && isset($_GET['ntype']) && $_GET['ntype'] == 'admind' && isset($_POST['type']) && $_POST['type'] == 'api-ajax' && isset($_POST['id']) && is_numeric($_POST['id'])){
+    
+//     $sql = "DELETE FROM nodes WHERE id='" . $_POST['id'] . "'";
+//     $db2->query($sql);
+//     $db2->execute();
+
+    $output = '';
+    $_POST['tab'] = str_replace('-table','',$_POST['tab']);
+    $resultset = load_tab_content($_POST['tab']);
+    
+    
+    
+    if (isset($resultset)) {
+        foreach ($resultset as $key => $value) {
+                        $output .= '<tr>
+									<td>'.$value['id'].'</td>
+									<td>'.$value['devicename'].'</td>
+									<td>'.$value['deviceIpAddr'].'</td>
+									<td>'.$value['deviceIpAddrsix'].'</td>
+									<td><a href="#" class="del-device">Delete</a></td>
+								</tr>';
+        }
+        echo $output;
+    }
+}

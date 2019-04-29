@@ -5373,7 +5373,41 @@ function update_login_api_rules($sso_flag, $username)
         if($_SERVER['SERVER_NAME'] == 'localhost'){
             $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
         }else{
-            $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi'].'/switch/tech/'.$username);
+            $token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=NCM4';
+            $ch = curl_init($token_url);
+            $header = array(
+                    'Accept: application/json',
+                    'Content-Type: application/x-www-form-urlencoded',
+                    'Authorization: Basic ZkFqd1lDSnpvdDRSX2FnRUw2ZGFta0dmUjNzYTptTlJwQnBfblVkOVJzdXVMM0YzZmNCWUpRdjhh'
+            );
+            // pass header variable in curl method
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $data = array(
+                    "grant_type" => 'password',
+                    'username' => 'kesavsr',
+                    'password' => 'NCM4'
+            );
+            $data_string = urlencode(json_encode($data));
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+                    $data_string
+            ));
+            $response = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Curl error: ' . curl_error($ch);
+                die();
+            }
+            $result = json_decode($response, 1);
+            $opts = array(
+                    'http' => array(
+                            'method' => "GET",
+                            'header' => "Accept-language: en\r\n" .
+                            "Authorization: Bearer " . $result['access_token'] . "\r\n"
+                    )
+            );
+            $context = stream_context_create($opts);
+            $output = file_get_contents($APPCONFIG['login']['switchtechloginapi'].'/iop/switchbytech/v1.0.0/switch/tech/' . $username, false, $context);
         }
         $resp_result_arr = json_decode($output, 1);
         $_SESSION['sel_switch_name'] = '';

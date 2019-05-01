@@ -5430,10 +5430,11 @@ function update_login_api_rules($sso_flag, $username)
         $_SESSION['swt_mswitch_arr'] = $swt_mswitch_arr;
         
         /* Updating user devices table based on switch from API */
+        $sql = "DELETE FROM userdevices WHERE userid=" . $_SESSION['userid'];
+        $db2->query($sql);
+        $db2->execute();
+        
         foreach ($swt_mswitch_arr as $key => $val) {
-            $sql = "DELETE FROM userdevices WHERE listname='" . $val . "'";
-            $db2->query($sql);
-            $db2->execute();
             $sql = " SELECT * from nodes where status=3 and switch_name = '" . $val . "'";
             $db2->query($sql);
             $resultset['result'] = $db2->resultset();

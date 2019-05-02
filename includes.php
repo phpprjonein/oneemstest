@@ -1,4 +1,3 @@
-
 <title><?php echo ($page_title) ? $page_title : 'title' ?></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,7 +97,7 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
-  var IDLE_TIMEOUT = 180; //seconds
+/*  var IDLE_TIMEOUT = 180; //seconds
 var _idleSecondsCounter = 0;
 
 document.onclick = function () {
@@ -126,8 +125,6 @@ function CheckIdleTime() {
         window.location.reload();
     }
 }
+*/
 </script>
 <!-- End Piwik Code -->
-
-
-

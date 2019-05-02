@@ -4,6 +4,7 @@
 	<table class="table table-bordered" cellspacing="0" cellpadding="0">
 		<tbody>
 			<tr>
+<!-- IOS Version / extract_version -->
 				<td style="width: 10px;"><input type="checkbox" name="extract_version"
 					id="extract_version" value="extract_version"
 					<?php if(in_array('extract_version', $_GET['category'])):?> checked="checked"
@@ -17,38 +18,43 @@
                     echo $display;
                     ?>
 				</td>
-				
-				
-				<td style="width: 10px;"><input id="extract_cpu_utilization" type="checkbox"
-					name="extract_cpu_utilization" value="extract_cpu_utilization"
-					<?php if(in_array('extract_cpu_utilization', $_GET['category'])):?> checked="checked"
+<!-- /IOS Version / extract_version -->
+
+<!-- CPU Utilization / extract_processes_cpu -->
+				<td style="width: 10px;"><input id="extract_processes_cpu" type="checkbox"
+					name="extract_processes_cpu" value="extract_processes_cpu"
+					<?php if(in_array('extract_processes_cpu', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>CPU Utilization </b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_cpu_utilization&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_processes_cpu&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['CPU Utilization']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['CPU Utilization']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
-				
-				<td style="width: 10px;"><input id="extract_memory_statistics" type="checkbox"
-					name="extract_memory_statistics" value="extract_memory_statistics"
-					<?php if(in_array('extract_memory_statistics', $_GET['category'])):?> checked="checked"
+<!-- /CPU Utilization / extract_processes_cpu -->
+
+<!-- Free Memory	extract_memory_summary -->
+				<td style="width: 10px;"><input id="extract_memory_summary" type="checkbox"
+					name="extract_memory_summary" value="extract_memory_summary"
+					<?php if(in_array('extract_memory_summary', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Free Memory</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
-					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_memory_statistics&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_memory_summary&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['Free Memory']['R'] == 0) ? 'green' : 'red';
                     $display = "<span style='color:" . $color . "'>" . $output['Free Memory']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
+<!-- /Free Memory	extract_memory_summary -->
 				</tr>
-				
+
 				<tr>
+<!-- Platform extract_platform -->
 				<td style="width: 10px;"><input id="extract_platform" type="checkbox"
 					name="extract_platform" value="extract_platform"
 					<?php if(in_array('extract_platform', $_GET['category'])):?> checked="checked"
@@ -62,6 +68,9 @@
                     echo $display;
                     ?>
 				</td>
+<!-- /Platform extract_platform -->
+
+<!-- Environmental	extract_alarms_brief -->
 				<td style="width: 10px;"><input id="extract_alarms_brief" type="checkbox"
 					name="extract_alarms_brief" value="extract_alarms_brief"
 					<?php if(in_array('extract_alarms_brief', $_GET['category'])):?> checked="checked"
@@ -74,8 +83,10 @@
                     $display = "<span style='color:" . $color . "'>" . $output['Environmental']['message'] . '</span>';
                     echo $display;
                     ?>
-				</td>`
-				
+				</td>
+<!-- /Environmental	extract_alarms_brief -->
+
+<!-- Interface Counters 	extract_interfaces -->
 				<td style="width: 10px;"><input id="extract_interfaces" type="checkbox"
 					name="extract_interfaces" value="extract_interfaces"
 					<?php if(in_array('extract_interfaces', $_GET['category'])):?> checked="checked"
@@ -89,34 +100,10 @@
                     echo $display;
                     ?>
 				</td>
+<!-- /Interface Counters 	extract_interfaces -->
 				</tr>
 				<tr>
-				<td style="width: 10px;"><input id="extract_ping" type="checkbox"
-					name="extract_ping" value="extract_ping"
-					<?php if(in_array('extract_ping', $_GET['category'])):?> checked="checked"
-					<?php endif;?>></td>
-				<td><b>2000 Byte Ping</b></td>
-				<td><a id="anchorcmd" class="anchorcmd"
-					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_ping&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
-						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['Ping']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['Ping']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
-				<td style="width: 10px;"><input id="extract_bfd_session" type="checkbox"
-					name="extract_bfd_session" value="extract_bfd_session"
-					<?php if(in_array('extract_bfd_session', $_GET['category'])):?> checked="checked"
-					<?php endif;?>></td>
-				<td><b>BFD Session</b></td>
-				<td><a id="anchorcmd" class="anchorcmd"
-					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
-						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['BFD Session']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['BFD Session']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
+<!-- Log Entries	extract_logging -->
 				<td style="width: 10px;"><input id="extract_logging" type="checkbox"
 					name="extract_logging" value="extract_logging"
 					<?php if(in_array('extract_logging', $_GET['category'])):?> checked="checked"
@@ -125,42 +112,30 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_logging&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['Log Entries']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['Log Entries']['message'] . '</span>';
+                    $color = ($output['Ping']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Ping']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
-				</tr>
-				<tr>
-				<td style="width: 10px;"><input id="extract_vrf_all" type="checkbox"
-					name="extract_vrf_all" value="extract_vrf_all"
-					<?php if(in_array('extract_vrf_all', $_GET['category'])):?> checked="checked"
-					<?php endif;?>></td>
-				<td><b>VRF</b></td>
-				<td><a id="anchorcmd" class="anchorcmd"
-					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_vrf_all&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
-						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['VRF']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['VRF']['message'] . '</span>';
-                    echo $display;
-                    ?>
-				</td>
+<!-- /Log Entries	extract_logging -->
+
+<!-- Interface Status	extract_ip_interface_brief -->
 				<td style="width: 10px;"><input id="extract_ip_interface_brief" type="checkbox"
 					name="extract_ip_interface_brief" value="extract_ip_interface_brief"
 					<?php if(in_array('extract_ip_interface_brief', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
-				<td><b>Show ip interface brief</b></td>
+				<td><b>Interface Status</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_ip_interface_brief&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['IP Interface brief']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['IP Interface brief']['message'] . '</span>';
+                    $color = ($output['Interface Status']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Interface Status']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
-				
-				
-				
+<!-- /Interface Status	extract_ip_interface_brief -->
+
+<!-- MPLS Interfaces	extract_mpls_interfaces -->
 				<td style="width: 10px;"><input id="extract_mpls_interfaces" type="checkbox"
 					name="extract_mpls_interfaces" value="extract_mpls_interfaces"
 					<?php if(in_array('extract_mpls_interfaces', $_GET['category'])):?> checked="checked"
@@ -174,8 +149,11 @@
                     echo $display;
                     ?>
 				</td>
+<!-- /MPLS Interfaces	extract_mpls_interfaces -->
 				</tr>
+
 				<tr>
+<!-- IPV4 BGP Neighbors 	extract_bgp_vpnv4_unicast_summary -->
 				<td style="width: 10px;"><input id="extract_bgp_vpnv4_unicast_summary" type="checkbox"
 					name="extract_bgp_vpnv4_unicast_summary" value="extract_bgp_vpnv4_unicast_summary"
 					<?php if(in_array('extract_bgp_vpnv4_unicast_summary', $_GET['category'])):?> checked="checked"
@@ -189,6 +167,126 @@
                     echo $display;
                     ?>
 				</td>
+<!-- /IPV4 BGP Neighbors 	extract_bgp_vpnv4_unicast_summary -->
+
+<!-- MPLS LDP Neighbor	extract_mpls_ldp_neighbor -->
+				<td style="width: 10px;"><input id="extract_mpls_ldp_neighbor" type="checkbox"
+					name="extract_mpls_ldp_neighbor" value="extract_mpls_ldp_neighbor"
+					<?php if(in_array('extract_mpls_ldp_neighbor', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>MPLS LDP Neighbor</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_mpls_ldp_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['MPLS LDP Neighbor']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['MPLS LDP Neighbor']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- /MPLS LDP Neighbor	extract_mpls_ldp_neighbor -->
+
+<!-- BGPv4 Routes	extract_bgp_vpnv4_unicast_vrf -->
+				<td style="width: 10px;"><input id="extract_bgp_vpnv4_unicast_vrf" type="checkbox"
+					name="extract_bgp_vpnv4_unicast_vrf" value="extract_bgp_vpnv4_unicast_vrf"
+					<?php if(in_array('extract_bgp_vpnv4_unicast_vrf', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>BGPv6 Routes</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_bgp_vpnv4_unicast_vrf&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['BGPv6 Routes']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BGPv6 Routes']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- /BGPv4 Routes	extract_bgp_vpnv4_unicast_vrf -->
+
+				</tr>
+
+				<tr>
+
+<!-- BGPv6 Neighbors	extract_bgp_vpnv6_unicast_summary -->
+				<td style="width: 10px;"><input id="extract_bgp_vpnv4_unicast_summary" type="checkbox"
+					name="extract_bgp_vpnv4_unicast_summary" value="extract_bgp_vpnv4_unicast_summary"
+					<?php if(in_array('extract_bgp_vpnv4_unicast_summary', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>BGPv6 Neighbors</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_bgp_vpnv4_unicast_summary&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['BGPv6 Neighbors']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BGPv6 Neighbors']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- /BGPv6 Neighbors	extract_bgp_vpnv6_unicast_summary -->
+
+<!-- BGPv6 Routes	extract_bgp_vpnv6_unicast_vrf -->
+				<td style="width: 10px;"><input id="extract_bgp_vpnv6_unicast_vrf" type="checkbox"
+					name="extract_bgp_vpnv6_unicast_vrf" value="extract_bgp_vpnv6_unicast_vrf"
+					<?php if(in_array('extract_bgp_vpnv6_unicast_vrf', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>BGPv6 Routes</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_bgp_vpnv6_unicast_vrf&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['BGPv6 Routes']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BGPv6 Routes']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- BGPv6 Routes	extract_bgp_vpnv6_unicast_vrf -->
+
+<!-- BFD Sessions - Not OK	extract_bfd_session -->
+				<td style="width: 10px;"><input id="extract_bfd_session" type="checkbox"
+					name="extract_bfd_session" value="extract_bfd_session"
+					<?php if(in_array('extract_bfd_session', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>BFD Sessions - Not OK</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_bfd_session&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['BFD Sessions - Not OK']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['BFD Sessions - Not OK']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- /BFD Sessions - Not OK	extract_bfd_session -->
+
+				</tr>
+
+				<tr>
+<!-- VRF - Not OK	extract_vrf_all -->
+				<td style="width: 10px;"><input id="extract_vrf_all" type="checkbox"
+					name="extract_vrf_all" value="extract_vrf_all"
+					<?php if(in_array('extract_vrf_all', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>VRF - Not OK</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_vrf_all&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['VRF - Not OK']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['VRF - Not OK']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- VRF - Not OK	extract_vrf_all -->
+
+<!-- Bandwidth – Not OK -->
+<td style="width: 10px;"><input id="extract_vrf_all" type="checkbox"
+					name="extract_vrf_all" value="extract_vrf_all"
+					<?php if(in_array('extract_vrf_all', $_GET['category'])):?> checked="checked"
+					<?php endif;?>></td>
+				<td><b>VRF - Not OK</b></td>
+				<td><a id="anchorcmd" class="anchorcmd"
+					href="healthchk-ncsfivefivezerozero-devdetmdl-cellsite.php?commandname=extract_vrf_all&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['VRF - Not OK']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['VRF - Not OK']['message'] . '</span>';
+                    echo $display;
+                    ?>
+				</td>
+<!-- /Bandwidth – Not OK -->
 				</tr>
 			<tr>
     <?php

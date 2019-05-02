@@ -1,3 +1,4 @@
+
 <title><?php echo ($page_title) ? $page_title : 'title' ?></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +67,7 @@
 	src="resources/js/jquery.rwdImageMaps.min.js"></script>
 <script src="resources/js/bootstrap3-typeahead.min.js"></script>
 <script type="text/javascript"
-	src="https://onejira.NCM.com/s/7c327c63ac96e0e9fc91ad412d9005b8-T/-2ww38y/72014/c7aa29275592192ce069072bdefe4e22/2.0.23/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=10a5834a"></script>
+	src="https://onejira.Verizon.com/s/7c327c63ac96e0e9fc91ad412d9005b8-T/-2ww38y/72014/c7aa29275592192ce069072bdefe4e22/2.0.23/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=10a5834a"></script>
 <script type="text/javascript" language="javascript"
 	src="resources/js/global.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
@@ -97,7 +98,8 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
-/*  var IDLE_TIMEOUT = 180; //seconds
+/*
+  var IDLE_TIMEOUT = 180; //seconds
 var _idleSecondsCounter = 0;
 
 document.onclick = function () {
@@ -128,3 +130,6 @@ function CheckIdleTime() {
 */
 </script>
 <!-- End Piwik Code -->
+
+
+

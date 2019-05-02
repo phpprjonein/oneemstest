@@ -58,7 +58,7 @@ $page_title = 'OneEMS';
 	<div class="container-fluid instant-health-check"
 		id="instant-health-check">
         <?php include ('menu.php'); ?>
-        
+
                     <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
@@ -76,7 +76,7 @@ $page_title = 'OneEMS';
                                         </label>
                                         <label class="radio-inline">
                                           <input type="radio" class="radiocat" value="devicename" name="optradio"><b>Device Name</b>
-                                        </label> 
+                                        </label>
 									</div>
 									</div>
 									<div class="input-group row">
@@ -86,9 +86,10 @@ $page_title = 'OneEMS';
 												autofocus>
 											<input type="inputName" name="devicename" style="display: none;" class="form-control"
 												id="inputDeviceName" placeholder="Enter Device Name"
-												autofocus>	
-											<button type="submit" class="btn" id="ip-health-check"
-												data-toggle="modal">Run All Health Checks</button>
+												autofocus>
+												<span data-toggle="tooltip"  title="Run all health checks on router and return summary">
+												<button type="submit" class="btn tooltip-test" id="ip-health-check"
+												data-toggle="modal">Run All Health Checks</button></span>
 									</div>
 									</div>
 								</form>
@@ -103,8 +104,10 @@ $page_title = 'OneEMS';
                                             <input type="inputName" name="syncpass_ipaddress" class="form-control"
                                                 id="syncPassInputDeviceIPaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
+												<span data-toggle="tooltip" title="Resets the Password for PAM accounts on CyberArk and the router">
                                             <button type="submit" class="btn" id="sync-password-ip-health-check"
                                                 data-toggle="modal">Reset CyberArk Password</button>
+												</span>
                                     </div>
                                     </div>
                                     </form>
@@ -115,8 +118,9 @@ $page_title = 'OneEMS';
                                             <input type="inputName" name="syncpass_ipaddress" class="form-control"
                                                 id="synccyberarkpass_ipaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
+												<span data-toggle="tooltip" title="Shows whether you can successfully SSH into the router using current PAM credentials">
                                             <button type="submit" class="btn" id="sync-cyberark-sync-password-ip-health-check"
-                                                data-toggle="modal">Check CyberArk Sync</button>
+                                                data-toggle="modal">Check CyberArk Sync</button></span>
                                     </div>
                                     </div>
                                 </form>
@@ -132,8 +136,9 @@ $page_title = 'OneEMS';
                                             <input type="inputName" name="sshPuTTY_IPv6_addr" class="form-control"
                                                 id="sshPuTTYInputIPv6" placeholder="Enter IPv6 Address"
                                                 autofocus>
+												<span data-toggle="tooltip" title="Provides the SSH syntax for logging into a router via the PAM proxy. Click COPY to copy the string to your local buffer">
                                             <button type="submit" class="btn" id="ssh-PuTTY-ip-health-check"
-                                                data-toggle="modal">CyberArk SSH Syntax</button>
+                                                data-toggle="modal">CyberArk SSH Syntax</button></span>
                                     </div>
                                                                 <!--  Show CyberArk CmdLine Form End -->
                                                                 <!--  Show Add CyberArk Account Form Start -->
@@ -144,8 +149,9 @@ $page_title = 'OneEMS';
                                             <input type="inputName" name="cyberarkaddacct_ipaddress" class="form-control"
                                                 id="cyberarkaddacct_ipaddress" placeholder="Enter IPv6 Address"
                                                 autofocus>
+												<span data-toggle="tooltip" title="Checks whether PAM accounts exist. If they do, then it resets passwords on PAM and the router. If it does not exist, then it adds accounts on both PAM and the router">
                                             <button type="submit" class="btn" id="cyberark-add-acct"
-                                                data-toggle="modal">Add CyberArk Account </button>
+                                                data-toggle="modal">Add CyberArk Account </button></span>
                                     </div>
                                                                 <!--  Show Add CyberArk Account Form End -->
                                     </div>
@@ -177,7 +183,7 @@ $page_title = 'OneEMS';
     					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     				</div>
     			</div>
-    
+
     		</div>
     	</div>
 	</div>

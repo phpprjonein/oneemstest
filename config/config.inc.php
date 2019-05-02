@@ -33,11 +33,11 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemstest/");
 //define('DB_USER', 'reader');
 //define('DB_PASSWORD','redaer1103');
 
-define('DB_HOST', 'njbboemsdd1v');
+define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'oneems');
-define('DB_USER', 'oneems');
-define('DB_PASSWORD','1emsservice#');
+define('DB_USER', 'root');
+define('DB_PASSWORD','root');
 define('HIGH_LIMIT', 25);
 define('LOW_LIMIT', 14);
 

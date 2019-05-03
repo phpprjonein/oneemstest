@@ -470,6 +470,45 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && iss
     echo $output;
     exit;
 }
+
+// Retrieve US Files
+if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && isset($_POST['select_region']) && isset($_POST['action']) && $_POST['action'] == 'LoadUSFiles') {
+    if($_POST['select_inventory_type'] == 'hw_inventory'){
+        //$path = '/usr/apps/oneems/sd/hw_inventory/';
+        $path = '/usr/apps/oneems/sd/hw_inventory/';
+    }elseif($_POST['select_inventory_type'] == 'sw_inventory'){
+        $path = '/usr/apps/oneems/sd/sw_inventory/';
+    }else{
+        $path = '/usr/apps/oneems/sd/devices/';
+    }
+
+    $contents = array_values(array_diff(scandir($path), array(
+            '.',
+            '..'
+    )));
+    $output = '';
+    $i=1;
+    foreach ($contents as $key => $val) :
+        //if(strpos($val, $_POST['select_region'].'-'.$_POST['select_market']) !== false){
+            //if (strcmp($val,"USA_devices_inv.csv.zip") == 0 ) || strcmp($val,"USA_SW_inv.csv.zip") == 0 || strcmp($val,"USA_HW_inv.csv.zip") == 0) {
+            if ($val == "USA_devices_inv.csv.zip" || $val == "USA_SW_inv.csv.zip" ||  $val == "USA_HW_inv.csv.zip" ) {
+            //$output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file='.$path.$val.'" class="btn" role="button">download</a></td></td></tr>';
+            $output .= $val;
+            $i++;
+           }
+        //}
+        endforeach;
+        if($i == 1){
+            $output .= '<tr id="row_'.$i.'"><td colspan="2">Files not found</td></tr>';
+        }
+    echo $output;
+    //if (strcmp($contents,"USA_devices_inv.csv.zip") == 0 ) {
+   // print_r($contents);
+    //};
+    exit;
+}
+// Retrieve US Files
+
 if (isset($_POST['calltype']) && $_POST['calltype'] == 'configtrigger' && isset($_POST['select_switch']) && isset($_POST['action']) && $_POST['action'] == 'GenerateScriptTimezoneLoad') {
     $results = get_market_from_node_by_switch_name($_POST['select_switch']);
     $market = ($results['result'][0]['market']);

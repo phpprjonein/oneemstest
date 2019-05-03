@@ -105,7 +105,27 @@ write_log($mesg);
             							<div class="col">
             								<button type="submit" class="btn">Show Files</button>
             							</div>
+
             						</div>
+
+<!-- Super User US File Downloads (Show ONLY For Super Users) -->
+<?php if (isset($_SESSION['welcome_username'])) { ?>
+<?php if (check_user_authentication(array(9))){?>
+<hr>
+
+<!-- US File Download Button -->
+<div class="row" id="show_files_us">
+<div class="col">
+<button type="submit" class="btn">Download US File</button>
+</div>
+</div>
+<!-- US File Download Button -->
+
+<?php } ?>
+<?php } ?>
+<!-- Super User US File Downloads (Show ONLY For Super Users) -->
+
+
 								</div>
 							</div>
 							<!-- /router selection content row -->

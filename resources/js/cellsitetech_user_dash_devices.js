@@ -256,7 +256,7 @@ $(document).ready(function() {
             exploded[1] +
             '@pamssh.nsiam.vzwnet.com" data-sshna="' +
             $("#username").val() +
-            "@PAMonlygrp@" +
+            "@PAMronlygrp@" +
             exploded[1] +
             '@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' +
             data +

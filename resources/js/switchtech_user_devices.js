@@ -166,7 +166,7 @@ $(document).ready(function() {
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 				//	return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">' + data +'</a>';
-	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMonlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMronlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 	           }
 	        }],   
           "pageLength": 25,

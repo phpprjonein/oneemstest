@@ -116,7 +116,7 @@ write_log($mesg);
 <!-- US File Download Button -->
 <div class="row" id="show_files_us">
 <div class="col">
-<button type="submit" class="btn">Download US File</button>
+<button type="submit" class="btn">Show USA File</button>
 </div>
 </div>
 <!-- US File Download Button -->

@@ -492,8 +492,8 @@ if (isset($_POST['calltype']) && $_POST['calltype'] == 'inventorytrigger' && iss
         //if(strpos($val, $_POST['select_region'].'-'.$_POST['select_market']) !== false){
             //if (strcmp($val,"USA_devices_inv.csv.zip") == 0 ) || strcmp($val,"USA_SW_inv.csv.zip") == 0 || strcmp($val,"USA_HW_inv.csv.zip") == 0) {
             if ($val == "USA_devices_inv.csv.zip" || $val == "USA_SW_inv.csv.zip" ||  $val == "USA_HW_inv.csv.zip" ) {
-            //$output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file='.$path.$val.'" class="btn" role="button">download</a></td></td></tr>';
-            $output .= $val;
+            $output .= '<tr id="row_'.$i.'"><td>'.$val.'</td><td><a href="download.php?file='.$path.$val.'" class="btn" role="button">download</a></td></td></tr>';
+            //$output .= $val;
             $i++;
            }
         //}

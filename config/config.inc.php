@@ -20,24 +20,24 @@ define('WEB_DIR', $_SERVER['DOCUMENT_ROOT'] . "/oneemstest/");
 /* Remote server connection */
 
 //define('DB_HOST', 'txaroemsda3z');
-/*
- define('DB_HOST', $_SERVER['DB_HOST']);
- define('DB_PORT', $_SERVER['DB_PORT']);
- define('DB_NAME', $_SERVER['DB_NAME']);
- define('DB_USER', $_SERVER['DB_USER']);
- define('DB_PASSWORD', $_SERVER['DB_PASSWORD']);
- define('HIGH_LIMIT', 25);
- define('LOW_LIMIT', 14);
+define('DB_HOST', $_SERVER['DB_HOST']);
+define('DB_PORT', $_SERVER['DB_PORT']);
+define('DB_NAME', $_SERVER['DB_NAME']);
+define('DB_USER', $_SERVER['DB_USER']);
+define('DB_PASSWORD', $_SERVER['DB_PASSWORD']);
+// define('HIGH_LIMIT', 25);
+// define('LOW_LIMIT', 14);
  
- */
 //define('DB_USER', 'reader');
 //define('DB_PASSWORD','redaer1103');
 
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-define('DB_NAME', 'oneems');
-define('DB_USER', 'root');
-define('DB_PASSWORD','root');
+//define('DB_HOST', 'njbboemsdd1v');
+//define('DB_PORT', '3306');
+//define('DB_NAME', 'oneems');
+//define('DB_NAME', $_SERVER['DB_NAME']);
+//define('DB_USER', 'oneems');
+//define('DB_PASSWORD','1emsservice#');
+
 define('HIGH_LIMIT', 25);
 define('LOW_LIMIT', 14);
 

@@ -91,17 +91,19 @@ echo generate_site_breadcrumb($values);
                 <?php
                 $resultset = load_tab_content('ipcase1');
                 if (isset($resultset)) {
-                    foreach ($resultset as $key => $value) {
-                        ?>
-                        <tr>
-									<td><?php echo $value['id'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['deviceIpAddr'];?></td>
-									<td><?php echo $value['deviceIpAddrsix'];?></td>
-									<td><a href="#" class="del-device">Delete</a></td>
-								</tr>
-                   <?php
-                    }
+                    foreach ($resultset as $key1 => $value1) {
+                            foreach ($value1 as $key => $value) {    
+                            ?>
+                            <tr>
+    									<td><?php echo $value['id'];?></td>
+    									<td><?php echo $value['devicename'];?></td>
+    									<td><?php echo $value['deviceIpAddr'];?></td>
+    									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><a href="#" class="del-device">Delete</a></td>
+    								</tr>
+                       		<?php
+                                }
+                        }
                 }
                 ?>
                 </tbody>
@@ -127,21 +129,22 @@ echo generate_site_breadcrumb($values);
                 <?php
                 $resultset = load_tab_content('ipcase2');
                 if (isset($resultset)) {
-                    foreach ($resultset as $key => $value) {
-                        ?>
-                        <tr>
-									<td><?php echo $value['id'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['deviceIpAddr'];?></td>
-									<td><?php echo $value['deviceIpAddrsix'];?></td>
-									<td><a href="#" class="del-device">Delete</a></td>
-								</tr>
-                   <?php
-                    }
+                    foreach ($resultset as $key1 => $value1) {
+                            foreach ($value1 as $key => $value) {    
+                            ?>
+                            <tr>
+    									<td><?php echo $value['id'];?></td>
+    									<td><?php echo $value['devicename'];?></td>
+    									<td><?php echo $value['deviceIpAddr'];?></td>
+    									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><a href="#" class="del-device">Delete</a></td>
+    								</tr>
+                       		<?php
+                                }
+                        }
                 }
                 ?>
                 </tbody>
-
 						</table>
 					</div>
 					<!-- /new table content -->
@@ -166,17 +169,19 @@ echo generate_site_breadcrumb($values);
                 <?php
                 $resultset = load_tab_content('ipcase3');
                 if (isset($resultset)) {
-                    foreach ($resultset as $key => $value) {
-                        ?>
-                        <tr>
-									<td><?php echo $value['id'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['deviceIpAddr'];?></td>
-									<td><?php echo $value['deviceIpAddrsix'];?></td>
-									<td><a href="#" class="del-device">Delete</a></td>
-								</tr>
-                   <?php
-                    }
+                    foreach ($resultset as $key1 => $value1) {
+                            foreach ($value1 as $key => $value) {    
+                            ?>
+                            <tr>
+    									<td><?php echo $value['id'];?></td>
+    									<td><?php echo $value['devicename'];?></td>
+    									<td><?php echo $value['deviceIpAddr'];?></td>
+    									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><a href="#" class="del-device">Delete</a></td>
+    								</tr>
+                       		<?php
+                                }
+                        }
                 }
                 ?>
                 </tbody>
@@ -201,17 +206,19 @@ echo generate_site_breadcrumb($values);
                 <?php
                 $resultset = load_tab_content('ipcase4');
                 if (isset($resultset)) {
-                    foreach ($resultset as $key => $value) {
-                        ?>
-                        <tr>
-									<td><?php echo $value['id'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['deviceIpAddr'];?></td>
-									<td><?php echo $value['deviceIpAddrsix'];?></td>
-									<td><a href="#" class="del-device">Delete</a></td>
-								</tr>
-                   <?php
-                    }
+                    foreach ($resultset as $key1 => $value1) {
+                            foreach ($value1 as $key => $value) {    
+                            ?>
+                            <tr>
+    									<td><?php echo $value['id'];?></td>
+    									<td><?php echo $value['devicename'];?></td>
+    									<td><?php echo $value['deviceIpAddr'];?></td>
+    									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><a href="#" class="del-device">Delete</a></td>
+    								</tr>
+                       		<?php
+                                }
+                        }
                 }
                 ?>
                 </tbody>

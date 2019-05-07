@@ -11,12 +11,12 @@ if (isset($_GET['clear'])) {
 }
 
 user_session_check();
-include_once ('config/session_check_cellsite_tech.php');
+include_once ('config/session_check_admin.php');
 
 $page_title = 'OneEMS';
 
 // page logging
-$usertype = (isset($_SESSION['userlevel']) == 1) ? "Cell sitetechnician" : "";
+$usertype = (isset($_SESSION['userlevel']) == 8) ? "Admin" : "";
 $username = $_SESSION['username'];
 $mesg = " User name: $username User type : $usertype Page:  Discovery Results page Description: Cell Site Tech has navigated to the Discovery Results page.";
 write_log($mesg);

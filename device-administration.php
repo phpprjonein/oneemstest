@@ -48,19 +48,19 @@ echo generate_site_breadcrumb($values);
 					<a
 						class="nav-link btn-missed active"
 						id="v-pills-tab1-tab" data-toggle="pill" href="#v-pills-tab1"
-						role="tab" aria-controls="v-pills-tab1" aria-selected="true">Cae1</a>
+						role="tab" aria-controls="v-pills-tab1" aria-selected="true">Device Name - IPV4&IPv6 Match</a>
 					<a
 						class="nav-link btn-new"
 						id="v-pills-tab2-tab" data-toggle="pill" href="#v-pills-tab2"
-						role="tab" aria-controls="v-pills-tab2" aria-selected="false">Cae2</a>
+						role="tab" aria-controls="v-pills-tab2" aria-selected="false">No Device Name - IPv4&IPv6 Match</a>
 					<a
 						class="nav-link btn-ok"
 						id="v-pills-tab3-tab" data-toggle="pill" href="#v-pills-tab3"
-						role="tab" aria-controls="v-pills-tab3" aria-selected="false">Cae3</a>
+						role="tab" aria-controls="v-pills-tab3" aria-selected="false">Device Name - IPv4/IPv6 Match</a>
 					<a
 						class="nav-link btn-manual"
 						id="v-pills-tab4-tab" data-toggle="pill" href="#v-pills-tab4"
-						role="tab" aria-controls="v-pills-case4" aria-selected="false">Cae4</a>
+						role="tab" aria-controls="v-pills-case4" aria-selected="false">No Device Name - IPv4/IPv6 Match</a>
 						
 				</div>
 			</div>

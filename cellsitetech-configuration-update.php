@@ -79,10 +79,8 @@ write_log($mesg);
 											<?php //print '<pre>'; print_r($templates);die;?>
 											
 											<?php foreach ($templates as $key=>$val):?>
-											<option><?php echo $val['templname'];?></option>
+											<option <?php echo ($_POST['templname'] == $val['templname']) ? ' selected':''; ?>><?php echo $val['templname'];?></option>
 											<?php endforeach;?>
-											<option>TEST 2</option>
-											<option>TEST 3</option>
 										</select>
 									</div>															
 												<input type="submit" name="action" id="config-submit"

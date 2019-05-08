@@ -6183,6 +6183,7 @@ function load_tab_content($type){
                     $devicename_arr = explode('-',$resultset[$i]['devicename']);
                     if(count($devicename_arr) > 3){
                         $case[trim($resultset[$i]['deviceIpAddr'].'~~~'.$resultset[$i]['deviceIpAddrsix'])][] = $resultset[$i];
+                        $ipv4_arr_result[] = trim($resultset[$i]['deviceIpAddr'].$resultset[$i]['deviceIpAddrsix']);
                     }
                 }
             }
@@ -6198,23 +6199,20 @@ function load_tab_content($type){
                     $devicename_arr = explode('-',$resultset[$i]['devicename']);
                     if(count($devicename_arr) > 3){
                         $case[trim($resultset[$i]['deviceIpAddr'].'~~~'.$resultset[$i]['deviceIpAddrsix'])][] = $resultset[$i];
+                        $ipv6_arr_result[] = trim($resultset[$i]['deviceIpAddr'].$resultset[$i]['deviceIpAddrsix']);
                     }
                 }
             }
             $ncase = array();
             //both ipv4 and ipv6 shd not match
             foreach ($case as $key => $val){
-                //if(count($val) == 1){
+                    $ipv4_arr_exist = in_array(trim($val[0]['deviceIpAddr'].$val[0]['deviceIpAddrsix']), $ipv4_arr_result) ? true : false;
+                    $ipv6_arr_exist = in_array(trim($val[0]['deviceIpAddr'].$val[0]['deviceIpAddrsix']), $ipv6_arr_result) ? true : false;
+                if($ipv4_arr_exist === false || $ipv6_arr_exist === false){
                     $devicename_arr = explode('-',$val[0]['devicename']);
                     $ncase[$devicename_arr[0].$devicename_arr[1].'-'.$devicename_arr[2].'-'.$devicename_arr[3]][] = $val[0];
-                //}
+                }
             }
-            
-            //             print '<pre>';
-            //             print_r($ncase);
-            //             die;
-            
-            
             foreach ($ncase as $key => $val){
                 if(count($val)>1){
                     $case3_arr[] = $val;

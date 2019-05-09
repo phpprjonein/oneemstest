@@ -106,11 +106,14 @@ write_log($mesg);
             ?>
 			<div id="file_process">
 										<form name="file_process" action="cellsite-config-process.php"
-											method="post" class="border">
+											method="post">
 											<div class="tags p-b-2">
 
             <?php
             $output = '';
+            if($_POST['templname']){
+                $output .= '<div class="form-group cb-control"><label>Hide Readonly Fields&nbsp;</label><input type="checkbox" value="1" id="show_hide_readonly"/></div>';
+            }
             $pink_box_min_size = 10;
             $tablename_arr = array(
                     'globalvars' => 'globalvars',

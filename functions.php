@@ -6105,7 +6105,7 @@ function generatescript_str_preprocess($str, $bmbps){
 function load_tab_content($type){
     global $db2;
     if($type == 'ipcase1' || $type == 'ipcase2'){
-        $sql = "SELECT CONCAT(deviceIpAddr, ', ', deviceIpAddrsix) AS ipaddress, count(*) as cnt FROM nodes GROUP BY ipaddress HAVING cnt > 1";
+        $sql = "SELECT CONCAT(deviceIpAddr, ', ', deviceIpAddrsix) AS ipaddress, count(*) as cnt FROM nodes  where deviceIpAddr != 'None' GROUP BY ipaddress HAVING cnt > 1";
         $db2->query($sql);
         $resultset = $db2->resultset();
         

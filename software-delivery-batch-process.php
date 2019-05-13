@@ -81,6 +81,11 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
     update_dev_batch_sd($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
+if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'showtech') {
+    $_POST['scriptname'] = implode(',', $_POST['scriptname']);
+    $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    update_dev_batch_st($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
+}
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'auditinglog') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
@@ -213,6 +218,39 @@ function update_dev_batch_sd($batchid, $deviceid, $scriptname, $deviceseries, $n
         /* insert in to batchmaster table */
         $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`)
         VALUES('" . $batchid . "','s','" . $date_op . "', '', 'sd', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $deviceseries . "','" . $node_version . "','" . $scriptname . "','" . $refmop . "','" . $destdrive . "','' )";
+        $db2->query($dsql);
+        $db2->execute();
+    }
+}
+function update_dev_batch_st($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop, $destdrive)
+{
+    global $db2;
+    $oc = 1;
+    $date_op = date('Y-m-d H:i:s');
+    $sql = "SELECT id, deviceIpAddr FROM nodes order by id";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    foreach ($resultset as $key => $val) {
+        $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
+    }
+    $deviceid = explode(',', $deviceid);
+    $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
+    foreach ($deviceid as $key => $val) {
+        if (count($deviceid) == $oc) {
+            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "','')";
+        } else {
+            $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
+        }
+        $oc ++;
+    }
+    
+    if ($oc > 1) {
+        $db2->query($dsql);
+        $db2->execute();
+        /* insert in to batchmaster table */
+        $priority = 1;
+        $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`)
+        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'st', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $deviceseries . "','" . $node_version . "','" . $scriptname . "','" . $refmop . "','" . $destdrive . "','' )";
         $db2->query($dsql);
         $db2->execute();
     }

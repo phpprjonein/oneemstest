@@ -14,6 +14,8 @@ if($_GET['batchtype'] == 'se'){
     $_SESSION['batchtype-dt-filter'] = 'Audit';
 }elseif($_GET['batchtype'] == 'cusal'){
     $_SESSION['batchtype-dt-filter'] = 'Customize Audit';
+}elseif($_GET['batchtype'] == 'st'){
+    $_SESSION['batchtype-dt-filter'] = 'Show Tech';
 }
 
 $backup_list = get_devicebatch_list_from_devicebatch_datatable();

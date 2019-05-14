@@ -15,6 +15,8 @@ $(document).ready(function() {
 			batchtype = 'al';
 		}else if($('#batchtype-dt-filter .btn').text() == 'Customize Audit'){					
 			batchtype = 'cusal';
+		}else if($('#batchtype-dt-filter .btn').text() == 'Show Tech'){					
+			batchtype = 'st';
 		} 
 		
          var table =  $('#devicebatchtrack').DataTable( {
@@ -154,7 +156,9 @@ $(document).ready(function() {
 						batchtype = 'al';
 					}else if(batchtype == 'Customize Audit'){					
 						batchtype = 'cusal';
-					} 
+					}else if($('#batchtype-dt-filter .btn').text() == 'Show Tech'){					
+						batchtype = 'st';
+					}  
 	      		  location.href = "xls-export-process.php?case=batch-tracking" + "&batchtype=" + batchtype + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
 	      		  return false;
 	      	  });
@@ -183,7 +187,9 @@ $(document).ready(function() {
 					batchtype = 'al';
 				}else if($('#batchtype-dt-filter .btn').text() == 'Customize Audit'){					
 					batchtype = 'cusal';
-				}  
+				}else if($('#batchtype-dt-filter .btn').text() == 'Show Tech'){					
+					batchtype = 'st';
+				}   
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,
 		             "serverSide": true,

@@ -4003,6 +4003,8 @@ function get_devicebatch_list_from_devicebatch_datatable_export()
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'al'";
     }else if ($_GET['batchtype'] == 'cusal') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'cusal'";
+    }else if ($_GET['batchtype'] == 'st') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'st'";
     }
     if ($search) {
         $sql_condition .= " AND ( ";
@@ -4094,6 +4096,8 @@ function get_devicebatch_list_from_devicebatch_datatable()
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'al'";
     }else if ($_GET['batchtype'] == 'cusal') {
         $sql_condition = " FROM batchmaster bm where bm.batchtype like 'cusal'";
+    }else if ($_GET['batchtype'] == 'st') {
+        $sql_condition = " FROM batchmaster bm where bm.batchtype like 'st'";
     }
     if ($search) {
         $sql_condition .= " AND ( ";

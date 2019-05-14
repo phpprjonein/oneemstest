@@ -61,6 +61,10 @@ echo generate_site_breadcrumb($values);
 						class="nav-link btn-manual"
 						id="v-pills-tab4-tab" data-toggle="pill" href="#v-pills-tab4"
 						role="tab" aria-controls="v-pills-case4" aria-selected="false">Device Unique & (IPv4 || IPv6 ) Same</a>
+					<a
+						class="nav-link btn-manual"
+						id="v-pills-tab5-tab" data-toggle="pill" href="#v-pills-tab5"
+						role="tab" aria-controls="v-pills-case5" aria-selected="false">Devicename Invalid</a>	
 						
 				</div>
 			</div>
@@ -224,6 +228,45 @@ echo generate_site_breadcrumb($values);
                 </tbody>
 						</table>	
 				</div>		
+				
+									<div
+						class="tab-pane fade"
+						id="v-pills-tab5" role="tabpanel"
+						aria-labelledby="v-pills-tab5-tab">
+						<table class="table table-striped ip-new-table" id="ipcase5-table">
+<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Device Name</th>
+									<th scope="col">IPv4 Address</th>
+									<th scope="col">IPv6 Address</th>
+									<th scope="col">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+                <?php
+                $resultset = load_tab_content('ipcase5');
+                if (isset($resultset)) {
+                    foreach ($resultset as $key => $value) {
+                            //foreach ($value1 as $key => $value) {    
+                            ?>
+                            <tr>
+    									<td><?php echo $value['id'];?></td>
+    									<td><?php echo $value['devicename'];?></td>
+    									<td><?php echo $value['deviceIpAddr'];?></td>
+    									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><a href="#" class="del-device">Delete</a></td>
+    								</tr>
+                       		<?php
+                                //}
+                        }
+                }
+                ?>
+                </tbody>
+						</table>	
+				</div>	
+				
+				
 				</div>
 			</div>
 			<!-- /IP container div -->

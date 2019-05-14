@@ -6227,6 +6227,21 @@ function load_tab_content($type){
         if($type == 'ipcase4'){
             return $case4_arr;
         }
+    }elseif($type == 'ipcase5'){
+        $case5_arr = array();
+        $sql = "SELECT * FROM nodes where deviceIpAddr != 'None' OR deviceIpAddrsix != 'None' order by id";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        for($i=0; $i<count($resultset); $i++){
+            $devicename_arr = explode('-',$resultset[$i]['devicename']);
+            if(count($devicename_arr) < 4){
+                $case5_arr[] = $resultset[$i];
+            }
+            
+        }
+        if($type == 'ipcase5'){
+            return $case5_arr;
+        }
     }
 }
 function load_tab_content_old($type){

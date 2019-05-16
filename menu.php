@@ -1,7 +1,7 @@
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -60,7 +60,7 @@
 							<a class="dropdown-item" href="os-repository.php">Device Binary</a>
 							 <!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
 							<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
-							<a class="dropdown-item" href="device-administration.php">Devices</a>
+							<a class="dropdown-item" href="device-administration.php">Device Cleanup </a>
                                                       
 						</div></li>
           <?php } ?>
@@ -84,7 +84,7 @@
 								Script - Golden </a>
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
-							<a class="dropdown-item" href="cellsitetech-configuration-update.php">Configuration template - View / Modify </a>			
+							<a class="dropdown-item" href="cellsitetech-configuration-update.php">Template - View / Modify </a>			
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch
 								Tracking </a>

@@ -109,10 +109,10 @@ write_log($mesg);
             						</div>
 
 <!-- Super User US File Downloads (Show ONLY For Super Users) -->
+
 <?php if (isset($_SESSION['welcome_username'])) { ?>
 <?php if (check_user_authentication(array(9))){?>
 <hr>
-
 <!-- US File Download Button -->
 <div class="row" id="show_files_us">
 <div class="col">

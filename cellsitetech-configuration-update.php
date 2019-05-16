@@ -55,7 +55,7 @@ write_log($mesg);
 			<!-- Main content -->
 			<section class="content">
 				<div class="col-md-12">
-					<h5>Load Template</h5>
+					<h5> View / Modify Template </h5>
 					<div class="panel panel-default">
 						<div class="panel-heading">Configuration Management</div>
 						<div class="panel-body">

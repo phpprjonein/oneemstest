@@ -33,7 +33,9 @@ $page_title = 'OneEMS';
 			<!-- Main content -->
 			<section class="content" id="sw-delivery-devices">
 				<div class="col-md-12">
-					<div id="status" style="display: none;" class="alert"></div>
+					<?php if($_SESSION['msg'] == 'ds'){?>
+					<div id="status" class="alert alert-success"> Vendor Deleted Successfully</div>
+					<?php unset($_SESSION['msg']);}?>
 <!-- Button trigger modal -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addVendorForm">
     Add Vendor
@@ -44,7 +46,6 @@ $page_title = 'OneEMS';
         		<div class="modal fade" id="addVendorForm">
         			<div class="modal-dialog modal-lg">
         				<div class="modal-content" id="manual-device-discovery">
-        
         					<!-- Modal Header -->
         					<div class="modal-header" id="restoremodalhdr">
         						<h5 class="modal-title text-center" id="modalLabelLarge">Add Vendor</h5>
@@ -55,9 +56,9 @@ $page_title = 'OneEMS';
         					</div>
         					<!-- Modal body -->
         					<div class="modal-body">
-        					<div id="status" style="display: none;" class="alert-popup alert-danger"></div><br/>
+        					<div id="status" style="display: none;" class="alert-popup"></div><br/>
         					<form role="form">
-        					
+        					<input type="hidden" id="vendorId" value="">
                           <div class="form-group">
                             <label for="vendorName">Vendor Name</label>
                               <input type="email" class="form-control"
@@ -70,7 +71,8 @@ $page_title = 'OneEMS';
         
         					<!-- Modal footer -->
         					<div class="modal-footer">
-        						<button type="button" class="btn btn-secondary" id="addvendor">Add Vendor</button>	
+        						<button type="button" class="btn btn-secondary" id="addvendor">Add Vendor</button>
+        						<button type="button" class="btn btn-secondary" id="editvendor">Update Vendor</button>	
         						<button type="button" class="btn btn-secondary"
         							data-dismiss="modal">Close</button>
         					</div>
@@ -78,28 +80,73 @@ $page_title = 'OneEMS';
         			</div>
         		</div>
 
+
+<div class="modal fade" id="deleteVendorForm">
+        			<div class="modal-dialog modal-lg">
+        				<div class="modal-content" id="manual-device-discovery">
+        					<!-- Modal Header -->
+        					<div class="modal-header" id="restoremodalhdr">
+        						<h5 class="modal-title text-center" id="modalLabelLarge">Delete Vendor</h5>
+        						<button type="button" class="close" data-dismiss="modal"
+        							aria-label="Close">
+        							<span aria-hidden="true">&times;</span>
+        						</button>
+        					</div>
+        					<!-- Modal body -->
+        					<div class="modal-body">
+        					<div id="status" style="display: none;" class="alert-popup"></div><br/>
+        					<form role="form">
+        					<input type="hidden" id="vendorId" value="">
+                          <div class="form-group">
+                            Are you sure want to delete Vendor - <b><span id="vendorNameDel"></span></b>
+                          </div>
+                          
+                        </form>
+        					
+        					</div>
+        
+        					<!-- Modal footer -->
+        					<div class="modal-footer">
+        						<button type="button" class="btn btn-secondary" id="deletevendor">Delete Vendor</button>
+        						<button type="button" class="btn btn-secondary"
+        							data-dismiss="modal">Close</button>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+
+
+
+
 						<div class="row">
 							<!-- /router selection content row -->
 							<div class="col-sm-12 col-md-12" id="listname-dd">
 								<div class="row">
 									<div class="col">
 										<input type="hidden" value="<?php echo $_SESSION['userid'];?>" name="userid" id="userid" />
+										<?php $vendors = generic_get_vendors();?>
+										<?php //print '<pre>'; print_r($vendors);?>
 										<table id="managevendors" class="display"
 											style="width: 100%">
 											<thead>
 												<tr>
-													<th>S.No</th>
-													<th>Vendor</th>
+													<th width="75px">S.No</th>
+													<th>Vendor ID</th>
+													<th>Vendor Name</th>
 													<th>Operation</th>
 													
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-												<td>1</td>
-												<td>Cisco</td>
-												<td><button type="button" class="btn btn-secondary" id="editvendor">Edit</button>&nbsp;<button type="button" class="btn btn-secondary" id="deletevendor">Delete</button></td>
+											<?php $i=1; foreach ($vendors['result'] as $key=>$val){?>
+												<tr data-vendor="<?php echo $val['id'];?>">
+												<td><?php echo $i++;?></td>
+												<td><?php echo $val['id'];?></td>
+												<td><?php echo $val['vendorName'];?></td>
+												<td><button type="button" class="btn btn-secondary editvendor">Edit</button>&nbsp;<button type="button" class="btn btn-secondary deletevendor">Delete</button></td>
 												</tr>
+											<?php }?>
+
 											</tbody>
 										</table>
 									</div>

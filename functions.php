@@ -2443,6 +2443,41 @@ function insert_ip_allocation($values)
 
 /**
  *
+ * @param unknown $values
+ */
+function insert_vendor($values)
+{
+    global $db2;
+    $sql = "INSERT INTO vendors (vendorName,vendorLogo,status) VALUES ('" . $values['vendorName'] . "','',1)";
+    $db2->query($sql);
+    $db2->execute();
+}
+
+/**
+ *
+ * @param unknown $values
+ */
+function update_vendor($values)
+{
+    global $db2;
+    $sql = "update vendors set vendorName = '" . $values['vendorName'] . "' where id = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+}
+/**
+ *
+ * @param unknown $values
+ */
+function delete_vendor($values)
+{
+    global $db2;
+    $sql = "delete from vendors where id = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+}
+
+/**
+ *
  * @param string $class
  * @return unknown|string
  */

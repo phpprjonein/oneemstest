@@ -2646,6 +2646,20 @@ function generic_get_vendors()
     return $resultset;
 }
 
+
+/**
+ *
+ * @return unknown
+ */
+function generic_get_users()
+{
+    global $db2;
+    $sql = "SELECT * FROM users where status = 1 ORDER BY username";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
 /**
  *
  * @return unknown

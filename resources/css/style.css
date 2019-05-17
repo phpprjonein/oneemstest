@@ -4477,7 +4477,7 @@ tbody.collapse.show {
 
 .alert {
   position: relative;
-  padding: 0.75rem 1.25rem;
+  padding: 0.15rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -8891,15 +8891,15 @@ button#password-revalidate {
 }
 
 .dtexcelbtn {
-  background: url(../img/excel-icon1.jpg) no-repeat center right !important;
+  background: url(../img/excel-icon1.png) no-repeat center right !important;
 }
 
 .dtpdfbtn {
-  background: url(../img/pdf-icon1.png) no-repeat center right !important;
+  background: url(../img/pdf-icon1.png) no-repeat center center !important;
 }
 
 .dtprintbtn {
-  background: url(../img/print.png) no-repeat center right !important;
+  background: url(../img/print.png) no-repeat center center !important;
 }
 
 div.dt-buttons {
@@ -9152,7 +9152,7 @@ div.fixed a:hover {
 /*# sourceMappingURL=../resources/css/style.map */
 .gsalert {
   position: relative;
-  padding: 0.75rem 1.25rem;
+  padding: 0.25rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-top-color: transparent;

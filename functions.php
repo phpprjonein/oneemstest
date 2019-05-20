@@ -2453,6 +2453,22 @@ function insert_vendor($values)
     $db2->execute();
 }
 
+
+/**
+ *
+ * @param unknown $values
+ */
+function insert_user($values)
+{
+    global $db2;
+    $sql = "INSERT INTO users (username,password,userid,userlevel,email,timestamp,status,fname,lname,phone,role,user_type,zones) VALUES 
+    ('" . $values['username'] . "','" . $values['password'] . "','" . $values['username'] . "'," . $values['role'] . ",'" . $values['email'] . "',
+    '" . date('m-d-Y') . "'," . $values['status'] . ",'" . $values['fname'] . "','" . $values['lname'] . "','" . $values['phone'] . "',
+    " . $values['role'] . ",'user',0)";
+    $db2->query($sql);
+    $db2->execute();
+}
+
 /**
  *
  * @param unknown $values
@@ -2472,6 +2488,17 @@ function delete_vendor($values)
 {
     global $db2;
     $sql = "delete from vendors where id = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+}
+/**
+ *
+ * @param unknown $values
+ */
+function delete_user($values)
+{
+    global $db2;
+    $sql = "delete from users where id = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
 }
@@ -2615,6 +2642,19 @@ function batch_accordion_details($batchid)
 {
     global $db2;
     $sql = 'SELECT CONCAT(IFNULL(n.deviceIpAddr,""),"<br/>",IFNULL(n.deviceIpAddrsix,"")) as deviceIpAddr,n.systemname,n.devicename, bm.status, bm.comment  FROM nodes n JOIN batchmembers bm on bm.deviceid = n.id where bm.batchid = ' . $batchid;
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @return unknown
+ */
+function generic_get_userlevels()
+{
+    global $db2;
+    $sql = "SELECT id,userlevel FROM userlevels ORDER BY id";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

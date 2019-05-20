@@ -30,4 +30,51 @@ if ($_POST['screen'] == 'Vendor') {
     }
     
 }
+
+if ($_POST['screen'] == 'User') {
+    
+    if($_POST['act'] == 'add'){
+        $values_arr = array(
+                'username' => $_POST['username'],
+                'password' => md5($_POST['password']),
+                'userid' => $_POST['userid'],
+                'userlevel' => $_POST['role'],
+                'email' => $_POST['email'],
+                'timestamp' => date('m-d-Y'),
+                'status' => $_POST['status'],
+                'fname' => $_POST['fname'],
+                'lname' => $_POST['lname'],
+                'phone' => $_POST['phone'],
+                'role' => $_POST['role'],
+        );
+        insert_user($values_arr);
+        print 'success';
+    }
+    
+    if($_POST['act'] == 'edit'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+                'vendorName' => $_POST['vendorName'],
+        );
+        update_vendor($values_arr);
+        print 'success';
+    }
+    
+    
+    if($_POST['act'] == 'delete'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+        );
+        delete_user($values_arr);
+        $_SESSION['msg'] = 'ds';
+        print 'success';
+    }
+    
+}
+
+
+
+
+
+
 ?>

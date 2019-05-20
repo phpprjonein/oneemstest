@@ -61,11 +61,83 @@ $page_title = 'OneEMS';
         					<div id="status" style="display: none;" class="alert-popup"></div><br/>
         					<form role="form">
         					<input type="hidden" id="userId" value="">
-                          <div class="form-group">
-                            <label for="userName">User Name</label>
-                              <input type="email" class="form-control"
-                              id="userName" placeholder="User Name"/>
+        					
+        					
+        				  <div class="row">
+    						  <div class="form-group col-md-6">
+                              <div class="form-group">
+                                <label for="userName">User Name</label>
+                                  <input type="email" class="form-control"
+                                  id="userName" placeholder="User Name"/>
+                              </div>
+                              </div>
+                              <div class="form-group col-md-6">
+                              <div class="form-group">
+                                <label for="Firstname">Firstname</label>
+                                  <input type="Firstname" class="form-control"
+                                  id="Firstname" placeholder="Firstname"/>
+                              </div>
+                              </div>
                           </div>
+                          
+                          <div class="row">
+    						  <div class="form-group col-md-6">
+                              <div class="form-group">
+                              <label for="Password">Password</label>
+                              <input type="Password" class="form-control"
+                                  id="Password" placeholder="Password"/>
+                              </div>
+                              </div>
+                              <div class="form-group col-md-6">
+                              <div class="form-group">
+                                <label for="Lastname">Lastname</label>
+                                  <input type="Lastname" class="form-control"
+                                  id="Lastname" placeholder="Lastname"/>
+                              </div>
+                              </div>
+                          </div>
+                          
+                          <div class="row">
+    						  <div class="form-group col-md-6">
+                              <div class="form-group">
+                              <label for="Email">Email</label>
+                              <input type="Email" class="form-control"
+                                  id="Email" placeholder="Email"/>
+                              </div>
+                              </div>
+                              <div class="form-group col-md-6">
+                              <div class="form-group">
+                                <label for="Phone">Phone</label>
+                                  <input type="Phone" class="form-control"
+                                  id="Phone" placeholder="Phone"/>
+                              </div>
+                              </div>
+                          </div>
+                            <?php
+                            $role_names = generic_get_userlevels();
+                            ?>
+                          <div class="row">
+    						  <div class="form-group col-md-6">
+                              <div class="form-group">
+                              <label for="Role">Role</label>
+                              <select class="form-control" id="Role">
+								<?php foreach ($role_names['result'] as $key => $val){ ?>
+                      			<option value="<?php  echo $val['id']; ?>"><?php  echo $val['userlevel']; ?></option>
+                        		<?php } ?>
+                              </select>
+                              </div>
+                              </div>
+                              <div class="form-group col-md-6">
+                              <div class="form-group">
+                                <label for="Status">Status</label>
+                                  <select class="form-control" id="Status">
+                                  <option value="1">Active</option>
+                                  <option value="0">In-Active</option>
+                                  </select>
+                              </div>
+                              </div>
+                          </div>
+                          
                           
                         </form>
         					

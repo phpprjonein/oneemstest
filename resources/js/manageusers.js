@@ -18,9 +18,20 @@ $(document).ready(function() {
 			$('#edituser').show();
 			$('#addUserForm #modalLabelLarge').text('Edit User');
 			var userid = $(this).closest('tr').data("user");
-			var userName = $(this).closest('tr').find("td:eq(2)").text(); 
+			var userName = $(this).closest('tr').find("td:eq(2)").text();
+			var Firstname = $(this).closest('tr').find("td:eq(3)").text();
+			var Lastname = $(this).closest('tr').find("td:eq(4)").text();
+			var Email = $(this).closest('tr').find("td:eq(5)").text();
+			var Phone = $(this).closest('tr').find("td:eq(6)").text();
+			
 			$('#addUserForm #userName').val(userName);
 			$('#addUserForm #userId').val(userid);
+			$('#addUserForm #Firstname').val(Firstname);
+			$('#addUserForm #Lastname').val(Lastname);
+			$('#addUserForm #Email').val(Email);
+			$('#addUserForm #Phone').val(Phone);
+			
+			
 			$('#addUserForm #adduser').text('Update User');
         	var myModal = $('#addUserForm');
         	myModal.modal('show');
@@ -35,7 +46,23 @@ $(document).ready(function() {
 			if($('#addUserForm #userName').val() == ""){
 				$('#addUserForm #status').append("<strong>Error!</strong> User Name field is required.<br/>");
 				req_err = true;
-			};
+			}
+			if($('#addUserForm #Password').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Password field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Firstname').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Firstname field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Lastname').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Lastname field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Email').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Email field is required.<br/>");
+				req_err = true;
+			}
 			if(req_err){ 
     			$('#addUserForm #status').show();
     			$('#addUserForm #status').addClass('alert-danger');
@@ -74,7 +101,26 @@ $(document).ready(function() {
 			if($('#addUserForm #userName').val() == ""){
 				$('#addUserForm #status').append("<strong>Error!</strong> User Name field is required.<br/>");
 				req_err = true;
-			};
+			}
+			if($('#addUserForm #Password').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Password field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Firstname').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Firstname field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Lastname').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Lastname field is required.<br/>");
+				req_err = true;
+			}
+			if($('#addUserForm #Email').val() == ""){
+				$('#addUserForm #status').append("<strong>Error!</strong> Email field is required.<br/>");
+				req_err = true;
+			}
+			
+			
+			
 			if(req_err){ 
     			$('#addUserForm #status').show();
     			$('#addUserForm #status').addClass('alert-danger');
@@ -85,13 +131,23 @@ $(document).ready(function() {
     		    }, 4000);
     			return false;
     		}else{
-    			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'add', 'userName' : $('#addUserForm #userName').val() })
+    			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'add', 
+    				'username' : $('#addUserForm #userName').val(),  
+    				'password' : $('#addUserForm #Password').val(),
+    				'fname' : $('#addUserForm #Firstname').val(),
+    				'lname' : $('#addUserForm #Lastname').val(),
+    				'email' : $('#addUserForm #Email').val(),
+    				'phone' : $('#addUserForm #Phone').val(),
+    				'role' : $('#addUserForm #Role').val(),
+    				'status' : $('#addUserForm #Status').val(),
+    			})
     			  .done(function( data ) {
     				  if(data == 'success'){
     					  $('#addUserForm #status').removeClass('alert-danger');
     					  $('#addUserForm #status').addClass('alert-success');
     					  $('#addUserForm #status').append("<strong>Success!</strong> User Name added successfully.<br/>"); 
-    					  $('#addUserForm #userName').val('');
+    					  $('#addUserForm #userName, #addUserForm #Password, #addUserForm #Firstname, #addUserForm #Lastname, #addUserForm #Email, #addUserForm #Phone').val('');
+    					  
     					  $('#addUserForm #status').show();
     		    		    window.setTimeout(function() {
     		    		        $(".alert-popup").fadeTo(500, 0).slideUp(500, function(){

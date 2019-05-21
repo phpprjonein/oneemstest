@@ -10,7 +10,7 @@ $(document).ready(function() {
 		 "pageLength": 20,
 		 "searching" : true,
 		 "destroy": true,
-		 "order": [[0, 'asc']],
+		 "order": [[2, 'asc']],
 		 } );
 		
 		$(document).on('click', '.edituser', function(event) {
@@ -18,20 +18,21 @@ $(document).ready(function() {
 			$('#edituser').show();
 			$('#addUserForm #modalLabelLarge').text('Edit User');
 			var userid = $(this).closest('tr').data("user");
+			var userlevel = $(this).closest('tr').data("userlevel");
+			var status = $(this).closest('tr').data("status");
 			var userName = $(this).closest('tr').find("td:eq(2)").text();
 			var Firstname = $(this).closest('tr').find("td:eq(3)").text();
 			var Lastname = $(this).closest('tr').find("td:eq(4)").text();
 			var Email = $(this).closest('tr').find("td:eq(5)").text();
 			var Phone = $(this).closest('tr').find("td:eq(6)").text();
-			
 			$('#addUserForm #userName').val(userName);
 			$('#addUserForm #userId').val(userid);
 			$('#addUserForm #Firstname').val(Firstname);
 			$('#addUserForm #Lastname').val(Lastname);
 			$('#addUserForm #Email').val(Email);
 			$('#addUserForm #Phone').val(Phone);
-			
-			
+			$('#addUserForm #Role').val(userlevel);
+			$('#addUserForm #Status').val(status);
 			$('#addUserForm #adduser').text('Update User');
         	var myModal = $('#addUserForm');
         	myModal.modal('show');
@@ -45,10 +46,6 @@ $(document).ready(function() {
 			$('#addUserForm #status').css("opacity","");  
 			if($('#addUserForm #userName').val() == ""){
 				$('#addUserForm #status').append("<strong>Error!</strong> User Name field is required.<br/>");
-				req_err = true;
-			}
-			if($('#addUserForm #Password').val() == ""){
-				$('#addUserForm #status').append("<strong>Error!</strong> Password field is required.<br/>");
 				req_err = true;
 			}
 			if($('#addUserForm #Firstname').val() == ""){
@@ -73,7 +70,16 @@ $(document).ready(function() {
     		    }, 4000);
     			return false;
     		}else{
-    			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'edit', 'userName' : $('#addUserForm #userName').val(), 'id' : $('#addUserForm #userId').val() })
+    			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'edit', 
+    				'username' : $('#addUserForm #userName').val(),  
+    				'password' : $('#addUserForm #Password').val(),
+    				'fname' : $('#addUserForm #Firstname').val(),
+    				'lname' : $('#addUserForm #Lastname').val(),
+    				'email' : $('#addUserForm #Email').val(),
+    				'phone' : $('#addUserForm #Phone').val(),
+    				'role' : $('#addUserForm #Role').val(),
+    				'status' : $('#addUserForm #Status').val(),
+    				'id' : $('#addUserForm #userId').val() })
     			  .done(function( data ) {
     				  if(data == 'success'){
     					  $('#addUserForm #status').removeClass('alert-danger');

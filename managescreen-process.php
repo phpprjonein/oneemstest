@@ -37,7 +37,7 @@ if ($_POST['screen'] == 'User') {
         $values_arr = array(
                 'username' => $_POST['username'],
                 'password' => md5($_POST['password']),
-                'userid' => $_POST['userid'],
+                'userid' => $_POST['username'],
                 'userlevel' => $_POST['role'],
                 'email' => $_POST['email'],
                 'timestamp' => date('m-d-Y'),
@@ -54,9 +54,20 @@ if ($_POST['screen'] == 'User') {
     if($_POST['act'] == 'edit'){
         $values_arr = array(
                 'id' => $_POST['id'],
-                'vendorName' => $_POST['vendorName'],
+                'username' => $_POST['username'],
+                'userlevel' => $_POST['role'],
+                'email' => $_POST['email'],
+                'status' => $_POST['status'],
+                'fname' => $_POST['fname'],
+                'lname' => $_POST['lname'],
+                'phone' => $_POST['phone'],
+                'role' => $_POST['role'],
         );
-        update_vendor($values_arr);
+        if($_POST['password'] != ''){
+            $values_arr['password'] = md5($_POST['password']);
+        }
+        
+        update_user($values_arr);
         print 'success';
     }
     

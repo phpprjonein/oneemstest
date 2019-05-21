@@ -2480,6 +2480,32 @@ function update_vendor($values)
     $db2->query($sql);
     $db2->execute();
 }
+
+
+/**
+ *
+ * @param unknown $values
+ */
+function update_user($values)
+{
+    global $db2;
+    $pass_update = '';
+    if($values['password'] != ''){
+        $pass_update = ", password = '" . $values['password'] . "'";
+    }
+    
+    $sql = "update users set username = '" . $values['username'] . "', username = '" . $values['username'] . "'".$pass_update.",
+        userid = '" . $values['username'] . "', userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
+        role = " . $values['role'] . ", status = " . $values['status'] . " where id = ". $values['id'];
+    
+    
+    
+    $db2->query($sql);
+    $db2->execute();
+}
+
+
+
 /**
  *
  * @param unknown $values
@@ -2694,7 +2720,7 @@ function generic_get_vendors()
 function generic_get_users()
 {
     global $db2;
-    $sql = "SELECT * FROM users where status = 1 ORDER BY username";
+    $sql = "SELECT * FROM users ORDER BY username";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

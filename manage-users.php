@@ -217,7 +217,7 @@ $page_title = 'OneEMS';
 											</thead>
 											<tbody>
 											<?php $i=1; foreach ($users['result'] as $key=>$val){?>
-												<tr data-user="<?php echo $val['id'];?>">
+												<tr data-user="<?php echo $val['id'];?>" data-userlevel="<?php echo $val['userlevel'];?>" data-status="<?php echo $val['status'];?>">
 												<td><?php echo $i++;?></td>
 												<td><?php echo $val['id'];?></td>
 												<td><?php echo $val['username'];?></td>

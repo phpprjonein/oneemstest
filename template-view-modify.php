@@ -12,14 +12,9 @@ if (isset($_GET['clear'])) {
 
 user_session_check();
 
-if ($_SESSION['userlevel'] == 1)
-    include_once ('config/session_check_cellsite_tech.php');
-else if ($_SESSION['userlevel'] == 2)
-    include_once ('config/session_check_switch_tech.php');
-else if ($_SESSION['userlevel'] == 8)
-    include_once ('config/session_check_admin.php');
-else if ($_SESSION['userlevel'] == 9)
-    include_once ('config/session_check_limited_admin.php');
+check_user_authentication(array(
+        8
+)); // cellsite tech type user
     
 $page_title = 'OneEMS';
 

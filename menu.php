@@ -46,14 +46,15 @@
 						class="nav-link <?php print activemenu("login-impersonate.php"); ?>"
 						href="login-impersonate.php">Impersonate User</a></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("golden-scripting.php", "cellsitetech-configuration.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("golden-scripting.php", "cellsitetech-configuration.php","template-view-modify.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Configuration</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="golden-scripting.php">Load Template - Golden</a>
+						<a class="dropdown-item" href="template-view-modify.php">View / Modify Template</a>
 						</div></li>	
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","device-upload.php","device-file-upload.php","admin-user-revalidate.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","device-upload.php","device-file-upload.php","admin-user-revalidate.php","device-administration.php","manage-users.php","manage-vendors.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Maintenance</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,7 +62,8 @@
 							 <!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
 							<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
 							<a class="dropdown-item" href="device-administration.php">Device Cleanup </a>
-                                                      
+                            <a class="dropdown-item" href="manage-users.php">Manage Users </a>
+                            <a class="dropdown-item" href="manage-vendors.php">Manage Vendors </a>                          
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>

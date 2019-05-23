@@ -300,6 +300,9 @@ if (isset($_POST['tempname']) && $_POST['calltype'] == 'trigger' && isset($_POST
 
 if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'DelGenerateScript') {
     delete_templname_already_exist($_POST['deltemp']);
+    if (file_exists(getcwd() .'/upload/'. $_POST['deltemp'] . ".txt")) {
+        unlink(getcwd() .'/upload/'. $_POST['deltemp'] . ".txt");
+    }
     $results = load_available_templates($_POST['filename'], $_POST['alias']);
     $output = '';
     foreach ($results as $key => $val) {

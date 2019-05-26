@@ -227,13 +227,15 @@ function update_dev_batch_st($batchid, $deviceid, $scriptname, $deviceseries, $n
     global $db2;
     $oc = 1;
     $date_op = date('Y-m-d H:i:s');
-    $sql = "SELECT id, deviceIpAddr FROM nodes order by id";
+    $sql = "SELECT id, deviceIpAddr, devicename FROM nodes order by id";
     $db2->query($sql);
     $resultset = $db2->resultset();
     foreach ($resultset as $key => $val) {
         $nodes[$val['id']]['deviceIpAddr'] = $val['deviceIpAddr'];
+        $nodes[$val['id']]['devicename'] = $val['devicename'];
     }
     $deviceid = explode(',', $deviceid);
+    $scriptname_arr = array();
     $dsql = 'INSERT INTO `batchmembers` (`batchid`, `deviceid`, `status`, `deviceIpAddr`, `comment`) VALUES';
     foreach ($deviceid as $key => $val) {
         if (count($deviceid) == $oc) {
@@ -242,6 +244,7 @@ function update_dev_batch_st($batchid, $deviceid, $scriptname, $deviceseries, $n
             $dsql .= "('" . $batchid . "','" . $val . "','s','" . $nodes[$val]['deviceIpAddr'] . "',''),";
         }
         $oc ++;
+        $scriptname_arr[$batchid][] = $nodes[$val]['devicename'].'.txt';
     }
     
     if ($oc > 1) {
@@ -249,8 +252,13 @@ function update_dev_batch_st($batchid, $deviceid, $scriptname, $deviceseries, $n
         $db2->execute();
         /* insert in to batchmaster table */
         $priority = 1;
+        if(count($scriptname_arr[$batchid]) > 1){
+            $scriptname_arr_imp = implode(' | ',$scriptname_arr[$batchid]);
+        }else{
+            $scriptname_arr_imp = $scriptname_arr[$batchid];
+        }
         $dsql = "INSERT INTO `batchmaster` (`batchid`, `batchstatus`, `batchscheddate`, `region`, `batchtype`, `priority`, `username`, `batchcreated`, `deviceseries`, `nodeVersion`, `scriptname`, `refmop`,`destinationpath`,`comment`)
-        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'st', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $deviceseries . "','" . $node_version . "','" . $scriptname . "','" . $refmop . "','" . $destdrive . "','' )";
+        VALUES('" . $batchid . "','s','" . $date_op . "', '', 'st', '" . $priority . "','" . $_SESSION['username'] . "','" . $date_op . "','" . $deviceseries . "','" . $node_version . "','" . $scriptname_arr_imp . "','" . $refmop . "','" . $destdrive . "','' )";
         $db2->query($dsql);
         $db2->execute();
     }

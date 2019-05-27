@@ -68,6 +68,7 @@ write_log($mesg);
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -232,7 +233,7 @@ ip vrf RAN
  route-target import #XXXXX#:1000
 !
 no ip domain lookup
-ip domain name NCMwireless.com
+ip domain name verizonwireless.com
 !
 ip multicast-routing distributed
 ip dhcp excluded-address #X.X.X.X# #X.X.X.X#
@@ -965,6 +966,29 @@ event manager applet LOOP_GIG authorization bypass
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
+							<h5 id="item-4-2-2">Template - View / Modify</h5>
+							<p>This functionality allows for device configuration template modification within the OneEMS application.</p>
+							<p>A user selects a device configuration file to manipulate from the dropdown list on the left. This will display all the associated fields within the template for manipulation, much in the same way a user can manipulate templates in the other Configuration menu items, for example, the <a href="#item-4-1">Load Template - Modification</a> screens.</p>
+							<p></p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Template modification in this instance is only viewable by administrative users.</p>
+							<p>&nbsp;</p>
+							<img src="resources/img/screenshot-template_view_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.9 - Template Selection For Modification</b></span>
+							<p></p>
+							<p>Once a template's device configuration file is selected, a user can opt to hide read only fields and change various values, then save the chosen configuration.</p>
+							<!-- <p>&nbsp;</p> -->
+							<img src="resources/img/screenshot-template_view_mod1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-2">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.9.1 - Template Configuration Field Updates</b></span>
+							<p></p>
+							<img src="resources/img/screenshot-template_view_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-3">
+							<p></p>
+							<span class="font-italic"><b>FIG. 4.5.9.2 - Template Update Success Message</b></span>
+							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
 							<h5 id="item-4-3">Batch Tracking</h5>
 							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, <b>Boot Order</b>, <b>Reboot Status</b>, <b>Audit</b>, and <b>Customized Audit</b>.</p>
 							<p>Scripts can be monitored for execution status on a device or sets of devices (<b>Script Execution</b>),  whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>
@@ -1055,6 +1079,36 @@ event manager applet LOOP_GIG authorization bypass
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-generate-script_gold.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-view-mod1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-view-mod1-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod1.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-view-mod1-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod2.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

@@ -69,6 +69,7 @@ echo generate_site_breadcrumb($values);
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -94,6 +95,7 @@ echo generate_site_breadcrumb($values);
 									</nav>
                                     <a class="nav-link" href="#item-audit">AUDIT</a>
 									<nav class="nav nav-pills flex-column">
+										<a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-0">Compliance</a>
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
                                         <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
 									</nav>
@@ -134,6 +136,7 @@ echo generate_site_breadcrumb($values);
 								<li>Audit Status</li>
 								<li>Compliance Log Name</li>
 							</ul>
+							<h5 id="item-audit-0">Compliance</h5>
                             <p></p>
                             <img src="resources/img/screenshot-audit1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit1">
                             <p></p>

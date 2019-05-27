@@ -71,6 +71,7 @@ echo generate_site_breadcrumb($values);
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
+										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
 										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 									</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>

@@ -565,3 +565,26 @@ if(isset($_GET['act']) && $_GET['act'] == 'delete' && isset($_GET['ntype']) && $
         echo $output;
     }
 }
+
+if(isset($_GET['act']) && $_GET['act'] == 'delete' && isset($_GET['ntype']) && $_GET['ntype'] == 'auditd' && isset($_POST['type']) && $_POST['type'] == 'api-ajax' && isset($_POST['batchid']) && is_numeric($_POST['batchid'])){
+    $sql = "DELETE FROM audithistory WHERE auhisid='" . $_POST['auhisid'] . "'";
+    $db2->query($sql);
+    $db2->execute();
+    
+    $output = '';
+    
+    $resultset = load_audittab_content();
+    
+    if (isset($resultset)) {
+        foreach ($resultset as $key => $value) {
+                $output .= '<tr data-auhisid="'.$value['auhisid'].'">
+									<td>'.$value['batchid'].'</td>
+									<td>'.$value['devicename'].'</td>
+									<td>'.$value['deviceIpAddr'].'</td>
+									<td>'.$value['deviceseries'].'</td>
+									<td><a href="#" class="del-device">Delete</a></td>
+								</tr>';
+        }
+        echo $output;
+    }
+}

@@ -6221,6 +6221,14 @@ function generatescript_str_preprocess($str, $bmbps){
     return $str;
 }
 
+function load_audittab_content(){
+    global $db2;
+    $sql = "SELECT auhisid, batchid, devicename, deviceIpAddr, deviceseries, austatus FROM audithistory where austatus = 'Fail'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
+}
+
 function load_tab_content($type){
     global $db2;
     if($type == 'ipcase1' || $type == 'ipcase2'){

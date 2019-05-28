@@ -62,6 +62,7 @@
 							 <!-- <a class="dropdown-item" href="device-upload.php">Device Upload</a> -->
 							<a class="dropdown-item" href="device-file-upload.php">Binary File Upload</a>
 							<a class="dropdown-item" href="device-administration.php">Device Cleanup </a>
+							<a class="dropdown-item" href="audit-history-cleanup.php">Audit History Cleanup </a>
                             <a class="dropdown-item" href="manage-users.php">Manage Users </a>
                             <a class="dropdown-item" href="manage-vendors.php">Manage Vendors </a>                          
 						</div></li>

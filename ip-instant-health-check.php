@@ -97,8 +97,11 @@ $page_title = 'OneEMS';
 						</div>
 						<div class="panel-body-wrap"></div>
                                                                 <!--  Sync Password Form Start -->
+<!--
 <hr width="50%" align="left" style="border: 1px solid blue;" />
+-->
                                                                 <form class="sync-pass-form" action="" method="post">
+<!--
                                     <div class="input-group row">
                                     <div class="form-inline col-md-6 col-sm-12">
                                             <input type="inputName" name="syncpass_ipaddress" class="form-control"
@@ -110,6 +113,7 @@ $page_title = 'OneEMS';
 												</span>
                                     </div>
                                     </div>
+-->
                                     </form>
                                     <hr width="50%" align="left" style="border: 1px solid blue;" />
                                     <form class="cyberark-sync-pass-form" action="" method="post">
@@ -151,7 +155,7 @@ $page_title = 'OneEMS';
                                                 autofocus>
 												<span data-toggle="tooltip" title="Checks whether PAM accounts exist. If they do, then it resets passwords on PAM and the router. If it does not exist, then it adds accounts on both PAM and the router">
                                             <button type="submit" class="btn" id="cyberark-add-acct"
-                                                data-toggle="modal">Add CyberArk Account </button></span>
+                                                data-toggle="modal">Add/Reset CyberArk Account </button></span>
                                     </div>
                                                                 <!--  Show Add CyberArk Account Form End -->
                                     </div>

@@ -87,10 +87,10 @@
 								Script - Golden </a>
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
-							<a class="dropdown-item" href="cellsitetech-configuration-update.php">Template - View / Modify </a>			
+							<!--<a class="dropdown-item" href="cellsitetech-configuration-update.php">Template - View / Modify </a>	-->
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
-							<a class="dropdown-item" href="batch-tracking-devices.php">Batch
-								Tracking </a>
+							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle  <?php print activemenu(array("cellsitetech-ip-management.php", "cellsitetech-discovery.php")); ?>"
@@ -163,8 +163,8 @@
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
-							<a class="dropdown-item" href="batch-tracking-devices.php">Batch
-								Tracking </a>
+							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle  <?php print activemenu(array("switchtech-ip-management.php", "switchtech-discovery.php")); ?>"

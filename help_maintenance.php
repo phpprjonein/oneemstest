@@ -55,59 +55,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a>
-									<a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-										<nav class="nav nav-pills flex-column">
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-										</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="#item-7">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-										<a	class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-										<a	class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -128,20 +76,20 @@ echo generate_site_breadcrumb($values);
 							<a name="selectBinary"></a>
 							<img src="resources/img/screenshot-sw-master.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-master1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.1 - Software Delivery – Selecting Binary And Remote Device(s)</b></span>
+							<span class="font-italic"><b>Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
 							<p>A user can define parameters for a device series type, file name, the destination for update file application and the ability to  set minimum build and/or patch versioning of a chosen OS.</p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is only accesible by NA Field Assurance Users.</p>
 							<h5 id="item-7-2">Reboot</h5>
 							<img src="resources/img/screenshot-reboot.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-os-repo">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.2 - Device Reboot Dashboard</b></span>
+							<span class="font-italic"><b>Device Reboot Dashboard</b></span>
 							<p></p>
 							<p>Here is where a user can initiate a physical reboot of devices within the OneEMS repository. This reboot functionality can be filtered and applied by device series, IP address, market or even OS versions.</p>
 							<p>Once a user has set a device or devices up for rebooting, they will be taken to the <a href="help_config.php#item-4-3">Batch Tracking</a> page. Here, users can track the progress of the reboot in real time.</p>
 							<img src="resources/img/screenshot-reboot2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-os-repo2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.2.1 - Reboot Batch Messaging</b></span>
+							<span class="font-italic"><b>Reboot Batch Messaging</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -150,12 +98,12 @@ echo generate_site_breadcrumb($values);
 							<p>This screen allows users to apply specific preset software configurations to devices within the OneEMS network.</p>
 							<img src="resources/img/screenshot-sw-delivery.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-delivery">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.3 - Software Delivery - Boot Order Sequence</b></span>
+							<span class="font-italic"><b>Software Delivery - Boot Order Sequence</b></span>
 							<p></p>
 							<p>Once you have selected a device or set of devices to apply a software configuration to, you will be presented with the <b>Batch Tracking</b> page. This page represents batch runs and is organized by type. Click the plus icon next to the appropriate drop down item in the results table to see the status of your batch job.</p>
 							<img src="resources/img/screenshot-sw-batch1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-batch1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 7.4 - Batch Tracking A Script Execution Request</b></span>
+							<span class="font-italic"><b>Batch Tracking A Script Execution Request</b></span>
 							<p></p>
 							<p>Here, you will be able to monitor the progress of your Batch request. You can also cancel a batch request you've initiated prior.</p>
 							<hr>

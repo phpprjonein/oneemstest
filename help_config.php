@@ -53,59 +53,7 @@ write_log($mesg);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-                                    <a class="nav-link" href="help.php">GETTING STARTED</a>
-                                    <a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-                                    <a class="nav-link" href="help_backup.php">BACKUP</a>
-                                    <a class="nav-link" href="#item-4">CONFIGURATION</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-                                        <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-										<a	class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-                                        <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
-								</nav>
-							</nav>
+						<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -129,15 +77,15 @@ write_log($mesg);
 							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
 							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.1 - Configuration Dashboard	With Sample Values Selected</b></span>
+							<span class="font-italic"><b>Configuration Dashboard	With Sample Values Selected</b></span>
                             <p></p>
                             <p>The name will be automatically generated based on the options you select. This template name will be unique  in OneEMS. Clicking <b>NEXT</b> will bring you to a page where you can associate a configuration file to the new  name just created.</p>
-							<p>To create a new template, a user starts with selecting categorization options for the template (shown in <b><i>FIG. 4.1</i></b>), then by uploading a new file from their computer by using the browse button (shown in <b><i>FIG. 4.1.2</i></b>).</p>
+							<p>To create a new template, a user starts with selecting categorization options for the template, then by uploading a new file from their computer by using the browse button.</p>
 							<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
                             <p>To manage device scripts, a user can upload one from their hard drive.</p>
                             <img src="resources/img/screenshot-load_template_mod3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1-1-1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.1.2 - File Upload</b></span>
+							<span class="font-italic"><b>File Upload</b></span>
 							<p></p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> The OneEMS application cannot consume files that  end in anything besides <b>.txt</b> extensions. <br> <br> Additionally, editable fields <b>MUST</b> be  encapsulated by a hash ( <b>#</b> )  symbol. This symbol must appear on both the left and right sides of an  editable field. Acceptable values within the encapsulated area are the letters "X", "Y", "A", "B" or "C". These  characters must be capitalized. The OneEMS application recognizes strings configured in this way as editable.</p>
 							<p>Once a user has either manipulated the default values in the form on the right or changed the values of the script they have  uploaded, they can then download this edited script for application on devices of their  choosing.</p>
@@ -825,7 +773,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p>&nbsp;</p>
 							<img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-config2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.2 - Editable Configuration Template</b></span>
+							<span class="font-italic"><b>Editable Configuration Template</b></span>
 							<p></p>
 							<b>Auto-populating Configuration Files</b>
 							<p>There are several categories for which you can auto-populate a field in a configuration file. For example:
@@ -900,7 +848,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p>Select the appropriate variable associated with each field in the configuration file. This is a one-time exercise that will create a template that will be available to all users. This will help standardize the process, save time and reduce chance of errors when generating scripts to run on a device.</p>
 							<img src="resources/img/screenshot-config3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config3">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.2.2 - Editable Configuration Template</b></span>
+							<span class="font-italic"><b>Editable Configuration Template</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -909,7 +857,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p>In this view, a user can select an existing template with which to create a script for use on a particular  device.</p>
 							<img src="resources/img/screenshot-generate-script.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.3 - Script Template Selection</b></span>
+							<span class="font-italic"><b>Script Template Selection</b></span>
 							<p></p>
 							<p>You can select parameters from the dropdown menu on the right side of the screen, which will reveal  associated templates to choose from. You can further drill down into the results by typing in the <b>Alias Name</b> input field above the table. You can also choose to delete a specific template by clicking on the <b>Delete</b> button next to the template you wish to remove.</p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Deleting a template is <b>permanent</b> and cannot be undone. Please be sure you wish to actually remove the selected template from the table.</p>
@@ -919,14 +867,14 @@ event manager applet LOOP_GIG authorization bypass
 							</p>
 							<img src="resources/img/screenshot-generate-script2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.4 - Generated Template Edit Screen</b></span>
+							<span class="font-italic"><b>Generated Template Edit Screen</b></span>
 							<p></p>
 							<p><b>Selecting One Or More Devices To Run Scripts</b>
 							<br />
 							Once you select “Execute”, you will be taken to the Batch Page where you can select devices to run a script. The list of devices have been filtered to show devices matching the device series and version only. Select the device by clicking on checkbox on left, set the priority and click submit to create a batch. You will then be prompted to confirm the batch run.</p>
 							<img src="resources/img/screenshot-config_confirm-batch.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-confirm-batch">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5 - Running A Script On One Or More Devices</b></span>
+							<span class="font-italic"><b>Running A Script On One Or More Devices</b></span>
 							<p></p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Please retain the Batch ID for your records.</p>
 							<p>Once the Batch is successfully scheduled you will get a Batch ID. Please make a note of it so you can view  the status later.</p>
@@ -939,7 +887,7 @@ event manager applet LOOP_GIG authorization bypass
 							After submitting your batch job you will be taken to the Batch Tracking page or you can return  to this page any  time by navigating the top menu bar (Configuration -> Batch Tracking). The Status field shows you the state  your batch is in; Scheduled, In-progress Completed or Cancelled. You can cancel only batches that are in  “Scheduled” state.</p>
 							<img src="resources/img/screenshot-config_batch-status.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch-status">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.7 - View Status Of A Batch Job</b></span>
+							<span class="font-italic"><b>View Status Of A Batch Job</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -953,7 +901,7 @@ event manager applet LOOP_GIG authorization bypass
 							</p>
 							<img src="resources/img/screenshot-generate-script_gold.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate1-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.8 - Script Template Selection (Golden)</b></span>
+							<span class="font-italic"><b>Script Template Selection (Golden)</b></span>
 							<p></p>
 							<p>This flow generates <b>three</b> different scripts, one for original CSR routers, one for associated 9k-01 devices and one for 9k-02 devices. Each CSR is associated with a pair of 9ks.</p>
 							<p>Click on the links below to view sample scripts for each aforementioned type:
@@ -974,17 +922,17 @@ event manager applet LOOP_GIG authorization bypass
 							<p>&nbsp;</p>
 							<img src="resources/img/screenshot-template_view_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.9 - Template Selection For Modification</b></span>
+							<span class="font-italic"><b>Template Selection For Modification</b></span>
 							<p></p>
 							<p>Once a template's device configuration file is selected, a user can opt to hide read only fields and change various values, then save the chosen configuration.</p>
 							<!-- <p>&nbsp;</p> -->
 							<img src="resources/img/screenshot-template_view_mod1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.9.1 - Template Configuration Field Updates</b></span>
+							<span class="font-italic"><b>Template Configuration Field Updates</b></span>
 							<p></p>
 							<img src="resources/img/screenshot-template_view_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-3">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.5.9.2 - Template Update Success Message</b></span>
+							<span class="font-italic"><b>Template Update Success Message</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -994,7 +942,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p>Scripts can be monitored for execution status on a device or sets of devices (<b>Script Execution</b>),  whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>
 							<img src="resources/img/screenshot-batch-tracking1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 4.6 - Batch Tracking View</b></span>
+							<span class="font-italic"><b>Batch Tracking View</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -1069,6 +1017,16 @@ event manager applet LOOP_GIG authorization bypass
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-generate-script.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-generate2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-generate-script2.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

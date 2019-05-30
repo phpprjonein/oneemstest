@@ -54,61 +54,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a>
-									<a class="nav-link" href="help_network_elements.php#item-2">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-										<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-									 	<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_instant_hc.php">TOOLS</a>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="help_ssh.php">PAM SSH USER GUIDE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh2">Command Line Usage - SSH</a>
-										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh3">SSH Application Usage: PuTTY</a>
-										<a class="nav-link ml-3 my-1" href="help_ssh.php#item-ssh4">SSH Application Usage: SecureCRT</a>
-                                    </nav>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -168,13 +114,13 @@ echo generate_site_breadcrumb($values);
                                     <p></p>
                                     <img src="resources/img/screenshot-putty-ssh1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh1">
                                     <p></p>
-                                    <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                    <span class="font-italic"><b>One EMS Regional Map</b></span>
                                     <p></p></li>
                             </ul>
                             <p>Select Open. This will open a putty window and will prompt you for your WIN-VZWNET password.</p>
                             <img src="resources/img/screenshot-putty-ssh2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                            <span class="font-italic"><b>One EMS Regional Map</b></span>
                             <p></p>
                             <p>Alternate Method:
                                 <br>
@@ -186,12 +132,12 @@ echo generate_site_breadcrumb($values);
                                 <p></p>
                                 <img src="resources/img/screenshot-putty-ssh3.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3">
                                 <p></p>
-                                <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                <span class="font-italic"><b>One EMS Regional Map</b></span>
                                 <p></p>
                                 <p>This will open up a putty window</p>
                                 <img src="resources/img/screenshot-putty-ssh4.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4">
                                 <p></p>
-                                <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                <span class="font-italic"><b>One EMS Regional Map</b></span>
                                 <p></p>
                                 <hr>
                                 <a href="#top" class="border"><b>Back to top</b></a>
@@ -204,14 +150,14 @@ echo generate_site_breadcrumb($values);
                                             <p></p>
                                             <img src="resources/img/screenshot-putty-ssh5.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5">
                                             <p></p>
-                                            <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                            <span class="font-italic"><b>One EMS Regional Map</b></span>
                                             <p></p>
                                         </li>
                                         <li>Select <b>"SSH2"</b> as the Protocol and click <b>"Next"</b>
                                             <p></p>
                                             <img src="resources/img/screenshot-putty-ssh6.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6">
                                             <p></p>
-                                            <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                            <span class="font-italic"><b>One EMS Regional Map</b></span>
                                             <p></p>
                                         </li>
                                         <li>Set the ‘Hostname’ to ‘pamssh.nsiam.vzwnet.com
@@ -225,7 +171,7 @@ echo generate_site_breadcrumb($values);
                                                     <p></p>
                                                     <img src="resources/img/screenshot-putty-ssh7.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh7">
                                                     <p></p>
-                                                    <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                                    <span class="font-italic"><b>One EMS Regional Map</b></span>
                                                     <p></p>
                                                 </li>
                                             </ol>
@@ -243,7 +189,7 @@ echo generate_site_breadcrumb($values);
                                             <p></p>
                                             <img src="resources/img/screenshot-putty-ssh8.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh8">
                                             <p></p>
-                                            <span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+                                            <span class="font-italic"><b>One EMS Regional Map</b></span>
                                             <p></p>
                                         </li>
                                         <li>Click ‘OK’ to save the changes to the session.</li>
@@ -258,13 +204,13 @@ echo generate_site_breadcrumb($values);
 								<p></p>
 								<img src="resources/img/screenshot-putty-ssh9.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh9">
 								<p></p>
-								<span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+								<span class="font-italic"><b>One EMS Regional Map</b></span>
 								<p></p>
 								<p>Click Connect</p>
 								<p></p>
 								<img src="resources/img/screenshot-putty-ssh10.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh10">
 								<p></p>
-								<span class="font-italic"><b>FIG. 1.2 - One EMS Regional Map</b></span>
+								<span class="font-italic"><b>One EMS Regional Map</b></span>
 								<p></p>
 								<hr>
 								<a href="#top" class="border"><b>Back to top</b></a>

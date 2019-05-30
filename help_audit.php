@@ -54,60 +54,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-                                    <a class="nav-link" href="help.php">GETTING STARTED</a>
-                                    <a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-                                        <a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-										<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-                                        <a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-                                        <a class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
-                                        <a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-                                    <a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-                                    <a class="nav-link" href="#item-audit">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-0">Compliance</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-                                        <a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -140,18 +87,18 @@ echo generate_site_breadcrumb($values);
                             <p></p>
                             <img src="resources/img/screenshot-audit1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit1">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.1 - Compliance Audit Dashboard</b></span>
+                            <span class="font-italic"><b>Compliance Audit Dashboard</b></span>
                             <p></p>
 							<p>Once a user has chosen a device or devices for audit, a batch is created for processing. You can see the status of the batch at the end of the selection process after you click on the <b>Submit</b> button:</p>
 							<p></p>
                             <img src="resources/img/screenshot-audit2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 9.1.1 - Audit Selection</b></span>
+							<span class="font-italic"><b>Audit Selection</b></span>
 							<p></p>
 							<p>A user will be redirected to the <a href="help_config.php#item-4-3">Batch Processing page</a> after clicking on the <b>Close</b> button. Here, you'll be presented with a screen showing the current status of the batch audit performed prior:</p>
                             <img src="resources/img/screenshot-audit3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit3">
                             <p></p>
-							<span class="font-italic"><b>FIG. 9.1.2 - Audit Batch Status</b></span>
+							<span class="font-italic"><b>Audit Batch Status</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -180,7 +127,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
                             <p></p>
                             <img src="resources/img/screenshot-audit4-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.2 - Customized Audit Dashboard</b></span>
+                            <span class="font-italic"><b>Customized Audit Dashboard</b></span>
                             <p></p>
 							<p>A user can filter the table results using the form fields for <b>Section Header</b> or a search string, a specific <b>Configuration Section</b> of a particular log file, and can also choose to ignore certain configuration lines in the results.</p>
 							<p>All of these filtering options can be performed on just one log file or multiple sets of log files.</p>
@@ -190,7 +137,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 							<p></p>
                             <img src="resources/img/screenshot-audit4-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.2.2 - Custom Audit Batch Tracking Dashboard</b></span>
+                            <span class="font-italic"><b>- Custom Audit Batch Tracking Dashboard</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -214,7 +161,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 							<p></p>
                             <img src="resources/img/screenshot-audit5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit5">
                             <p></p>
-                            <span class="font-italic"><b>FIG. 9.3 - Customized Audit History Dashboard</b></span>
+                            <span class="font-italic"><b>Customized Audit History Dashboard</b></span>
                             <hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>

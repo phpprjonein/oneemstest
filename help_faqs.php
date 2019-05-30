@@ -54,59 +54,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a>
-									<a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-										<nav class="nav nav-pills flex-column">
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script -  Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-										</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-											<a class="nav-link ml-3 my-1"	href="help_maintenance.php#item-7-2">Reboot</a>
-											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="#item-10">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -139,12 +87,12 @@ echo generate_site_breadcrumb($values);
 								</div>
 
 								<div class="card">
-									<div class="card-header" id="headingThree">
+									<div class="card-header" id="headingTwo">
 										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"  aria-controls="collapseThree">A specific device I'm looking for isn't showing up. How do I fix this?</button>
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"  aria-controls="collapseTwo">A specific device I'm looking for isn't showing up. How do I fix this?</button>
 										</h5>
 									</div>
-									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 										<div class="card-body">
 											<p>Devices are made available to the OneEMS application via <b>Ops Tracker</b>. Each device is categorized by its  name, associated site number, switch name and site name. If one or more of these criteria are not met, it is  entirely possible that <b>Ops Tracker</b>'s database does not contain the specific device in question.</p>
 											<p>Please contact your administrator or supervisory body for more information regarding adding more devices.</p>
@@ -153,12 +101,12 @@ echo generate_site_breadcrumb($values);
 								</div>
 
 								<div class="card">
-									<div class="card-header" id="headingFour">
+									<div class="card-header" id="headingThree">
 										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Where do I view ALL the devices I'm assigned to?</button>
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Where do I view ALL the devices I'm assigned to?</button>
 										</h5>
 									</div>
-									<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 										<div class="card-body">
 											<p>The <a href="help_network_elements.php">Network Elements Dashboard</a> exposes all the devices assigned to a specific user as per the <b>OpsTracks</b> database.</p>
 											<p class="alert alert-danger"><b class="text-danger">NOTE:</b> For NA Field Assurance Users, the <b>My Routers</b> list on the <b>Network  Elements Dashboard</b> contains routers assigned to a specific user by <b>Ops Tracker</b>.</p>
@@ -167,12 +115,12 @@ echo generate_site_breadcrumb($values);
 								</div>
 
 								<div class="card">
-									<div class="card-header" id="headingFive">
+									<div class="card-header" id="headingFour">
 										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How do I add more devices to the OneEMS Application?</button>
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">How do I add more devices to the OneEMS Application?</button>
 										</h5>
 									</div>
-									<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+									<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
 										<div class="card-body">
 											<p>The OneEMS application allows for addition of devices to the network from the <a href="help_discovery_results.php#manualDiscovery">Discovery Results Dashboard</a> in order to rediscover devices that may have been newly added to the IOP database.</p>
 											<p>Once a user has found a device s/he would like to add, they would click on the <b>SAVE</b> button on the <b>Manual Discovery</b> results screen. This adds to the device to any future results sets that a user may perform OneEMS-supported queries on within the application.</p>
@@ -181,12 +129,12 @@ echo generate_site_breadcrumb($values);
 								</div>
 
 								<div class="card">
-									<div class="card-header" id="headingSix">
+									<div class="card-header" id="headingFive">
 										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">A Dashboard screen I'm working in doesn't look right/work properly. How do I fix this?</button>
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">A Dashboard screen I'm working in doesn't look right/work properly. How do I fix this?</button>
 										</h5>
 									</div>
-									<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+									<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
 										<div class="card-body">
 											<p>The <a href="#browserOSMatrix">Browser / OS Support Matrix</a> below shows the currently supported configurations that the OneEMS Application works in. You must have <b>BOTH</b> a supported operating system  <b>AND</b> a supported browser to view this application. Using browsers and operating systems besides the ones  listed as supported below will produce unintended results in terms of layout and/or functionality.</p>
 											<p>Currently, no version of Internet Explorer earlier than V.11 is supported by this application.</p>
@@ -309,33 +257,13 @@ echo generate_site_breadcrumb($values);
 									</div>
 								</div>
 
-
 								<div class="card">
-									<div class="card-header" id="headingSeven">
+									<div class="card-header" id="headingSix">
 										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">I have an issue or question that isn't addressed here in these FAQ<span style="text-transform: lowercase;">s</span>...</button>
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">How can I make a PuTTY window popup automatically to log in to a device?</button>
 										</h5>
 									</div>
-									<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-										<div class="card-body">
-											<p>On <i>every</i> page of the OneEMS application, there is an option to raise a <b>JIRA Ticket</b> by clicking the persistent "<b>OPEN TICKET</b>" button at the bottom of the screen.</p>
-											<img src="resources/img/screenshot-jira-button-link.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-jira-button-link">
-											<p></p>
-											<span class="font-italic"><b>FIG. 9.1 - JIRA Ticketing Button</b></span>
-											<p></p>
-											<p>Upon clicking this button, you will be redirected to an external JIRA ticketing system, where you can open a  ticket relevant to an issue you may be having with the OneEMS application. There, you can relay all the pertinent information that applies to your issue.</p>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="card">
-									<div class="card-header" id="headingEight">
-										<h5 class="mb-0 table-responsive">
-											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">How can I make a PuTTY window popup automatically to log in to a device?</button>
-										</h5>
-									</div>
-									<div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+									<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
 										<div class="card-body">
 										<p><b>OneEMS Software Requirements</b></p>
 							<ol>
@@ -368,6 +296,193 @@ echo generate_site_breadcrumb($values);
 									</div>
 								</div>
 
+								<div class="card">
+									<div class="card-header" id="headingSeven">
+										<h5 class="mb-0 table-responsive">
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">What is the pass criteria for each health check?</button>
+										</h5>
+									</div>
+									<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+										<div class="card-body">
+											<p>The <a href="help_network_elements.php#item-2-3">health check dashboard</a> functionality runs specific commands against specific devices in order to determine their viability.</p>
+											<p>The criteria by which a device passes these health checks is shown in the table below along with the actual commands that trigger the associated check.</p>
+
+<!-- browser/OS support table -->
+											<div class="table-responsive">
+												<table class="table table-sm table-hover table-bordered" id="browserOSMatrix">
+													<thead class="thead-dark">
+														<tr>
+															<th scope="col">Health Check</th>
+															<th scope="col">Raw Command</th>
+															<th scope="col">Output Summary</th>
+															<th scope="col">Pass Criteria</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">2000 Byte Ping</th>
+															<td><pre>ping <bfd neighbor1> size 2000
+ping <bfd neighbor2> size 2000</pre></td>
+															<td>success rate = X percent</td>
+															<td>5/5 success rate</td>
+														</tr>
+														<tr>
+															<th scope="row">Bandwidth</th>
+															<td><pre>show run int gigabitEthernet0/0/0
+sh int Gi0/0/0</pre></td>
+															<td>bandwidth = A;
+port utilization:
+input rate = B bits/sec,
+output rate = C bits/sec,
+D packets/sec</td>
+															<td>Display the current configured Bandwidth and current Utilization</td>
+														</tr>
+														<tr>
+															<th scope="row">BFD Sessions</th>
+															<td><pre>show bfd neighbor</pre></td>
+															<td>down neighbors = X</td>
+															<td>all neighbors are up/up</td>
+														</tr>
+														<tr>
+															<th scope="row">BGPv4 Routes</th>
+															<td><pre>show ip bgp vpnv4 vrf &lt;RAN,1xrtt,cell_mgmt&gt;</pre></td>
+															<td>1xrtt=X,cell_mgmt:Y,ran:Z</td>
+															<td>number of default gateways >= 2</td>
+														</tr>
+														<tr>
+															<th scope="row">BGPv4 Routes</th>
+															<td><pre>show ip bgp vpnv6 unicast vrf LTE</pre></td>
+															<td>BGPv6 Routes = X</td>
+															<td>number of default gateways >= 2</td>
+														</tr>
+														<tr>
+															<th scope="row">Boot Statement</th>
+															<td><pre>show running | i boot</pre></td>
+															<td>Boot statement matches version</td>
+															<td>first boot statement in running config = currently running IOS version</td>
+														</tr>
+														<tr>
+															<th scope="row">Buffers</th>
+															<td><pre>show buffers</pre></td>
+															<td>Max Buffer misses = X</td>
+															<td>all buffers <= 300 misses each AND “no memory” fails = 0 for Huge pool</td>
+														</tr>
+														<tr>
+															<th scope="row">Config Register</th>
+															<td><pre>show version | i Config</pre></td>
+															<td>0x2102</td>
+															<td>configuration register = 0x2102 OR (will be at next reload) = 0x2102</td>
+														</tr>
+														<tr>
+															<th scope="row">CPU Utilization</th>
+															<td><pre>show processes cpu</pre></td>
+															<td>5s=x%,1m=y%,5m=x%</td>
+															<td>5min utilization <= 70%</td>
+														</tr>
+														<tr>
+															<th scope="row">Environmental</th>
+															<td><pre>show environment</pre></td>
+															<td>Total alarms = X</td>
+															<td>Critical + Major + Minor alarms = 0</td>
+														</tr>
+														<tr>
+															<th scope="row">Free Memory</th>
+															<td><pre>show memory statistics</pre></td>
+															<td>Free Memory  X (bytes)</td>
+															<td>> 500MB</td>
+														</tr>
+														<tr>
+															<th scope="row">Interface Counters</th>
+															<td><pre>show interfaces</pre></td>
+															<td>Interface Counters = X</td>
+															<td>None</td>
+														</tr>
+														<tr>
+															<th scope="row">Interface State</th>
+															<td><pre>show ip interface brief </pre></td>
+															<td>Interfaces down = X</td>
+															<td>no interfaces are down (unless they are admin down or in the ‘ignore list’)</td>
+														</tr>
+														<tr>
+															<th scope="row">IOS Version</th>
+															<td><pre>show version</pre></td>
+															<td>X (version)</td>
+															<td>current version = “Expected IOS Version” in Health Check Options</td>
+														</tr>
+														<tr>
+															<th scope="row">IPv4 BGP Neighbors</th>
+															<td><pre>show ip bgp vnpv4 all summary</pre></td>
+															<td>BGPv4 Neighbors = X</td>
+															<td>number of neighbors >= 2 and neighbor is not ‘idle’ or ‘active’ </td>
+														</tr>
+														<tr>
+															<th scope="row">IPv6 BGP Neighbors</th>
+															<td><pre>show ip bgp vpnv6 unicast all summary</pre></td>
+															<td>BGPv6 Neighbors = X</td>
+															<td>number of neighbors >= 2 and neighbor is not ‘idle’ or ‘active’</td>
+														</tr>
+														<tr>
+															<th scope="row">Log Entries</th>
+															<td><pre>show logging</pre></td>
+															<td>Buffer Logging : X Trap Logging: Y</td>
+															<td>number of logs in each category < threshold set in “Health Check Options” ></td>
+														</tr>
+														<tr>
+															<th scope="row">MPLS Interfaces</th>
+															<td><pre>show mpls interfaces</pre></td>
+															<td>Number of failed interfaces = X</td>
+															<td>all interfaces have ‘Yes (ldp)’ under Ip column and “Yes” under Operational column Fail</td>
+														</tr>
+														<tr>
+															<th scope="row">MPLS Neighbors</th>
+															<td><pre>show mpls ldp neighbor</pre></td>
+															<td>MPLS LDP neighbors = X</td>
+															<td>ldp neighbors >= 2 (or 1 if gi0/0/0 is down) and all ldp neighbors have bound IP addresses</td>
+														</tr>
+														<tr>
+															<th scope="row">Platform</th>
+															<td><pre>show platform</pre></td>
+															<td>All slots OK</td>
+															<td>State contains 'ok' for every slot</td>
+														</tr>
+														<tr>
+															<th scope="row">VRF</th>
+															<td><pre>show ip vrf interface</pre></td>
+															<td>Interfaces down = X</td>
+															<td>no interfaces are down (unless they are admin down or in the ‘ignore list’)</td>
+														</tr>
+														<tr>
+															<th scope="row">Xconnect</th>
+															<td><pre>show xconnect all</pre></td>
+															<td>All OK</td>
+															<td>all xconnects are “UP”</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+<!-- /browser/OS support table -->
+
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-header" id="headingEight">
+										<h5 class="mb-0 table-responsive">
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">I have an issue or question that isn't addressed here in these FAQ<span style="text-transform: lowercase;">s</span>...</button>
+										</h5>
+									</div>
+									<div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+										<div class="card-body">
+											<p>On <i>every</i> page of the OneEMS application, there is an option to raise a <b>JIRA Ticket</b> by clicking the persistent "<b>OPEN TICKET</b>" button at the bottom of the screen.</p>
+											<img src="resources/img/screenshot-jira-button-link.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-jira-button-link">
+											<p></p>
+											<span class="font-italic"><b>JIRA Ticketing Button</b></span>
+											<p></p>
+											<p>Upon clicking this button, you will be redirected to an external JIRA ticketing system, where you can open a  ticket relevant to an issue you may be having with the OneEMS application. There, you can relay all the pertinent information that applies to your issue.</p>
+										</div>
+									</div>
+								</div>
 
 
 							</div>

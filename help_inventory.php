@@ -52,59 +52,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a>
-									<a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-										<nav class="nav nav-pills flex-column">
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-										</nav>
-									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-                                    <a class="nav-link" href="#item-10">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="#item-11">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -118,7 +66,7 @@ echo generate_site_breadcrumb($values);
                             <p>Once a user has chosen their Inventory search parameters, they are then presented with a list of files that match for  download.</p>
 							<img src="resources/img/screenshot-inventory1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-inventory1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 10 - Inventory Dashboard With Sample Values Selected</b></span>
+							<span class="font-italic"><b>Inventory Dashboard With Sample Values Selected</b></span>
 							<p></p>
                             <hr>
 							<a href="#top" class="border"><b>Back to top</b></a>

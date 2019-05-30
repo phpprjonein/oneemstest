@@ -54,59 +54,7 @@ echo generate_site_breadcrumb($values);
 
 <!-- help guide navigation -->
 						<div class="col-md-3 col-sm-12">
-							<nav id="navbar-help" class="navbar navbar-light bg-light">
-								<nav class="nav nav-pills flex-column">
-									<h6 class="text-center">CONTENTS</h6>
-									<a class="nav-link" href="help.php">GETTING STARTED</a>
-									<a class="nav-link" href="help_network_elements.php">NETWORK ELEMENTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-2-1">List Management Options</a>
-										<a class="nav-link ml-3 my-1" href="help_network_elements.php#item-2-3">Health Check Details View</a>
-									</nav>
-									<a class="nav-link" href="help_backup.php">BACKUP</a>
-									<a class="nav-link" href="help_config.php">CONFIGURATION</a>
-										<nav class="nav nav-pills flex-column">
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script - Modification</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
-										</nav>
-									<a class="nav-link" href="#item-5">DISCOVERY IPs</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_ips.php#item-5-1">Subnet Addition</a>
-									</nav>
-									<a class="nav-link" href="help_discovery_results.php">DISCOVERY RESULTS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-1">Missed IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-2">New IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-3">OK IP Addresses</a>
-										<a class="nav-link ml-3 my-1" href="help_discovery_results.php#item-6-4">Manual Discovery</a>
-									</nav>
-									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
-									</nav>
-									<a class="nav-link" href="help_tools.php">TOOLS</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_tools.php#item-8-1">Run All Health Checks</a>
-									</nav>
-									<a class="nav-link" href="help_audit.php">AUDIT</a>
-									<nav class="nav nav-pills flex-column">
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-1">Customized Audit</a>
-                                        <a class="nav-link ml-3 my-1" href="help_audit.php#item-audit-2">Customized Audit History</a>
-									</nav>
-									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
-									<a class="nav-link" href="help_admin.php">ADMIN</a>
-									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
-                                    </nav>
-									<a class="nav-link" href="help_faqs.php">FAQs</a>
-								</nav>
-							</nav>
+							<?php include_once("help-nav.php");  ?>
 						</div>
 <!-- /help guide navigation -->
 
@@ -123,12 +71,12 @@ echo generate_site_breadcrumb($values);
 							</p>
 							<img src="resources/img/screenshot-ip_management.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management">
 							<p></p>
-							<span class="font-italic"><b>FIG. 5.1 - IP Management Dashboard</b></span>
+							<span class="font-italic"><b>IP Management Dashboard</b></span>
 							<p></p>
 							<p>To view subnets by Region, choose a Region from the dropdown menu to the right of the <b>IP Type</b> button.  When this Dashboard first loads, a user's default Region is selected.</p>
 							<img src="resources/img/screenshot-ip_management_choose_Region-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 5.2 - Choose Region</b></span>
+							<span class="font-italic"><b>Choose Region</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -138,18 +86,18 @@ echo generate_site_breadcrumb($values);
 							<p>To add a Subnet, choose a Region from the <b>Select Region</b> dropdown at the top of the page.</p>
 							<img src="resources/img/screenshot-ip_management_choose_Region-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 5.3 - Choose Region For Subnet Addition</b></span>
+							<span class="font-italic"><b>Choose Region For Subnet Addition</b></span>
 							<p></p>
 							<p>Once you've selected a Region, click on the <b>Add A Subnet</b> button. You will then be presented with the  Add A Subnet screen.</p>
 							<img src="resources/img/screenshot-ip_management_add_subnet-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_add_subnet-1">
 							<p></p>
-							<span class="font-italic"><b>FIG. 5.4 - Add A Subnet Screen</b></span>
+							<span class="font-italic"><b>Add A Subnet Screen</b></span>
 							<p></p>
 							<p>Once at this screen, you can now set a subnet and a corresponding subnet mask to compute subnet range values  for. Once you've input your values into the input fields on this screen, click on the <b>Compute</b> button to  display the appropriate range of IPs.</p>
 							<p>The correct subnet range is then displayed to the left of the input values. You can then either re-enter values to compute for different ranges or click the <b>Add</b> button to add this subnet to the total list of subnets associated with this particular Market.</p>
 							<img src="resources/img/screenshot-ip_management_add_subnet-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_add_subnet-2">
 							<p></p>
-							<span class="font-italic"><b>FIG. 5.5 - Select Subnet And Subnet Mask Range Screen</b></span>
+							<span class="font-italic"><b>Select Subnet And Subnet Mask Range Screen</b></span>
 							<p></p>
 							<p>Clicking on the <b>Close</b> "X" icon will bring the user back to the main <b>Discovery IPs</b> screen.</p>
 							<hr>

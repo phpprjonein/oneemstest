@@ -45,8 +45,9 @@
 									<a class="nav-link" href="help_inventory.php">INVENTORY</a>
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
-										<a class="nav-link ml-3 my-1" href="#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="#item-9-2">Maintenance</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3">Device Cleanup</a>
                                     </nav>
 									<a class="nav-link" href="help_ssh.php">PAM SSH USER GUIDE</a>
 									<nav class="nav nav-pills flex-column">

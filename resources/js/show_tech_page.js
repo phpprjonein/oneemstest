@@ -191,6 +191,7 @@
 			if(listname == 'My routers'){
 				listname = 0;
 			}
+			deviceseries = '';
 		  location.href = "xls-export-process.php?case=sw-delivery-devices&userid=" + $('#userid').val() + "&deviceseries=" + deviceseries +"&listname=" + listname + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
 		  return false;
 	  });

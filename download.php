@@ -17,8 +17,12 @@ if (isset($_GET['tarfile'])) {
     $zip = new ZipArchive;
     $zip->open($zipname, ZipArchive::CREATE);
     foreach ($filenames as $file) {
+        $file = "/usr/apps/oneems/fs1/showtech/".$file;
+        $file = str_replace('\\', '/', $file);
         if(strpos($file, $_GET['tarfile']) !== false){
-            $zip->addFile("/usr/apps/oneems/fs1/showtech/".$file);
+            //$zip->addFile("/usr/apps/oneems/fs1/showtech/".$file);
+            //$zip->addFile($file);
+            $zip->addFile( $file, pathinfo($file,PATHINFO_BASENAME ));
         }
     }
     $zip->close();

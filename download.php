@@ -11,7 +11,7 @@ if (isset($_GET['tarfile'])) {
             '.',
             '..'
     )));
-    $timestamp = date("Y-m-d_h-i-sa");
+    $timestamp = date("Y-m-d_H-i-s");
     $zipname = 'showtech/'.$_GET['tarfile'].'_'.$timestamp.'.zip';
     unlink($zipname);
     $zip = new ZipArchive;

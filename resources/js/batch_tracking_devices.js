@@ -64,7 +64,9 @@ $(document).ready(function() {
          			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
          		 else
          			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-         	 }else if(colIndex == 8 && (batchtype == 'se' || batchtype == 'st') && $(this).text() != ''){
+         	 }else if(colIndex == 8 && (batchtype == 'se') && $(this).text() != ''){
+         		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
+         	 }else if(colIndex == 8 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
          		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
          	 }
             });
@@ -237,8 +239,10 @@ $(document).ready(function() {
 		             			$(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
 		             		 else
 		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-		             	 }else if(colIndex == 8 && (batchtype == 'se' || batchtype == 'st') && $(this).text() != ''){
+		             	 }else if(colIndex == 8 && (batchtype == 'se') && $(this).text() != ''){
 		              		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
+		             	 }else if(colIndex == 8 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
+		             		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
 		             	 }
 		                 });
 		            }

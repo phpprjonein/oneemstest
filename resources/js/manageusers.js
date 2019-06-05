@@ -18,6 +18,7 @@ $(document).ready(function() {
 			$('#edituser').show();
 			$('#addUserForm #modalLabelLarge').text('Edit User');
 			var userid = $(this).closest('tr').data("user");
+			var zones = $(this).closest('tr').data("zones");
 			var userlevel = $(this).closest('tr').data("userlevel");
 			var status = $(this).closest('tr').data("status");
 			var userName = $(this).closest('tr').find("td:eq(2)").text();
@@ -33,6 +34,13 @@ $(document).ready(function() {
 			$('#addUserForm #Phone').val(Phone);
 			$('#addUserForm #Role').val(userlevel);
 			$('#addUserForm #Status').val(status);
+			if(zones == 1){
+				$("input[name=zones][value='1']").prop("checked",true);
+			}else{
+				$("input[name=zones][value='0']").prop("checked",true);
+			}
+			$('#addUserForm #Status').val(status);
+			
 			$('#addUserForm #adduser').text('Update User');
         	var myModal = $('#addUserForm');
         	myModal.modal('show');
@@ -79,6 +87,7 @@ $(document).ready(function() {
     				'phone' : $('#addUserForm #Phone').val(),
     				'role' : $('#addUserForm #Role').val(),
     				'status' : $('#addUserForm #Status').val(),
+    				'zones' : $("input[name=zones]:checked").val(),
     				'id' : $('#addUserForm #userId').val() })
     			  .done(function( data ) {
     				  if(data == 'success'){
@@ -145,6 +154,7 @@ $(document).ready(function() {
     				'email' : $('#addUserForm #Email').val(),
     				'phone' : $('#addUserForm #Phone').val(),
     				'role' : $('#addUserForm #Role').val(),
+    				'zones' : $("input[name=zones]:checked").val(),
     				'status' : $('#addUserForm #Status').val(),
     			})
     			  .done(function( data ) {

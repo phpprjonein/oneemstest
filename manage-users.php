@@ -137,7 +137,18 @@ $page_title = 'OneEMS';
                               </div>
                               </div>
                           </div>
-                          
+                          <div class="row">
+                              <div class="form-group col-md-6">
+                              
+                              	<label for="calloutZone">Callout Zone Defined</label>
+                              	<div class="form-group">
+                                <label for="calloutZone">Yes</label> <input
+											type="radio" name="zones" value="1" /> <label
+											for="zones">No</label> <input type="radio"
+											name="zones" checked value="0" />
+                              </div>
+                              </div>
+                          </div>
                           
                         </form>
         					
@@ -217,7 +228,7 @@ $page_title = 'OneEMS';
 											</thead>
 											<tbody>
 											<?php $i=1; foreach ($users['result'] as $key=>$val){?>
-												<tr data-user="<?php echo $val['id'];?>" data-userlevel="<?php echo $val['userlevel'];?>" data-status="<?php echo $val['status'];?>">
+												<tr data-user="<?php echo $val['id'];?>" data-zones="<?php echo $val['zones'];?>"  data-userlevel="<?php echo $val['userlevel'];?>" data-status="<?php echo $val['status'];?>">
 												<td><?php echo $i++;?></td>
 												<td><?php echo $val['id'];?></td>
 												<td><?php echo $val['username'];?></td>

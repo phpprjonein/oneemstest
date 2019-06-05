@@ -2464,7 +2464,7 @@ function insert_user($values)
     $sql = "INSERT INTO users (username,password,userid,userlevel,email,timestamp,status,fname,lname,phone,role,user_type,zones) VALUES 
     ('" . $values['username'] . "','" . $values['password'] . "','" . $values['username'] . "'," . $values['role'] . ",'" . $values['email'] . "',
     '" . date('m-d-Y') . "'," . $values['status'] . ",'" . $values['fname'] . "','" . $values['lname'] . "','" . $values['phone'] . "',
-    " . $values['role'] . ",'user',0)";
+    " . $values['role'] . ",'user', ".$values['zones'].")";
     $db2->query($sql);
     $db2->execute();
 }
@@ -2496,7 +2496,7 @@ function update_user($values)
     
     $sql = "update users set username = '" . $values['username'] . "', username = '" . $values['username'] . "'".$pass_update.",
         userid = '" . $values['username'] . "', userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
-        role = " . $values['role'] . ", status = " . $values['status'] . " where id = ". $values['id'];
+        role = " . $values['role'] . ", status = " . $values['status'] . ", zones = " . $values['zones'] . " where id = ". $values['id'];
     
     
     

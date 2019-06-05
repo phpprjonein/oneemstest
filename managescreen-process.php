@@ -46,6 +46,7 @@ if ($_POST['screen'] == 'User') {
                 'lname' => $_POST['lname'],
                 'phone' => $_POST['phone'],
                 'role' => $_POST['role'],
+                'zones' => $_POST['zones'],
         );
         insert_user($values_arr);
         print 'success';
@@ -62,6 +63,7 @@ if ($_POST['screen'] == 'User') {
                 'lname' => $_POST['lname'],
                 'phone' => $_POST['phone'],
                 'role' => $_POST['role'],
+                'zones' => $_POST['zones'],
         );
         if($_POST['password'] != ''){
             $values_arr['password'] = md5($_POST['password']);

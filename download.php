@@ -13,7 +13,9 @@ if (isset($_GET['tarfile'])) {
     )));
     $timestamp = date("Y-m-d_H-i-s");
     $zipname = 'showtech/'.$_GET['tarfile'].'_'.$timestamp.'.zip';
-    unlink($zipname);
+    if (file_exists($zipname)) {
+        unlink($zipname);
+    }
     $zip = new ZipArchive;
     $zip->open($zipname, ZipArchive::CREATE);
     foreach ($filenames as $file) {

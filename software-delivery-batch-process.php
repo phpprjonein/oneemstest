@@ -98,6 +98,10 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['
     update_dev_batch_cusal($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive'], $_POST['filtercriteria'], $_POST['sectionheader'], $_POST['skpaddcfgln']);
 }
 
+if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'rerun') {
+    update_dev_batch_rerun($_POST['category']);
+}
+
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'bootorder') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
@@ -142,6 +146,20 @@ function update_dev_batch_al($batchid, $deviceid, $scriptname, $deviceseries, $n
         $db2->execute();
     }
 }
+
+function update_dev_batch_rerun($deviceid)
+{
+    global $db2;
+    $deviceid_arr = explode(',', $deviceid);
+    $deviceid = implode("', '", $deviceid_arr);
+    if(count($deviceid_arr) > 0){
+        $sql = "update batchmaster set batchstatus = 's' where batchid in  ('" . $deviceid . "')";
+        $db2->query($sql);
+        $db2->execute();
+    }    
+}
+
+
 
 function update_dev_batch_cusal($batchid, $deviceid, $scriptname, $deviceseries, $node_version, $priority, $refmop, $destdrive, $filtercriteria, $sectionheader, $skpaddcfgln)
 {

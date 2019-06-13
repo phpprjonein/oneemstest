@@ -35,7 +35,7 @@ $(document).ready(function() {
          var table =  $('#devicebatchtrack').DataTable( {
           "processing": true,
           "serverSide": true,
-          "ajax":"batch-tracking-devices-server.php?batchtype="+batchtype,      
+          "ajax":"batch-tracking-devices-server.php?case=rerun&batchtype="+batchtype,      
           "pageLength": 25,
           "destroy": true,
           "dom": 'Bfrtip',
@@ -53,6 +53,7 @@ $(document).ready(function() {
                   "data":           null,
                   "defaultContent": ''},
             { "data": "batchid" },
+            { "data": "devicename" },
             { "data": "scriptname" },
             { "data": "deviceseries" },
 			{ "data": "nodeVersion" },
@@ -76,24 +77,22 @@ $(document).ready(function() {
 	            	 }
 				  
 				  
-           	 if(colIndex == 6 && $(this).html() == 's'){ 
+           	 if(colIndex == 7 && $(this).html() == 's'){ 
            	   $(this).html('Scheduled');
-         	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
+         	 }else if(colIndex == 7 && $(this).html() == 'd'){ 
            	   $(this).html('Cancelled');
-         	 }else if(colIndex == 4 && $(this).html() == ''){
+         	 }else if(colIndex == 5 && $(this).html() == ''){
         		   $(this).html('N/A');	
-          	 }else if(colIndex == 7){ 
+          	 }else if(colIndex == 8){ 
          		 if($(this).html() == 'd' || $(this).html() == 'Completed')
          			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
          		 else
          			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-         	 }else if(colIndex == 8 && (batchtype == 'se') && $(this).text() != ''){
+         	 }else if(colIndex == 9 && (batchtype == 'se') && $(this).text() != ''){
          		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
-         	 }else if(colIndex == 8 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
-         		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(1)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
+         	 }else if(colIndex == 9 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
+         		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(2)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
          	 }
-           	 
-           	 
             });
        }
       } );
@@ -220,9 +219,9 @@ $(document).ready(function() {
 		         var table =  $('#devicebatchtrack').DataTable( {
 		             "processing": true,
 		             "serverSide": true,
-		             "destroy": true,
-		             "ajax":"batch-tracking-devices-server.php?batchtype="+batchtype,     
+		             "ajax":"batch-tracking-devices-server.php?case=rerun&batchtype="+batchtype,      
 		             "pageLength": 25,
+		             "destroy": true,
 		             "dom": 'Bfrtip',
 		   	      "buttons": [{extend: 'excelHtml5',text: '', titleAttr:'Excel',className:'dtexcelbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'pdfHtml5',titleAttr:'',className:'dtpdfbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}},{extend: 'print',titleAttr:'',className:'dtprintbtn',exportOptions: {columns: [1,2, 3, 4, 5, 6]}}], 
 		               "language": {
@@ -232,52 +231,54 @@ $(document).ready(function() {
 		               "infoEmpty": "",
 		               "infoFiltered": ""
 		               },
-		               "columns": [
-		                   {  "className":      'details-control-hide',
-		                       "orderable":      false,
-		                       "data":           null,
-		                       "defaultContent": ''},
-		                 { "data": "batchid" },
-		                 { "data": "scriptname" },
-		                 { "data": "deviceseries" },
-		     			{ "data": "nodeVersion" },
-		                 { "data": "batchcreated" },
-		                 { "data": "batchstatus" },
-		                 { "data": "batchstatus", "orderable": 	false },
-		                 { "data": "scriptfilemame", "orderable": false  },
-		                 //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn">Cancel</a>' },
-		             ],
-		             "order": [[5, 'desc']],
-		             "createdRow": function (row, data, rowIndex) {
-		                 $(row).addClass('device_row');
-		     			  $.each($('td', row), function (colIndex) {
-		    				  if(colIndex == 0){
-		 	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
-		 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
-		 	            		 }else{
-		 	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
-		 	            		 }
-		 	            	 }
-		                 if(colIndex == 6 && $(this).html() == 's'){ 
-		                	   $(this).html('Scheduled');
-		              	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
-		                	   $(this).html('Cancelled');
-		              	 }else if(colIndex == 2 && $(this).html() == ''){
-		              		   $(this).html('N/A');	
-		              	 }else if(colIndex == 4 && $(this).html() == ''){
-		              		   $(this).html('N/A');	
-		              	 }else if(colIndex == 7){ 
-		             		 if($(this).html() == 'd' || $(this).html() == 'Completed')
-		             			$(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
-		             		 else
-		             			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-		             	 }else if(colIndex == 8 && (batchtype == 'se') && $(this).text() != ''){
-		              		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
-		             	 }else if(colIndex == 8 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
-		             		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(1)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
-		             	 }
-		                 });
-		            }
+		             "columns": [
+		                 {  "className":      'details-control-hide',
+		                     "orderable":      false,
+		                     "data":           null,
+		                     "defaultContent": ''},
+		               { "data": "batchid" },
+		               { "data": "devicename" },
+		               { "data": "scriptname" },
+		               { "data": "deviceseries" },
+		   			{ "data": "nodeVersion" },
+		               { "data": "batchcreated" },
+		               { "data": "batchstatus" },
+		               { "data": "batchstatus", "orderable": false },
+		               { "data": "scriptfilemame", "orderable": false  },
+		               //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
+		           ],
+		           "order": [[5, 'desc']],
+		           "createdRow": function (row, data, rowIndex) {
+		               $(row).addClass('device_row');
+		   			  $.each($('td', row), function (colIndex) {
+		   				  
+		   				  if(colIndex == 0){
+		   	            		 if(jQuery.inArray($(this).closest('tr').attr('id').replace('row_',''), allVals ) == -1){
+		   	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal'>");
+		   	            		 }else{
+		   	            			 $(this).html("<input type='checkbox' id = 'batchchkbox' class='btn btn-primary selector' data-toggle='modal' checked='checked'>");
+		   	            		 }
+		   	            	 }
+		   				  
+		   				  
+		              	 if(colIndex == 7 && $(this).html() == 's'){ 
+		              	   $(this).html('Scheduled');
+		            	 }else if(colIndex == 7 && $(this).html() == 'd'){ 
+		              	   $(this).html('Cancelled');
+		            	 }else if(colIndex == 5 && $(this).html() == ''){
+		           		   $(this).html('N/A');	
+		             	 }else if(colIndex == 8){ 
+		            		 if($(this).html() == 'd' || $(this).html() == 'Completed')
+		            			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
+		            		 else
+		            			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
+		            	 }else if(colIndex == 9 && (batchtype == 'se') && $(this).text() != ''){
+		            		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
+		            	 }else if(colIndex == 9 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
+		            		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(2)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
+		            	 }
+		               });
+		          }
 		         } );
 		         $("#batch_track_devices .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
 	      });		

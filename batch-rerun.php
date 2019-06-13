@@ -124,6 +124,7 @@ echo generate_site_breadcrumb($values);
 										<tr>
 											<th class="noExport"></th>
 											<th>Batch ID</th>
+											<th>Devicename</th>
 											<th>Filename</th>
 											<th>Device Series</th>
 											<th>Device OS</th>

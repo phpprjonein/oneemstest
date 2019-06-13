@@ -1,7 +1,6 @@
 <?php
 include "classes/db2.class.php";
 include 'functions.php';
-
 if($_GET['batchtype'] == 'se'){
     $_SESSION['batchtype-dt-filter'] = 'Script Execution';
 }elseif($_GET['batchtype'] == 'sd'){
@@ -17,7 +16,10 @@ if($_GET['batchtype'] == 'se'){
 }elseif($_GET['batchtype'] == 'st'){
     $_SESSION['batchtype-dt-filter'] = 'Show Tech';
 }
-
-$backup_list = get_devicebatch_list_from_devicebatch_datatable();
+if($_GET['case'] == 'rerun'){
+    $backup_list = get_devicebatch_list_from_devicebatch_rerun_datatable();
+}else{
+    $backup_list = get_devicebatch_list_from_devicebatch_datatable();
+}
 exit(json_encode($backup_list, 1));
 ?>

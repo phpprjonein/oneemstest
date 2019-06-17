@@ -238,8 +238,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
 }*/elseif ($_POST['action'] == 'UPLOAD') {
     if ($_FILES["file"]["type"] == "text/plain") {
         // Remove if config file exist
-        if (file_exists(getcwd() . "/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt")) {
-            unlink(getcwd() . "/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt");
+        if (file_exists("/usr/apps/oneems/fs1/sampleconfigfile_" . $_SESSION['userid'] . ".txt")) {
+            unlink("/usr/apps/oneems/fs1/sampleconfigfile_" . $_SESSION['userid'] . ".txt");
         }
         if ($_FILES["file"]["error"] > 0) {
             $_SESSION['msg'] = 'fe';

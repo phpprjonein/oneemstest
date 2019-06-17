@@ -77,6 +77,29 @@ if ($_GET['case'] == 'batch-tracking') {
         );
     }
 }
+if ($_GET['case'] == 'batch-tracking-rerun') {
+    $resultset = get_devicebatch_list_from_devicebatch_rerun_datatable_export();
+    $data[] = array(
+            'Batch ID',
+            'Devicename',
+            'Filename',
+            'Device Series',
+            'Device OS',
+            'Created Date',
+            'Status',
+    );
+    foreach ($resultset['data'] as $key => $value) {
+        $data[] = array(
+                $value['batchid'],
+                $value['devicename'],
+                $value['scriptname'],
+                $value['deviceseries'],
+                $value['nodeVersion'],
+                $value['batchcreated'],
+                $value['status']
+        );
+    }
+}
 if ($_GET['case'] == 'sw-delivery-devices' || $_GET['case'] == 'reboot' ) {
     $resultset = swt_get_batch_process_datatable_export($_GET['userid'], $_GET['listname'], $_GET['deviceseries']);
     $data[] = array(

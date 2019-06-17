@@ -87,7 +87,7 @@ $page_title = 'OneEMS';
             <?php include_once ('menu.php'); ?>
 			<?php
 $values = array(
-    'Batch Tracking' => '#'
+    'Batch Rerun' => '#'
 );
 echo generate_site_breadcrumb($values);
 ?>

@@ -151,11 +151,14 @@ function update_dev_batch_rerun($deviceid)
 {
     global $db2;
     $deviceid_arr = explode(',', $deviceid);
-    $deviceid = implode("', '", $deviceid_arr);
+    //$deviceid = implode("', '", $deviceid_arr);
     if(count($deviceid_arr) > 0){
-        $sql = "update batchmaster set batchstatus = 's' where batchid in  ('" . $deviceid . "')";
-        $db2->query($sql);
-        $db2->execute();
+        foreach ($deviceid_arr as $key => $val){
+            $val_arr = explode('_', $val);
+            $sql = "update batchmembers set status = 's' where batchid = ".$val_arr[0]." and deviceid = '" . $val_arr[1]."'";
+            $db2->query($sql);
+            $db2->execute();
+        }
     }    
 }
 

@@ -6527,10 +6527,10 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable()
             'bm.deviceseries',
             'bm.nodeVersion',
             'bm.batchcreated',
-            'bm.batchstatus',
+            'ba.status',
             'bm.scriptfilemame',
             'n.devicename',
-            
+            'n.id',
     );
     $sql_count = "SELECT COUNT(distinct(bm.batchid)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
@@ -6558,7 +6558,7 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable()
         $sql_condition .= " OR bm.deviceseries LIKE '%" . $search . "%'";
         $sql_condition .= " OR bm.nodeVersion  LIKE '%" . $search . "%'";
         $sql_condition .= " OR bm.batchcreated  LIKE '%" . $search . "%'";
-        $sql_condition .= " OR bm.batchstatus  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ba.status  LIKE '%" . $search . "%'";
         $sql_condition .= " OR bm.scriptfilemame  LIKE '%" . $search . "%'";
         $sql_condition .= " ) ";
     }
@@ -6586,7 +6586,7 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable()
     
     if ($db2->resultset()) {
         foreach ($db2->resultset() as $key => $value) {
-            $value['DT_RowId'] = "row_" . $value['batchid'];
+            $value['DT_RowId'] = "row_" . $value['batchid'].'_'.$value['id'];
             $records[$key] = $value;
         }
         $resultset['data'] = $records;
@@ -6600,4 +6600,83 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable()
     return $resultset;
 }
 
+function get_devicebatch_list_from_devicebatch_rerun_datatable_export()
+{
+    global $db2, $pages;
+    $search = trim($_GET['search']) ? addslashes(trim($_GET['search'])) : null;
+    $order_col = $_GET['column'];
+    $order_dir = $_GET['dir'];
+    
+    $columns = array(
+            'distinct(bm.batchid)',
+            'bm.batchid',
+            'bm.scriptname',
+            'bm.deviceseries',
+            'bm.nodeVersion',
+            'bm.batchcreated',
+            'ba.status',
+            'bm.scriptfilemame',
+            'n.devicename',
+            'n.id',
+    );
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    if ($_GET['batchtype'] == 'se') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'se' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    } else if ($_GET['batchtype'] == 'sd') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'sd' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    } else if ($_GET['batchtype'] == 'bo') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'bo' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    } else if ($_GET['batchtype'] == 'rb') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'rb' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    } else if ($_GET['batchtype'] == 'al') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'al' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    }else if ($_GET['batchtype'] == 'cusal') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'cusal' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    }else if ($_GET['batchtype'] == 'st') {
+        $sql_condition = " FROM batchmaster bm join batchmembers ba join nodes n where bm.batchtype like 'st' AND ba.batchid = bm.batchid and n.id=ba.deviceid";
+    }
+    if ($search) {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= " bm.batchid LIKE '%" . $search . "%'";
+        $sql_condition .= " OR n.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.scriptname  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.deviceseries LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.nodeVersion  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.batchcreated  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR ba.status  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR bm.scriptfilemame  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
 
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    $sql_limit = " LIMIT $start, $length ";
+    
+    $sql = $sql_select . $sql_condition . $sql_order;
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['batchid'].'_'.$value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}

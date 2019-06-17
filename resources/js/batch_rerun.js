@@ -58,8 +58,8 @@ $(document).ready(function() {
             { "data": "deviceseries" },
 			{ "data": "nodeVersion" },
             { "data": "batchcreated" },
-            { "data": "batchstatus" },
-            { "data": "batchstatus", "orderable": false },
+            { "data": "status" },
+            { "data": "status", "orderable": false },
             { "data": "scriptfilemame", "orderable": false  },
             //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
@@ -185,7 +185,7 @@ $(document).ready(function() {
 					}else if($('#batchtype-dt-filter .btn').text() == 'Show Tech'){					
 						batchtype = 'st';
 					}  
-	      		  location.href = "xls-export-process.php?case=batch-tracking" + "&batchtype=" + batchtype + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
+	      		  location.href = "xls-export-process.php?case=batch-tracking-rerun" + "&batchtype=" + batchtype + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
 	      		  return false;
 	      	  });
 	        
@@ -242,8 +242,8 @@ $(document).ready(function() {
 		               { "data": "deviceseries" },
 		   			{ "data": "nodeVersion" },
 		               { "data": "batchcreated" },
-		               { "data": "batchstatus" },
-		               { "data": "batchstatus", "orderable": false },
+		               { "data": "status" },
+		               { "data": "status", "orderable": false },
 		               { "data": "scriptfilemame", "orderable": false  },
 		               //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
 		           ],

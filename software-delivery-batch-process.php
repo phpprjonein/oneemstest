@@ -79,22 +79,26 @@ if (isset($_POST['filenames']) && $_POST['ctype'] == 'OsRepoUPdate') {
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'swdelivery') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Software Delivery';
     update_dev_batch_sd($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'showtech') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Show Tech';
     update_dev_batch_st($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'auditinglog') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Audit';
     update_dev_batch_al($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'cusauditinglog') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Customize Audit';
     update_dev_batch_cusal($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive'], $_POST['filtercriteria'], $_POST['sectionheader'], $_POST['skpaddcfgln']);
 }
 
@@ -105,12 +109,14 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'bootorder') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Change Boot Order';
     update_dev_batch_bo($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate' && $_POST['batchtype'] == 'reboot') {
     $_POST['scriptname'] = implode(',', $_POST['scriptname']);
     $_SESSION['batch_vars']['batchid'] = $batchid = $_POST['batchid'];
+    $_SESSION['batchtype-dt-filter'] = 'Reboot';
     update_dev_batch_rb($batchid, $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['node_version'], $_POST['priority'], $_POST['refmop'], $_POST['destdrive']);
 }
 

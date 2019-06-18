@@ -39,6 +39,7 @@ if (isset($_POST['categorylist']) && $_POST['ctype'] == 'BatchTabUPdateAddAddAll
     }
     if(isset($category) && count($category) > 0){
         $category = implode(',',$category);
+        $_SESSION['batchtype-dt-filter'] = 'Script Execution';
         update_dev_batch($_POST['batchid'], $category, $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
     }
 }
@@ -46,6 +47,7 @@ if (isset($_POST['categorylist']) && $_POST['ctype'] == 'BatchTabUPdateAddAddAll
 
 
 if (isset($_POST['category']) && $_POST['ctype'] == 'BatchTabUPdate') {
+    $_SESSION['batchtype-dt-filter'] = 'Script Execution';
     update_dev_batch($_POST['batchid'], $_POST['category'], $_POST['scriptname'], $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
 }
 
@@ -54,7 +56,7 @@ if (isset($_POST['category']) && $_POST['ctype'] == 'BWBatchTabUPdate') {
     $ipaddress_arr = array($_POST['ip-address'], $switchvarsips[0]['swvarval'], $switchvarsips[1]['swvarval']);
     $scriptname_arr = explode(',',$_POST['scriptname']);
     $batchid_arr = array($_POST['batchid'], $_POST['batchid'] + 1, $_POST['batchid'] + 2);
-    
+    $_SESSION['batchtype-dt-filter'] = 'Script Execution';
     update_dev_batch_bw($batchid_arr, $ipaddress_arr, $scriptname_arr , $_POST['deviceseries'], $_POST['deviceos'], $_POST['priority'], $_POST['refmop']);
     
     

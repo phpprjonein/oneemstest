@@ -656,7 +656,7 @@ $lists_all = get_list_by_count($userid);
                 ;
                 ?>
           </div>
-           <?php if(isset($_GET['switchlistid']) && $_GET['switchlistid'] > 0 && (($_SESSION['userlevel'] == 5) || ($_SESSION['userlevel'] == 9))){?>
+          <?php if(isset($_GET['switchlistid']) && $_GET['switchlistid'] > 0){?>
                &nbsp;<button type="submit" value="Add All Devices" id="addalldevices" name="addalldevices" class="btn">Add All Devices</button>
                <input type="hidden" name="hidd_mylistid" id="hidd_mylistid" value="<?php echo  $_GET['switchlistid']; ?>">
                <input type="hidden" name="hidd_switch_selected" id="hidd_switch_selected" value="">

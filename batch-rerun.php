@@ -102,15 +102,15 @@ echo generate_site_breadcrumb($values);
 							<div class="btn-group" id="batchtype-dt-filter">
 								<button type="button" style="text-transform: none;"
 									class="btn dropdown-toggle" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false"><?php echo !empty($_SESSION['batchtype-dt-filter']) ? $_SESSION['batchtype-dt-filter']:'Script Execution'; ?></button>
+									aria-haspopup="true" aria-expanded="false">Script Execution</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Script Execution</a> <a
+									<a class="dropdown-item" href="#">Script Execution</a><!--  <a
 										class="dropdown-item" href="#">Software Delivery</a> <a
 										class="dropdown-item" href="#">Change Boot Order</a> <a
 										class="dropdown-item" href="#">Reboot</a> <a
 										class="dropdown-item" href="#">Audit</a> <a
 										class="dropdown-item" href="#">Customize Audit</a>  <a
-										class="dropdown-item" href="#">Show Tech</a>
+										class="dropdown-item" href="#">Show Tech</a> -->
 								</div>
 							</div>
 							<p id="cp1" style="display: none"></p>

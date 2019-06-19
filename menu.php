@@ -90,6 +90,7 @@
 							<!--<a class="dropdown-item" href="cellsitetech-configuration-update.php">Template - View / Modify </a>	-->
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
 							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+							<a class="dropdown-item" href="batch-rerun.php">Script Rerun </a>
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a
@@ -164,6 +165,7 @@
 								Script - Modification </a>		
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
 							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+							<a class="dropdown-item" href="batch-rerun.php">Script Rerun </a>
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a

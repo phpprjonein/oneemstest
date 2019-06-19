@@ -57,9 +57,7 @@ $(document).ready(function() {
             { "data": "scriptname" },
             { "data": "deviceseries" },
 			{ "data": "nodeVersion" },
-            { "data": "batchcreated" },
             { "data": "status" },
-            { "data": "status", "orderable": false },
             { "data": "scriptfilemame", "orderable": false  },
             //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
         ],
@@ -77,20 +75,15 @@ $(document).ready(function() {
 	            	 }
 				  
 				  
-           	 if(colIndex == 7 && $(this).html() == 's'){ 
+           	 if(colIndex == 6 && $(this).html() == 's'){ 
            	   $(this).html('Scheduled');
-         	 }else if(colIndex == 7 && $(this).html() == 'd'){ 
+         	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
            	   $(this).html('Cancelled');
          	 }else if(colIndex == 5 && $(this).html() == ''){
         		   $(this).html('N/A');	
-          	 }else if(colIndex == 8){ 
-         		 if($(this).html() == 'd' || $(this).html() == 'Completed')
-         			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
-         		 else
-         			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-         	 }else if(colIndex == 9 && (batchtype == 'se') && $(this).text() != ''){
+          	 }else if(colIndex == 7 && (batchtype == 'se') && $(this).text() != ''){
          		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
-         	 }else if(colIndex == 9 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
+         	 }else if(colIndex == 7 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
          		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(2)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
          	 }
             });
@@ -241,9 +234,7 @@ $(document).ready(function() {
 		               { "data": "scriptname" },
 		               { "data": "deviceseries" },
 		   			{ "data": "nodeVersion" },
-		               { "data": "batchcreated" },
 		               { "data": "status" },
-		               { "data": "status", "orderable": false },
 		               { "data": "scriptfilemame", "orderable": false  },
 		               //{ "data": null, "orderable": false,"defaultContent": '<a href="#" id="deletebatch" class="btn"> Cancel </a>' },
 		           ],
@@ -261,20 +252,15 @@ $(document).ready(function() {
 		   	            	 }
 		   				  
 		   				  
-		              	 if(colIndex == 7 && $(this).html() == 's'){ 
+		              	 if(colIndex == 6 && $(this).html() == 's'){ 
 		              	   $(this).html('Scheduled');
-		            	 }else if(colIndex == 7 && $(this).html() == 'd'){ 
+		            	 }else if(colIndex == 6 && $(this).html() == 'd'){ 
 		              	   $(this).html('Cancelled');
 		            	 }else if(colIndex == 5 && $(this).html() == ''){
 		           		   $(this).html('N/A');	
-		             	 }else if(colIndex == 8){ 
-		            		 if($(this).html() == 'd' || $(this).html() == 'Completed')
-		            			 $(this).html('<a href="#" id="deletebatch" class="btn disabled"> Cancel </a>');
-		            		 else
-		            			$(this).html('<a href="#" id="deletebatch" class="btn"> Cancel </a>');
-		            	 }else if(colIndex == 9 && (batchtype == 'se') && $(this).text() != ''){
+		             	 }else if(colIndex == 7 && (batchtype == 'se') && $(this).text() != ''){
 		            		$(this).html('<a href="download.php?file=' + $(this).text() +'" class="downloadbatch  btn"> Download </a>');
-		            	 }else if(colIndex == 9 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
+		            	 }else if(colIndex == 7 && batchtype == 'st' && $(this).closest('tr').find("td:eq(6)").text() != 'Scheduled'){
 		            		$(this).html('<a href="download.php?tarfile=' + $(this).closest('tr').find("td:eq(2)").text() +'&batchtype=st" class="downloadbatch  btn"> Download </a>');
 		            	 }
 		               });

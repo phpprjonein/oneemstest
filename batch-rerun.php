@@ -128,10 +128,8 @@ echo generate_site_breadcrumb($values);
 											<th>Filename</th>
 											<th>Device Series</th>
 											<th>Device OS</th>
-											<th>Created Date</th>
 											<th>Status</th>
-											<th>Cancel</th>
-											<th>Download</th>
+											<th>Script</th>
 										</tr>
 									</thead>
 								</table>

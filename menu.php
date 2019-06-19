@@ -89,7 +89,6 @@
 								Script - Modification </a>		
 							<!--<a class="dropdown-item" href="cellsitetech-configuration-update.php">Template - View / Modify </a>	-->
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
-							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
 							<a class="dropdown-item" href="batch-rerun.php">Script Rerun </a>
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
@@ -119,9 +118,18 @@
 								Order Sequence</a>
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
-					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
-						href="ip-instant-health-check.php">Tools</a></li>
+					<li class="nav-item dropdown">
+					<a class="nav-link  dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    	aria-haspopup="true" aria-expanded="false">Tools</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    		<a class="dropdown-item" href="cyberark.php">CyberArk</a> 
+                    		<a class="dropdown-item" href="ip-instant-health-check.php">Health Check</a>
+                    		<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+                    	</div>
+					</li>
+						
+						
+						
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -164,7 +172,6 @@
 							<a class="dropdown-item" href="modification-generate-pre-script.php">Generate
 								Script - Modification </a>		
 							<!-- <a class="dropdown-item" href="batch-page.php">Batch Page </a> -->
-							<a class="dropdown-item" href="show-tech.php">Show Tech </a>
 							<a class="dropdown-item" href="batch-rerun.php">Script Rerun </a>
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
@@ -203,9 +210,15 @@
 								Order Sequence</a>
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
-					<li class="nav-item"><a
-						class="nav-link <?php print activemenu(array("ip-instant-health-check.php")); ?>"
-						href="ip-instant-health-check.php">Tools</a></li>
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    	aria-haspopup="true" aria-expanded="false">Tools</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    		<a class="dropdown-item" href="cyberark.php">CyberArk</a> 
+                    		<a class="dropdown-item" href="ip-instant-health-check.php">Health Check</a>
+                    		<a class="dropdown-item" href="show-tech.php">Show Tech </a>
+                    	</div>
+					</li>
 					<li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

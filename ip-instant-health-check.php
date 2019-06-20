@@ -96,70 +96,7 @@ $page_title = 'OneEMS';
 							</div>
 						</div>
 						<div class="panel-body-wrap"></div>
-                                                                <!--  Sync Password Form Start -->
-<!--
-<hr width="50%" align="left" style="border: 1px solid blue;" />
--->
-                                                                <form class="sync-pass-form" action="" method="post">
-<!--
-                                    <div class="input-group row">
-                                    <div class="form-inline col-md-6 col-sm-12">
-                                            <input type="inputName" name="syncpass_ipaddress" class="form-control"
-                                                id="syncPassInputDeviceIPaddress" placeholder="Enter IPv6 Address"
-                                                autofocus>
-												<span data-toggle="tooltip" title="Resets the Password for PAM accounts on CyberArk and the router">
-                                            <button type="submit" class="btn" id="sync-password-ip-health-check"
-                                                data-toggle="modal">Reset CyberArk Password</button>
-												</span>
-                                    </div>
-                                    </div>
--->
-                                    </form>
-                                    <hr width="50%" align="left" style="border: 1px solid blue;" />
-                                    <form class="cyberark-sync-pass-form" action="" method="post">
-                                    <div class="input-group row">
-                                    <div class="form-inline col-md-6 col-sm-12">
-                                            <input type="inputName" name="syncpass_ipaddress" class="form-control"
-                                                id="synccyberarkpass_ipaddress" placeholder="Enter IPv6 Address"
-                                                autofocus>
-												<span data-toggle="tooltip" title="Shows whether you can successfully SSH into the router using current PAM credentials">
-                                            <button type="submit" class="btn" id="sync-cyberark-sync-password-ip-health-check"
-                                                data-toggle="modal">Check CyberArk Sync</button></span>
-                                    </div>
-                                    </div>
-                                </form>
-<?php
-    echo $cyberarc_output;
-?>
-                                                                <!--  Sync Password Form End -->
-                                                                <!--  Show CyberArk CmdLine Form Start -->
-<hr width="50%" align="left" style="border: 1px solid blue;" />
-                                                                <form class="ssh-putty-form" action="" method="post">
-                                    <div class="input-group row">
-                                    <div class="form-inline col-md-6 col-sm-12">
-                                            <input type="inputName" name="sshPuTTY_IPv6_addr" class="form-control"
-                                                id="sshPuTTYInputIPv6" placeholder="Enter IPv6 Address"
-                                                autofocus>
-												<span data-toggle="tooltip" title="Provides the SSH syntax for logging into a router via the PAM proxy. Click COPY to copy the string to your local buffer">
-                                            <button type="submit" class="btn" id="ssh-PuTTY-ip-health-check"
-                                                data-toggle="modal">CyberArk SSH Syntax</button></span>
-                                    </div>
-                                                                <!--  Show CyberArk CmdLine Form End -->
-                                                                <!--  Show Add CyberArk Account Form Start -->
-                                    </div>
-<hr width="50%" align="left" style="border: 1px solid blue;" />
-                                    <div class="input-group row">
-                                    <div class="form-inline col-md-6 col-sm-12">
-                                            <input type="inputName" name="cyberarkaddacct_ipaddress" class="form-control"
-                                                id="cyberarkaddacct_ipaddress" placeholder="Enter IPv6 Address"
-                                                autofocus>
-												<span data-toggle="tooltip" title="Checks whether PAM accounts exist. If they do, then it resets passwords on PAM and the router. If it does not exist, then it adds accounts on both PAM and the router">
-                                            <button type="submit" class="btn" id="cyberark-add-acct"
-                                                data-toggle="modal">Add/Reset CyberArk Account </button></span>
-                                    </div>
-                                                                <!--  Show Add CyberArk Account Form End -->
-                                    </div>
-                                </form>
+
 <br>
 
 					</div>

@@ -56,6 +56,7 @@ if ($_POST['userimp'] == 'imp' && isset($_POST['username'])) {
     $_SESSION['email'] = $userinfo['email'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];
     $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+    $_SESSION['welcome_mechname'] = $userinfo['lname'] . ', ' . $userinfo['fname'];
     $_SESSION['zones'] = $userinfo['zones'];
     update_login_api_rules($sso_flag, $_SESSION['username']);
     // Remove if config file exist
@@ -81,6 +82,7 @@ if ($sso_flag == 1) {
     $_SESSION['email'] = $userinfo['email'];
     $_SESSION['userlevel'] = $userinfo['userlevel'];
     $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+    $_SESSION['welcome_mechname'] = $userinfo['lname'] . ', ' . $userinfo['fname'];
     $_SESSION['zones'] = $userinfo['zones'];
     $_SESSION['role'] = $userinfo['role'];
     update_login_api_rules($sso_flag, $_SESSION['username']);
@@ -109,6 +111,7 @@ if ($sso_flag == 1) {
             $_SESSION['userlevel'] = $userinfo['userlevel'];
             $_SESSION['role'] = $userinfo['role'];
             $_SESSION['welcome_username'] = $userinfo['fname'] . ' ' . $userinfo['lname'];
+            $_SESSION['welcome_mechname'] = $userinfo['lname'] . ', ' . $userinfo['fname'];
             $_SESSION['zones'] = $userinfo['zones'];
             update_login_api_rules($sso_flag, $_SESSION['username']);
         }

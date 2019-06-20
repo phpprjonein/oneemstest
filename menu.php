@@ -116,6 +116,7 @@
 							<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
 							<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot
 								Order Sequence</a>
+							<a class="dropdown-item" href="cellsite-usr-device-administration.php">Device Cleanup </a>	
 							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item dropdown">

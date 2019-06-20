@@ -6371,6 +6371,148 @@ function load_tab_content($type){
         }
     }
 }
+function load_tab_content_cellsite($type){
+    global $db2;
+    if($type == 'ipcase1' || $type == 'ipcase2'){
+        $sql = "SELECT CONCAT(deviceIpAddr, ', ', deviceIpAddrsix) AS ipaddress, count(*) as cnt FROM nodes  where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr != 'None' GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        $ipv4 = $ipv6 = array();
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress'])){
+                $ipaddress_arr = explode(',',$val['ipaddress']);
+                $ipv4[] = $ipaddress_arr[0];
+                $ipv6[] = $ipaddress_arr[1];
+            }
+        }
+        
+        if(count($ipv4) > 0){
+            $ipv4inquery = implode("','", $ipv4);
+            $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr in ('".$ipv4inquery."')  order by deviceIpAddr asc";
+            $db2->query($sql);
+            $resultset = $db2->resultset();
+            
+            for($i=0; $i<count($resultset); $i++){
+                $devicename_arr = explode('-',$resultset[$i]['devicename']);
+                if(count($devicename_arr) > 3){
+                    $case[trim($resultset[$i]['deviceIpAddr'].'~~~'.$resultset[$i]['deviceIpAddrsix'])][$devicename_arr[0].$devicename_arr[1].'-'.$devicename_arr[2].'-'.$devicename_arr[3]][] = $resultset[$i];
+                }
+            }
+            
+            foreach ($case as $key => $val){
+                foreach ($val as $key1 => $val1){
+                    if(count($val1)>1){
+                        $case1_arr[] = $val1;
+                    }else{
+                        $case2_arr[] = $val1;
+                    }
+                }
+            }
+        }
+        if($type == 'ipcase1'){
+            return $case1_arr;
+        }
+        if($type == 'ipcase2'){
+            return $case2_arr;
+        }
+    }
+    if($type == 'ipcase3' || $type == 'ipcase4'){
+        $ipv4 = $ipv6 = array();
+        $sql = "SELECT deviceIpAddr AS ipaddress, count(*) as cnt FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr != 'None' and deviceIpAddr != '' GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress']) && !empty($val['ipaddress'])){
+                $ipv4[] = $val['ipaddress'];
+            }
+        }
+        
+        $sql = "SELECT deviceIpAddrsix AS ipaddress, count(*) as cnt FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddrsix != 'None' and deviceIpAddrsix != '' GROUP BY ipaddress HAVING cnt > 1";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        
+        foreach ($resultset as $key=>$val){
+            if(isset($val['ipaddress']) && !empty($val['ipaddress'])){
+                $ipv6[] = $val['ipaddress'];
+            }
+        }
+        if(count($ipv4) > 0 || count($ipv6) > 0 ){
+            $where = '';
+            $case = $case3_arr = $case4_arr = array();
+            if(count($ipv4) > 0){
+                $ipv4inquery = implode("','", $ipv4);
+                $where = " deviceIpAddr in ('".$ipv4inquery."')";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
+                $db2->query($sql);
+                $resultset = $db2->resultset();
+                
+                for($i=0; $i<count($resultset); $i++){
+                    $devicename_arr = explode('-',$resultset[$i]['devicename']);
+                    if(count($devicename_arr) > 3){
+                        $case[trim($resultset[$i]['deviceIpAddr'].'~~~'.$resultset[$i]['deviceIpAddrsix'])][] = $resultset[$i];
+                        $ipv4_arr_result[] = trim($resultset[$i]['deviceIpAddr'].$resultset[$i]['deviceIpAddrsix']);
+                    }
+                }
+            }
+            
+            if(count($ipv6) > 0){
+                $ipv6inquery = implode("','", $ipv6);
+                $where = " deviceIpAddrsix in ('".$ipv6inquery."') ";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
+                $db2->query($sql);
+                $resultset = $db2->resultset();
+                
+                for($i=0; $i<count($resultset); $i++){
+                    $devicename_arr = explode('-',$resultset[$i]['devicename']);
+                    if(count($devicename_arr) > 3){
+                        $case[trim($resultset[$i]['deviceIpAddr'].'~~~'.$resultset[$i]['deviceIpAddrsix'])][] = $resultset[$i];
+                        $ipv6_arr_result[] = trim($resultset[$i]['deviceIpAddr'].$resultset[$i]['deviceIpAddrsix']);
+                    }
+                }
+            }
+            $ncase = array();
+            //both ipv4 and ipv6 shd not match
+            foreach ($case as $key => $val){
+                $ipv4_arr_exist = in_array(trim($val[0]['deviceIpAddr'].$val[0]['deviceIpAddrsix']), $ipv4_arr_result) ? true : false;
+                $ipv6_arr_exist = in_array(trim($val[0]['deviceIpAddr'].$val[0]['deviceIpAddrsix']), $ipv6_arr_result) ? true : false;
+                if($ipv4_arr_exist === false || $ipv6_arr_exist === false){
+                    $devicename_arr = explode('-',$val[0]['devicename']);
+                    $ncase[$devicename_arr[0].$devicename_arr[1].'-'.$devicename_arr[2].'-'.$devicename_arr[3]][] = $val[0];
+                }
+            }
+            foreach ($ncase as $key => $val){
+                if(count($val)>1){
+                    $case3_arr[] = $val;
+                }else{
+                    $case4_arr[] = $val;
+                }
+            }
+        }
+        if($type == 'ipcase3'){
+            return $case3_arr;
+        }
+        if($type == 'ipcase4'){
+            return $case4_arr;
+        }
+    }elseif($type == 'ipcase5'){
+        $case5_arr = array();
+        $sql = "SELECT * FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr != 'None' OR deviceIpAddrsix != 'None' order by id";
+        $db2->query($sql);
+        $resultset = $db2->resultset();
+        for($i=0; $i<count($resultset); $i++){
+            $devicename_arr = explode('-',$resultset[$i]['devicename']);
+            if(count($devicename_arr) < 4){
+                $case5_arr[] = $resultset[$i];
+            }
+            
+        }
+        if($type == 'ipcase5'){
+            return $case5_arr;
+        }
+    }
+}
 function load_tab_content_old($type){
     global $db2;
     if($type == 'ipcase1' || $type == 'ipcase2'){

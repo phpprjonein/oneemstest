@@ -34,6 +34,11 @@ $(document).ready(function() {
 			$('#addUserForm #Phone').val(Phone);
 			$('#addUserForm #Role').val(userlevel);
 			$('#addUserForm #Status').val(status);
+			
+			if(userlevel != 1){
+				$('#calloutZonewrap').hide();
+			}
+			
 			if(zones == 1){
 				$("input[name=zones][value='1']").prop("checked",true);
 			}else{
@@ -205,4 +210,11 @@ $(document).ready(function() {
 		$('#addUserForm, #deleteUserForm').on('hidden.bs.modal', function () {
 			 location.reload();
 		});
+		  $('#Role').on('change', function(){
+			  if(this.value != 1){
+				  $('#calloutZonewrap').hide();
+			  }else{
+				  $('#calloutZonewrap').show();
+			  }
+		  });
 });

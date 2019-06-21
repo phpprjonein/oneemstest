@@ -58,7 +58,12 @@ $page_title = 'OneEMS';
 	<div class="container-fluid instant-health-check"
 		id="instant-health-check">
         <?php include ('menu.php'); ?>
-
+		<?php
+$values = array(
+        'Health Check' => '#'
+);
+echo generate_site_breadcrumb($values);
+?>
                     <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->

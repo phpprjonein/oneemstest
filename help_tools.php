@@ -67,7 +67,6 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>Tools Page</b></span>
 							<p></p>
-							<p><b>Run All Health Checks :</b> This will return the results of a full health check for a single device. For more details see section on “Run All Health Checks”.</p>
                             <p><b>Reset CyberArk Password :</b> This will reset the cyberark accounts and PAM usernames on the device to a new password.</p>
                             <p><b>Check CyberArk Sync :</b> This will log in to device and return a PASS or FAIL message.</p>
                             <p><b>Show CyberArk  Password :</b> This will provide the user string required to log in to a device as PAMadmingrp via Cyberark. User can copy the string to a buffer.</p>
@@ -75,11 +74,8 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>Instant Health Check Dashboard Results for an ASR9K device</b></span>
 							<p></p>
-							<p><b>Add CyberArk Account :</b> This will attempt to add the PAM accounts (for a discovered device in OneEMS) to cyberark and the device.</p>
-							<!-- <hr>
-							<a href="#top" class="border"><b>Back to top</b></a>
-							<hr> -->
-							<h5 id="item-8-1">Run All Health Checks</h5>
+							<p><b>Run All Health Checks :</b> This will return the results of a full health check for a single device. For more details see section on “Run All Health Checks”.</p>
+							<p></p>
 							<p>This view allows a user to initiate a full health check on a specific device in the OneEMS network. A user can perform this search based on IPV4/IPV6 addresses OR device name.</p>
 							<img src="resources/img/screenshot-tools3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools3">
 							<p></p>
@@ -90,6 +86,11 @@ echo generate_site_breadcrumb($values);
 							<img src="resources/img/screenshot-tools4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools4">
 							<p></p>
 							<span class="font-italic"><b>Run All Health Checks Dashboard Results For An ASR9K Device</b></span>
+							<p></p>
+							<p><b>Show Tech :</b> This will allow a user to select devices to add to a batch process for later scheduling.</p>
+							<img src="resources/img/screenshot-tools5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools6">
+							<p></p>
+							<span class="font-italic"><b>Show Tech Batch Process Results Screen</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -158,6 +159,16 @@ echo generate_site_breadcrumb($values);
             </div>
         </div>
 		<div class="modal fade show" id="screenshot-tools5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <img src="resources/img/screenshot-tools5.png" alt="" width="100%">
+                </div>
+            </div>
+        </div>
+		<div class="modal fade show" id="screenshot-tools6" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">

@@ -22,6 +22,8 @@ $(document).ready(function() {
       actionurl = "healthchk-nexusetran3k-cellsitetech.php";
     } else if (deviceseries == "StarOS") {
       actionurl = "healthchk-staros-cellsitetech.php";
+    } else if (deviceseries == "SAR7705") {
+      actionurl = "healthchk-nokiasevensevenzerofive-cellsitetech.php";
     } else {
       actionurl = "healthchk-cellsitetech.php";
     }
@@ -150,6 +152,8 @@ $(document).ready(function() {
       actionurl = "healthchk-nexusetran3k-cellsitetech-custom.php";
     } else if (deviceseries == "StarOS") {
       actionurl = "healthchk-staros-cellsitetech-custom.php";
+     } else if (deviceseries == "SAR7705") {
+      actionurl = "healthchk-nokiasevensevenzerofive-cellsitetech-custom.php";
     } else {
       actionurl = "healthchk-cellsitetech-custom.php";
     }
@@ -408,6 +412,8 @@ $(document).ready(function() {
           actionurl = "healthchk-nexusetran3k-load-table-data.php";
         } else if (deviceseries == "StarOS") {
           actionurl = "healthchk-staros-load-table-data.php";
+        } else if (deviceseries == "SAR7705") {
+          actionurl = "healthchk-nokiasevensevenzerofive-load-table-data.php";
         } else {
           actionurl = "healthchk-load-table-data.php";
         }

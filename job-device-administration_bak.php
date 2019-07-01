@@ -18,7 +18,8 @@ if (isset($resultset)) {
             'ID',
             'Device Name',
             'IPv4 Address',
-            'IPv6 Address'
+            'IPv6 Address',
+            'Owner'
     ));
     
     // Sample data. This can be fetched from mysql too
@@ -28,7 +29,8 @@ if (isset($resultset)) {
                     $value['id'],
                     $value['devicename'],
                     $value['deviceIpAddr'],
-                    $value['deviceIpAddrsix']
+                    $value['deviceIpAddrsix'],
+                    $value['csr_site_tech_name']
             );
             ?>
                            		<?php
@@ -60,7 +62,8 @@ if (isset($resultset)) {
             'ID',
             'Device Name',
             'IPv4 Address',
-            'IPv6 Address'
+            'IPv6 Address',
+            'Owner'
     ));
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
@@ -69,7 +72,8 @@ if (isset($resultset)) {
                     $value['id'],
                     $value['devicename'],
                     $value['deviceIpAddr'],
-                    $value['deviceIpAddrsix']
+                    $value['deviceIpAddrsix'],
+                    $value['csr_site_tech_name']
             );
             ?>
                            		<?php
@@ -103,7 +107,8 @@ if (isset($resultset)) {
             'ID',
             'Device Name',
             'IPv4 Address',
-            'IPv6 Address'
+            'IPv6 Address',
+            'Owner'
     ));
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
@@ -112,7 +117,8 @@ if (isset($resultset)) {
                     $value['id'],
                     $value['devicename'],
                     $value['deviceIpAddr'],
-                    $value['deviceIpAddrsix']
+                    $value['deviceIpAddrsix'],
+                    $value['csr_site_tech_name']
             );
             ?>
                            		<?php
@@ -141,7 +147,8 @@ if (isset($resultset)) {
             'ID',
             'Device Name',
             'IPv4 Address',
-            'IPv6 Address'
+            'IPv6 Address',
+            'Owner'
     ));
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
@@ -150,7 +157,8 @@ if (isset($resultset)) {
                     $value['id'],
                     $value['devicename'],
                     $value['deviceIpAddr'],
-                    $value['deviceIpAddrsix']
+                    $value['deviceIpAddrsix'],
+                    $value['csr_site_tech_name']
             );
             ?>
                            		<?php

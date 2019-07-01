@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	// Conflict Tab - 1-11 col, 11 no exp and 12, 13 region, market
 	$('#ipcase1-table, #ipcase2-table, #ipcase3-table, #ipcase4-table, #ipcase5-table').DataTable( {
-		 "aoColumns": [{},{},{},{},{"bSortable": false}],		
+		 "aoColumns": [{},{},{},{},{},{"bSortable": false}],		
 		 "processing": true,
-		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3]}}],
+		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}}],
 		 "autoWidth": false,
 		 "dom": 'Bfrtip',
 		 "pageLength": 20,
@@ -24,12 +24,12 @@ $(document).ready(function() {
 				}); 
 			 
 			 $('#'+table).DataTable( {
-				 "aoColumns": [{},{},{},{},{"bSortable": false}],		
+				 "aoColumns": [{},{},{},{},{},{"bSortable": false}],		
 				 "processing": true,
 				 "autoWidth": false,
 				 "dom": 'Bfrtip',
 				 "pageLength": 20,
-				 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3]}}],
+				 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2, 3, 4]}}],
 				 "searching" : true,
 				 "destroy": true,
 				 "order": [[0, 'asc']],

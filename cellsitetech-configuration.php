@@ -85,14 +85,17 @@ write_log($mesg);
                             		<?php
                             if (empty($_SESSION['filename'])) {
                                 $_SESSION['filename'] = isset($_POST['filename']) ? $_POST['filename'] : '';
+                                $_SESSION['filename'] = isset($_POST['filename']) ? $_POST['filename'] : '';
                                 $_SESSION['alias'] = isset($_POST['alias']) ? $_POST['alias'] : '';
                                 $_SESSION['refmop'] = isset($_POST['refmop']) ? $_POST['refmop'] : '';
                             }
                             if (empty($_SESSION['filename'])) {
-                                $filename = "/usr/apps/oneems/fs1/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
+                                //$filename = "/usr/apps/oneems/fs1/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
+                                $filename = "/usr/apps/oneems/fs1/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
                                 $templname = 'templ_' . generateRandomString();
                             } else {
-                                $filename = "/usr/apps/oneems/fs1/" . $_SESSION['filename'] . ".txt";
+                                //$filename = "/usr/apps/oneems/fs1/" . $_SESSION['filename'] . ".txt";
+                                $filename = "/usr/apps/oneems/fs1/upload/" . $_SESSION['filename'] . ".txt";
                                 $templname = $_SESSION['filename'];
                                 $alias = $_SESSION['alias'];
                                 $refmop = $_SESSION['refmop'];

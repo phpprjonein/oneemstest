@@ -130,7 +130,8 @@ function get_landing_page()
             5,
             6,
             7,
-            9    
+            9,
+            10    
         ))) {
             $location_href = "switchtech-dashboard.php";
         }
@@ -938,7 +939,8 @@ function insert_usrfavritedev($data)
         5,
         6,
         7,
-        9    
+        9,
+        10    
     ))) {
         header("Location: switchtech-dashboard.php");
     } elseif (in_array($_SESSION['userlevel'], array(
@@ -3499,7 +3501,8 @@ function get_landing_page_sso($username, $eid, $email, $fname, $lname, $vzid)
             5,
             6,
             7,
-            9    
+            9,
+            10    
         ))) {
             $location_href = "switchtech-dashboard.php";
         }
@@ -4282,7 +4285,8 @@ function generate_site_breadcrumb($values = array())
         5,
         6,
         7,
-        9    
+        9, 
+        10    
     ))) {
         $output .= '<a class="breadcrumb-item" href="switchtech-dashboard.php">Home</a>';
     }
@@ -5487,7 +5491,8 @@ function update_login_api_rules($sso_flag, $username)
         5,
         6,
         7,
-        9    
+        9,
+        10    
     ))) {
         if($_SERVER['SERVER_NAME'] == 'localhost'){
             $output = @file_get_contents($APPCONFIG['login']['switchtechloginapi']);
@@ -5567,6 +5572,35 @@ function update_login_api_rules($sso_flag, $username)
                     $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "')";
                 } else {
                     $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','" . $resultsetv['switch_name'] . "'),";
+                }
+                $oc ++;
+            }
+            if ($oc > 1) {
+                $db2->query($dsql);
+                $db2->execute();
+            }
+        }
+        
+        if (in_array($_SESSION['userlevel'], array(
+                10
+        ))) {
+            $sql = "DELETE FROM userdevices WHERE listname='MITG Devices' and userid=".$_SESSION['userid'];
+            $db2->query($sql);
+            $db2->execute();
+            $sql = " SELECT * from nodes where deviceseries = 'ASR5K'";
+            $db2->query($sql);
+            $resultset['result'] = $db2->resultset();
+            $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+            $db2->query($sql);
+            $recordset = $db2->resultset();
+            $listid = $recordset[0]['listidmaxval'];
+            $oc = 1;
+            $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+            foreach ($resultset['result'] as $resultsetk => $resultsetv) {
+                if (count($resultset['result']) == $oc) {
+                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','MITG Devices')";
+                } else {
+                    $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','MITG Devices'),";
                 }
                 $oc ++;
             }

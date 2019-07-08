@@ -9,6 +9,8 @@ $(document).ready(function() {
       	  actionurl = "healthchk-asrninethousand-cellsitetech.php";
         }else if(deviceseries == 'ASR3K'){
           actionurl = "healthchk-asrthreethousand-cellsitetech.php";	
+        }else if(deviceseries == 'ASR5K'){
+          actionurl = "healthchk-asrfivethousand-cellsitetech.php";	
         }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-ncsfivefivezerozero-cellsitetech.php";	
         }else if(deviceseries == 'Nexus3K'){
@@ -84,6 +86,8 @@ $(document).ready(function() {
       	  actionurl = "healthchk-asrninethousand-cellsitetech-custom.php";
         }else if(deviceseries == 'ASR3K'){
           actionurl = "healthchk-asrthreethousand-cellsitetech-custom.php";	
+        }else if(deviceseries == 'ASR5K'){
+          actionurl = "healthchk-asrfivethousand-cellsitetech-custom.php";	
         }else if(deviceseries == 'NCS5500'){
           actionurl = "healthchk-ncsfivefivezerozero-cellsitetech-custom.php";	
         }else if(deviceseries == 'Nexus3K'){
@@ -281,6 +285,8 @@ $(document).ready(function() {
                 	  actionurl = "healthchk-asrninethousand-load-table-data.php";
                   }else if(deviceseries == 'ASR3K'){
                       actionurl = "healthchk-asrthreethousand-load-table-data.php";	
+                  }else if(deviceseries == 'ASR5K'){
+                      actionurl = "healthchk-asrfivethousand-load-table-data.php";	
                   }else if(deviceseries == 'NCS5500'){
                       actionurl = "healthchk-ncsfivefivezerozero-load-table-data.php";	
                   }else if(deviceseries == 'Nexus3K'){

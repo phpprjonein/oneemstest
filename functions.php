@@ -3895,7 +3895,7 @@ function delete_batchid($batchid)
     $sql = "UPDATE `batchmaster` SET batchstatus = 'd' WHERE batchid = '" . $batchid . "'";
     $db2->query($sql);
     $db2->execute();
-    $sql = "UPDATE `batchmembers` SET status = 'd' WHERE batchid = '" . $batchid . "'";
+    $sql = "UPDATE `batchmembers` SET status = 'd' WHERE batchid = '" . $batchid . "' and status != 'Success' and status != 'Completed'";
     $db2->query($sql);
     $db2->execute();
 }

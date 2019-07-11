@@ -15,7 +15,7 @@ $(document).ready(function() {
       if (this.value == "BW-Upgrade") {
         $(".bandwidth").show();
         $(".non-bandwidth").hide();
-        $(".bandwidth .Telco-Interface-ASR9010-Even, .bandwidth .Telco-Interface-ASR9010-Odd").prop( "disabled", false );
+        $(".bandwidth .BW----Telco-Interface-ASR9010-Even, .bandwidth .BW----Telco-Interface-ASR9010-Odd").prop( "disabled", false );
       } else {
         $(".non-bandwidth").show();
         $(".bandwidth").hide();
@@ -543,7 +543,7 @@ function refresh_telco_interface(){
 		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
 	  }).done(function(data) {
 			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
-				$('.Telco-Interface-ASR9010-Even').val(data);
+				$('.BW----Telco-Interface-ASR9010-Even').val(data);
 			}else{
 				$('.Telco-Interface-ASR9010-Even').html(data);
 			}
@@ -556,7 +556,7 @@ function refresh_telco_interface(){
 		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
 	  }).done(function(data) {
 			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
-				$('.Telco-Interface-ASR9010-Odd').val(data);
+				$('.BW----Telco-Interface-ASR9010-Odd').val(data);
 			}else{
 				$('.Telco-Interface-ASR9010-Odd').html(data);
 			}

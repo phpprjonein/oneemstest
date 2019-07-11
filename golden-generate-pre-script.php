@@ -278,7 +278,7 @@ write_log($mesg);
                             <div
 								class="jf-form <?php if($val['deviceseries'] == 'Bandwidth'): ?> bandwidth <?php else: ?> non-bandwidth <?php endif;?> form-group col-xs-10 col-sm-3 col-md-3 col-lg-3" <?php if($val['deviceseries'] == 'Bandwidth'): ?>  style="display: none;" <?php endif;?>>
 								<?php   
-								    if ((($val['usrvarname'] == 'CSR -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')) || ($val['usrvarname'] == 'Bandwidth Type')  || ($val['usrvarname'] == 'MTU') ){ 
+								    if ((($val['usrvarname'] == 'BW -- Bandwidth Type(6/8)') && ($val['deviceseries'] == 'Bandwidth')) || ($val['usrvarname'] == 'Bandwidth Type')  || ($val['usrvarname'] == 'MTU') ){ 
 								        echo generate_option_button_for_configs_static_type($val['usrvarname']);
 								    }elseif ($val['usrvarname'] == 'MTU'){ 
                                         echo generate_option_button_for_configs_bandwidth_type($val['usrvarname']);
@@ -289,7 +289,7 @@ write_log($mesg);
 								        echo generate_option_button_for_configs_marketvars('marketvars', 'mvarval', $val['usrvarname']);
 								    }/*elseif (('Time Zone' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_marketvars_timezone('marketvars', 'mvarval', $val['usrvarname']);
-								    }*/elseif ((('CSR -- Bandwidth(Mbps)' == $val['usrvarname']))){   
+								    }*/elseif ((('BW -- Bandwidth(Mbps)' == $val['usrvarname']))){   
 								        echo generate_option_button_for_configs('bandwidth', 'bwid', $val['usrvarname']);
 								    }elseif (('Vlan(Even)' == $val['usrvarname']) || ('Vlan(Odd)' == $val['usrvarname'])){   
 								        echo generate_option_button_for_configs_sw_inventory_vlan('software_inventory', 'vlan', $val['usrvarname']);

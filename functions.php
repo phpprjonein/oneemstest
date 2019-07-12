@@ -6423,7 +6423,7 @@ function load_tab_content_cellsite($type){
         
         if(count($ipv4) > 0){
             $ipv4inquery = implode("','", $ipv4);
-            $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr in ('".$ipv4inquery."')  order by deviceIpAddr asc";
+            $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix, csr_site_tech_name FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and deviceIpAddr in ('".$ipv4inquery."')  order by deviceIpAddr asc";
             $db2->query($sql);
             $resultset = $db2->resultset();
             
@@ -6478,7 +6478,7 @@ function load_tab_content_cellsite($type){
             if(count($ipv4) > 0){
                 $ipv4inquery = implode("','", $ipv4);
                 $where = " deviceIpAddr in ('".$ipv4inquery."')";
-                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix, csr_site_tech_name FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
                 $db2->query($sql);
                 $resultset = $db2->resultset();
                 
@@ -6494,7 +6494,7 @@ function load_tab_content_cellsite($type){
             if(count($ipv6) > 0){
                 $ipv6inquery = implode("','", $ipv6);
                 $where = " deviceIpAddrsix in ('".$ipv6inquery."') ";
-                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
+                $sql = "SELECT id, devicename, deviceIpAddr, deviceIpAddrsix, csr_site_tech_name FROM nodes where csr_site_tech_name = '".$_SESSION['welcome_mechname']."' and ".$where."  order by deviceIpAddr asc";
                 $db2->query($sql);
                 $resultset = $db2->resultset();
                 

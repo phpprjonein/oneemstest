@@ -10,6 +10,13 @@ define('ONE_EMS_ROOT', __DIR__);
 echo date('d-m-Y');
 $resultset = $data = array();
 $resultset = load_tab_content('ipcase1');
+$head = array(
+        'ID',
+        'Device Name',
+        'IPv4 Address',
+        'IPv6 Address',
+        'Owner'
+);
 if (isset($resultset)) {
     // open the file "demosaved.csv" for writing
     $file = fopen(ONE_EMS_ROOT . '/upload/admin/siteid_ipv4_ipv6_same.csv', 'w');
@@ -21,7 +28,7 @@ if (isset($resultset)) {
             'IPv6 Address',
             'Owner'
     ));
-    
+    $data[] = $head;
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
         foreach ($value1 as $key => $value) {
@@ -65,6 +72,7 @@ if (isset($resultset)) {
             'IPv6 Address',
             'Owner'
     ));
+    $data[] = $head;
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
         foreach ($value1 as $key => $value) {
@@ -110,6 +118,7 @@ if (isset($resultset)) {
             'IPv6 Address',
             'Owner'
     ));
+    $data[] = $head;
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
         foreach ($value1 as $key => $value) {
@@ -150,6 +159,7 @@ if (isset($resultset)) {
             'IPv6 Address',
             'Owner'
     ));
+    $data[] = $head;
     // Sample data. This can be fetched from mysql too
     foreach ($resultset as $key1 => $value1) {
         foreach ($value1 as $key => $value) {

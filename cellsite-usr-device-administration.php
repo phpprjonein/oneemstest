@@ -88,6 +88,7 @@ echo generate_site_breadcrumb($values);
 									<th scope="col">Device Name</th>
 									<th scope="col">IPv4 Address</th>
 									<th scope="col">IPv6 Address</th>
+									<th scope="col">Owner</th>
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
@@ -103,6 +104,7 @@ echo generate_site_breadcrumb($values);
     									<td><?php echo $value['devicename'];?></td>
     									<td><?php echo $value['deviceIpAddr'];?></td>
     									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><?php echo $value['csr_site_tech_name'];?></td>
     									<td><a href="#" class="del-device">Delete</a></td>
     								</tr>
                        		<?php
@@ -126,6 +128,7 @@ echo generate_site_breadcrumb($values);
 									<th scope="col">Device Name</th>
 									<th scope="col">IPv4 Address</th>
 									<th scope="col">IPv6 Address</th>
+									<th scope="col">Owner</th>
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
@@ -141,6 +144,7 @@ echo generate_site_breadcrumb($values);
     									<td><?php echo $value['devicename'];?></td>
     									<td><?php echo $value['deviceIpAddr'];?></td>
     									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><?php echo $value['csr_site_tech_name'];?></td>
     									<td><a href="#" class="del-device">Delete</a></td>
     								</tr>
                        		<?php
@@ -166,6 +170,7 @@ echo generate_site_breadcrumb($values);
 									<th scope="col">Device Name</th>
 									<th scope="col">IPv4 Address</th>
 									<th scope="col">IPv6 Address</th>
+									<th scope="col">Owner</th>
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
@@ -181,6 +186,7 @@ echo generate_site_breadcrumb($values);
     									<td><?php echo $value['devicename'];?></td>
     									<td><?php echo $value['deviceIpAddr'];?></td>
     									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><?php echo $value['csr_site_tech_name'];?></td>
     									<td><a href="#" class="del-device">Delete</a></td>
     								</tr>
                        		<?php
@@ -203,6 +209,7 @@ echo generate_site_breadcrumb($values);
 									<th scope="col">Device Name</th>
 									<th scope="col">IPv4 Address</th>
 									<th scope="col">IPv6 Address</th>
+									<th scope="col">Owner</th>
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
@@ -218,6 +225,7 @@ echo generate_site_breadcrumb($values);
     									<td><?php echo $value['devicename'];?></td>
     									<td><?php echo $value['deviceIpAddr'];?></td>
     									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><?php echo $value['csr_site_tech_name'];?></td>
     									<td><a href="#" class="del-device">Delete</a></td>
     								</tr>
                        		<?php
@@ -240,6 +248,7 @@ echo generate_site_breadcrumb($values);
 									<th scope="col">Device Name</th>
 									<th scope="col">IPv4 Address</th>
 									<th scope="col">IPv6 Address</th>
+									<th scope="col">Owner</th>
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
@@ -255,6 +264,7 @@ echo generate_site_breadcrumb($values);
     									<td><?php echo $value['devicename'];?></td>
     									<td><?php echo $value['deviceIpAddr'];?></td>
     									<td><?php echo $value['deviceIpAddrsix'];?></td>
+    									<td><?php echo $value['csr_site_tech_name'];?></td>
     									<td><a href="#" class="del-device">Delete</a></td>
     								</tr>
                        		<?php

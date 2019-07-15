@@ -86,7 +86,30 @@ echo generate_site_breadcrumb($values);
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
-							<h5 id="item-9-2">Maintenance</h5>
+							<h5 id="item-9-3-1">Template - View / Modify</h5>
+							<p>This functionality allows for device configuration template modification within the OneEMS application.</p>
+							<p>A user selects a device configuration file to manipulate from the dropdown list on the left. This will display all the associated fields within the template for manipulation, much in the same way a user can manipulate templates in the other Configuration menu items, for example, the <a href="help_config.php#item-4-1">Load Template - Modification</a> screens.</p>
+							<p></p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Template modification in this instance is only viewable by administrative users.</p>
+							<p>&nbsp;</p>
+							<img src="resources/img/screenshot-template_view_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin7">
+							<p></p>
+							<span class="font-italic"><b>Template Selection For Modification</b></span>
+							<p></p>
+							<p>Once a template's device configuration file is selected, a user can opt to hide read only fields and change various values, then save the chosen configuration.</p>`
+							<!-- <p>&nbsp;</p> -->
+							<img src="resources/img/screenshot-template_view_mod1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin8">
+							<p></p>
+							<span class="font-italic"><b>Template Configuration Field Updates</b></span>
+							<p></p>
+							<img src="resources/img/screenshot-template_view_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin9">
+							<p></p>
+							<span class="font-italic"><b>Template Update Success Message</b></span>
+							<p></p>
+							<hr>
+							<a href="#top" class="border"><b>Back to top</b></a>
+							<hr>
+							<h5 id="item-9-3-2">Maintenance</h5>
 							<p>Software Upload is a four step process.</p>
 							<ol>
 								<li>A OneEMS administrator or superuser pulls an official binary from the vendor site and loads it on to his/her laptop. This step is beyond the scope of OneEMS.</li>
@@ -104,7 +127,7 @@ echo generate_site_breadcrumb($values);
                             <p></p>
 							<img src="resources/img/screenshot-admin4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin4">
 							<p></p>
-                            <span class="font-italic"><b>- Existing Binary Listing</b></span>
+                            <span class="font-italic"><b>Existing Binary Listing</b></span>
                             <p></p>
 							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
 							<p>If you wish to view binaries already loaded to the OS repository, select file name from the list then click the “Retrieve” button. You will get a popup with the list of existing binaries.</p>
@@ -239,6 +262,36 @@ echo generate_site_breadcrumb($values);
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-admin6.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin7" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin8" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod1.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-admin9" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-template_view_mod2.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

@@ -914,25 +914,11 @@ event manager applet LOOP_GIG authorization bypass
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
-							<h5 id="item-4-2-2">Template - View / Modify</h5>
-							<p>This functionality allows for device configuration template modification within the OneEMS application.</p>
-							<p>A user selects a device configuration file to manipulate from the dropdown list on the left. This will display all the associated fields within the template for manipulation, much in the same way a user can manipulate templates in the other Configuration menu items, for example, the <a href="#item-4-1">Load Template - Modification</a> screens.</p>
+							<h5 id="item-4-3-0">Script Rerun</h5>
+							<p>This screen allows users to reinitialize batches previously run on a device or sets of devices (<b>Script Execution</b>).</p>
+							<img src="resources/img/screenshot-script-rerun1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch2">
 							<p></p>
-							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Template modification in this instance is only viewable by administrative users.</p>
-							<p>&nbsp;</p>
-							<img src="resources/img/screenshot-template_view_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1">
-							<p></p>
-							<span class="font-italic"><b>Template Selection For Modification</b></span>
-							<p></p>
-							<p>Once a template's device configuration file is selected, a user can opt to hide read only fields and change various values, then save the chosen configuration.</p>
-							<!-- <p>&nbsp;</p> -->
-							<img src="resources/img/screenshot-template_view_mod1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-2">
-							<p></p>
-							<span class="font-italic"><b>Template Configuration Field Updates</b></span>
-							<p></p>
-							<img src="resources/img/screenshot-template_view_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-view-mod1-3">
-							<p></p>
-							<span class="font-italic"><b>Template Update Success Message</b></span>
+							<span class="font-italic"><b>Script Rerun View</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -1119,6 +1105,16 @@ event manager applet LOOP_GIG authorization bypass
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-batch-tracking1.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-batch2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-script-rerun1.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

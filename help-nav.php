@@ -13,7 +13,7 @@
 											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-1">Load Template - Modification</a>
 											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2">Generate Script -  Modification</a>
 											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-1">Generate Script - Golden</a>
-											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-2-2">Template - View / Modify</a>
+											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3-0">Script Rerun</a>
 											<a class="nav-link ml-3 my-1" href="help_config.php#item-4-3">Batch Tracking</a>
 										</nav>
 									<a class="nav-link" href="help_discovery_ips.php">DISCOVERY IPs</a>
@@ -43,7 +43,8 @@
 									<a class="nav-link" href="help_admin.php">ADMIN</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-1">Load Template - Golden</a>
-										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-2">Maintenance</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3-1">Template - View / Modify</a>
+										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3-2">Maintenance</a>
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3">Device Cleanup</a>
                                     </nav>
 									<a class="nav-link" href="help_ssh.php">PAM SSH USER GUIDE</a>

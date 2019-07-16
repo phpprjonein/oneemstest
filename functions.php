@@ -5610,6 +5610,38 @@ function update_login_api_rules($sso_flag, $username)
             }
         }
     }
+    //Default devices add
+    $sql = "DELETE FROM userdevices WHERE listname='Default devices' and userid = " . $_SESSION['userid'];
+    $db2->query($sql);
+    $db2->execute();
+    $default_devicename = $APPCONFIG['default_list']['devicenames'];
+    $default_devicename_arr = explode(',', $default_devicename);
+    $default_devicenames = implode("','",$default_devicename_arr);
+    $sql = "SELECT * from nodes where devicename in  ('" . $default_devicenames . "')";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    if(count($resultset['result']) > 0){
+        $sql = "SELECT  max(listid) + 1  as listidmaxval FROM userdevices WHERE listid <> 0 ";
+        $db2->query($sql);
+        $recordset = $db2->resultset();
+        $listid = $recordset[0]['listidmaxval'];
+        
+        
+        $oc = 1;
+        $dsql = 'INSERT INTO `userdevices` (`nodeid`, `userid`, `listid`, `listname`) VALUES';
+        foreach ($resultset['result'] as $resultsetk => $resultsetv) {
+            if (count($resultset['result']) == $oc) {
+                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','Default devices')";
+            } else {
+                $dsql .= "('" . $resultsetv['id'] . "'," . $_SESSION['userid'] . ",'" . $listid . "','Default devices'),";
+            }
+            $oc ++;
+        }
+        if ($oc > 1) {
+            $db2->query($dsql);
+            $db2->execute();
+        }
+    }
 }
 
 /**

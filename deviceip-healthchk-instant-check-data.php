@@ -168,7 +168,7 @@ $(document).ready(function(){
      }
      }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
-    }if($device_details['deviceseries'] == 'ASR3K'){
+    }elseif($device_details['deviceseries'] == 'ASR3K'){
         $output = sendPostData($url_final);
         /*$output = '{
          "extract_redundancy": {

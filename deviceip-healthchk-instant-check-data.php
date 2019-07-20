@@ -43,7 +43,11 @@ $(document).ready(function(){
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
     $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
     
-    
+    //PORT 8086 - ASR 9K 
+    /*
+    if($device_details['deviceseries'] == 'ASR9K'){
+        $url_final = 'http://10.134.179.82:8086/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
+    }*/
     
     
     $lastupdated = date('Y-m-d H:i:s');

@@ -23,7 +23,7 @@
 				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-              url: 'software-delivery-process.php?deviceseries=' + $("#device_series option:first").val(),
+              url: 'multi-device-hc-process.php?deviceseries=' + $("#device_series option:first").val()+'&vendorId='+$("#vendorId option:first").val(),
               type: 'GET'
           },
           "columns": [ 		
@@ -52,19 +52,12 @@
 	        }
       });
       $("#devhc .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
-            $('#device_series').change(function(){
+            $('#device_series, #vendorId').change(function(){
+            	alert('in ');
           	    allVals = [];	 
           	    $('#cbvals').val('');
     			var deviceseries = '';
     			var nodeVersion = '';
-    	  		var listname = $("#backup-restore-list-dt-filter .btn").text().trim();
-    				if(listname == 'My routers'){
-    					listname = 0;
-    				}
-
-    			  if($('#device_series').val() != 'Choose Device Series'){ 	
-    				  deviceseries = $('#device_series').val();
-    			  }	  
 	          var table = $('#multidevhc').DataTable({
 	              "processing": true,
 	              "serverSide": true,
@@ -75,7 +68,7 @@
 	    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	                  url: 'software-delivery-process.php?listname='+listname+'&deviceseries='+deviceseries,
+	            	  url: 'multi-device-hc-process.php?deviceseries=' + $("#device_series option:selected").val()+'&vendorId='+$("#vendorId option:selected").val(),
 	                  type: 'GET'
 	              },
 	              "columns": [ 		
@@ -106,6 +99,7 @@
 	          $("#devhc .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
             });
             })
+      
       $(document).on('click', '.dtexcelbtn-cs', function(event) {
 		  var sortInfo = $("#multidevhc").dataTable().fnSettings().aaSorting;
 		  if($('#device_series').val() != 'Choose Device Series'){ 	
@@ -114,6 +108,8 @@
 		  location.href = "xls-export-process.php?case=devhc&userid=" + $('#userid').val() + "&deviceseries=" + deviceseries +"&listname=" + listname + "&search=" + $('.dataTables_filter input').val() + "&column=" + sortInfo[0][0] + "&dir=" + sortInfo[0][1];
 		  return false;
 	  });
+  
+  
 			$(document).on('click', '#multi-device-healthcheck', function(event) {
 				var req_err = false;
 				$('#multidevicehc #status').html('');
@@ -135,14 +131,15 @@
 	    		}
 	        	
 				if(confirm("Are you sure, do you want to do healthcheck of selected devices ?")){
-					
+                	var myModal = $('#multihcModel');
+            		myModal.modal('show'); 
 				}
         	return false;
     	}); 
 
 	
 $(document).ready(function() {
-	$('#Modal').on('hidden.bs.modal', function () {
+	$('#multihcModel').on('hidden.bs.modal', function () {
 		 location.reload();
 	})
 });		

@@ -26,6 +26,37 @@ write_log($mesg);
 	src="resources/js/multi-device-healthcheck.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body id="devhc">
+	<div class="modal fade" id="multihcModel">
+		<div class="modal-dialog">
+			<div class="modal-content" id="batchModalContent">
+				<!-- Modal Header -->
+				<div class="modal-header" id="backupmodalhdr">
+					<h5 class="modal-title">Health Check on Device Selected</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								 <tr><th>Device #1</th><th>Device #1</th><th>Device #1</th></tr>
+							</thead>
+								<tbody>
+								<tr><td>Body #1</td><td>Body #1</td><td>Body #1</td></tr>
+								</tbody>
+						</table>
+					</div>	
+			  	</div>
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid multidevicehc" id="multidevicehc">
     <?php include_once ('menu.php'); ?>
       <?php
@@ -73,10 +104,10 @@ write_log($mesg);
                   ?>
                     <div class="form-group f4 required" data-fid="f4">
 										<label class="control-label" for="f4">Select Vendor</label>
-										<select id="device_series" name="device_series"
+										<select id="vendorId" name="vendorId"
 											class="form-control custom-select" data-rule-required="true">
                         <?php foreach ($swrepolist['result'] as $key => $val){ ?>
-        				        <option value="<?php echo $val['vendorName'];?>"><?php echo $val['vendorName'];?></option>
+        				        <option value="<?php echo $val['id'];?>"><?php echo $val['vendorName'];?></option>
         				        <?php }; ?>
                       </select>
 									</div>

@@ -39,16 +39,7 @@ write_log($mesg);
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								 <tr><th>Device #1</th><th>Device #1</th><th>Device #1</th></tr>
-							</thead>
-								<tbody>
-								<tr><td>Body #1</td><td>Body #1</td><td>Body #1</td></tr>
-								</tbody>
-						</table>
-					</div>	
+
 			  	</div>
 				<!-- Modal footer -->
 				<div class="modal-footer">

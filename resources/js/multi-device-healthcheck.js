@@ -23,7 +23,7 @@
 				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 				 ],
           "ajax": {
-              url: 'multi-device-hc-process.php?deviceseries=' + $("#device_series option:first").val()+'&vendorId='+$("#vendorId option:first").val(),
+              url: 'multi-device-hc-process.php?loadtype=datatable&deviceseries=' + $("#device_series option:first").val()+'&vendorId='+$("#vendorId option:first").val(),
               type: 'GET'
           },
           "columns": [ 		
@@ -68,7 +68,7 @@
 	    				 {extend: 'print',text: '',titleAttr:'Copy',className:'dtprintbtn'}
 	    				 ],
 	              "ajax": {
-	            	  url: 'multi-device-hc-process.php?deviceseries=' + $("#device_series option:selected").val()+'&vendorId='+$("#vendorId option:selected").val(),
+	            	  url: 'multi-device-hc-process.php?loadtype=datatable&deviceseries=' + $("#device_series option:selected").val()+'&vendorId='+$("#vendorId option:selected").val(),
 	                  type: 'GET'
 	              },
 	              "columns": [ 		
@@ -129,11 +129,23 @@
 	    		    }, 4000);
 	    			return false;
 	    		}
-	        	
-				if(confirm("Are you sure, do you want to do healthcheck of selected devices ?")){
-                	var myModal = $('#multihcModel');
-            		myModal.modal('show'); 
-				}
+
+				//if(confirm("Are you sure, do you want to do healthcheck of selected devices ?")){
+				
+				$.ajax({
+	                type:"post",
+	                url:"multi-device-hc-process.php?loadtype=healthcheck",
+	                data: {'loadtype':'healthcheck', 'devices':allVals}, 
+	                success: function(resdata){
+	                	var obj = jQuery.parseJSON( resdata );
+	                	$('#multihcModel .modal-body').html(obj.result);
+	                	var myModal = $('#multihcModel');
+	            		myModal.modal('show'); 
+	                }
+	            });
+				
+
+				//}
         	return false;
     	}); 
 

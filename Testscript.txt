@@ -1,4 +1,0 @@
-exit
-sh ip int brief
-show version
-!

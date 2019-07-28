@@ -26,6 +26,14 @@ write_log($mesg);
 	src="resources/js/multi-device-healthcheck.js?t=<?php echo date('his'); ?>"></script>
 </head>
 <body id="devhc">
+			<div id="mycmdModal" class="modal fade">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<!-- Content will be loaded here from "remote.php" file -->
+				</div>
+			</div>
+		</div>
+		<!-- /.content-wrapper -->
 	<div class="modal fade" id="multihcModel">
 		<div class="modal-dialog">
 			<div class="modal-content" id="batchModalContent">

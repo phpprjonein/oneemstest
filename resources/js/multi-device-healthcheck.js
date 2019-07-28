@@ -98,6 +98,27 @@
 	          });
 	          $("#devhc .dt-buttons").append('<a class="dt-button buttons-excel buttons-html5 dtexcelbtn dtexcelbtn-cs" tabindex="0" aria-controls="example"><span></span></a>');
             });
+            
+			$(document).on('click', '.anchorcmd', function(event) {
+        		//var myModal = $('#mycmdModal');
+        		//myModal.find('.modal-content').css('border', 'none'); 
+                //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 50%; top: 50%; display: start;"><img src="resources/img/ajax-loader.gif"></img></div>');
+                //myModal.find('.modal-content').html('<div id="ajax_loader" style="position: absolute; left: 30%; top: 50%; display: start;"><b>Running health checks. Takes several minutes</b></div>');
+                //myModal.modal('show'); 
+            	$.ajax({url: $(this).attr('href'), success: function(result){
+            		$('#test-resp').html(result);
+            		$('#test-resp').show();
+            		//var myModal = $('#mycmdModal');
+            		//myModal.find('.modal-content').css('border', '1px solid rgba(0, 0, 0, 0.2)');
+                    //myModal.find('.modal-content').html(result);
+                    //myModal.modal('show');
+                    
+                }});
+                 //$('#mycmdModal').removeData()   
+                 return false;                  
+          });
+            
+            
             })
       
       $(document).on('click', '.dtexcelbtn-cs', function(event) {

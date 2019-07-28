@@ -9195,3 +9195,6 @@ textarea {
   background: #fff;
 }
 /* Tools page tooltips */
+table.popup-hc-in th, table.popup-hc-in td{border-top: 0px;}
+#multihcModel{width:1000px;}
+#multihcModel #batchModalContent{width:750px;}

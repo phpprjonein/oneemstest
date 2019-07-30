@@ -147,7 +147,7 @@
 					<li class="nav-item"><a
 						class="nav-link <?php print activemenu(array("help.php", "help_network_elements.php", "help_discovery_ips.php", "help_discovery_results.php", "help_backup.php", "help_config.php", "help_maintenance.php", "help_admin.php", "help_faqs.php")); ?>"
 						href="help.php">Help</a></li>
-              <?php }elseif(check_user_authentication(array(2,5,6,7,9))){  ?>
+              <?php }elseif(check_user_authentication(array(2,5,6,7,9,10))){  ?>
                 <li class="nav-item"><a
 						class="nav-link <?php print activemenu("switchtech-dashboard.php"); ?>"
 						href="switchtech-dashboard.php">Network Elements</a></li>

@@ -462,6 +462,7 @@ $(document).ready(function() {
 		if(req_err){ 
 			$('#multidevicehc #status').show();
 			$('#multidevicehc #status').addClass('alert-danger');
+			window.scrollTo(0, 0);
 		    window.setTimeout(function() {
 		        $(".alert").fadeTo(500, 0).slideUp(500, function(){
 		            $(this).hide(); 
@@ -474,13 +475,22 @@ $(document).ready(function() {
 		
 		$.ajax({
             type:"post",
-            url:"multi-device-hc-process.php?loadtype=healthcheck",
+            url:"multi-device-hc-process.php?loadtype=healthchecknew",
             data: {'loadtype':'healthcheck', 'devices':allVals}, 
             success: function(resdata){
             	var obj = jQuery.parseJSON( resdata );
-            	$('#multihcModel .modal-body').html(obj.result);
-            	var myModal = $('#multihcModel');
-        		myModal.modal('show'); 
+            	console.log(obj.result);
+
+            	$.each(obj.result, function(idx, obj) {
+            		//alert(obj.deviceid + '  ' + obj.error);
+            		$('#row_'+obj.deviceid).removeClass('device_row_green device_row_red');
+            		if(obj.error == 'Reached'){
+            			
+            			$('#row_'+obj.deviceid).addClass('device_row_green');
+            		}else{
+            			$('#row_'+obj.deviceid).addClass('device_row_red');
+            		}
+            	});
             }
         });
 		

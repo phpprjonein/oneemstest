@@ -300,3 +300,15 @@ if($_GET['loadtype'] == 'healthcheck'){
     $output = json_encode(array('result' => $output));
     echo $output;
 }
+if($_GET['loadtype'] == 'healthchecknew'){
+    $output = array();
+    if(count($_POST['devices']) > 0){
+        $device_status = array('Failed','Reached');
+        foreach ($_POST['devices'] as $key=>$val){
+            $output[$val]['deviceid'] = $val;
+            $output[$val]['error'] = $device_status[rand(0,1)];
+        }
+    }
+    $output = json_encode(array('result' => $output));
+    echo $output;
+}

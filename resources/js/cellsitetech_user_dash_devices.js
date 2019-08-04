@@ -270,6 +270,17 @@ $(document).ready(function() {
           //return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmin#AKROOH20T1A-C-PI-9999-01#pamssh-stage.nsiam.vzwnet.com">' + data +'</a>';
           //return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
         }
+      },{
+        targets: 5,
+        render: function(data, type, row, meta) {
+          exploded = row["deviceIpAddr"].split("<br/>");
+          return (
+            '<a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[0] +'">' +
+            exploded[0] +
+            '</a><br><a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[1] +'">' +
+            exploded[1] +
+            '</a>'
+          );       }
       }
     ],
     pageLength: 25,

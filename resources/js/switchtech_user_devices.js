@@ -176,7 +176,18 @@ $(document).ready(function() {
 			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">' + data +'</a>';
 	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMronlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 	           }
-	        }],   
+	        },{
+	            targets: 5,
+	            render: function(data, type, row, meta) {
+	              exploded = row["deviceIpAddr"].split("<br/>");
+	              return (
+	                '<a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[0] +'">' +
+	                exploded[0] +
+	                '</a><br><a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[1] +'">' +
+	                exploded[1] +
+	                '</a>'
+	              );       }
+	          }],   
           "pageLength": 25,
           //"dom": 'lBfrtip',
           "dom": 'Bfrtip',

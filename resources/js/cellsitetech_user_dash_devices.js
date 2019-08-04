@@ -660,14 +660,14 @@ $(document).ready(function() {
         $(this)
           .data("ssh")
           .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></div>'
+        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com</a></div>'
     );
     $("#Modal_Device_Name .modal-body").append(
-      '<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
+      '<hr><br><br><div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
         $(this)
           .data("sshna")
           .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></div>'
+        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMronlygrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMronlygrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com</a></div>'
     );
     myModal.modal("show");
     return false;

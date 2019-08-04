@@ -79,9 +79,11 @@ echo generate_site_breadcrumb($values);
 										<label class="radio-inline">
                                           <input type="radio" class="radiocat" value="ipaddress" name="optradio" checked><b>IP V4/IP V6 Address</b>
                                         </label>
+                                        <!-- 
                                         <label class="radio-inline">
                                           <input type="radio" class="radiocat" value="devicename" name="optradio"><b>Device Name</b>
                                         </label>
+                                         -->
 									</div>
 									</div>
 								</form>

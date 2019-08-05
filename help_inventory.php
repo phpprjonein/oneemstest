@@ -68,6 +68,10 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>Inventory Dashboard With Sample Values Selected</b></span>
 							<p></p>
+							<p>Super Users have the option to download a set of master files that show inventories for entire regions at once.</p>
+							<img src="resources/img/screenshot-inventory3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-inventory3">
+							<p></p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This option is available <b><i>ONLY</i></b> for Super Users.</p>
                             <hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
@@ -104,6 +108,16 @@ echo generate_site_breadcrumb($values);
 						<span aria-hidden="true">×</span>
 					</button>
 					<img src="resources/img/screenshot-inventory1.png" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="modal fade show" id="screenshot-inventory3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<img src="resources/img/screenshot-inventory3.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

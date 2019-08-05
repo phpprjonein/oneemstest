@@ -76,10 +76,11 @@ echo generate_site_breadcrumb($values);
 								<form class="login-form" action="#" method="post">
 									<div class="input-group row">
 									<div id="slectchktype" class="form-inline col-md-6 pb-2 col-sm-12">
+									<!--
 										<label class="radio-inline">
                                           <input type="radio" class="radiocat" value="ipaddress" name="optradio" checked><b>IP V4/IP V6 Address</b>
                                         </label>
-                                        <!-- 
+     
                                         <label class="radio-inline">
                                           <input type="radio" class="radiocat" value="devicename" name="optradio"><b>Device Name</b>
                                         </label>

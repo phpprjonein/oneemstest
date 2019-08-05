@@ -222,7 +222,7 @@ $page_title = 'OneEMS';
 													<th>Last Name</th>
 													<th>Email</th>
 													<th>Phone</th>
-													<th>Operation</th>
+													<th>Action</th>
 													
 												</tr>
 											</thead>

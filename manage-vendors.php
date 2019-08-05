@@ -133,7 +133,7 @@ $page_title = 'OneEMS';
 													<th width="75px">S.No</th>
 													<th>Vendor ID</th>
 													<th>Vendor Name</th>
-													<th>Operation</th>
+													<th>Action</th>
 													
 												</tr>
 											</thead>

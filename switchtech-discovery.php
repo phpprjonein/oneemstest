@@ -284,8 +284,8 @@ conflict table content -->
 									<td><?php echo $value['deviceos'];?></td>
 									<td><?php echo $value['nodeVersion'];?></td>
 									<td><?php echo $value['timepolled'];?></td>
-									<td><button type="button" data-toggle="modal"
-											class="btn btn-danger missed_update">UPDATE</button></td>
+									<td><!-- <button type="button" data-toggle="modal"
+											class="btn btn-danger missed_update">UPDATE</button> --></td>
 									<td style="display: none;"><?php echo $value['region'];?></td>
 									<td style="display: none;"><?php echo $value['market'];?></td>
 								</tr>
@@ -338,7 +338,7 @@ conflict table content -->
 									<td><?php echo $value['deviceos'];?></td>
 									<td><?php echo $value['nodeVersion'];?></td>
 									<td><?php echo (!empty($value['lastpolled']) && $value['lastpolled'] != 'None') ? date('m/d/y h:i:s', strtotime($value['lastpolled'])) : date('m/d/y h:i:s');?></td>
-									<td><button type="button" class="btn btn-danger addDeviceModal">ADD</button></td>
+									<td><!-- <button type="button" class="btn btn-danger addDeviceModal">ADD</button> --></td>
 									<td style="display: none;"><?php echo $value['region'];?></td>
 									<td style="display: none;"><?php echo $value['market'];?></td>
 									<td style="display: none;"><?php echo $value['upsince'];?></td>
@@ -401,8 +401,8 @@ conflict table content -->
 									<td><?php echo $value['deviceseries'];?></td>
 									<td><?php echo $value['deviceos'];?></td>
 									<td><?php echo $value['nodeVersion'];?></td>
-									<td><?php echo $value['timepolled'];?></td>
-									<td><label class="form-check-label"> <input
+									<td><?php echo $value['lastpolled'];?></td>
+									<td style="display: none;"><label class="form-check-label"> <input
 											class="form-check-input" type="checkbox" id="inlineCheckbox1"
 											value="<?php echo $value['id'];?>">
 									</label></td>

@@ -173,21 +173,21 @@ $(document).ready(function() {
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.198.238.19">' + 	data +'</a>';
 				//	return '<a target="blank" href="ssh://' + $('#username').val() + '@10.202.96.191">' + 	data +'</a>';
 				//	return '<a target="blank" href="chrome-extension://iodihamcpbpeioajjeobimgagajmlibd/html/nassh.html#">'+ data + '</a>';
-			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">' + data +'</a>';
-	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMronlygrp@' + exploded[1]+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
+			//return '<a target="blank" href="ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">' + data +'</a>';
+	            	return '<a data-ssh="'+$('#username').val() + '@PAMadmingrp@' + $.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com" data-sshna="'+$('#username').val() + '@PAMronlygrp@' + $.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' + data +'</a>'; //Correct -New format
 	           }
-	        },{
+	        },/*{
 	            targets: 5,
 	            render: function(data, type, row, meta) {
 	              exploded = row["deviceIpAddr"].split("<br/>");
 	              return (
 	                '<a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[0] +'">' +
 	                exploded[0] +
-	                '</a><br><a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ exploded[1] +'">' +
-	                exploded[1] +
+	                '</a><br><a class="link_device_ips" href="ssh://' + $('#username').val() + '@'+ $.trim(exploded[1]) +'">' +
+	                $.trim(exploded[1]) +
 	                '</a>'
 	              );       }
-	          }],   
+	          }*/],   
           "pageLength": 25,
           //"dom": 'lBfrtip',
           "dom": 'Bfrtip',
@@ -545,10 +545,13 @@ $(document).ready(function() {
 				
 				$(document).on('click', '.link_device_name', function(event) {  
 		          	var myModal = $('#Modal_Device_Name');
+		          	exploded = $(this).closest('tr').find('td:eq(4)').html();
+		          	exploded = exploded.split("<br>");
+
 		        	$('#Modal_Device_Name .modal-title').html('SSH Command');
 		        	//$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
-		        	$('#Modal_Device_Name .modal-body').html('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp1\')\">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMadmingrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com</a></div>');
-		        	$('#Modal_Device_Name .modal-body').append('<hr><br><br><div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' + $(this).data('sshna').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp2\')\">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMronlygrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMronlygrp@2001-4888-2a31-b000-386-400-0-5@pamssh.nsiam.vzwnet.com</a></div>');
+		        	$('#Modal_Device_Name .modal-body').html('<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' + $(this).data('ssh').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp1\')\">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com</a></div>');
+		        	$('#Modal_Device_Name .modal-body').append('<hr><br><br><div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' + $(this).data('sshna').replace(/:/gi,"-") + '" >&nbsp;<button class="btn btn-default" onclick=\"copyToClipboard(\'textboxp2\')\">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMronlygrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMronlygrp@'+$.trim($.trim(exploded[1]))+'@pamssh.nsiam.vzwnet.com</a></div>');
 		        	myModal.modal('show');
 		        	return false;
 				});	 

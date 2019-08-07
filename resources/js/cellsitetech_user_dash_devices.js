@@ -670,18 +670,18 @@ $(document).ready(function() {
     exploded = exploded.split("<br>");
     
     $("#Modal_Device_Name .modal-body").html(
-      '<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' +
+      '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' +
         $(this)
           .data("ssh")
           .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com</a></div>'
+        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></td><td><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMadmingrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">Open&nbsp;SSH</a></td></tr></table></div>'
     );
     $("#Modal_Device_Name .modal-body").append(
-      '<hr><br><br><div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
+      '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
         $(this)
           .data("sshna")
           .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></div><div><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMronlygrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">ssh://' + $('#username').val() + '@PAMronlygrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com</a></div>'
+        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></td><td><a target="blank" class="link_device_name_popup" href="ssh://' + $('#username').val() + '@PAMronlygrp@'+$.trim(exploded[1])+'@pamssh.nsiam.vzwnet.com">Open&nbsp;SSH</a></td></tr></table></div>'
     );
     myModal.modal("show");
     return false;

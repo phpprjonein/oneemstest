@@ -24,7 +24,9 @@ if ($_POST['ctype'] == 'SyncCyberArk') {
 if ($_POST['ctype'] ==  'CyberArkadd') {
      $ip_address = $_POST['syncpass_ipaddress'];
      $devicename = get_device_name_from_ip_address($ip_address);
-     $cyberarc_command = "cd /usr/apps/oneems/python/cyber_add ; ./add_accts.ksh " .$ip_address ." " . $devicename[0]['devicename'];
+     $deviceseries = get_device_series_from_ip_address($ip_address);
+     $cyberarc_command = "cd /usr/apps/oneems/python/cyber_add ; ./add_accts.ksh " .$ip_address ." " .   $devicename[0]['devicename'] ." " . $deviceseries[0]['deviceseries'];
+    //  $cyberarc_command = "cd /usr/apps/oneems/python/cyber_add ; ./add_accts.ksh " .$ip_address ." " . $devicename[0]['devicename'];
      $cyberarc_output = shell_exec($cyberarc_command);
      echo $cyberarc_output =  "Status: " . $cyberarc_output;
 }

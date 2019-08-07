@@ -5,6 +5,12 @@ $(document).ready(function() {
 		    	$("#manual-disc-utils #manual-discovery").trigger('click');
 		    }
 		  });
+			$('#export-v-pills-missed').show();
+			$('#search-v-pills-missed').show();
+			$('#export-v-pills-new').hide();
+			$('#search-v-pills-new').hide();
+			$('#export-v-pills-ok').hide();
+			$('#search-v-pills-ok').hide();
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'Conflicts'){
 			$('#export-v-pills-conflict').show();

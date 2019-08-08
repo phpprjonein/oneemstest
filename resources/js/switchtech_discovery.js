@@ -205,13 +205,13 @@ $(document).ready(function() {
     	}
     	
     	
-    	$.post( "api-test.php", { type: "api-ajax"
+    	$.post( "ip-mgt-process.php", { 'type': "api-ajax",'page':'device-disc','missedDeviceIPaddress':$('#missedDeviceIPaddress').val()
 		}).done(function( data ) {
 			var obj = jQuery.parseJSON( data );
 			$('#Modal_Missed_Update').modal('hide');
 			if(obj.result == true){
-				myModal.find('.modal-body #response-txt h6').html('Device Ping - Successful.');
-				myModal.find('.modal-body #button-action #ip-ok').show();
+				myModal.find('.modal-body #response-txt h6').html('Device Update - Successful.');
+				myModal.find('.modal-body #button-action #ip-ok').hide();
 				myModal.find('.modal-body #button-action #ip-ignore').hide();
 				myModal.find('.modal-body #button-action #ip-remove').hide();
 			}else{
@@ -629,4 +629,8 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	$('#Modal_Missed_Update').on('hidden.bs.modal', function () {
+		 //location.reload();
+		 window.location.href = 'switchtech-discovery.php';
+	})
 });

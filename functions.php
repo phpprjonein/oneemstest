@@ -2545,7 +2545,7 @@ function load_discovery_dataset($class = 'C')
         $mrecordset = $db2->resultset();
         if (isset($mrecordset[0]['market'])) {
             $market = $mrecordset[0]['market'];
-            $sql = "SELECT * FROM discoveryres where class ='" . strtolower($class) . "' AND market in (" . $market . ") ORDER BY id";
+            $sql = "SELECT dr.id, dr.region, dr.market, dr.devicename, n.csr_site_id, n.csr_site_name, dr.nodeVersion, dr.deviceseries, dr.lastpolled, dr.deviceIpAddr, dr.model, dr.deviceos, dr.submarket, dr.upsince, dr.class, dr.sys_location, dr.sys_contact, dr.datepolled, dr.timepolled FROM discoveryres dr, nodes n where n.deviceIpAddr = dr.deviceIpAddr AND dr.class ='" . strtolower($class) . "' AND dr.market in (" . $market . ") ORDER BY id";
             $db2->query($sql);
             $resultset['result'] = $db2->resultset();
             return $resultset;
@@ -2553,7 +2553,7 @@ function load_discovery_dataset($class = 'C')
             return '';
         }
     }else{
-        $sql = "SELECT * FROM discoveryres where class ='" . strtolower($class) . "' ORDER BY id";
+        $sql = "SELECT dr.id, dr.region, dr.market, dr.devicename, n.csr_site_id, n.csr_site_name, dr.nodeVersion, dr.deviceseries, dr.lastpolled, dr.deviceIpAddr, dr.model, dr.deviceos, dr.submarket, dr.upsince, dr.class, dr.sys_location, dr.sys_contact, dr.datepolled, dr.timepolled FROM discoveryres dr, nodes n where n.deviceIpAddr = dr.deviceIpAddr AND dr.class ='" . strtolower($class) . "' ORDER BY id";
         $db2->query($sql);
         $resultset['result'] = $db2->resultset();
         return $resultset;

@@ -4,6 +4,36 @@ include 'functions.php';
 $userid = $_SESSION['userid'];
 ini_set('display_errors', 1);
 
+if ($_POST['type'] == 'api-ajax' && $_POST['page'] == 'device-disc' && !empty($_POST['missedDeviceIPaddress'])) {
+    global $db2;
+    
+    $sql = "SELECT deviceIpAddr, deviceIpAddrsix from nodes where deviceIpAddr = '" . $_POST['missedDeviceIPaddress'] . "'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    /*
+    print '<pre>';
+    print_r($resultset[0]['deviceIpAddr']);
+    print_r($resultset[0]['deviceIpAddrsix']);
+    die;
+    */
+    if(empty(($resultset[0]['deviceIpAddrsix']))){
+        $sql = "DELETE FROM nodes WHERE deviceIpAddr = '".$_POST['missedDeviceIPaddress']."'";
+        $db2->query($sql);
+        $db2->execute();
+        
+        $sql = "DELETE FROM discoveryres WHERE deviceIpAddr = '".$_POST['missedDeviceIPaddress']."'";
+        $db2->query($sql);
+        $db2->execute();
+    }else{
+        $sql = "UPDATE `nodes` SET deviceIpAddrsix = '' WHERE deviceIpAddr = '" . $_POST['missedDeviceIPaddress'] . "'";
+        $db2->query($sql);
+        $db2->execute();
+    }
+    $myObject = array(
+            'result' => true
+    );
+    echo json_encode($myObject); // outputs JSON text
+}
 if ($_POST['ctype'] == 'Sync Password') {
     $ip_address = $_POST['syncpass_ipaddress'];
     $devicename = get_device_name_from_ip_address($ip_address);

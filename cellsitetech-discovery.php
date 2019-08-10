@@ -68,10 +68,10 @@ echo generate_site_breadcrumb($values);
 
 
 
-		<!--
-      <div class="form-row align-items-center justify-content-between">
+       <div class="form-row align-items-center justify-content-between">
 
       <div class="col-auto">
+      	<!-- 
         <div class="btn-group" id="discovery-region">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SELECT REGION
@@ -93,9 +93,9 @@ echo generate_site_breadcrumb($values);
           	<a class="dropdown-item" href="#">SELECT REGION</a>
           <?php endif; ?>
           </div>
-        </div>
+        </div> -->
       </div>
-
+		<!-- 
                     <div class="btn-group" id="discovery-market">
                       <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       SELECT MARKET
@@ -103,10 +103,10 @@ echo generate_site_breadcrumb($values);
                       <div class="dropdown-menu">
                       </div>
                     </div>
-
+-->
 
         <div class="col-6">
-
+<!-- 
           <div class="input-group" id="search-v-pills-conflict">
             <input type="text" class="form-control" placeholder="Search Conflicts" aria-label="Search Region Table">
             <span class="input-group-btn">
@@ -134,7 +134,7 @@ echo generate_site_breadcrumb($values);
               <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
             </span>
           </div>
-
+ -->
         </div>
 
       <div class="col-md-2 col-xs-6">
@@ -147,7 +147,7 @@ echo generate_site_breadcrumb($values);
       </div>
 
       <hr />
- -->
+
 
 
 		<!-- IP management table row -->
@@ -155,7 +155,7 @@ echo generate_site_breadcrumb($values);
 
 			<!-- table pill navigation -->
 			<div class="col col-md-2 col-sm-12">
-				<div class="nav flex-column nav-pills" id="v-pills-tab"
+				<div class="nav col-1 flex-column nav-pills" id="v-pills-tab"
 					role="tablist" aria-orientation="vertical">
 					<!--
 			<a class="nav-link btn-conflicts <?php /*if((isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Conflicts') || empty($_SESSION['disc_page_tab'])): */?>active<?php /*endif; */?>" id="v-pills-conflict-tab" data-toggle="pill" href="#v-pills-conflict" role="tab" aria-controls="v-pills-conflict" aria-selected="true">Conflicts</a>
@@ -287,10 +287,9 @@ conflict table content -->
 									<td><?php echo $value['deviceseries'];?></td>
 									<td><?php echo $value['deviceos'];?></td>
 									<td><?php echo $value['nodeVersion'];?></td>
-									<td><?php //echo $value['timepolled'];?><?php echo $value['lastpolled'];?></td>
-									<td>
-										<!-- <button type="button"  data-toggle="modal" class="btn btn-danger missed_update">UPDATE</button> -->
-									</td>
+									<td><?php echo $value['timepolled'];?></td>
+									<td><button type="button" data-toggle="modal"
+											class="btn btn-danger missed_update">UPDATE</button></td>
 									<td style="display: none;"><?php echo $value['region'];?></td>
 									<td style="display: none;"><?php echo $value['market'];?></td>
 								</tr>

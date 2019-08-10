@@ -5,6 +5,12 @@ $(document).ready(function() {
 		    	$("#manual-disc-utils #manual-discovery").trigger('click');
 		    }
 		  });
+			$('#export-v-pills-missed').show();
+			$('#search-v-pills-missed').show();
+			$('#export-v-pills-new').hide();
+			$('#search-v-pills-new').hide();
+			$('#export-v-pills-ok').hide();
+			$('#search-v-pills-ok').hide();
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'Conflicts'){
 			$('#export-v-pills-conflict').show();
@@ -199,13 +205,13 @@ $(document).ready(function() {
     	}
     	
     	
-    	$.post( "api-test.php", { type: "api-ajax"
-		}).done(function( data ) {
+    	$.post( "ip-mgt-process.php", { 'type': "api-ajax",'page':'device-disc','missedDeviceIPaddress':$('#missedDeviceIPaddress').val()
+    		}).done(function( data ) {
 			var obj = jQuery.parseJSON( data );
 			$('#Modal_Missed_Update').modal('hide');
 			if(obj.result == true){
-				myModal.find('.modal-body #response-txt h6').html('Device Ping - Successful.');
-				myModal.find('.modal-body #button-action #ip-ok').show();
+				myModal.find('.modal-body #response-txt h6').html('Device Update - Successful.');
+				myModal.find('.modal-body #button-action #ip-ok').hide();
 				myModal.find('.modal-body #button-action #ip-ignore').hide();
 				myModal.find('.modal-body #button-action #ip-remove').hide();
 			}else{
@@ -623,4 +629,8 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	$('#Modal_Missed_Update').on('hidden.bs.modal', function () {
+			 //location.reload();
+			 window.location.href = 'cellsitetech-discovery.php';
+	})
 });

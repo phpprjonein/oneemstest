@@ -349,11 +349,11 @@ $(document).ready(function() {
 
         var deviceseries = $(this)
           .closest("tr")
-          .find("td:eq(6)")
+          .find("td:eq(7)")
           .text();
         var version = $(this)
           .closest("tr")
-          .find("td:eq(7)")
+          .find("td:eq(8)")
           .text();
         version = version
           .replace(/\(/g, "-")
@@ -429,25 +429,29 @@ $(document).ready(function() {
 
 
   $(document).on("click", ".link_device_name", function(event) {
-    var myModal = $("#Modal_Device_Name");
-    $("#Modal_Device_Name .modal-title").html("SSH Command");
-    $("#Modal_Device_Name .modal-body").html(
-      '<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' +
-        $(this)
-          .data("ssh")
-          .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></div>'
-    );
-    $("#Modal_Device_Name .modal-body").append(
-      '<div class="input-group mb-3"><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
-        $(this)
-          .data("sshna")
-          .replace(/:/gi, "-") +
-        '" >&nbsp;<button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></div>'
-    );
-    myModal.modal("show");
-    return false;
-  });
+	    var myModal = $("#Modal_Device_Name");
+	    $("#Modal_Device_Name .modal-title").html("SSH Command");
+	    //$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
+	    exploded = $(this).closest('tr').find('td:eq(4)').html();
+	    exploded = exploded.split("<br>");
+	    
+	    $("#Modal_Device_Name .modal-body").html(
+	      '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' +
+	        $(this)
+	          .data("ssh")
+	          .replace(/:/gi, "-") +
+	        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></td><td><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">Open&nbsp;SSH</a></td></tr></table></div>'
+	    );
+	    $("#Modal_Device_Name .modal-body").append(
+	      '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
+	        $(this)
+	          .data("sshna")
+	          .replace(/:/gi, "-") +
+	        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></td><td><a target="blank" class="link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">Open&nbsp;SSH</a></td></tr></table></div>'
+	    );
+	    myModal.modal("show");
+	    return false;
+	  });
 
 	$(document).on('click', '#multi-device-healthcheck', function(event) {
 		var req_err = false;
@@ -470,7 +474,63 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
-
+		
+		$.each(allVals, function( index, value ) {
+			  var version = $('#row_'+value).find("td:eq(8)").text();;
+			  version = version
+			      .replace(/\(/g, "-")
+			      .replace(/\)/g, "-")
+			      .replace(/\./g, "-");
+			  var deviceseries = $('#row_'+value).find("td:eq(7)").text();
+			  
+			  
+			  
+			      if (deviceseries == "ASR9K") {
+			        actionurl = "healthchk-asrninethousand-cellsitetech.php";
+			      } else if (deviceseries == "ASR3K") {
+			        actionurl = "healthchk-asrthreethousand-cellsitetech.php";
+			      } else if (deviceseries == "NCS5500") {
+			        actionurl = "healthchk-ncsfivefivezerozero-cellsitetech.php";
+			      } else if (deviceseries == "Nexus3K") {
+			        actionurl = "healthchk-nexus3k-cellsitetech.php";
+			      } else if (deviceseries == "NexusETRAN3K") {
+			        actionurl = "healthchk-nexusetran3k-cellsitetech.php";
+			      } else if (deviceseries == "StarOS") {
+			        actionurl = "healthchk-staros-cellsitetech.php";
+			      } else if (deviceseries == "SAR7705") {
+			        actionurl = "healthchk-nokiasevensevenzerofive-cellsitetech.php";
+			      } else {
+			        actionurl = "healthchk-cellsitetech.php";
+			      }
+			      alert(version + ' - ' + deviceseries + ' - ' + actionurl);
+			      
+			      $.ajax({
+			          type: "get",
+			          url: actionurl,
+			          data: {
+			            'deviceid': value,
+			            'userid': $('#userid').val(),
+			            'deviceseries': deviceseries,
+			            'version': version,
+			            'ajax-val-session': 1,
+			            'resultversion':'short',
+			            
+			          },
+			          success: function(resdata) {
+			            if (resdata == "redirectUser") {
+			              window.location.href = "index.php";
+			            } else {
+		            		$('#row_'+value).removeClass('device_row_green device_row_red');
+		            		if(resdata == 'Reached'){
+		            			$('#row_'+value).addClass('device_row_green');
+		            		}else{
+		            			$('#row_'+value).addClass('device_row_red');
+		            		}
+			            }
+			          }
+			        });
+		});
+		return false;
 		//if(confirm("Are you sure, do you want to do healthcheck of selected devices ?")){
 		
 		$.ajax({
@@ -485,7 +545,6 @@ $(document).ready(function() {
             		//alert(obj.deviceid + '  ' + obj.error);
             		$('#row_'+obj.deviceid).removeClass('device_row_green device_row_red');
             		if(obj.error == 'Reached'){
-            			
             			$('#row_'+obj.deviceid).addClass('device_row_green');
             		}else{
             			$('#row_'+obj.deviceid).addClass('device_row_red');

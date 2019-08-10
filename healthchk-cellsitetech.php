@@ -44,4 +44,14 @@ $(document).ready(function(){
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
     $_SESSION['deviceidcs'] = $deviceid;
     ?>
+    <?php 
+    if(isset($_GET['resultversion']) && $_GET['resultversion'] == 'short'){
+        if (($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)) {
+            $device_status .= 'Failed';
+        } else {
+            $device_status .= 'Reached';
+        }
+        exit;
+    }
+    ?>
 <?php include_once 'hc_blk_inc.php';?>                

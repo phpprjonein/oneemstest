@@ -474,7 +474,7 @@ $(document).ready(function() {
 		    }, 4000);
 			return false;
 		}
-		
+		$('.device_row').removeClass('device_row_green device_row_red');
 		$.each(allVals, function( index, value ) {
 			  var version = $('#row_'+value).find("td:eq(8)").text();;
 			  version = version
@@ -482,9 +482,6 @@ $(document).ready(function() {
 			      .replace(/\)/g, "-")
 			      .replace(/\./g, "-");
 			  var deviceseries = $('#row_'+value).find("td:eq(7)").text();
-			  
-			  
-			  
 			      if (deviceseries == "ASR9K") {
 			        actionurl = "healthchk-asrninethousand-cellsitetech.php";
 			      } else if (deviceseries == "ASR3K") {
@@ -502,7 +499,7 @@ $(document).ready(function() {
 			      } else {
 			        actionurl = "healthchk-cellsitetech.php";
 			      }
-			      alert(version + ' - ' + deviceseries + ' - ' + actionurl);
+			      //alert(version + ' - ' + deviceseries + ' - ' + actionurl + ' - ' + value);
 			      
 			      $.ajax({
 			          type: "get",
@@ -520,7 +517,6 @@ $(document).ready(function() {
 			            if (resdata == "redirectUser") {
 			              window.location.href = "index.php";
 			            } else {
-		            		$('#row_'+value).removeClass('device_row_green device_row_red');
 		            		if(resdata == 'Reached'){
 		            			$('#row_'+value).addClass('device_row_green');
 		            		}else{

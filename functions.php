@@ -611,6 +611,7 @@ function sendPostData($url)
     // exit($url);
     // Curl GET methods begins
     // echo "Inside the sendpostdata method value of url is $url";;
+    if(function_exists('curl_init')){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_POST, 0);
     curl_setopt($ch, CURLOPT_HTTPGET, 1);
@@ -627,7 +628,7 @@ function sendPostData($url)
     }
     ;
     curl_close($crl);
-    
+    }
     return $result;
     // cURL ends
     // Curl GET method ends

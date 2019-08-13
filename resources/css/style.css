@@ -9198,6 +9198,6 @@ textarea {
 table.popup-hc-in th, table.popup-hc-in td{border-top: 0px;}
 #multihcModel{width:1000px;}
 #multihcModel #batchModalContent{width:750px;}
-.device_row_green{background-color: #98FB98 !important;}
-.device_row_red{background-color: #F08080 !important;}
+.device_row_green, .device_row_green .sorting_1{background-color: #98FB98 !important;}
+.device_row_red, .device_row_red .sorting_1{background-color: #F08080 !important;}
 .link_device_name_popup{font-size: 16px; text-decoration: none;}

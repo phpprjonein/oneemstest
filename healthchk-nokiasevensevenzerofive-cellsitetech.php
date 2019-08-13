@@ -46,4 +46,14 @@ $(document).ready(function(){
     $output = json_decode($output, true);
     $_SESSION['deviceidcs'] = $deviceid;
     ?>
+    <?php 
+    if(isset($_GET['resultversion']) && $_GET['resultversion'] == 'short'){
+        if (($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)) {
+            $device_status .= 'Failed';
+        } else {
+            $device_status .= 'Reached';
+        }
+        exit;
+    }
+    ?>
 <?php include_once 'healthchk-nokiasevensevenzerofive-blk-inc.php';?>

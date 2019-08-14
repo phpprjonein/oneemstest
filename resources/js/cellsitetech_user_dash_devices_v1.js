@@ -503,6 +503,7 @@ $(document).ready(function() {
 			      
 			      $.ajax({
 			          type: "get",
+			          async: true,
 			          url: actionurl,
 			          data: {
 			            'deviceid': value,

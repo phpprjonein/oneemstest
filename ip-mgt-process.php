@@ -16,7 +16,7 @@ if ($_POST['type'] == 'api-ajax' && $_POST['page'] == 'device-disc' && !empty($_
     print_r($resultset[0]['deviceIpAddrsix']);
     die;
     */
-    if(empty(($resultset[0]['deviceIpAddrsix']))){
+    if(empty($resultset[0]['deviceIpAddrsix'])){
         $sql = "DELETE FROM nodes WHERE deviceIpAddr = '".$_POST['missedDeviceIPaddress']."'";
         $db2->query($sql);
         $db2->execute();

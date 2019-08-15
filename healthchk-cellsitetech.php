@@ -45,7 +45,6 @@ $(document).ready(function(){
     //$_SESSION['deviceidcs'] = $deviceid;
     ?>
     <?php 
-    sleep(10);
     if(isset($_GET['resultversion']) && $_GET['resultversion'] == 'short'){
         if (($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)) {
             echo 'Failed';

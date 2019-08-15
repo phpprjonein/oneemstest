@@ -1,7 +1,7 @@
 <?php
 include "classes/db2.class.php";
-include "classes/paginator.class.php";
 include 'functions.php';
+//ini_set('display_errors', 1);
 global $APPCONFIG;
 ?>
 <script type="text/javascript">
@@ -42,14 +42,15 @@ $(document).ready(function(){
     $output = json_decode(sendPostData($url_final), true);
     $lastupdated = date('Y-m-d H:i:s');
     insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
-    $_SESSION['deviceidcs'] = $deviceid;
+    //$_SESSION['deviceidcs'] = $deviceid;
     ?>
     <?php 
+    sleep(10);
     if(isset($_GET['resultversion']) && $_GET['resultversion'] == 'short'){
         if (($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)) {
-            $device_status .= 'Failed';
+            echo 'Failed';
         } else {
-            $device_status .= 'Reached';
+            echo 'Reached';
         }
         exit;
     }

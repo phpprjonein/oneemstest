@@ -499,6 +499,7 @@ $(document).ready(function() {
 			      } else {
 			        actionurl = "healthchk-cellsitetech.php";
 			      }
+			      //actionurl = "healthchk-test.php";
 			      //alert(version + ' - ' + deviceseries + ' - ' + actionurl + ' - ' + value);
 			      
 			      $.ajax({
@@ -512,7 +513,7 @@ $(document).ready(function() {
 			            'version': version,
 			            'ajax-val-session': 1,
 			            'resultversion':'short',
-			            
+			            'skip-session': 'set',
 			          },
 			          success: function(resdata) {
 			            if (resdata == "redirectUser") {

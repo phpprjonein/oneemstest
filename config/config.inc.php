@@ -121,8 +121,9 @@ define("EMAIL_WELCOME", true);
  * converted automatically.
  */
 define("ALL_LOWERCASE", true);
+if($_GET['skip-session'] != 'set')
+    session_start();
 
-session_start();
 if($_GET['ajax-val-session'] == 1 || $_POST['ajax-val-session'] == 1){
     /*if(!isset($_SESSION['userid']) || (isset($_SESSION['userid']) && empty($_SESSION['userid']))){
         echo 'redirectUser';

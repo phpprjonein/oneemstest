@@ -1,6 +1,5 @@
 <?php
 include "classes/db2.class.php";
-include "classes/paginator.class.php";
 include 'functions.php';
 global $APPCONFIG;
 ?>
@@ -164,6 +163,15 @@ $(document).ready(function(){
     $lastupdated = date('Y-m-d H:i:s');
     ems_update_healthchk_info($deviceid, $output, $lastupdated);
     $output = json_decode($output, true);
-    $_SESSION['deviceidcs'] = $deviceid;
+    ?>
+    <?php 
+    if(isset($_GET['resultversion']) && $_GET['resultversion'] == 'short'){
+        if (($output['error']) || ($healthchktype == 'Custom' && count($_GET['category']) == 0)) {
+            echo 'Failed';
+        } else {
+            echo 'Reached';
+        }
+        exit;
+    }
     ?>
 <?php include_once 'healthchk-asrninethousand-blk-inc.php';?>                

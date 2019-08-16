@@ -85,9 +85,84 @@ if ($_POST['screen'] == 'User') {
     
 }
 
+/* 
+if ($_POST['screen'] == 'Usrvar') {
+    
+    if($_POST['act'] == 'add'){
+        $values_arr = array(
+                'usrvarname' => $_POST['usrvarname'],
+                'value' => $_POST['value'],
+                'deviceseries' => $_POST['deviceseries'],
+                'template' => $_POST['template']
+        );
+        insert_user_variable($values_arr);
+        print 'success';
+    }
+    
+    if($_POST['act'] == 'edit'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+                'username' => $_POST['username'],
+                'userlevel' => $_POST['role'],
+                'email' => $_POST['email'],
+                'status' => $_POST['status'],
+                'fname' => $_POST['fname'],
+                'lname' => $_POST['lname'],
+                'phone' => $_POST['phone'],
+                'role' => $_POST['role'],
+                'zones' => $_POST['zones'],
+        );
+        if($_POST['password'] != ''){
+            $values_arr['password'] = md5($_POST['password']);
+        }
+        
+        update_user($values_arr);
+        print 'success';
+    }
+    
+    
+    if($_POST['act'] == 'delete'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+        );
+        delete_user($values_arr);
+        $_SESSION['msg'] = 'ds';
+        print 'success';
+    }
+    
+} */
 
 
-
-
+if ($_POST['screen'] == 'Userlevel') {
+    
+    if($_POST['act'] == 'add'){
+        $values_arr = array(
+                'userlevel' => $_POST['userlevel'],                
+        );
+        insert_user_level($values_arr);
+        print 'success';
+    }
+    
+    if($_POST['act'] == 'edit'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+                'userlevel' => $_POST['userlevelname'],
+        );
+        
+        update_user_level($values_arr);
+        print 'success';
+    }
+    
+    
+    if($_POST['act'] == 'delete'){
+        $values_arr = array(
+                'id' => $_POST['id'],
+        );
+        delete_user_level($values_arr);
+        $_SESSION['msg'] = 'ds';
+        print 'success';
+    }
+    
+}
 
 ?>

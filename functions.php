@@ -611,7 +611,6 @@ function sendPostData($url)
     // exit($url);
     // Curl GET methods begins
     // echo "Inside the sendpostdata method value of url is $url";;
-    if(function_exists('curl_init')){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_POST, 0);
     curl_setopt($ch, CURLOPT_HTTPGET, 1);
@@ -628,7 +627,7 @@ function sendPostData($url)
     }
     ;
     curl_close($crl);
-    }
+    
     return $result;
     // cURL ends
     // Curl GET method ends
@@ -2456,6 +2455,30 @@ function insert_vendor($values)
     $db2->execute();
 }
 
+/**
+ *
+ * @param unknown $values
+ */
+function insert_user_variable($values)
+{
+    global $db2;
+    $sql = "INSERT INTO usrvars (usrvarname,usrvarval,deviceseries,templname) VALUES ('" . $values['usrvarname'] . "','" . $values['value'] . "','" . $values['deviceseries'] . "','" . $values['template'] . "')";
+    $db2->query($sql);
+    $db2->execute();
+}
+
+/**
+ *
+ * @param unknown $values
+ */
+function insert_user_level($values)
+{
+    global $db2;
+    $sql = "INSERT INTO userlevels (userlevel) VALUES ('" . $values['userlevel'] . "')";
+    $db2->query($sql);
+    $db2->execute();
+}
+
 
 /**
  *
@@ -2484,6 +2507,20 @@ function update_vendor($values)
     $db2->execute();
 }
 
+
+/**
+ *
+ * @param unknown $values
+ */
+function update_user_level($values)
+{
+    global $db2;
+    
+    $sql = "update userlevels set userlevel = '" . $values['userlevel'] . "' where id = ". $values['id'];
+    
+    $db2->query($sql);
+    $db2->execute();
+}
 
 /**
  *
@@ -2534,6 +2571,18 @@ function delete_user($values)
 
 /**
  *
+ * @param unknown $values
+ */
+function delete_user_level($values)
+{
+    global $db2;
+    $sql = "delete from userlevels where id = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+}
+
+/**
+ *
  * @param string $class
  * @return unknown|string
  */
@@ -2546,7 +2595,7 @@ function load_discovery_dataset($class = 'C')
         $mrecordset = $db2->resultset();
         if (isset($mrecordset[0]['market'])) {
             $market = $mrecordset[0]['market'];
-            $sql = "SELECT dr.id, dr.region, dr.market, dr.devicename, n.csr_site_id, n.csr_site_name, dr.nodeVersion, dr.deviceseries, dr.lastpolled, dr.deviceIpAddr, dr.model, dr.deviceos, dr.submarket, dr.upsince, dr.class, dr.sys_location, dr.sys_contact, dr.datepolled, dr.timepolled FROM discoveryres dr, nodes n where n.deviceIpAddr = dr.deviceIpAddr AND dr.class ='" . strtolower($class) . "' AND dr.market in (" . $market . ") ORDER BY id";
+            $sql = "SELECT * FROM discoveryres where class ='" . strtolower($class) . "' AND market in (" . $market . ") ORDER BY id";
             $db2->query($sql);
             $resultset['result'] = $db2->resultset();
             return $resultset;
@@ -2554,7 +2603,7 @@ function load_discovery_dataset($class = 'C')
             return '';
         }
     }else{
-        $sql = "SELECT dr.id, dr.region, dr.market, dr.devicename, n.csr_site_id, n.csr_site_name, dr.nodeVersion, dr.deviceseries, dr.lastpolled, dr.deviceIpAddr, dr.model, dr.deviceos, dr.submarket, dr.upsince, dr.class, dr.sys_location, dr.sys_contact, dr.datepolled, dr.timepolled FROM discoveryres dr, nodes n where n.deviceIpAddr = dr.deviceIpAddr AND dr.class ='" . strtolower($class) . "' ORDER BY id";
+        $sql = "SELECT * FROM discoveryres where class ='" . strtolower($class) . "' ORDER BY id";
         $db2->query($sql);
         $resultset['result'] = $db2->resultset();
         return $resultset;
@@ -2687,6 +2736,19 @@ function batch_accordion_details($batchid)
  *
  * @return unknown
  */
+function generic_get_usrvars()
+{
+    global $db2;
+    $sql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM usrvars ORDER BY usrvarid";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @return unknown
+ */
 function generic_get_userlevels()
 {
     global $db2;
@@ -2722,6 +2784,18 @@ function generic_get_vendors()
     return $resultset;
 }
 
+/**
+ *
+ * @return unknown
+ */
+function generic_get_user_levels()
+{
+    global $db2;
+    $sql = "SELECT id,userlevel FROM userlevels";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
 
 /**
  *
@@ -5599,7 +5673,7 @@ function update_login_api_rules($sso_flag, $username)
         }else{
           
          /*	 Usin old API 
-    		$token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=NCM4';
+    		$token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=Verizon4';
             $ch = curl_init($token_url);
             $header = array(
                     'Accept: application/json',
@@ -5612,7 +5686,7 @@ function update_login_api_rules($sso_flag, $username)
             $data = array(
                     "grant_type" => 'password',
                     'username' => 'kesavsr',
-                    'password' => 'NCM4'
+                    'password' => 'Verizon4'
             );
             $data_string = urlencode(json_encode($data));
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -6989,18 +7063,4 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable_export()
         $resultset['recordsFiltered'] = 0;
     }
     return $resultset;
-}
-
-/**
-*
-* @param unknown $ipaddress
-* @return unknown
-*/
-function get_device_series_from_ip_address($ipaddress)
-{
-   global $db2;
-   $sql = "SELECT deviceseries FROM nodes where deviceIpAddrsix = '".$ipaddress."'";
-   $db2->query($sql);
-   $resultset = $db2->resultset();
-   return $resultset;
 }

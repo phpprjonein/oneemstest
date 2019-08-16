@@ -64,7 +64,9 @@
 							<a class="dropdown-item" href="device-administration.php">Device Cleanup </a>
 							<a class="dropdown-item" href="audit-history-cleanup.php">Audit History Cleanup </a>
                             <a class="dropdown-item" href="manage-users.php">Manage Users </a>
-                            <a class="dropdown-item" href="manage-vendors.php">Manage Vendors </a>                          
+                            <a class="dropdown-item" href="manage-vendors.php">Manage Vendors </a>
+							<a class="dropdown-item" href="manage-userlevels.php">Manage User Levels </a>
+							<a class="dropdown-item" href="manage-usrvars.php">Import User Variables </a>							
 						</div></li>
           <?php } ?>
           <?php if (check_user_authentication(array(1,3,4))){ ?>

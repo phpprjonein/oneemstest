@@ -519,7 +519,7 @@ $(document).ready(function() {
 			            if (resdata == "redirectUser") {
 			              window.location.href = "index.php";
 			            } else {
-		            		if(resdata == 'Reached'){
+		            		if(jQuery.trim(resdata) == 'Reached'){
 		            			$('#row_'+value).addClass('device_row_green');
 		            		}else{
 		            			$('#row_'+value).addClass('device_row_red');

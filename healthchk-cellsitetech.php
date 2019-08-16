@@ -4,6 +4,7 @@ include 'functions.php';
 //ini_set('display_errors', 1);
 global $APPCONFIG;
 ?>
+<?php if(!isset($_GET['resultversion'])){ ?>
 <script type="text/javascript">
 $(document).ready(function(){
 				$(document).on('click', '.anchorcmd', function(event) {
@@ -24,6 +25,7 @@ $(document).ready(function(){
               });
             });        
 </script>
+<?php }?>
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];

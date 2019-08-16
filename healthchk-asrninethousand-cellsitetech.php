@@ -3,6 +3,7 @@ include "classes/db2.class.php";
 include 'functions.php';
 global $APPCONFIG;
 ?>
+<?php if(!isset($_GET['resultversion'])){ ?>
 <script type="text/javascript">
 $(document).ready(function(){
 				$(document).on('click', '.anchorcmd', function(event) {
@@ -23,6 +24,7 @@ $(document).ready(function(){
               });
             });        
 </script>
+<?php }?>
     <?php
     // Python API Request using curl Begins
     $userid = $_GET['userid'];

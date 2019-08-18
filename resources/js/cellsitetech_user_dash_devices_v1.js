@@ -560,6 +560,7 @@ $(document).ready(function() {
   $(document).on("click", ".paginate_button", function(event) {
 	  allVals = []
 	  $('#cbvals').val('');
+	  $( '#example .toggle-button' ).prop('checked', false);
 	  return false;
   });
   $(document).on("click", ".auditLog", function(event) {
@@ -643,6 +644,20 @@ $(document).ready(function() {
       }
     }
   });
+  $( '#example .toggle-button' ).click( function () {
+	    $( '#example input[type="checkbox"]' ).prop('checked', this.checked);
+  });
+  $(document).on("click", "#example .selector", function(
+		    event
+		  ) {
+	    var selected = $('#example .selector').length;
+	    if ($('.selector:checked:enabled').length === selected) {
+	      $('#example .toggle-button').prop('checked', true);
+	    } else {
+	      $('#example .toggle-button').prop('checked', false);
+	    }
+  })
+  
 });
 $(document).keydown(function(event) {
   if (event.keyCode == 27) {

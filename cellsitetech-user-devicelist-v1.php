@@ -129,7 +129,7 @@ modal.children[0].addEventListener('click', function(e) {
 								data-listid="<?php echo $listid ?>" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th>Select</th>
+										<th>Select&nbsp;All<input type="checkbox" name="selall" class="toggle-button"></th>
 										<th class="noExport">Health Check</th>
 										<th>ID</th>
 										<th>Site ID</th>

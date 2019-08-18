@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var allVals = [];	  
   $(document).on('change', '.selector', function(event) {
+	  var allVals = $('#cbvals').val().split(',');	  
 	  var tr = $(this).closest('tr');
 	  var id = tr.attr('id').replace('row_',''); 
 	  if($(this).is(':checked')){
@@ -11,6 +12,7 @@ $(document).ready(function() {
 		  	allVals.splice($.inArray(id, allVals), 1);
 	  }	
       $('#cbvals').val(allVals);
+	  //console.log(allVals);
     });
 	
   $("body").on("click", ".run_all_checks", function() {
@@ -458,9 +460,8 @@ $(document).ready(function() {
 		var allVals = $('#cbvals').val().split(',');
 		$('#multidevicehc #status').html('');
 		$('#multidevicehc #status').css("opacity","");
-    	
-    	if(allVals.length > 5){
-    		$('#multidevicehc #status').append("<strong>Error!</strong> Can't select more than 5 Devices");
+    	if($('#cbvals').val() == ''){
+    		$('#multidevicehc #status').append("<strong>Error!</strong> You should select minimum 1 device");
         	req_err = true;	
     	}
 		if(req_err){ 
@@ -646,6 +647,21 @@ $(document).ready(function() {
   });
   $( '#example .toggle-button' ).click( function () {
 	    $( '#example input[type="checkbox"]' ).prop('checked', this.checked);
+	    var allVals = [];
+	    $("tr.device_row").each(function() {
+		  var tr = $(this).closest('tr');
+		  var id = tr.attr('id').replace('row_',''); 
+		  if($('#row_'+id+ ' input[type="checkbox"]').is(':checked')){
+			  if(jQuery.inArray(id, allVals ) == -1){ 
+			  		allVals.push(id);
+			  }
+		  }else{
+			  	allVals.splice($.inArray(id, allVals), 1);
+		  }
+	    });	  
+	      $('#cbvals').val(allVals);
+	      
+	    
   });
   $(document).on("click", "#example .selector", function(
 		    event

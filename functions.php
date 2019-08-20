@@ -2581,6 +2581,105 @@ function delete_user_level($values)
     $db2->execute();
 }
 
+
+/**
+ *
+ * @param string $class
+ * @return unknown|string
+ */
+function load_discovery_dataset_new($class = 'C')
+{
+    global $db2, $pages;
+    $draw = $_GET['draw'];
+    $start = isset($_GET['start']) ? $_GET['start'] : 0;
+    $length = isset($_GET['length']) ? $_GET['length'] : 10;
+    $search = trim($_GET['search']['value']) ? addslashes(trim($_GET['search']['value'])) : null;
+    $order_col = $_GET['order'][0]['column'];
+    $order_dir = $_GET['order'][0]['dir'];
+    
+    $columns = array(
+            'd.deviceIpAddr',
+            'd.devicename',
+            'd.csr_site_id',
+            'd.csr_site_name',
+            'd.deviceseries',
+            'd.deviceos',
+            'd.nodeVersion',
+            'd.timepolled',
+            'd.timepolled',
+            'd.region',
+            'd.market'
+    );
+    $sql_count = "SELECT COUNT(distinct(d.id)) ";
+    $sql_select = "SELECT " . implode(", ", $columns);
+    
+    $sql_condition = " FROM discoveryres d where class = '" . $class ."'";
+    if(!in_array($_SESSION['userlevel'], array(9))){
+        $sqlm = "select GROUP_CONCAT(DISTINCT(CONCAT('''', (market), '''' ))) as market from nodes where csr_site_tech_id like '" . $_SESSION['username'] . "'";
+        $db2->query($sqlm);
+        $mrecordset = $db2->resultset();
+        if (isset($mrecordset[0]['market'])) {
+            $market = $mrecordset[0]['market'];
+            $sql_condition .= " AND d.market in (" . $market . ")";
+        }
+    }
+    if ($search) {
+        $sql_condition .= " AND ( ";
+        $sql_condition .= " d.deviceIpAddr LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.devicename  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.csr_site_name LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.deviceseries  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.deviceos  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.deviceos  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.nodeVersion  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.timepolled  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.region  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " ) ";
+    }
+    $count_sql = $sql_count . $sql_condition;
+    //echo $count_sql; die;
+    $db2->query($count_sql);
+    $row = $db2->resultsetCols();
+    
+    $total_rec = $row[0];
+    
+    $sql_order = "";
+    if ($order_col != '') {
+        $sql_order = " ORDER BY " . $columns[$order_col];
+    }
+    
+    if ($order_dir != '') {
+        $sql_order .= $order_dir != '' ? " $order_dir " : " asc ";
+    }
+    
+    $sql_limit = " LIMIT $start, $length ";
+    
+    $sql = $sql_select . $sql_condition . $sql_order . $sql_limit;
+    // echo '<br>';
+    // echo $sql;
+    
+    $db2->query($sql);
+    
+    $resultset['draw'] = $draw;
+    
+    if ($db2->resultset()) {
+        foreach ($db2->resultset() as $key => $value) {
+            $value['DT_RowId'] = "row_" . $value['id'];
+            $records[$key] = $value;
+        }
+        $resultset['data'] = $records;
+        $resultset['recordsTotal'] = $total_rec;
+        $resultset['recordsFiltered'] = $total_rec;
+    } else {
+        $resultset['data'] = array();
+        $resultset['recordsTotal'] = 10;
+        $resultset['recordsFiltered'] = 0;
+    }
+    return $resultset;
+}
+
+
 /**
  *
  * @param string $class

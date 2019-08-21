@@ -2608,7 +2608,9 @@ function load_discovery_dataset_new($class = 'C')
             'd.timepolled',
             'd.timepolled',
             'd.region',
-            'd.market'
+            'd.market',
+            'd.upsince',
+            
     );
     $sql_count = "SELECT COUNT(distinct(d.id)) ";
     $sql_select = "SELECT " . implode(", ", $columns);
@@ -2635,6 +2637,7 @@ function load_discovery_dataset_new($class = 'C')
         $sql_condition .= " OR d.timepolled  LIKE '%" . $search . "%'";
         $sql_condition .= " OR d.region  LIKE '%" . $search . "%'";
         $sql_condition .= " OR d.market  LIKE '%" . $search . "%'";
+        $sql_condition .= " OR d.upsince  LIKE '%" . $search . "%'";
         $sql_condition .= " ) ";
     }
     $count_sql = $sql_count . $sql_condition;

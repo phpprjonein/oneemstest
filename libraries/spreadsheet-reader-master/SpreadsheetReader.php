@@ -38,15 +38,11 @@
 		 * @param string MIME type from an upload, used to determine file type, optional
 		 */
 		public function __construct($Filepath, $OriginalFilename = false, $MimeType = false)
-		{    echo $Filepath;
+		{
 			if (!is_readable($Filepath))
 			{
 				throw new Exception('SpreadsheetReader: File ('.$Filepath.') not readable');
 			}
-			 if(!is_readable($sFileName)) {
-    $this->error = 1;
-    return false;
-} 
 
 			// To avoid timezone warnings and exceptions for formatting dates retrieved from files
 			$DefaultTZ = @date_default_timezone_get();

@@ -21,16 +21,18 @@ check_user_authentication(array(
 
 $page_title = 'OneEMS';
 if ( isset($_POST["submit"]) ) {
-	if(!file_exists($_FILES["file"]["tmp_name"])){
+	/* if(!file_exists($_FILES["file"]["tmp_name"])){
 		echo '
 			<div id="main-status" class="alert alert-success">No file to upload</div>';																
 	}
-	else{
+	else{ */
 		$allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 		  
-		if(in_array($_FILES["file"]["type"],$allowedFileType)){
-			
-			$Reader = new SpreadsheetReader($_FILES['file']['name']);			
+		if(in_array($_FILES["file"]["type"],$allowedFileType))
+		{
+			$targetPath = 'upload/'.$_FILES['file']['name'];
+			move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+			$Reader = new SpreadsheetReader($targetPath);			
 			$sheetCount = count($Reader->sheets());
 			
 			for($i=0;$i<$sheetCount;$i++)
@@ -55,7 +57,7 @@ if ( isset($_POST["submit"]) ) {
 			$message = "Invalid File Type. Upload Excel File.";
 			echo $message;exit;
 		}
-	}	 
+	//}	 
 }
 
 ?>

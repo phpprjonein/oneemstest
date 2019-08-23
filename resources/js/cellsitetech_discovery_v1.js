@@ -5,12 +5,6 @@ $(document).ready(function() {
 		    	$("#manual-disc-utils #manual-discovery").trigger('click');
 		    }
 		  });
-			$('#export-v-pills-missed').show();
-			$('#search-v-pills-missed').show();
-			$('#export-v-pills-new').hide();
-			$('#search-v-pills-new').hide();
-			$('#export-v-pills-ok').hide();
-			$('#search-v-pills-ok').hide();
 	$(".col-1 .nav-link").click(function(){
 		if($(this).html() == 'Missed'){
 			var ipmissedtable = $('#ip-missed-table').DataTable({
@@ -51,15 +45,6 @@ $(document).ready(function() {
 			             });
 			        }
 		      });
-			
-			$('#export-v-pills-conflict').hide();
-			$('#search-v-pills-conflict').hide();
-			$('#export-v-pills-missed').show();
-			$('#search-v-pills-missed').show();
-			$('#export-v-pills-new').hide();
-			$('#search-v-pills-new').hide();
-			$('#export-v-pills-ok').hide();
-			$('#search-v-pills-ok').hide();
 		}else if($(this).html() == 'New'){
 			var ipnewtable = $('#ip-new-table').DataTable({
 		          "processing": true,
@@ -98,15 +83,6 @@ $(document).ready(function() {
 		            },
 					"order": [[3, 'asc']],
 		      });
-			
-			$('#export-v-pills-conflict').hide();
-			$('#search-v-pills-conflict').hide();
-			$('#export-v-pills-missed').hide();
-			$('#search-v-pills-missed').hide();
-			$('#export-v-pills-new').show();
-			$('#search-v-pills-new').show();
-			$('#export-v-pills-ok').hide();
-			$('#search-v-pills-ok').hide();
 		}else if($(this).html() == 'OK'){
 			var ipoktable =  $('#ip-ok-table').DataTable( {
 		          "processing": true,
@@ -145,15 +121,6 @@ $(document).ready(function() {
 		            },
 					"order": [[3, 'asc']],
 		      });
-			
-			$('#export-v-pills-conflict').hide();
-			$('#search-v-pills-conflict').hide();
-			$('#export-v-pills-missed').hide();
-			$('#search-v-pills-missed').hide();
-			$('#export-v-pills-new').hide();
-			$('#search-v-pills-new').hide();
-			$('#export-v-pills-ok').show();
-			$('#search-v-pills-ok').show();
 		}
 	}); 
 	
@@ -712,6 +679,6 @@ $(document).ready(function() {
 	});
 	$('#Modal_Missed_Update').on('hidden.bs.modal', function () {
 			 //location.reload();
-			 window.location.href = 'cellsitetech-discovery.php';
+			 window.location.href = 'cellsitetech-discovery-v1.php';
 	})
 });

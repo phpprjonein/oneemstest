@@ -25,26 +25,38 @@ if ( isset($_POST["submit"]) ) {
 		echo '
 			<div id="main-status" class="alert alert-success">No file to upload</div>';																
 	}
-	else{
+	else{ 
 		$allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 		  
-		if(in_array($_FILES["file"]["type"],$allowedFileType)){
-			
-			$Reader = new SpreadsheetReader($_FILES['file']['name']);			
+		if(in_array($_FILES["file"]["type"],$allowedFileType))
+		{
+			$targetPath = 'upload/'.$_FILES['file']['name'];
+			move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+			$Reader = new SpreadsheetReader($targetPath);			
 			$sheetCount = count($Reader->sheets());
 			
 			for($i=0;$i<$sheetCount;$i++)
 			{
-				$Reader->ChangeSheet($i);				
+				$Reader->ChangeSheet($i);
+				$skipRows = 1;
+				$currentRow = 0;
+				
 				foreach ($Reader as $Row)
 				{
-					$values_arr = array(
-						'usrvarname' => $Row[1],
-						'value' => $Row[2],
-						'deviceseries' => $Row[3],
-						'template' => $Row[4],
-					);
-					insert_user_variable($values_arr);
+					if ($currentRow < $skipRows)
+					{	$currentRow++;
+						continue;
+					}
+					else{
+						$values_arr = array(
+							'usrvarname' => $Row[1],
+							'value' => $Row[2],
+							'deviceseries' => $Row[3],
+							'template' => $Row[4],
+						);
+						insert_user_variable($values_arr);
+						$currentRow++;
+					}
 				}			
 			}
 			echo '<div id="main-status" class="alert alert-success">Variables inserted successfully</div>';

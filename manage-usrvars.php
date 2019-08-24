@@ -93,7 +93,7 @@ if ( isset($_POST["submit"]) ) {
 						<!--button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addUsrvarForm">
 							Add User Variable
 						</button-->
-						<h5> Add User Variable</h5>
+						<h5> Upload User Variables</h5>
 						<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="file">Select a file to upload</label> <input

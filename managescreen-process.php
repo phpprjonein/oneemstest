@@ -37,7 +37,6 @@ if ($_POST['screen'] == 'User') {
         $values_arr = array(
                 'username' => $_POST['username'],
                 'password' => md5($_POST['password']),
-                'userid' => $_POST['username'],
                 'userlevel' => $_POST['role'],
                 'email' => $_POST['email'],
                 'timestamp' => date('m-d-Y'),

@@ -2487,8 +2487,8 @@ function insert_user_level($values)
 function insert_user($values)
 {
     global $db2;
-    $sql = "INSERT INTO users (username,password,userid,userlevel,email,timestamp,status,fname,lname,phone,zones) VALUES 
-    ('" . $values['username'] . "','" . $values['password'] . "','" . $values['username'] . "'," . $values['role'] . ",'" . $values['email'] . "',
+    $sql = "INSERT INTO users (username,password,userlevel,email,timestamp,status,fname,lname,phone,zones) VALUES 
+    ('" . $values['username'] . "','" . $values['password'] . "'," . $values['role'] . ",'" . $values['email'] . "',
     '" . date('m-d-Y') . "'," . $values['status'] . ",'" . $values['fname'] . "','" . $values['lname'] . "','" . $values['phone'] . "',
     ".$values['zones'].")";
     $db2->query($sql);
@@ -2535,8 +2535,8 @@ function update_user($values)
     }
     
     $sql = "update users set username = '" . $values['username'] . "', username = '" . $values['username'] . "'".$pass_update.",
-        userid = '" . $values['username'] . "', userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
-        status = " . $values['status'] . ", zones = " . $values['zones'] . " where id = ". $values['id'];
+        userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
+        status = " . $values['status'] . ", phone = '" . $values['phone'] . "', zones = " . $values['zones'] . " where id = ". $values['id'];
     
     
     

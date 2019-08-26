@@ -67,7 +67,7 @@ $page_title = 'OneEMS';
     						  <div class="form-group col-md-6">
                               <div class="form-group">
                                 <label for="userName">User Name</label>
-                                  <input type="email" class="form-control"
+                                  <input type="User Name" class="form-control"
                                   id="userName" placeholder="User Name"/>
                               </div>
                               </div>

@@ -564,6 +564,9 @@ $lists_all = get_list_by_count($userid);
 							<?php } ?>								
 							<area shape="default" href="#" target="">
 						</map>
+						<?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9) || ($_SESSION['userlevel'] == 5))) ||(in_array('North East', $_SESSION['sel_region']))){ ?>
+						<a href="switchtech-dashboard.php?markets=philadelphia" class="pull-right p-3">Philadelphia</a>
+						<?php } ?>	
 					</div>
 					<!-- END : Map section -->
 					<div class="panel-info panel-default">

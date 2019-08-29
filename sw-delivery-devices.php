@@ -134,7 +134,7 @@ select device series options -->
 									</div>
 									<!-- /select OS version options -->
 
-				<?php $destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/');?>
+				<?php $destdrive_arr = array('bootflash:/' => 'bootflash:/',  'flash:/' => 'flash:/', 'nvram:/' => 'nvram:/', 'system:/' => 'system:/', 'disk2:/' => 'disk2:/', 'harddisk:/' => 'harddisk:/');?>
 				<!-- select device series options -->
 									<div class="form-group f7 required" data-fid="f17">
 										<label class="control-label" for="f17">Destination Drive</label>

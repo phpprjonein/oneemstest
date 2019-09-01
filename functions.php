@@ -2579,6 +2579,9 @@ function delete_user($values)
     $db2->query($sql);
     $db2->execute();
     
+    $sql = "delete from nodes where csr_site_tech_id = '". $values['username']."' or swt_tech_id = '". $values['username']."'";
+    $db2->query($sql);
+    $db2->execute();
     
 }
 

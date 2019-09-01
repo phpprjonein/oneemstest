@@ -76,6 +76,7 @@ if ($_POST['screen'] == 'User') {
     if($_POST['act'] == 'delete'){
         $values_arr = array(
                 'id' => $_POST['id'],
+                'username' => $_POST['username']
         );
         delete_user($values_arr);
         $_SESSION['msg'] = 'ds';

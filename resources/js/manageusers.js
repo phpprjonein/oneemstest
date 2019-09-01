@@ -193,7 +193,7 @@ $(document).ready(function() {
 		});
 		
 		$(document).on('click', '#deleteUserForm #deleteuser', function(event) {
-			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'delete', 'id' : $('#deleteUserForm #userId').val() })
+			$.post( "managescreen-process.php", { 'screen': "User", 'act' : 'delete', 'id' : $('#deleteUserForm #userId').val(), 'username' : $('#deleteUserForm #userNameDel').text() })
 			  .done(function( data ) {
 				  if(data == 'success'){
 			        	var myModal = $('#deleteUserForm'); 

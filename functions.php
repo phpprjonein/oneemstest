@@ -35,8 +35,8 @@ function get_user_info($username, $password)
     
     if (trim($username) != '' && trim($password) != '') {
         $password = md5($password);
-        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" . $username . "' AND u.password='" . $password . "' AND ul.id = u.userlevel";
-        
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" . $username . "' AND 
+        u.password='" . $password . "' AND ul.id = u.userlevel AND u.status = 1";
         $db2->query($sql);
         $rows = $db2->resultset();
         $result = $rows[0];
@@ -56,7 +56,8 @@ function get_user_info_sso($username)
     global $db2;
     
     if (trim($username) != '') {
-        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" . $username . "' AND ul.id = u.userlevel";
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.username='" . $username . "' AND ul.id = u.userlevel AND
+u.status = 1";
         $db2->query($sql);
         $rows = $db2->resultset();
         $result = $rows[0];
@@ -82,7 +83,8 @@ function get_user_info_sso_imp($fname, $lname, $userlevel)
         $userlevel = str_replace('NA_Systems_Assurance', 'SwitchTech User',$userlevel);
     
     if (trim($fname) != '' && trim($lname) != '' && trim($userlevel)) {
-        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.fname='" . trim($fname) . "' AND  u.lname='" . trim($lname) . "' AND  ul.userlevel='" . trim($userlevel) . "' AND ul.id = u.userlevel";
+        $sql = "SELECT u.*,ul.userlevel as role FROM users u, userlevels ul WHERE u.fname='" . trim($fname) . "' AND  u.lname='" . trim($lname) . "' 
+        AND  ul.userlevel='" . trim($userlevel) . "' AND ul.id = u.userlevel AND u.status = 1";
         $db2->query($sql);
         $rows = $db2->resultset();
         $result = $rows[0];
@@ -2487,10 +2489,10 @@ function insert_user_level($values)
 function insert_user($values)
 {
     global $db2;
-    $sql = "INSERT INTO users (username,password,userid,userlevel,email,timestamp,status,fname,lname,phone,zones) VALUES 
-    ('" . $values['username'] . "','" . $values['password'] . "','" . $values['username'] . "'," . $values['role'] . ",'" . $values['email'] . "',
-    '" . date('m-d-Y') . "'," . $values['status'] . ",'" . $values['fname'] . "','" . $values['lname'] . "','" . $values['phone'] . "',
-    ".$values['zones'].")";
+    $sql = "INSERT INTO users (username,password,userlevel,email,timestamp,status,fname,lname,phone,zones) VALUES
+     ('" . $values['username'] . "','" . $values['password'] . "'," . $values['role'] . ",'" . $values['email'] . "',
+     '" . date('m-d-Y') . "'," . $values['status'] . ",'" . $values['fname'] . "','" . $values['lname'] . "','" . $values['phone'] . "',
+     ".$values['zones'].")";
     $db2->query($sql);
     $db2->execute();
 }
@@ -2535,11 +2537,8 @@ function update_user($values)
     }
     
     $sql = "update users set username = '" . $values['username'] . "', username = '" . $values['username'] . "'".$pass_update.",
-        userid = '" . $values['username'] . "', userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
-        status = " . $values['status'] . ", zones = " . $values['zones'] . " where id = ". $values['id'];
-    
-    
-    
+        userlevel = " . $values['userlevel'] . ", email = '" . $values['email'] . "', username = '" . $values['username'] . "',
+        status = " . $values['status'] . ", phone = '" . $values['phone'] . "', zones = " . $values['zones'] . " where id = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
 }
@@ -2564,9 +2563,23 @@ function delete_vendor($values)
 function delete_user($values)
 {
     global $db2;
-    $sql = "delete from users where id = ". $values['id'];
+    $sql = "update users set status=0 where id = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
+    
+    $sql = "delete from userdevices where userid = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+    
+    $sql = "delete from batchconfigtemplate where userid = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+    
+    $sql = "delete from tmpbatchconfigtemplate where userid = ". $values['id'];
+    $db2->query($sql);
+    $db2->execute();
+    
+    
 }
 
 /**
@@ -2906,7 +2919,7 @@ function generic_get_user_levels()
 function generic_get_users()
 {
     global $db2;
-    $sql = "SELECT * FROM users ORDER BY username";
+    $sql = "SELECT * FROM users where status = 1 ORDER BY username";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;

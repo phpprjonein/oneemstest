@@ -27,18 +27,12 @@ define('DB_NAME', $_SERVER['DB_NAME']);
 define('DB_USER', $_SERVER['DB_USER']);
 define('DB_PASSWORD', $_SERVER['DB_PASSWORD']);
 */
-// define('HIGH_LIMIT', 25);
-// define('LOW_LIMIT', 14);
- 
-//define('DB_USER', 'reader');
-//define('DB_PASSWORD','redaer1103');
 
-//define('DB_HOST', 'njbboemsdd1v');
+//define('DB_HOST', 'xxxxxx');
 //define('DB_PORT', '3306');
 //define('DB_NAME', 'oneems');
-//define('DB_NAME', $_SERVER['DB_NAME']);
 //define('DB_USER', 'oneems');
-//define('DB_PASSWORD','1emsservice#');
+//define('DB_PASSWORD','xxxxxxxxxx");
 
 
 define('DB_HOST', 'localhost');

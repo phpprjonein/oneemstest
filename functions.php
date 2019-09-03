@@ -7189,3 +7189,16 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable_export()
     }
     return $resultset;
 }
+/**
+*
+* @param unknown $ipaddress
+* @return unknown
+*/
+function get_device_series_from_ip_address($ipaddress)
+{
+   global $db2;
+   $sql = "SELECT deviceseries FROM nodes where deviceIpAddrsix = '".$ipaddress."'";
+   $db2->query($sql);
+   $resultset = $db2->resultset();
+   return $resultset;
+}

@@ -2464,9 +2464,20 @@ function insert_vendor($values)
 function insert_user_variable($values)
 {
     global $db2;
-    $sql = "INSERT INTO usrvars (usrvarname,usrvarval,deviceseries,templname) VALUES ('" . $values['usrvarname'] . "','" . $values['value'] . "','" . $values['deviceseries'] . "','" . $values['template'] . "')";
+	$sql = "SELECT * FROM import_usrvars WHERE usrvarname LIKE '" . $values['usrvarname'] . "' and username LIKE '".$values['username']."'";
     $db2->query($sql);
-    $db2->execute();
+    $recordset = $db2->resultset();
+	
+	if(!($recordset)){
+		$sql = "INSERT INTO import_usrvars (usrvarname,usrvarval,deviceseries,templname,username) VALUES ('" . $values['usrvarname'] . "','" . $values['value'] . "','" . $values['deviceseries'] . "','" . $values['template'] . "','" . $values['username'] . "')";
+		$db2->query($sql);
+		$db2->execute();
+	}
+	else{
+		$sql = "UPDATE `import_usrvars` SET usrvarval = '" . $values['value'] . "' WHERE usrvarname LIKE '" . $values['usrvarname'] . "' and username LIKE '".$values['username']."'";
+        $db2->query($sql);
+        $db2->execute();
+	}
 }
 
 /**
@@ -2857,10 +2868,66 @@ function batch_accordion_details($batchid)
 function generic_get_usrvars()
 {
     global $db2;
+    $sql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM import_usrvars ORDER BY usrvarid";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+
+/**
+ *
+ * @return unknown
+ */
+function generic_getall_usrvars()
+{
+    global $db2;
     $sql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM usrvars ORDER BY usrvarid";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
+}
+
+function getuservar($usrvarname, $username)
+{
+	global $db2;
+    $sql = "SELECT * FROM usrvars where usrvarname like '".$usrvarname."' and username like '".$username."'";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
+}
+/**
+*
+*/
+function exportUsrvars($username)
+{
+	$conn = new mysqli('localhost', 'root', '');  
+	mysqli_select_db($conn, 'oneems_all'); 
+	//exportUsrvars($Usrvars);
+	$setSql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM import_usrvars where username like '" . $username . "' ORDER BY usrvarid";  
+	$setRec = mysqli_query($conn, $setSql);
+	
+	$columnHeader = '';  
+	$columnHeader = "Sr NO" . "\t" . "User Variable Name" . "\t" . "Value" . "\t". "Device Series" . "\t";  
+	  
+	$setData = '';  
+	  
+	while ($rec = mysqli_fetch_row($setRec)) {  
+		$rowData = '';  
+		foreach ($rec as $value) {  
+			$value = '"' . $value . '"' . "\t";  
+			$rowData .= $value;  
+		}  
+		$setData .= trim($rowData) . "\n";  
+	}  
+	$timestamp = time();
+	$filename = 'Export_usrvars_' . $timestamp . '.xls';  
+	  
+	header("Content-type: application/octet-stream");  
+	header("Content-Disposition: attachment; filename=\"$filename\"");
+	header("Pragma: no-cache");  
+	header("Expires: 0");  
+	  
+	echo ucwords($columnHeader) . "\n" . $setData . "\n";exit;
 }
 
 /**
@@ -6512,6 +6579,25 @@ function generate_option_button_for_configs_enable($tablename, $column, $varname
     return $output;
 }
 
+function generate_option_button_for_configs_enable_usrvar($tablename, $column, $varname){
+    global $db2;
+    $options_arr = array();
+    //$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'  order by ".$column;
+	$sql = "SELECT distinct(".$column.") ".$addcolumn." FROM ".$tablename." where ".$column." != '' and ".$column." != 'None'"." and usrvarname = 'Enable Secret'"."  order by ".$column;
+    $db2->query($sql);	
+    $resultset = $db2->resultset();
+    
+    $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>
+									<input type="'.$varname.'"
+									name="'.$varname.'"
+									class="form-control"
+									id="'.str_replace(' ','-',$varname).'"
+									value="'.$resultset[0][$column].'"
+									placeholder="">';
+									
+	return $output;
+}
+
 function generate_option_button_for_configs_defaultbox_type($usrvarname, $deviceseries){
     $uservarsreq = ($deviceseries != 'Bandwidth') ? 'uservarsreq' : '';
     $output = '<label class="control-label" for="'.$usrvarname.'">'.$usrvarname.'</label>
@@ -6523,6 +6609,19 @@ function generate_option_button_for_configs_defaultbox_type($usrvarname, $device
 									placeholder="">';
     return $output;
 }
+
+function generate_option_button_for_configs_defaultbox_type_usrvars($usrvarname, $deviceseries, $usrvarval){
+    $uservarsreq = ($deviceseries != 'Bandwidth') ? 'uservarsreq' : '';
+    $output = '<label class="control-label" for="'.$usrvarname.'">'.$usrvarname.'</label>
+									<input type="'.$usrvarname.'"
+									name="'.$usrvarname.'"
+									class="form-control '.$uservarsreq.'"
+									id="'.str_replace(' ','-',$usrvarname).'"
+									value="'.$usrvarval.'"
+									placeholder="">';
+    return $output;
+}
+
 function generate_option_button_for_configs_static_type($usrvarname){
     if($usrvarname == 'MTU'){
         $option_arr = array(1970 => '1970', 4350 => '4350' );

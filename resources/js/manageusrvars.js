@@ -1,10 +1,17 @@
 $(document).ready(function() {
+	$(document).on('change', '#cellsitech-config #file_process input[type="checkbox"]', function(e){
+        if($(this).is(':checked')){
+        	$('#file_process .form-non-editable-fields').hide();
+        }else{
+        	$('#file_process .form-non-editable-fields').show();
+        }
+    });
 	$('#edituser').hide();
 	// Conflict Tab - 1-11 col, 11 no exp and 12, 13 region, market
 	$('#manageusrvars').DataTable( {
 		 "aoColumns": [{},{},{},{},{"bSortable": false}],		
 		 "processing": true,
-		 "buttons": [{extend: 'excelHtml5',className:'dtexcelbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2]}}],
+		 "buttons": [{extend: 'pdfHtml5',className:'dtpdfbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'print',className:'dtprintbtn',exportOptions: {columns: [0, 1, 2]}},{extend: 'excelHtml5',className:'dtexcelbtn dtexcelbtn-cs',exportOptions: {columns: [0, 1, 2]}}],
 		 "autoWidth": false,
 		 "dom": 'Bfrtip',
 		 "pageLength": 20,
@@ -156,6 +163,94 @@ $(document).ready(function() {
     			
     		}
 		});
+		
+		$(document).on("input", "#template-dropdown #select_device_name", function(event) {
+			  refresh_telco_interface();
+		  });
+		$('select[name="templname"]').change(function(){
+			$('.non-bandwidth').not('.panel-heading-lstmgmt').hide();
+			var templnamefwd=$(this).val();
+			$("#templnamefwd").val(templnamefwd);
+			$.post("ip-mgt-process.php", {
+				'calltype': "trigger",
+				'tempname': $(this).val(),
+				'action': "GetUserVars"
+			}).done(function(data) {
+				dataarr = data.split(',');
+				$(".non-bandwidth input").each(function() {
+					if($.inArray($(this).attr('name'),dataarr) != -1){
+						$(this).parent("div").show();
+					}
+				});
+				$(".non-bandwidth select").each(function() {
+					if($.inArray($(this).attr('name'),dataarr) != -1){
+						$(this).parent("div").show();
+					}
+				});
+		
+			});
+			
+			
+			if ($(this).val() != "" && $('#template-dropdown #select_script_type').val() == 'BW-Upgrade') {
+				  $('#template-dropdown #select_device_name').val($(this).val());
+			  }else{
+				  $('#template-dropdown #select_device_name').val('');
+			  }
+			  if ($('#template-dropdown #select_switch').val() != ""){
+					$.post("ip-mgt-process.php", {
+					  'calltype': "configtrigger",
+					  'select_switch' : $('#template-dropdown #select_switch').val(),
+					  'action': "GenerateScriptDeviceLoad"
+					}).done(function(data) {
+					  if (data != "") {
+							readOnlyLength = data.length;
+							$('#template-dropdown #select_device_name').val(data);
+							refresh_telco_interface();	
+					  }
+					});
+					$.post("ip-mgt-process.php", {
+						'calltype': "configtrigger",
+						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'action': "GenerateScriptTimezoneLoad"
+					  }).done(function(data) {
+						if (data != "") {
+								$('#template-dropdown #Time-Zone').val(data);
+						}
+					});
+					
+					$.post("ip-mgt-process.php", {
+						'calltype': "configtrigger",
+						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'action': "GenerateScriptLoadVlanEven",
+					  }).done(function(data) {
+						if (data != "") {
+							$('.VlanEven').html(data);
+						}
+					});
+					$.post("ip-mgt-process.php", {
+						'calltype': "configtrigger",
+						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'action': "GenerateScriptLoadVlanOdd",
+					  }).done(function(data) {
+						if (data != "") {
+							$('.VlanOdd').html(data);
+						}
+					});
+					
+					
+			  }
+	  });
+	  
+		$(document).on('change', "#file_process .elementvalref", function(event) {
+			var selid = $(this).attr('id');
+			$.post( "cellsite-config-process.php", { 
+				'action': "LoadTableData", 
+				'loadTab' : $('#' + selid).val(),
+				//'switch_name': $('#configt_load_switch_name').val(),
+			}).done(function( data ) {
+				$('#val_' + selid).html( data );
+			});
+		});
 		/* $(document).on('click', '#manageusrvars .deleteusrvar', function(event) {
 			var usrvarId = $(this).closest('tr').data("usrvarid");
 			var userName = $(this).closest('tr').find("td:eq(2)").text(); 
@@ -193,3 +288,32 @@ $(document).ready(function() {
 			  }
 		  }); */
 });
+
+function refresh_telco_interface(){
+	$.post("ip-mgt-process.php", {
+		'calltype': "configtrigger",
+		'select_switch' : $('#template-dropdown #select_switch').val(),
+		'action': "GenerateScriptTelcoInterfaceLoadEven",
+		'select_script_type' : $(".gscript1 #select_script_type").val(),
+		'select_device_name' : $('#cellsitech-generate-script #select_device_name').val(),
+	  }).done(function(data) {
+			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
+				$('.BW----Telco-Interface-ASR9010-Even').val(data);
+			}else{
+				$('.Telco-Interface-ASR9010-Even').html(data);
+			}
+	});
+	$.post("ip-mgt-process.php", {
+		'calltype': "configtrigger",
+		'select_switch' : $('#template-dropdown #select_switch').val(),
+		'action': "GenerateScriptTelcoInterfaceLoadOdd",
+		'select_script_type' : $(".gscript1 #select_script_type").val(),
+		'select_device_name' : $('#template-dropdown #select_device_name').val(),
+	  }).done(function(data) {
+			if($(".gscript1 #select_script_type").val() == "BW-Upgrade"){
+				$('.BW----Telco-Interface-ASR9010-Odd').val(data);
+			}else{
+				$('.Telco-Interface-ASR9010-Odd').html(data);
+			}
+	});	
+}

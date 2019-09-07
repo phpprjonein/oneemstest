@@ -2900,25 +2900,49 @@ function getuservar($usrvarname, $username)
 */
 function exportUsrvars($username)
 {
-	$conn = new mysqli('localhost', 'root', '');  
+	global $db2;
+    $sql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM import_usrvars where username like '" . $username . "' ORDER BY usrvarid";  
+    $db2->query($sql);
+	$resultset['result']=$db2->resultset();
+	//$setRec1 = mysqli_query($db2, $sql);
+	//echo '<pre>';print_r($resultset);
+	//echo '<pre>';
+	$columnHeader = '';  
+	$columnHeader = "Sr NO" . "\t" . "User Variable Name" . "\t" . "Value" . "\t". "Device Series" . "\t";  
+	  
+	$setData = '';
+	foreach($resultset as $result)
+	{
+		foreach($result as $rec)
+		{
+			$rowData = '';  
+			foreach ($rec as $value) {  
+				$value = '"' . $value . '"' . "\t";  
+				$rowData .= $value;  
+			}  
+			$setData .= trim($rowData) . "\n";  
+		}		
+	}
+	
+	/* $conn = new mysqli('localhost', 'root', '');  
 	mysqli_select_db($conn, 'oneems_all'); 
 	//exportUsrvars($Usrvars);
 	$setSql = "SELECT usrvarid, usrvarname, usrvarval, deviceseries FROM import_usrvars where username like '" . $username . "' ORDER BY usrvarid";  
 	$setRec = mysqli_query($conn, $setSql);
-	
+	//echo '<pre>';print_r($setRec);exit;
 	$columnHeader = '';  
 	$columnHeader = "Sr NO" . "\t" . "User Variable Name" . "\t" . "Value" . "\t". "Device Series" . "\t";  
 	  
 	$setData = '';  
-	  
-	while ($rec = mysqli_fetch_row($setRec)) {  
+	  echo '<pre>';
+	while ($rec = mysqli_fetch_row($setRec)) {  print_r($rec);
 		$rowData = '';  
 		foreach ($rec as $value) {  
 			$value = '"' . $value . '"' . "\t";  
 			$rowData .= $value;  
 		}  
 		$setData .= trim($rowData) . "\n";  
-	}  
+	}  exit; */
 	$timestamp = time();
 	$filename = 'Export_usrvars_' . $timestamp . '.xls';  
 	  
@@ -3096,6 +3120,9 @@ function generic_get_deviceseries()
         ),
         array(
             'deviceseries' => 'ASR900'
+        ),
+	 array(
+            'deviceseries' => 'NCS5500'
         )
     );
     return $resultset;

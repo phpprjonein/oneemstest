@@ -171,6 +171,14 @@ $(document).ready(function() {
 			$('.non-bandwidth').not('.panel-heading-lstmgmt').hide();
 			var templnamefwd=$(this).val();
 			$("#templnamefwd").val(templnamefwd);
+			var postval = templnamefwd.split('_');
+			var f8val=postval[2];
+			if(f8val=='1561S1'){
+				f8val='15.6(1)S1'
+			}
+			
+			$("#f7").val(postval[1]);
+			$("#f8").val(f8val);
 			$.post("ip-mgt-process.php", {
 				'calltype': "trigger",
 				'tempname': $(this).val(),
@@ -191,36 +199,45 @@ $(document).ready(function() {
 			});
 			
 			
+			
+	  });
+	  
+		$(document).on('change', "#select_switch", function(event) {
+			var switchnamefwd = $(this).val();
+			$("#f11").val(switchnamefwd);
 			if ($(this).val() != "" && $('#template-dropdown #select_script_type').val() == 'BW-Upgrade') {
 				  $('#template-dropdown #select_device_name').val($(this).val());
+				  $('#f14').val($(this).val());
 			  }else{
 				  $('#template-dropdown #select_device_name').val('');
+				  $('#f14').val('');
 			  }
-			  if ($('#template-dropdown #select_switch').val() != ""){
+			  if ($('#select_switch').val() != ""){
 					$.post("ip-mgt-process.php", {
 					  'calltype': "configtrigger",
-					  'select_switch' : $('#template-dropdown #select_switch').val(),
+					  'select_switch' : $('#select_switch').val(),
 					  'action': "GenerateScriptDeviceLoad"
 					}).done(function(data) {
 					  if (data != "") {
 							readOnlyLength = data.length;
 							$('#template-dropdown #select_device_name').val(data);
+							$('#f14').val(data);
 							refresh_telco_interface();	
 					  }
 					});
 					$.post("ip-mgt-process.php", {
 						'calltype': "configtrigger",
-						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'select_switch' : $('#select_switch').val(),
 						'action': "GenerateScriptTimezoneLoad"
 					  }).done(function(data) {
 						if (data != "") {
-								$('#template-dropdown #Time-Zone').val(data);
+								$('#Time-Zone').val(data);
 						}
 					});
 					
 					$.post("ip-mgt-process.php", {
 						'calltype': "configtrigger",
-						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'select_switch' : $('#select_switch').val(),
 						'action': "GenerateScriptLoadVlanEven",
 					  }).done(function(data) {
 						if (data != "") {
@@ -229,7 +246,7 @@ $(document).ready(function() {
 					});
 					$.post("ip-mgt-process.php", {
 						'calltype': "configtrigger",
-						'select_switch' : $('#template-dropdown #select_switch').val(),
+						'select_switch' : $('#select_switch').val(),
 						'action': "GenerateScriptLoadVlanOdd",
 					  }).done(function(data) {
 						if (data != "") {
@@ -239,8 +256,7 @@ $(document).ready(function() {
 					
 					
 			  }
-	  });
-	  
+		});	
 		$(document).on('change', "#file_process .elementvalref", function(event) {
 			var selid = $(this).attr('id');
 			$.post( "cellsite-config-process.php", { 

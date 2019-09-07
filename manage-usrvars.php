@@ -86,16 +86,11 @@ if ( isset($_POST["submit"]) ) {
 	<!-- Modal HTML -->
 	<div class="container-fluid">
         <?php include ('menu.php'); ?>
-		<div class="form-group" style="float:right">
-			<form action="" method="post" id="config_file_updater" enctype="multipart/form-data">
-				<input type="hidden" name="tablename" value="usrvars">
-				<input type="submit" name="action" id="config-submit" class="btn" value="Download">
-			</form>
-		</div>
+		
         <div class="content container-fluid" id="login-impersonate">
 			<!-- Main content -->
 			<section class="content" id="sw-delivery-devices">
-				<div class="col-md-11">
+				<div class="col-md-12">
 					<?php if($_SESSION['msg'] == 'ds'){?>
 					<div id="status" class="alert alert-success"> User Variable Deleted Successfully</div>
 					<?php unset($_SESSION['msg']);}?>
@@ -103,8 +98,13 @@ if ( isset($_POST["submit"]) ) {
 						<!--button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addUsrvarForm">
 							Add User Variable
 						</button-->
-						
-						<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data" style="width:75%">
+						<div class="form-group" style="float:right">
+							<form action="" method="post" id="config_file_updater" enctype="multipart/form-data">
+								<input type="hidden" name="tablename" value="usrvars">
+								<input type="submit" name="action" id="config-submit" class="btn" value="Download">
+							</form>
+						</div>
+						<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 						<h5> Upload User Variables</h5>
 							<div class="form-group">
 								<label for="file">Select a file to upload</label> <input
@@ -274,7 +274,7 @@ if ( isset($_POST["submit"]) ) {
 									<div class="form-group f11 required" data-fid="f11">
 										<label class="control-label" for="f11">Select Switch</label> 
 										<select	id="select_switch" class="form-control custom-select"
-											id="f11" name="f11" data-rule-required="true">
+											data-rule-required="true">
 											<option value="">- SELECT Switch -</option>
 											<?php foreach($gsswitchddwndata as $key => $val) {;?>
 											<option value="<?php echo $val['switch_name'];?>"><?php echo $val['switch_name']; ?></option>
@@ -459,6 +459,10 @@ if ( isset($_POST["submit"]) ) {
 								action='generate-post-script-usrvars.php' method='POST'
 								enctype='multipart/form-data' novalidate autocomplete="on">
 								<input type="hidden" name="templnamefwd" id="templnamefwd">
+								<input type="hidden" name="f7" id="f7">
+								<input type="hidden" name="f8" id="f8">
+								<input type="hidden" name="f11" id="f11">
+								<input type="hidden" name="f14" id="f14">
 								<div class="row">
 									<input type="hidden" name="tmplcategory" value="Golden">
 									<!-- router selection content row -->

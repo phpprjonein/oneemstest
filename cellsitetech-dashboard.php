@@ -283,7 +283,8 @@ $lists_all = get_list_by_count($userid);
 						<!-- US Map Image -->
 						<img src="resources/img/map_new.png" id="map_image"
 							usemap="#United States of America" height="50%">
-						<a href="cellsitetech-dashboard.php?markets=philadelphia" class="pull-right p-3">Philadelphia</a>	
+						<!-- <a href="cellsitetech-dashboard.php?markets=philadelphia" class="pull-right p-3">Philadelphia</a>	
+                                                   -->
 					</div>
 					<!-- END : Map section -->
 					<div class="panel-info panel-default">

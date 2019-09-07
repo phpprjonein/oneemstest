@@ -468,7 +468,7 @@ $lists_all = get_list_by_count($userid);
 							<!-- New York Metro  -->
 							<?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9) || ($_SESSION['userlevel'] == 5))) ||(in_array('New York Metro', $_SESSION['sel_region']))){ ?>
 							<area name="New York Metro" shape="poly"
-								coords="550,131,547,128,536,135,534,131,533,125,529,126,527,131,520,129,517,133,523,137,524,140,522,143,526,144,531,145,534,147,534,141,531,141,531,139,534,138,538,138,543,135,547,133,550,131"
+                                                                coords="550,133,547,128,536,135,534,131,533,125,529,126,527,131,520,129,517,133,523,137,524,140,522,143,526,144,531,145,534,147,534,141,531,141,531,139,534,138,538,138,550,134"
 								href="#" class="map_region" data-market="NY-Metro"
 								alt="New York Metro" title="New York Metro">
 							<?php } ?>
@@ -484,12 +484,22 @@ $lists_all = get_list_by_count($userid);
 							<!-- New York  -->
 							<?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9) || ($_SESSION['userlevel'] == 5))) ||(in_array('New York', $_SESSION['sel_region']))){ ?>
 							<area name="New York" shape="poly"
-								coords="524,168,524,163,519,159,520,155,529,161,533,153,533,148,527,145,523,143,522,138,524,134,523,130,520,133,517,131,518,127,519,124,524,127,528,124,534,123,532,108,530,94,524,81,509,82,500,95,502,103,497,109,488,111,476,113,478,118,476,122,471,131,472,133,484,129,485,136,486,141,490,142,492,146,492,150,492,152,487,154,487,159,491,161,495,159,502,156,508,153"
+								coords="518,127,519,124,524,127,528,124,534,123,532,108,530,94,524,81,509,82,500,95,502,103,497,109,488,111,476,113,478,118,476,122,471,131,484,130,484,138,518,128"
+			
 								href="#" class="map_region" data-market="NY-Upstate" alt="New York"
 								title="New York"
 								OnMouseOver="window.status='New York'; return true"
 								OnMouseOut="window.status=''; return true">
 							<?php } ?>
+						       <!-- PhiladelphiaTriState  -->
+			                              <?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9) || ($_SESSION['userlevel'] == 5))) ||(in_array('PhiladelphiaTriState', $_SESSION['sel_region']))){ ?>
+			                              <area name="PhiladelphiaTriState" shape="poly"
+			                              		coords="524,168,524,163,519,159,520,155,529,161,533,153,533,148,527,145,523,143,522,138,524,134,523,130,520,133,517,131,485,136,486,141,490,142,492,146,492,150,492,152,487,154,487,159,491,161,495,159,502,156,508,153"
+			                                                                href="#" class="map_region" data-market="PhiladelphiaTriState" alt="PhiladelphiaTriState"
+			                                                                title="PhiladelphiaTriState"
+			                                                                OnMouseOver="window.status='PhiladelphiaTriState'; return true"
+			                                                                OnMouseOut="window.status=''; return true">
+			                                                        <?php } ?>
 							<!-- Washington/Baltimore/Virginia  -->
 							<?php if((isset($_SESSION['userlevel']) && (($_SESSION['userlevel'] == 8) || ($_SESSION['userlevel'] == 9) || ($_SESSION['userlevel'] == 5))) ||(in_array('Washington/Baltimore/Virginia', $_SESSION['sel_region']))){ ?>
 							<area name="Washington/Baltimore/Virginia" shape="poly"

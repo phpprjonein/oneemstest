@@ -9,10 +9,8 @@ if (isset($_GET['clear'])) {
         unset($_SESSION['search_term']);
     }
 }
-
-user_session_check();
-include_once ('config/session_check_cellsite_tech.php');
-
+//user_session_check();
+//include_once ('config/session_check_cellsite_tech.php');
 $page_title = 'OneEMS';
 
 // page logging
@@ -656,7 +654,7 @@ conflict table content -->
 									<!--
                     <div class="form-group col-md-6">
                       <label for="inputSysName">System Name</label>
-                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.NCMwireless.com" readonly>
+                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.Verizonwireless.com" readonly>
                     </div>
 					-->
 									<div class="form-group col-md-4">

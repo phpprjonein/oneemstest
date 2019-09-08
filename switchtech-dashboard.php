@@ -2,9 +2,9 @@
 include_once ("classes/db2.class.php");
 include_once "classes/paginator.class.php";
 include_once ("functions.php");
-//user_session_check();
+user_session_check();
 // Check for switch tech type user
-//include_once ('config/session_check_switch_tech.php');
+include_once ('config/session_check_switch_tech.php');
 $page_title = 'OneEMS';
 // Default map dispaly flag true
 $show_map_flag = true;

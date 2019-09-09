@@ -5375,7 +5375,7 @@ function update_login_api_rules($sso_flag, $username)
         }else{
           
          /*	 Usin old API 
-    		$token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=kesavsr&password=NCM4';
+    		$token_url = $APPCONFIG['login']['switchtechloginapi'].'/token?grant_type=password&username=xxxxx&password=xxxxx';
             $ch = curl_init($token_url);
             $header = array(
                     'Accept: application/json',
@@ -5387,8 +5387,8 @@ function update_login_api_rules($sso_flag, $username)
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $data = array(
                     "grant_type" => 'password',
-                    'username' => 'kesavsr',
-                    'password' => 'NCM4'
+                    'username' => 'xxxxx',
+                    'password' => 'xxxxx'
             );
             $data_string = urlencode(json_encode($data));
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

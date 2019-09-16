@@ -2914,14 +2914,15 @@ function exportUsrvars($username)
 	foreach($resultset as $result)
 	{
 		foreach($result as $rec)
-		{
+		{   
+			$rec['usrvarval']='';
 			$rowData = '';  
 			foreach ($rec as $value) {  
 				$value = '"' . $value . '"' . "\t";  
 				$rowData .= $value;  
 			}  
 			$setData .= trim($rowData) . "\n";  
-		}		
+		}
 	}
 	
 	/* $conn = new mysqli('localhost', 'root', '');  

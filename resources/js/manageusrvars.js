@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var readOnlyLength = 0;
 	$(document).on('change', '#cellsitech-config #file_process input[type="checkbox"]', function(e){
         if($(this).is(':checked')){
         	$('#file_process .form-non-editable-fields').hide();
@@ -201,7 +202,15 @@ $(document).ready(function() {
 			
 			
 	  });
-	  
+		$(document).on('keypress, keydown', '#select_device_name', function(event) {
+			var $field = $(this);
+			if ((event.which != 37 && (event.which != 39)) &&
+			  ((this.selectionStart < readOnlyLength) ||
+				((this.selectionStart == readOnlyLength) && (event.which == 8)))) {
+			  return false;
+			}
+		});
+		
 		$(document).on('change', "#select_switch", function(event) {
 			var switchnamefwd = $(this).val();
 			$("#f11").val(switchnamefwd);
@@ -220,7 +229,7 @@ $(document).ready(function() {
 					}).done(function(data) {
 					  if (data != "") {
 							readOnlyLength = data.length;
-							$('#template-dropdown #select_device_name').val(data);
+							$('#select_device_name').val(data);
 							$('#f14').val(data);
 							refresh_telco_interface();	
 					  }
@@ -267,6 +276,13 @@ $(document).ready(function() {
 				$('#val_' + selid).html( data );
 			});
 		});
+		
+		$(document).on('change', "#select_device_name", function(event) {
+			readOnlyLength = $('#select_device_name').val().length;
+			$('#f14').val($('#select_device_name').val());
+			
+		});
+		
 		/* $(document).on('click', '#manageusrvars .deleteusrvar', function(event) {
 			var usrvarId = $(this).closest('tr').data("usrvarid");
 			var userName = $(this).closest('tr').find("td:eq(2)").text(); 

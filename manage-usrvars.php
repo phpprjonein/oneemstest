@@ -101,7 +101,7 @@ if ( isset($_POST["submit"]) ) {
 						<div class="form-group" style="float:right">
 							<form action="" method="post" id="config_file_updater" enctype="multipart/form-data">
 								<input type="hidden" name="tablename" value="usrvars">
-								<input type="submit" name="action" id="config-submit" class="btn" value="Download">
+								<input type="submit" name="action" id="config-submit" class="btn" value="Get Template">
 							</form>
 						</div>
 						<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
@@ -111,7 +111,7 @@ if ( isset($_POST["submit"]) ) {
 									type="file" id="file" name="file">
 								
 							</div>
-							<input type="submit" name="submit" value="Submit" />
+							<input type="submit" name="submit" value="Upload" />
 						</form>
 
         <!-- Modal -->
@@ -265,7 +265,9 @@ if ( isset($_POST["submit"]) ) {
 											<?php //print '<pre>'; print_r($templates);die;?>
 											
 											<?php foreach ($templates as $key=>$val):?>
-											<option <?php echo ($_POST['templname'] == $val['templname']) ? ' selected':''; ?>><?php echo $val['templname'];?></option>
+												<?php if(substr( $val['templname'], 0, 6 ) === "Golden"){?>
+													<option <?php echo ($_POST['templname'] == $val['templname']) ? ' selected':''; ?>><?php echo $val['templname'];?></option>
+												<?php }?>
 											<?php endforeach;?>
 										</select>
 									</div>		

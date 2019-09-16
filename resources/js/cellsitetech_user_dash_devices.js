@@ -256,11 +256,11 @@ $(document).ready(function() {
           return (
             '<a data-ssh="' +
             $("#username").val() +
-            "@PAMadmingrp@" +
+            "%40PAMadmingrp%40" +
             $.trim(exploded[1]) +
             '@pamssh.nsiam.vzwnet.com" data-sshna="' +
             $("#username").val() +
-            "@PAMronlygrp@" +
+            "%40PAMronlygrp%40" +
             $.trim(exploded[1]) +
             '@pamssh.nsiam.vzwnet.com" class="link_device_name" href="#">' +
             data +
@@ -664,7 +664,7 @@ $(document).ready(function() {
 
   $(document).on("click", ".link_device_name", function(event) {
     var myModal = $("#Modal_Device_Name");
-    $("#Modal_Device_Name .modal-title").html("SSH Command");
+    $("#Modal_Device_Name .modal-title").html("Copy Cyberark syntax or directly sign in via PuTTY or SecureCRT");
     //$('#Modal_Device_Name .modal-body').html($(this).data('ssh'));
     exploded = $(this).closest('tr').find('td:eq(4)').html();
     exploded = exploded.split("<br>");
@@ -674,14 +674,14 @@ $(document).ready(function() {
         $(this)
           .data("ssh")
           .replace(/:/gi, "-") +
-        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy</button></td><td><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">Open&nbsp;SSH</a></td></tr></table></div>'
+        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy Admin</button></td><td><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">PuTTY</a><br><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh2://' + $(this).data("ssh").replace(/:/gi, "-") + '">SecureCRT</a></td></tr></table></div>'
     );
     $("#Modal_Device_Name .modal-body").append(
       '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
         $(this)
           .data("sshna")
           .replace(/:/gi, "-") +
-        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy</button></td><td><a target="blank" class="link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">Open&nbsp;SSH</a></td></tr></table></div>'
+        '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy ReadOnly</button></td><td><a target="blank" class="link_device_name_popup" href="ssh://' + $(this).data("sshna").replace(/:/gi, "-") + '">PuTTY</a><br><a target="blank" class="link_device_name_popup" href="ssh2://' + $(this).data("sshna").replace(/:/gi, "-") + '">SecureCRT</a></td></tr></table></div>'
     );
     myModal.modal("show");
     return false;

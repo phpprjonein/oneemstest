@@ -58,7 +58,11 @@ $page_title = 'OneEMS';
 					<i class="fa fa-sign-out fa-3x"></i>
 				</div>
 				<div class="col-sm-10 col-10">
+                               <?php  if ($_SESSION['sso_flag'] == 0) { ?>
 					<a href="index.php"><h5>CLICK HERE TO LOG OUT</h5></a>
+				<?php } else { ?>
+ <a href="https://logindev.ebiz.verizon.com/onesso/login.jsp?TYPE=33554433&REALMOID=06-12035133-bb2a-1020-90b6-85114dc6fbc3&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=$SM$Obk1gdJc3jGvdncG6BVVdHZ%2fQ0Ex627Y2pqBng6CDqNJdPLkjB768sxKLQTIhg%2b0&TARGET=$SM$HTTPS%3a%2f%2foneems-uat%2evh%2evzwnet%2ecom%2f"><h5>CLICK HERE TO LOG OUT</h5></a> 
+                                  <?php }; ?>
 					<p class="font-weight-bold">Didn't mean to log out?</p>
 					<p>
 						<a href="<?php echo $location_href;?>"><i

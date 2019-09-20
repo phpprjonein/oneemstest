@@ -179,12 +179,12 @@
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("switchtech-ip-management.php", "switchtech-discovery.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("switchtech-ip-management.php", "cellsitetech-discovery.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Discovery</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="switchtech-ip-management.php">Discovery
-								IPs</a> <a class="dropdown-item" href="switchtech-discovery.php">Discovery
+								IPs</a> <a class="dropdown-item" href="cellsitetech-discovery.php">Discovery
 								Results</a>
 						</div></li>
 					<li class="nav-item dropdown"><a

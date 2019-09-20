@@ -9,10 +9,8 @@ if (isset($_GET['clear'])) {
         unset($_SESSION['search_term']);
     }
 }
-
-user_session_check();
-include_once ('config/session_check_cellsite_tech.php');
-
+//user_session_check();
+//include_once ('config/session_check_cellsite_tech.php');
 $page_title = 'OneEMS';
 
 // page logging
@@ -25,7 +23,7 @@ write_log($mesg);
 <html>
 <head>
    <?php include_once("includes.php");  ?>
-   <script src="resources/js/cellsitetech_discovery.js?t="
+   <script src="resources/js/cellsitetech_discovery_v1.js?t="
 	<?php echo date('his'); ?>></script>
 </head>
 <body>
@@ -251,53 +249,22 @@ conflict table content -->
 							id="ip-missed-table">
 							<thead>
 								<tr>
-									<th scope="col">IPv4 Address</th>
-									<th scope="col">IPv6 Address</th>
-									<th scope="col">Device Name</th>
-									<th scope="col">Site ID</th>
-									<th scope="col">Site Name</th>
-									<th scope="col">Device Series</th>
-									<th scope="col">OS</th>
-									<th scope="col">OS Version</th>
-									<th scope="col">Last Polled</th>
-									<th scope="col">
+									<th>IPv4 Address</th>
+									<th>Device Name</th>
+									<th>Site ID</th>
+									<th>Site Name</th>
+									<th>Device Series</th>
+									<th>OS</th>
+									<th>OS Version</th>
+									<th>Last Polled</th>
+									<th>
 										<!-- Remove / Update -->
 									</th>
-									<th scope="col" style="display: none;">Region</th>
-									<th scope="col" style="display: none;">Market</th>
+									<th style="display: none;">Region</th>
+									<th style="display: none;">Market</th>
 								</tr>
 							</thead>
-							<tbody>
-                <?php
-                $resultset = load_discovery_dataset('m');
-                if (isset($resultset['result'])) {
-                    foreach ($resultset['result'] as $key => $value) {
-                        if (test_ipv6_address($value['deviceIpAddr'])) {
-                            $value['ipvsix'] = $value['deviceIpAddr'];
-                        } else {
-                            $value['ipvfour'] = $value['deviceIpAddr'];
-                        }
-                        ?>
-                        <tr>
-									<td><?php echo $value['ipvfour'];?></td>
-									<td><?php echo $value['ipvsix'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['csr_site_id'];?></td>
-									<td><?php echo $value['csr_site_name'];?></td>
-									<td><?php echo $value['deviceseries'];?></td>
-									<td><?php echo $value['deviceos'];?></td>
-									<td><?php echo $value['nodeVersion'];?></td>
-									<td><?php echo $value['timepolled'];?></td>
-									<td><button type="button" data-toggle="modal"
-											class="btn btn-danger missed_update">UPDATE</button></td>
-									<td style="display: none;"><?php echo $value['region'];?></td>
-									<td style="display: none;"><?php echo $value['market'];?></td>
-								</tr>
-                   <?php
-                    }
-                }
-                ?>
-                </tbody>
+
 						</table>
 					</div>
 					<!-- /missed table content -->
@@ -310,51 +277,18 @@ conflict table content -->
 							<thead>
 								<tr>
 									<th scope="col">IPv4 Address</th>
-									<th scope="col">IPv6 Address</th>
 									<th scope="col">Device Name</th>
 									<th scope="col">Device Series</th>
 									<th scope="col">OS</th>
 									<th scope="col">OS Version</th>
 									<th scope="col">Last Polled</th>
-									<th scope="col " style="display: none;">Add</th>
 									<th scope="col" style="display: none;">Region</th>
 									<th scope="col" style="display: none;">Market</th>
 									<th scope="col" style="display: none;">Upsince</th>
 									<th scope="col" style="display: none;">Site ID</th>
+
 								</tr>
 							</thead>
-							<tbody>
-                <?php
-                $resultset = load_discovery_dataset('n');
-                if (isset($resultset['result'])) {
-                    foreach ($resultset['result'] as $key => $value) {
-                        if (test_ipv6_address($value['deviceIpAddr'])) {
-                            $value['ipvsix'] = $value['deviceIpAddr'];
-                        } else {
-                            $value['ipvfour'] = $value['deviceIpAddr'];
-                        }
-                        ?>
-                        <tr>
-									<td><?php echo $value['ipvfour'];?></td>
-									<td><?php echo $value['ipvsix'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['deviceseries'];?></td>
-									<td><?php echo $value['deviceos'];?></td>
-									<td><?php echo $value['nodeVersion'];?></td>
-									<td><?php echo($value['lastpolled']);?></td>
-									<td>
-										<!--<button type="button" class="btn btn-danger addDeviceModal">ADD</button>-->
-									</td>
-									<td style="display: none;"><?php echo $value['region'];?></td>
-									<td style="display: none;"><?php echo $value['market'];?></td>
-									<td style="display: none;"><?php echo $value['upsince'];?></td>
-									<td style="display: none;"><?php echo $value['csr_site_id'];?></td>
-								</tr>
-                   <?php
-                    }
-                }
-                ?>
-                    </tbody>
 						</table>
 					</div>
 					<!-- /new table content -->
@@ -363,13 +297,11 @@ conflict table content -->
 					<div
 						class="tab-pane fade table-responsive <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>show active<?php unset($_SESSION['disc_page_tab']); endif;?>"
 						id="v-pills-ok" role="tabpanel" aria-labelledby="v-pills-ok-tab">
-            	<?php $resultset =  load_discovery_dataset('k'); ?>
               <table id="ip-ok-table"
 							class="table table-sm table-striped ip-ok-table">
 							<thead>
 								<tr>
 									<th scope="col">IPv4 Address</th>
-									<th scope="col">IPv6 Address</th>
 									<th scope="col">Device Name</th>
 									<th scope="col">Site ID</th>
 									<th scope="col">Site Name</th>
@@ -377,48 +309,10 @@ conflict table content -->
 									<th scope="col">OS</th>
 									<th scope="col">OS Version</th>
 									<th scope="col">Last Polled</th>
-                    <?php  if(count($resultset['result']) > 0): ?>
-                    <th scope="col" style="display: none;"><a href="#"
-										id="select_all" onclick="ok_all_item();">Select&nbsp;All</a></th>
-                    <?php else:?>
-                    <th scope="col" style="display: none;">Select&nbsp;All</th>
-                    <?php endif; ?>
-                    <th scope="col" style="display: none;">Region</th>
+                    				<th scope="col" style="display: none;">Region</th>
 									<th scope="col" style="display: none;">Market</th>
 								</tr>
 							</thead>
-							<tbody>
-                  	<?php
-                if (isset($resultset['result'])) {
-                    foreach ($resultset['result'] as $key => $value) {
-                        if (test_ipv6_address($value['deviceIpAddr'])) {
-                            $value['ipvsix'] = $value['deviceIpAddr'];
-                        } else {
-                            $value['ipvfour'] = $value['deviceIpAddr'];
-                        }
-                        ?>
-                        <tr>
-									<td><?php echo $value['ipvfour'];?></td>
-									<td><?php echo $value['ipvsix'];?></td>
-									<td><?php echo $value['devicename'];?></td>
-									<td><?php echo $value['csr_site_id'];?></td>
-									<td><?php echo $value['csr_site_name'];?></td>
-									<td><?php echo $value['deviceseries'];?></td>
-									<td><?php echo $value['deviceos'];?></td>
-									<td><?php echo $value['nodeVersion'];?></td>
-									<td><?php //echo $value['timepolled'];?><?php echo $value['lastpolled'];?></td>
-									<td style="display: none;"><label class="form-check-label"> <input
-											class="form-check-input" type="checkbox" id="inlineCheckbox1"
-											value="<?php echo $value['id'];?>">
-									</label></td>
-									<td style="display: none;"><?php echo $value['region'];?></td>
-									<td style="display: none;"><?php echo $value['market'];?></td>
-								</tr>
-                   <?php
-                    }
-                }
-                ?>
-                </tbody>
 						</table>
 					</div>
 					<!-- /ok table content -->
@@ -760,7 +654,7 @@ conflict table content -->
 									<!--
                     <div class="form-group col-md-6">
                       <label for="inputSysName">System Name</label>
-                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.NCMwireless.com" readonly>
+                      <input type="systemName" class="form-control-plaintext" id="inputSysName" placeholder="MSHWINBWT1A-P-CI-0090-01.Verizonwireless.com" readonly>
                     </div>
 					-->
 									<div class="form-group col-md-4">

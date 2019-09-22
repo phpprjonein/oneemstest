@@ -54,6 +54,7 @@ modal.children[0].addEventListener('click', function(e) {
 </head>
 <body class="hold-transition skin-blue sidebar-mini ownfont"
 	id="healthpage">
+	<input type="hidden" name="run-all-hck" id="masValsh" value=""/>
 	<!-- Modal HTML -->
 			<!-- https://codepen.io/shaikmaqsood/pen/XmydxJ/ -->
     	<div id="Modal_Device_Name" tabindex="-1" class="modal fade"
@@ -147,9 +148,8 @@ modal.children[0].addEventListener('click', function(e) {
 							</table>
 								<div class="row">
 									<div class="col">
-										<button type="button" value="SUBMIT"
-											class="btn btn-default text-center" id="multi-device-healthcheck"
-											name="do-multi-device-healthcheck-submit">Run Health Check</button>
+										<button type="button" value="SUBMIT" class="btn btn-default text-center" id="multi-device-healthcheck" name="do-multi-device-healthcheck-submit">Run Health Check</button>
+										<button type="button" value="SUBMIT" class="btn btn-default text-center" id="multi-all-device-healthcheck" name="do-multi-all-device-healthcheck-submit">Run All Health Check</button>	
 									</div>
 								</div>
 						</div>

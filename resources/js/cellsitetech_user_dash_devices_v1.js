@@ -320,6 +320,24 @@ $(document).ready(function() {
           $(this).attr("class", "device-red");
         }
       });
+    },"fnDrawCallback": function( oSettings ) {
+        if($('#masValsh').val() == 'Clicked'){
+        	$( '#example input[type="checkbox"]' ).prop('checked', true);
+    	    var allVals = [];
+    	    $("tr.device_row").each(function() {
+    		  var tr = $(this).closest('tr');
+    		  var id = tr.attr('id').replace('row_',''); 
+    		  if($('#row_'+id+ ' input[type="checkbox"]').is(':checked')){
+    			  if(jQuery.inArray(id, allVals ) == -1){ 
+    			  		allVals.push(id);
+    			  }
+    		  }else{
+    			  	allVals.splice($.inArray(id, allVals), 1);
+    		  }
+    	    });	  
+    	    $('#cbvals').val(allVals);
+            $('#multi-device-healthcheck').trigger('click');
+          }
     }
   });
 
@@ -477,6 +495,7 @@ $(document).ready(function() {
 		}
 		$('.device_row').removeClass('device_row_green device_row_red');
 		$.each(allVals, function( index, value ) {
+			if(value != ''){
 			  var version = $('#row_'+value).find("td:eq(8)").text();;
 			  version = version
 			      .replace(/\(/g, "-")
@@ -528,6 +547,7 @@ $(document).ready(function() {
 			            }
 			          }
 			        });
+				}    
 		});
 		return false;
 		//if(confirm("Are you sure, do you want to do healthcheck of selected devices ?")){
@@ -673,7 +693,27 @@ $(document).ready(function() {
 	      $('#example .toggle-button').prop('checked', false);
 	    }
   })
-  
+  $(document).on("click", "#multi-all-device-healthcheck", function(
+		    event
+		  ) {
+	  $('#masValsh').val('Clicked');
+
+  	$( '#example input[type="checkbox"]' ).prop('checked', true);
+	    var allVals = [];
+	    $("tr.device_row").each(function() {
+		  var tr = $(this).closest('tr');
+		  var id = tr.attr('id').replace('row_',''); 
+		  if($('#row_'+id+ ' input[type="checkbox"]').is(':checked')){
+			  if(jQuery.inArray(id, allVals ) == -1){ 
+			  		allVals.push(id);
+			  }
+		  }else{
+			  	allVals.splice($.inArray(id, allVals), 1);
+		  }
+	    });	  
+	    $('#cbvals').val(allVals);
+      $('#multi-device-healthcheck').trigger('click');
+  })
 });
 $(document).keydown(function(event) {
   if (event.keyCode == 27) {

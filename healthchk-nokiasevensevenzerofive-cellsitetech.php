@@ -35,15 +35,13 @@ $(document).ready(function(){
     }
 
     $devicetype = 'TiMOS';
-    $url_send = "http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
+    //$url_send = "http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     $deviceid = $_GET['deviceid'];
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
     $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Nokia/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid;
     $output = sendPostData($url_final);
-
-
     $lastupdated = date('Y-m-d H:i:s');
-    ems_update_healthchk_info($deviceid, $output, $lastupdated);
+    //ems_update_healthchk_info($deviceid, $output, $lastupdated);
     $output = json_decode($output, true);
     ?>
     <?php 

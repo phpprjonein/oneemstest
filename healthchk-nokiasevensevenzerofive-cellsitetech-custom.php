@@ -36,6 +36,9 @@ if (count($_GET['category']) > 0) {
     //$url_final = 'http:///njbboemsda3v.nss.vzwnet.com:8085/healthcheck/custom/Cisco/'.$_GET['deviceseries'].'/'.$devicetype.'/'.$_GET['version'].'/'.$deviceid.'/'.$category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/custom/' . $deviceid . '/' . $category_imp;
     // $url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/'.$devicetype.'/custom/'.$deviceid.'/1,2,3';
+ $filename = 'customhealthcheck';
+     $msg = $url_final;
+   logToFile($filename, $msg);
     $output = sendPostData($url_final);
     /*
       $output = '{
@@ -52,7 +55,8 @@ if (count($_GET['category']) > 0) {
 }
 //print_r($output); die;
 $healthchktype = 'Custom';
-ems_update_healthchk_info($deviceid, $output, $lastupdated);
+//$output = '{"bfdsession": {"message": "All 2 BFD's are UP", "R": 0}}';
+//ems_update_healthchk_info($deviceid, $output, $lastupdated);
 $output = json_decode($output, 1);
 $_SESSION['deviceidswusr'] = $deviceid;
 ?>

@@ -189,7 +189,9 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
     header("location:cellsitetech-configuration.php");
 }elseif ($_POST['action'] == 'Download Script') {
     $timestamp = date("Y-m-d_h-i-sa_");
-    $filenames = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script');
+    //$filenames = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script');
+ $filenames = array($timestamp.$_POST['templname'].'.script', $timestamp.'ASR9010-01.script', $timestamp.'ASR9010-02.script', $timestamp.'NCS540-01.script', $timestamp.'NCS540-02.script', $timestamp.'NCS540-03.script', $timestamp.'ASR920-01.script', $timestamp.'ASR920-02.script', $timestamp.'ASR903-01.script'
+, $timestamp.'ASR903-02.script', $timestamp.'IXR-01.script', $timestamp.'IXR-02.script', $timestamp.'IXR-03.script');
     $filenameindex = 0;
     $resetfile = 1;
     foreach ($_POST['loop'] as $key => $val) {
@@ -197,7 +199,8 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         foreach ($val as $linekey => $lineval) {
             $line .= $lineval;
         }
-        if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
+        //if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
+ if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02') ||  strpos($line, 'NCS540-01') || strpos($line, 'NCS540-01')||  strpos($line, 'NCS540-02') ||  strpos($line, 'NCS540-03') ||  strpos($line, 'ASR920-01') ||  strpos($line, 'ASR920-02') ||  strpos($line, 'ASR903-01') ||  strpos($line, 'ASR903-02') ||  strpos($line, 'IXR-01') ||  strpos($line, 'IXR-02') ||  strpos($line, 'IXR-03') || strpos($line, 'NCS5500-01')  || strpos($line, 'NCS5500-02')){
             $resetfile = 1;
         }
         if($filenameindex == 0 || $resetfile == 1 ){

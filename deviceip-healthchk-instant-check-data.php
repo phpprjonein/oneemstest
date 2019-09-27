@@ -416,6 +416,7 @@ $(document).ready(function(){
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'SAR7705'){
         $output = sendPostData($url_final);
+        /*
         $output = '{
    "ARP":{
       "message":"No of ARP Entries: 5",
@@ -473,7 +474,7 @@ $(document).ready(function(){
       "message":"MPLS Neighbors: All Ok",
       "R":0
    }
-}';
+}';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }else{
         $output = json_decode(sendPostData($url_final), true);
@@ -551,14 +552,12 @@ if ($vendorId == 1) {
     }else if($device_details['deviceseries'] == 'StarOS'){
         $output = json_decode($output, true);
         include_once 'healthchk-staros-instant-hc-blk-inc.php';
-    }else if($device_details['deviceseries'] == 'SAR7705'){
-        $output = json_decode($output, true);
-        include_once 'healthchk-nokiasevensevenzerofive-instant-hc-blk-inc.php';
     }else{
         include_once 'instant_hc_blk_inc.php';
     }
 } elseif ($vendorId == 2) {
-    include_once 'hc_blk_inc_nokia.php';
+        $output = json_decode($output, true);
+        include_once 'healthchk-nokiasevensevenzerofive-instant-hc-blk-inc.php';
 } elseif ($vendorId == 3) {
     include_once 'hc_blk_inc_juniper.php';
 }

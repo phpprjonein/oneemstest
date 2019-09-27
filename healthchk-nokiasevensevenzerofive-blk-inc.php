@@ -82,7 +82,8 @@
 					href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_environmental&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
                     $color = ($output['environmental']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['environmental']['message'] . '</span>';
+                    $display = "<span style='color:" . $color . "'>" . "Major led state:". $output['environmental']['message'][major_led_state]. "Critical led state: ". $output['environmental']['message'][critical_led_state] .'</span>';
+                    //$display = "<span style='color:" . $color . "'>" . print_r($output). '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -107,16 +108,18 @@
 
 				<tr>
 <!-- BFD Sessions(S) / extract_bfd_neighbor -->
-				<td style="width: 10px;"><input id="extract_bfd_neighbor" type="checkbox"
-					name="extract_bfd_neighbor" value="extract_bfd_neighbor"
+				<td style="width: 10px;"><input name="extract_bfd_neighbor" type="checkbox"
+					id="extract_bfd_neighbor" value="extract_bfd_neighbor"
 					<?php if(in_array('extract_bfd_neighbor', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>BFD Sessions(S)</b></td>
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_bfd_neighbor&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['BFD Sessions(S)']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['BFD Sessions(S)']['message'] . '</span>';
+                   
+ $color = ($output['bfdsession']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['bfdsession']['message'] . '</span>';
+
                     echo $display;
                     ?>
 				</td>
@@ -124,7 +127,7 @@
 
 <!-- Interface States / extract_interfact_states -->
 				<td style="width: 10px;"><input id="extract_interface_states" type="checkbox"
-					name="extract_interfact_states" value="extract_interface_states"
+					name="extract_interface_states" value="extract_interface_states"
 					<?php if(in_array('extract_interface_states', $_GET['category'])):?> checked="checked"
 					<?php endif;?>></td>
 				<td><b>Interface States</b></td>
@@ -147,8 +150,8 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_count_interfaces&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['Interface Counters']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['Interface Counters']['message'] . '</span>';
+                    $color = ($output['interfacecounters']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['interfacecounters']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -188,6 +191,8 @@
 				</td>
 <!-- /Log Entries / extract_show_logging -->
 
+
+
 <!-- Xconnect / extract_xconnect -->
 				<td style="width: 10px;"><input id="extract_xconnect" type="checkbox"
 					name="extract_xconnect" value="extract_xconnect"
@@ -197,8 +202,8 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_xconnect&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['Xconnect']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['Xconnect']['message'] . '</span>';
+                    $color = ($output['xconnect']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['xconnect']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -247,8 +252,8 @@
 				<td><a id="anchorcmd" class="anchorcmd"
 					href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_service_using&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
 						class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
-                    $color = ($output['Service service-Using']['R'] == 0) ? 'green' : 'red';
-                    $display = "<span style='color:" . $color . "'>" . $output['Service service-Using']['message'] . '</span>';
+                    $color = ($output['Service Service-using']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['Service Service-using']['message'] . '</span>';
                     echo $display;
                     ?>
 				</td>
@@ -271,9 +276,43 @@
                     ?>
 				</td>
 <!-- /ARP / extract_arp -->
+
+<!-- MPLS Neighbors / extract_mpls_neighbors -->
+                    <td style="width: 10px;"><input id="extract_mpls_neighbors" type="checkbox"
+                                        name="extract_mpls_neighbors" value="extract_mpls_neighbors"
+                                        <?php if(in_array('extract_mpls_neighbors', $_GET['category'])):?> checked="checked"
+                                        <?php endif;?>></td>
+                                <td><b>MPLS Neighbors</b></td>
+                                <td><a id="anchorcmd" class="anchorcmd"
+                                        href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_mpls_neighbors&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+                                                class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['MPLS Neighbors']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['MPLS Neighbors']['message'] . '</span>';
+                    echo $display;
+                    ?>
+                                </td>
+<!-- /MPLS Neighbors / extract_mpls_neighbors  -->
+
+
+<!-- Buffers / extract_buffers --
+                    <td style="width: 10px;"><input id="extract_buffers" type="checkbox"
+                                        name="extract_buffers" value="extract_buffers"
+                                        <?php if(in_array('extract_buffers', $_GET['category'])):?> checked="checked"
+                                        <?php endif;?>></td>
+                                <td><b>Buffers</b></td>
+                                <td><a id="anchorcmd" class="anchorcmd"
+                                        href="healthchk-nokiasevensevenzerofive-devdetmdl-cellsite.php?commandname=extract_buffers&deviceid=<?php echo $_SESSION['deviceidswusr'];?>&deviceseries=<?php echo $_GET['deviceseries']?>&version=<?php echo $_GET['version']?>"><i
+                                                class="fa fa-file-text-o fa-lg text-primary"></i></a><?php
+                    $color = ($output['buffers']['R'] == 0) ? 'green' : 'red';
+                    $display = "<span style='color:" . $color . "'>" . $output['buffers']['message'] . '</span>';
+                    echo $display;
+                    ?>
+                                </td>
+-- /Buffers / extract_buffers  -->
+
 				</tr>
 			<tr>
-    <?php
+<?php         
     if ($healthchktype != 'Load Table') {
         $device_status = '<tr><td align="right" class="border-0"><b>Status: </b></td><td align="left" class="border-0"><b>';
         // if($output['status']['error']){

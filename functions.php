@@ -613,23 +613,24 @@ function sendPostData($url)
     // exit($url);
     // Curl GET methods begins
     // echo "Inside the sendpostdata method value of url is $url";;
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_POST, 0);
-    curl_setopt($ch, CURLOPT_HTTPGET, 1);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS,$query);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    
-    // error handling for cURL
-    if ($reply === false) {
-        // throw new Exception('Curl error: ' . curl_error($crl));
-        print_r('Curl error: ' . curl_error($crl));
+    if(function_exists('curl_init')){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_POST, 0);
+        curl_setopt($ch, CURLOPT_HTTPGET, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS,$query);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        
+        // error handling for cURL
+        if ($reply === false) {
+            // throw new Exception('Curl error: ' . curl_error($crl));
+            print_r('Curl error: ' . curl_error($crl));
+        }
+        ;
+        curl_close($crl);
     }
-    ;
-    curl_close($crl);
-    
     return $result;
     // cURL ends
     // Curl GET method ends
@@ -4105,9 +4106,24 @@ function update_healthchk_info($deviceid, $output, $lastupdated)
 function ems_update_healthchk_info($deviceid, $output, $lastupdated)
 {
     global $db2;
-    $sql = "UPDATE  `emshealthcheck` SET  content='" . $output . "',lastupdated='" . $lastupdated . "' WHERE deviceid = '" . $deviceid . "'";
+    if(isset($deviceid)){
+    $sql = "SELECT id FROM emshealthcheck WHERE deviceid = $deviceid";
     $db2->query($sql);
-    $db2->execute();
+    $recordset = $db2->resultset();
+    $output = addslashes($output);
+        if ($recordset[0]['id'] == "") {
+            $userid = 1;
+            $sql = "INSERT INTO `emshealthcheck` (`deviceid`, `content`, `userid`, `lastupdated` )
+                VALUES($deviceid, '" . $output . "', $userid,'" . $lastupdated . "')";
+            $db2->query($sql);
+            $db2->execute();
+        } else {
+            $sql = "UPDATE  `emshealthcheck` SET  content='" . $output . "',lastupdated='" . $lastupdated . "' WHERE deviceid = '" . $deviceid . "'";
+            $db2->query($sql);
+            $db2->execute();
+        }
+    
+    }
 }
 
 /**

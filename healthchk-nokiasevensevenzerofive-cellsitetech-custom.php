@@ -55,7 +55,7 @@ if (count($_GET['category']) > 0) {
 }
 //print_r($output); die;
 $healthchktype = 'Custom';
-$output = '{"BFD Sessions(S)": {"message": "All 2 BFD\'s are UP", "R": 0}}';
+//$output = '{"BFD Sessions(S)": {"message": "All 2 BFD\'s are UP", "R": 0}}';
 ems_update_healthchk_info($deviceid, $output, $lastupdated);
 $output = json_decode($output, 1);
 $_SESSION['deviceidswusr'] = $deviceid;

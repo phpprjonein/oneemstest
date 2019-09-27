@@ -417,6 +417,7 @@ $(document).ready(function(){
          }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'SAR7705'){
+        $devicetype = 'TiMOS';
         $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Nokia/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = sendPostData($url_final);
         /*
@@ -480,7 +481,6 @@ $(document).ready(function(){
 }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }else{
-        $devicetype = 'TiMOS';
         $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = json_decode(sendPostData($url_final), true);
         insertorupdate_healthchk_info($deviceid, $output, $lastupdated);

@@ -41,7 +41,6 @@ $(document).ready(function(){
     $devicetype = 'ios';
     //$url_send = " http://txaroemsda2z.nss.vzwnet.com:8080/healthcheck/";
     //$url_final = 'http://njbboemsda3v.nss.vzwnet.com:8080/healthcheck/' . $devicetype . '/' . $deviceid;
-    $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
     
     //PORT 8086 - ASR 9K 
     /*
@@ -52,6 +51,7 @@ $(document).ready(function(){
     
     $lastupdated = date('Y-m-d H:i:s');
     if($device_details['deviceseries'] == 'ASR9K'){
+        $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = sendPostData($url_final);
         /*$output = '{
      "extract_redundancy": {
@@ -173,6 +173,7 @@ $(document).ready(function(){
      }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'ASR3K'){
+        $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = sendPostData($url_final);
         /*$output = '{
          "extract_redundancy": {
@@ -294,6 +295,7 @@ $(document).ready(function(){
          }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'NCS5500'){
+        $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = sendPostData($url_final);
         /*$output = '{
          "extract_redundancy": {
@@ -415,6 +417,7 @@ $(document).ready(function(){
          }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }elseif($device_details['deviceseries'] == 'SAR7705'){
+        $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Nokia/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = sendPostData($url_final);
         /*
         $output = '{
@@ -477,6 +480,7 @@ $(document).ready(function(){
 }';*/
         ems_update_healthchk_info($deviceid, $output, $lastupdated);
     }else{
+        $url_final = $APPCONFIG['healthcheck']['endpoint'].'/healthcheck/Cisco/'.$device_details['deviceseries'].'/'.$devicetype.'/'.$device_details['nodeVersion'].'/'.$deviceid;
         $output = json_decode(sendPostData($url_final), true);
         insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
     }

@@ -4135,7 +4135,6 @@ function ems_update_healthchk_info($deviceid, $output, $lastupdated)
 function insertorupdate_healthchk_info($deviceid, $output, $lastupdated)
 {
     global $db2;
-    if (count($output) > 0 && isset($output)) :
         $sql = "SELECT id FROM healthcheck WHERE deviceid = $deviceid";
         $db2->query($sql);
         $recordset = $db2->resultset();
@@ -4179,7 +4178,6 @@ function insertorupdate_healthchk_info($deviceid, $output, $lastupdated)
             $db2->query($sql);
             $db2->execute();
         }
-    endif;
     
 }
 

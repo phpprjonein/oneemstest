@@ -207,7 +207,7 @@ if (! in_array('extract_bandwidth', $_GET['category']) || ! isset($output['bandw
 // $output = json_decode($output,true);
 // print '<pre>';
 // print_r($output); die;
-update_healthchk_info($deviceid, $output, $lastupdated);
+insertorupdate_healthchk_info($deviceid, $output, $lastupdated);
 $_SESSION['deviceidswusr'] = $deviceid;
 ?>
 <?php

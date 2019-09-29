@@ -673,6 +673,7 @@ $(document).ready(function() {
       '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp1" readonly value="' +
         $(this)
           .data("ssh")
+          .replace(/%40/gi, "@")
           .replace(/:/gi, "-") +
         '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp1\')">Copy Admin</button></td><td><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh://' + $(this).data("ssh").replace(/:/gi, "-") + '">PuTTY</a><br><a target="blank" class="align-text-bottom link_device_name_popup" href="ssh2://' + $(this).data("ssh").replace(/:/gi, "-") + '">SecureCRT</a></td></tr></table></div>'
     );
@@ -680,6 +681,7 @@ $(document).ready(function() {
       '<div class="table-responsive"><table class="table"><tr><td><input type="text" class="form-control" size="100" name="textbox" id="textboxp2" readonly value="' +
         $(this)
           .data("sshna")
+          .replace(/%40/gi, "@")
           .replace(/:/gi, "-") +
         '" ></td><td><button class="btn btn-default" onclick="copyToClipboard(\'textboxp2\')">Copy ReadOnly</button></td><td><a target="blank" class="link_device_name_popup" href="ssh://' + $(this).data("sshna").replace(/:/gi, "-") + '">PuTTY</a><br><a target="blank" class="link_device_name_popup" href="ssh2://' + $(this).data("sshna").replace(/:/gi, "-") + '">SecureCRT</a></td></tr></table></div>'
     );

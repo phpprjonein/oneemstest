@@ -610,6 +610,15 @@ function delete_alluser()
  */
 function sendPostData($url)
 {
+    /*Make a comment used to delay parallel processing Ajax calls with delay*/
+    /*
+    if(isset($_GET['skip-session']) && $_GET['skip-session'] == 'set'){
+        $msarr = array(20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150);
+        $interval = rand(0,13);
+        usleep( $msarr[$interval] * 1000 );
+    }*/
+    
+    
     // exit($url);
     // Curl GET methods begins
     // echo "Inside the sendpostdata method value of url is $url";;

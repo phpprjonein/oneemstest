@@ -2591,7 +2591,7 @@ function delete_user($values)
     $sql = "delete from userdevices where userid = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
-    
+    /*
     $sql = "delete from batchconfigtemplate where userid = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
@@ -2599,7 +2599,7 @@ function delete_user($values)
     $sql = "delete from tmpbatchconfigtemplate where userid = ". $values['id'];
     $db2->query($sql);
     $db2->execute();
-    
+    */
     $sql = "delete from nodes where csr_site_tech_id = '". $values['username']."' or swt_tech_id = '". $values['username']."'";
     $db2->query($sql);
     $db2->execute();

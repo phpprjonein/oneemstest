@@ -174,7 +174,8 @@ write_log($mesg);
                                 $replace_selbox .= '</select>';
                             }
                             if($newarr[$k][$l]["tabname"] == 'switchvars'){
-                                $vars_switchvars = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
+                                //$vars_switchvars = configtemplate_elemvalue_pos_script('switchvars', 'swvarname', 'swvarval');
+				$vars_switchvars = configtemplate_elemvalue_pos_script_sw('switchvars', 'swvarname', 'swvarval');
                                 foreach ($vars_switchvars as $key11=>$val11){
                                     $selected = $newarr[$k][$l]["elemvalue"] == $val11['swvarname'] ? 'selected':'';
                                     $replace_selbox .= '<option val="'.$val11['swvarname'].'" '.$selected.'>'.$val11['swvarname'].'</option>';

@@ -6467,7 +6467,8 @@ function generate_option_button_for_configs_vlan($switchname, $type){
     $output = '<option value="">-- Select -- </option>';
     if(isset($resultset[0]['swvarval'])){
         $devicename = $resultset[0]['swvarval'];
-        $sql = "SELECT max(vlan) + 2 as maximum FROM software_inventory where devicename like '".$devicename."' and vlan < 4000";
+        //$sql = "SELECT max(vlan) + 2 as maximum FROM software_inventory where devicename like '".$devicename."' and vlan < 4000";
+$sql = "SELECT max(vlan) + 2 as maximum FROM software_inventory where devicename like '".$devicename."' and interface like 'TenGigE%' and vlan < 4000";
         $db2->query($sql);
         $resultset = $db2->resultset();
         $start = $resultset[0]['maximum'];
@@ -7351,4 +7352,13 @@ function get_device_series_from_ip_address($ipaddress)
    $db2->query($sql);
    $resultset = $db2->resultset();
    return $resultset;
+}
+function configtemplate_elemvalue_pos_script_sw($posttabname, $field, $value)
+			{
+			    global $db2;
+			    
+			    $sql = "SELECT distinct(" . $field . ")  FROM " . $posttabname . $whr . " order by " . $field;
+			    $db2->query($sql);
+			    $resultset = $db2->resultset();
+			    return $resultset;
 }

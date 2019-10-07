@@ -261,6 +261,7 @@ if ( isset($_POST["submit"]) ) {
 											class="form-control custom-select chosen-select"
 											id="templname" name="templname"
 											data-rule-required="true">
+											<option>-- Select Template -- </option>
 											<?php $templates = config_get_templates_templname();?>
 											<?php //print '<pre>'; print_r($templates);die;?>
 											

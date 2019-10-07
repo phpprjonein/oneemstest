@@ -77,6 +77,10 @@ if ($sso_flag == 1) {
         $_SESSION['sso_session_started'] = $_SERVER['REQUEST_TIME'];
     }
     $userinfo = get_user_info_sso($username);
+    if(empty($userinfo['id'])){
+        header('Location: carms-add-user.php');
+        exit();
+    }
     $_SESSION['userid'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
     $_SESSION['email'] = $userinfo['email'];

@@ -1,5 +1,5 @@
 
-<title><?php echo ($page_title) ? $page_title : 'ONE EMS' ?></title>
+<title><?php echo ($page_title) ? $page_title : 'OneEMS' ?></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->

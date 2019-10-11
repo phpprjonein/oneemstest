@@ -62,6 +62,16 @@ $(document).ready(function() {
         $(".instant-health-check #status").show();
         req_err = true;
       }
+	var count = ($(".instant-health-check #synccyberarkpass_ipaddress").val().match(/:/g) || []).length;
+        if (count < 5)
+        {
+            $(".instant-health-check #status").html(
+            "<strong>Error!</strong> Enter only IPV6 address<br/>"
+            );
+            $(".instant-health-check #status").addClass("alert-danger");
+            $(".instant-health-check #status").show();
+            req_err = true;
+        }
       if (req_err) {
         window.setTimeout(function() {
           $(".alert")

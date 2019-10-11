@@ -30,8 +30,8 @@
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
-											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
-											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>
+<!--											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
+											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>-->
                                     </nav>
 									<a class="nav-link" href="help_tools.php">TOOLS</a>
 									<a class="nav-link" href="help_audit.php">AUDIT</a>

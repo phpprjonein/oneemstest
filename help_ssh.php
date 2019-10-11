@@ -107,7 +107,35 @@ echo generate_site_breadcrumb($values);
                             <!-- <a href="#top" class="border"><b>Back to top</b></a>
                             <hr> -->
                             <h5 id="item-ssh3">SSH Application Usage: PuTTY</h5>
-                            <p>This section describes configuration of a PuTTY session using the example shown in Command Line Usage - SSH.</p>
+				<ol>
+					<li><b>Install PuTTY</b>
+						<ol type="a">
+							<li>Go to the <a href="https://atyourservice.verizon.com/ays" target="_blank">Verizon At Your Service website</a></li>
+							<li>Click on <b>Request Something</b></li>
+							<li>Click on <b>Desktop Software</b></li>
+							<li>Scroll down to the "Search for software" search field and type "Putty terminal emulator"</li>
+							<li>Select the Enterprise Standard version of "PuTTY - Terminal Emulator"</li>
+							<li>Click "Submit". Once the software is approved, it will be auto installed on your device.</li>
+						</ol>
+					</li>
+					<li><b>Install WinSCP</b>
+						<ol type="a">
+							<li>Go to the <a href="https://atyourservice.verizon.com/ays" target="_blank">Verizon At Your Service website</a></li>
+							<li>Click on <b>Request Something</b></li>
+							<li>Click on <b>Desktop Software</b></li>
+							<li>Scroll down to the "Search for software" search field and type "winscp"</li>
+							<li>Select the Enterprise Standard version of "WinSCP"</li>
+							<li>Click "Submit". Once the software is approved, it will be auto installed on your device.</li>
+						</ol>
+					</li>
+					<li>Click on the Network Elements tab in the main navigation and select a Device List. Then, on the Health Check page, click on a device name. You will get a popup which has a <b>"PuTTY"</b> text link on the right hand side. Click on this link and you will see a PuTTY window that will attempt to log you into the device. Enter your WIN-VZWNET password.
+<p></p>
+<img src="resources/img/screenshot-putty-ssh2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2"><p></p></li>
+					<li>If you are denied access, be sure you have properly requested access to this device via CyberArk (aka PAM). Request access via CARMS.</li>
+				</ol>
+
+
+<!--                            <p>This section describes configuration of a PuTTY session using the example shown in Command Line Usage - SSH.</p>
                             <ul>
                                 <li>Launch the PuTTY client</li>
                                 <li>Set the Host Name to "jsmith@PAMronlygrp@2001-4888-a26-2017-aa-a--1@pamssh.nsiam.vzwnet.com"
@@ -137,13 +165,13 @@ echo generate_site_breadcrumb($values);
                                 <p>This will open up a putty window</p>
                                 <img src="resources/img/screenshot-putty-ssh4.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4">
                                 <p></p>
-                                <span class="font-italic"><b>One EMS Regional Map</b></span>
+                                <span class="font-italic"><b>One EMS Regional Map</b></span> -->
                                 <p></p>
                                 <hr>
                                 <a href="#top" class="border"><b>Back to top</b></a>
                                 <hr>
                                 <h5 id="item-ssh4">SSH Application Usage: SecureCRT</h5>
-                                <p>This section describes configuration of a SecureCRT session using the example shown in Command Line Usage - SSH.</p>
+                              <!--  <p>This section describes configuration of a SecureCRT session using the example shown in Command Line Usage - SSH.</p>
                                     <ol type="n">
                                         <li>Launch the SecureCRT client</li>
                                         <li>From the Session Manager window, add a new session
@@ -210,7 +238,52 @@ echo generate_site_breadcrumb($values);
 								<p></p>
 								<img src="resources/img/screenshot-putty-ssh10.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh10">
 								<p></p>
-								<span class="font-italic"><b>One EMS Regional Map</b></span>
+								<span class="font-italic"><b>One EMS Regional Map</b></span> -->
+								
+<ol>
+                                        <li><b>Install SecureCRT</b>
+                                                <ol type="a">
+                                                        <li>Go to the <a href="https://atyourservice.verizon.com/ays" target="_blank">Verizon At Your Service website</a></li>
+                                                        <li>Click on <b>Request Something</b></li>
+                                                        <li>Click on <b>Desktop Software</b></li>
+                                                        <li>Scroll down to the "Search for software" search field and type "SecureCRT"</li>
+                                                        <li>Select the Enterprise Standard version of "SecureCRT"</li>
+                                                        <li>Click "Submit". Once the software is approved, it will be auto installed on your device.</li>
+                                                </ol>
+                                        </li>
+                                        <li><b>Make SSH2 default setting for SecureCRT</b>
+                                                <ol type="a">
+                                                        <li>Open SecureCRT</a></li>
+                                                        <li>Go to <b>Options -> Global Options -> Terminal -> Appearance -> Web Browser</b></li>
+                                                        <li>Click on <b>Make SecureCRT the Default Application</b>
+							<p></p>
+							<img src="resources/img/screenshot-putty-ssh3.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3"><p></p></li>
+                                                        <li>Click OK on the popup</li>
+                                                        <li>Click OK on the Global Options window</li>
+                                                        <li>Close SecureCRT</li>
+							<li>Next, go to the Windows menu on the bottom right of your device's screen</li>
+							<li>Select <b>Settings -> Apps -> Default Apps</b></li>
+							<li>Scroll down to the bottom and click on <b>"Choose default apps by protocol"</b>
+							<p></p>
+							<img src="resources/img/screenshot-putty-ssh4.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4"><p></p></li>
+							<li>Scroll down to SSH2
+							<br />
+							<br />
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> On the right side, if the <b>"SecureCRT Application"</b> is already assigned, then this process is complete.</p></li>
+							<li>If it is not assigned, click on <b>"Choose a default"</b> and select <b>"SecureCRT Application"</b>
+							<p></p>
+							<img src="resources/img/screenshot-putty-ssh5.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5"><p></p></li>
+							<li>Click on the Network Elements tab in the main navigation and select a Device List. Then, on the Health Check page, click on a device name. You will get a popup which has a <b>"SecureCRT"</b> text link on the right hand side. Click on this link and you will see a SecureCRT window that will attempt to log you into the device. Enter your WIN-VZWNET password.
+<p></p>
+<img src="resources/img/screenshot-putty-ssh6.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6"><p></p></li>
+                                          
+                                        </li>
+                                        <li>If you are denied access, be sure you have properly requested access to this device via CyberArk (aka PAM). Request access via CARMS.</li>
+                                </ol>
+							
+
+
+
 								<p></p>
 								<hr>
 								<a href="#top" class="border"><b>Back to top</b></a>

@@ -70,12 +70,12 @@ echo generate_site_breadcrumb($values);
 								<li>Restore a previous configuration to a device. Note: This only copies the configuration file to the remote device</li>
 								<li>Filter custom lists of devices via the "My List" dropdown</li>
 							</ul>
-							<img src="resources/img/screenshot-backup1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-backup1">
+							<img src="resources/img/screenshot-backup-one.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-backup1">
 							<p></p>
 							<span class="font-italic"><b>Backup Dashboard</b></span>
 							<p></p>
 							<p>To backup a device's configuration, simply click the <b>Backup</b> button in the right most column of the list  table. This will run an API that attempts to remotely backup the configuration of the device selected in the  user's List table.</p>
-							<img src="resources/img/screenshot-backup2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-backup2">
+							<img src="resources/img/screenshot-backup-two.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-backup2">
 							<p></p>
 							<span class="font-italic"><b>Backup Device Results</b></span>
 							<p></p>
@@ -111,7 +111,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-backup1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-backup-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-backup2_LARGE.png" alt="" width="100%">
+					<img src="resources/img/screenshot-backup-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

@@ -83,7 +83,7 @@ write_log($mesg);
 							<p>To create a new template, a user starts with selecting categorization options for the template, then by uploading a new file from their computer by using the browse button.</p>
 							<p>Doing so produces a form on the right in which a user can edit values. Many lines do not contain editable fields, but a user can collapse the list to only show editable fields. To do so, click on the check box next to “<b>Hide Readonly Fields</b>”.</p>
                             <p>To manage device scripts, a user can upload one from their hard drive.</p>
-                            <img src="resources/img/screenshot-load_template_mod3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1-1-1">
+                            <img src="resources/img/screenshot-load_template_mod-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1-1-1">
 							<p></p>
 							<span class="font-italic"><b>File Upload</b></span>
 							<p></p>
@@ -771,7 +771,7 @@ event manager applet LOOP_GIG authorization bypass
 								</samp>
 							</div>
 							<p>&nbsp;</p>
-							<img src="resources/img/screenshot-config2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-config2">
+							<img src="resources/img/screenshot-config-two.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-config2">
 							<p></p>
 							<span class="font-italic"><b>Editable Configuration Template</b></span>
 							<p></p>
@@ -865,7 +865,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p>Once you select a template from the list, that template will appear with editable fields highlighted in <span  class="text-danger"><b>red</b></span>. You can then edit and download this template for deployment elsewhere or  you can schedule a batch job by clicking on the “Execute” button.</p>
 							<p>Once a user executes a configuration template for script execution, that template gets added to a batch  process. More information about this batch process can be found <a  href="help_maintenance.php#item-7-3">HERE</a>.
 							</p>
-							<img src="resources/img/screenshot-generate-script2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
+							<img src="resources/img/screenshot-generate-script-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-generate2">
 							<p></p>
 							<span class="font-italic"><b>Generated Template Edit Screen</b></span>
 							<p></p>
@@ -878,7 +878,7 @@ event manager applet LOOP_GIG authorization bypass
 							<p></p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> Please retain the Batch ID for your records.</p>
 							<p>Once the Batch is successfully scheduled you will get a Batch ID. Please make a note of it so you can view  the status later.</p>
-							<img src="resources/img/screenshot-config_confirm-batch2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-confirm-batch2">
+							<img src="resources/img/screenshot-config_confirm-batch-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-confirm-batch2">
 							<p></p>
 							<span class="font-italic"><b>FIG. 4.5.6 - Batch ID Created For Your Run</b></span>
 							<p></p>
@@ -916,7 +916,7 @@ event manager applet LOOP_GIG authorization bypass
 							<hr>
 							<h5 id="item-4-3-0">Script Rerun</h5>
 							<p>This screen allows users to reinitialize batches previously run on a device or sets of devices (<b>Script Execution</b>).</p>
-							<img src="resources/img/screenshot-script-rerun1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch2">
+							<img src="resources/img/screenshot-script-rerun-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch2">
 							<p></p>
 							<span class="font-italic"><b>Script Rerun View</b></span>
 							<p></p>
@@ -926,7 +926,7 @@ event manager applet LOOP_GIG authorization bypass
 							<h5 id="item-4-3">Batch Tracking</h5>
 							<p>This batch tracking screen allows users to view the execution status for three areas: <b>Script Execution</b>, <b>Software Delivery</b>, <b>Boot Order</b>, <b>Reboot Status</b>, <b>Audit</b>, and <b>Customized Audit</b>.</p>
 							<p>Scripts can be monitored for execution status on a device or sets of devices (<b>Script Execution</b>),  whether or not a template has been applied to a device (<b>Software Delivery</b>) as well as overall job priority application of templated scripts to devices (<b>Boot Order</b>).</p>
-							<img src="resources/img/screenshot-batch-tracking1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch1">
+							<img src="resources/img/screenshot-batch-tracking-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-batch1">
 							<p></p>
 							<span class="font-italic"><b>Batch Tracking View</b></span>
 							<p></p>
@@ -972,7 +972,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-load_template_mod2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -982,7 +982,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-load_template_mod3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod-three.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -992,7 +992,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-config-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1012,7 +1012,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-generate-script2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-generate-script-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1042,7 +1042,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-template_view_mod-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1052,7 +1052,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-template_view_mod-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1073,7 +1073,7 @@ event manager applet LOOP_GIG authorization bypass
 						aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config_confirm-batch2.png" alt=""
+					<img src="resources/img/screenshot-config_confirm-batch-two.png" alt=""
 						width="100%">
 				</div>
 			</div>
@@ -1081,6 +1081,8 @@ event manager applet LOOP_GIG authorization bypass
 		<div class="modal fade show" id="screenshot-batch-status" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
+
+
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
@@ -1094,7 +1096,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-config3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-config-three.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1104,7 +1106,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-batch-tracking1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-batch-tracking-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1114,7 +1116,7 @@ event manager applet LOOP_GIG authorization bypass
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-script-rerun1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-script-rerun-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -1126,4 +1128,3 @@ event manager applet LOOP_GIG authorization bypass
 <!-- /footer div -->
 
 </body>
-</html>

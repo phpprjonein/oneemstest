@@ -80,7 +80,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<p>A user can define parameters for a device series type, file name, the destination for update file application and the ability to  set minimum build and/or patch versioning of a chosen OS.</p>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is only accesible by NA Field Assurance Users.</p>
-							<h5 id="item-7-2">Reboot</h5>
+						<!--	<h5 id="item-7-2">Reboot</h5>
 							<img src="resources/img/screenshot-reboot.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-os-repo">
 							<p></p>
 							<span class="font-italic"><b>Device Reboot Dashboard</b></span>
@@ -105,7 +105,7 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<span class="font-italic"><b>Batch Tracking A Script Execution Request</b></span>
 							<p></p>
-							<p>Here, you will be able to monitor the progress of your Batch request. You can also cancel a batch request you've initiated prior.</p>
+							<p>Here, you will be able to monitor the progress of your Batch request. You can also cancel a batch request you've initiated prior.</p>  -->
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>

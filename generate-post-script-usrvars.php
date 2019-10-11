@@ -259,7 +259,7 @@ echo generate_site_breadcrumb($values);
             $result['globalvars'][$_POST['f11'] . 'device name'] = $result['usrvars'][$_POST['f11'] . 'device name'] = $result['marketvars'][$_POST['f11'] . 'device name'] = $result['switchvars'][$_POST['f11'] . 'device name'] = $_POST['f14'];
             
             
-            
+            $checkcount=0;
             for ($k = 1; $k <= count($newarr); $k ++) {
                 if (count($newarr[$k]) == 1) {
                     $output .= '<div class="form-group">';
@@ -279,7 +279,7 @@ echo generate_site_breadcrumb($values);
                     $output .= '<div class="form-group">';
                     $editable = 0;
                     $outputin = '';
-                    for ($l = 0; $l < count($newarr[$k]); $l ++) {
+                    for ($l = 0; $l < count($newarr[$k]); $l ++) {$checkcount++;
                         if ($newarr[$k][$l]["editable"] == 0) {
                             $rowval = generatescript_str_preprocess($newarr[$k][$l]["elemvalue"], $bmbps);
                             $rowval_arr = explode('||', $rowval);
@@ -314,7 +314,73 @@ echo generate_site_breadcrumb($values);
                     $output .= '</div>';
                 }
             }
-            echo $output .= '</div>';
+            //echo $output .= '</div>';
+			//code start for new section addition by Swapnil
+			
+				
+			$usrvars = generic_get_usrvars_section();$limit=count($usrvars['result'])/2;
+			$s=0;//echo count($usrvars['result']).' & '.$limit;exit;
+			if(count($usrvars['result'])<2){
+				echo $output .= '</div>';
+			}
+			else{
+				for($usrvarloop=0;$usrvarloop<$limit;$usrvarloop++){
+					$filename = 'resources/scripts/import-usrvars/ASR920_eNodeB_interface_section_v7.txt';
+					//$filename = '/usr/apps/oneems/fs1/resources/scripts/import-usrvar/ASR920_eNodeB_interface_section_v7.txt';
+					$fd = fopen($filename, "r");
+					$line = $checkcount;				
+					
+					while (! feof($fd)) {
+						++ $line;
+						$contents = fgets($fd, filesize($filename));
+						$delimiter = "#";
+						$splitcontents = explode($delimiter, $contents);
+						$splitcontcount = count($splitcontents);
+						if ($splitcontcount > 1) {
+							$output .= '<div class="form-group">';
+							$output_inner1 = '';
+							$l = 1;
+							foreach ($splitcontents as $color) {
+								if (! empty($color)) {
+									if (substr_count(strtolower('#' . $color), "#x") > 0 || substr_count(strtolower('#' . $color), "#y") > 0 || substr_count(strtolower('#' . $color), "#x.x.x.x") > 0 || substr_count(strtolower('#' . $color), "#y.y.y.y") > 0 || substr_count(strtolower('#' . $color), "#z.z.z.z") > 0 || substr_count(strtolower('#' . $color), "#a.a.a.a") > 0 || substr_count(strtolower('#' . $color), "#b.b.b.b") > 0) {
+										
+										//print_r($usrvars);exit;
+										/*
+										 * $output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'>
+										 * <input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
+										 */
+										
+										$output .= "<span class='form-editable-fields'><input type='text' size='" . $pink_box_size . "' name='loop[looper_" . $line . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$usrvars['result'][$s]['usrvarval']."'></span><input type='hidden' name='edit[looper_" . $line . "][]' value='1'>";
+										$s++;
+									} else {
+										if (strlen($color) != 0) {
+											$orgcolor = $color;
+											$color = ($color == " ") ? '&nbsp;' : $color;
+											//$output_inner .= "<label class='readonly'>" . $color . "</label><input type='text' style='display:none !important;' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' ><input type='hidden' name='looptabler[looper_" . $line . "][]' value='' >";
+											$output .= "<span class='form-non-editable-fields'><label class='readonly'>" . $color . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $line . "][]' value='" . $color . "'></span>";
+										}
+									}
+								}
+								$l ++;
+							};
+							
+							$output .= '<span class="form-editable-fields">' . $output_inner1 . '</span>';
+							
+							//$output .= '</div>';
+						} elseif ($splitcontcount == 1) {
+							foreach ($splitcontents as $color) {
+								if (! empty($color)) {
+									$orgcolor = $color;
+									$color = ($color == " ") ? '&nbsp;' : $color;
+									$output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>" . $color . "</label><input style='display:none !important;' type='text' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' ><input type='hidden' name='looptabler[looper_" . $line . "][]' value='' ></span></div>";
+								}
+							};
+						};
+					};
+					fclose($fd);//code end for new section addition by Swapnil
+					echo $output .= '</div>';
+				}
+			}
             ?>
 			</div>
 											<div>

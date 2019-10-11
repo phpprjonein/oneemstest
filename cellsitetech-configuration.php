@@ -92,10 +92,12 @@ write_log($mesg);
                             if (empty($_SESSION['filename'])) {
                                 //$filename = "/usr/apps/oneems/fs1/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
                                 $filename = "/usr/apps/oneems/fs1/upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
+								//$filename = "upload/sampleconfigfile_" . $_SESSION['userid'] . ".txt";
                                 $templname = 'templ_' . generateRandomString();
                             } else {
                                 //$filename = "/usr/apps/oneems/fs1/" . $_SESSION['filename'] . ".txt";
                                 $filename = "/usr/apps/oneems/fs1/upload/" . $_SESSION['filename'] . ".txt";
+								//$filename = "upload/" . $_SESSION['filename'] . ".txt";
                                 $templname = $_SESSION['filename'];
                                 $alias = $_SESSION['alias'];
                                 $refmop = $_SESSION['refmop'];

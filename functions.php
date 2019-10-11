@@ -611,12 +611,11 @@ function delete_alluser()
 function sendPostData($url)
 {
     /*Make a comment used to delay parallel processing Ajax calls with delay*/
-    /*
     if(isset($_GET['skip-session']) && $_GET['skip-session'] == 'set'){
         $msarr = array(20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150);
         $interval = rand(0,13);
         usleep( $msarr[$interval] * 1000 );
-    }*/
+    }
     
     
     // exit($url);
@@ -7361,4 +7360,16 @@ function configtemplate_elemvalue_pos_script_sw($posttabname, $field, $value)
 			    $db2->query($sql);
 			    $resultset = $db2->resultset();
 			    return $resultset;
+}
+/**
+ *
+ * @return unknown
+ */
+function generic_get_usrvars_section()
+{
+    global $db2;
+    $sql = "SELECT usrvarid, usrvarval FROM import_usrvars where usrvarname like 'interface-%'";
+    $db2->query($sql);
+    $resultset['result'] = $db2->resultset();
+    return $resultset;
 }

@@ -94,7 +94,7 @@ echo generate_site_breadcrumb($values);
 							<p><b>Inserting A Manually Discovered Device Into OneEMS</b>
 							<br>
 							After discovering a device manually, you will get a popup that shows the details of the discovery. To save this to the database you  will need to specify the correct Market (from a dropdown). Then you can “Save Changes”.</p>
-							<img src="resources/img/screenshot-discovery-manual3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-discovery-manual3">
+							<img src="resources/img/screenshot-discovery-manual-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-discovery-manual3">
 							<p></p>
 							<span class="font-italic"><b>Manual Discovery Update</b></span>
 							<p></p>
@@ -172,7 +172,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-discovery-manual3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-discovery-manual-three.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

@@ -74,7 +74,7 @@ echo generate_site_breadcrumb($values);
 							<span class="font-italic"><b>IP Management Dashboard</b></span>
 							<p></p>
 							<p>To view subnets by Region, choose a Region from the dropdown menu to the right of the <b>IP Type</b> button.  When this Dashboard first loads, a user's default Region is selected.</p>
-							<img src="resources/img/screenshot-ip_management_choose_Region-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
+							<img src="resources/img/screenshot-ip_management_choose_Region-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-1">
 							<p></p>
 							<span class="font-italic"><b>Choose Region</b></span>
 							<p></p>
@@ -84,12 +84,12 @@ echo generate_site_breadcrumb($values);
 							<h5 id="item-5-1">Subnet Addition</h5>
 							<p></p>
 							<p>To add a Subnet, choose a Region from the <b>Select Region</b> dropdown at the top of the page.</p>
-							<img src="resources/img/screenshot-ip_management_choose_Region-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-2">
+							<img src="resources/img/screenshot-ip_management_choose_Region-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_choose_Region-2">
 							<p></p>
 							<span class="font-italic"><b>Choose Region For Subnet Addition</b></span>
 							<p></p>
 							<p>Once you've selected a Region, click on the <b>Add A Subnet</b> button. You will then be presented with the  Add A Subnet screen.</p>
-							<img src="resources/img/screenshot-ip_management_add_subnet-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_add_subnet-1">
+							<img src="resources/img/screenshot-ip_management_add_subnet-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-ip_management_add_subnet-1">
 							<p></p>
 							<span class="font-italic"><b>Add A Subnet Screen</b></span>
 							<p></p>
@@ -143,7 +143,7 @@ echo generate_site_breadcrumb($values);
 				<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<img src="resources/img/screenshot-ip_management_choose_Region-1_LARGE.png" alt="" width="">
+				<img src="resources/img/screenshot-ip_management_choose_Region-one.png" alt="" width="">
 			</div>
 		</div>
 		<div class="modal fade show" id="screenshot-ip_management_choose_Region-2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -151,7 +151,7 @@ echo generate_site_breadcrumb($values);
 				<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<img src="resources/img/screenshot-ip_management_choose_Region-2_LARGE.png" alt="" width="">
+				<img src="resources/img/screenshot-ip_management_choose_Region-two.png" alt="" width="">
 			</div>
 		</div>
 		<div class="modal fade show" id="screenshot-ip_management_add_subnet-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -160,7 +160,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-ip_management_add_subnet-1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-ip_management_add_subnet-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

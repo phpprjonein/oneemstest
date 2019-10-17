@@ -63,32 +63,32 @@ echo generate_site_breadcrumb($values);
 							<hr class="d-md-none" />
 							<h4 id="item-8">TOOLS</h4>
 							<p>This view allows a user to access several tools for obtaining health information or managing CyberArk credentials.</p>
-							<img src="resources/img/screenshot-tools1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools1">
+							<img src="resources/img/screenshot-tools-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools1">
 							<p></p>
 							<span class="font-italic"><b>Tools Page</b></span>
 							<p></p>
                             <p><b>Reset CyberArk Password :</b> This will reset the cyberark accounts and PAM usernames on the device to a new password.</p>
                             <p><b>Check CyberArk Sync :</b> This will log in to device and return a PASS or FAIL message.</p>
-                            <p><b>Show CyberArk  Password :</b> This will provide the user string required to log in to a device as PAMadmingrp via Cyberark. User can copy the string to a buffer.</p>
-                            <img src="resources/img/screenshot-tools2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools2">
+                            <p><b>Show CyberArk  Password :</b> This will provide the user string required to log in to a device as PAMadmingrp via Cyberark. A user can copy the string to a buffer.</p>
+                            <img src="resources/img/screenshot-tools-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools2">
 							<p></p>
 							<span class="font-italic"><b>Instant Health Check Dashboard Results for an ASR9K device</b></span>
 							<p></p>
 							<p><b>Run All Health Checks :</b> This will return the results of a full health check for a single device. For more details see section on “Run All Health Checks”.</p>
 							<p></p>
 							<p>This view allows a user to initiate a full health check on a specific device in the OneEMS network. A user can perform this search based on IPV4/IPV6 addresses OR device name.</p>
-							<img src="resources/img/screenshot-tools3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools3">
+							<img src="resources/img/screenshot-tools-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools3">
 							<p></p>
 							<span class="font-italic"><b>Run All Health Checks Dashboard Results</b></span>
 							<p></p>
 							<p>This dashboard page returns the same results as a Health Check initiated for a device on the main Health Check page, but for a single device.</p>
 							<p>This dashboard returns Health Check results based on the device type of the IP address or device name. ASR9K devices return results for parameters such as redundancy state, CPU utilization, memory utilization, software running on the RSP and others.</p>
-							<img src="resources/img/screenshot-tools4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools4">
+							<img src="resources/img/screenshot-tools-four.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools4">
 							<p></p>
 							<span class="font-italic"><b>Run All Health Checks Dashboard Results For An ASR9K Device</b></span>
 							<p></p>
 							<p><b>Show Tech :</b> This will allow a user to select devices to add to a batch process for later scheduling.</p>
-							<img src="resources/img/screenshot-tools5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools6">
+							<img src="resources/img/screenshot-tools-five.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-tools5">
 							<p></p>
 							<span class="font-italic"><b>Show Tech Batch Process Results Screen</b></span>
 							<p></p>
@@ -124,7 +124,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools1.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-one.png" alt="" width="100%">
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools2.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-two.png" alt="" width="100%">
                 </div>
             </div>
 		</div>
@@ -144,7 +144,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools3.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-three.png" alt="" width="100%">
                 </div>
             </div>
 		</div>
@@ -154,7 +154,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools4.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-four.png" alt="" width="100%">
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools5.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-five.png" alt="" width="100%">
                 </div>
             </div>
         </div>
@@ -174,7 +174,7 @@ echo generate_site_breadcrumb($values);
                     <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <img src="resources/img/screenshot-tools5.png" alt="" width="100%">
+                    <img src="resources/img/screenshot-tools-six.png" alt="" width="100%">
                 </div>
             </div>
         </div>

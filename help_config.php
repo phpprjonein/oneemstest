@@ -846,7 +846,7 @@ event manager applet LOOP_GIG authorization bypass
 								</ul>
 							</p>
 							<p>Select the appropriate variable associated with each field in the configuration file. This is a one-time exercise that will create a template that will be available to all users. This will help standardize the process, save time and reduce chance of errors when generating scripts to run on a device.</p>
-							<img src="resources/img/screenshot-config3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config3">
+							<img src="resources/img/screenshot-config-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config3">
 							<p></p>
 							<span class="font-italic"><b>Editable Configuration Template</b></span>
 							<p></p>

@@ -85,18 +85,18 @@ echo generate_site_breadcrumb($values);
 							</ul>
 							<h5 id="item-audit-0">Compliance</h5>
                             <p></p>
-                            <img src="resources/img/screenshot-audit1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit1">
+                            <img src="resources/img/screenshot-audit-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit1">
                             <p></p>
                             <span class="font-italic"><b>Compliance Audit Dashboard</b></span>
                             <p></p>
 							<p>Once a user has chosen a device or devices for audit, a batch is created for processing. You can see the status of the batch at the end of the selection process after you click on the <b>Submit</b> button:</p>
 							<p></p>
-                            <img src="resources/img/screenshot-audit2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit2">
+                            <img src="resources/img/screenshot-audit-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit2">
 							<p></p>
 							<span class="font-italic"><b>Audit Selection</b></span>
 							<p></p>
 							<p>A user will be redirected to the <a href="help_config.php#item-4-3">Batch Processing page</a> after clicking on the <b>Close</b> button. Here, you'll be presented with a screen showing the current status of the batch audit performed prior:</p>
-                            <img src="resources/img/screenshot-audit3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit3">
+                            <img src="resources/img/screenshot-audit-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit3">
                             <p></p>
 							<span class="font-italic"><b>Audit Batch Status</b></span>
 							<p></p>
@@ -125,7 +125,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 								</ol>
 							</p>
                             <p></p>
-                            <img src="resources/img/screenshot-audit4-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
+                            <img src="resources/img/screenshot-audit-four-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-1">
                             <p></p>
                             <span class="font-italic"><b>Customized Audit Dashboard</b></span>
                             <p></p>
@@ -135,9 +135,9 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 							<p></p>
 							<p>To track the audit log customization, a user navigates to the Batch Tracking page and does a search within the table for the Batch ID created in the step earlier. Success/failure execution status will be shown here.</p>
 							<p></p>
-                            <img src="resources/img/screenshot-audit4-2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
+                            <img src="resources/img/screenshot-audit-four-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit4-2">
                             <p></p>
-                            <span class="font-italic"><b>- Custom Audit Batch Tracking Dashboard</b></span>
+                            <span class="font-italic"><b>Custom Audit Batch Tracking Dashboard</b></span>
 							<p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -159,7 +159,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 								<li>Created Date</li>
 							</ul>
 							<p></p>
-                            <img src="resources/img/screenshot-audit5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit5">
+                            <img src="resources/img/screenshot-audit-five.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-audit5">
                             <p></p>
                             <span class="font-italic"><b>Customized Audit History Dashboard</b></span>
                             <hr>
@@ -196,7 +196,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-one.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -206,7 +206,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-two.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -216,7 +216,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-three.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -226,7 +226,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit4.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-four.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -236,7 +236,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit4-1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-four-one.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -246,7 +246,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit4-2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-four-two.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -256,7 +256,7 @@ username PAMadmin privilege 15 secret 5 {{anystring}}</pre>
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-audit5.png" alt="" width="100%">
+					<img src="resources/img/screenshot-audit-five.png" alt="" width="100%">
 				</div>
 			</div>
         </div>

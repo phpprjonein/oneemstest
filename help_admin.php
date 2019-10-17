@@ -65,21 +65,21 @@ echo generate_site_breadcrumb($values);
 <!-- admin -->
                             <h4 id="item-9">ADMIN</h4>
                             <p>Admin users will be taken to this page first. They have the option of impersonating a user or   maintaining software binaries available to the user community.</p>
-                            <img src="resources/img/screenshot-admin1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1">
+                            <img src="resources/img/screenshot-admin-one.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1">
 							<p></p>
 							<span class="font-italic"><b>Software Delivery – Selecting Binary And Remote Device(s)</b></span>
 							<p></p>
 							<h5 id="item-9-1">Load Template - Golden</h5>
 							<p>Admin users are presented with a similar page and flow as all other users when configuring templates, with the key exception being that admin users are allowed to configure Golden templates.</p>
-							<img src="resources/img/screenshot-load_template_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
+							<img src="resources/img/screenshot-load_template_mod-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-1">
 							<p></p>
 							<span class="font-italic"><b>Configuration Dashboard With Sample Values Selected (Administrative Users)</b></span>
 							<p><a name="loadGolden"></a></p>
-							<img src="resources/img/screenshot-load_template_mod2-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-2">
+							<img src="resources/img/screenshot-load_template_mod-two-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin1-2">
 							<p></p>
 							<span class="font-italic"><b>File Upload</b></span>
 							<p></p>
-							<img src="resources/img/screenshot-load_template_mod2-2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1-3">
+							<img src="resources/img/screenshot-load_template_mod-two-two.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-admin1-3">
 							<p></p>
 							<span class="font-italic"><b>Configurable Template</b></span>
 							<p></p>
@@ -98,11 +98,11 @@ echo generate_site_breadcrumb($values);
 							<p></p>
 							<p>Once a template's device configuration file is selected, a user can opt to hide read only fields and change various values, then save the chosen configuration.</p>`
 							<!-- <p>&nbsp;</p> -->
-							<img src="resources/img/screenshot-template_view_mod1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin8">
+							<img src="resources/img/screenshot-template_view_mod-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin8">
 							<p></p>
 							<span class="font-italic"><b>Template Configuration Field Updates</b></span>
 							<p></p>
-							<img src="resources/img/screenshot-template_view_mod2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin9">
+							<img src="resources/img/screenshot-template_view_mod-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin9">
 							<p></p>
 							<span class="font-italic"><b>Template Update Success Message</b></span>
 							<p></p>
@@ -121,19 +121,19 @@ echo generate_site_breadcrumb($values);
 								<li>Any user can delivery a binary to a device via the <b>Maintenance->Software Delivery</b> tab (<a href="help_maintenance.php#selectBinary">here</a>).</li>
 							</ol>
 							</p>
-							<img src="resources/img/screenshot-admin3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin3">
+							<img src="resources/img/screenshot-admin-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin3">
 							<p></p>
                             <span class="font-italic"><b>Uploading A New Binary Into OneEMS</b></span>
                             <p></p>
-							<img src="resources/img/screenshot-admin4.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin4">
+							<img src="resources/img/screenshot-admin-four.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin4">
 							<p></p>
                             <span class="font-italic"><b>Existing Binary Listing</b></span>
                             <p></p>
 							<p>This page permits user to upload a new binary to the OneEMS OS repository. This makes the binary available to users who wish to deliver a binary to a device. Select Vendor and device series on left. Then, select binary file on right and click “Submit”.</p>
 							<p>If you wish to view binaries already loaded to the OS repository, select file name from the list then click the “Retrieve” button. You will get a popup with the list of existing binaries.</p>
-							<img src="resources/img/screenshot-admin5.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin5">
+							<img src="resources/img/screenshot-admin-five.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin5">
 							<p><a name="binaryListing"></a></p>
-                            <span class="font-italic"><b>- Binary Retrieval Results</b></span>
+                            <span class="font-italic"><b>Binary Retrieval Results</b></span>
                             <p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
@@ -141,7 +141,7 @@ echo generate_site_breadcrumb($values);
 							<h5 id="item-9-3">Device Cleanup</h5>
 							<p>This view allows an administrative user to remove records for a specific device or set of devices in the OneEMS network that may represent irrelevant duplicates.</p>
 							<p>Admins can filter these records based on combinations of IPV4/IPV6 addresses or Site IDs, and can sort the resulting records by any of those same paramaters including device name.</p>
-							<img src="resources/img/screenshot-admin6.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin6">
+							<img src="resources/img/screenshot-admin-six.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin6">
 							<p></p>
 							<span class="font-italic"><b>Device Cleanup</b></span>
 							<p></p>
@@ -181,7 +181,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -191,7 +191,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-load_template_mod2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -201,7 +201,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-load_template_mod2-1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod-two-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -211,7 +211,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-load_template_mod2-2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-load_template_mod-two-two.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -221,7 +221,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-two.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -231,7 +231,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-three.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -241,7 +241,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin4.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-four.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -251,7 +251,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin5.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-five.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -261,7 +261,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-admin6.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-six.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -281,7 +281,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-template_view_mod-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -291,7 +291,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-template_view_mod-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

@@ -4083,6 +4083,51 @@ function get_tempate_uservars($tempname){
 
 /**
  *
+ * @return interface usrvars details
+ */
+function generic_get_interface_usrvars_section($getInterface)
+{
+    global $db2;
+    $sql = "SELECT * FROM import_usrvars where usrvarname like 'interface-%'";
+	$db2->query($sql);
+    $resultset = $db2->resultset();//print_r($resultset);
+    //return $resultset;
+	$result = array();
+	$s=0;
+    foreach ($resultset as $key => $val){
+		$result[] = ++$s;
+        $result[] = $val['usrvarid'];
+		$result[] = $val['usrvarname'];
+		$result[] = $val['usrvarval'];		
+		$result[] = $val['deviceseries'];
+    }
+    return implode(',',$result);
+}
+
+/**
+ *
+ * @param unknown $templname
+ * @return unknown
+ */
+function get_usrvars_detail($usrvarname){
+    global $db2;
+    $sql = "SELECT * FROM import_usrvars where usrvarname = '".$usrvarname."'";
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    $result = array();
+	$s=0;
+    foreach ($resultset as $key => $val){
+		$result['sr'] = ++$s;
+        $result['usrvarid'] = $val['usrvarid'];
+		$result['usrvarname'] = $val['usrvarname'];
+		$result['usrvarval'] = $val['usrvarval'];		
+		$result['deviceseries'] = $val['deviceseries'];
+    }
+    return implode(',',$result);
+}
+
+/**
+ *
  * @param unknown $deviceid
  * @param unknown $output
  * @param unknown $lastupdated
@@ -7373,3 +7418,4 @@ function generic_get_usrvars_section()
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+

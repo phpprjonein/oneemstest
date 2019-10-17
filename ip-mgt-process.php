@@ -332,6 +332,14 @@ if (isset($_POST['tempname']) && $_POST['calltype'] == 'trigger' && isset($_POST
     //echo 'BDI 400 LTE IPv6 Address,Telco Interface-ASR9010-Even';
 }
 
+if(isset($_POST['checkusrvarname']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GetUserVarDetails'){
+	echo get_usrvars_detail($_POST['checkusrvarname']);
+}
+
+if($_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GetInterfaceUsrVarDetails'){
+	echo generic_get_interface_usrvars_section();
+}
+
 if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'DelGenerateScript') {
     delete_templname_already_exist($_POST['deltemp']);
     //if (file_exists(getcwd() .'/upload/'. $_POST['deltemp'] . ".txt")) {

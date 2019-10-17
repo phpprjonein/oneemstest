@@ -196,7 +196,23 @@ if ( isset($_POST["submit"]) ) {
         				</div>
         			</div>
         		</div-->
-
+				<div class="form-group f8 required col-md-4" data-fid="f8">
+					<label class="control-label" for="f8">Select Template Name</label>
+					<select data-placeholder="Select Template Names..."
+						class="form-control custom-select chosen-select"
+						id="templname" name="templname"
+						data-rule-required="true">
+						<option>-- Select Template -- </option>
+						<?php $templates = config_get_templates_templname();?>
+						<?php //print '<pre>'; print_r($templates);die;?>
+						
+						<?php foreach ($templates as $key=>$val):?>
+							<?php if(substr( $val['templname'], 0, 6 ) === "Golden"){?>
+								<option <?php echo ($_POST['templname'] == $val['templname']) ? ' selected':''; ?>><?php echo $val['templname'];?></option>
+							<?php }?>
+						<?php endforeach;?>
+					</select>
+				</div>
 				<div class="row">
 					<!-- /router selection content row -->
 					<div class="col-sm-12 col-md-12" id="listname-dd">
@@ -218,7 +234,7 @@ if ( isset($_POST["submit"]) ) {
 										</tr>
 									</thead>
 									<tbody>
-									<?php $i=1; foreach ($usrvars['result'] as $key=>$val){?>
+									<?php /* $i=1; foreach ($usrvars['result'] as $key=>$val){?>
 										<tr data-user="<?php echo $val['id'];?>" data-zones="<?php echo $val['zones'];?>" data-userlevel="<?php echo $val['userlevel'];?>" data-status="<?php echo $val['status'];?>">
 										<td><?php echo $i++;?></td>
 										<td><?php echo $val['usrvarid'];?></td>
@@ -227,7 +243,7 @@ if ( isset($_POST["submit"]) ) {
 										<td><?php echo $val['deviceseries'];?></td>
 										<!--td><button type="button" class="btn btn-secondary edituser">Edit</button>&nbsp;<button type="button" class="btn btn-secondary deleteuser">Delete</button></td-->
 										</tr>
-									<?php }?>
+									<?php } */?>
 
 									</tbody>
 								</table>
@@ -243,7 +259,6 @@ if ( isset($_POST["submit"]) ) {
 			</div>
 		<!--Template drop down code start by Swapnil-->
 		<div class="panel panel-default" id="template-dropdown">
-			<div class="panel-heading">Configuration Management</div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-12">
@@ -255,7 +270,7 @@ if ( isset($_POST["submit"]) ) {
 							<div class="col-lg-4 tags p-b-2">
 								<form action="cellsitetech-configuration-update.php" method="post"
 									id="config_file_updater" enctype="multipart/form-data">
-									<div class="form-group f8 required" data-fid="f8">
+									<!--div class="form-group f8 required" data-fid="f8">
 										<label class="control-label" for="f8">Select Template Name</label>
 										<select data-placeholder="Select Template Names..."
 											class="form-control custom-select chosen-select"
@@ -271,7 +286,7 @@ if ( isset($_POST["submit"]) ) {
 												<?php }?>
 											<?php endforeach;?>
 										</select>
-									</div>		
+									</div-->		
 									<!-- select Switch options -->
 									<?php  $gsswitchddwndata = configtemplate_switches_from_switchvars(); ?>
 									<div class="form-group f11 required" data-fid="f11">

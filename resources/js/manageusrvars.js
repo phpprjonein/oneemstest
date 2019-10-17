@@ -172,6 +172,8 @@ $(document).ready(function() {
 			$('.non-bandwidth').not('.panel-heading-lstmgmt').hide();
 			var templnamefwd=$(this).val();
 			$("#templnamefwd").val(templnamefwd);
+			var table = $('#manageusrvars').DataTable();
+			table.clear();
 			var postval = templnamefwd.split('_');
 			var f8val=postval[2];
 			if(f8val=='1561S1'){
@@ -196,10 +198,46 @@ $(document).ready(function() {
 						$(this).parent("div").show();
 					}
 				});
+				var sw;
+				var resultdataarr=[];
+				$.each(dataarr, function(i, e) {
+					if ($.inArray(e, resultdataarr) == -1) resultdataarr.push(e);
+				  });
+				for (sw = 0; sw < resultdataarr.length; ++sw) {
+					$.post("ip-mgt-process.php", {
+						'calltype': "trigger",
+						'checkusrvarname': resultdataarr[sw],
+						'action': "GetUserVarDetails"
+					}).done(function(data1) {	
+						var dataarr1={};
+						dataarr1 = data1.split(',');
+						dataarr1 = jQuery.unique( dataarr1 );
+						for (index = 0; index < dataarr1.length; index=index+5) { 
+							table.row.add([dataarr1[index],
+											dataarr1[index+1],
+											dataarr1[index+2],
+											dataarr1[index+3],
+											dataarr1[index+4]]).draw();
+						}  				
+					});
+				}
+				 
 		
 			});
-			
-			
+			$.post("ip-mgt-process.php", {
+						'calltype': "trigger",
+						'getInterface': '1',
+						'action': "GetInterfaceUsrVarDetails"
+					}).done(function(interface_usrvar_data) {						
+						interface_usrvar_dataarr = interface_usrvar_data.split(',');
+						for (index = 0; index < interface_usrvar_dataarr.length; index=index+5) { 
+							table.row.add( [interface_usrvar_dataarr[index],
+											interface_usrvar_dataarr[index+1],
+											interface_usrvar_dataarr[index+2],
+											interface_usrvar_dataarr[index+3],
+											interface_usrvar_dataarr[index+4]]).draw();							
+						}  											
+					}); 
 			
 	  });
 		$(document).on('keypress, keydown', '#select_device_name', function(event) {

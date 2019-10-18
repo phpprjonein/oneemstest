@@ -337,7 +337,7 @@ if(isset($_POST['checkusrvarname']) && $_POST['calltype'] == 'trigger' && isset(
 }
 
 if($_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'GetInterfaceUsrVarDetails'){
-	echo generic_get_interface_usrvars_section();
+	echo generic_get_interface_usrvars_section(1);
 }
 
 if (isset($_POST['filename']) && $_POST['calltype'] == 'trigger' && isset($_POST['action']) && $_POST['action'] == 'DelGenerateScript') {

@@ -204,6 +204,7 @@ $(document).ready(function() {
 					if ($.inArray(e, resultdataarr) == -1) resultdataarr.push(e);
 				  });
 				for (sw = 0; sw < resultdataarr.length; ++sw) {
+                                    if (resultdataarr[sw] != '') { 
 					$.post("ip-mgt-process.php", {
 						'calltype': "trigger",
 						'checkusrvarname': resultdataarr[sw],
@@ -220,6 +221,7 @@ $(document).ready(function() {
 											dataarr1[index+4]]).draw();
 						}  				
 					});
+                                     } 
 				}
 				 
 		

@@ -74,6 +74,12 @@ if ($_POST['screen'] == 'User') {
     
     
     if($_POST['act'] == 'delete'){
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 8) ? "Admin" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Manage Users page Description: Admin has deleted the user ".$_POST['username'];
+write_log($mesg);
+
         $values_arr = array(
                 'id' => $_POST['id'],
                 'username' => $_POST['username']

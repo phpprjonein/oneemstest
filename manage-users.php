@@ -19,6 +19,12 @@ check_user_authentication(array(
 
 $page_title = 'OneEMS';
 
+// page logging
+$usertype = (isset($_SESSION['userlevel']) == 8) ? "Admin" : "";
+$username = $_SESSION['username'];
+$mesg = " User name: $username User type : $usertype Page:  Manage Users page Description: Admin has navigated to the Manage Users page.";
+write_log($mesg);
+
 ?>
 <!DOCTYPE html>
 <html>

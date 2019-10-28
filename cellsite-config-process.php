@@ -200,16 +200,16 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
             $line .= $lineval;
         }
         //if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02')){
- if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02') ||  strpos($line, 'NCS540-01') || strpos($line, 'NCS540-01')||  strpos($line, 'NCS540-02') ||  strpos($line, 'NCS540-03') ||  strpos($line, 'ASR920-01') ||  strpos($line, 'ASR920-02') ||  strpos($line, 'ASR903-01') ||  strpos($line, 'ASR903-02') ||  strpos($line, 'IXR-01') ||  strpos($line, 'IXR-02') ||  strpos($line, 'IXR-03') || strpos($line, 'NCS5500-01')  || strpos($line, 'NCS5500-02')){
+		if(strpos($line, 'ASR9010-01') || strpos($line, 'ASR9010-02') ||  strpos($line, 'NCS540-01') || strpos($line, 'NCS540-01')||  strpos($line, 'NCS540-02') ||  strpos($line, 'NCS540-03') ||  strpos($line, 'ASR920-01') ||  strpos($line, 'ASR920-02') ||  strpos($line, 'ASR903-01') ||  strpos($line, 'ASR903-02') ||  strpos($line, 'IXR-01') ||  strpos($line, 'IXR-02') ||  strpos($line, 'IXR-03') || strpos($line, 'NCS5500-01')  || strpos($line, 'NCS5500-02')){
             $resetfile = 1;
         }
         if($filenameindex == 0 || $resetfile == 1 ){
             $file = fopen(getcwd() . "/generatescript/".$filenames[$filenameindex], "w");
             $filenameindex++;
             $resetfile = 0;
-        }
+        }//echo '<br>'.$line;
         fwrite($file, $line . "\n");
-    }
+    }//exit;
     fclose($file);
     $zipname = 'generatescript/'.$timestamp.$_POST['templname'].'.zip';
     unlink($zipname);

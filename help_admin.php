@@ -146,9 +146,71 @@ echo generate_site_breadcrumb($values);
 							<span class="font-italic"><b>Device Cleanup</b></span>
 							<p></p>
 							<p></p>
+<hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+
+ <h5 id="item-9-4">Audit History Cleanup</h5>
+<p>This view allows an administrative user to manage previous audit history logs.</p>
+                                                        <img src="resources/img/screenshot-admin-seven.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin7">
+                                                        <p></p>
+                                                        <span class="font-italic"><b>Audit History Cleanup</b></span>
+                                                        <p></p>
+                                                        <p></p>
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
+ <h5 id="item-9-5">Manage Users</h5>
+                                                        <p>This view allows an administrative user to manage users.</p>
+                                                        <p>Admins can edit identifying information as well as Callout Zones per user.</p>
+                                                        <img src="resources/img/screenshot-admin-eight.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin8">
+                                                        <p></p>
+                                                        <span class="font-italic"><b>Manage Users</b></span>
+                                                        <p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+ <h5 id="item-9-6">Manage Vendors</h5>
+                                                        <p>This view allows administrators to add vendors to OneEMS.</p>
+                                                        <img src="resources/img/screenshot-admin-nine.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin9">
+                                                        <p></p>
+                                                        <span class="font-italic"><b>Manage Vendors</b></span>
+                                                        <p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+ <h5 id="item-9-7">Manage User Levels</h5>
+                                                        <p>This view allows an administrative user to manage the overall user levels available to the OneEMS application.</p>
+                                                        <img src="resources/img/screenshot-admin-ten.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin10">
+                                                        <p></p>
+                                                        <span class="font-italic"><b>Manage User Levels</b></span>
+                                                        <p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+ <h5 id="item-9-8">Import User Variables</h5>
+                                                        <p>Administrators can use this view to manage device variables available to users. Admins can download a clean template for upload or choose existing ones.</p>
+                                                        <img src="resources/img/screenshot-admin-eleven.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin11">
+                                                        <p></p>
+                                                        <span class="font-italic"><b>User Variables Management</b></span>
+                                                        <p></p>
+
+
+ <img src="resources/img/screenshot-admin-eleven-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-admin11-1">
+                                                        <p></p>                                                       <p></p>
+<p>This process is similar to the <a href="help_config.php#item-4-2-1">golden script generation</a> process.</p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+
+
+
+
+
+
 							<div class="row">
 								<div class="col-6">
 									<a href="help_inventory.php" class="border"><b><< PREV: Inventory</b></a>
@@ -271,7 +333,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-seven.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -281,7 +343,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod-one.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-eight.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -291,10 +353,40 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-template_view_mod-two.png" alt="" width="100%">
+					<img src="resources/img/screenshot-admin-nine.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
+		<div class="modal fade show" id="screenshot-admin10" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                        <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                        </button>
+                                        <img src="resources/img/screenshot-admin-ten.png" alt="" width="100%">
+                                </div>
+                        </div>
+                </div>
+		<div class="modal fade show" id="screenshot-admin11" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                        <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                        </button>
+                                        <img src="resources/img/screenshot-admin-eleven.png" alt="" width="100%">
+                                </div>
+                        </div>
+                </div>
+		<div class="modal fade show" id="screenshot-admin12" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                        <button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                        </button>
+                                        <img src="resources/img/screenshot-admin-eleven-one.png" alt="" width="100%">
+                                </div>
+                        </div>
+                </div>
 	</div>
 <!-- /image modals -->
 

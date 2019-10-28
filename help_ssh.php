@@ -130,7 +130,7 @@ echo generate_site_breadcrumb($values);
 					</li>
 					<li>Click on the Network Elements tab in the main navigation and select a Device List. Then, on the Health Check page, click on a device name. You will get a popup which has a <b>"PuTTY"</b> text link on the right hand side. Click on this link and you will see a PuTTY window that will attempt to log you into the device. Enter your WIN-VZWNET password.
 <p></p>
-<img src="resources/img/screenshot-putty-ssh2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2"><p></p></li>
+<img src="resources/img/screenshot-putty-ssh-two.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2"><p></p></li>
 					<li>If you are denied access, be sure you have properly requested access to this device via CyberArk (aka PAM). Request access via CARMS.</li>
 				</ol>
 
@@ -146,7 +146,7 @@ echo generate_site_breadcrumb($values);
                                     <p></p></li>
                             </ul>
                             <p>Select Open. This will open a putty window and will prompt you for your WIN-VZWNET password.</p>
-                            <img src="resources/img/screenshot-putty-ssh2.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2">
+                            <img src="resources/img/screenshot-putty-ssh-two.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh2">
                             <p></p>
                             <span class="font-italic"><b>One EMS Regional Map</b></span>
                             <p></p>
@@ -158,12 +158,12 @@ echo generate_site_breadcrumb($values);
                                 <br>
                                 1@pamssh.nsiam.vzwnet.com</p>
                                 <p></p>
-                                <img src="resources/img/screenshot-putty-ssh3.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3">
+                                <img src="resources/img/screenshot-putty-ssh-three.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3">
                                 <p></p>
                                 <span class="font-italic"><b>One EMS Regional Map</b></span>
                                 <p></p>
                                 <p>This will open up a putty window</p>
-                                <img src="resources/img/screenshot-putty-ssh4.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4">
+                                <img src="resources/img/screenshot-putty-ssh-four.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4">
                                 <p></p>
                                 <span class="font-italic"><b>One EMS Regional Map</b></span> -->
                                 <p></p>
@@ -176,14 +176,14 @@ echo generate_site_breadcrumb($values);
                                         <li>Launch the SecureCRT client</li>
                                         <li>From the Session Manager window, add a new session
                                             <p></p>
-                                            <img src="resources/img/screenshot-putty-ssh5.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5">
+                                            <img src="resources/img/screenshot-putty-ssh-five.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5">
                                             <p></p>
                                             <span class="font-italic"><b>One EMS Regional Map</b></span>
                                             <p></p>
                                         </li>
                                         <li>Select <b>"SSH2"</b> as the Protocol and click <b>"Next"</b>
                                             <p></p>
-                                            <img src="resources/img/screenshot-putty-ssh6.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6">
+                                            <img src="resources/img/screenshot-putty-ssh-six.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6">
                                             <p></p>
                                             <span class="font-italic"><b>One EMS Regional Map</b></span>
                                             <p></p>
@@ -257,7 +257,7 @@ echo generate_site_breadcrumb($values);
                                                         <li>Go to <b>Options -> Global Options -> Terminal -> Appearance -> Web Browser</b></li>
                                                         <li>Click on <b>Make SecureCRT the Default Application</b>
 							<p></p>
-							<img src="resources/img/screenshot-putty-ssh3.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3"><p></p></li>
+							<img src="resources/img/screenshot-putty-ssh-three.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh3"><p></p></li>
                                                         <li>Click OK on the popup</li>
                                                         <li>Click OK on the Global Options window</li>
                                                         <li>Close SecureCRT</li>
@@ -265,17 +265,17 @@ echo generate_site_breadcrumb($values);
 							<li>Select <b>Settings -> Apps -> Default Apps</b></li>
 							<li>Scroll down to the bottom and click on <b>"Choose default apps by protocol"</b>
 							<p></p>
-							<img src="resources/img/screenshot-putty-ssh4.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4"><p></p></li>
+							<img src="resources/img/screenshot-putty-ssh-four.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh4"><p></p></li>
 							<li>Scroll down to SSH2
 							<br />
 							<br />
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> On the right side, if the <b>"SecureCRT Application"</b> is already assigned, then this process is complete.</p></li>
 							<li>If it is not assigned, click on <b>"Choose a default"</b> and select <b>"SecureCRT Application"</b>
 							<p></p>
-							<img src="resources/img/screenshot-putty-ssh5.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5"><p></p></li>
+							<img src="resources/img/screenshot-putty-ssh-five.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh5"><p></p></li>
 							<li>Click on the Network Elements tab in the main navigation and select a Device List. Then, on the Health Check page, click on a device name. You will get a popup which has a <b>"SecureCRT"</b> text link on the right hand side. Click on this link and you will see a SecureCRT window that will attempt to log you into the device. Enter your WIN-VZWNET password.
 <p></p>
-<img src="resources/img/screenshot-putty-ssh6.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6"><p></p></li>
+<img src="resources/img/screenshot-putty-ssh-six.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-ssh6"><p></p></li>
                                           
                                         </li>
                                         <li>If you are denied access, be sure you have properly requested access to this device via CyberArk (aka PAM). Request access via CARMS.</li>
@@ -334,7 +334,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-putty-ssh2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-putty-ssh-two.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -347,7 +347,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-putty-ssh3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-putty-ssh-three.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -360,7 +360,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-putty-ssh4.png" alt="" width="100%">
+					<img src="resources/img/screenshot-putty-ssh-four.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -373,7 +373,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-putty-ssh5.png" alt="" width="100%">
+					<img src="resources/img/screenshot-putty-ssh-five.png" alt="" width="100%">
 				</div>
 			</div>
         </div>
@@ -386,7 +386,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-putty-ssh6.png" alt="" width="100%">
+					<img src="resources/img/screenshot-putty-ssh-six.png" alt="" width="100%">
 				</div>
 			</div>
         </div>

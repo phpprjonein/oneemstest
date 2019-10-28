@@ -46,6 +46,12 @@
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3-1">Template - View / Modify</a>
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3-2">Maintenance</a>
 										<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-3">Device Cleanup</a>
+<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-4">Audit History Cleanup</a>
+<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-5">Manage Users</a>
+<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-6">Manage Vendors</a>
+<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-7">Manage User Levels</a>
+<a class="nav-link ml-3 my-1" href="help_admin.php#item-9-8">Import User Variables</a>
+
                                     </nav>
 									<a class="nav-link" href="help_ssh.php">PAM SSH USER GUIDE</a>
 									<nav class="nav nav-pills flex-column">

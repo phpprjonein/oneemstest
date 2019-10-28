@@ -31,7 +31,8 @@
 				<div class="col-sm-10 col-10">
                                <?php  if ($_SESSION['sso_flag'] == 0) { ?>
 					<!--<a href="index.php"><h5>User name not Found! Please get registered in CARMS </h5></a>-->
-					<h5>User not Found! Please register through CARMS </h5>
+					<h5> User name not Found! Please register through CARMS. </h5>
+					<h5> For any issues, Please raise a ticket on clicking the icon located at the bottom of page.</h5>
 				<?php }?>
 					<p>
  <!--

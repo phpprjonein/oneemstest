@@ -1,4 +1,4 @@
-$(document).ready(function() { var iCnt=0;
+$(document).ready(function() { var iCnt=0;var myCnt=0;
     $(document).on('change', '#cellsitech-config #file_process input[type="checkbox"]', function(e){
         if($(this).is(':checked')){
         	$('#file_process .form-non-editable-fields').hide();
@@ -50,7 +50,7 @@ $(document).ready(function() { var iCnt=0;
     });
 	
 	var tmp = [];
-	$('#append-interface-section').click( function(event){iCnt=iCnt+1;
+	/*$('#append-interface-section').click( function(event){iCnt=iCnt+1;
 		event.preventDefault();
 		var lastID='';
 		var myUpdate=[];
@@ -73,7 +73,7 @@ $(document).ready(function() { var iCnt=0;
 		  s++;
 		});
 		$('.form-editable-fields-to-append').append("<br><span class='form-editable-fields'><label class='readonly' id='fields-"+iCnt+"'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_" +iCnt+ name1 + "][1]'><a href='#' id='remove-interface-section-"+iCnt+"'style='padding-left : 87px'><font size='25'>-</font></a><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_" +iCnt+ name2 + "][1]'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>");
-		/* var searchIDs = $("input:checkbox:checked").map(function(){
+		 var searchIDs = $("input:checkbox:checked").map(function(){
 			tmp.push($(this).attr("id"));
 		  return $(this).attr("id");
 		}).get(); // <----
@@ -93,10 +93,99 @@ $(document).ready(function() { var iCnt=0;
 				}
 			});
 			
-		});		 */	
+		});		 	
 		console.log('test');
-	});	
+	});	*/
 	
+	$('#apend-interface-section').click( function(event){myCnt=myCnt+1;
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv1"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv1"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><a href="#" id="apend-interface-section-1"><font size="5">+</font></a><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');
+	});
+	$(document).delegate('#append-interface-section','click', function(){myCnt=myCnt+1;
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv'+myCnt+'"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv'+myCnt+'"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><!--a href="#" id="apend-interface-section-2"><font size="5">+</font></a--><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');
+	});
+	$(document).delegate('#apend-interface-section-1','click', function(){
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv2"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv2"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><!--a href="#" id="apend-interface-section-2"><font size="5">+</font></a--><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');
+	});
+	$(document).delegate('#apend-interface-section-2','click', function(){
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv3"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv3"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><!--a href="#" id="apend-interface-section-3"><font size="5">+</font></a--><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');		
+	});
+	$(document).delegate('#apend-interface-section-3','click', function(){
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv4"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv4"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><!--a href="#" id="apend-interface-section-4"><font size="5">+</font></a--><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');		
+	});
+	$(document).delegate('#apend-interface-section-4','click', function(){
+		event.preventDefault();		
+		$('#interface-div').append('<div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="vardiv5"><label class="control-label" for="Interface variables">Gigabyte Ethernate</label><input type="text" name="gigabyteethernate'+myCnt+'" class="form-control uservarsreq" value="" placeholder=""></div> <div class="jf-form form-group col-xs-10 col-sm-3 col-md-3 col-lg-5" id="descdiv5"><label class="control-label" for="Interface Description">eNodeB#</label> <input type="text" name="enodeb'+myCnt+'" class="form-control uservarsreq" id="" value="" placeholder=""><!--a href="#" id="apend-interface-section-5"><font size="5">+</font></a--><a href="#" id="remove-interface-box-'+myCnt+'" style="padding-left : 18px"><font size="25">-</font></a></div>');		
+	});
+	
+	
+	
+
+	$(document).delegate('#remove-interface-box-1', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv1').remove();
+		$('#descdiv1').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
+
+	$(document).delegate('#remove-interface-box-2', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv2').remove();
+		$('#descdiv2').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
+	$(document).delegate('#remove-interface-box-3', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv3').remove();
+		$('#descdiv3').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
+	$(document).delegate('#remove-interface-box-4', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv4').remove();
+		$('#descdiv4').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
+	$(document).delegate('#remove-interface-box-5', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv5').remove();
+		$('#descdiv5').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
+	$(document).delegate('#remove-interface-box-6', 'click', function(){
+		event.preventDefault();		
+		$('#vardiv6').remove();
+		$('#descdiv6').remove();myCnt=myCnt-1;
+		/* var p=$('#last-element').val();
+		$.each( section, function( key, value ) {
+				$('#new-field2'+p).remove();
+				p++;
+		}); */
+	}); 
 });
 var section={0:'interface GigabitEthernet',1:'description eNB - MacroNodeID - ',
 		2:'mtu 1956',3:'no ip address',4:'load-interval 30',5:'media-type sfp',6:'negotiation auto',
@@ -115,6 +204,7 @@ $(document).delegate('#remove-interface-section-1', 'click', function(){
 	});
     
 }); 
+
 $(document).delegate('#remove-interface-section-2', 'click', function(){
 	$('#fields-2').remove();
     $('#remove-interface-section-2').remove();
@@ -160,3 +250,5 @@ $(document).delegate('#remove-interface-section-6', 'click', function(){
 			p++;
 	});
 }); 
+
+

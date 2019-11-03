@@ -314,73 +314,74 @@ echo generate_site_breadcrumb($values);
                     $output .= '</div>';
                 }
             }
-            //echo $output .= '</div>';
-			//code start for new section addition by Swapnil
+            echo $output .= '</div>';
 			
-				
-			$usrvars = generic_get_usrvars_section();$limit=count($usrvars['result'])/2;
-			$s=0;//echo count($usrvars['result']).' & '.$limit;exit;
-			if(count($usrvars['result'])<2){
-				echo $output .= '</div>';
+		
+			//code start for new section addition by Swapnil
+			$usrvars = generic_get_usrvars_section();
+			
+			$section903=['interface GigabitEthernet',' description eNB - MacroNodeID - ',' mtu 1956',' no ip address',
+			' load-interval 30',' negotiation auto',' service-policy input METER-IN',' service-policy output SHAPE-OUT',
+			'!',' service instance 300 ethernet','  description CELL_MGMT eNB OAM','  encapsulation dot1q 101',
+			'  rewrite ingress tag pop 1 symmetric','  bridge-domain 300','!',' service instance 400 ethernet',
+			'  description LTE VLAN','  encapsulation dot1q 100','  rewrite ingress tag pop 1 symmetric',
+			'  bridge-domain 400','!'];											
+			$section920=['interface GigabitEthernet',' description eNB - MacroNodeID - ',' mtu 1956',' no ip address',
+			' load-interval 30',' media-type sfp',' negotiation auto',' service-policy input METER-IN',
+			' service-policy output METER-OUT',' service instance 300 ethernet','  description CELL_MGMT eNB OAM',
+			'  encapsulation dot1q 101','  rewrite ingress tag pop 1 symmetric','  bridge-domain 300',
+			'  service instance 400 ethernet','  description LTE VLAN','  encapsulation dot1q 100',
+			'  rewrite ingress tag pop 1 symmetric','  bridge-domain 400','!'];
+			$section1000=['interface GigabitEthernet',' description eNB - MacroNodeID - ',' mtu 1956',' no ip address',
+			' load-interval 30',' negotiation auto',' service-policy input EBH-METER',
+			' service-policy output EBH-METER',' service instance 300 ethernet','  description vrf CELL_MGMT eNB OAM',
+			'  encapsulation dot1q 101','  rewrite ingress tag pop 1 symmetric','  bridge-domain 300',' !',
+			' service instance 400 ethernet','  description vrf LTE eNB S1 RAN','  encapsulation dot1q 100',
+			'  rewrite ingress tag pop 1 symmetric','  bridge-domain 400'];
+			$section5500=['interface TenGigE',' description eNB - MacroNodeID - ',' cdp',' mtu 1970',
+			' service-policy input CLASSIFY-IN',' service-policy output MARK-OUT',' service-policy output QUEUES-OUT',
+			' load-interval 30','!','interface TenGigE#XXXXXX#.301 l2transport',' description eNB LTE S1 VLAN',
+			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+			' description eNB OAM VLAN',' encapsulation dot1q 401',' rewrite ingress tag pop 1 symmetric','!'];
+			$section540=['interface TenGigE',' description eNB - MacroNodeID - ',' cdp',' mtu 1970',
+			' load-interval 30',' service-policy input CLASSIFY-IN',' service-policy output MARK-OUT',
+			' service-policy output QUEUES-OUT','!','interface TenGigE#XXXXXX#.301 l2transport', 'description eNB LTE VLAN',
+			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+			' description eNB OAM VLAN',' encapsulation dot1q 401',' rewrite ingress tag pop 1 symmetric','!'];
+			$sw=count($newarr);
+			$mycount=count($newarr);
+			$limit=count($usrvars['result'])/2;	//echo 'Limit : '.$limit;	
+			if(strpos($_POST["f7"],'903')){
+				$section=$section903;
 			}
-			else{
-				for($usrvarloop=0;$usrvarloop<$limit;$usrvarloop++){
-					$filename = 'resources/scripts/import-usrvars/ASR920_eNodeB_interface_section_v7.txt';
-					//$filename = '/usr/apps/oneems/fs1/resources/scripts/import-usrvar/ASR920_eNodeB_interface_section_v7.txt';
-					$fd = fopen($filename, "r");
-					$line = $checkcount;				
-					
-					while (! feof($fd)) {
-						++ $line;
-						$contents = fgets($fd, filesize($filename));
-						$delimiter = "#";
-						$splitcontents = explode($delimiter, $contents);
-						$splitcontcount = count($splitcontents);
-						if ($splitcontcount > 1) {
-							$output .= '<div class="form-group">';
-							$output_inner1 = '';
-							$l = 1;
-							foreach ($splitcontents as $color) {
-								if (! empty($color)) {
-									if (substr_count(strtolower('#' . $color), "#x") > 0 || substr_count(strtolower('#' . $color), "#y") > 0 || substr_count(strtolower('#' . $color), "#x.x.x.x") > 0 || substr_count(strtolower('#' . $color), "#y.y.y.y") > 0 || substr_count(strtolower('#' . $color), "#z.z.z.z") > 0 || substr_count(strtolower('#' . $color), "#a.a.a.a") > 0 || substr_count(strtolower('#' . $color), "#b.b.b.b") > 0) {
-										
-										//print_r($usrvars);exit;
-										/*
-										 * $output_inner .= "<input type='text' size='" . strlen($color) . "' name='loop[looper_" . $line . "][]' value='" . $color . "' class='form-control cellsitech-configtxtinp border border-dark'>
-										 * <input type='hidden' name='hidden[looper_" . $line . "][]' value='1' >";
-										 */
-										
-										$output .= "<span class='form-editable-fields'><input type='text' size='" . $pink_box_size . "' name='loop[looper_" . $line . "][]' class='form-control cellsitech-configtxtinp border border-dark' value='".$usrvars['result'][$s]['usrvarval']."'></span><input type='hidden' name='edit[looper_" . $line . "][]' value='1'>";
-										$s++;
-									} else {
-										if (strlen($color) != 0) {
-											$orgcolor = $color;
-											$color = ($color == " ") ? '&nbsp;' : $color;
-											//$output_inner .= "<label class='readonly'>" . $color . "</label><input type='text' style='display:none !important;' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "'  class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' ><input type='hidden' name='looptabler[looper_" . $line . "][]' value='' >";
-											$output .= "<span class='form-non-editable-fields'><label class='readonly'>" . $color . "</label><input type='text' style='display:none !important;' name='loop[looper_" . $line . "][]' value='" . $color . "'></span>";
-										}
-									}
-								}
-								$l ++;
-							};
-							
-							$output .= '<span class="form-editable-fields">' . $output_inner1 . '</span>';
-							
-							//$output .= '</div>';
-						} elseif ($splitcontcount == 1) {
-							foreach ($splitcontents as $color) {
-								if (! empty($color)) {
-									$orgcolor = $color;
-									$color = ($color == " ") ? '&nbsp;' : $color;
-									$output .= "<div class='form-group'><span class='form-non-editable-fields'><label  class='readonly'>" . $color . "</label><input style='display:none !important;' type='text' size='" . strlen($orgcolor) . "' name='loop[looper_" . $line . "][]' value='" . $orgcolor . "' class='form-control cellsitech-configtxtdisp'><input type='hidden' name='hidden[looper_" . $line . "][]' value='0' ><input type='hidden' name='looptabler[looper_" . $line . "][]' value='' ></span></div>";
-								}
-							};
-						};
-					};
-					fclose($fd);//code end for new section addition by Swapnil
-					echo $output .= '</div>';
-				}
+			if(strpos($_POST["f7"],'920')){
+				$section=$section920;
 			}
+			if(strpos($_POST["f7"],'1000')){
+				$section=$section1000;
+			}
+			if(strpos($_POST["f7"],'5500')){
+				$section=$section5500;
+			}
+			if(strpos($_POST["f7"],'540')){
+				$section=$section540;
+			}//echo '<pre>';print_r($section);exit;
+				$usrvarvalcnt=0;
+			for($usrvarloop=1;$usrvarloop<$limit;$usrvarloop++){	$mycount=$sw;//echo 'Count : '.$usrvarvalcnt;
+				foreach ($section as $key => $val) {$sw++;?>
+					<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+				<?php }
+				echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+				foreach ($section as $key => $val) {
+					if($key==0){
+					echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
+					if($key==1){
+					echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
+					else
+						echo $val."<br>";
+				}echo "</label></span>";
+			}
+			//code end for new section addition by Swapnil
             ?>
 			</div>
 											<div>

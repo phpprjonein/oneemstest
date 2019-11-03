@@ -221,7 +221,7 @@ echo generate_site_breadcrumb($values);
 													<label>Hide Readonly Fields&nbsp;</label><input
 														type="checkbox" value="1" id="show_hide_readonly" />
 												</div>
-												<a href="#" id="append-interface-section" style="position:fixed; margin-left:700px"><font size="25">+</font></a>												
+												<!--a href="#" id="append-interface-section" style="position:fixed; margin-left:700px"><font size="25">+</font></a-->												
 												<?php
 												$output = '';
 												$pink_box_min_size = 10;
@@ -305,7 +305,7 @@ echo generate_site_breadcrumb($values);
 												}$output .= '<span class="form-editable-fields-to-append"> </span>';
 												echo $output .= '</div>';
 												
-												//code start for new section addition by Swapnil
+												//code start for new section addition by Swapnil (+ icon on same page)
 												/* $usrvars = generic_get_usrvars_section();$limit=count($usrvars['result'])/2;
 												$s=0;
 												if(count($usrvars['result'])<2){
@@ -365,6 +365,142 @@ echo generate_site_breadcrumb($values);
 												}
 												
 												echo $output .= '</div>';*/
+												//code start for new section addition by Swapnil (+ icon on prev page)
+												$section=['interface GigabitEthernet','description eNB - MacroNodeID - ',
+												'mtu 1956','no ip address','load-interval 30','media-type sfp','negotiation auto',
+												'service-policy input METER-IN','service-policy output METER-OUT','no shut','!',
+												'service instance 300 ethernet','description CELL_MGMT eNB OAM','encapsulation dot1q 101',
+												'rewrite ingress tag pop 1 symmetric','bridge-domain 300','!','service instance 400 ethernet',
+												'description LTE VLAN','encapsulation dot1q 100','rewrite ingress tag pop 1 symmetric',
+												'bridge-domain 400','!'];
+												$section903=['interface GigabitEthernet','description eNB - MacroNodeID - ','mtu 1956','no ip address',
+												'load-interval 30','negotiation auto','service-policy input METER-IN','service-policy output SHAPE-OUT',
+												'!','service instance 300 ethernet','description CELL_MGMT eNB OAM','encapsulation dot1q 101',
+												'rewrite ingress tag pop 1 symmetric','bridge-domain 300','!','service instance 400 ethernet',
+												'description LTE VLAN','encapsulation dot1q 100','rewrite ingress tag pop 1 symmetric',
+												'bridge-domain 400','!'];
+												$section920=['interface GigabitEthernet','description eNB - MacroNodeID - ','mtu 1956','no ip address',
+												'load-interval 30','media-type sfp','negotiation auto','service-policy input METER-IN',
+												'service-policy output METER-OUT','service instance 300 ethernet','description CELL_MGMT eNB OAM',
+												'encapsulation dot1q 101','rewrite ingress tag pop 1 symmetric','bridge-domain 300',
+												'service instance 400 ethernet','description LTE VLAN','encapsulation dot1q 100',
+												'rewrite ingress tag pop 1 symmetric','bridge-domain 400','!'];
+												$section1000=['interface GigabitEthernet','description eNB - MacroNodeID - ','mtu 1956','no ip address',
+												'load-interval 30','negotiation auto','service-policy input EBH-METER',
+												'service-policy output EBH-METER','service instance 300 ethernet','description vrf CELL_MGMT eNB OAM',
+												'encapsulation dot1q 101','rewrite ingress tag pop 1 symmetric','bridge-domain 300','!',
+												'service instance 400 ethernet','description vrf LTE eNB S1 RAN','encapsulation dot1q 100',
+												'rewrite ingress tag pop 1 symmetric','bridge-domain 400'];
+												$section5500=['interface TenGigE','description eNB - MacroNodeID - ','cdp','mtu 1970',
+												'service-policy input CLASSIFY-IN','service-policy output MARK-OUT','service-policy output QUEUES-OUT',
+												'load-interval 30','!','interface TenGigE#XXXXXX#.301 l2transport','description eNB LTE S1 VLAN',
+												'encapsulation dot1q 301','rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+												'description eNB OAM VLAN','encapsulation dot1q 401','rewrite ingress tag pop 1 symmetric','!'];
+												$section540=['interface TenGigE','description eNB - MacroNodeID - ','cdp','mtu 1970',
+												'load-interval 30','service-policy input CLASSIFY-IN','service-policy output MARK-OUT',
+												'service-policy output QUEUES-OUT','!','interface TenGigE#XXXXXX#.301 l2transport','description eNB LTE VLAN',
+												'encapsulation dot1q 301','rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+												'description eNB OAM VLAN','encapsulation dot1q 401','rewrite ingress tag pop 1 symmetric','!'];
+												$sw=count($newarr);
+												$mycount=count($newarr);
+												if(strpos($_POST["f7"],'903')){
+													$section=$section903;
+												}
+												if(strpos($_POST["f7"],'920')){
+													$section=$section920;
+												}
+												if(strpos($_POST["f7"],'1000')){
+													$section=$section1000;
+												}
+												if(strpos($_POST["f7"],'5500')){
+													$section=$section5500;
+												}
+												if(strpos($_POST["f7"],'540')){
+													$section=$section540;
+												}//echo '<pre>';print_r($section);exit;
+												if(isset($_POST['gigabyteethernate']))
+												{													
+													foreach ($section as $key => $val) {$sw++;
+														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
+													}
+													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+													foreach ($section as $key => $val) {
+														if($key==0)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate']."'><br>";
+														if($key==1)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb']."'><br>";
+														else
+															echo $val."<br>";
+													}echo "</label></span>";
+												}
+												if(isset($_POST['gigabyteethernate1']))
+												{
+													$mycount=$sw;													
+													foreach ($section as $key => $val) {$sw++;
+														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
+													}
+													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
+													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+													foreach ($section as $key => $val) {
+														if($key==0)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>";
+														if($key==1)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>";
+														else
+															echo $val."<br>";
+													}echo "</label></span>";
+												}
+												if(isset($_POST['gigabyteethernate2']))
+												{
+													$mycount=$sw;													
+													foreach ($section as $key => $val) {$sw++;
+														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
+													}
+													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
+													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+													foreach ($section as $key => $val) {
+														if($key==0)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>";
+														if($key==1)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>";
+														else
+															echo $val."<br>";
+													}echo "</label></span>";
+												}
+												if(isset($_POST['gigabyteethernate3']))
+												{
+													$mycount=$sw;													
+													foreach ($section as $key => $val) {$sw++;
+														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
+													}
+													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
+													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+													foreach ($section as $key => $val) {
+														if($key==0)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>";
+														if($key==1)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>";
+														else
+															echo $val."<br>";
+													}echo "</label></span>";
+												}
+												if(isset($_POST['gigabyteethernate4']))
+												{
+													$mycount=$sw;													
+													foreach ($section as $key => $val) {$sw++;
+														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
+													}
+													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
+													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
+													foreach ($section as $key => $val) {
+														if($key==0)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>";
+														if($key==1)
+															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>";
+														else
+															echo $val."<br>";
+													}echo "</label></span>";
+												}
 												?>
 											</div>
 											<div>

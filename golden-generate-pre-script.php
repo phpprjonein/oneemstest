@@ -306,15 +306,36 @@ write_log($mesg);
 							</div>
                             <?php
                         // $result['usrvars'][$val['usrvarname']] = $val['usrvarval'];
-                    }
-                    ?>
-                        </div>
-						<!-- /template name content -->
-						<div class="row" id="template_info_act">
-							<div class="col">
-								<button type="submit" class="btn btn-lg generate-script-submit">Select</button>
-							</div>
+                    }?>
+							
 						</div>
+						<div class="jf-form form-group col-xs-12 col-sm-3 col-md-3 col-lg-12 gsalert alert-secondary panel-heading-lstmgmt non-bandwidth"><b>Interface</b><a href="#" id="append-interface-section" style="float:right; margin-top:-32px"><font size="10">+</font></a>	</div>
+						<div class="row" id="interface-div">
+							<div class="jf-form form-group col-xs-12 col-sm-5 col-md-5 col-lg-5">
+								<?php 
+								echo '<label class="control-label" for="Interface variables">Gigabyte Ethernate</label>
+														<input type="text"
+														name="gigabyteethernate"
+														class="form-control uservarsreq">';
+								?>
+							</div>		
+							<div class="jf-form form-group col-xs-12 col-sm-5 col-md-5 col-lg-5" id="interface-description">							
+								<?php 
+								echo '<label class="control-label" for="Interface Description">eNodeB#</label>
+														<input type="text"
+														name="enodeb"
+														class="form-control uservarsreq"
+														id="'.str_replace(' ','-',$usrvarname).'"><!--a href="#" id="apend-interface-section"><font size="5">+</font></a-->	';
+								?>
+									
+							</div>
+						</div>	
+					<!-- /template name content -->
+					<div class="row" id="template_info_act">
+						<div class="col">
+							<button type="submit" class="btn btn-lg generate-script-submit">Select</button>
+						</div>
+					</div>
 					</form>
 
 			</section>

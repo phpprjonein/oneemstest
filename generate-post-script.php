@@ -420,15 +420,15 @@ echo generate_site_breadcrumb($values);
 												}//echo '<pre>';print_r($section);exit;
 												if(isset($_POST['gigabyteethernate']))
 												{													
-													foreach ($section as $key => $val) {$sw++;
-														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
-													}
+													foreach ($section as $key => $val) {$sw++;?>
+														<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+													<?php }
 													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 													foreach ($section as $key => $val) {
 														if($key==0)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate']."'><br>";
 														if($key==1)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb']."'><br>";
 														else
 															echo $val."<br>";
 													}echo "</label></span>";
@@ -436,16 +436,16 @@ echo generate_site_breadcrumb($values);
 												if(isset($_POST['gigabyteethernate1']))
 												{
 													$mycount=$sw;													
-													foreach ($section as $key => $val) {$sw++;
-														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
-													}
+													foreach ($section as $key => $val) {$sw++;?>
+														<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+													<?php }
 													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
 													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 													foreach ($section as $key => $val) {
 														if($key==0)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>";
 														if($key==1)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>";
 														else
 															echo $val."<br>";
 													}echo "</label></span>";
@@ -453,16 +453,16 @@ echo generate_site_breadcrumb($values);
 												if(isset($_POST['gigabyteethernate2']))
 												{
 													$mycount=$sw;													
-													foreach ($section as $key => $val) {$sw++;
-														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
-													}
+													foreach ($section as $key => $val) {$sw++;?>
+														<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+													<?php }
 													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
 													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 													foreach ($section as $key => $val) {
 														if($key==0)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>";
 														if($key==1)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>";
 														else
 															echo $val."<br>";
 													}echo "</label></span>";
@@ -470,16 +470,16 @@ echo generate_site_breadcrumb($values);
 												if(isset($_POST['gigabyteethernate3']))
 												{
 													$mycount=$sw;													
-													foreach ($section as $key => $val) {$sw++;
-														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
-													}
+													foreach ($section as $key => $val) {$sw++;?>
+														<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+													<?php }
 													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
 													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 													foreach ($section as $key => $val) {
 														if($key==0)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>";
 														if($key==1)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>";
 														else
 															echo $val."<br>";
 													}echo "</label></span>";
@@ -487,16 +487,16 @@ echo generate_site_breadcrumb($values);
 												if(isset($_POST['gigabyteethernate4']))
 												{
 													$mycount=$sw;													
-													foreach ($section as $key => $val) {$sw++;
-														echo "<input type='text' style='display:none !important;' id='new-field' size='' name='loop[looper_".$sw."][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value=".$val.">";
-													}
+													foreach ($section as $key => $val) {$sw++;?>
+														<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
+													<?php }
 													//echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>interface GigabitEthernet<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>description eNB - MacroNodeID - <input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>mtu 1956<br>no ip address<br>load-interval 30<br>media-type sfp<br>negotiation auto<br>service-policy input METER-IN<br>service-policy output METER-OUT<br>no shut<br>!<br>service instance 300 ethernet<br>description CELL_MGMT eNB OAM<br>encapsulation dot1q 101<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 300<br>!<br>service instance 400 ethernet<br>description LTE VLAN<br>encapsulation dot1q 100<br>rewrite ingress tag pop 1 symmetric<br>bridge-domain 400<br>!</label></span>";													
 													echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 													foreach ($section as $key => $val) {
 														if($key==0)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>";
 														if($key==1)
-															echo $val."<input type='text' class='form-control' name='loop[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>";
+															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>";
 														else
 															echo $val."<br>";
 													}echo "</label></span>";

@@ -211,6 +211,19 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
         fwrite($file, $line . "\n");
     }//exit;
     fclose($file);
+	foreach ($filenames as $file) {
+		if(strpos($file,$_POST['templname'])){
+			$file = fopen(getcwd() . "/generatescript/".$file, "a");
+			foreach ($_POST['loop1'] as $key => $val) {
+				$line = '';
+				foreach ($val as $linekey => $lineval) {
+					$line .= $lineval;
+				}
+				fwrite($file, $line . "\n");
+			}
+			fclose($file);			
+		}
+	}
     $zipname = 'generatescript/'.$timestamp.$_POST['templname'].'.zip';
     unlink($zipname);
     $zip = new ZipArchive;

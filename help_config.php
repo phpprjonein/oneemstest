@@ -73,7 +73,7 @@ write_log($mesg);
                                     <li>View the status of execution for multiple devices</li>
                                 </ul>
 							</p>
-							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This Load Template process is slightly different for general users than it is for  administrative users. Click <a href="#item-4-1-2">here</a> for more information on how to load a template as an admin.</p>
+							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This Load Template process is slightly different for general users than it is for administrative users. Click <a href="help_admin.php#item-9-1">here</a> for more information on how to load a template as an admin.</p>
 							<h5 id="item-4-1">Load Template - Modification (All Users)</h5>
 							<img src="resources/img/screenshot-load_template_mod.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-config1">
 							<p></p>

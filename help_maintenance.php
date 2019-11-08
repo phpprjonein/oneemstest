@@ -109,6 +109,63 @@ echo generate_site_breadcrumb($values);
 							<hr>
 							<a href="#top" class="border"><b>Back to top</b></a>
 							<hr>
+
+
+<h5 id="item-7-4">Binary File Upload</h5>
+                                                        <p></p>
+                                                        <p>Binary File Upload content will go <b>HERE</b> page. </p>
+
+                                                        <img src="resources/img/screenshot-sw-master-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-batch2">
+<p></p>
+ <span class="font-italic"><b>Batch Tracking A Script Execution Request</b></span>
+<p></p>
+<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is only accesible by Super Users.</p>
+                                                        
+
+<p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+
+
+
+<h5 id="item-7-5">Device Binary</h5>
+                                                        <p></p>
+                                                        <p>Device Binary content will go <b>HERE</b> page. </p>
+
+                                                        <img src="resources/img/screenshot-sw-master-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-batch3">
+<p></p>
+ <span class="font-italic"><b>Batch Tracking A Script Execution Request</b></span>
+<p></p>
+<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is only accesible by Super Users.</p>
+
+
+<p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+
+
+<h5 id="item-7-6">Device Cleanup</h5>
+                                                        <p></p>
+                                                        <p>Device Cleanup content will go <b>HERE</b> page. </p>
+
+                                                        <img src="resources/img/screenshot-sw-master-four.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-sw-batch4">
+<p></p>
+ <span class="font-italic"><b>Batch Tracking A Script Execution Request</b></span>
+<p></p>
+<p class="alert alert-danger"><b class="text-danger">NOTE:</b> This group of pages within the OneEMS application is similar to the process that an Admin User goes through <a href="help_admin.php#item-9-3">here</a> to clean up device listings from the OneEMS database.</p>
+
+
+<p></p>
+                                                        <p></p>
+                                                        <hr>
+                                                        <a href="#top" class="border"><b>Back to top</b></a>
+                                                        <hr>
+
+
 							<div class="row">
 								<div class="col-6">
 									<a href="help_discovery_results.php" class="border"><b><< PREV: Discovery Results</b></a>

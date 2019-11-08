@@ -72,7 +72,7 @@ echo generate_site_breadcrumb($values);
 							<p>This List Management screen allows for the user to create lists of devices that s/he can use in other screens  within the OneEMS application.</p>
 							<p><a href="#item-2-3">Click here</a> for more detailed information about device health individual Dashboard  views.</p>
 							<h5 id="item-2-2-1">List Management Options</h5>
-							<img src="resources/img/screenshot-dashboard1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-dashboard1">
+							<img src="resources/img/screenshot-dashboard-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-dashboard1">
 							<p></p>
 							<span class="font-italic"><b>One EMS Dashboard</b></span>
 							<p></p>
@@ -92,7 +92,7 @@ echo generate_site_breadcrumb($values);
 							<br>
 							<b>NA Systems Assurance Users</b> will only be permitted to view the switches and associated devices assigned to  them. The map will be enabled for only those markets that contain an assigned switch.</p>
 							<p>&nbsp;</p>
-							<img src="resources/img/screenshot-map1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-map1">
+							<img src="resources/img/screenshot-map-one.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-map1">
 							<p></p>
 							<span class="font-italic"><b>One EMS Regional Map</b></span>
 							<p></p>
@@ -110,7 +110,7 @@ echo generate_site_breadcrumb($values);
 							<h5 id="item-2-3">Health Check Details View</h5>
 							<p class="alert alert-danger"><b class="text-danger">NOTE:</b> NA Field Assurance Users will be provided a <b>"My Routers"</b> List. This List contains Routers that are assigned to the NA Field Assurance Users via <b>Ops  Tracker</b>. NA Systems Assurance Users will be provided a list of Switch names that are associated with him/her.</p>
 							<p>Here, a user can view the health status of devices associated with a List created on the <b>Network Elements</b> page. Various device health parameters are exposed in this view. This affords the user the ability to monitor multiple devices at a glance.</p>
-							<img src="resources/img/screenshot-healthcheck1.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-healthcheck1">
+							<img src="resources/img/screenshot-healthcheck-one.png" class="img-fluid" alt="" data-toggle="modal"  data-target="#screenshot-healthcheck1">
 							<p></p>
 							<span class="font-italic"><b>Health Check Dashboard</b></span>
 							</p>
@@ -233,20 +233,20 @@ echo generate_site_breadcrumb($values);
 							</p>
 							<b>Cyber Ark Command Generation</b>
 							<p>Click on the device name (which is a link to the Cyber Ark Syntax). You will be presented with syntax that  you can copy to a buffer and use it to ssh in to the device.</p>
-							<img src="resources/img/screenshot-healthcheck2-1.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck2-1">
+							<img src="resources/img/screenshot-healthcheck-two-one.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck2-1">
 							<p></p>
 							<span class="font-italic"><b>Cyber Ark Commands For Copying</b></span>
 							<p></p>
 							<p>In order to add devices to your list, first open a list for editing. To do this, click on the <b>Edit icon</b> ( <i class="fa fa-edit fa-lg text-primary"></i> ) to the immediate right of the list name. The contents of the selected list will appear in the center column of the page.</p></p>
 							<p>To view the health of a specific device, click on the plus icon ( <i class="fa fa-plus-circle fa-lg  text-primary"></i> ) on the leftmost column of the device. This will present the results of the last run of  health checks on the device in view.</p>
-							<img src="resources/img/screenshot-healthcheck2.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck2">
+							<img src="resources/img/screenshot-healthcheck-two.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck2">
 							<p></p>
 							<span class="font-italic"><b>Refreshing An Individual Health Check</b></span>
 							<p></p>
 							<p>You can choose to run any of the health checks from the list by selecting the corresponding check  boxes and then clicking on “Run Selective Health Checks” or you can “Run All Health Checks”.</p>
 							<p>Once this real-time health check is done, you will be presented with a brief summary for each check. You will  be able to click on the page icons ( <i class="fa fa-file-text-o text-primary"></i> ) associated with each parameter to view output directly from the console of the currently selected device.</p>
 							<p>You will then see the specific command that was run on the devices and the corresponding output response.</p>
-							<img src="resources/img/screenshot-healthcheck3.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck3">
+							<img src="resources/img/screenshot-healthcheck-three.png" class="img-fluid" alt="" data-toggle="modal" data-target="#screenshot-healthcheck3">
 							<p></p>
 							<span class="font-italic"><b>Device Console Output View</b></span>
 							<p></p>
@@ -284,7 +284,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-dashboard1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-dashboard-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -294,7 +294,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-map1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-map-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -314,7 +314,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-healthcheck2.png" alt="" width="100%">
+					<img src="resources/img/screenshot-healthcheck-two.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -324,7 +324,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-healthcheck2-1.png" alt="" width="100%">
+					<img src="resources/img/screenshot-healthcheck-two-one.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>
@@ -334,7 +334,7 @@ echo generate_site_breadcrumb($values);
 					<button type="button" class="close img-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
-					<img src="resources/img/screenshot-healthcheck3.png" alt="" width="100%">
+					<img src="resources/img/screenshot-healthcheck-three.png" alt="" width="100%">
 				</div>
 			</div>
 		</div>

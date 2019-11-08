@@ -1,7 +1,7 @@
 <header class="main-header">
 	<div class="nav top-menu">
 		<div class="float-left box logo-box">
-			<img src="resources/img/ncmlogo.png" height="24px" alt=" NCM Logo" />
+			<img src="resources/img/verizonlogo.png" height="24px" alt=" Verizon Logo" />
 			<h4>OneEMS</h4>
 		</div>
     <?php
@@ -113,13 +113,12 @@
 							<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
                 <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
 							<a class="dropdown-item" href="sw-delivery-devices.php">Software
-								Delivery</a> <a class="dropdown-item" href="reboot.php">Reboot</a>
-							<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
-							<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
-							<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot
-								Order Sequence</a>
-							<a class="dropdown-item" href="cellsite-usr-device-administration.php">Device Cleanup </a>	
-							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
+								Delivery</a> 
+								<!-- <a class="dropdown-item" href="reboot.php">Reboot</a>
+								<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
+								<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a> -->
+								<a class="dropdown-item" href="cellsite-usr-device-administration.php">Device Cleanup </a>	
+								<!--<a class="dropdown-item" href="config-template-uservar.php">Configuration Template User Variables</a>-->
 						</div></li>
 					<li class="nav-item dropdown">
 					<a class="nav-link  dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -130,9 +129,6 @@
                     		<a class="dropdown-item" href="show-tech.php">Show Tech </a>
                     	</div>
 					</li>
-						
-						
-						
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -201,17 +197,15 @@
 						
                     
 						
-							<!-- <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a> -->
-							<!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
-							<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
-                <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
-							<a class="dropdown-item" href="sw-delivery-devices.php">Software
-								Delivery</a> <a class="dropdown-item" href="reboot.php">Reboot</a>
-							<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
-							<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
-							<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot
-								Order Sequence</a>
-							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
+							<!-- <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
+								<a class="dropdown-item" href=".php">Software Upload</a>
+								<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
+                						<a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a> -->
+								<a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a> 
+								<!-- <a class="dropdown-item" href="reboot.php">Reboot</a>
+								<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
+								<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>
+								<a class="dropdown-item" href="config-template-uservar.php">Configuration Template User Variables</a>-->
 						</div></li>
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

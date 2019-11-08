@@ -30,6 +30,10 @@
 									<a class="nav-link" href="help_maintenance.php">MAINTENANCE</a>
 									<nav class="nav nav-pills flex-column">
 										<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-1">Software Delivery</a>
+<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-4">Binary File Upload</a>
+<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-5">Device Cleanup</a>
+
+
 <!--											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-2">Reboot</a>
 											<a class="nav-link ml-3 my-1" href="help_maintenance.php#item-7-3">Boot Order Sequence</a>-->
                                     </nav>

@@ -7422,4 +7422,10 @@ function generic_get_usrvars_section()
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
-
+function delete_interface_usrvars($username)
+{
+	global $db2;
+	$sql = "DELETE FROM import_usrvars WHERE usrvarname like 'interface-enodeb%' AND username='".$username."'";
+	$db2->query($sql);
+	$db2->execute();
+}

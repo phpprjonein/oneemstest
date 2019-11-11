@@ -170,10 +170,10 @@ echo generate_site_breadcrumb($values);
 						class="nav-link btn-ok <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'OK'):?>active<?php endif;?>"
 						id="v-pills-ok-tab" data-toggle="pill" href="#v-pills-ok"
 						role="tab" aria-controls="v-pills-ok" aria-selected="false">OK</a>
-					<a
+					<!--a
 						class="nav-link btn-manual <?php if(isset($_SESSION['disc_page_tab']) && $_SESSION['disc_page_tab'] == 'Manual Discovery'):?>active<?php endif;?>"
 						id="v-pills-manual-tab" data-toggle="pill" href="#v-pills-manual"
-						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual Discovery</a>
+						role="tab" aria-controls="v-pills-manual" aria-selected="false">Manual Discovery</a-->
 				</div>
 			</div>
 			<!-- /table pill navigation -->

@@ -32,7 +32,7 @@ write_log($mesg);
 <?php include_once ('menu.php'); ?>
 		<?php
 $values = array(
-        'Discovery Results' => '#'
+        'Manual Discovery' => '#'
 );
 echo generate_site_breadcrumb($values);
 ?>

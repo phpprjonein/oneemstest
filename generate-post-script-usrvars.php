@@ -53,22 +53,21 @@ write_log($mesg);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-   <?php include_once("includes.php");  ?>
-   <script
-	src="resources/js/manageusrvars.js?t=<?php echo date('his'); ?>"></script>
-	<script
-	src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
-</head>
-<body>
+	<head>
+	   <?php include_once("includes.php");  ?>
+	   <script
+		src="resources/js/manageusrvars.js?t=<?php echo date('his'); ?>"></script>
+		<script
+		src="resources/js/cellsitetech_config_new.js?t=<?php echo date('his'); ?>"></script>
+	</head>
+	<body>
 	<div class="container-fluid" id="cellsitech-config">
-	<?php include_once ('menu.php'); ?>
-			<?php
-$values = array(
-    'Generate Script' => '#'
-);
-echo generate_site_breadcrumb($values);
-?>
+	<?php include_once ('menu.php'); 
+	$values = array(
+		'Generate Script' => '#'
+	);
+	echo generate_site_breadcrumb($values);
+	?>
         <!-- Content Wrapper. Contains page content -->
 		<div class="content">
 			<!-- Main content -->
@@ -205,13 +204,6 @@ echo generate_site_breadcrumb($values);
 			<?php foreach ($results as $key=>$val):?>
 			<?php $newarr[intval($val['elemid']/10)][] = array('elemid' => $val['elemid'], 'elemvalue' => $val['elemvalue'], 'editable' => $val['editable'], 'tabname' => $val['tabname']); ?>
 			<?php endforeach;?>
-
-			<?php
- //print '<pre>';
- //print_r($newarr);die;
-
-?>
-
 
 			<div id="file_process">
 										<form name="file_process" action="cellsite-config-process.php"
@@ -350,7 +342,7 @@ echo generate_site_breadcrumb($values);
 			' description eNB OAM VLAN',' encapsulation dot1q 401',' rewrite ingress tag pop 1 symmetric','!'];
 			$sw=count($newarr);
 			$mycount=count($newarr);
-			$limit=count($usrvars['result'])/2;	//echo 'Limit : '.$limit;	
+			$limit=count($usrvars['result'])/2;
 			if(strpos($_POST["f7"],'903')){
 				$section=$section903;
 			}
@@ -367,7 +359,7 @@ echo generate_site_breadcrumb($values);
 				$section=$section540;
 			}//echo '<pre>';print_r($section);exit;
 				$usrvarvalcnt=0;
-			for($usrvarloop=1;$usrvarloop<$limit;$usrvarloop++){	$mycount=$sw;//echo 'Count : '.$usrvarvalcnt;
+			for($usrvarloop=0;$usrvarloop<$limit;$usrvarloop++){	$mycount=$sw;
 				foreach ($section as $key => $val) {$sw++;?>
 					<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
 				<?php }
@@ -406,14 +398,13 @@ echo generate_site_breadcrumb($values);
 							</div>
 							<!-- /template name content -->
 							<!--
-<div class="row">
-  <div class="col">
-    <button type="submit" class="btn btn-primary btn-lg">DOWNLOAD</button>
-  </div>
-</div> -->
+							<div class="row">
+							  <div class="col">
+								<button type="submit" class="btn btn-primary btn-lg">DOWNLOAD</button>
+							  </div>
+							</div> -->
 							<!-- /right side -->
 							<!-- /script output -->
-
 						</div>
 						<!-- /backup management content row -->
 					</div>

@@ -6378,15 +6378,16 @@ function get_device_name_from_ip_address($ipaddress)
 
 function generate_option_button_for_configs_sw_inventory($tablename, $column, $varname, $deviceseries){
     $varnameid = str_replace(' ', '-', $varname);
-    //$deviceseries = 'Bandwidth';
+    $deviceseries = 'Bandwidth';
     $output = '<label class="control-label" for="'.$varname.'">'.$varname.'</label>';
     if($deviceseries != 'Bandwidth'){
-        //echo "input params $tablename, $column, $varname, $deviceseries";
+        echo "input params $tablename, $column, $varname, $deviceseries";
         $output .= '<select id="'.$varnameid.'" class="form-control '.$varnameid.'" name="'.$varname.'" data-rule-required="true">';
-        $output .= '<option value="">-- Select -- </option>';
+        $output .= '<option value="">-- Select123 -- </option>';
         $output .= '</select>';
     }else{
-        $output .= '<input type="'.$varname.'"
+        //$output .= '<input type="'.$varname.'"
+        $output .= '<input type="'.'hello2'.'"
 									name="'.$varname.'"
 									class="form-control '.$varnameid.'"
 									id="'.$varnameid.'"
@@ -6437,7 +6438,10 @@ function generate_option_button_for_configs_telco_interface($switchname, $type, 
             }*/
             $sql = "SELECT distinct(interface), devicename FROM software_inventory where interface like 'TenGigE%' and devicename like '".$devicename."' and NOT interface LIKE '%.%' and interface != '' and interface != 'None' order by interface";
             $db2->query($sql);
-	    //$filename = 'customhealthcheck'; $msg = $sql; logToFile($filename, $msg);
+			$filename = 'customhealthcheck';
+			$msg = $sql;
+			logToFile($filename, $msg);
+
             $resultset = $db2->resultset();
             foreach ($resultset as $key => $val){
                 if(!in_array($val[$column], $options_arr)){
@@ -6450,8 +6454,10 @@ function generate_option_button_for_configs_telco_interface($switchname, $type, 
             $sql = "SELECT distinct(".$tabcolname.") as interface, devicename FROM swinventoryinterface where devicename = '".$device_name."' and ".$tabcolname." != '' and ".$tabcolname." != 'None' order by ".$tabcolname;
             $db2->query($sql);
             $resultset = $db2->resultset();
-	    $output = $resultset[0]['interface'];
-           // $filename = 'customhealthcheck'; $output = $resultset[0]['interface']; $msg = $sql.$output; logToFile($filename, $msg); 
+            $filename = 'customhealthcheck';
+            $output = $resultset[0]['interface'];
+     $msg = $sql.$output;
+   logToFile($filename, $msg); 
             /*
             foreach ($resultset as $key => $val){
                 if(!in_array($val[$column], $options_arr)){
@@ -7388,6 +7394,7 @@ function get_devicebatch_list_from_devicebatch_rerun_datatable_export()
     }
     return $resultset;
 }
+
 /**
 *
 * @param unknown $ipaddress
@@ -7401,15 +7408,16 @@ function get_device_series_from_ip_address($ipaddress)
    $resultset = $db2->resultset();
    return $resultset;
 }
+
 function configtemplate_elemvalue_pos_script_sw($posttabname, $field, $value)
-			{
-			    global $db2;
-			    
-			    $sql = "SELECT distinct(" . $field . ")  FROM " . $posttabname . $whr . " order by " . $field;
-			    $db2->query($sql);
-			    $resultset = $db2->resultset();
-			    return $resultset;
+{
+    global $db2;
+    $sql = "SELECT distinct(" . $field . ")  FROM " . $posttabname . $whr . " order by " . $field;
+    $db2->query($sql);
+    $resultset = $db2->resultset();
+    return $resultset;
 }
+
 /**
  *
  * @return unknown
@@ -7417,11 +7425,12 @@ function configtemplate_elemvalue_pos_script_sw($posttabname, $field, $value)
 function generic_get_usrvars_section()
 {
     global $db2;
-    $sql = "SELECT usrvarid, usrvarval FROM import_usrvars where usrvarname like 'interface-%'";
+    $sql = "SELECT usrvarid, usrvarval FROM import_usrvars where usrvarname like 'interface-enodeb%'";
     $db2->query($sql);
     $resultset['result'] = $db2->resultset();
     return $resultset;
 }
+
 function delete_interface_usrvars($username)
 {
 	global $db2;

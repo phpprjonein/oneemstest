@@ -95,13 +95,15 @@
 							<a class="dropdown-item" href="batch-tracking-devices.php">Batch Tracking </a>
 						</div></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle  <?php print activemenu(array("cellsitetech-ip-management.php", "discovery-results.php")); ?>"
+						class="nav-link dropdown-toggle  <?php print activemenu(array("cellsitetech-ip-management.php", "discovery-results.php", "manual-discovery.php")); ?>"
 						href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Discovery</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="cellsitetech-ip-management.php">Discovery
 								IPs</a> <a class="dropdown-item"
 								href="discovery-results.php">Discovery Results</a>
+								<a class="dropdown-item"
+								href="manual-discovery.php">Manual Discovery</a>
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle  <?php print activemenu(array("software-upload-master.php", "software-master.php", "software-upload-devices.php", "reboot.php", "sw-delivery-devices.php", "schedule-backup-new.php", "sw-bootorder-sequence.php")); ?>"
@@ -113,12 +115,13 @@
 							<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
                 <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
 							<a class="dropdown-item" href="sw-delivery-devices.php">Software
-								Delivery</a> 
-								<!-- <a class="dropdown-item" href="reboot.php">Reboot</a>
-								<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
-								<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a> -->
-								<a class="dropdown-item" href="cellsite-usr-device-administration.php">Device Cleanup </a>	
-								<!--<a class="dropdown-item" href="config-template-uservar.php">Configuration Template User Variables</a>-->
+								Delivery</a> <a class="dropdown-item" href="reboot.php">Reboot</a>
+							<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
+							<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
+							<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot
+								Order Sequence</a>
+							<a class="dropdown-item" href="cellsite-usr-device-administration.php">Device Cleanup </a>	
+							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item dropdown">
 					<a class="nav-link  dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -129,6 +132,9 @@
                     		<a class="dropdown-item" href="show-tech.php">Show Tech </a>
                     	</div>
 					</li>
+						
+						
+						
                     <li class="nav-item dropdown"><a
                     	class="nav-link dropdown-toggle  <?php print activemenu(array("auditing-log.php", "cus-auditing-log.php","audit-history.php")); ?>"
                     	href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -182,6 +188,7 @@
 							<a class="dropdown-item" href="switchtech-ip-management.php">Discovery
 								IPs</a> <a class="dropdown-item" href="discovery-results.php">Discovery
 								Results</a>
+								<a class="dropdown-item" href="manual-discovery.php">Manual Discovery</a>
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle  <?php print activemenu(array("os-repository.php","admin-user-revalidate.php", "software-upload-master.php", "software-master.php", "software-upload-devices.php", "sw-delivery-devices.php", "schedule-backup-new.php", "sw-bootorder-sequence.php")); ?>"
@@ -197,15 +204,17 @@
 						
                     
 						
-							<!-- <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a>
-								<a class="dropdown-item" href=".php">Software Upload</a>
-								<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
-                						<a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a> -->
-								<a class="dropdown-item" href="sw-delivery-devices.php">Software Delivery</a> 
-								<!-- <a class="dropdown-item" href="reboot.php">Reboot</a>
-								<a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a>
-								<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>
-								<a class="dropdown-item" href="config-template-uservar.php">Configuration Template User Variables</a>-->
+							<!-- <a class="dropdown-item" href="software-upload-master.php">Software Upload - Master</a> -->
+							<!-- <a class="dropdown-item" href=".php">Software Upload</a> -->
+							<!--<a class="dropdown-item" href="software-delivery-devices.php">Software Delivery-version Initial</a>
+                <a class="dropdown-item" href="software-delivery-devices-new.php">Software Delivery-version final</a>-->
+							<a class="dropdown-item" href="sw-delivery-devices.php">Software
+								Delivery</a> <a class="dropdown-item" href="reboot.php">Reboot</a>
+							<!-- <a class="dropdown-item" href="schedule-backup.php">Schedule Backup</a> -->
+							<!-- <a class="dropdown-item" href="sw-bootorder-sequence.php">Boot Order Sequence</a>   -->
+							<a class="dropdown-item" href="sw-bootorder-sequence.php">Boot
+								Order Sequence</a>
+							<!--<a class="dropdown-item" href="config-template-uservar.php"> Configuration Template User Variables </a>-->
 						</div></li>
 					<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle <?php print activemenu(array("ip-instant-health-check.php","cyberark.php","show-tech.php")); ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

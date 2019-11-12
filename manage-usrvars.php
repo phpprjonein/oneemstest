@@ -43,57 +43,6 @@ if ( isset($_POST["submit"]) ) {
 					$Reader->ChangeSheet($i);
 					$skipRows = 1;
 					$currentRow = 0;
-					
-					foreach ($Reader as $Row)
-					{
-						if ($currentRow < $skipRows)
-						{	$currentRow++;
-							continue;
-						}
-						else{
-							$values_arr = array(
-								'usrvarname' => $Row[1],
-								'value' => $Row[2],
-								'deviceseries' => $Row[3],
-								'template' => $Row[4],
-								'username' => $_SESSION['username'],
-							);
-							insert_user_variable($values_arr);
-							$currentRow++;
-						}
-					}			
-				}
-				echo '<div id="main-status" class="alert alert-success">Variables inserted successfully</div>';
-			}
-			else
-			{ 
-				$type = "error";
-				$message = "Invalid File Type. Upload Excel File.";
-				echo $message;exit;
-			}
-		}
-	}
-
-	if($_POST['submit']=='InterfaceUpload')
-	{
-		if(!file_exists($_FILES["file"]["tmp_name"])){
-			echo '<div id="main-status" class="alert alert-success">No file to upload</div>';																
-		}
-		else{ 
-			$allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-			  
-			if(in_array($_FILES["file"]["type"],$allowedFileType))
-			{
-				$targetPath = 'upload/'.$_FILES['file']['name'];
-				move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
-				$Reader = new SpreadsheetReader($targetPath);
-				$sheetCount = count($Reader->sheets());
-				
-				for($i=0;$i<$sheetCount;$i++)
-				{
-					$Reader->ChangeSheet($i);
-					$skipRows = 1;
-					$currentRow = 0;
 					delete_interface_usrvars($_SESSION['username']);
 					foreach ($Reader as $Row)
 					{
@@ -109,8 +58,14 @@ if ( isset($_POST["submit"]) ) {
 								'template' => $Row[4],
 								'username' => $_SESSION['username'],
 							);
-							if($Row[2]!='')
-							insert_user_variable($values_arr);
+							if (strpos($Row[1], 'interface-enodeb') !== false) {
+								if($Row[2]!='')
+								insert_user_variable($values_arr);
+							}
+							else{
+								insert_user_variable($values_arr);
+							}
+							
 							$currentRow++;
 						}
 					}			
@@ -124,7 +79,7 @@ if ( isset($_POST["submit"]) ) {
 				echo $message;exit;
 			}
 		}
-	}	
+	}
 }
 
 ?>
@@ -165,11 +120,11 @@ if ( isset($_POST["submit"]) ) {
 								type="file" id="file" name="file">
 							
 						</div>
-						<input type="submit" name="submit" value="Upload" />
-						<label>Use 97-2003 format</label>
+						<input type="submit" name="submit" value="Upload" /></br>
+						<label>Upload Excel 97-2003 File format</label>
 					</form></br>
 					
-					<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
+					<!--form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 						<h5> Upload User Variables (Interface)</h5>
 						<div class="form-group">
 							<label for="file">Select a file to upload</label> <input
@@ -177,7 +132,7 @@ if ( isset($_POST["submit"]) ) {
 							
 						</div>
 						<input type="submit" name="submit" value="InterfaceUpload" />
-					</form></br>
+					</form--></br>
 					
 					<div class="form-group f8 required col-md-4" data-fid="f8">
 						<label class="control-label" for="f8">Select Template Name</label>

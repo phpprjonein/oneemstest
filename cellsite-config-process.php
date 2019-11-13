@@ -216,8 +216,18 @@ if ($_POST['action'] == 'SAVE CONFIGURATION') {
 			$file = fopen(getcwd() . "/generatescript/".$file, "a");
 			foreach ($_POST['loop1'] as $key => $val) {
 				$line = '';
-				foreach ($val as $linekey => $lineval) {
-					$line .= $lineval;
+				if(strpos($val[0],'TenGigE.301'))
+				{
+					$line .= 'interface TenGigE'.$val[1].'.301 l2transport description eNB LTE S1 VLAN';					
+				}
+				elseif(strpos($val[0],'TenGigE.401'))
+				{
+					$line .= 'interface TenGigE'.$val[1].'.401 l2transport description eNB OAM VLAN';					
+				}
+				else{
+					foreach ($val as $linekey => $lineval) {
+						$line .= $lineval;
+					}
 				}
 				fwrite($file, $line . "\n");
 			}

@@ -427,7 +427,7 @@ echo generate_site_breadcrumb($values);
 													foreach ($section as $key => $val) {
 														if($key==0)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate']."'><br>";
-														if($key==1)
+														elseif($key==1)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb']."'><br>";
 														else
 															echo $val."<br>";
@@ -444,7 +444,7 @@ echo generate_site_breadcrumb($values);
 													foreach ($section as $key => $val) {
 														if($key==0)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate1']."'><br>";
-														if($key==1)
+														elseif($key==1)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb1']."'><br>";
 														else
 															echo $val."<br>";
@@ -461,7 +461,7 @@ echo generate_site_breadcrumb($values);
 													foreach ($section as $key => $val) {
 														if($key==0)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate2']."'><br>";
-														if($key==1)
+														elseif($key==1)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb2']."'><br>";
 														else
 															echo $val."<br>";
@@ -478,7 +478,7 @@ echo generate_site_breadcrumb($values);
 													foreach ($section as $key => $val) {
 														if($key==0)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate3']."'><br>";
-														if($key==1)
+														elseif($key==1)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb3']."'><br>";
 														else
 															echo $val."<br>";
@@ -495,7 +495,7 @@ echo generate_site_breadcrumb($values);
 													foreach ($section as $key => $val) {
 														if($key==0)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$_POST['gigabyteethernate4']."'><br>";
-														if($key==1)
+														elseif($key==1)
 															echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$_POST['enodeb4']."'><br>";
 														else
 															echo $val."<br>";

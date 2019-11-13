@@ -332,13 +332,13 @@ write_log($mesg);
 			'  rewrite ingress tag pop 1 symmetric','  bridge-domain 400'];
 			$section5500=['interface TenGigE',' description eNB - MacroNodeID - ',' cdp',' mtu 1970',
 			' service-policy input CLASSIFY-IN',' service-policy output MARK-OUT',' service-policy output QUEUES-OUT',
-			' load-interval 30','!','interface TenGigE#XXXXXX#.301 l2transport',' description eNB LTE S1 VLAN',
-			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+			' load-interval 30','!','interface TenGigE.301 l2transport',' description eNB LTE S1 VLAN',
+			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE.401 l2transport',
 			' description eNB OAM VLAN',' encapsulation dot1q 401',' rewrite ingress tag pop 1 symmetric','!'];
 			$section540=['interface TenGigE',' description eNB - MacroNodeID - ',' cdp',' mtu 1970',
 			' load-interval 30',' service-policy input CLASSIFY-IN',' service-policy output MARK-OUT',
-			' service-policy output QUEUES-OUT','!','interface TenGigE#XXXXXX#.301 l2transport', 'description eNB LTE VLAN',
-			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE#XXXXXX#.401 l2transport',
+			' service-policy output QUEUES-OUT','!','interface TenGigE.301 l2transport', 'description eNB LTE VLAN',
+			' encapsulation dot1q 301',' rewrite ingress tag pop 1 symmetric','!','interface TenGigE.401 l2transport',
 			' description eNB OAM VLAN',' encapsulation dot1q 401',' rewrite ingress tag pop 1 symmetric','!'];
 			$sw=count($newarr);
 			$mycount=count($newarr);
@@ -362,15 +362,17 @@ write_log($mesg);
 			for($usrvarloop=0;$usrvarloop<$limit;$usrvarloop++){	$mycount=$sw;
 				foreach ($section as $key => $val) {$sw++;?>
 					<input type='text' style='display:none !important;' id='new-field' size='' name='loop1[looper_<?php echo $sw; ?>][0]' class='form-editable-fields form-control cellsitech-configtxtinp border border-dark' value='<?php echo $val; ?>'>
-				<?php }
+				<?php }$ncnt=0;
 				echo "<br><span class='form-editable-fields'><label class='readonly' id='fields'>";
 				foreach ($section as $key => $val) {
-					if($key==0){
-					echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
-					if($key==1){
-					echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
-					else
-						echo $val."<br>";
+					if($key==0){$first=$usrvars['result'][$usrvarvalcnt]['usrvarval'];
+						echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+1)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
+					elseif($key==1){
+						echo $val."<input type='text' class='form-control' name='loop1[looper_".($mycount+2)."][1]' value='".$usrvars['result'][$usrvarvalcnt]['usrvarval']."'><br>";$usrvarvalcnt++;}
+					elseif(strpos($val,'TenGigE')){
+						echo str_replace('TenGigE',"TenGigE<input type='text' class='form-control' name='loop1[looper_".($mycount+10)."][1]' value='".$first."'>",$val);$usrvarvalcnt++;$mycount=$mycount+5;}
+					else{$ncnt++;
+						echo $val."<br>";}
 				}echo "</label></span>";
 			}
 			//code end for new section addition by Swapnil

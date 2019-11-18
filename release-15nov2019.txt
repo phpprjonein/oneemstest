@@ -1,0 +1,4 @@
+Current version present in local tg and gtlb is same as on date 15nov2019 except upload, testdatainputs, generatescripts folders which are not much importance.
+Checked and verified in dev server. After this version, gtlb is the latest. In future, latest version can be obtained from gtlb and put into into a new branch to move forward.
+
+Thanks.

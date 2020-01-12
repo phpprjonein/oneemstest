@@ -1,0 +1,76 @@
+.main-header .navbar {
+  border-bottom: 0.02rem solid #d8dada;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+.main-header .navbar .navbar-toggler-icon {
+  width: 1em;
+}
+
+.main-header .top-menu .navbar-brand {
+  display: inline-block;
+  padding: 1.25rem 0 0.3125rem 0.9rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.main-header .top-menu .navbar-brand:focus,
+.main-header .top-menu .navbar-brand:hover {
+  tex-decoration: none;
+}
+
+.main-header .top-menu .nav > li {
+  display: block;
+  position: relative;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+}
+
+.main-header .top-menu .nav > li:hover {
+  background-color: #d8dada;
+  text-decoration: none;
+}
+
+.main-header .top-menu .navbar-nav {
+  display: inline-flex;
+  flex-direction: unset;
+}
+
+.main-header .box {
+  width: 50%;
+}
+
+.main-header .box h4 {
+  border-left: 0.1rem solid #d8dada;
+  display: inline-block;
+  font-size: 1.35rem;
+  margin: 1.65rem 0 0 0.5rem;
+  padding-left: 0.3rem;
+  position: absolute;
+}
+
+.main-header .logo-box img {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .main-header .logo-box img {
+    margin-top: 1rem;
+  }
+}
+
+.main-header .profile-box {
+  text-align: right;
+  padding: 0.625rem 0.625rem 0 0;
+}
+
+.footer {
+  bottom: 0;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  background-color: #f5f5f5;
+}
+.oneems-pages{min-height: 500px;margin: 10px;}

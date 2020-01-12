@@ -1,0 +1,72 @@
+header hr{height: 0.15rem;background-color: #dc3545;}
+.login-page {
+    margin: auto;
+    max-width: 22.5rem;
+    padding: 8% 0 0;
+  }
+  
+  .login-page h4 {
+    text-align: center;
+  }
+  
+  .login-page .warning {
+    font-weight: 600;
+  }
+  
+  .login-page button {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  
+  .login-page .form {
+    margin: 0 auto 6.25rem;
+    padding: 2.813rem;
+    border: 0.0625rem solid #d8dada;
+  }
+  
+  .login-page .form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-page .form button {
+    margin-top: 1rem;
+  }
+  
+  .login-page .form .input {
+    border-radius: 0.3125rem;
+    margin: 0 0 1.25rem;
+    width: 100%;
+  }
+  
+  .login-page .form .message {
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .form-control {
+
+    border-bottom: 0.09rem solid #000;
+    border-radius: 0;
+
+}
+.btn {
+    border-radius: 0 !important;
+    cursor: pointer;
+    -webkit-box-shadow: 0.25rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0.25rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0.25rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.3);
+    border-color: #d8dada;
+    background-color: #d8dada;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+
+.btn:hover {
+    border: 0.0625rem solid #000;
+    background-color: transparent;
+    color: #000;
+}

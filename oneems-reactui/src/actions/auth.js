@@ -14,6 +14,7 @@ export const login = (credentials) => dispatch =>
 api.user.login(credentials).then(
     user => {
         localStorage.loginJWT = user.token;
+        localStorage.email = user.email;
         dispatch(userLoggedIn(user));
     }
 );
@@ -21,6 +22,7 @@ api.user.login(credentials).then(
 
 export const logout = () => dispatch => {
         localStorage.removeItem("loginJWT");
+        localStorage.removeItem("email");
         dispatch(userLoggedOut());
 
 };

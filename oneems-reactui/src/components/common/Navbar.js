@@ -3,22 +3,24 @@ import { Nav, handleSelect, NavDropdown  } from "react-bootstrap";
 
 
 function Navbar() {
-  const handleSelect = eventKey => alert(`selected ${eventKey}`);
+  const handleSelect =  (eventKey) =>  {
+      console.log(`selected1 ${eventKey} `);
+    };
     return (
-<Nav variant="pills" activeKey="1" onSelect={handleSelect}>
+<Nav variant="pills" activeKey="2" onSelect={handleSelect}>
       <Nav.Item>
-        <Nav.Link eventKey="1" href="#/home">
-          NavLink 1 content
+        <Nav.Link eventKey="1" href="/home" title="Home">
+          Home
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="2" title="Item">
-          NavLink 2 content
+        <Nav.Link href="/employee" eventKey="2" title="Employee">
+          Employees
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="3" disabled>
-          NavLink 3 content
+        <Nav.Link href="/dashboard" eventKey="3" eventKey="3" title="Dashboard">
+          Dashboard
         </Nav.Link>
       </Nav.Item>
       <NavDropdown title="Dropdown" id="nav-dropdown">

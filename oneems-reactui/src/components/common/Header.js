@@ -17,7 +17,7 @@ function Header({ isAuthenticated, logout }) {
             <div className="float-right box profile-box">
               <ol className="nav navbar-nav text-center">
                 <li className="dropdown messages-menu"><b>Welcome </b>
-                  <span className="hidden-xs"> SARAVANAN*</span> | {isAuthenticated ? <Link to="/login" onClick={() => logout()}>Logout</Link> : <Link to="/login">Login</Link>}
+                  <span className="hidden-xs"> {localStorage.email}</span> | {isAuthenticated ? <Link to="/login" onClick={() => logout()}>Logout</Link> : <Link to="/login">Login</Link>}
                 </li>
               </ol>
             </div>

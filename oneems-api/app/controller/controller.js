@@ -1,3 +1,4 @@
+var Sequelize = require('sequelize');
 const db = require('../config/db.config.js');
 const config = require('../config/config.js');
 const User = db.user;
@@ -69,7 +70,7 @@ exports.signin = (req, res) => {
 exports.userContent = (req, res) => {
 	User.findOne({
 		where: {id: req.userId},
-		attributes: ['name', 'username', 'email'],
+		attributes: ['username', 'email'],
 		include: [{
 			model: Role,
 			attributes: ['id', 'name'],
@@ -137,3 +138,93 @@ exports.managementBoard = (req, res) => {
 		});
 	})
 }
+
+//Custom routes actions
+
+exports.employees = (req, res) => {
+	console.log("Employees List Creations");
+
+	var order = req.body.order[0];
+	var columns = req.body.columns[0];
+	var search = req.body.search['value'];
+	
+	//const orderobj = JSON.parse(order);
+	
+	console.log('++++++++++++++++++++++++++++++++');
+	console.log(search);
+	console.log('++++++++++++++++++++++++++++++++');
+
+var draw = req.body.draw;
+var row = req.body.start;
+var rowperpage = req.body.length; // Rows display per page
+var columnIndex = order.column;//req.order[0]['column']; // Column index
+var columnName = columns.data;//req.columns[columnIndex]['data']; // Column name
+var columnSortOrder = order.dir;//req.order[0]['dir']; // asc or desc
+var searchValue = search;//req.search['value']; // Search value
+var totalRecords = totalRecordwithFilter = 0;
+
+User.count({
+}).then(function(count) {
+	totalRecords = totalRecordwithFilter = count;
+});
+ 
+console.log("########################");
+
+console.log(totalRecords);
+
+console.log("########################");
+
+
+
+
+if(searchValue !== ''){
+
+	User.count({
+		where: {
+		[Sequelize.Op.or]: [
+			{username:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+			{email: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+		]
+  	}
+}).then(function(count) {
+	totalRecordwithFilter = count;
+});
+
+
+	User.findAll({
+	offset: parseInt(row), 
+  	limit: parseInt(rowperpage),
+  	where: {
+		[Sequelize.Op.or]: [
+			{username:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+			{email: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+		]
+  	},
+  	order: [ [ columnName, columnSortOrder ]]
+	}).then(data => {
+		res.status(200).json({
+			"draw" : draw,
+    		"iTotalRecords" : totalRecords,
+    		"iTotalDisplayRecords" : totalRecordwithFilter,
+    		"aaData" : data
+		});
+	}); 
+}else{
+
+
+	User.findAll({
+	offset: parseInt(row), 
+  	limit: parseInt(rowperpage),
+  	order: [ [ columnName, columnSortOrder ]]
+	}).then(data => {
+		res.status(200).json({
+			"draw" : parseInt(draw),
+    		"iTotalRecords" : totalRecords,
+    		"iTotalDisplayRecords" : totalRecordwithFilter,
+    		"aaData" : data
+	});
+	});
+	} 
+}	
+
+

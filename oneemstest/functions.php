@@ -33,6 +33,8 @@ function httpPost($endpoint,$params)
     curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
     curl_setopt($ch, CURLOPT_USERPWD, $APPCONFIG['api']['username'].':'.$APPCONFIG['api']['password']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);    // SSL verifier is set to false
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $output=curl_exec($ch);
     curl_close($ch);
     return $output;

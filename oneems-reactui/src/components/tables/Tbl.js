@@ -23,6 +23,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class Tbl extends Component{
     componentDidMount(){
         this.$el = $(this.el);
+                   
         this.$el.DataTable(
             {
                 'dom': 'Bfrtip',
@@ -34,8 +35,16 @@ export class Tbl extends Component{
                 },
                 'order': [[ 1, 'asc' ]],
                 'columns': [
+                    { data: 'fname', "orderable": true},
+                    { data: 'lname', "orderable": true},                    
                     { data: 'username', "orderable": true},
                     { data: 'email', "orderable": true},
+                    {"orderable": false,
+                        "render": function ( data, type, full, meta ) {
+                            var buttonID = full.id;
+                            return '<a id='+buttonID+' href="/editemployee/'+buttonID+'" class="btn btn-success editBtn" role="button">Edit</a>&nbsp;<a id='+buttonID+' class="btn btn-danger deleteBtn" href="/delemployee/'+buttonID+'" role="button">Delete</a>';
+                        }
+                    }
                 ],
                 'buttons': [
                           'copyHtml5',
@@ -44,7 +53,11 @@ export class Tbl extends Component{
                           'pdfHtml5'
                       ]
             }
+
+
+
         )
+        
     }
     componentWillUnmount(){
         $('#oneemsdt').DataTable().destroy();
@@ -57,8 +70,11 @@ export class Tbl extends Component{
             <table id="oneemsdt" className="display" width="100%" ref={el => this.el = el}>
             <thead>
                 <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             </table>

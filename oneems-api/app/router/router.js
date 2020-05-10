@@ -21,4 +21,10 @@ module.exports = function(app) {
 
 	app.post('/api/employees', controller.employees);
 
+	app.post('/api/addemployee', [authJwt.verifyToken, verifySignUp.checkDuplicateUserNameOrEmail], controller.empsignup);
+	//, verifySignUp.checkDuplicateUserNameOrEmailDuringUpdate
+	app.post('/api/updateemployee', [authJwt.verifyToken, verifySignUp.checkDuplicateUserNameOrEmailDuringUpdate], controller.empupdate);
+	app.post('/api/employeeget', [], controller.employeeget);
+	app.post('/api/employeedelete', [authJwt.verifyToken], controller.employeedelete);
+
 }

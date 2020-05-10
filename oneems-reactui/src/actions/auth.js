@@ -19,6 +19,25 @@ api.user.login(credentials).then(
     }
 );
 
+export const employee = (employee) => dispatch => 
+api.user.employee(employee).then(
+    employee => {
+        
+    }
+);
+export const updateemployee = (employee) => dispatch => 
+api.user.updateemployee(employee).then(
+    employee => {
+        
+    }
+);
+
+export const employeeget = (id) => dispatch => 
+api.user.employeeget(id).then(
+    user => {
+        console.log("111111111111" + user.email + "222222222");
+    }
+);
 
 export const logout = () => dispatch => {
         localStorage.removeItem("loginJWT");

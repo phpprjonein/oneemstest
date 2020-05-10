@@ -182,6 +182,8 @@ if(searchValue !== ''){
 	User.count({
 		where: {
 		[Sequelize.Op.or]: [
+			{fname:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+			{lname: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 			{username:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 			{email: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 		]
@@ -196,6 +198,8 @@ if(searchValue !== ''){
   	limit: parseInt(rowperpage),
   	where: {
 		[Sequelize.Op.or]: [
+			{fname:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
+			{lname: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 			{username:       {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 			{email: {[Sequelize.Op.like]: '%' + searchValue + '%'}},
 		]
@@ -210,8 +214,6 @@ if(searchValue !== ''){
 		});
 	}); 
 }else{
-
-
 	User.findAll({
 	offset: parseInt(row), 
   	limit: parseInt(rowperpage),
@@ -227,4 +229,93 @@ if(searchValue !== ''){
 	} 
 }	
 
+exports.empsignup = (req, res) => {
+	// Save User to Database
+	console.log("Processing func -> EMP SignUp");
 
+	console.log("------------------------------");
+	console.log(req.body);
+	console.log("------------------------------");
+
+
+	//return res.status(500).json({errors:{global: req.body.employee.name + " - " + req.body.employee.email + " - " + req.body.employee.password +  " - Account Create Error!"}});
+
+	User.create({
+		fname: req.body.employee.fname,
+		lname: req.body.employee.lname,
+		name: req.body.employee.name,
+		username: req.body.employee.name,
+		email: req.body.employee.email,
+		password: bcrypt.hashSync(req.body.employee.password, 8)
+	}).then(data => {
+			res.status(200).send({errors:{global: "Success -> Account Created Successfully!", "type": 'success'}});
+			return;
+			return res.status(200).json({errors:{global: "Account Created Successfully!"}});
+		}
+	).catch(err => {
+		return res.status(500).json({errors:{global: "Account Create Error!"}});
+	})
+}
+exports.empupdate = (req, res) => {
+	// Save User to Database
+	console.log("Processing func -> EMP SignUp");
+
+	console.log("------------------------------");
+	console.log(req.body);
+	console.log("------------------------------");
+
+	//return res.status(500).json({errors:{global: req.body.employee.name + " - " + req.body.employee.email + " - " + req.body.employee.password +  " - Account Create Error!"}});
+
+	User.update({
+		fname: req.body.employee.fname,
+		lname: req.body.employee.lname,
+		name: req.body.employee.name,
+		username: req.body.employee.name,
+		email: req.body.employee.email,
+		password: bcrypt.hashSync(req.body.employee.password, 8)
+	},{ where: {id: req.body.employee.id}}).then(data => {
+			res.status(200).send({errors:{global: "Success -> Account Updated Successfully!", "type": 'success'}});
+			return;
+			return res.status(200).json({errors:{global: "Account Updated Successfully!"}});
+		}
+	).catch(err => {
+		return res.status(500).json({errors:{global: "Account Create Error!"}});
+	})
+}
+
+exports.employeeget = (req, res) => {
+	User.findOne({
+		where: {id: req.body.id},
+		attributes: ['id','fname', 'lname', 'username','email'],
+	}).then(user => {
+		res.status(200).json({
+			"description": "User Board By Id",
+			"user": user
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Admin Board",
+			"error": err
+		});
+	})
+}
+exports.employeedelete = (req, res) => {
+	
+	console.log("SARAVANAN - START");
+	console.log(req.body.id);
+	console.log("SARAVANAN - END");
+
+	User.destroy({
+		where: {id: req.body.id},
+	}).then(user => {
+		res.status(200).json({
+			"description": "User Deleted By Id",
+			"status": "success"
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Admin Board",
+			"error": err
+		});
+	})
+}

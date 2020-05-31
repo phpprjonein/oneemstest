@@ -42,7 +42,7 @@ export class Tbl extends Component{
                     {"orderable": false,
                         "render": function ( data, type, full, meta ) {
                             var buttonID = full.id;
-                            return '<a id='+buttonID+' href="/editemployee/'+buttonID+'" class="btn btn-success editBtn" role="button">Edit</a>&nbsp;<a id='+buttonID+' class="btn btn-danger deleteBtn" href="/delemployee/'+buttonID+'" role="button">Delete</a>';
+                            return '<a id='+buttonID+' href="/editemployee/'+buttonID+'" class="btn btn-success editBtn" role="button"><i aria-hidden="true" class="edit big icon"></i><p class="name"></p></a>&nbsp;<a id='+buttonID+' class="btn btn-danger deleteBtn" href="/delemployee/'+buttonID+'" role="button"><i aria-hidden="true" class="delete big icon"></i><p class="name"></p></a>';
                         }
                     }
                 ],

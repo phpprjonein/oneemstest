@@ -29,10 +29,10 @@ const EmployeePage = (props,{isConfirmed}) => {
         <p>Employee Updated successfully</p>
     </Message>:''}
                 <div className="mb-sm-4 row">
-    <div className="col-lg-9 col-md-9"></div>
+    <div className="col-lg-10 col-md-9"></div>
     <div className="col-auto col-auto">
         <Nav.Link href="/addemployee" className="btn pull-right btn-success editBtn"  title="Add Employee">
-          Add Employee
+          <i aria-hidden="true" class="add big icon"></i><p class="name"></p>
         </Nav.Link>     
     </div>
 </div>
